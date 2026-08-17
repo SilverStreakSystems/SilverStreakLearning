@@ -21,11 +21,14 @@ export async function renderRoute(path: string) {
     defaultPendingMinMs: 0,
   });
 
+  await router.load();
+
   const result = render(<RouterProvider router={router as never} />);
 
   await waitFor(() => {
     expect(screen.getAllByRole("heading", { level: 1 }).length).toBeGreaterThan(0);
   });
+
 
   return { ...result, router };
 }
