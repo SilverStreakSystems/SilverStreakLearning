@@ -4,7 +4,10 @@
 - **Program:** SSLS-BPP-001 v2.0 (ratified by DEC-007)
 - **Executed:** 2026-08-17 04:41–04:43 UTC
 - **Repository HEAD at execution:** `9854a119bbcaffc0469118bc04a9013fbb966f6f`
-- **Record state:** CANDIDATE — executor output, not owner-closed
+- **Record state:** Executor output, OWNER CLOSED by DEC-008 on 2026-08-17. Residual
+  unknown accepted by DEC-009. Closure is an owner act on this evidence package, not a
+  technical certification; all evidence below remains executor/self-verified and is
+  preserved exactly as executed.
 
 ## 1. Scope boundary
 
