@@ -5,9 +5,16 @@ import {
   AUTHORITY_CLASS_META,
   VERIFICATION_STATE_META,
   carriesImplementationAuthority,
+  deriveFutureWorkspaces,
   type EnterpriseCapability,
 } from "@/domain";
-import { ENTERPRISE_CAPABILITIES, CLAIMS, FOUNDATION_ARTIFACTS, READINESS_AXES } from "@/fixtures";
+import {
+  ENTERPRISE_CAPABILITIES,
+  CLAIMS,
+  FOUNDATION_ARTIFACTS,
+  READINESS_AXES,
+  WORKSPACES,
+} from "@/fixtures";
 
 describe("authority is declared, never derived", () => {
   it("does not change authority when implementation status changes", () => {
