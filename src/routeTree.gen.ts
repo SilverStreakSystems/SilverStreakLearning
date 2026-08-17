@@ -20,6 +20,7 @@ import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
 import { Route as ObjectsRouteImport } from './routes/objects'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
+import { Route as ValueStreamsRouteImport } from './routes/value-streams'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesCapabilityIdRouteImport } from './routes/capabilities.$capabilityId'
 import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
@@ -80,6 +81,11 @@ const TraceabilityRoute = TraceabilityRouteImport.update({
   path: '/traceability',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ValueStreamsRoute = ValueStreamsRouteImport.update({
+  id: '/value-streams',
+  path: '/value-streams',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/future-architecture': typeof FutureArchitectureRoute
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
+  '/value-streams': typeof ValueStreamsRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
+  '/value-streams': typeof ValueStreamsRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   '/future-architecture': typeof FutureArchitectureRoute
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
+  '/value-streams': typeof ValueStreamsRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -166,6 +175,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/objects'
     | '/traceability'
+    | '/value-streams'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/capabilities/'
@@ -181,6 +191,7 @@ export interface FileRouteTypes {
     | '/foundation-map'
     | '/future-architecture'
     | '/traceability'
+    | '/value-streams'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/capabilities'
@@ -198,6 +209,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/objects'
     | '/traceability'
+    | '/value-streams'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/capabilities/'
@@ -216,6 +228,7 @@ export interface RootRouteChildren {
   FutureArchitectureRoute: typeof FutureArchitectureRoute
   ObjectsRoute: typeof ObjectsRouteWithChildren
   TraceabilityRoute: typeof TraceabilityRoute
+  ValueStreamsRoute: typeof ValueStreamsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TraceabilityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/value-streams': {
+      id: '/value-streams'
+      path: '/value-streams'
+      fullPath: '/value-streams'
+      preLoaderRoute: typeof ValueStreamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capabilities/': {
       id: '/capabilities/'
       path: '/'
@@ -367,6 +387,7 @@ const rootRouteChildren: RootRouteChildren = {
   FutureArchitectureRoute: FutureArchitectureRoute,
   ObjectsRoute: ObjectsRouteWithChildren,
   TraceabilityRoute: TraceabilityRoute,
+  ValueStreamsRoute: ValueStreamsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
