@@ -11,6 +11,10 @@ implemented shell. Implementation does not confer authority.
 - Domain models for authority classes, verification states, foundation layers,
   foundation artifacts, candidate capabilities, traceability threads, findings,
   evidence, decisions, claims, and gated future workspaces.
+- Enterprise Capability Architecture v0.1: 12 candidate domains, 129 candidate
+  capability records, 16 deliverable types, 38 dependency edges, 15
+  normalization findings, and a nine-view Capability Command View with
+  URL-addressable filters and per-capability detail pages.
 - Synthetic fixtures for every register, each marked in the interface.
 - Governance components that render declared authority and declared state, with
   a text marker and a text label on every status (never color alone).
@@ -36,6 +40,9 @@ integration availability, or release status, because no evidence supports them.
 ## Verification state of this build
 
 - Route rendering, landmarks, keyboard reach, gating, and state labelling:
+  Confirmed by automated test.
+- Capability model invariants (candidate-only authority, stage ordering,
+  independence coverage, dependency integrity, no percentage rendered):
   Confirmed by automated test.
 - Screen reader behaviour, 200% zoom reflow on real devices, and color contrast
   measurement: Not Run.

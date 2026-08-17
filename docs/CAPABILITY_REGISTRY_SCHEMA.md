@@ -1,18 +1,19 @@
 # Candidate Capability Registry — Schema
 
-Source of truth: `src/domain/capability.ts`. Every seeded record is synthetic
-and carries Candidate Proposal authority. No record grants implementation
-authority.
+Superseded by the Enterprise Capability Architecture v0.1. The earlier
+`CapabilityRecord` model and its 17 seeded records were retired to prevent two
+competing capability truths.
 
-Fields: id, name, purpose, north star contribution, human beneficiary, owning
-function candidate, accountable role candidate, supporting functions, dependency
-candidates, required evidence, risk profile, failure mode if absent, maturity
-candidate, authority class, lifecycle stage, implementation status, open
-questions, synthetic flag.
+Current source of truth:
 
-Rules:
+- Model: `src/domain/capability-architecture.ts` (`EnterpriseCapability`)
+- Deliverable types: `src/domain/deliverable-type.ts`
+- Records: `src/fixtures/capability-architecture/`
+- Documentation: `docs/capability-architecture/`
+
+Rules carried forward unchanged:
 
 - A capability is a candidate until an Approved Decision record promotes it.
 - `implementationStatus` is descriptive only; changing it never changes
   `currentAuthority`. This is locked by test.
-- Every record must name a human beneficiary and a failure mode if absent.
+- Every record must name a human beneficiary and a risk if absent.

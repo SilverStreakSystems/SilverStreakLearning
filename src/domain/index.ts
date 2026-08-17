@@ -1,7 +1,6 @@
 export * from "./authority";
 export * from "./layer";
 export * from "./artifact";
-export * from "./capability";
 export * from "./capability-architecture";
 export * from "./deliverable-type";
 export * from "./traceability";

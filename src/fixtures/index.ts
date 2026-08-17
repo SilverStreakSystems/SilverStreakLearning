@@ -1,6 +1,5 @@
 export * from "./layers";
 export * from "./artifacts";
-export * from "./capabilities";
 export * from "./capability-architecture";
 export * from "./deliverable-types";
 export * from "./registers";
