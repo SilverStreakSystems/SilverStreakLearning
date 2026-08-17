@@ -11,7 +11,9 @@ import {
   NEXT_DEFENSIBLE_ACTIONS,
   READINESS_AXES,
 } from "@/fixtures";
-import { carriesImplementationAuthority } from "@/domain";
+import { carriesImplementationAuthority, operatesNow } from "@/domain";
+import { WORKSPACES } from "@/fixtures";
+import { ACTIVE_CAPACITY, buildActions, buildNotifications } from "@/lib/workspace-queries";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -55,6 +57,12 @@ function CommandCenter() {
   );
   const evidenceNotRun = EVIDENCE.filter((record) => record.state !== "confirmed" && record.state !== "partial");
   const refusedClaims = CLAIMS.filter((claim) => claim.posture === "refused");
+  const openActions = buildActions();
+  const openNotifications = buildNotifications();
+  const stopNotifications = openNotifications.filter(
+    (notification) => notification.severity === "stop",
+  );
+  const openWorkspaces = WORKSPACES.filter(operatesNow);
 
   return (
     <div>
@@ -62,6 +70,41 @@ function CommandCenter() {
         title="Command Center"
         summary="What is currently authoritative, what is only built, what has actually been checked, and what decision comes next. Readiness is reported on separate axes and is never combined into a single score."
       />
+
+      <Section
+        id="standing"
+        title="Where you are standing"
+        description="Acting capacity, open obligations, and which workspaces are open right now. Each number links to the register that produced it; none of them are combined."
+      >
+        <dl className="grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <dt className="font-semibold">Acting as</dt>
+            <dd className="text-muted-foreground">{ACTIVE_CAPACITY.name}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold">Obligations owed</dt>
+            <dd className="text-muted-foreground">
+              <Link to="/actions">{openActions.length} in the Action Center</Link>
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold">Notifications</dt>
+            <dd className="text-muted-foreground">
+              <Link to="/notifications">
+                {stopNotifications.length} stop, {openNotifications.length} total
+              </Link>
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold">Workspaces open now</dt>
+            <dd className="text-muted-foreground">
+              <Link to="/workspaces">
+                {openWorkspaces.length} of {WORKSPACES.length} operating
+              </Link>
+            </dd>
+          </div>
+        </dl>
+      </Section>
 
       <Section
         id="axes"
