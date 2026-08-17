@@ -516,7 +516,93 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-TRUST-001", "SSLS-GOV-002"],
     synthetic: false,
   },
+  {
+    id: "DEC-010",
+    title: "Authorize the go-forward software source of truth and classify every other lineage",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "Exactly one repository holds executable code, with fully recoverable provenance and a passing build and test suite. Its origin diverges from a candidate first-commit plan that was never executed, and other referenced lineages could not be located from inside this project.",
+    decision:
+      "Not decided. The owner must name the authorized go-forward source-code lineage, classify every other discoverable lineage, and state the disposition of the actual repository origin.",
+    consequences: [
+      "Until decided, no lineage may be described as the authorized source of truth.",
+      "Existing evidence remains bound to the current baseline commit regardless of the outcome.",
+      "The decision confers no security, privacy, accessibility, or compliance certification.",
+    ],
+    authorityClass: "candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-011",
+    title: "Locate or author the governing build program register text",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "The governing program register is ratified by reference, but no artifact carrying its text exists in either plane. Requirement labels, gate definitions, and work-package identifiers are cited from a document that cannot be produced.",
+    decision:
+      "Not decided. The owner must either locate the ratified text and mirror it as the canonical copy, or author it under explicit ratification.",
+    consequences: [
+      "Until resolved, program citations cannot be independently checked.",
+      "Ratification by reference remains in force; this does not invalidate the existing ratification decision.",
+    ],
+    authorityClass: "candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-012",
+    title: "Declare the effective revision of the interface acceptance standard",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "Implementation work cites revision 1.3 while a later revision also exists in the document corpus. No accepted decision names which is effective.",
+    decision:
+      "Not decided. The owner must declare the effective revision and the disposition of work already accepted against the earlier one.",
+    consequences: [
+      "Until declared, no conformance statement may name a revision as satisfied.",
+      "A change of effective revision may reopen previously accepted interface work.",
+    ],
+    authorityClass: "candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["ULW-AS-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-013",
+    title: "Reconcile the historical and current gate taxonomies",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "A historical gate sequence left its second gate open. The current program proceeds under a separately named gate covering overlapping subject matter. No decision maps one taxonomy onto the other.",
+    decision:
+      "Not decided. The owner must state whether the current gate supersedes, incorporates, or runs independently of the open historical gate, and record the disposition of historical gate evidence.",
+    consequences: [
+      "Until decided, the historical gate remains open and its evidence has no stated status under the current program.",
+      "No statement may assert that the historical gate was completed.",
+    ],
+    authorityClass: "candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001"],
+    synthetic: false,
+  },
 ];
+
 
 
 
