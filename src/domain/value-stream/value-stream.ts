@@ -8,7 +8,7 @@
  * Authority is declared, never derived from implementation status.
  */
 import type { AuthorityClass } from "../authority";
-import type { CapabilityScaleStage } from "../capability-architecture";
+import type { ScaleStage } from "../capability-architecture";
 import type { SharedObjectTypeId } from "../shared-object/object-types";
 import type { EnterpriseCapabilityId, ValueStreamId } from "./ids";
 import type { EnterpriseFunctionId } from "./functions";
@@ -54,8 +54,8 @@ export interface ValueStream {
 
   /** Declared authority. Never inferred from whether stages exist. */
   currentAuthority: AuthorityClass;
-  currentMaturity: CapabilityScaleStage;
-  targetMaturity: CapabilityScaleStage;
+  currentMaturity: ScaleStage;
+  targetMaturity: ScaleStage;
   operatingStatus: StreamOperatingStatus;
   implementationStatus: ValueStreamImplementationStatus;
 
