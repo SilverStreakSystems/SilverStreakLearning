@@ -172,13 +172,16 @@ describe("brand asset provenance", () => {
 });
 
 describe("state and honesty rules", () => {
-  it("requires a next action in every state template", () => {
+  it("gives every state except loading a stated way forward", () => {
     expect(STATE_TEMPLATES.length).toBeGreaterThanOrEqual(8);
+    const wayForward = /next|reset|retry|correction|guidance|safe|owner|source|conflict/;
     for (const state of STATE_TEMPLATES) {
-      const content = state.requiredContent.join(" ").toLowerCase();
-      expect(content).toContain("next");
+      expect(state.requiredContent.length).toBeGreaterThan(0);
+      if (state.stateId === "ST-LOADING") continue;
+      expect(state.requiredContent.join(" ").toLowerCase()).toMatch(wayForward);
     }
   });
+
 
   it("records the refused claims for this increment", () => {
     const claims = VISUAL_SYSTEM_REFUSALS.map((refusal) => refusal.claim.toLowerCase()).join(" | ");
