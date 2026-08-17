@@ -56,9 +56,34 @@ export interface RelationshipKindMeta {
   doesNotImply: string;
 }
 
+
 /** Projection may read from canonical sources, never from another projection. */
-// eslint-disable-next-line no-var
-var SHARED_OBJECT_TARGETS_FOR_PROJECTION: SharedObjectTypeId[];
+const SHARED_OBJECT_TARGETS_FOR_PROJECTION = [
+  "person-reference",
+  "organization",
+  "organizational-unit",
+  "acting-capacity",
+  "role-reference",
+  "enterprise-capability",
+  "requirement",
+  "decision",
+  "policy-rule",
+  "standard",
+  "approval",
+  "review",
+  "risk",
+  "finding",
+  "claim",
+  "work-item",
+  "deliverable-instance",
+  "event",
+  "evidence",
+  "source",
+  "research-record",
+  "artifact-reference",
+  "validation",
+  "knowledge-object",
+];
 
 const G = (...ids: SharedObjectTypeId[]) => ids;
 
@@ -372,32 +397,7 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
 };
 
 
-SHARED_OBJECT_TARGETS_FOR_PROJECTION = [
-  "person-reference",
-  "organization",
-  "organizational-unit",
-  "acting-capacity",
-  "role-reference",
-  "enterprise-capability",
-  "requirement",
-  "decision",
-  "policy-rule",
-  "standard",
-  "approval",
-  "review",
-  "risk",
-  "finding",
-  "claim",
-  "work-item",
-  "deliverable-instance",
-  "event",
-  "evidence",
-  "source",
-  "research-record",
-  "artifact-reference",
-  "validation",
-  "knowledge-object",
-];
+
 
 export interface RelationshipRecord {
   relationshipId: string;
