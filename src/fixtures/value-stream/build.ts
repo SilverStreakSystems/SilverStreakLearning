@@ -17,7 +17,13 @@ import type {
   ValueStreamImplementationStatus,
   ValueStreamStage,
 } from "@/domain";
-import type { AuthorityClass, ScaleStage, SharedObjectTypeId, WorkType } from "@/domain";
+import type {
+  AuthorityClass,
+  ScaleStage,
+  SharedObjectTypeId,
+  ValueStreamId,
+  WorkType,
+} from "@/domain";
 
 export interface StageSeed {
   name: string;
@@ -44,7 +50,7 @@ export interface StageSeed {
 }
 
 export interface ValueStreamSeed {
-  id: string;
+  id: ValueStreamId;
   name: string;
   description: string;
   purpose: string;
@@ -73,7 +79,7 @@ export interface ValueStreamSeed {
   refusalConditions: string[];
   rollbackRecovery: string;
   outcomeMeasures: string[];
-  learningLoop: string;
+  learningLoop: ValueStreamId;
   risks: string[];
   assumptions: string[];
   unknowns: string[];
@@ -86,7 +92,7 @@ export interface ValueStreamSeed {
 const DEFAULT_AUDIT =
   "Record who acted, in which capacity, on which objects, under which rule, and when.";
 
-function buildStages(streamId: string, seeds: StageSeed[]): ValueStreamStage[] {
+function buildStages(streamId: ValueStreamId, seeds: StageSeed[]): ValueStreamStage[] {
   return seeds.map((seed, index) => {
     const sequence = index + 1;
     const stageId = `${streamId}-S${String(sequence).padStart(2, "0")}`;
