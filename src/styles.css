@@ -18,6 +18,26 @@
 @theme inline {
   --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Brand palette (SSLS Brand Visual System v0.1). Hex recorded for traceability. */
+  --color-ssls-midnight: var(--ssls-midnight);
+  --color-ssls-deep: var(--ssls-deep);
+  --color-ssls-silver-blue: var(--ssls-silver-blue);
+  --color-ssls-ice-blue: var(--ssls-ice-blue);
+  --color-ssls-signal-blue: var(--ssls-signal-blue);
+  --color-ssls-signal-cyan: var(--ssls-signal-cyan);
+  --color-ssls-neutral-ink: var(--ssls-neutral-ink);
+  --color-ssls-progress-green: var(--ssls-progress-green);
+  --color-ssls-attention-yellow: var(--ssls-attention-yellow);
+
+  /* Semantic status. Always rendered with a label and a shape, never color alone. */
+  --color-status-success: var(--status-success);
+  --color-status-warning: var(--status-warning);
+  --color-status-danger: var(--status-danger);
+  --color-status-information: var(--status-information);
+  --color-status-unknown: var(--status-unknown);
+
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
