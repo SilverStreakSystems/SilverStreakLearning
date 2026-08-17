@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { GatedPanel } from "@/components/governance/markers";
-import { ENTERPRISE_CAPABILITIES, FUTURE_WORKSPACES } from "@/fixtures";
+import { ENTERPRISE_CAPABILITIES, WORKSPACES } from "@/fixtures";
+import { deriveFutureWorkspaces } from "@/domain";
 import { capabilityById } from "@/lib/capability-queries";
 
 export const Route = createFileRoute("/future-architecture")({
@@ -25,6 +26,9 @@ export const Route = createFileRoute("/future-architecture")({
 });
 
 function FutureArchitecture() {
+  // Derived from the canonical workspace definitions. Nothing here is authored twice.
+  const futureWorkspaces = deriveFutureWorkspaces(WORKSPACES);
+
   return (
     <div>
       <PageHeader
@@ -40,24 +44,28 @@ function FutureArchitecture() {
       <Section
         id="workspaces"
         title="Target-state enterprise workspaces"
-        description="Nine candidate workspaces. Each names what would have to be true before it could be built."
+        description="Every canonical workspace that is not operating now, read directly from the workspace register so this page can never disagree with it."
       >
+        <p className="measure mb-4 text-sm text-muted-foreground">
+          Showing {futureWorkspaces.length} of {WORKSPACES.length} workspaces. A workspace leaves
+          this page only by becoming current in the workspace register.
+        </p>
         <div className="grid gap-4 xl:grid-cols-2">
-          {FUTURE_WORKSPACES.map((workspace) => (
+          {futureWorkspaces.map((workspace) => (
             <GatedPanel
-              key={workspace.id}
-              title={`${workspace.id} — ${workspace.name}`}
+              key={workspace.workspaceId}
+              title={`${workspace.name} (${workspace.availabilityLabel})`}
               notice={workspace.gateNotice}
             >
               <p className="measure text-sm text-muted-foreground">{workspace.intent}</p>
               <dl className="mt-3 space-y-2 text-sm">
                 <div>
                   <dt className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-                    Candidate capabilities
+                    Required capabilities
                   </dt>
                   <dd>
                     <ul className="mt-1 list-disc space-y-1 pl-5">
-                      {workspace.candidateCapabilities.map((id) => (
+                      {workspace.requiredCapabilities.map((id: string) => (
                         <li key={id}>
                           {id} — {capabilityById(ENTERPRISE_CAPABILITIES, id)?.name ?? "Not recorded"}
                         </li>
@@ -67,9 +75,15 @@ function FutureArchitecture() {
                 </div>
                 <div>
                   <dt className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-                    Promotion requirement
+                    Future boundary that still applies
                   </dt>
                   <dd className="mt-1">{workspace.promotionRequirement}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                    Review trigger
+                  </dt>
+                  <dd className="mt-1">{workspace.reviewTrigger}</dd>
                 </div>
                 <div>
                   <dt className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
