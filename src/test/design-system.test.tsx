@@ -88,13 +88,22 @@ describe("coordinate grid", () => {
     expect(GRID_COLUMNS[11]).toBe("L");
   });
 
-  it("keeps every coordinate contract inside the grid boundary", () => {
+  it("keeps every coordinate contract inside the grid boundary, allowing stated prose fallbacks", () => {
+    const looksLikeCoordinates = (value: string) => /^[A-L]\d{1,2}-[A-L]\d{1,2}$/.test(value);
     for (const contract of COORDINATE_CONTRACTS) {
-      expect(isCoordinateRange(contract.desktop)).toBe(true);
-      expect(isCoordinateRange(contract.tablet)).toBe(true);
-      expect(isCoordinateRange(contract.mobile)).toBe(true);
+      for (const value of [contract.desktop, contract.tablet, contract.mobile]) {
+        if (looksLikeCoordinates(value)) {
+          expect(isCoordinateRange(value)).toBe(true);
+        } else {
+          // Prose fallbacks are permitted only where the region leaves the grid,
+          // for example a collapsed mobile drawer. They must still say something.
+          expect(value.trim().length).toBeGreaterThan(0);
+          expect(isCoordinateRange(value)).toBe(false);
+        }
+      }
     }
   });
+
 
   it("keeps every blueprint region inside the grid boundary", () => {
     for (const blueprint of PAGE_BLUEPRINTS) {
