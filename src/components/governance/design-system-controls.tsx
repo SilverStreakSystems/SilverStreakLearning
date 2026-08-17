@@ -41,14 +41,19 @@ export const DEFAULT_DESIGN_SYSTEM_SEARCH: DesignSystemSearch = {
 const VIEW_IDS = DESIGN_SYSTEM_VIEWS.map((view) => view.id) as readonly string[];
 
 export function parseDesignSystemSearch(input: Record<string, unknown>): DesignSystemSearch {
-  const view = typeof input.view === "string" && VIEW_IDS.includes(input.view) ? (input.view as DesignSystemView) : "overview";
+  const rawView = input["view"];
+  const rawMaturity = input["maturity"];
+  const rawQuery = input["q"];
+  const view =
+    typeof rawView === "string" && VIEW_IDS.includes(rawView) ? (rawView as DesignSystemView) : "overview";
   const maturity =
-    typeof input.maturity === "string" && input.maturity in TEMPLATE_MATURITY_META
-      ? (input.maturity as TemplateMaturity)
+    typeof rawMaturity === "string" && rawMaturity in TEMPLATE_MATURITY_META
+      ? (rawMaturity as TemplateMaturity)
       : "all";
-  const q = typeof input.q === "string" ? input.q : "";
+  const q = typeof rawQuery === "string" ? rawQuery : "";
   return { view, maturity, q };
 }
+
 
 /** Views are links, so each one is addressable and survives a detour into detail. */
 export function DesignSystemViewTabs({
