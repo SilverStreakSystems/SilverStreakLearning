@@ -30,6 +30,7 @@ import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
 import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
 import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 import { Route as ValueStreamsStreamIdRouteImport } from './routes/value-streams.$streamId'
+import { Route as WorkspacesIndexRouteImport } from './routes/workspaces.index'
 import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/design-system.templates.$templateId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -138,6 +139,11 @@ const ValueStreamsStreamIdRoute = ValueStreamsStreamIdRouteImport.update({
   path: '/$streamId',
   getParentRoute: () => ValueStreamsRoute,
 } as any)
+const WorkspacesIndexRoute = WorkspacesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorkspacesRoute,
+} as any)
 const DesignSystemTemplatesTemplateIdRoute =
   DesignSystemTemplatesTemplateIdRouteImport.update({
     id: '/templates/$templateId',
@@ -159,7 +165,7 @@ export interface FileRoutesByFullPath {
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
-  '/workspaces': typeof WorkspacesRoute
+  '/workspaces': typeof WorkspacesRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
@@ -167,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/workspaces/': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesByTo {
@@ -179,7 +186,6 @@ export interface FileRoutesByTo {
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
-  '/workspaces': typeof WorkspacesRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
@@ -187,6 +193,7 @@ export interface FileRoutesByTo {
   '/design-system': typeof DesignSystemIndexRoute
   '/objects': typeof ObjectsIndexRoute
   '/value-streams': typeof ValueStreamsIndexRoute
+  '/workspaces': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesById {
@@ -204,7 +211,7 @@ export interface FileRoutesById {
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
-  '/workspaces': typeof WorkspacesRoute
+  '/workspaces': typeof WorkspacesRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
@@ -212,6 +219,7 @@ export interface FileRoutesById {
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/workspaces/': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRouteTypes {
@@ -238,6 +246,7 @@ export interface FileRouteTypes {
     | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/workspaces/'
     | '/design-system/templates/$templateId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -250,7 +259,6 @@ export interface FileRouteTypes {
     | '/foundation-map'
     | '/future-architecture'
     | '/traceability'
-    | '/workspaces'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
@@ -258,6 +266,7 @@ export interface FileRouteTypes {
     | '/design-system'
     | '/objects'
     | '/value-streams'
+    | '/workspaces'
     | '/design-system/templates/$templateId'
   id:
     | '__root__'
@@ -282,6 +291,7 @@ export interface FileRouteTypes {
     | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/workspaces/'
     | '/design-system/templates/$templateId'
   fileRoutesById: FileRoutesById
 }
@@ -299,7 +309,7 @@ export interface RootRouteChildren {
   ObjectsRoute: typeof ObjectsRouteWithChildren
   TraceabilityRoute: typeof TraceabilityRoute
   ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
-  WorkspacesRoute: typeof WorkspacesRoute
+  WorkspacesRoute: typeof WorkspacesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -451,6 +461,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ValueStreamsStreamIdRouteImport
       parentRoute: typeof ValueStreamsRoute
     }
+    '/workspaces/': {
+      id: '/workspaces/'
+      path: '/'
+      fullPath: '/workspaces/'
+      preLoaderRoute: typeof WorkspacesIndexRouteImport
+      parentRoute: typeof WorkspacesRoute
+    }
     '/design-system/templates/$templateId': {
       id: '/design-system/templates/$templateId'
       path: '/templates/$templateId'
@@ -516,6 +533,18 @@ const ValueStreamsRouteWithChildren = ValueStreamsRoute._addFileChildren(
   ValueStreamsRouteChildren,
 )
 
+interface WorkspacesRouteChildren {
+  WorkspacesIndexRoute: typeof WorkspacesIndexRoute
+}
+
+const WorkspacesRouteChildren: WorkspacesRouteChildren = {
+  WorkspacesIndexRoute: WorkspacesIndexRoute,
+}
+
+const WorkspacesRouteWithChildren = WorkspacesRoute._addFileChildren(
+  WorkspacesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthorityRoute: AuthorityRoute,
@@ -530,7 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   ObjectsRoute: ObjectsRouteWithChildren,
   TraceabilityRoute: TraceabilityRoute,
   ValueStreamsRoute: ValueStreamsRouteWithChildren,
-  WorkspacesRoute: WorkspacesRoute,
+  WorkspacesRoute: WorkspacesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
