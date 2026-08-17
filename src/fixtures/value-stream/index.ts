@@ -59,3 +59,5 @@ export {
   VALUE_STREAM_TRANSITIONS,
 };
 export { buildValueStream } from "./build";
+export { VALUE_STREAM_NORMALIZATION_FINDINGS } from "./normalization";
+export { VALUE_STREAM_PROJECTIONS } from "./projections";
