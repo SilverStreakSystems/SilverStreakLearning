@@ -6,7 +6,7 @@
  */
 import type { EnterpriseFunctionId } from "./functions";
 
-export const DEPENDENCY_KINDS = [
+export const STREAM_DEPENDENCY_KINDS = [
   "stage",
   "object",
   "capability",
@@ -15,9 +15,9 @@ export const DEPENDENCY_KINDS = [
   "decision",
 ] as const;
 
-export type DependencyKind = (typeof DEPENDENCY_KINDS)[number];
+export type StreamDependencyKind = (typeof STREAM_DEPENDENCY_KINDS)[number];
 
-export const DEPENDENCY_KIND_LABEL: Record<DependencyKind, string> = {
+export const STREAM_DEPENDENCY_KIND_LABEL: Record<StreamDependencyKind, string> = {
   stage: "Stage dependency",
   object: "Object dependency",
   capability: "Capability dependency",
@@ -34,7 +34,7 @@ export type DependencyCriticality = (typeof DEPENDENCY_CRITICALITY)[number];
 
 export interface DependencyRecord {
   dependencyId: string;
-  kind: DependencyKind;
+  kind: StreamDependencyKind;
   valueStreamId: string;
   /** The stage that cannot proceed while this dependency is unmet. */
   dependentStageId: string;
