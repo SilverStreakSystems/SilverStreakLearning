@@ -357,80 +357,62 @@ export function assembleProjection(
     : "future-gated";
 
   const steps: ProjectionStepRecord[] = [
-    {
-      step: "purpose",
-      satisfied: true,
-      detail: workspace.purpose,
-      omitted: "Anything not serving this purpose is left out, however interesting.",
-    },
+    { step: "purpose", value: workspace.purpose },
     {
       step: "authorized-participant",
-      satisfied: true,
-      detail: `${OPERATOR_IDENTITY.displayLabel}. ${OPERATOR_IDENTITY.purpose}`,
-      omitted: "No name, contact details, or other personal data is held.",
+      value: `${OPERATOR_IDENTITY.displayLabel}. ${OPERATOR_IDENTITY.purpose}`,
     },
-    {
-      step: "acting-capacity",
-      satisfied: capacity.status === "active",
-      detail: `${capacity.name} (${capacity.status}).`,
-      omitted: "Capabilities outside this capacity are not exposed.",
-    },
+    { step: "acting-capacity", value: `${capacity.name} (${capacity.status}).` },
     {
       step: "relationship",
-      satisfied: Boolean(membership),
-      detail: membership
+      value: membership
         ? membership.relationship
         : "No membership connects this capacity to this workspace.",
-      omitted: "Membership alone authorizes no record inside the workspace.",
     },
-    {
-      step: "applicable-policy",
-      satisfied: true,
-      detail: workspace.currentBoundary,
-      omitted: workspace.futureBoundary,
-    },
+    { step: "applicable-policy", value: workspace.currentBoundary },
     {
       step: "canonical-source-objects",
-      satisfied: workspace.sharedObjectsUsed.length > 0,
-      detail: `Reads ${workspace.sharedObjectsUsed.join(", ")} from their owning registers.`,
-      omitted: workspace.prohibitedObjects.join(" "),
+      value: `Reads ${workspace.sharedObjectsUsed.join(", ")} from their owning registers.`,
     },
-    {
-      step: "minimum-authorized-projection",
-      satisfied: true,
-      detail: workspace.allowedProjections.join(" "),
-      omitted: "Fields not required by the purpose are not projected.",
-    },
+    { step: "minimum-authorized-projection", value: workspace.allowedProjections.join(" ") },
     {
       step: "freshness-missing-conflict-check",
-      satisfied: operates,
-      detail: operates
+      value: operates
         ? "Register freshness is stated on each surface; unrun checks are shown as unrun."
         : "Not performed: this workspace does not operate, so it has no live sources to check.",
-      omitted: "Absent sections mean unknown, never zero.",
     },
     {
       step: "workspace-projection",
-      satisfied: true,
-      detail: operates
+      value: operates
         ? "Rendered with the surfaces marked current."
         : "Rendered as architecture with its gate stated.",
-      omitted: "Surfaces marked candidate or gated future carry no operational records.",
     },
   ];
 
   return {
     projectionId: `projection-${workspace.workspaceId}-${capacity.capacityId}`,
     workspaceId: workspace.workspaceId,
-    capacityId: capacity.capacityId,
+    name: `${workspace.name} projection for ${capacity.name}`,
     purpose: workspace.purpose,
     steps,
+    canonicalSourceRefs: workspace.sharedObjectsUsed,
+    fieldsShown: workspace.allowedProjections,
+    fieldsWithheld: workspace.prohibitedObjects,
+    withholdingReason:
+      "Outside the governed boundary, or not required by the purpose this projection serves.",
+    freshnessNote: operates
+      ? "As fresh as the registers behind each surface."
+      : "No live sources: this workspace does not operate.",
+    missingInformation: membership
+      ? []
+      : ["No membership connects this capacity to this workspace, so no records are projected."],
+    conflicts: [],
     surfaceState,
-    reusable: false,
-    reuseRule:
-      "This projection was assembled for one purpose. A different purpose requires a new assembly, not a reused view.",
+    isSourceOfTruth: false,
+    reusableForOtherPurpose: false,
   };
 }
+
 
 export function utilityFor(route: string) {
   return GLOBAL_UTILITIES.find((utility) => utility.route === route);
