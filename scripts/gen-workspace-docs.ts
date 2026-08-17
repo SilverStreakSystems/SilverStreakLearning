@@ -25,7 +25,7 @@ import {
   PROHIBITED_WORKSPACE_SIGNALS,
   PROJECTION_ASSEMBLY_STEPS,
   PROJECTION_STEP_META,
-  SEARCH_RULES,
+  SEARCH_LEAK_RULES,
   SURFACE_STATES,
   SURFACE_STATE_META,
 } from "../src/domain";
@@ -194,7 +194,7 @@ write(
 Authorization happens before retrieval, before counting, and before faceting.
 A withheld record must not be inferable from a count, a facet, or a suggestion.
 
-${list(SEARCH_RULES)}
+${list(SEARCH_LEAK_RULES)}
 `,
 );
 
