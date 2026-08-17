@@ -361,6 +361,8 @@ export const VALUE_STREAMS = [
   "hire-develop-retain",
   "vendor-lifecycle",
   "evidence-claim",
+  "governance-artifact-lifecycle",
+  "ai-capability-lifecycle",
 ] as const;
 
 export type ValueStreamId = (typeof VALUE_STREAMS)[number];
@@ -382,6 +384,8 @@ export const VALUE_STREAM_LABEL: Record<ValueStreamId, string> = {
   "hire-develop-retain": "Hire → Develop → Retain",
   "vendor-lifecycle": "Vendor → Review → Contract → Monitor → Exit",
   "evidence-claim": "Evidence → Claim",
+  "governance-artifact-lifecycle": "Governance Artifact → Promotion / Supersession",
+  "ai-capability-lifecycle": "AI Capability Lifecycle (gated future)",
 };
 
 /* ---------------------------------------------------------------- functions */
