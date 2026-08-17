@@ -57,7 +57,7 @@ describe("state axes stay independent", () => {
   it("never lets one axis be described as implying another", () => {
     for (const axis of STATE_AXES) {
       const meta = STATE_AXIS_META[axis];
-      expect(meta.neverImplies.length, axis).toBeGreaterThan(0);
+      expect(meta.doesNotImply.length, axis).toBeGreaterThan(0);
     }
   });
 });
@@ -87,7 +87,7 @@ describe("work, evidence, and claim contracts", () => {
     expect(validateEvidence(EXAMPLE_EVIDENCE)).toEqual([]);
     for (const record of EXAMPLE_EVIDENCE) {
       if ((VERSION_BOUND_EVIDENCE_TYPES as readonly string[]).includes(record.evidenceType)) {
-        expect(record.versionBinding, record.evidenceId).not.toBeNull();
+        expect(record.subjectVersion, record.evidenceId).not.toBeNull();
       }
     }
   });
@@ -98,15 +98,16 @@ describe("work, evidence, and claim contracts", () => {
 
   it("keeps a context package bound to the single purpose it was assembled for", () => {
     for (const pkg of EXAMPLE_CONTEXT_PACKAGES) {
-      expect(pkg.purpose.length, pkg.packageId).toBeGreaterThan(0);
-      expect(pkg.reusePolicy.toLowerCase(), pkg.packageId).toMatch(/not|only|single/);
+      expect(pkg.purpose.length, pkg.contextPackageId).toBeGreaterThan(0);
+      expect(pkg.reuseRestrictions.length, pkg.contextPackageId).toBeGreaterThan(0);
     }
   });
 
   it("never completes a handoff the receiver has not accepted", () => {
     for (const handoff of EXAMPLE_HANDOFFS) {
-      if (!handoff.receiverAccepted) {
-        expect(handoff.outcome, handoff.handoffId).not.toBe("accepted");
+      if (!handoff.accepted) {
+        expect(handoff.acceptedBy, handoff.handoffId).toBeNull();
+        expect(handoff.acceptedAt, handoff.handoffId).toBeNull();
       }
     }
   });
