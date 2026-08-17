@@ -20,6 +20,7 @@ import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ObjectsRouteImport } from './routes/objects'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -91,6 +92,11 @@ const FoundationMapRoute = FoundationMapRouteImport.update({
 const FutureArchitectureRoute = FutureArchitectureRouteImport.update({
   id: '/future-architecture',
   path: '/future-architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotificationsRoute = NotificationsRouteImport.update({
@@ -193,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/help': typeof HelpRoute
   '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
   '/profile': typeof ProfileRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/help': typeof HelpRoute
   '/notifications': typeof NotificationsRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
@@ -249,6 +257,7 @@ export interface FileRoutesById {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/help': typeof HelpRoute
   '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
   '/profile': typeof ProfileRoute
@@ -281,6 +290,7 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/help'
     | '/notifications'
     | '/objects'
     | '/profile'
@@ -309,6 +319,7 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/help'
     | '/notifications'
     | '/profile'
     | '/search'
@@ -336,6 +347,7 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/help'
     | '/notifications'
     | '/objects'
     | '/profile'
@@ -367,6 +379,7 @@ export interface RootRouteChildren {
   FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
   FutureArchitectureRoute: typeof FutureArchitectureRoute
+  HelpRoute: typeof HelpRoute
   NotificationsRoute: typeof NotificationsRoute
   ObjectsRoute: typeof ObjectsRouteWithChildren
   ProfileRoute: typeof ProfileRoute
@@ -453,6 +466,13 @@ declare module '@tanstack/react-router' {
       path: '/future-architecture'
       fullPath: '/future-architecture'
       preLoaderRoute: typeof FutureArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notifications': {
@@ -658,6 +678,7 @@ const rootRouteChildren: RootRouteChildren = {
   FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
   FutureArchitectureRoute: FutureArchitectureRoute,
+  HelpRoute: HelpRoute,
   NotificationsRoute: NotificationsRoute,
   ObjectsRoute: ObjectsRouteWithChildren,
   ProfileRoute: ProfileRoute,

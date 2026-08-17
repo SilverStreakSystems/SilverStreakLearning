@@ -88,6 +88,42 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     heading: "Brand Visual System and Experience Template Architecture v0.1",
   },
   {
+    path: "/workspaces",
+    label: "Workspaces",
+    purpose: "The nine enterprise workspaces, their acting capacities, and the gates holding the rest closed.",
+    heading: "Enterprise Workspaces",
+  },
+  {
+    path: "/actions",
+    label: "Action Center",
+    purpose: "Every obligation currently owed, projected from the registers that record them.",
+    heading: "Action Center",
+  },
+  {
+    path: "/search",
+    label: "Search",
+    purpose: "Find any authorized governed record without leaking what is withheld.",
+    heading: "Universal Search",
+  },
+  {
+    path: "/notifications",
+    label: "Notifications",
+    purpose: "States where a human owes a response or must know that work has stopped.",
+    heading: "Notifications",
+  },
+  {
+    path: "/profile",
+    label: "Profile and Capacity",
+    purpose: "Who is acting, in what capacity, and what that capacity may not do alone.",
+    heading: "Profile and Acting Capacity",
+  },
+  {
+    path: "/help",
+    label: "Knowledge and Help",
+    purpose: "Definitions and procedures, with governing policy kept separate from explanatory help.",
+    heading: "Knowledge and Help",
+  },
+  {
     path: "/boundaries",
     label: "Settings and Boundaries",
     purpose: "The authorized posture of this workspace and the claims it refuses.",
