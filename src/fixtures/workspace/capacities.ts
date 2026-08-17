@@ -8,9 +8,9 @@ import type { ActingCapacity, IdentityReference, WorkspaceMembership } from "@/d
 
 export const OPERATOR_IDENTITY: IdentityReference = {
   identityId: "identity-operator",
-  displayLabel: "Founder operator (synthetic handle)",
+  displayLabel: "Founder and developer operator",
   purpose:
-    "Attribute recorded decisions and actions to a single authorized human without storing any personal data.",
+    "Attribute recorded decisions and actions to the single authorized acting capacity, by role rather than by person, so no personal data is stored.",
 };
 
 export const ACTING_CAPACITIES: ActingCapacity[] = [
