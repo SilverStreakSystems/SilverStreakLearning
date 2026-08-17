@@ -25,6 +25,7 @@ import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.ind
 import { Route as CapabilitiesCapabilityIdRouteImport } from './routes/capabilities.$capabilityId'
 import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
 import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
+import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -107,6 +108,11 @@ const ObjectsTypeIdRoute = ObjectsTypeIdRouteImport.update({
   path: '/$typeId',
   getParentRoute: () => ObjectsRoute,
 } as any)
+const ValueStreamsIndexRoute = ValueStreamsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ValueStreamsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -120,11 +126,12 @@ export interface FileRoutesByFullPath {
   '/future-architecture': typeof FutureArchitectureRoute
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
-  '/value-streams': typeof ValueStreamsRoute
+  '/value-streams': typeof ValueStreamsRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/objects/': typeof ObjectsIndexRoute
+  '/value-streams/': typeof ValueStreamsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -136,11 +143,11 @@ export interface FileRoutesByTo {
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
-  '/value-streams': typeof ValueStreamsRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/objects': typeof ObjectsIndexRoute
+  '/value-streams': typeof ValueStreamsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -155,11 +162,12 @@ export interface FileRoutesById {
   '/future-architecture': typeof FutureArchitectureRoute
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
-  '/value-streams': typeof ValueStreamsRoute
+  '/value-streams': typeof ValueStreamsRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/objects/': typeof ObjectsIndexRoute
+  '/value-streams/': typeof ValueStreamsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -180,6 +188,7 @@ export interface FileRouteTypes {
     | '/objects/$typeId'
     | '/capabilities/'
     | '/objects/'
+    | '/value-streams/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -191,11 +200,11 @@ export interface FileRouteTypes {
     | '/foundation-map'
     | '/future-architecture'
     | '/traceability'
-    | '/value-streams'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/capabilities'
     | '/objects'
+    | '/value-streams'
   id:
     | '__root__'
     | '/'
@@ -214,6 +223,7 @@ export interface FileRouteTypes {
     | '/objects/$typeId'
     | '/capabilities/'
     | '/objects/'
+    | '/value-streams/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -228,7 +238,7 @@ export interface RootRouteChildren {
   FutureArchitectureRoute: typeof FutureArchitectureRoute
   ObjectsRoute: typeof ObjectsRouteWithChildren
   TraceabilityRoute: typeof TraceabilityRoute
-  ValueStreamsRoute: typeof ValueStreamsRoute
+  ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -345,6 +355,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObjectsTypeIdRouteImport
       parentRoute: typeof ObjectsRoute
     }
+    '/value-streams/': {
+      id: '/value-streams/'
+      path: '/'
+      fullPath: '/value-streams/'
+      preLoaderRoute: typeof ValueStreamsIndexRouteImport
+      parentRoute: typeof ValueStreamsRoute
+    }
   }
 }
 
@@ -375,6 +392,18 @@ const ObjectsRouteChildren: ObjectsRouteChildren = {
 const ObjectsRouteWithChildren =
   ObjectsRoute._addFileChildren(ObjectsRouteChildren)
 
+interface ValueStreamsRouteChildren {
+  ValueStreamsIndexRoute: typeof ValueStreamsIndexRoute
+}
+
+const ValueStreamsRouteChildren: ValueStreamsRouteChildren = {
+  ValueStreamsIndexRoute: ValueStreamsIndexRoute,
+}
+
+const ValueStreamsRouteWithChildren = ValueStreamsRoute._addFileChildren(
+  ValueStreamsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthorityRoute: AuthorityRoute,
@@ -387,7 +416,7 @@ const rootRouteChildren: RootRouteChildren = {
   FutureArchitectureRoute: FutureArchitectureRoute,
   ObjectsRoute: ObjectsRouteWithChildren,
   TraceabilityRoute: TraceabilityRoute,
-  ValueStreamsRoute: ValueStreamsRoute,
+  ValueStreamsRoute: ValueStreamsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
