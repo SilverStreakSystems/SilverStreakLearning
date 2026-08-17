@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { ROUTE_REGISTRY } from "@/lib/route-registry";
 
@@ -7,7 +8,7 @@ import { ROUTE_REGISTRY } from "@/lib/route-registry";
  * commitments that a rendered jsdom tree cannot observe, because jsdom does not
  * evaluate the application stylesheet.
  */
-const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+const styles = readFileSync(resolve(process.cwd(), "src/styles.css"), "utf8");
 
 describe("accessibility commitments in the stylesheet", () => {
   it("honors the reduced-motion preference", () => {
