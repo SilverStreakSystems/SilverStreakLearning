@@ -18,6 +18,7 @@ import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
+import { Route as ObjectsRouteImport } from './routes/objects'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesCapabilityIdRouteImport } from './routes/capabilities.$capabilityId'
@@ -67,6 +68,11 @@ const FutureArchitectureRoute = FutureArchitectureRouteImport.update({
   path: '/future-architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ObjectsRoute = ObjectsRouteImport.update({
+  id: '/objects',
+  path: '/objects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TraceabilityRoute = TraceabilityRouteImport.update({
   id: '/traceability',
   path: '/traceability',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/objects': typeof ObjectsRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/objects': typeof ObjectsRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/objects': typeof ObjectsRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/objects'
     | '/traceability'
     | '/capabilities/$capabilityId'
     | '/capabilities/'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/objects'
     | '/traceability'
     | '/capabilities/$capabilityId'
     | '/capabilities'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/objects'
     | '/traceability'
     | '/capabilities/$capabilityId'
     | '/capabilities/'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
   FutureArchitectureRoute: typeof FutureArchitectureRoute
+  ObjectsRoute: typeof ObjectsRoute
   TraceabilityRoute: typeof TraceabilityRoute
 }
 
@@ -248,6 +261,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FutureArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/objects': {
+      id: '/objects'
+      path: '/objects'
+      fullPath: '/objects'
+      preLoaderRoute: typeof ObjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/traceability': {
       id: '/traceability'
       path: '/traceability'
@@ -296,6 +316,7 @@ const rootRouteChildren: RootRouteChildren = {
   FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
   FutureArchitectureRoute: FutureArchitectureRoute,
+  ObjectsRoute: ObjectsRoute,
   TraceabilityRoute: TraceabilityRoute,
 }
 export const routeTree = rootRouteImport
