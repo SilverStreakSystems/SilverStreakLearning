@@ -37,3 +37,19 @@ stays open and no Gate A work is authorized.
 
 Conditional only: if and only if the owner records WP-000 as closed, the next work package
 in the program sequence is WP-006. No WP-006 execution prompt is generated here.
+
+## Owner disposition (recorded 2026-08-17)
+
+The sections above are preserved as executed. They are not rewritten.
+
+- **WP-000 final status: OWNER CLOSED by DEC-008.**
+- **Residual risk accepted by DEC-009** (bounded UNKNOWN on third-party and historical copies).
+- Closure is an owner act on the current evidence package. It is **not** a technical,
+  security, privacy, legal, or compliance certification.
+- The independence limitation stands: all WP-000 evidence is executor/self-verified
+  (WP000-F-004). Closure does not cure it.
+- Precautionary rotation of CRED-001 is **not** required on the current evidence. A new
+  external fact establishing a plausible exposure path reopens both the rotation question
+  and WP-000 itself.
+- Gate A may proceed. **WP-006 — Current-State SSOT and Repository Provenance is the next
+  eligible work package only.** It is not executed here and no later work package is authorized.

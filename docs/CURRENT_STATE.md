@@ -32,6 +32,19 @@ Workspaces are defined once, in the canonical workspace register. The future
 architecture page derives its gated view from that register and holds no records
 of its own.
 
+## Program status
+
+- Governing program: **SSLS-BPP-001 v2.0**, ratified by DEC-007.
+- **WP-000 — Exposure Containment and Credential Remediation: executed and OWNER CLOSED**
+  by DEC-008 (2026-08-17). Owner closure on the executor evidence package, not a technical,
+  security, privacy, legal, or compliance certification.
+- Residual external-copy uncertainty is **accepted** by DEC-009 for the current private,
+  founder-only, zero-real-PII phase. It is bounded, not resolved.
+- **Gate A may proceed. WP-006 — Current-State SSOT and Repository Provenance is the next
+  eligible work package only**; it is not executed and no later work package is authorized.
+- No database enabled. No release authority. No independent validation. No production,
+  district, or compliance claims.
+
 ## Verification recorded
 
 - Vitest: 210 tests passing across 8 files, covering registered routes, detail

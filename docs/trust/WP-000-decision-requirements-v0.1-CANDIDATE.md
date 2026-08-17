@@ -17,3 +17,17 @@ executor does not close WP-000 (R-17, §19).
 - **DEC-009** — "Accept or reject residual unknown on third-party and historical copies" — state `required`.
 
 Both are open records. Neither grants any claim, closure, or credit while open.
+
+## Disposition (recorded 2026-08-17)
+
+The table above is preserved as issued. Current record states:
+
+- **DEC-008** — now `accepted`, decided 2026-08-17 by Founder / Operator. Closes WP-000 on
+  the current evidence package and resolves DR-001, DR-003 (no precautionary rotation
+  required on current evidence), and DR-004 (independent verification not required before
+  Gate A, with the executor/self-verified limitation left explicitly on the record).
+- **DEC-009** — now `accepted`, decided 2026-08-17 by Founder / Operator. Resolves DR-002 by
+  accepting the bounded residual UNKNOWN for the current private, founder-only,
+  zero-real-PII phase.
+- **DR-005** remains unresolved by design. No legal or privacy notification determination has
+  been made, and none may be inferred from closure.
