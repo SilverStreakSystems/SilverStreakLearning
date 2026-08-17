@@ -1,4 +1,6 @@
+import { expect } from "vitest";
 import { QueryClient } from "@tanstack/react-query";
+
 import {
   RouterProvider,
   createMemoryHistory,
