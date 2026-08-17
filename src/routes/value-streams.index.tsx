@@ -153,7 +153,6 @@ function RegistryView({ streams, search }: { streams: ValueStream[]; search: Val
               <Link
                 to="/value-streams/$streamId"
                 params={{ streamId: stream.valueStreamId }}
-                search={search}
                 className="underline underline-offset-4"
               >
                 {stream.name}
@@ -231,7 +230,7 @@ function FunctionsView() {
             <tr key={right}>
               <RowHeader>{DECISION_RIGHT_META[right].label}</RowHeader>
               <Cell>{DECISION_RIGHT_META[right].meaning}</Cell>
-              <Cell>{DECISION_RIGHT_META[right].notThis}</Cell>
+              <Cell>{DECISION_RIGHT_META[right].doesNotGrant}</Cell>
             </tr>
           ))}
         </RegistryTable>
@@ -304,7 +303,7 @@ function StagesView() {
           {CROSS_AXIS_PROHIBITIONS.map((rule) => (
             <tr key={rule.id}>
               <RowHeader>{rule.statement}</RowHeader>
-              <Cell>{rule.rationale}</Cell>
+              <Cell>{rule.reason}</Cell>
             </tr>
           ))}
         </RegistryTable>
