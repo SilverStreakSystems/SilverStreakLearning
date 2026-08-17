@@ -463,7 +463,7 @@ const seeds: ValueStreamSeed[] = [
     ],
     exit: ["The capability is authorized under continuous oversight, or refused."],
     operatingStatus: "gated-future",
-    authority: "future-architecture",
+    authority: "gated-future",
     capabilities: ["CAP-D05-009", "CAP-D05-010", "CAP-D06-010"],
     primaryFunction: "F07",
     supportingFunctions: ["F09", "F08", "F03", "F01"],
