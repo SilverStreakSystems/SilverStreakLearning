@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { GatedPanel } from "@/components/governance/markers";
-import { FUTURE_WORKSPACES, getCapability } from "@/fixtures";
+import { ENTERPRISE_CAPABILITIES, FUTURE_WORKSPACES } from "@/fixtures";
+import { capabilityById } from "@/lib/capability-queries";
 
 export const Route = createFileRoute("/future-architecture")({
   head: () => ({
@@ -58,7 +59,7 @@ function FutureArchitecture() {
                     <ul className="mt-1 list-disc space-y-1 pl-5">
                       {workspace.candidateCapabilities.map((id) => (
                         <li key={id}>
-                          {id} — {getCapability(id)?.name ?? "Not recorded"}
+                          {id} — {capabilityById(ENTERPRISE_CAPABILITIES, id)?.name ?? "Not recorded"}
                         </li>
                       ))}
                     </ul>
