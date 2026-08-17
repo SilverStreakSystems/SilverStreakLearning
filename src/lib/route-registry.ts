@@ -35,8 +35,8 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
   {
     path: "/capabilities",
     label: "Capabilities",
-    purpose: "Candidate enterprise capabilities and what each would require.",
-    heading: "Enterprise Capability Registry (Candidate)",
+    purpose: "Candidate enterprise capabilities across twelve domains, and what each would require.",
+    heading: "Enterprise Capability Architecture (Candidate)",
   },
   {
     path: "/traceability",
