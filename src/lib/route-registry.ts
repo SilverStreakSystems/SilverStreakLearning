@@ -45,6 +45,12 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     heading: "Shared Enterprise Object Architecture (Candidate)",
   },
   {
+    path: "/value-streams",
+    label: "Value Streams",
+    purpose: "How work moves end to end, where it is gated, and where it is refused.",
+    heading: "Enterprise Value Stream Architecture (Candidate)",
+  },
+  {
 
     path: "/traceability",
     label: "Traceability",
