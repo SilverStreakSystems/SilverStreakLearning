@@ -14,6 +14,7 @@ import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as BoundariesRouteImport } from './routes/boundaries'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
 import { Route as DecisionsRouteImport } from './routes/decisions'
+import { Route as DesignSystemRouteImport } from './routes/design-system'
 import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
@@ -51,6 +52,11 @@ const CapabilitiesRoute = CapabilitiesRouteImport.update({
 const DecisionsRoute = DecisionsRouteImport.update({
   id: '/decisions',
   path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignSystemRoute = DesignSystemRouteImport.update({
+  id: '/design-system',
+  path: '/design-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EvidenceRoute = EvidenceRouteImport.update({
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
   '/decisions': typeof DecisionsRoute
+  '/design-system': typeof DesignSystemRoute
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/decisions': typeof DecisionsRoute
+  '/design-system': typeof DesignSystemRoute
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
   '/decisions': typeof DecisionsRoute
+  '/design-system': typeof DesignSystemRoute
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
     | '/boundaries'
     | '/capabilities'
     | '/decisions'
+    | '/design-system'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/authority'
     | '/boundaries'
     | '/decisions'
+    | '/design-system'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
@@ -223,6 +234,7 @@ export interface FileRouteTypes {
     | '/boundaries'
     | '/capabilities'
     | '/decisions'
+    | '/design-system'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
@@ -244,6 +256,7 @@ export interface RootRouteChildren {
   BoundariesRoute: typeof BoundariesRoute
   CapabilitiesRoute: typeof CapabilitiesRouteWithChildren
   DecisionsRoute: typeof DecisionsRoute
+  DesignSystemRoute: typeof DesignSystemRoute
   EvidenceRoute: typeof EvidenceRoute
   FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
@@ -288,6 +301,13 @@ declare module '@tanstack/react-router' {
       path: '/decisions'
       fullPath: '/decisions'
       preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-system': {
+      id: '/design-system'
+      path: '/design-system'
+      fullPath: '/design-system'
+      preLoaderRoute: typeof DesignSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/evidence': {
@@ -431,6 +451,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoundariesRoute: BoundariesRoute,
   CapabilitiesRoute: CapabilitiesRouteWithChildren,
   DecisionsRoute: DecisionsRoute,
+  DesignSystemRoute: DesignSystemRoute,
   EvidenceRoute: EvidenceRoute,
   FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
