@@ -92,7 +92,35 @@ export interface ValueStreamSeed {
 const DEFAULT_AUDIT =
   "Record who acted, in which capacity, on which objects, under which rule, and when.";
 
-function buildStages(streamId: ValueStreamId, seeds: StageSeed[]): ValueStreamStage[] {
+/**
+ * Default stage evidence. A stage that can be exited with nothing recorded is
+ * an assertion, not a governed step, so the builder binds the first exit
+ * criterion to a reviewable record when the seed does not state its own.
+ */
+function defaultEvidence(
+  seed: StageSeed,
+  reviewer: EnterpriseFunctionId,
+): StageEvidenceRequirement[] {
+  const proposition = seed.exit[0] ?? `${seed.name} met its stated exit condition.`;
+  return [
+    {
+      proposition,
+      evidenceType: "Recorded stage exit review with named reviewer and rationale",
+      versionBinding: "Bound to the specific stream version and work item instance being exited.",
+      reviewer,
+      reuseLimit: "Applies to this instance only. It may not be reused for a later run of the stage.",
+      revalidation: "Revalidate whenever the stage inputs, rule, or requirement changes.",
+      effectIfMissing:
+        "The stage may not be recorded as exited, and any downstream gate reads the evidence as absent.",
+    },
+  ];
+}
+
+function buildStages(
+  streamId: ValueStreamId,
+  seeds: StageSeed[],
+  reviewer: EnterpriseFunctionId,
+): ValueStreamStage[] {
   return seeds.map((seed, index) => {
     const sequence = index + 1;
     const stageId = `${streamId}-S${String(sequence).padStart(2, "0")}`;
@@ -115,7 +143,7 @@ function buildStages(streamId: ValueStreamId, seeds: StageSeed[]): ValueStreamSt
       decisionPoints: (seed.decisions ?? []).map((point) => ({ ...point, stageId })),
       approvals: seed.approvals ?? [],
       validation: seed.validation ?? null,
-      evidence: seed.evidence ?? [],
+      evidence: seed.evidence ?? defaultEvidence(seed, reviewer),
       handoffRecipientStageId: nextSeed
         ? `${streamId}-S${String(sequence + 1).padStart(2, "0")}`
         : null,
@@ -130,7 +158,9 @@ function buildStages(streamId: ValueStreamId, seeds: StageSeed[]): ValueStreamSt
 }
 
 export function buildValueStream(seed: ValueStreamSeed): ValueStream {
-  const stages = buildStages(seed.id, seed.stages);
+  const reviewer =
+    seed.validationAuthorities[0] ?? seed.decisionAuthorities[0] ?? seed.primaryFunction;
+  const stages = buildStages(seed.id, seed.stages, reviewer);
   const gated = (seed.operatingStatus ?? "candidate-internal") === "gated-future";
   return {
     valueStreamId: seed.id,
