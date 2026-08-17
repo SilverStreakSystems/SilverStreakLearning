@@ -82,9 +82,16 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     heading: "Future Architecture",
   },
   {
+    path: "/design-system",
+    label: "Design System",
+    purpose: "Tokens, brand assets, the coordinate grid, and the interface templates every surface is built from.",
+    heading: "Brand Visual System and Experience Template Architecture v0.1",
+  },
+  {
     path: "/boundaries",
     label: "Settings and Boundaries",
     purpose: "The authorized posture of this workspace and the claims it refuses.",
     heading: "Settings and Boundaries",
   },
 ];
+
