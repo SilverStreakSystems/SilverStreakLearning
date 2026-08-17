@@ -254,7 +254,82 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "historical-evidence",
     synthetic: true,
   },
+  {
+    id: "EV-008",
+    title: "Document-corpus enumeration and authority mapping",
+    kind: "document-review",
+    subject: "Governing document corpus, four levels deep",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "partial",
+    supports:
+      "Which governing artifacts exist in the document plane, how they map to repository artifacts, and where the two planes disagree.",
+    doesNotSupport:
+      "Completeness. Enumeration stopped at four levels, and artifacts outside the inspected corpus were not reachable.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-009",
+    title: "Repository provenance inspection at the current baseline",
+    kind: "manual-check",
+    subject: "Repository origin, history, branch, and working-tree state",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That exactly one repository holds executable code, that its root commit is a platform template scaffold with no legacy ancestry, and that every intermediate state is recoverable.",
+    doesNotSupport:
+      "Anything about copies outside this project, or about repositories that were never located.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-010",
+    title: "Build and test execution bound to the current baseline",
+    kind: "automated-test",
+    subject: "Production build and full test suite at the recorded commit",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the recorded commit builds and that its declared test suite passes in full at that commit.",
+    doesNotSupport:
+      "Correctness, accessibility conformance, security, or fitness for use. Executor-run, not independent.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-011",
+    title: "Backend and data-surface absence check",
+    kind: "manual-check",
+    subject: "Database, migrations, authentication, storage, and external integrations",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That no database, migration, authentication surface, storage bucket, or live external integration exists in the current implementation.",
+    doesNotSupport:
+      "Any statement about future data handling, or about privacy compliance once real data is introduced.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-012",
+    title: "Independent verification of the current-state record",
+    kind: "external-validation",
+    subject: "Every WP-006 provenance and status assertion",
+    collectedOn: null,
+    collectedBy: "Not assigned",
+    state: "not-run",
+    supports: "Nothing yet.",
+    doesNotSupport:
+      "All current-state evidence is executor-produced and self-verified. No independent party has reviewed it.",
+    authorityClass: "gated-future",
+    synthetic: false,
+  },
 ];
+
 
 export const DECISIONS: DecisionRecord[] = [
   {
