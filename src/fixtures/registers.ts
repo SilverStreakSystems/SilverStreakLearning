@@ -78,7 +78,88 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: [],
     synthetic: false,
   },
+  {
+    id: "FND-006",
+    title: "Governing program register text cannot be located in either plane",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "DEC-007 ratifies SSLS-BPP-001 v2.0 as the governing build program register, but no artifact carrying that text exists in the repository or in the inspected document corpus. Work-package identifiers, gate definitions, and requirement labels are cited from a document no reviewer can read.",
+    boundary:
+      "Does not assert the program is invalid or that DEC-007 is defective. It records that the ratified text is not producible on demand.",
+    resolutionState: "unknown",
+    requiredDecision: "DEC-011",
+    evidenceReferences: ["EV-008"],
+    synthetic: false,
+  },
+  {
+    id: "FND-007",
+    title: "Gate lineage between the historical and current taxonomies is unresolved",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "A historical gate sequence closed its first gate and left its second gate open. The current program proceeds under a separately named gate. No accepted decision maps one taxonomy onto the other, so an open historical gate coexists with a proceeding current gate.",
+    boundary:
+      "Does not assert that either taxonomy is wrong, and does not rename either one.",
+    resolutionState: "conflicted",
+    requiredDecision: "DEC-013",
+    evidenceReferences: ["EV-008"],
+    synthetic: false,
+  },
+  {
+    id: "FND-008",
+    title: "Actual repository origin diverges from the never-executed first-commit plan",
+    severity: "structural",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L6"],
+    description:
+      "A candidate plan specified a reviewed documentation-only first commit before any application code. The repository instead begins with a platform template scaffold followed by application work, with no recorded first-commit ratification. Containment intent is met in substance; the review step was not performed.",
+    boundary:
+      "Does not assert contamination. No legacy ancestry, committed secrets, or legacy backend bindings were found in the root commit.",
+    resolutionState: "conflicted",
+    requiredDecision: "DEC-010",
+    evidenceReferences: ["EV-009", "EV-010"],
+    synthetic: false,
+  },
+  {
+    id: "FND-009",
+    title: "Document-plane control map states no repository exists",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L6"],
+    description:
+      "The controlling navigation map in the document plane states that no repository, commit, or containment result exists yet. A repository exists, builds, and passes its test suite. A reviewer starting from the document plane is misinformed about the most basic current fact.",
+    boundary:
+      "The statement was true when written. This finding marks a single proposition stale, not the document as a whole.",
+    resolutionState: "stale",
+    requiredDecision: null,
+    evidenceReferences: ["EV-009"],
+    synthetic: false,
+  },
+  {
+    id: "FND-010",
+    title: "Effective version of the interface acceptance standard is not declared",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "Repository work cites version 1.3 of the interface acceptance standard while the document corpus also holds a later revision. No accepted decision names which revision is effective, so acceptance criteria may be measured against a superseded version.",
+    boundary:
+      "Does not assert that the interface fails either revision, and does not promote the later revision.",
+    resolutionState: "conflicted",
+    requiredDecision: "DEC-012",
+    evidenceReferences: ["EV-008"],
+    synthetic: false,
+  },
 ];
+
 
 export const EVIDENCE: EvidenceRecord[] = [
   {
