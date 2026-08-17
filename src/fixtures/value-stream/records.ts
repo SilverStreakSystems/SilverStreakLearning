@@ -517,7 +517,7 @@ export const VALUE_STREAM_REFUSALS: RefusalRecord[] = [
     reason: "The finding does not generalize to the populations SSLS serves.",
     governingRule: "A requirement may not exceed what its evidence supports.",
     refusedBy: "F01",
-    resolutionPath: "Queue a broader research question before reconsidering."
+    resolutionPath: "Queue a broader research question before reconsidering.",
     appealAvailable: true,
     appealRoute: "Resubmit with additional evidence to the governance authority.",
     escalation: "None required; the refusal is the outcome.",
@@ -531,7 +531,7 @@ export const VALUE_STREAM_REFUSALS: RefusalRecord[] = [
     reason: "No outcome evidence exists. SSLS has no users and no results.",
     governingRule: "A claim may not assert more than its linked evidence supports.",
     refusedBy: "F01",
-    resolutionPath: "No resubmission until outcome evidence exists and is validated."
+    resolutionPath: "No resubmission until outcome evidence exists and is validated.",
     appealAvailable: false,
     appealRoute: null,
     escalation: "None required; the refusal is the outcome.",
@@ -545,7 +545,7 @@ export const VALUE_STREAM_REFUSALS: RefusalRecord[] = [
     reason: "The AI trigger gate has never been opened by a governed decision.",
     governingRule: "No AI capability may be built before its trigger gate is opened.",
     refusedBy: "F01",
-    resolutionPath: "A governed decision would have to open the gate first."
+    resolutionPath: "A governed decision would have to open the gate first.",
     appealAvailable: true,
     appealRoute: "Propose opening the gate as a governance decision, with evidence.",
     escalation: "None required; the block is the outcome.",
@@ -559,7 +559,7 @@ export const VALUE_STREAM_REFUSALS: RefusalRecord[] = [
     reason: "Surveillance-style measurement of individuals is prohibited by design.",
     governingRule: "Prohibited metrics may not be produced, even on request.",
     refusedBy: "F09",
-    resolutionPath: "Offer system-level barrier analysis instead."
+    resolutionPath: "Offer system-level barrier analysis instead.",
     appealAvailable: false,
     appealRoute: null,
     escalation: "None required; the refusal is the outcome.",
@@ -573,7 +573,7 @@ export const VALUE_STREAM_REFUSALS: RefusalRecord[] = [
     reason: "An accessibility barrier blocks release regardless of other readiness.",
     governingRule: "Accessibility is a stop condition, not a weighting factor.",
     refusedBy: "F05",
-    resolutionPath: "Remediate and re-validate the exact candidate."
+    resolutionPath: "Remediate and re-validate the exact candidate.",
     appealAvailable: false,
     appealRoute: null,
     escalation: "None required; the refusal is the outcome.",
