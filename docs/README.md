@@ -37,6 +37,10 @@ synthetic and visibly marked.
 - `docs/shared-object/` — shared object, context, work and evidence architecture v0.1.
 - `docs/value-streams/` — enterprise value streams and operating workflow architecture v0.1,
   including one generated document per priority stream.
+- `docs/design-system/` — brand visual system and enterprise experience template
+  architecture v0.1: tokens, coordinate grid, eighteen interface templates,
+  state templates, and the unvalidated responsive matrix.
+
 
 ## Code map
 

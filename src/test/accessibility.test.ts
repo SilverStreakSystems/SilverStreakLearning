@@ -26,7 +26,9 @@ describe("accessibility commitments in the stylesheet", () => {
   it("wraps rather than truncates and keeps readable line length available", () => {
     expect(styles).toContain("overflow-wrap: break-word");
     expect(styles).toContain("@utility measure");
-    expect(styles).toContain("max-width: 72ch");
+    expect(styles).toContain("--prose-measure: 72ch");
+    expect(styles).toContain("max-width: var(--prose-measure)");
+
   });
 
   it("does not disable text size adjustment on zoom", () => {

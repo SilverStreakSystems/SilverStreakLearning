@@ -14,6 +14,7 @@ import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as BoundariesRouteImport } from './routes/boundaries'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
 import { Route as DecisionsRouteImport } from './routes/decisions'
+import { Route as DesignSystemRouteImport } from './routes/design-system'
 import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
@@ -23,10 +24,12 @@ import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as ValueStreamsRouteImport } from './routes/value-streams'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesCapabilityIdRouteImport } from './routes/capabilities.$capabilityId'
+import { Route as DesignSystemIndexRouteImport } from './routes/design-system.index'
 import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
 import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
 import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 import { Route as ValueStreamsStreamIdRouteImport } from './routes/value-streams.$streamId'
+import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/design-system.templates.$templateId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -51,6 +54,11 @@ const CapabilitiesRoute = CapabilitiesRouteImport.update({
 const DecisionsRoute = DecisionsRouteImport.update({
   id: '/decisions',
   path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignSystemRoute = DesignSystemRouteImport.update({
+  id: '/design-system',
+  path: '/design-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EvidenceRoute = EvidenceRouteImport.update({
@@ -99,6 +107,11 @@ const CapabilitiesCapabilityIdRoute =
     path: '/$capabilityId',
     getParentRoute: () => CapabilitiesRoute,
   } as any)
+const DesignSystemIndexRoute = DesignSystemIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DesignSystemRoute,
+} as any)
 const ObjectsIndexRoute = ObjectsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -119,6 +132,12 @@ const ValueStreamsStreamIdRoute = ValueStreamsStreamIdRouteImport.update({
   path: '/$streamId',
   getParentRoute: () => ValueStreamsRoute,
 } as any)
+const DesignSystemTemplatesTemplateIdRoute =
+  DesignSystemTemplatesTemplateIdRouteImport.update({
+    id: '/templates/$templateId',
+    path: '/templates/$templateId',
+    getParentRoute: () => DesignSystemRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -126,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
   '/decisions': typeof DecisionsRoute
+  '/design-system': typeof DesignSystemRouteWithChildren
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
@@ -137,8 +157,10 @@ export interface FileRoutesByFullPath {
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
+  '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -154,8 +176,10 @@ export interface FileRoutesByTo {
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
+  '/design-system': typeof DesignSystemIndexRoute
   '/objects': typeof ObjectsIndexRoute
   '/value-streams': typeof ValueStreamsIndexRoute
+  '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -164,6 +188,7 @@ export interface FileRoutesById {
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
   '/decisions': typeof DecisionsRoute
+  '/design-system': typeof DesignSystemRouteWithChildren
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
@@ -175,8 +200,10 @@ export interface FileRoutesById {
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
+  '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -186,6 +213,7 @@ export interface FileRouteTypes {
     | '/boundaries'
     | '/capabilities'
     | '/decisions'
+    | '/design-system'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
@@ -197,8 +225,10 @@ export interface FileRouteTypes {
     | '/objects/$typeId'
     | '/value-streams/$streamId'
     | '/capabilities/'
+    | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/design-system/templates/$templateId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -214,8 +244,10 @@ export interface FileRouteTypes {
     | '/objects/$typeId'
     | '/value-streams/$streamId'
     | '/capabilities'
+    | '/design-system'
     | '/objects'
     | '/value-streams'
+    | '/design-system/templates/$templateId'
   id:
     | '__root__'
     | '/'
@@ -223,6 +255,7 @@ export interface FileRouteTypes {
     | '/boundaries'
     | '/capabilities'
     | '/decisions'
+    | '/design-system'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
@@ -234,8 +267,10 @@ export interface FileRouteTypes {
     | '/objects/$typeId'
     | '/value-streams/$streamId'
     | '/capabilities/'
+    | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/design-system/templates/$templateId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -244,6 +279,7 @@ export interface RootRouteChildren {
   BoundariesRoute: typeof BoundariesRoute
   CapabilitiesRoute: typeof CapabilitiesRouteWithChildren
   DecisionsRoute: typeof DecisionsRoute
+  DesignSystemRoute: typeof DesignSystemRouteWithChildren
   EvidenceRoute: typeof EvidenceRoute
   FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
@@ -288,6 +324,13 @@ declare module '@tanstack/react-router' {
       path: '/decisions'
       fullPath: '/decisions'
       preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-system': {
+      id: '/design-system'
+      path: '/design-system'
+      fullPath: '/design-system'
+      preLoaderRoute: typeof DesignSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/evidence': {
@@ -353,6 +396,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CapabilitiesCapabilityIdRouteImport
       parentRoute: typeof CapabilitiesRoute
     }
+    '/design-system/': {
+      id: '/design-system/'
+      path: '/'
+      fullPath: '/design-system/'
+      preLoaderRoute: typeof DesignSystemIndexRouteImport
+      parentRoute: typeof DesignSystemRoute
+    }
     '/objects/': {
       id: '/objects/'
       path: '/'
@@ -381,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ValueStreamsStreamIdRouteImport
       parentRoute: typeof ValueStreamsRoute
     }
+    '/design-system/templates/$templateId': {
+      id: '/design-system/templates/$templateId'
+      path: '/templates/$templateId'
+      fullPath: '/design-system/templates/$templateId'
+      preLoaderRoute: typeof DesignSystemTemplatesTemplateIdRouteImport
+      parentRoute: typeof DesignSystemRoute
+    }
   }
 }
 
@@ -396,6 +453,20 @@ const CapabilitiesRouteChildren: CapabilitiesRouteChildren = {
 
 const CapabilitiesRouteWithChildren = CapabilitiesRoute._addFileChildren(
   CapabilitiesRouteChildren,
+)
+
+interface DesignSystemRouteChildren {
+  DesignSystemIndexRoute: typeof DesignSystemIndexRoute
+  DesignSystemTemplatesTemplateIdRoute: typeof DesignSystemTemplatesTemplateIdRoute
+}
+
+const DesignSystemRouteChildren: DesignSystemRouteChildren = {
+  DesignSystemIndexRoute: DesignSystemIndexRoute,
+  DesignSystemTemplatesTemplateIdRoute: DesignSystemTemplatesTemplateIdRoute,
+}
+
+const DesignSystemRouteWithChildren = DesignSystemRoute._addFileChildren(
+  DesignSystemRouteChildren,
 )
 
 interface ObjectsRouteChildren {
@@ -431,6 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoundariesRoute: BoundariesRoute,
   CapabilitiesRoute: CapabilitiesRouteWithChildren,
   DecisionsRoute: DecisionsRoute,
+  DesignSystemRoute: DesignSystemRouteWithChildren,
   EvidenceRoute: EvidenceRoute,
   FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
