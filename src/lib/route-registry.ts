@@ -39,6 +39,13 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     heading: "Enterprise Capability Architecture (Candidate)",
   },
   {
+    path: "/objects",
+    label: "Shared Objects",
+    purpose: "The governed objects, relationships, states, and context contracts everything else will reuse.",
+    heading: "Shared Enterprise Object Architecture (Candidate)",
+  },
+  {
+
     path: "/traceability",
     label: "Traceability",
     purpose: "How requirements connect to evidence and claims.",

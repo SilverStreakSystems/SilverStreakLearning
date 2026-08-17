@@ -23,6 +23,7 @@ import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesCapabilityIdRouteImport } from './routes/capabilities.$capabilityId'
 import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
+import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -95,6 +96,11 @@ const ObjectsIndexRoute = ObjectsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ObjectsRoute,
 } as any)
+const ObjectsTypeIdRoute = ObjectsTypeIdRouteImport.update({
+  id: '/$typeId',
+  path: '/$typeId',
+  getParentRoute: () => ObjectsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
+  '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/objects/': typeof ObjectsIndexRoute
 }
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
+  '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/objects': typeof ObjectsIndexRoute
 }
@@ -140,6 +148,7 @@ export interface FileRoutesById {
   '/objects': typeof ObjectsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
+  '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/objects/': typeof ObjectsIndexRoute
 }
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
     | '/objects'
     | '/traceability'
     | '/capabilities/$capabilityId'
+    | '/objects/$typeId'
     | '/capabilities/'
     | '/objects/'
   fileRoutesByTo: FileRoutesByTo
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/traceability'
     | '/capabilities/$capabilityId'
+    | '/objects/$typeId'
     | '/capabilities'
     | '/objects'
   id:
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/objects'
     | '/traceability'
     | '/capabilities/$capabilityId'
+    | '/objects/$typeId'
     | '/capabilities/'
     | '/objects/'
   fileRoutesById: FileRoutesById
@@ -306,6 +318,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObjectsIndexRouteImport
       parentRoute: typeof ObjectsRoute
     }
+    '/objects/$typeId': {
+      id: '/objects/$typeId'
+      path: '/$typeId'
+      fullPath: '/objects/$typeId'
+      preLoaderRoute: typeof ObjectsTypeIdRouteImport
+      parentRoute: typeof ObjectsRoute
+    }
   }
 }
 
@@ -324,10 +343,12 @@ const CapabilitiesRouteWithChildren = CapabilitiesRoute._addFileChildren(
 )
 
 interface ObjectsRouteChildren {
+  ObjectsTypeIdRoute: typeof ObjectsTypeIdRoute
   ObjectsIndexRoute: typeof ObjectsIndexRoute
 }
 
 const ObjectsRouteChildren: ObjectsRouteChildren = {
+  ObjectsTypeIdRoute: ObjectsTypeIdRoute,
   ObjectsIndexRoute: ObjectsIndexRoute,
 }
 
