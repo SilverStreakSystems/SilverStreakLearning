@@ -11,11 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthorityRouteImport } from './routes/authority'
+import { Route as BoundariesRouteImport } from './routes/boundaries'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
 import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
+import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 
 const IndexRoute = IndexRouteImport.update({
@@ -26,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthorityRoute = AuthorityRouteImport.update({
   id: '/authority',
   path: '/authority',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoundariesRoute = BoundariesRouteImport.update({
+  id: '/boundaries',
+  path: '/boundaries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CapabilitiesRoute = CapabilitiesRouteImport.update({
@@ -53,6 +60,11 @@ const FoundationMapRoute = FoundationMapRouteImport.update({
   path: '/foundation-map',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FutureArchitectureRoute = FutureArchitectureRouteImport.update({
+  id: '/future-architecture',
+  path: '/future-architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TraceabilityRoute = TraceabilityRouteImport.update({
   id: '/traceability',
   path: '/traceability',
@@ -62,32 +74,38 @@ const TraceabilityRoute = TraceabilityRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
+  '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRoute
   '/decisions': typeof DecisionsRoute
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
+  '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
+  '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRoute
   '/decisions': typeof DecisionsRoute
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
+  '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
+  '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRoute
   '/decisions': typeof DecisionsRoute
   '/evidence': typeof EvidenceRoute
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
+  '/future-architecture': typeof FutureArchitectureRoute
   '/traceability': typeof TraceabilityRoute
 }
 export interface FileRouteTypes {
@@ -95,42 +113,50 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/authority'
+    | '/boundaries'
     | '/capabilities'
     | '/decisions'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
+    | '/future-architecture'
     | '/traceability'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/authority'
+    | '/boundaries'
     | '/capabilities'
     | '/decisions'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
+    | '/future-architecture'
     | '/traceability'
   id:
     | '__root__'
     | '/'
     | '/authority'
+    | '/boundaries'
     | '/capabilities'
     | '/decisions'
     | '/evidence'
     | '/findings'
     | '/foundation-map'
+    | '/future-architecture'
     | '/traceability'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthorityRoute: typeof AuthorityRoute
+  BoundariesRoute: typeof BoundariesRoute
   CapabilitiesRoute: typeof CapabilitiesRoute
   DecisionsRoute: typeof DecisionsRoute
   EvidenceRoute: typeof EvidenceRoute
   FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
+  FutureArchitectureRoute: typeof FutureArchitectureRoute
   TraceabilityRoute: typeof TraceabilityRoute
 }
 
@@ -148,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/authority'
       fullPath: '/authority'
       preLoaderRoute: typeof AuthorityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/boundaries': {
+      id: '/boundaries'
+      path: '/boundaries'
+      fullPath: '/boundaries'
+      preLoaderRoute: typeof BoundariesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/capabilities': {
@@ -185,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoundationMapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/future-architecture': {
+      id: '/future-architecture'
+      path: '/future-architecture'
+      fullPath: '/future-architecture'
+      preLoaderRoute: typeof FutureArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/traceability': {
       id: '/traceability'
       path: '/traceability'
@@ -198,11 +238,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthorityRoute: AuthorityRoute,
+  BoundariesRoute: BoundariesRoute,
   CapabilitiesRoute: CapabilitiesRoute,
   DecisionsRoute: DecisionsRoute,
   EvidenceRoute: EvidenceRoute,
   FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
+  FutureArchitectureRoute: FutureArchitectureRoute,
   TraceabilityRoute: TraceabilityRoute,
 }
 export const routeTree = rootRouteImport
