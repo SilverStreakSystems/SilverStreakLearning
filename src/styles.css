@@ -100,6 +100,76 @@
 :root {
   --radius: 0.375rem;
 
+  /*
+   * SSLS Brand Visual System v0.1 primitives.
+   * Working visual direction; canonical vector promotion is not yet granted.
+   */
+  --ssls-midnight: oklch(0.2 0.062 264); /* #07132E */
+  --ssls-deep: oklch(0.14 0.041 265); /* #050B18 */
+  --ssls-silver-blue: oklch(0.878 0.048 226); /* #B9DFF2 */
+  --ssls-ice-blue: oklch(0.935 0.032 216); /* #D8F1FA */
+  --ssls-signal-blue: oklch(0.667 0.128 240); /* #3BA8E6 */
+  --ssls-signal-cyan: oklch(0.735 0.115 185); /* #22C9C0 */
+  --ssls-neutral-ink: oklch(0.336 0.056 269); /* #2A3656 */
+  --ssls-progress-green: oklch(0.784 0.169 133); /* #86D04B */
+  --ssls-attention-yellow: oklch(0.86 0.14 91); /* #F3D049 */
+
+  /* Semantic status. Never the only carrier of meaning. */
+  --status-success: oklch(0.65 0.17 149); /* #22C55E */
+  --status-warning: oklch(0.72 0.16 65); /* #F59E0B */
+  --status-danger: oklch(0.61 0.2 26); /* #EF4444 */
+  --status-information: oklch(0.6 0.18 259); /* #3B82F6 */
+  --status-unknown: oklch(0.51 0.037 269); /* #5B6885 */
+
+  /* Spacing ladder: 4px micro-unit to 128px structural interval. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Layout tokens. */
+  --page-gutter: clamp(12px, 2vw, 32px);
+  --section-gap: clamp(32px, 4vw, 64px);
+  --hero-pad: clamp(48px, 7vw, 112px);
+  --card-padding: clamp(16px, 1.5vw, 24px);
+  --panel-gap: clamp(16px, 2vw, 32px);
+  --sidebar-width: clamp(240px, 18vw, 288px);
+  --context-rail-width: clamp(280px, 24vw, 360px);
+  --content-max: 1360px;
+  --prose-measure: 72ch;
+
+  /* Type scale. */
+  --text-display-xl: clamp(40px, calc(3vw + 22px), 56px);
+  --text-h1: clamp(30px, calc(1.8vw + 20px), 40px);
+  --text-h2: clamp(24px, calc(1.2vw + 18px), 32px);
+  --text-h3: clamp(20px, calc(0.8vw + 17px), 26px);
+  --text-h4: clamp(18px, calc(0.4vw + 17px), 22px);
+  --text-body-large: 18px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-meta: 12px;
+
+  /* Radius, motion, focus, control geometry. */
+  --radius-brand-sm: 6px;
+  --radius-brand-md: 8px;
+  --radius-brand-lg: 12px;
+  --radius-brand-xl: 16px;
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 320ms;
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --control-min-h: 44px;
+  --control-comfort-h: 48px;
+
+
+
   --background: oklch(0.985 0.004 250);
   --foreground: oklch(0.21 0.045 258);
   --surface: oklch(1 0 0);
