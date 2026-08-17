@@ -21,6 +21,50 @@ describe("route coverage", () => {
   });
 });
 
+/**
+ * Detail routes are not in ROUTE_REGISTRY because they are not navigation
+ * destinations. They still have to satisfy ULW-AS-001, and a missing record
+ * must produce a governed page rather than a blank one.
+ */
+const DYNAMIC_ROUTES = [
+  { path: "/capabilities/CAP-D01-001", missing: "/capabilities/CAP-D99-999" },
+  { path: "/objects/evidence", missing: "/objects/no-such-object-type" },
+  { path: "/value-streams/research-requirement", missing: "/value-streams/no-such-stream" },
+  { path: "/workspaces/command-center", missing: "/workspaces/no-such-workspace" },
+  { path: "/design-system/templates/TPL-01", missing: "/design-system/templates/TPL-99" },
+] as const;
+
+describe("detail route coverage", () => {
+  it.each(DYNAMIC_ROUTES)("renders exactly one H1 on $path", async ({ path }) => {
+    await renderRoute(path);
+    expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+  });
+
+  it.each(DYNAMIC_ROUTES)("exposes landmarks on $path", async ({ path }) => {
+    await renderRoute(path);
+    expect(screen.getByRole("main")).toBeInTheDocument();
+    expect(screen.getByRole("banner")).toBeInTheDocument();
+    expect(screen.getByRole("contentinfo")).toBeInTheDocument();
+    expect(screen.getAllByRole("navigation").length).toBeGreaterThan(0);
+  });
+
+  it.each(DYNAMIC_ROUTES)("states the boundary on $path", async ({ path }) => {
+    const { container } = await renderRoute(path);
+    const banner = container.querySelector('[data-boundary-banner="true"]');
+    expect(banner?.textContent).toContain("No personal data");
+  });
+
+  it.each(DYNAMIC_ROUTES)(
+    "answers an unrecorded identifier with a governed page on $missing",
+    async ({ missing }) => {
+      await renderRoute(missing);
+      expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+      expect(screen.getByRole("main").textContent).toMatch(/not recorded|no record|not found/i);
+    },
+  );
+});
+
+
 describe("navigation and keyboard operation", () => {
   it("places the skip link first in tab order and points it at main content", async () => {
     const user = userEvent.setup();
