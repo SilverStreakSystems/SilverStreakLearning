@@ -86,9 +86,25 @@ describe("workspace contracts", () => {
   it("refuses a blended readiness percentage and every surveillance signal", () => {
     expect(BLENDED_READINESS_REFUSAL).toMatch(/refused/i);
     expect(PROHIBITED_WORKSPACE_SIGNALS.length).toBeGreaterThan(4);
-    const serialized = JSON.stringify(WORKSPACES).toLowerCase();
-    expect(serialized).not.toContain("readiness percentage");
-    expect(serialized).not.toContain("productivity score");
+    // The phrase may appear only where it is being refused, never as a metric.
+    for (const workspace of WORKSPACES) {
+      const refusalText = [
+        ...workspace.prohibitedObjects,
+        ...workspace.metrics.map((metric) => metric.prohibitedInterpretation),
+      ]
+        .join(" ")
+        .toLowerCase();
+      const offered = [
+        workspace.purpose,
+        workspace.fundamentalQuestion,
+        ...workspace.metrics.map((metric) => `${metric.name} ${metric.meaning}`),
+      ]
+        .join(" ")
+        .toLowerCase();
+      expect(offered).not.toContain("readiness percentage");
+      expect(offered).not.toContain("productivity score");
+      expect(refusalText.length).toBeGreaterThan(0);
+    }
   });
 
   it("names prohibited objects on every workspace so nothing is displayed by default", () => {
