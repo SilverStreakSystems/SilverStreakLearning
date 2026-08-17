@@ -11,7 +11,7 @@ import { CAPABILITIES, CLAIMS, FOUNDATION_ARTIFACTS, READINESS_AXES } from "@/fi
 
 describe("authority is declared, never derived", () => {
   it("does not change authority when implementation status changes", () => {
-    const capability = CAPABILITIES[0];
+    const capability = CAPABILITIES[0]!;
     const before = capability.currentAuthority;
 
     const implemented: CapabilityRecord = {
@@ -53,7 +53,7 @@ describe("candidate material never renders as approved", () => {
     const { container } = await renderRoute("/capabilities");
     const markers = container.querySelectorAll('[data-synthetic="true"]');
     expect(markers.length).toBe(CAPABILITIES.filter((c) => c.synthetic).length);
-    expect(markers[0].textContent).toContain("Synthetic");
+    expect(markers[0]?.textContent).toContain("Synthetic");
   });
 });
 
