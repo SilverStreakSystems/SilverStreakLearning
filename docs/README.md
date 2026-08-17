@@ -31,6 +31,13 @@ synthetic and visibly marked.
 | `FUTURE_ARCHITECTURE_BOUNDARY.md` | Gated target-state workspaces. |
 | `FINDINGS.md` | Findings register in text form. |
 
+## Increment documentation
+
+- `docs/capability-architecture/` — enterprise capability architecture v0.1.
+- `docs/shared-object/` — shared object, context, work and evidence architecture v0.1.
+- `docs/value-streams/` — enterprise value streams and operating workflow architecture v0.1,
+  including one generated document per priority stream.
+
 ## Code map
 
 - `src/domain/` — authority, layers, artifacts, capabilities, traceability,
