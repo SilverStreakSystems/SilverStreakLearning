@@ -64,14 +64,18 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <header className="border-b border-border bg-sidebar px-4 py-3 lg:px-6">
         <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <p className="font-display text-base font-bold text-sidebar-foreground">
-              Silver Streak Learning Systems
-            </p>
-            <p className="text-xs text-sidebar-foreground/85">
-              Integrated Foundation and Authority Shell
-            </p>
+          <div className="flex min-w-0 items-center gap-3">
+            <SSLSMonogram size={36} className="shrink-0 text-ssls-silver-blue" />
+            <div className="min-w-0">
+              <p className="font-display text-base font-bold text-sidebar-foreground">
+                Silver Streak Learning Systems
+              </p>
+              <p className="text-xs text-sidebar-foreground/85">
+                Integrated Foundation and Authority Shell
+              </p>
+            </div>
           </div>
+
           <button
             type="button"
             aria-expanded={mobileNavOpen}
