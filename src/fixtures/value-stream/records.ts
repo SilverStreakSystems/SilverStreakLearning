@@ -28,10 +28,13 @@ const AUDIT =
 export function buildGates(streams: ValueStream[]): ValueStreamGate[] {
   const gates: ValueStreamGate[] = [];
   for (const stream of streams) {
+    // A gate needs something to examine. A stage that requires no evidence is
+    // not gated; treating it as gated would create a formality that always passes.
     const gated = stream.stages.filter(
       (stage) =>
-        stage.approvals.length > 0 ||
-        /decision|authoriz|gate|disposition|approval|review/i.test(stage.name),
+        stage.evidence.length > 0 &&
+        (stage.approvals.length > 0 ||
+          /decision|authoriz|gate|disposition|approval|review/i.test(stage.name)),
     );
     gated.forEach((stage, index) => {
       const gateId = `${stream.valueStreamId}-G${String(index + 1).padStart(2, "0")}`;
