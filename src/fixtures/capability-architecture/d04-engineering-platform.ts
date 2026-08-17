@@ -213,7 +213,6 @@ const seeds: CapabilitySeed[] = [
     fn: "Engineering and Delivery",
     support: ["Enterprise Operations"],
     ind: "required",
-    indTrigger: null,
     sod: "Recovery testing is witnessed by someone other than the operator.",
     deliverables: ["DT-08", "DT-11", "DT-12"],
     evidence: ["Tested restore record", "Stated recovery objectives"],
