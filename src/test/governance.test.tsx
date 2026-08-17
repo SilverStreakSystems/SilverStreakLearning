@@ -61,7 +61,10 @@ describe("future architecture stays gated", () => {
   it("gates every target-state workspace with a visible notice", async () => {
     const { container } = await renderRoute("/future-architecture");
     const gates = container.querySelectorAll('[data-gated="true"]');
-    expect(gates.length).toBe(9);
+    // Derived from the canonical workspace register, never a hardcoded count.
+    const expected = deriveFutureWorkspaces(WORKSPACES);
+    expect(expected.length).toBeGreaterThan(0);
+    expect(gates.length).toBe(expected.length);
     gates.forEach((gate) => {
       expect(gate.textContent).toContain("Target-state candidate");
       expect(gate.textContent).toContain("Not current implementation authority");
