@@ -17,6 +17,7 @@ import type {
   StateTransition,
   ValueStream,
   ValueStreamGate,
+  ValueStreamId,
   ValueStreamMetric,
 } from "@/domain";
 
@@ -43,26 +44,22 @@ export function buildGates(streams: ValueStream[]): ValueStreamGate[] {
         purpose: `Decide whether ${stream.name} may advance past ${stage.name.toLowerCase()}.`,
         entryCriteria: stage.entryCriteria,
         requiredDeliverables: stage.requiredDeliverables,
-        requiredEvidence: stage.evidence.map((item) => item.description),
+        requiredEvidence: stage.evidence.map((item) => item.proposition),
         owner: stage.stageOwner,
         reviewers: stage.participatingFunctions,
-        stopAuthorities: stream.stopAuthorities,
         stopConditions: stream.refusalConditions,
-        residualRiskAcceptance:
-          "Residual risk may be accepted only by the named authority, in writing, with the risk restated.",
         residualRiskAuthority: stream.decisionAuthorities[0] ?? null,
         dispositionOptions: closedByAiGate
           ? ["blocked", "refused"]
           : ["pass", "hold", "blocked", "refused", "revise"],
         exitCriteria: stage.exitCriteria,
-        auditRequirement: AUDIT,
+        auditRequirement:
+          AUDIT + " Silence is not passage: a gate with no recorded disposition has not passed.",
         nextStageId: stage.handoffRecipientStageId,
-        silenceRule: "Silence is not passage. A gate with no recorded disposition has not passed.",
         exampleDisposition: closedByAiGate ? "blocked" : "hold",
         exampleRationale: closedByAiGate
           ? "The AI trigger gate is closed, so no AI capability may advance."
           : "Illustrative disposition only. No real work has passed this gate.",
-        synthetic: true,
       });
     });
   }
@@ -78,7 +75,6 @@ export function buildHandoffs(streams: ValueStream[]): HandoffContract[] {
       if (!next) return;
       handoffs.push({
         handoffId: `${stage.stageId}-H`,
-        valueStreamId: stream.valueStreamId,
         sourceStageId: stage.stageId,
         destinationStageId: next.stageId,
         sourceOwner: stage.stageOwner,
@@ -86,7 +82,7 @@ export function buildHandoffs(streams: ValueStream[]): HandoffContract[] {
         objectsTransferred: stage.outputObjects,
         requiredState: `Exit criteria of ${stage.name} are recorded as met.`,
         requiredDeliverables: stage.requiredDeliverables,
-        requiredEvidence: stage.evidence.map((item) => item.description),
+        requiredEvidence: stage.evidence.map((item) => item.proposition),
         contextPackagePurpose: next.requiredContext,
         acceptanceCriteria: next.entryCriteria,
         expectedTiming: "Within one working cycle of the source stage recording its exit.",
@@ -95,7 +91,6 @@ export function buildHandoffs(streams: ValueStream[]): HandoffContract[] {
         escalation: next.escalation,
         auditRequirement: AUDIT,
         outcome: "pending",
-        synthetic: true,
       });
     });
   }
@@ -103,7 +98,7 @@ export function buildHandoffs(streams: ValueStream[]): HandoffContract[] {
 }
 
 interface DependencySeed {
-  stream: string;
+  stream: ValueStreamId;
   stage: number;
   kind: DependencyRecord["kind"];
   description: string;
@@ -235,10 +230,8 @@ export function buildDependencies(streams: ValueStream[]): DependencyRecord[] {
       dependencyId: `DEP-${String(index + 1).padStart(3, "0")}`,
       kind: seed.kind,
       valueStreamId: seed.stream,
-      dependsOn: seed.dependsOn,
       dependentStageId: stage?.stageId ?? `${seed.stream}-S01`,
-      description: seed.description,
-      hidden: seed.owner === null,
+      description: `${seed.description} Depends on: ${seed.dependsOn}.`,
       owner: seed.owner,
       state: seed.state,
       blocking: seed.blocking,
@@ -247,7 +240,6 @@ export function buildDependencies(streams: ValueStream[]): DependencyRecord[] {
       reviewDate: "Reviewed each governance cycle.",
       evidence: null,
       escalation: "Escalate to the stream stop authority when a blocking dependency stays unowned.",
-      synthetic: true,
     } satisfies DependencyRecord;
   });
 }
@@ -276,7 +268,6 @@ export function buildMetrics(streams: ValueStream[]): ValueStreamMetric[] {
         prohibitedInterpretation: "Does not measure the productivity of any individual.",
         actionTriggered: "Escalate the stalled item to the stream stop authority.",
         perverseIncentiveRisk: "Could encourage closing items without a recorded outcome.",
-        synthetic: true,
       },
       {
         metricId: `${base}-M02`,
@@ -295,7 +286,6 @@ export function buildMetrics(streams: ValueStream[]): ValueStreamMetric[] {
         prohibitedInterpretation: "A return is not a failure of the person who sent it.",
         actionTriggered: "Review the handoff contract's acceptance criteria.",
         perverseIncentiveRisk: "Could discourage legitimate refusals.",
-        synthetic: true,
       },
       {
         metricId: `${base}-M03`,
@@ -314,7 +304,6 @@ export function buildMetrics(streams: ValueStream[]): ValueStreamMetric[] {
         prohibitedInterpretation: "A recorded pass is not evidence that the work is correct.",
         actionTriggered: "Raise a finding for any gate reached without a disposition.",
         perverseIncentiveRisk: "Could encourage rubber-stamping to raise the count.",
-        synthetic: true,
       },
       {
         metricId: `${base}-M04`,
@@ -333,7 +322,6 @@ export function buildMetrics(streams: ValueStream[]): ValueStreamMetric[] {
         prohibitedInterpretation: "A low refusal count is not a sign of health.",
         actionTriggered: "Return ungrounded refusals for a stated reason.",
         perverseIncentiveRisk: "Could be misread as a target to minimize.",
-        synthetic: true,
       },
     );
   }
@@ -353,12 +341,11 @@ export const VALUE_STREAM_COMMITMENTS: Commitment[] = [
     sourceAuthority: "Release authority decision rights, recorded in this stream.",
     relatedDeliverable: "Release record",
     dependencyIds: ["DEP-004"],
-    status: "open",
+    status: "proposed",
     evidence: null,
     escalation: "An unauthorized release is an incident and enters incident handling.",
     fulfillment: null,
     supersededBy: null,
-    synthetic: true,
   },
   {
     commitmentId: "COM-002",
@@ -372,12 +359,11 @@ export const VALUE_STREAM_COMMITMENTS: Commitment[] = [
     sourceAuthority: "Feedback triage decision rights, recorded in this stream.",
     relatedDeliverable: "Disposition record",
     dependencyIds: [],
-    status: "open",
+    status: "proposed",
     evidence: null,
     escalation: "Unanswered feedback escalates to the decision authority.",
     fulfillment: null,
     supersededBy: null,
-    synthetic: true,
   },
   {
     commitmentId: "COM-003",
@@ -391,12 +377,11 @@ export const VALUE_STREAM_COMMITMENTS: Commitment[] = [
     sourceAuthority: "Incident notification refusal condition recorded in this stream.",
     relatedDeliverable: "Incident record",
     dependencyIds: [],
-    status: "open",
+    status: "proposed",
     evidence: null,
     escalation: "Suppressed notification is escalated to the governance authority immediately.",
     fulfillment: null,
     supersededBy: null,
-    synthetic: true,
   },
 ];
 
@@ -405,13 +390,11 @@ export const VALUE_STREAM_BURDENS: BurdenAssessment[] = [
     burdenId: "BUR-001",
     valueStreamId: "contract-implementation",
     burdenType: "setup",
-    bearer: "district-administrator",
+    bearer: "district-leader",
     level: "high",
     description: "Configuration and readiness evidence require district staff time before any benefit appears.",
-    justified: true,
     offset: "SSLS supplies templates and performs configuration where scope allows.",
     mitigation: "Readiness evidence is scoped to what a small district can realistically produce.",
-    synthetic: true,
   },
   {
     burdenId: "BUR-002",
@@ -420,34 +403,28 @@ export const VALUE_STREAM_BURDENS: BurdenAssessment[] = [
     bearer: "educator",
     level: "moderate",
     description: "Educators must learn a new tool during instructional time.",
-    justified: true,
     offset: "Enablement is delivered in short segments inside existing meetings.",
     mitigation: "Barriers are recorded as system problems, not as educator failure.",
-    synthetic: true,
   },
   {
     burdenId: "BUR-003",
     valueStreamId: "build-validation",
     burdenType: "review",
-    bearer: "ssls-internal",
+    bearer: "founder-operator",
     level: "high",
     description: "One operator carries both build and validation review load.",
-    justified: false,
     offset: null,
     mitigation: "The independence limitation is recorded on every validation result.",
-    synthetic: true,
   },
   {
     burdenId: "BUR-004",
     valueStreamId: "evidence-claim",
     burdenType: "documentation",
-    bearer: "ssls-internal",
+    bearer: "founder-operator",
     level: "moderate",
     description: "Every claim requires evidence linkage and limitations before use.",
-    justified: true,
     offset: "Reused evidence links reduce the cost of subsequent claims.",
     mitigation: "Claims are batched into review cycles rather than reviewed ad hoc.",
-    synthetic: true,
   },
 ];
 
@@ -455,7 +432,6 @@ export const VALUE_STREAM_TRANSITIONS: StateTransition[] = [
   {
     transitionId: "TRN-001",
     valueStreamId: "decision-build",
-    axis: "implementation",
     currentState: "in-progress",
     preconditions: ["Internal review is recorded.", "Work items name their served objects."],
     authorizedFunctions: ["F06"],
@@ -471,12 +447,10 @@ export const VALUE_STREAM_TRANSITIONS: StateTransition[] = [
     escalation: "Escalate to the validation authority.",
     recovery: "Reverse the state and record the correction.",
     enforced: false,
-    synthetic: true,
   },
   {
     transitionId: "TRN-002",
     valueStreamId: "build-validation",
-    axis: "validation",
     currentState: "planned",
     preconditions: ["Preconditions for each check are confirmed.", "The validator is not the builder."],
     authorizedFunctions: ["F08"],
@@ -492,12 +466,10 @@ export const VALUE_STREAM_TRANSITIONS: StateTransition[] = [
     escalation: "Escalate to the stop authority when independence cannot be established.",
     recovery: "Mark results void and re-run under correct conditions.",
     enforced: false,
-    synthetic: true,
   },
   {
     transitionId: "TRN-003",
     valueStreamId: "evidence-claim",
-    axis: "approval",
     currentState: "pending",
     preconditions: ["Every assertion maps to evidence.", "Limitations are written into the wording."],
     authorizedFunctions: ["F01"],
@@ -513,12 +485,10 @@ export const VALUE_STREAM_TRANSITIONS: StateTransition[] = [
     escalation: "Escalate altered wording to the governance authority.",
     recovery: "Withdraw the claim and publish a correction.",
     enforced: false,
-    synthetic: true,
   },
   {
     transitionId: "TRN-004",
     valueStreamId: "validation-release",
-    axis: "publication",
     currentState: "internal",
     preconditions: ["Every gate recorded a disposition permitting advance.", "The candidate is frozen."],
     authorizedFunctions: ["F01"],
@@ -534,7 +504,6 @@ export const VALUE_STREAM_TRANSITIONS: StateTransition[] = [
     escalation: "Escalate to the stop authority.",
     recovery: "Roll back and open an incident.",
     enforced: false,
-    synthetic: true,
   },
 ];
 
@@ -548,76 +517,66 @@ export const VALUE_STREAM_REFUSALS: RefusalRecord[] = [
     reason: "The finding does not generalize to the populations SSLS serves.",
     governingRule: "A requirement may not exceed what its evidence supports.",
     refusedBy: "F01",
-    recordedOutcome: "Refusal recorded as a successful governance outcome.",
-    resolutionPath: "Queue a broader research question before reconsidering.",
+    resolutionPath: "Queue a broader research question before reconsidering."
     appealAvailable: true,
     appealRoute: "Resubmit with additional evidence to the governance authority.",
     escalation: "None required; the refusal is the outcome.",
-    synthetic: true,
   },
   {
     refusalId: "REF-002",
     valueStreamId: "evidence-claim",
     stageId: "evidence-claim-S06",
-    ground: "claim-exceeds-evidence",
+    ground: "invalid-claim",
     refusedThing: "Wording asserting that SSLS improves student outcomes.",
     reason: "No outcome evidence exists. SSLS has no users and no results.",
     governingRule: "A claim may not assert more than its linked evidence supports.",
     refusedBy: "F01",
-    recordedOutcome: "Claim refused and recorded in the refused claims register.",
-    resolutionPath: "No resubmission until outcome evidence exists and is validated.",
+    resolutionPath: "No resubmission until outcome evidence exists and is validated."
     appealAvailable: false,
     appealRoute: null,
     escalation: "None required; the refusal is the outcome.",
-    synthetic: true,
   },
   {
     refusalId: "REF-003",
     valueStreamId: "ai-capability-lifecycle",
     stageId: "ai-capability-lifecycle-S01",
-    ground: "gate-closed",
+    ground: "ai-use-not-justified",
     refusedThing: "Any proposal to add an AI capability to SSLS.",
     reason: "The AI trigger gate has never been opened by a governed decision.",
     governingRule: "No AI capability may be built before its trigger gate is opened.",
     refusedBy: "F01",
-    recordedOutcome: "Blocked at the gate check stage; the stream does not proceed.",
-    resolutionPath: "A governed decision would have to open the gate first.",
+    resolutionPath: "A governed decision would have to open the gate first."
     appealAvailable: true,
     appealRoute: "Propose opening the gate as a governance decision, with evidence.",
     escalation: "None required; the block is the outcome.",
-    synthetic: true,
   },
   {
     refusalId: "REF-004",
     valueStreamId: "implementation-adoption",
     stageId: "implementation-adoption-S05",
-    ground: "prohibited-measurement",
+    ground: "privacy-stop",
     refusedThing: "A request to rank individual teachers by system usage.",
     reason: "Surveillance-style measurement of individuals is prohibited by design.",
     governingRule: "Prohibited metrics may not be produced, even on request.",
     refusedBy: "F09",
-    recordedOutcome: "Request refused and recorded.",
-    resolutionPath: "Offer system-level barrier analysis instead.",
+    resolutionPath: "Offer system-level barrier analysis instead."
     appealAvailable: false,
     appealRoute: null,
     escalation: "None required; the refusal is the outcome.",
-    synthetic: true,
   },
   {
     refusalId: "REF-005",
     valueStreamId: "validation-release",
     stageId: "validation-release-S03",
-    ground: "accessibility-barrier",
+    ground: "accessibility-stop",
     refusedThing: "Release of a candidate with an unresolved keyboard trap.",
     reason: "An accessibility barrier blocks release regardless of other readiness.",
     governingRule: "Accessibility is a stop condition, not a weighting factor.",
     refusedBy: "F05",
-    recordedOutcome: "Gate disposition recorded as refused.",
-    resolutionPath: "Remediate and re-validate the exact candidate.",
+    resolutionPath: "Remediate and re-validate the exact candidate."
     appealAvailable: false,
     appealRoute: null,
     escalation: "None required; the refusal is the outcome.",
-    synthetic: true,
   },
 ];
 
@@ -627,43 +586,31 @@ export const VALUE_STREAM_ESCALATIONS: EscalationPath[] = [
     trigger: "A blocking dependency has no owner.",
     fromFunction: "F06",
     toFunction: "F14",
-    expectedAction: "Assign an owner or record the dependency as accepted risk.",
     timeBox: "One governance cycle.",
-    ifUnresolved: "Escalate to the governance authority and record a finding.",
     authorityOfEscalation: "Escalation does not transfer decision rights; it requests a decision.",
-    synthetic: true,
   },
   {
     escalationId: "ESC-002",
     trigger: "A stage exceeds its maximum waiting state.",
     fromFunction: "F14",
     toFunction: "F01",
-    expectedAction: "Decide to resume, re-scope, or stop the item.",
     timeBox: "One governance cycle.",
-    ifUnresolved: "The item is recorded as stalled with a named cause.",
     authorityOfEscalation: "Escalation does not transfer decision rights; it requests a decision.",
-    synthetic: true,
   },
   {
     escalationId: "ESC-003",
     trigger: "A stop authority halts work and the halt is disputed.",
     fromFunction: "F09",
     toFunction: "F01",
-    expectedAction: "Uphold or lift the halt, on the record, with reasoning.",
     timeBox: "Immediately for potential harm.",
-    ifUnresolved: "The halt remains in force. A disputed halt does not lapse.",
     authorityOfEscalation: "A halt stays in force until explicitly lifted.",
-    synthetic: true,
   },
   {
     escalationId: "ESC-004",
     trigger: "A finding has no recorded outcome after its review interval.",
     fromFunction: "F15",
     toFunction: "F01",
-    expectedAction: "Record an outcome or an explicit deferral with a reason.",
     timeBox: "One learning cycle.",
-    ifUnresolved: "The finding is escalated as a governance gap.",
     authorityOfEscalation: "Escalation does not transfer decision rights; it requests a decision.",
-    synthetic: true,
   },
 ];
