@@ -96,7 +96,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         >
           <NavList onNavigate={() => setMobileNavOpen(false)} />
         </nav>
+        </div>
       </header>
+
 
       <div className="lg:flex">
         <nav
