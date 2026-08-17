@@ -6,3 +6,4 @@ export * from "./registers";
 export * from "./traceability";
 export * from "./future-workspaces";
 export * from "./posture";
+export * from "./shared-object";

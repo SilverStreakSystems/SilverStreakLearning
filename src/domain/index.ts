@@ -6,3 +6,4 @@ export * from "./deliverable-type";
 export * from "./traceability";
 export * from "./registers";
 export * from "./future-workspace";
+export * from "./shared-object";
