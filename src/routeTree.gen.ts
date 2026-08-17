@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
+import { Route as DecisionsRouteImport } from './routes/decisions'
+import { Route as EvidenceRouteImport } from './routes/evidence'
+import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 
@@ -30,6 +33,21 @@ const CapabilitiesRoute = CapabilitiesRouteImport.update({
   path: '/capabilities',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DecisionsRoute = DecisionsRouteImport.update({
+  id: '/decisions',
+  path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidenceRoute = EvidenceRouteImport.update({
+  id: '/evidence',
+  path: '/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FindingsRoute = FindingsRouteImport.update({
+  id: '/findings',
+  path: '/findings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FoundationMapRoute = FoundationMapRouteImport.update({
   id: '/foundation-map',
   path: '/foundation-map',
@@ -45,6 +63,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
   '/capabilities': typeof CapabilitiesRoute
+  '/decisions': typeof DecisionsRoute
+  '/evidence': typeof EvidenceRoute
+  '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/traceability': typeof TraceabilityRoute
 }
@@ -52,6 +73,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
   '/capabilities': typeof CapabilitiesRoute
+  '/decisions': typeof DecisionsRoute
+  '/evidence': typeof EvidenceRoute
+  '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/traceability': typeof TraceabilityRoute
 }
@@ -60,20 +84,41 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
   '/capabilities': typeof CapabilitiesRoute
+  '/decisions': typeof DecisionsRoute
+  '/evidence': typeof EvidenceRoute
+  '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/traceability': typeof TraceabilityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/authority' | '/capabilities' | '/foundation-map' | '/traceability'
+    | '/'
+    | '/authority'
+    | '/capabilities'
+    | '/decisions'
+    | '/evidence'
+    | '/findings'
+    | '/foundation-map'
+    | '/traceability'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/authority' | '/capabilities' | '/foundation-map' | '/traceability'
+  to:
+    | '/'
+    | '/authority'
+    | '/capabilities'
+    | '/decisions'
+    | '/evidence'
+    | '/findings'
+    | '/foundation-map'
+    | '/traceability'
   id:
     | '__root__'
     | '/'
     | '/authority'
     | '/capabilities'
+    | '/decisions'
+    | '/evidence'
+    | '/findings'
     | '/foundation-map'
     | '/traceability'
   fileRoutesById: FileRoutesById
@@ -82,6 +127,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthorityRoute: typeof AuthorityRoute
   CapabilitiesRoute: typeof CapabilitiesRoute
+  DecisionsRoute: typeof DecisionsRoute
+  EvidenceRoute: typeof EvidenceRoute
+  FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
   TraceabilityRoute: typeof TraceabilityRoute
 }
@@ -109,6 +157,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CapabilitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/decisions': {
+      id: '/decisions'
+      path: '/decisions'
+      fullPath: '/decisions'
+      preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidence': {
+      id: '/evidence'
+      path: '/evidence'
+      fullPath: '/evidence'
+      preLoaderRoute: typeof EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/findings': {
+      id: '/findings'
+      path: '/findings'
+      fullPath: '/findings'
+      preLoaderRoute: typeof FindingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foundation-map': {
       id: '/foundation-map'
       path: '/foundation-map'
@@ -130,6 +199,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthorityRoute: AuthorityRoute,
   CapabilitiesRoute: CapabilitiesRoute,
+  DecisionsRoute: DecisionsRoute,
+  EvidenceRoute: EvidenceRoute,
+  FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
   TraceabilityRoute: TraceabilityRoute,
 }
