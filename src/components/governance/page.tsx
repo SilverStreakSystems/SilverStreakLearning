@@ -15,11 +15,14 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <header className="border-b border-border pb-5">
+    // A plain container, not <header>: the page banner landmark belongs to the
+    // application shell, and a second banner would create landmark ambiguity.
+    <div className="border-b border-border pb-5">
       <h1 className="font-display text-2xl leading-tight font-bold sm:text-3xl">{title}</h1>
       <p className="measure mt-2 text-base text-muted-foreground">{summary}</p>
       {children ? <div className="mt-4">{children}</div> : null}
-    </header>
+    </div>
+
   );
 }
 
