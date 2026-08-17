@@ -16,8 +16,8 @@ import {
   GateChip,
   IndependenceChip,
   StageChip,
+  parseCapabilitySearch,
   type CapabilitySearch,
-  CAPABILITY_VIEWS,
 } from "@/components/governance/capability-controls";
 import {
   CAPABILITY_DEPENDENCIES,
@@ -29,7 +29,6 @@ import {
   CAPABILITY_DOMAINS,
   CAPABILITY_DOMAIN_META,
   CAPABILITY_TYPES,
-  CAPABILITY_TYPE_LABEL,
   COVERAGE_MODE_LABEL,
   CURRENT_SCALE_STAGE,
   DEPENDENCY_KIND_LABEL,
@@ -57,32 +56,8 @@ import {
   stageCounts,
 } from "@/lib/capability-queries";
 
-function asOption<T extends string>(value: unknown, allowed: readonly T[]): T | "all" {
-  return typeof value === "string" && (allowed as readonly string[]).includes(value)
-    ? (value as T)
-    : "all";
-}
-
 export const Route = createFileRoute("/capabilities/")({
-  validateSearch: (search: Record<string, unknown>): CapabilitySearch => ({
-    view: asOption(
-      search["view"],
-      CAPABILITY_VIEWS.map((v) => v.id),
-    ) === "all"
-      ? "registry"
-      : (search["view"] as CapabilitySearch["view"]),
-    domain: asOption<CapabilityDomainId>(search["domain"], CAPABILITY_DOMAINS),
-    type: asOption<CapabilityType>(search["type"], CAPABILITY_TYPES),
-    stage: asOption<ScaleStage>(search["stage"], SCALE_STAGES),
-    gate: asOption<TriggerGate>(search["gate"], TRIGGER_GATES),
-    independence: asOption<IndependenceLevel>(search["independence"], [
-      "required",
-      "conditional",
-      "not-required",
-    ]),
-    maturity: asOption<MaturityLevel>(search["maturity"], MATURITY_LEVELS),
-    q: typeof search["q"] === "string" ? search["q"] : "",
-  }),
+  validateSearch: parseCapabilitySearch,
   head: () => ({
     meta: [
       { title: "Enterprise Capability Architecture v0.1 (Candidate) | SSLS" },
@@ -105,8 +80,13 @@ export const Route = createFileRoute("/capabilities/")({
 });
 
 function CapabilityCommandView() {
+  const navigate = Route.useNavigate();
   const search = Route.useSearch();
   const filtered = filterCapabilities(ENTERPRISE_CAPABILITIES, search);
+
+  const updateSearch = (next: Partial<CapabilitySearch>) => {
+    void navigate({ search: (prev) => ({ ...prev, ...next }), replace: true });
+  };
 
   return (
     <div>
@@ -129,17 +109,17 @@ function CapabilityCommandView() {
       </PageHeader>
 
       <CapabilityViewTabs current={search.view} search={search} />
-      <CapabilityFilterBar search={search} resultCount={filtered.length} />
+      <CapabilityFilterBar search={search} resultCount={filtered.length} onChange={updateSearch} />
 
       {search.view === "registry" ? <RegistryView capabilities={filtered} search={search} /> : null}
-      {search.view === "domains" ? <DomainMapView /> : null}
-      {search.view === "dependencies" ? <DependencyView /> : null}
-      {search.view === "maturity" ? <MaturityView capabilities={filtered} /> : null}
-      {search.view === "independence" ? <IndependenceView capabilities={filtered} /> : null}
-      {search.view === "gates" ? <GateView /> : null}
-      {search.view === "coverage" ? <CoverageView capabilities={filtered} /> : null}
-      {search.view === "deliverables" ? <DeliverableView /> : null}
-      {search.view === "normalization" ? <NormalizationView /> : null}
+      {search.view === "domains" ? <DomainMapView search={search} /> : null}
+      {search.view === "dependencies" ? <DependencyView search={search} /> : null}
+      {search.view === "maturity" ? <MaturityView capabilities={filtered} search={search} /> : null}
+      {search.view === "independence" ? <IndependenceView capabilities={filtered} search={search} /> : null}
+      {search.view === "gates" ? <GateView search={search} /> : null}
+      {search.view === "coverage" ? <CoverageView capabilities={filtered} search={search} /> : null}
+      {search.view === "deliverables" ? <DeliverableView search={search} /> : null}
+      {search.view === "normalization" ? <NormalizationView search={search} /> : null}
     </div>
   );
 }
@@ -210,7 +190,7 @@ function RegistryView({
   );
 }
 
-function DomainMapView() {
+function DomainMapView({ search }: { search: CapabilitySearch }) {
   const summaries = domainSummaries(ENTERPRISE_CAPABILITIES);
   return (
     <Section
@@ -233,7 +213,7 @@ function DomainMapView() {
             <p className="mt-3">
               <Link
                 to="/capabilities"
-                search={{ view: "registry", domain: summary.id }}
+                search={{ ...search, view: "registry", domain: summary.id }}
                 className="text-sm font-semibold underline underline-offset-2"
               >
                 Filter the registry to {summary.id}
@@ -246,7 +226,7 @@ function DomainMapView() {
   );
 }
 
-function DependencyView() {
+function DependencyView({ search }: { search: CapabilitySearch }) {
   return (
     <Section
       id="dependencies"
@@ -263,6 +243,7 @@ function DependencyView() {
               <Link
                 to="/capabilities/$capabilityId"
                 params={{ capabilityId: dependency.from }}
+                search={search}
                 className="underline underline-offset-2"
               >
                 {dependency.from}
@@ -273,6 +254,7 @@ function DependencyView() {
               <Link
                 to="/capabilities/$capabilityId"
                 params={{ capabilityId: dependency.to }}
+                search={search}
                 className="underline underline-offset-2"
               >
                 {dependency.to}
@@ -286,7 +268,13 @@ function DependencyView() {
   );
 }
 
-function MaturityView({ capabilities }: { capabilities: ReturnType<typeof filterCapabilities> }) {
+function MaturityView({
+  capabilities,
+  search,
+}: {
+  capabilities: ReturnType<typeof filterCapabilities>;
+  search: CapabilitySearch;
+}) {
   const counts = stageCounts(capabilities);
   return (
     <>
@@ -334,6 +322,7 @@ function MaturityView({ capabilities }: { capabilities: ReturnType<typeof filter
                 <Link
                   to="/capabilities/$capabilityId"
                   params={{ capabilityId: capability.capabilityId }}
+                  search={search}
                   className="underline underline-offset-2"
                 >
                   {capability.capabilityId} — {capability.shortName}
@@ -353,7 +342,13 @@ function MaturityView({ capabilities }: { capabilities: ReturnType<typeof filter
   );
 }
 
-function IndependenceView({ capabilities }: { capabilities: ReturnType<typeof filterCapabilities> }) {
+function IndependenceView({
+  capabilities,
+  search,
+}: {
+  capabilities: ReturnType<typeof filterCapabilities>;
+  search: CapabilitySearch;
+}) {
   const groups = independenceGroups(capabilities);
   return (
     <Section
@@ -380,6 +375,7 @@ function IndependenceView({ capabilities }: { capabilities: ReturnType<typeof fi
                       <Link
                         to="/capabilities/$capabilityId"
                         params={{ capabilityId: capability.capabilityId }}
+                        search={search}
                         className="underline underline-offset-2"
                       >
                         {capability.capabilityId} — {capability.shortName}
@@ -405,7 +401,7 @@ function IndependenceView({ capabilities }: { capabilities: ReturnType<typeof fi
   );
 }
 
-function GateView() {
+function GateView({ search }: { search: CapabilitySearch }) {
   const groups = gateGroups(ENTERPRISE_CAPABILITIES);
   return (
     <Section
@@ -432,6 +428,7 @@ function GateView() {
                   <Link
                     to="/capabilities/$capabilityId"
                     params={{ capabilityId: capability.capabilityId }}
+                    search={search}
                     className="underline underline-offset-2"
                   >
                     {capability.capabilityId} — {capability.name}
@@ -446,7 +443,13 @@ function GateView() {
   );
 }
 
-function CoverageView({ capabilities }: { capabilities: ReturnType<typeof filterCapabilities> }) {
+function CoverageView({
+  capabilities,
+  search: _search,
+}: {
+  capabilities: ReturnType<typeof filterCapabilities>;
+  search: CapabilitySearch;
+}) {
   const groups = coverageGroups(capabilities);
   return (
     <Section
@@ -480,7 +483,7 @@ function CoverageView({ capabilities }: { capabilities: ReturnType<typeof filter
   );
 }
 
-function DeliverableView() {
+function DeliverableView({ search: _search }: { search: CapabilitySearch }) {
   return (
     <Section
       id="deliverables"
@@ -512,7 +515,7 @@ function DeliverableView() {
   );
 }
 
-function NormalizationView() {
+function NormalizationView({ search: _search }: { search: CapabilitySearch }) {
   return (
     <Section
       id="normalization"
@@ -548,5 +551,3 @@ function NormalizationView() {
     </Section>
   );
 }
-
-export { CAPABILITY_TYPE_LABEL };
