@@ -274,20 +274,48 @@ export const DECISIONS: DecisionRecord[] = [
   {
     id: "DEC-006",
     title: "Build the target-state enterprise model in this pass",
-    state: "declined",
+    state: "superseded",
     decidedOn: "2026-08-17",
     decidedBy: "Founder / Operator",
     context: "Considered and rejected in favor of a bounded foundation shell.",
-    decision: "Declined. The foundation must be governed before the operating model is built.",
-    consequences: ["Scope of this pass stays at the foundation shell."],
+    decision:
+      "Declined at the time of record. Superseded by DEC-007, which ratifies a governed build program under which target-state work proceeds only through authorized work packages.",
+    consequences: [
+      "Scope of the original pass stayed at the foundation shell.",
+      "Target-state work is no longer refused outright; it is gated by DEC-007 work-package authorization.",
+    ],
     authorityClass: "accepted-decision",
-    recordState: "current",
+    recordState: "historical",
     supersedes: [],
-    supersededBy: null,
+    supersededBy: "DEC-007",
     relatedArtifacts: ["FND-OPMODEL-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-007",
+    title: "Ratify SSLS-BPP-001 v2.0 as the governing build program register",
+    state: "accepted",
+    decidedOn: "2026-08-17",
+    decidedBy: "Founder / Operator",
+    context:
+      "Work packages were being issued against a build program that carried no ratification record, so no authority chain existed to authorize them. DEC-006 had declined target-state build outright, which is no longer the governing posture.",
+    decision:
+      "SSLS-BPP-001 v2.0 (SSLS Build Program Register) is ratified as the governing build program for this project. Work packages issued under it, beginning with WP-000 (Exposure Containment and Credential Remediation), are authorized work. Ratification authorizes execution only; it grants no conformance, validation, or public claim. DEC-006 is superseded: target-state work is permitted only through an authorized work package under this register, never by inference from a prompt.",
+    consequences: [
+      "WP-000 may be executed and its findings recorded against this authority chain.",
+      "Every subsequent work package must name SSLS-BPP-001 v2.0 as its authorizing register.",
+      "Founder/developer operator boundary holds: no live PII, no production data, no AI features.",
+      "No readiness, conformance, or completion claim follows from ratification.",
+    ],
+    authorityClass: "accepted-decision",
+    recordState: "current",
+    supersedes: ["DEC-006"],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "FND-OPMODEL-001"],
+    synthetic: false,
+  },
 ];
+
 
 export const CLAIMS: ClaimRecord[] = [
   {
