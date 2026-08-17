@@ -58,7 +58,7 @@ export interface RelationshipKindMeta {
 
 
 /** Projection may read from canonical sources, never from another projection. */
-const SHARED_OBJECT_TARGETS_FOR_PROJECTION = [
+const SHARED_OBJECT_TARGETS_FOR_PROJECTION: SharedObjectTypeId[] = [
   "person-reference",
   "organization",
   "organizational-unit",
