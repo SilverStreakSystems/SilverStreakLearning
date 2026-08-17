@@ -10,11 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthorityRouteImport } from './routes/authority'
+import { Route as CapabilitiesRouteImport } from './routes/capabilities'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
+import { Route as TraceabilityRouteImport } from './routes/traceability'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthorityRoute = AuthorityRouteImport.update({
+  id: '/authority',
+  path: '/authority',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapabilitiesRoute = CapabilitiesRouteImport.update({
+  id: '/capabilities',
+  path: '/capabilities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FoundationMapRoute = FoundationMapRouteImport.update({
@@ -22,31 +35,55 @@ const FoundationMapRoute = FoundationMapRouteImport.update({
   path: '/foundation-map',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TraceabilityRoute = TraceabilityRouteImport.update({
+  id: '/traceability',
+  path: '/traceability',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/authority': typeof AuthorityRoute
+  '/capabilities': typeof CapabilitiesRoute
   '/foundation-map': typeof FoundationMapRoute
+  '/traceability': typeof TraceabilityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/authority': typeof AuthorityRoute
+  '/capabilities': typeof CapabilitiesRoute
   '/foundation-map': typeof FoundationMapRoute
+  '/traceability': typeof TraceabilityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/authority': typeof AuthorityRoute
+  '/capabilities': typeof CapabilitiesRoute
   '/foundation-map': typeof FoundationMapRoute
+  '/traceability': typeof TraceabilityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/foundation-map'
+  fullPaths:
+    '/' | '/authority' | '/capabilities' | '/foundation-map' | '/traceability'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/foundation-map'
-  id: '__root__' | '/' | '/foundation-map'
+  to: '/' | '/authority' | '/capabilities' | '/foundation-map' | '/traceability'
+  id:
+    | '__root__'
+    | '/'
+    | '/authority'
+    | '/capabilities'
+    | '/foundation-map'
+    | '/traceability'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthorityRoute: typeof AuthorityRoute
+  CapabilitiesRoute: typeof CapabilitiesRoute
   FoundationMapRoute: typeof FoundationMapRoute
+  TraceabilityRoute: typeof TraceabilityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +95,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/authority': {
+      id: '/authority'
+      path: '/authority'
+      fullPath: '/authority'
+      preLoaderRoute: typeof AuthorityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capabilities': {
+      id: '/capabilities'
+      path: '/capabilities'
+      fullPath: '/capabilities'
+      preLoaderRoute: typeof CapabilitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foundation-map': {
       id: '/foundation-map'
       path: '/foundation-map'
@@ -65,12 +116,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoundationMapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/traceability': {
+      id: '/traceability'
+      path: '/traceability'
+      fullPath: '/traceability'
+      preLoaderRoute: typeof TraceabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthorityRoute: AuthorityRoute,
+  CapabilitiesRoute: CapabilitiesRoute,
   FoundationMapRoute: FoundationMapRoute,
+  TraceabilityRoute: TraceabilityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
