@@ -317,8 +317,67 @@
 }
 
 @utility measure {
-  max-width: 72ch;
+  max-width: var(--prose-measure);
 }
+
+/* Layout utilities bound to the governed layout tokens. */
+@utility page-gutter {
+  padding-inline: var(--page-gutter);
+}
+
+@utility content-max {
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+@utility sidebar-rail {
+  width: var(--sidebar-width);
+}
+
+@utility context-rail {
+  width: 100%;
+  @media (min-width: 1024px) {
+    width: var(--context-rail-width);
+  }
+}
+
+/* Minimum effective target: 44 by 44 CSS pixels. */
+@utility control-target {
+  min-height: var(--control-min-h);
+  min-width: var(--control-min-h);
+}
+
+/* Battleship planning grid: A-L columns, collapsing to 8 then 4. */
+@utility coordinate-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: var(--space-5, 20px);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+/*
+ * Signal gradient. Permitted only as a thin signal layer, never as a page fill
+ * or decorative wallpaper.
+ */
+@utility signal-rule {
+  height: 3px;
+  border-radius: 999px;
+  background-image: linear-gradient(
+    90deg,
+    var(--ssls-signal-blue),
+    var(--ssls-signal-cyan),
+    var(--ssls-progress-green),
+    var(--ssls-attention-yellow)
+  );
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
