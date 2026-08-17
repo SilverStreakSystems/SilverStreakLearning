@@ -22,6 +22,7 @@ import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ObjectsRouteImport } from './routes/objects'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as ValueStreamsRouteImport } from './routes/value-streams'
@@ -100,6 +101,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
 const ObjectsRoute = ObjectsRouteImport.update({
   id: '/objects',
   path: '/objects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SearchRoute = SearchRouteImport.update({
@@ -189,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/future-architecture': typeof FutureArchitectureRoute
   '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
+  '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
@@ -215,6 +222,7 @@ export interface FileRoutesByTo {
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
   '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
@@ -243,6 +251,7 @@ export interface FileRoutesById {
   '/future-architecture': typeof FutureArchitectureRoute
   '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
+  '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
@@ -274,6 +283,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/notifications'
     | '/objects'
+    | '/profile'
     | '/search'
     | '/traceability'
     | '/value-streams'
@@ -300,6 +310,7 @@ export interface FileRouteTypes {
     | '/foundation-map'
     | '/future-architecture'
     | '/notifications'
+    | '/profile'
     | '/search'
     | '/traceability'
     | '/capabilities/$capabilityId'
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/notifications'
     | '/objects'
+    | '/profile'
     | '/search'
     | '/traceability'
     | '/value-streams'
@@ -357,6 +369,7 @@ export interface RootRouteChildren {
   FutureArchitectureRoute: typeof FutureArchitectureRoute
   NotificationsRoute: typeof NotificationsRoute
   ObjectsRoute: typeof ObjectsRouteWithChildren
+  ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
   TraceabilityRoute: typeof TraceabilityRoute
   ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
@@ -454,6 +467,13 @@ declare module '@tanstack/react-router' {
       path: '/objects'
       fullPath: '/objects'
       preLoaderRoute: typeof ObjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/search': {
@@ -640,6 +660,7 @@ const rootRouteChildren: RootRouteChildren = {
   FutureArchitectureRoute: FutureArchitectureRoute,
   NotificationsRoute: NotificationsRoute,
   ObjectsRoute: ObjectsRouteWithChildren,
+  ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
   TraceabilityRoute: TraceabilityRoute,
   ValueStreamsRoute: ValueStreamsRouteWithChildren,
