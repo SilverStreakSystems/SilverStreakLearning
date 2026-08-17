@@ -97,7 +97,7 @@ describe("workspace contracts", () => {
       const offered = [
         workspace.purpose,
         workspace.fundamentalQuestion,
-        ...workspace.metrics.map((metric) => `${metric.name} ${metric.meaning}`),
+        ...workspace.metrics.map((metric) => `${metric.name} ${metric.interpretation}`),
       ]
         .join(" ")
         .toLowerCase();
