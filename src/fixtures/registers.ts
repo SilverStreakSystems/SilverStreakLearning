@@ -78,7 +78,88 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: [],
     synthetic: false,
   },
+  {
+    id: "FND-006",
+    title: "Governing program register text cannot be located in either plane",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "DEC-007 ratifies SSLS-BPP-001 v2.0 as the governing build program register, but no artifact carrying that text exists in the repository or in the inspected document corpus. Work-package identifiers, gate definitions, and requirement labels are cited from a document no reviewer can read.",
+    boundary:
+      "Does not assert the program is invalid or that DEC-007 is defective. It records that the ratified text is not producible on demand.",
+    resolutionState: "unknown",
+    requiredDecision: "DEC-011",
+    evidenceReferences: ["EV-008"],
+    synthetic: false,
+  },
+  {
+    id: "FND-007",
+    title: "Gate lineage between the historical and current taxonomies is unresolved",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "A historical gate sequence closed its first gate and left its second gate open. The current program proceeds under a separately named gate. No accepted decision maps one taxonomy onto the other, so an open historical gate coexists with a proceeding current gate.",
+    boundary:
+      "Does not assert that either taxonomy is wrong, and does not rename either one.",
+    resolutionState: "conflicted",
+    requiredDecision: "DEC-013",
+    evidenceReferences: ["EV-008"],
+    synthetic: false,
+  },
+  {
+    id: "FND-008",
+    title: "Actual repository origin diverges from the never-executed first-commit plan",
+    severity: "structural",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L6"],
+    description:
+      "A candidate plan specified a reviewed documentation-only first commit before any application code. The repository instead begins with a platform template scaffold followed by application work, with no recorded first-commit ratification. Containment intent is met in substance; the review step was not performed.",
+    boundary:
+      "Does not assert contamination. No legacy ancestry, committed secrets, or legacy backend bindings were found in the root commit.",
+    resolutionState: "conflicted",
+    requiredDecision: "DEC-010",
+    evidenceReferences: ["EV-009", "EV-010"],
+    synthetic: false,
+  },
+  {
+    id: "FND-009",
+    title: "Document-plane control map states no repository exists",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L6"],
+    description:
+      "The controlling navigation map in the document plane states that no repository, commit, or containment result exists yet. A repository exists, builds, and passes its test suite. A reviewer starting from the document plane is misinformed about the most basic current fact.",
+    boundary:
+      "The statement was true when written. This finding marks a single proposition stale, not the document as a whole.",
+    resolutionState: "stale",
+    requiredDecision: null,
+    evidenceReferences: ["EV-009"],
+    synthetic: false,
+  },
+  {
+    id: "FND-010",
+    title: "Effective version of the interface acceptance standard is not declared",
+    severity: "governance",
+    raisedOn: "2026-08-17",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "Repository work cites version 1.3 of the interface acceptance standard while the document corpus also holds a later revision. No accepted decision names which revision is effective, so acceptance criteria may be measured against a superseded version.",
+    boundary:
+      "Does not assert that the interface fails either revision, and does not promote the later revision.",
+    resolutionState: "conflicted",
+    requiredDecision: "DEC-012",
+    evidenceReferences: ["EV-008"],
+    synthetic: false,
+  },
 ];
+
 
 export const EVIDENCE: EvidenceRecord[] = [
   {
@@ -173,7 +254,82 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "historical-evidence",
     synthetic: true,
   },
+  {
+    id: "EV-008",
+    title: "Document-corpus enumeration and authority mapping",
+    kind: "document-review",
+    subject: "Governing document corpus, four levels deep",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "partial",
+    supports:
+      "Which governing artifacts exist in the document plane, how they map to repository artifacts, and where the two planes disagree.",
+    doesNotSupport:
+      "Completeness. Enumeration stopped at four levels, and artifacts outside the inspected corpus were not reachable.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-009",
+    title: "Repository provenance inspection at the current baseline",
+    kind: "manual-check",
+    subject: "Repository origin, history, branch, and working-tree state",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That exactly one repository holds executable code, that its root commit is a platform template scaffold with no legacy ancestry, and that every intermediate state is recoverable.",
+    doesNotSupport:
+      "Anything about copies outside this project, or about repositories that were never located.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-010",
+    title: "Build and test execution bound to the current baseline",
+    kind: "automated-test",
+    subject: "Production build and full test suite at the recorded commit",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the recorded commit builds and that its declared test suite passes in full at that commit.",
+    doesNotSupport:
+      "Correctness, accessibility conformance, security, or fitness for use. Executor-run, not independent.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-011",
+    title: "Backend and data-surface absence check",
+    kind: "manual-check",
+    subject: "Database, migrations, authentication, storage, and external integrations",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That no database, migration, authentication surface, storage bucket, or live external integration exists in the current implementation.",
+    doesNotSupport:
+      "Any statement about future data handling, or about privacy compliance once real data is introduced.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-012",
+    title: "Independent verification of the current-state record",
+    kind: "external-validation",
+    subject: "Every WP-006 provenance and status assertion",
+    collectedOn: null,
+    collectedBy: "Not assigned",
+    state: "not-run",
+    supports: "Nothing yet.",
+    doesNotSupport:
+      "All current-state evidence is executor-produced and self-verified. No independent party has reviewed it.",
+    authorityClass: "gated-future",
+    synthetic: false,
+  },
 ];
+
 
 export const DECISIONS: DecisionRecord[] = [
   {
@@ -360,7 +516,93 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-TRUST-001", "SSLS-GOV-002"],
     synthetic: false,
   },
+  {
+    id: "DEC-010",
+    title: "Authorize the go-forward software source of truth and classify every other lineage",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "Exactly one repository holds executable code, with fully recoverable provenance and a passing build and test suite. Its origin diverges from a candidate first-commit plan that was never executed, and other referenced lineages could not be located from inside this project.",
+    decision:
+      "Not decided. The owner must name the authorized go-forward source-code lineage, classify every other discoverable lineage, and state the disposition of the actual repository origin.",
+    consequences: [
+      "Until decided, no lineage may be described as the authorized source of truth.",
+      "Existing evidence remains bound to the current baseline commit regardless of the outcome.",
+      "The decision confers no security, privacy, accessibility, or compliance certification.",
+    ],
+    authorityClass: "research-candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-011",
+    title: "Locate or author the governing build program register text",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "The governing program register is ratified by reference, but no artifact carrying its text exists in either plane. Requirement labels, gate definitions, and work-package identifiers are cited from a document that cannot be produced.",
+    decision:
+      "Not decided. The owner must either locate the ratified text and mirror it as the canonical copy, or author it under explicit ratification.",
+    consequences: [
+      "Until resolved, program citations cannot be independently checked.",
+      "Ratification by reference remains in force; this does not invalidate the existing ratification decision.",
+    ],
+    authorityClass: "research-candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-012",
+    title: "Declare the effective revision of the interface acceptance standard",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "Implementation work cites revision 1.3 while a later revision also exists in the document corpus. No accepted decision names which is effective.",
+    decision:
+      "Not decided. The owner must declare the effective revision and the disposition of work already accepted against the earlier one.",
+    consequences: [
+      "Until declared, no conformance statement may name a revision as satisfied.",
+      "A change of effective revision may reopen previously accepted interface work.",
+    ],
+    authorityClass: "research-candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["ULW-AS-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-013",
+    title: "Reconcile the historical and current gate taxonomies",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "A historical gate sequence left its second gate open. The current program proceeds under a separately named gate covering overlapping subject matter. No decision maps one taxonomy onto the other.",
+    decision:
+      "Not decided. The owner must state whether the current gate supersedes, incorporates, or runs independently of the open historical gate, and record the disposition of historical gate evidence.",
+    consequences: [
+      "Until decided, the historical gate remains open and its evidence has no stated status under the current program.",
+      "No statement may assert that the historical gate was completed.",
+    ],
+    authorityClass: "research-candidate",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001"],
+    synthetic: false,
+  },
 ];
+
 
 
 

@@ -1,0 +1,13 @@
+# WP-006 Staleness Register
+
+An artifact is marked stale **for a specific proposition**, not condemned as a whole. No historical
+text was overwritten. Every entry names a current replacement.
+
+| id | artifact | stale proposition | current fact | historical context preserved | current replacement | recommendation | status |
+|---|---|---|---|---|---|---|---|
+| STL-001 | Drive `START HERE - SSLS Drive Map and Authority Boundary` (2026-08-16) | "No repository, commit, containment result, or repository-proof record exists yet." | A private repository exists with root commit `3190f797`, HEAD `70c1f89`, 283 commits, a passing build, and 210 passing tests. | True as written on 2026-08-16 before the project was created. | `docs/wp-006/REPOSITORY_MANIFEST.md`, `PROVENANCE_REPORT.md` | Add a dated correction note in Drive pointing to this manifest set; do not edit the original paragraph in place | open |
+| STL-002 | Drive `START HERE` control posture | "Gate 1: IN PROGRESS" as the current operating gate | The current program operates under Gate A of SSLS-BPP-001 v2.0 (DEC-007), while Gate 1 has never been closed | Accurate for the pre-program era | `docs/wp-006/GATE_LINEAGE_RECONCILIATION.md` | Supersede only after the owner records a gate-lineage decision (DQ-R05-CAND) | open |
+| STL-003 | Drive `FIRST-COMMIT-001 v0.1` | "does not create a repository or commit … 12-file first commit pending review" as the forward plan | A repository already exists with a template-scaffold root commit; the 12-file plan was never executed | Correct as a 2026-08-07 candidate plan | `docs/wp-006/REPOSITORY_MANIFEST.md`, DSC-003 | Reclassify as HISTORICAL EVIDENCE once the owner disposes DQ-R01 | open |
+| STL-004 | Drive `REPO-MAP-001 v0.1` | Current-vs-target map treats implementation directories as not yet created | Substantial application implementation exists (30 route files, ~35.5k lines) | Correct for 2026-08-06 | `docs/wp-006/IMPLEMENTATION_INVENTORY.md` | Version to v0.2 against actual state, or mark superseded by the WP-006 inventory | open |
+| STL-005 | Repository `docs/CURRENT_STATE.md` | Sole current-truth record for the project | It omits repository, commit, build, and route provenance now held in the WP-006 SSOT | It was accurate for its scope | `docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md` | Converted in this pass to a pointer to the canonical SSOT; content preserved | resolved in this pass |
+| STL-006 | Repository `docs/ACCESSIBILITY_ACCEPTANCE.md` | Cites ULW-AS-001 v1.3 as the standard | Drive also holds v1.4; no decision names the effective version | v1.3 was the version cited when the shell was built | DSC-004 | Owner declares the effective version before WP-011 | open |

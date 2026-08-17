@@ -1,0 +1,45 @@
+# Implementation Inventory — component level
+
+Every row is bound to commit `70c1f891c5d341c60132d0109979042004425a4b`. Status values come from the
+program register enumeration only. Documentation never earns Implemented status for a capability.
+
+| Area | Source path | Status | Notes |
+|---|---|---|---|
+| Application shell | `src/components/app-shell.tsx` | Implemented | Landmarks, skip link, navigation from `ROUTE_REGISTRY` |
+| Root document / head | `src/routes/__root.tsx` | Implemented | Fonts and metadata |
+| Routes / pages | `src/routes/` (30 files) | Implemented | See `ROUTE_MANIFEST.md` |
+| Route registry | `src/lib/route-registry.ts` | Implemented | 19 registered paths; drives nav and tests |
+| Brand components | `src/components/brand/index.tsx` | Implemented | Arrow/sparkle/rounded-square motif, wordmark |
+| Governance UI primitives | `src/components/governance/*.tsx` (8 files) | Implemented | Authority badge, state chip, markers, page scaffold, per-domain controls |
+| Reusable UI library | `src/components/ui/` | Implemented | shadcn primitives from the platform template |
+| Authority domain | `src/domain/authority.ts` | Implemented | Authority classes, record states, verification states |
+| Layer domain | `src/domain/layer.ts` | Implemented | L0–L7 |
+| Artifact / traceability domain | `src/domain/artifact.ts`, `src/domain/traceability.ts` | Implemented | Governance spine chain |
+| Register domain | `src/domain/registers.ts` | Implemented | Findings, evidence, decisions, claims |
+| Capability architecture domain | `src/domain/capability-architecture.ts`, `deliverable-type.ts` | Implemented | 12 domains, S0–S5, trigger gates |
+| Shared object domain | `src/domain/shared-object/` (14 files) | Implemented | 32 object types, 8 state axes, context and authorization contracts |
+| Value stream domain | `src/domain/value-stream/` (15 files) | Implemented | Streams, stages, gates, handoffs, refusals, metrics |
+| Workspace domain | `src/domain/workspace/` (8 files) | Implemented | 9-step projection engine, search, actions, notifications, capacities |
+| Experience / design system domain | `src/domain/experience/` | Implemented | Tokens, grid, templates, quality rules |
+| Future workspace derivation | `src/domain/future-workspace.ts` | Implemented | Derived from the canonical workspace register (SSOT reconciled) |
+| Fixture system | `src/fixtures/` (30+ files) | Implemented | All synthetic; no real data |
+| Query layer | `src/lib/*-queries.ts` (4 files) | Implemented | Pure in-memory filtering and projection |
+| State management | — | Missing | No global store; route-local state only. Not required by any current decision. |
+| Authentication | — | Missing | Single-operator posture |
+| Persistence | — | Missing | See `DATA_BACKEND_STATUS.md` |
+| Integrations | — | Missing in-app | Drive connector is agent-side only |
+| Search | `src/domain/workspace/search.ts`, `src/routes/search.tsx` | Implemented | Authorization evaluated before results |
+| Action center | `src/domain/workspace/action.ts`, `src/routes/actions.tsx` | Implemented | |
+| Workspace definitions | `src/fixtures/workspace/workspaces.ts` | Implemented | 9 workspaces, canonical |
+| Capability registry | `src/fixtures/capability-architecture/` | Implemented | 129 candidate capabilities |
+| Value stream registry | `src/fixtures/value-stream/` | Implemented | 18 priority streams |
+| Shared object registry | `src/fixtures/shared-object/` | Implemented | 32 types across 7 families |
+| Evidence / decision / findings surfaces | `src/routes/evidence.tsx`, `decisions.tsx`, `findings.tsx`, `src/fixtures/registers.ts` | Implemented | Includes DEC-007/008/009 |
+| Accessibility mechanisms | `src/components/app-shell.tsx`, `src/styles.css`, `src/test/accessibility.test.ts` | Partial | Automated invariants only; screen-reader and measured contrast Not Run |
+| Styling / design tokens | `src/styles.css` | Implemented | Tailwind v4 theme tokens, Midnight Navy palette |
+| Tests | `src/test/` (8 suites) | Implemented | 210 passing at HEAD |
+| Test configuration | `vitest.config.ts`, `src/test/setup.ts`, `src/test/render-route.tsx` | Implemented | jsdom |
+| Documentation generators | `scripts/gen-*-docs.ts` (3) | Implemented | Value stream, workspace, design system docs are generated from fixtures |
+| Documentation | `docs/` (111 files pre-WP-006) | Implemented as documents; confers no capability credit | |
+| CI pipeline | — | Missing | WP-037 scope; not started |
+| Archive directories | — | Missing | No `archive/` directory exists in the repository |

@@ -1,0 +1,54 @@
+# Route Manifest — current state
+
+Provenance commit for every row: `70c1f891c5d341c60132d0109979042004425a4b`.
+Actor for every row: Founder / Operator (single active capacity; no other actor exists).
+Data source for every row is synthetic fixtures compiled into the bundle; no network, no database.
+Accessibility obligation for every row: ULW-AS-001 v1.3 as an acceptance contract
+(`docs/ACCESSIBILITY_ACCEPTANCE.md`, evidence in `docs/ACCESSIBILITY_EVIDENCE.md`).
+
+Disposition is classification only. No route remediation was performed. Route conformance is not
+claimed here; that is WP-011.
+
+| route_id | path | component / source file | purpose | authority class | impl. status | data source | test coverage | disposition |
+|---|---|---|---|---|---|---|---|---|
+| RT-000 | (layout) | `src/routes/__root.tsx` | Root document, head metadata, app shell wrapper | operational-shell | Implemented | — | Exercised by every render test | Retain |
+| RT-001 | `/` | `src/routes/index.tsx` | Command Center: what is true now, what is open, what is next | operational-shell | Implemented | `src/fixtures/*` | `shell.test.tsx` (render, landmarks, single H1, boundary) | Retain |
+| RT-002 | `/foundation-map` | `src/routes/foundation-map.tsx` | Foundation layers L0–L7 | candidate-model | Implemented | `src/fixtures/layers.ts` | `shell.test.tsx` | Retain |
+| RT-003 | `/authority` | `src/routes/authority.tsx` | Authority ledger: what governs vs what describes | declared-authority | Implemented | `src/fixtures/artifacts.ts` | `shell.test.tsx`, `governance.test.tsx` | Retain |
+| RT-004 | `/capabilities` | `src/routes/capabilities.tsx` (layout) + `capabilities.index.tsx` | Enterprise capability architecture command view | research-candidate | Implemented | `src/fixtures/capability-architecture/` | `capability-architecture.test.tsx`, `shell.test.tsx` | Retain |
+| RT-005 | `/capabilities/$capabilityId` | `src/routes/capabilities.$capabilityId.tsx` | Single capability, including unrecorded-identifier case | research-candidate | Implemented | same | `shell.test.tsx` dynamic-route cases | Retain |
+| RT-006 | `/objects` | `src/routes/objects.tsx` + `objects.index.tsx` | Shared enterprise object registry, 11 views | candidate-model | Implemented | `src/fixtures/shared-object/` | `shared-objects.test.tsx` | Retain |
+| RT-007 | `/objects/$typeId` | `src/routes/objects.$typeId.tsx` | Single object type detail | candidate-model | Implemented | same | `shell.test.tsx` dynamic-route cases | Retain |
+| RT-008 | `/value-streams` | `src/routes/value-streams.tsx` + `value-streams.index.tsx` | Value stream registry, 11 views | research-candidate | Implemented | `src/fixtures/value-stream/` | `value-streams.test.tsx` | Retain |
+| RT-009 | `/value-streams/$streamId` | `src/routes/value-streams.$streamId.tsx` | Single value stream detail | research-candidate | Implemented | same | `shell.test.tsx` dynamic-route cases | Retain |
+| RT-010 | `/workspaces` | `src/routes/workspaces.tsx` + `workspaces.index.tsx` | Workspace register and projection engine surface | candidate-model | Implemented | `src/fixtures/workspace/` | `workspaces.test.tsx` | Retain |
+| RT-011 | `/workspaces/$workspaceId` | `src/routes/workspaces.$workspaceId.tsx` | Single workspace command center | candidate-model | Implemented | same | `workspaces.test.tsx`, `shell.test.tsx` | Retain |
+| RT-012 | `/design-system` | `src/routes/design-system.tsx` + `design-system.index.tsx` | Brand visual system and template architecture | candidate-model | Implemented | `src/fixtures/experience/` | `design-system.test.tsx` | Retain |
+| RT-013 | `/design-system/templates/$templateId` | `src/routes/design-system.templates.$templateId.tsx` | Single interface template | candidate-model | Implemented | same | `shell.test.tsx` dynamic-route cases | Retain |
+| RT-014 | `/traceability` | `src/routes/traceability.tsx` | Requirement → evidence → claim chain | candidate-model | Implemented | `src/fixtures/traceability.ts` | `shell.test.tsx` | Retain |
+| RT-015 | `/findings` | `src/routes/findings.tsx` | Findings register | operational-record | Implemented | `src/fixtures/registers.ts` | `shell.test.tsx`, `governance.test.tsx` | Retain |
+| RT-016 | `/evidence` | `src/routes/evidence.tsx` | Evidence register | operational-record | Implemented | `src/fixtures/registers.ts` | `shell.test.tsx`, `governance.test.tsx` | Retain |
+| RT-017 | `/decisions` | `src/routes/decisions.tsx` | Decision register, including DEC-007/008/009 | accepted-decision (records) | Implemented | `src/fixtures/registers.ts` | `shell.test.tsx`, `governance.test.tsx` | Retain |
+| RT-018 | `/future-architecture` | `src/routes/future-architecture.tsx` | Gated future workspaces derived from the canonical register | gated-future | Implemented | derived from `src/fixtures/workspace/workspaces.ts` | `shell.test.tsx`, `workspaces.test.tsx` | Retain |
+| RT-019 | `/boundaries` | `src/routes/boundaries.tsx` | Boundaries and refused claims | declared-authority | Implemented | `src/fixtures/posture.ts`, `registers.ts` | `shell.test.tsx`, `governance.test.tsx` | Retain |
+| RT-020 | `/actions` | `src/routes/actions.tsx` | Action center utility | candidate-model | Implemented | `src/fixtures/workspace/utilities.ts` | `workspaces.test.tsx`, `shell.test.tsx` | Retain |
+| RT-021 | `/search` | `src/routes/search.tsx` | Universal search utility with authorization-before-results order | candidate-model | Implemented | `src/domain/workspace/search.ts` | `workspaces.test.tsx` | Retain |
+| RT-022 | `/notifications` | `src/routes/notifications.tsx` | Notification utility | candidate-model | Implemented | `src/domain/workspace/notification.ts` | `workspaces.test.tsx`, `shell.test.tsx` | Retain |
+| RT-023 | `/profile` | `src/routes/profile.tsx` | Acting capacity and operator role surface | operational-record | Implemented | `src/fixtures/workspace/capacities.ts` | `shell.test.tsx` | Retain |
+| RT-024 | `/help` | `src/routes/help.tsx` | Knowledge and help utility | candidate-model | Implemented | `src/fixtures/workspace/utilities.ts` | `shell.test.tsx` | Retain |
+
+## Counts
+
+- 30 route files; 29 addressable routes plus the root layout.
+- 19 paths registered in `ROUTE_REGISTRY` (`src/lib/route-registry.ts`), which drives navigation and
+  the static rendering/landmark/boundary tests.
+- 5 dynamic detail routes and 5 index leaves are outside `ROUTE_REGISTRY` by design; they are covered
+  by dedicated dynamic-route cases added during the pre-WP-006 remediation pass.
+
+## Notes
+
+- No route reads a network resource, a database, or an environment variable.
+- No route is orphaned: every registry entry resolves to a file and every non-index file is reachable
+  from navigation or from a parent registry entry.
+- Conformance to ULW-AS-001 is asserted as an acceptance contract with automated evidence only.
+  Screen-reader walkthrough and measured contrast remain Not Run.

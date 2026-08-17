@@ -1,7 +1,13 @@
 # Current state of the SSLS foundation shell
 
+> **Superseded as the canonical current-state record.** WP-006 produced
+> `docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md`, which is bound to a specific
+> commit and is now the single source of truth for current state. This file is preserved for
+> continuity and describes the shell in narrative form only. Recorded as STL-005.
+
 Authority class: current-state record. Machine-verified only. No human,
 independent, legal, security, accessibility, or district review has occurred.
+
 
 ## Boundary now in force
 
