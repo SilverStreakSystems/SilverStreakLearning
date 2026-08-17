@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { SSLSMonogram } from "@/components/brand";
+
 import { ROUTE_REGISTRY } from "@/lib/route-registry";
 import { cn } from "@/lib/utils";
 
