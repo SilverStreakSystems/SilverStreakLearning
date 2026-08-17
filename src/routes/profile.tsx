@@ -35,7 +35,7 @@ function ProfilePage() {
     <div>
       <PageHeader
         title="Profile and Acting Capacity"
-        summary="This shell holds a synthetic operator handle and nothing else. There is no name, no contact detail, and no personal data of any kind."
+        summary="This shell identifies the operator by acting role only. There is no name, no contact detail, and no personal data of any kind."
       />
 
       <Section id="identity" title="Identity">
