@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActionsRouteImport } from './routes/actions'
 import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as BoundariesRouteImport } from './routes/boundaries'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
@@ -19,9 +20,14 @@ import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as FindingsRouteImport } from './routes/findings'
 import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ObjectsRouteImport } from './routes/objects'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as ValueStreamsRouteImport } from './routes/value-streams'
+import { Route as WorkspacesRouteImport } from './routes/workspaces'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesCapabilityIdRouteImport } from './routes/capabilities.$capabilityId'
 import { Route as DesignSystemIndexRouteImport } from './routes/design-system.index'
@@ -29,11 +35,18 @@ import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
 import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
 import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 import { Route as ValueStreamsStreamIdRouteImport } from './routes/value-streams.$streamId'
+import { Route as WorkspacesIndexRouteImport } from './routes/workspaces.index'
+import { Route as WorkspacesWorkspaceIdRouteImport } from './routes/workspaces.$workspaceId'
 import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/design-system.templates.$templateId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActionsRoute = ActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthorityRoute = AuthorityRouteImport.update({
@@ -81,9 +94,29 @@ const FutureArchitectureRoute = FutureArchitectureRouteImport.update({
   path: '/future-architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObjectsRoute = ObjectsRouteImport.update({
   id: '/objects',
   path: '/objects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TraceabilityRoute = TraceabilityRouteImport.update({
@@ -94,6 +127,11 @@ const TraceabilityRoute = TraceabilityRouteImport.update({
 const ValueStreamsRoute = ValueStreamsRouteImport.update({
   id: '/value-streams',
   path: '/value-streams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkspacesRoute = WorkspacesRouteImport.update({
+  id: '/workspaces',
+  path: '/workspaces',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
@@ -132,6 +170,16 @@ const ValueStreamsStreamIdRoute = ValueStreamsStreamIdRouteImport.update({
   path: '/$streamId',
   getParentRoute: () => ValueStreamsRoute,
 } as any)
+const WorkspacesIndexRoute = WorkspacesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorkspacesRoute,
+} as any)
+const WorkspacesWorkspaceIdRoute = WorkspacesWorkspaceIdRouteImport.update({
+  id: '/$workspaceId',
+  path: '/$workspaceId',
+  getParentRoute: () => WorkspacesRoute,
+} as any)
 const DesignSystemTemplatesTemplateIdRoute =
   DesignSystemTemplatesTemplateIdRouteImport.update({
     id: '/templates/$templateId',
@@ -141,6 +189,7 @@ const DesignSystemTemplatesTemplateIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
@@ -150,20 +199,28 @@ export interface FileRoutesByFullPath {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/help': typeof HelpRoute
+  '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
+  '/workspaces': typeof WorkspacesRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
+  '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/workspaces/': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/decisions': typeof DecisionsRoute
@@ -171,19 +228,26 @@ export interface FileRoutesByTo {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/help': typeof HelpRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
+  '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/design-system': typeof DesignSystemIndexRoute
   '/objects': typeof ObjectsIndexRoute
   '/value-streams': typeof ValueStreamsIndexRoute
+  '/workspaces': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
@@ -193,22 +257,30 @@ export interface FileRoutesById {
   '/findings': typeof FindingsRoute
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
+  '/help': typeof HelpRoute
+  '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
+  '/workspaces': typeof WorkspacesRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
+  '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/workspaces/': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/actions'
     | '/authority'
     | '/boundaries'
     | '/capabilities'
@@ -218,20 +290,28 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/help'
+    | '/notifications'
     | '/objects'
+    | '/profile'
+    | '/search'
     | '/traceability'
     | '/value-streams'
+    | '/workspaces'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
+    | '/workspaces/$workspaceId'
     | '/capabilities/'
     | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/workspaces/'
     | '/design-system/templates/$templateId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/actions'
     | '/authority'
     | '/boundaries'
     | '/decisions'
@@ -239,18 +319,25 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/help'
+    | '/notifications'
+    | '/profile'
+    | '/search'
     | '/traceability'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
+    | '/workspaces/$workspaceId'
     | '/capabilities'
     | '/design-system'
     | '/objects'
     | '/value-streams'
+    | '/workspaces'
     | '/design-system/templates/$templateId'
   id:
     | '__root__'
     | '/'
+    | '/actions'
     | '/authority'
     | '/boundaries'
     | '/capabilities'
@@ -260,21 +347,29 @@ export interface FileRouteTypes {
     | '/findings'
     | '/foundation-map'
     | '/future-architecture'
+    | '/help'
+    | '/notifications'
     | '/objects'
+    | '/profile'
+    | '/search'
     | '/traceability'
     | '/value-streams'
+    | '/workspaces'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
+    | '/workspaces/$workspaceId'
     | '/capabilities/'
     | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/workspaces/'
     | '/design-system/templates/$templateId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActionsRoute: typeof ActionsRoute
   AuthorityRoute: typeof AuthorityRoute
   BoundariesRoute: typeof BoundariesRoute
   CapabilitiesRoute: typeof CapabilitiesRouteWithChildren
@@ -284,9 +379,14 @@ export interface RootRouteChildren {
   FindingsRoute: typeof FindingsRoute
   FoundationMapRoute: typeof FoundationMapRoute
   FutureArchitectureRoute: typeof FutureArchitectureRoute
+  HelpRoute: typeof HelpRoute
+  NotificationsRoute: typeof NotificationsRoute
   ObjectsRoute: typeof ObjectsRouteWithChildren
+  ProfileRoute: typeof ProfileRoute
+  SearchRoute: typeof SearchRoute
   TraceabilityRoute: typeof TraceabilityRoute
   ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
+  WorkspacesRoute: typeof WorkspacesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -296,6 +396,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/actions': {
+      id: '/actions'
+      path: '/actions'
+      fullPath: '/actions'
+      preLoaderRoute: typeof ActionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/authority': {
@@ -361,11 +468,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FutureArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/objects': {
       id: '/objects'
       path: '/objects'
       fullPath: '/objects'
       preLoaderRoute: typeof ObjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/traceability': {
@@ -380,6 +515,13 @@ declare module '@tanstack/react-router' {
       path: '/value-streams'
       fullPath: '/value-streams'
       preLoaderRoute: typeof ValueStreamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workspaces': {
+      id: '/workspaces'
+      path: '/workspaces'
+      fullPath: '/workspaces'
+      preLoaderRoute: typeof WorkspacesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/capabilities/': {
@@ -430,6 +572,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/value-streams/$streamId'
       preLoaderRoute: typeof ValueStreamsStreamIdRouteImport
       parentRoute: typeof ValueStreamsRoute
+    }
+    '/workspaces/': {
+      id: '/workspaces/'
+      path: '/'
+      fullPath: '/workspaces/'
+      preLoaderRoute: typeof WorkspacesIndexRouteImport
+      parentRoute: typeof WorkspacesRoute
+    }
+    '/workspaces/$workspaceId': {
+      id: '/workspaces/$workspaceId'
+      path: '/$workspaceId'
+      fullPath: '/workspaces/$workspaceId'
+      preLoaderRoute: typeof WorkspacesWorkspaceIdRouteImport
+      parentRoute: typeof WorkspacesRoute
     }
     '/design-system/templates/$templateId': {
       id: '/design-system/templates/$templateId'
@@ -496,8 +652,23 @@ const ValueStreamsRouteWithChildren = ValueStreamsRoute._addFileChildren(
   ValueStreamsRouteChildren,
 )
 
+interface WorkspacesRouteChildren {
+  WorkspacesWorkspaceIdRoute: typeof WorkspacesWorkspaceIdRoute
+  WorkspacesIndexRoute: typeof WorkspacesIndexRoute
+}
+
+const WorkspacesRouteChildren: WorkspacesRouteChildren = {
+  WorkspacesWorkspaceIdRoute: WorkspacesWorkspaceIdRoute,
+  WorkspacesIndexRoute: WorkspacesIndexRoute,
+}
+
+const WorkspacesRouteWithChildren = WorkspacesRoute._addFileChildren(
+  WorkspacesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActionsRoute: ActionsRoute,
   AuthorityRoute: AuthorityRoute,
   BoundariesRoute: BoundariesRoute,
   CapabilitiesRoute: CapabilitiesRouteWithChildren,
@@ -507,9 +678,14 @@ const rootRouteChildren: RootRouteChildren = {
   FindingsRoute: FindingsRoute,
   FoundationMapRoute: FoundationMapRoute,
   FutureArchitectureRoute: FutureArchitectureRoute,
+  HelpRoute: HelpRoute,
+  NotificationsRoute: NotificationsRoute,
   ObjectsRoute: ObjectsRouteWithChildren,
+  ProfileRoute: ProfileRoute,
+  SearchRoute: SearchRoute,
   TraceabilityRoute: TraceabilityRoute,
   ValueStreamsRoute: ValueStreamsRouteWithChildren,
+  WorkspacesRoute: WorkspacesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
