@@ -1,13 +1,20 @@
 /**
- * Candidate 15-function workforce architecture.
+ * Function identifiers for the existing 15-function workforce candidate.
  *
- * No prior function taxonomy existed in the repository. This list is declared
- * here as a candidate so value streams can name accountability without
- * inventing role folders. Nothing here is staffed, budgeted, or authorized.
+ * The function names themselves already exist in the capability architecture
+ * (`ENTERPRISE_FUNCTIONS`) and are not rewritten here. This module adds stable
+ * identifiers, capability-domain mapping, and role candidates so value streams
+ * can name accountability without duplicating the taxonomy.
+ *
+ * Nothing here is staffed, budgeted, or authorized.
  */
-import type { CapabilityDomainId } from "../capability-architecture";
+import {
+  ENTERPRISE_FUNCTIONS,
+  type CapabilityDomainId,
+  type EnterpriseFunction,
+} from "../capability-architecture";
 
-export const ENTERPRISE_FUNCTIONS = [
+export const ENTERPRISE_FUNCTION_IDS = [
   "F01",
   "F02",
   "F03",
@@ -25,19 +32,17 @@ export const ENTERPRISE_FUNCTIONS = [
   "F15",
 ] as const;
 
-export type EnterpriseFunctionId = (typeof ENTERPRISE_FUNCTIONS)[number];
+export type EnterpriseFunctionId = (typeof ENTERPRISE_FUNCTION_IDS)[number];
 
 export interface EnterpriseFunctionMeta {
   id: EnterpriseFunctionId;
-  name: string;
-  /** What this function is accountable for, in one sentence. */
+  /** The canonical name, taken from the capability architecture. */
+  name: EnterpriseFunction;
   accountability: string;
-  /** Capability domains this function primarily serves. */
   capabilityDomains: CapabilityDomainId[];
-  /** Role names are candidates, not job postings and not staffed positions. */
   accountableRoleCandidate: string;
   expertIcCandidate: string;
-  /** Always false in the current boundary. Kept explicit so no view can imply otherwise. */
+  /** Always false in the current boundary, so no view can imply staffing. */
   staffed: false;
 }
 
@@ -53,8 +58,8 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F02: {
     id: "F02",
-    name: "Research and Evidence",
-    accountability: "Produce bounded research and hold the evidence record.",
+    name: "Research and Intelligence",
+    accountability: "Produce bounded research and hold the source and evidence record.",
     capabilityDomains: ["D02", "D12"],
     accountableRoleCandidate: "Head of Research",
     expertIcCandidate: "Research lead",
@@ -62,16 +67,16 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F03: {
     id: "F03",
-    name: "Learning and Educational Validity",
+    name: "Learning Design and Academics",
     accountability: "Keep what SSLS teaches and measures educationally sound.",
     capabilityDomains: ["D02"],
-    accountableRoleCandidate: "Head of Learning",
+    accountableRoleCandidate: "Head of Learning Design",
     expertIcCandidate: "Curriculum and assessment specialist",
     staffed: false,
   },
   F04: {
     id: "F04",
-    name: "Product Management",
+    name: "Product and Learning Systems",
     accountability: "Own requirements, scope, and product decisions.",
     capabilityDomains: ["D03"],
     accountableRoleCandidate: "Head of Product",
@@ -80,16 +85,16 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F05: {
     id: "F05",
-    name: "Design and Accessibility",
+    name: "Experience and Accessibility",
     accountability: "Own experience design and accessible interaction.",
     capabilityDomains: ["D03"],
-    accountableRoleCandidate: "Head of Design",
+    accountableRoleCandidate: "Head of Experience",
     expertIcCandidate: "Accessibility architect",
     staffed: false,
   },
   F06: {
     id: "F06",
-    name: "Engineering",
+    name: "Engineering and Delivery",
     accountability: "Build and operate the platform.",
     capabilityDomains: ["D04"],
     accountableRoleCandidate: "Head of Engineering",
@@ -98,7 +103,7 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F07: {
     id: "F07",
-    name: "Data and Analytics",
+    name: "Data and Measurement",
     accountability: "Own data models, measurement, and analysis integrity.",
     capabilityDomains: ["D05"],
     accountableRoleCandidate: "Head of Data",
@@ -107,25 +112,25 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F08: {
     id: "F08",
-    name: "Trust, Security and Privacy",
-    accountability: "Protect people and data, and stop unsafe work.",
-    capabilityDomains: ["D06"],
-    accountableRoleCandidate: "Head of Trust",
-    expertIcCandidate: "Security and privacy lead",
+    name: "Trust, Quality and Assurance",
+    accountability: "Determine independently whether an implementation meets its requirement.",
+    capabilityDomains: ["D07"],
+    accountableRoleCandidate: "Head of Quality and Assurance",
+    expertIcCandidate: "Validation lead",
     staffed: false,
   },
   F09: {
     id: "F09",
-    name: "Quality and Validation",
-    accountability: "Determine whether an implementation actually satisfies its requirement.",
-    capabilityDomains: ["D07"],
-    accountableRoleCandidate: "Head of Quality",
-    expertIcCandidate: "Validation lead",
+    name: "Security and Privacy",
+    accountability: "Protect people and data, and stop unsafe work.",
+    capabilityDomains: ["D06"],
+    accountableRoleCandidate: "Head of Security and Privacy",
+    expertIcCandidate: "Privacy engineer",
     staffed: false,
   },
   F10: {
     id: "F10",
-    name: "Revenue and Partnerships",
+    name: "Revenue and Market",
     accountability: "Develop responsible commercial relationships.",
     capabilityDomains: ["D08"],
     accountableRoleCandidate: "Head of Revenue",
@@ -134,7 +139,7 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F11: {
     id: "F11",
-    name: "Implementation and Professional Learning",
+    name: "Customer and Implementation",
     accountability: "Turn contracted scope into working, understood practice.",
     capabilityDomains: ["D09"],
     accountableRoleCandidate: "Head of Implementation",
@@ -143,16 +148,16 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F12: {
     id: "F12",
-    name: "Customer Success and Support",
+    name: "Support and Service",
     accountability: "Sustain use, surface barriers, and resolve customer problems.",
     capabilityDomains: ["D09"],
-    accountableRoleCandidate: "Head of Customer Success",
+    accountableRoleCandidate: "Head of Support",
     expertIcCandidate: "Support escalation lead",
     staffed: false,
   },
   F13: {
     id: "F13",
-    name: "Finance, Legal and Compliance",
+    name: "Finance and Legal",
     accountability: "Own contracts, obligations, spend, and legal exposure.",
     capabilityDomains: ["D10"],
     accountableRoleCandidate: "Head of Finance and Legal",
@@ -161,23 +166,28 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   },
   F14: {
     id: "F14",
-    name: "People and Workforce",
-    accountability: "Staff and sustain the capabilities the enterprise needs.",
-    capabilityDomains: ["D11"],
-    accountableRoleCandidate: "Head of People",
-    expertIcCandidate: "Workforce planning lead",
-    staffed: false,
-  },
-  F15: {
-    id: "F15",
-    name: "Enterprise Operations and Vendors",
+    name: "Enterprise Operations",
     accountability: "Run the operating rhythm and govern third-party dependencies.",
     capabilityDomains: ["D10", "D12"],
     accountableRoleCandidate: "Head of Operations",
     expertIcCandidate: "Vendor governance lead",
     staffed: false,
   },
+  F15: {
+    id: "F15",
+    name: "People and Organizational Learning",
+    accountability: "Staff and sustain the capabilities the enterprise needs, and close learning loops.",
+    capabilityDomains: ["D11", "D12"],
+    accountableRoleCandidate: "Head of People",
+    expertIcCandidate: "Workforce planning lead",
+    staffed: false,
+  },
 };
+
+/** Guards that the identifier map stays aligned with the canonical name list. */
+export const FUNCTION_NAMES_ALIGNED: boolean = ENTERPRISE_FUNCTION_IDS.every((id) =>
+  (ENTERPRISE_FUNCTIONS as readonly string[]).includes(ENTERPRISE_FUNCTION_META[id].name),
+);
 
 export function functionName(id: EnterpriseFunctionId): string {
   return ENTERPRISE_FUNCTION_META[id].name;
