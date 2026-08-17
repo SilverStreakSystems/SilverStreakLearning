@@ -314,7 +314,49 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001", "FND-OPMODEL-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-008",
+    title: "Disposition of WP-000 exposure containment and credential remediation",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "WP-000 was executed under DEC-007. Scans of the working tree, all refs, and full commit history found no real personal data and no exposed credential; no containment or rotation was triggered. The executor cannot close the gate, accept residual risk, decide precautionary rotation of the platform key, or declare independent verification.",
+    decision:
+      "Not yet decided. Executor recommendation is PROMOTE TO OWNER CLOSURE, with terminal status 'WP-000 REMEDIATION EXECUTED — OWNER DISPOSITION REQUIRED'.",
+    consequences: [
+      "Until recorded, WP-000 remains open and no Gate A work is authorized.",
+      "Closure carries no security, privacy, or compliance claim.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "SSLS-TRUST-001", "SSLS-GOV-002"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-009",
+    title: "Accept or reject residual unknown on third-party and historical copies",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "External caches, screenshots, shared links, prior repositories, and downstream forks cannot be enumerated from within the project, and host access logs are unavailable. WP-000 records this as UNKNOWN rather than remediated.",
+    decision: "Not yet decided. The unknown must be explicitly accepted or actioned by the owner.",
+    consequences: [
+      "The claim 'all third-party copies were removed' stays prohibited while this is open.",
+      "No breach or non-breach determination may be stated by anyone without qualified review.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-TRUST-001", "SSLS-GOV-002"],
+    synthetic: false,
+  },
 ];
+
 
 
 export const CLAIMS: ClaimRecord[] = [
