@@ -8,3 +8,4 @@ export * from "./registers";
 export * from "./future-workspace";
 export * from "./shared-object";
 export * from "./value-stream";
+export * from "./experience";
