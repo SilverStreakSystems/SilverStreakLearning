@@ -56,6 +56,10 @@ export interface RelationshipKindMeta {
   doesNotImply: string;
 }
 
+/** Projection may read from canonical sources, never from another projection. */
+// eslint-disable-next-line no-var
+var SHARED_OBJECT_TARGETS_FOR_PROJECTION: SharedObjectTypeId[];
+
 const G = (...ids: SharedObjectTypeId[]) => ids;
 
 export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMeta> = {
@@ -273,7 +277,7 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
     meaning: "A context package draws a minimum authorized view from a source object.",
     cardinality: "many-to-many",
     permittedSourceTypes: G("context-package"),
-    permittedTargetTypes: [...(SHARED_OBJECT_TARGETS_FOR_PROJECTION)],
+    permittedTargetTypes: [...SHARED_OBJECT_TARGETS_FOR_PROJECTION],
     historyPreserving: true,
     doesNotImply: "Projecting from a source never transfers the source's authority.",
   },
@@ -367,9 +371,7 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
   },
 };
 
-/** Projection may read from canonical sources, never from another projection. */
-// eslint-disable-next-line no-var
-var SHARED_OBJECT_TARGETS_FOR_PROJECTION: SharedObjectTypeId[];
+
 SHARED_OBJECT_TARGETS_FOR_PROJECTION = [
   "person-reference",
   "organization",
