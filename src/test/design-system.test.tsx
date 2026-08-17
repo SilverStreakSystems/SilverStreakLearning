@@ -20,7 +20,7 @@ import {
 import {
   GRID_COLUMNS,
   TEMPLATE_MATURITIES,
-  isValidCoordinateRange,
+  isCoordinateRange,
   unrecordedValidationViewports,
 } from "@/domain";
 
@@ -90,9 +90,9 @@ describe("coordinate grid", () => {
 
   it("keeps every coordinate contract inside the grid boundary", () => {
     for (const contract of COORDINATE_CONTRACTS) {
-      expect(isValidCoordinateRange(contract.desktop)).toBe(true);
-      expect(isValidCoordinateRange(contract.tablet)).toBe(true);
-      expect(isValidCoordinateRange(contract.mobile)).toBe(true);
+      expect(isCoordinateRange(contract.desktop)).toBe(true);
+      expect(isCoordinateRange(contract.tablet)).toBe(true);
+      expect(isCoordinateRange(contract.mobile)).toBe(true);
     }
   });
 
@@ -100,15 +100,15 @@ describe("coordinate grid", () => {
     for (const blueprint of PAGE_BLUEPRINTS) {
       expect(blueprint.regions.length).toBeGreaterThan(0);
       for (const region of blueprint.regions) {
-        expect(isValidCoordinateRange(region.coordinates)).toBe(true);
+        expect(isCoordinateRange(region.coordinates)).toBe(true);
       }
     }
   });
 
   it("rejects coordinates outside the declared field", () => {
-    expect(isValidCoordinateRange("A1-M12")).toBe(false);
-    expect(isValidCoordinateRange("A1-L13")).toBe(false);
-    expect(isValidCoordinateRange("not a coordinate")).toBe(false);
+    expect(isCoordinateRange("A1-M12")).toBe(false);
+    expect(isCoordinateRange("A1-L13")).toBe(false);
+    expect(isCoordinateRange("not a coordinate")).toBe(false);
   });
 });
 
