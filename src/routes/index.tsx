@@ -130,7 +130,7 @@ function CommandCenter() {
       </Section>
 
       <Section
-        id="standing"
+        id="foundation-standing"
         title="Where the foundation stands"
         description="Counts describe the registry as it is recorded, not as it is hoped to be."
       >

@@ -62,9 +62,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
 
-      <BoundaryBanner />
 
-      <header className="border-b border-border bg-sidebar px-4 py-3 lg:px-6">
+      <header className="border-b border-border bg-sidebar">
+        <BoundaryBanner />
+        <div className="px-4 py-3 lg:px-6">
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
             <SSLSMonogram size={36} className="shrink-0 text-ssls-silver-blue" />
