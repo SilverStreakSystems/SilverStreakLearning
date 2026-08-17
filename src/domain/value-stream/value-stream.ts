@@ -8,9 +8,9 @@
  * Authority is declared, never derived from implementation status.
  */
 import type { AuthorityClass } from "../authority";
-import type { ScaleStage } from "../capability-architecture";
+import type { ScaleStage, ValueStreamId } from "../capability-architecture";
 import type { SharedObjectTypeId } from "../shared-object/object-types";
-import type { EnterpriseCapabilityId, ValueStreamId } from "./ids";
+import type { EnterpriseCapabilityId } from "./ids";
 import type { EnterpriseFunctionId } from "./functions";
 import type { ValueStreamStage } from "./stage";
 
