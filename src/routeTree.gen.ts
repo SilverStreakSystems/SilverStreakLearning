@@ -22,6 +22,7 @@ import { Route as FoundationMapRouteImport } from './routes/foundation-map'
 import { Route as FutureArchitectureRouteImport } from './routes/future-architecture'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ObjectsRouteImport } from './routes/objects'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as ValueStreamsRouteImport } from './routes/value-streams'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
@@ -99,6 +100,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
 const ObjectsRoute = ObjectsRouteImport.update({
   id: '/objects',
   path: '/objects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TraceabilityRoute = TraceabilityRouteImport.update({
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/future-architecture': typeof FutureArchitectureRoute
   '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
+  '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
   '/workspaces': typeof WorkspacesRouteWithChildren
@@ -208,6 +215,7 @@ export interface FileRoutesByTo {
   '/foundation-map': typeof FoundationMapRoute
   '/future-architecture': typeof FutureArchitectureRoute
   '/notifications': typeof NotificationsRoute
+  '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
@@ -235,6 +243,7 @@ export interface FileRoutesById {
   '/future-architecture': typeof FutureArchitectureRoute
   '/notifications': typeof NotificationsRoute
   '/objects': typeof ObjectsRouteWithChildren
+  '/search': typeof SearchRoute
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
   '/workspaces': typeof WorkspacesRouteWithChildren
@@ -265,6 +274,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/notifications'
     | '/objects'
+    | '/search'
     | '/traceability'
     | '/value-streams'
     | '/workspaces'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/foundation-map'
     | '/future-architecture'
     | '/notifications'
+    | '/search'
     | '/traceability'
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
@@ -316,6 +327,7 @@ export interface FileRouteTypes {
     | '/future-architecture'
     | '/notifications'
     | '/objects'
+    | '/search'
     | '/traceability'
     | '/value-streams'
     | '/workspaces'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   FutureArchitectureRoute: typeof FutureArchitectureRoute
   NotificationsRoute: typeof NotificationsRoute
   ObjectsRoute: typeof ObjectsRouteWithChildren
+  SearchRoute: typeof SearchRoute
   TraceabilityRoute: typeof TraceabilityRoute
   ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
   WorkspacesRoute: typeof WorkspacesRouteWithChildren
@@ -441,6 +454,13 @@ declare module '@tanstack/react-router' {
       path: '/objects'
       fullPath: '/objects'
       preLoaderRoute: typeof ObjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/traceability': {
@@ -620,6 +640,7 @@ const rootRouteChildren: RootRouteChildren = {
   FutureArchitectureRoute: FutureArchitectureRoute,
   NotificationsRoute: NotificationsRoute,
   ObjectsRoute: ObjectsRouteWithChildren,
+  SearchRoute: SearchRoute,
   TraceabilityRoute: TraceabilityRoute,
   ValueStreamsRoute: ValueStreamsRouteWithChildren,
   WorkspacesRoute: WorkspacesRouteWithChildren,
