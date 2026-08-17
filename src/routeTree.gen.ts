@@ -31,6 +31,7 @@ import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
 import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 import { Route as ValueStreamsStreamIdRouteImport } from './routes/value-streams.$streamId'
 import { Route as WorkspacesIndexRouteImport } from './routes/workspaces.index'
+import { Route as WorkspacesWorkspaceIdRouteImport } from './routes/workspaces.$workspaceId'
 import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/design-system.templates.$templateId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -144,6 +145,11 @@ const WorkspacesIndexRoute = WorkspacesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => WorkspacesRoute,
 } as any)
+const WorkspacesWorkspaceIdRoute = WorkspacesWorkspaceIdRouteImport.update({
+  id: '/$workspaceId',
+  path: '/$workspaceId',
+  getParentRoute: () => WorkspacesRoute,
+} as any)
 const DesignSystemTemplatesTemplateIdRoute =
   DesignSystemTemplatesTemplateIdRouteImport.update({
     id: '/templates/$templateId',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
+  '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
+  '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/design-system': typeof DesignSystemIndexRoute
   '/objects': typeof ObjectsIndexRoute
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
+  '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
@@ -242,6 +251,7 @@ export interface FileRouteTypes {
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
+    | '/workspaces/$workspaceId'
     | '/capabilities/'
     | '/design-system/'
     | '/objects/'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
+    | '/workspaces/$workspaceId'
     | '/capabilities'
     | '/design-system'
     | '/objects'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/capabilities/$capabilityId'
     | '/objects/$typeId'
     | '/value-streams/$streamId'
+    | '/workspaces/$workspaceId'
     | '/capabilities/'
     | '/design-system/'
     | '/objects/'
@@ -468,6 +480,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkspacesIndexRouteImport
       parentRoute: typeof WorkspacesRoute
     }
+    '/workspaces/$workspaceId': {
+      id: '/workspaces/$workspaceId'
+      path: '/$workspaceId'
+      fullPath: '/workspaces/$workspaceId'
+      preLoaderRoute: typeof WorkspacesWorkspaceIdRouteImport
+      parentRoute: typeof WorkspacesRoute
+    }
     '/design-system/templates/$templateId': {
       id: '/design-system/templates/$templateId'
       path: '/templates/$templateId'
@@ -534,10 +553,12 @@ const ValueStreamsRouteWithChildren = ValueStreamsRoute._addFileChildren(
 )
 
 interface WorkspacesRouteChildren {
+  WorkspacesWorkspaceIdRoute: typeof WorkspacesWorkspaceIdRoute
   WorkspacesIndexRoute: typeof WorkspacesIndexRoute
 }
 
 const WorkspacesRouteChildren: WorkspacesRouteChildren = {
+  WorkspacesWorkspaceIdRoute: WorkspacesWorkspaceIdRoute,
   WorkspacesIndexRoute: WorkspacesIndexRoute,
 }
 
