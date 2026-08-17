@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActionsRouteImport } from './routes/actions'
 import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as BoundariesRouteImport } from './routes/boundaries'
 import { Route as CapabilitiesRouteImport } from './routes/capabilities'
@@ -37,6 +38,11 @@ import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/de
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActionsRoute = ActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthorityRoute = AuthorityRouteImport.update({
@@ -159,6 +165,7 @@ const DesignSystemTemplatesTemplateIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
@@ -185,6 +192,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/decisions': typeof DecisionsRoute
@@ -207,6 +215,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
   '/authority': typeof AuthorityRoute
   '/boundaries': typeof BoundariesRoute
   '/capabilities': typeof CapabilitiesRouteWithChildren
@@ -235,6 +244,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/actions'
     | '/authority'
     | '/boundaries'
     | '/capabilities'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/actions'
     | '/authority'
     | '/boundaries'
     | '/decisions'
@@ -282,6 +293,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/actions'
     | '/authority'
     | '/boundaries'
     | '/capabilities'
@@ -309,6 +321,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActionsRoute: typeof ActionsRoute
   AuthorityRoute: typeof AuthorityRoute
   BoundariesRoute: typeof BoundariesRoute
   CapabilitiesRoute: typeof CapabilitiesRouteWithChildren
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/actions': {
+      id: '/actions'
+      path: '/actions'
+      fullPath: '/actions'
+      preLoaderRoute: typeof ActionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/authority': {
@@ -568,6 +588,7 @@ const WorkspacesRouteWithChildren = WorkspacesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActionsRoute: ActionsRoute,
   AuthorityRoute: AuthorityRoute,
   BoundariesRoute: BoundariesRoute,
   CapabilitiesRoute: CapabilitiesRouteWithChildren,
