@@ -29,6 +29,7 @@ import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
 import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
 import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 import { Route as ValueStreamsStreamIdRouteImport } from './routes/value-streams.$streamId'
+import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/design-system.templates.$templateId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -131,6 +132,12 @@ const ValueStreamsStreamIdRoute = ValueStreamsStreamIdRouteImport.update({
   path: '/$streamId',
   getParentRoute: () => ValueStreamsRoute,
 } as any)
+const DesignSystemTemplatesTemplateIdRoute =
+  DesignSystemTemplatesTemplateIdRouteImport.update({
+    id: '/templates/$templateId',
+    path: '/templates/$templateId',
+    getParentRoute: () => DesignSystemRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -171,6 +179,7 @@ export interface FileRoutesByTo {
   '/design-system': typeof DesignSystemIndexRoute
   '/objects': typeof ObjectsIndexRoute
   '/value-streams': typeof ValueStreamsIndexRoute
+  '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -194,6 +203,7 @@ export interface FileRoutesById {
   '/design-system/': typeof DesignSystemIndexRoute
   '/objects/': typeof ObjectsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
+  '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/design-system/templates/$templateId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '/design-system'
     | '/objects'
     | '/value-streams'
+    | '/design-system/templates/$templateId'
   id:
     | '__root__'
     | '/'
@@ -258,6 +270,7 @@ export interface FileRouteTypes {
     | '/design-system/'
     | '/objects/'
     | '/value-streams/'
+    | '/design-system/templates/$templateId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -418,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ValueStreamsStreamIdRouteImport
       parentRoute: typeof ValueStreamsRoute
     }
+    '/design-system/templates/$templateId': {
+      id: '/design-system/templates/$templateId'
+      path: '/templates/$templateId'
+      fullPath: '/design-system/templates/$templateId'
+      preLoaderRoute: typeof DesignSystemTemplatesTemplateIdRouteImport
+      parentRoute: typeof DesignSystemRoute
+    }
   }
 }
 
@@ -437,10 +457,12 @@ const CapabilitiesRouteWithChildren = CapabilitiesRoute._addFileChildren(
 
 interface DesignSystemRouteChildren {
   DesignSystemIndexRoute: typeof DesignSystemIndexRoute
+  DesignSystemTemplatesTemplateIdRoute: typeof DesignSystemTemplatesTemplateIdRoute
 }
 
 const DesignSystemRouteChildren: DesignSystemRouteChildren = {
   DesignSystemIndexRoute: DesignSystemIndexRoute,
+  DesignSystemTemplatesTemplateIdRoute: DesignSystemTemplatesTemplateIdRoute,
 }
 
 const DesignSystemRouteWithChildren = DesignSystemRoute._addFileChildren(
