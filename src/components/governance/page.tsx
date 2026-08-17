@@ -66,7 +66,15 @@ export function RegistryTable({
   children: ReactNode;
 }) {
   return (
-    <div className="overflow-x-auto rounded-md border border-border bg-surface">
+    // min-w-0 keeps the scroll container from being widened by its own content
+    // when it sits inside a grid or flex parent, which would push the page into
+    // horizontal scroll at 200% zoom.
+    <div
+      tabIndex={0}
+      role="group"
+      aria-label={caption}
+      className="w-full min-w-0 max-w-full overflow-x-auto rounded-md border border-border bg-surface"
+    >
       <table className="w-full min-w-[48rem] border-collapse text-left text-sm">
         <caption className="sr-only">{caption}</caption>
         <thead>
