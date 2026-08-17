@@ -1,50 +1,45 @@
-# Current State
+# Current state of the SSLS foundation shell
 
-Authority of this document: Provisional Working Artifact. It describes an
-implemented shell. Implementation does not confer authority.
+Authority class: current-state record. Machine-verified only. No human,
+independent, legal, security, accessibility, or district review has occurred.
 
-## Implemented (shell only)
+## Boundary now in force
 
-- Ten operator views: Command Center, Foundation Map, Authority Ledger,
-  Capability Registry, Traceability, Findings, Evidence, Decisions, Future
-  Architecture, Settings and Boundaries.
-- Domain models for authority classes, verification states, foundation layers,
-  foundation artifacts, candidate capabilities, traceability threads, findings,
-  evidence, decisions, claims, and gated future workspaces.
-- Enterprise Capability Architecture v0.1: 12 candidate domains, 129 candidate
-  capability records, 16 deliverable types, 38 dependency edges, 15
-  normalization findings, and a nine-view Capability Command View with
-  URL-addressable filters and per-capability detail pages.
-- Synthetic fixtures for every register, each marked in the interface.
-- Governance components that render declared authority and declared state, with
-  a text marker and a text label on every status (never color alone).
-- Automated tests covering route rendering, single H1 per page, landmarks, skip
-  link and keyboard navigation, boundary banner presence, gating of future
-  workspaces, refusal of unearned claims, and stylesheet accessibility
-  commitments.
+Founder and developer operator only. No personal data. All records are
+synthetic. No product-facing AI. Future architecture is modelled and gated, and
+carries no implementation authority.
 
-## Declared but not implemented
+## What is implemented
 
-- Persistence. All records are in-memory fixtures.
-- Authentication, roles, row-level security.
-- Any student, staff, district, or production data path.
-- AI features of any kind.
-- External integrations.
+- Prompt 001 — Foundation and authority shell: authority classes declared
+  independently of implementation status, seven foundation layers, governance
+  spine, and the operator shell.
+- Prompt 002 — Enterprise capability architecture v0.1: 12-domain taxonomy,
+  129 candidate capabilities, maturity stages S0 to S5, trigger gates, and
+  builder/validator independence rules.
+- Prompt 003 — Shared enterprise objects, context, work and evidence v0.1:
+  32 object types across 7 families, eight independent state axes, version-bound
+  evidence, and the purpose-bound context assembly contract.
+- Prompt 004 — Value streams and operating workflow v0.1: 18 priority value
+  streams, stages, handoffs, gates, refusal records, and prohibited metrics.
+- Prompt 005 — Command centers and workspace experience v0.1: nine workspace
+  definitions, six global utilities, and the nine-step projection engine.
+- Brand visual system and experience template architecture v0.1.
 
-## Refused claims
+## Single source of truth
 
-Recorded in the interface under Settings and Boundaries and in the claims
-fixture. The shell refuses to state readiness, compliance, validation,
-integration availability, or release status, because no evidence supports them.
+Workspaces are defined once, in the canonical workspace register. The future
+architecture page derives its gated view from that register and holds no records
+of its own.
 
-## Verification state of this build
+## Verification recorded
 
-- Route rendering, landmarks, keyboard reach, gating, and state labelling:
-  Confirmed by automated test.
-- Capability model invariants (candidate-only authority, stage ordering,
-  independence coverage, dependency integrity, no percentage rendered):
-  Confirmed by automated test.
-- Screen reader behaviour, 200% zoom reflow on real devices, and color contrast
-  measurement: Not Run.
-- Security, privacy, and compliance posture: Not Applicable at this scope, and
-  Refused as a claim.
+- Vitest: 210 tests passing across 8 files, covering registered routes, detail
+  routes, unrecorded identifiers, authority discipline, gate discipline,
+  prohibited metrics, search authorization order, and rendering invariants.
+- Accessibility: see `docs/ACCESSIBILITY_EVIDENCE.md`. Automated only.
+
+## Not established
+
+Release, public claim, human validation, and any blended readiness figure. None
+of these exist and none may be inferred from the tests passing.
