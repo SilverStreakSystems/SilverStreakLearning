@@ -429,20 +429,37 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-016",
-    title: "Current SSOT binding and re-executed build and test evidence — commit 9a257f7",
+    title: "Superseded SSOT binding and build and test evidence — commit 9a257f7",
     kind: "automated-test",
     subject:
-      "Re-bound current-state record and its three manifests, with build, test, and lint executed at the bound source tree",
+      "Re-bound current-state record and its three manifests, with build, test, and lint executed at that source tree",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "stale",
+    supports:
+      "That the current-state record, provenance report, build manifest, and test and build status once declared commit 9a257f7; that the binding check reported PASS for that commit; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
+    doesNotSupport:
+      "Any statement about the present repository. Superseded by EV-018 and retained unrewritten as historical execution evidence.",
+    authorityClass: "historical-evidence",
+    synthetic: false,
+  },
+  {
+    id: "EV-018",
+    title: "Owner-authorization pass: decisions recorded and evidence re-executed — commit c1f0601",
+    kind: "automated-test",
+    subject:
+      "DEC-010 and DEC-014 recorded as accepted, exit criteria reconciled, and the four bound documents re-bound with build, test, lint, and both binding-check controls re-executed",
     collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "confirmed",
     supports:
-      "That the current-state record, provenance report, build manifest, and test and build status all declare commit 9a257f7; that the binding check reports PASS for that commit; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
+      "That DEC-010 and DEC-014 are recorded as accepted owner decisions; that the current-state record, provenance report, build manifest, and test and build status all declare commit c1f0601; that the binding check reports PASS for that commit and exits non-zero for a commit no document declares; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
     doesNotSupport:
-      "Correctness, accessibility conformance, security, authority, or approval. Executor-run, not independent, and no longer current once a further commit lands.",
+      "Correctness, accessibility conformance, security, compliance, release readiness, gate closure, or merge enforcement. It does not establish that any figure inside a bound document was captured at the declared commit. Executor-run, not independent, and no longer current once a further commit lands.",
     authorityClass: "current-summary",
     synthetic: false,
   },
+
   {
     id: "EV-017",
     title: "Negative control for the SSOT binding guard",
