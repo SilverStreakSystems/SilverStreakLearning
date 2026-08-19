@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
+    "check:ssot-binding": "node scripts/check-ssot-binding.mjs",
     "format": "prettier --write ."
 
   },
