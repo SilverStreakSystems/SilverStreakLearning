@@ -1,7 +1,8 @@
 # Build Manifest
 
 All values inspected at commit `9a257f754e97b9cddf9a474009c5947488102c04` on 2026-08-19 (UTC).
-This capture supersedes the earlier capture at `70c1f89`, which is now historical.
+This capture supersedes the captures at `6aa254e` (2026-08-19 01:40 UTC) and `70c1f89`
+(2026-08-17), both now historical.
 Results below were executed at this commit, not reused from an earlier run.
 
 | Field | Value | Status |
@@ -22,25 +23,26 @@ Results below were executed at this commit, not reused from an earlier run.
 | Environment model | No `.env` or `.env.example` in the tree; no `import.meta.env.VITE_*` or `process.env` read anywhere under `src/` outside tests | [C] |
 | Backend status | None. No server functions, no `src/routes/api`, no integrations directory. | [C] |
 | Database status | NOT IMPLEMENTED (see `DATA_BACKEND_STATUS.md`) | [C] |
+| Repository CI | One workflow, `.github/workflows/ssot-binding.yml` (SSOT declared-binding guard). No build, test, or lint job runs in CI. | [C] |
 | Deployment provider | Lovable preview only; not published | [C] |
 | Build command | `bun run build` (`vite build`) | [C] |
 | Test command | `bun run test` (`vitest run`) | [C] |
 | Build result | Succeeded; Nitro emitted worker output and client bundle | [C] |
-| Test result | 8 files, 210 tests, 210 passed, 0 failed, 0 skipped; duration 14.53 s | [C] |
-| Lint result | Not executed in this pass — status Unknown for this commit | [U] |
+| Test result | 9 files, 217 tests, 217 passed, 0 failed, 0 skipped; duration 14.48 s | [C] |
+| Lint result | `eslint .` executed: 683 problems (669 errors, 14 warnings), overwhelmingly Prettier formatting errors spread across pre-existing files; 664 auto-fixable. The two guard scripts lint clean; `src/fixtures/registers.ts` carries 6 Prettier errors. Recorded as FND-014, not presented as a lint PASS. | [C] |
 | Typecheck result | Not executed separately; the build compiled without error | [I] |
 
 ## Scale
 
 | Measure | Value |
 |---|---|
-| Tracked files | 366 |
-| Files under `src/` | 210 (208 TypeScript/TSX) |
-| TypeScript/TSX lines under `src/` | 35,798 |
-| Files under `docs/` | 129 (including this work package's outputs) |
+| Tracked files | 372 |
+| Files under `src/` | 211 (209 TypeScript/TSX) |
+| TypeScript/TSX lines under `src/` | 35,912 |
+| Files under `docs/` | 130 (including this work package's outputs) |
 | Route files | 30 (including `__root.tsx`) |
 
 ## Binding rule
 
-Every result above is bound to `6aa254e`. After any commit to any ref, these results become
+Every result above is bound to `9a257f7`. After any commit to any ref, these results become
 historical and must be re-executed before being reported as current.
