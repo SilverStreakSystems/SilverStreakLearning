@@ -80,8 +80,8 @@ export const PROGRAM_STATE: ProgramStateRecord = {
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
       boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
       source: {
-        recordId: "EV-033",
-        locator: "docs/wp-007/CHECKPOINT-006.md; src/fixtures/registers.ts — EV-040",
+        recordId: "EV-041",
+        locator: "docs/wp-007/CHECKPOINT-007.md; src/fixtures/registers.ts — EV-041",
         route: "/evidence",
       },
     },
@@ -93,7 +93,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
       source: {
         recordId: "EV-040",
-        locator: "docs/wp-007/CHECKPOINT-006.md",
+        locator: "docs/wp-007/CHECKPOINT-007.md",
         route: "/evidence",
       },
     },
@@ -128,10 +128,10 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       },
     },
     {
-      stageId: "CYCLE-5",
+      stageId: "CYCLE-6",
       statement:
-        "No cycle beyond Cycle 4 is authorized. DEC-019 authorizes Cycle 4 only, and the unsupplied v0.2.0 DOCX and ZIP remain unread.",
-      source: { recordId: "DEC-019", locator: "docs/wp-007/CHECKPOINT-006.md", route: "/decisions" },
+        "No cycle beyond the bounded Cycle 5 review-packet preparation is authorized. DEC-019 authorizes Cycle 4 only, Cycle 5 was authorized to prepare a decision and not to record one, and the historical v0.2.0 DOCX and ZIP, neither supplied, remain unread.",
+      source: { recordId: "CHECKPOINT-007", locator: "docs/wp-007/CHECKPOINT-007.md", route: "/decisions" },
     },
     {
       stageId: "PKG-002-PROMOTION",
