@@ -57,3 +57,24 @@ No bulk historical requirement extraction, no restoration of legacy code, no pro
 historical authority, no rewriting of historical artifacts, no real personal data, no product
 features or routes, no resolution of WP-008 authority conflicts, no gate or work-package closure,
 no WP-039 work.
+
+## Target-stack contract (applies to every WP-007 cycle)
+
+Every cycle states a destination before any file changes, and every cycle checkpoint records all
+ten layers:
+
+1. North Star — Make Learning Visible.
+2. Target product state.
+3. Current program target.
+4. Active work package.
+5. Locked cycle outcome — a user-observable or repository-observable result. A list of files to
+   edit is not a valid target.
+6. Current-to-target delta.
+7. Acceptance evidence — named tests, records, locators, and validation results.
+8. Anti-targets.
+9. End-of-cycle evaluation — ACHIEVED, PARTIAL, NOT ACHIEVED, or BLOCKED, judged against the
+   acceptance criteria and recorded evidence, never against effort or file count.
+10. Proposed next defensible target, proposed and never self-authorized.
+
+The contract adds no route, no workflow, and no authority. It is recorded in each cycle checkpoint
+under `docs/wp-007/`; the canonical registers remain the machine-readable source of truth.
