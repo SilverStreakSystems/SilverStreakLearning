@@ -975,26 +975,28 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-012",
-    title: "Declare the effective revision of the interface acceptance standard",
-    state: "required",
-    decidedOn: null,
-    decidedBy: null,
+    title: "Effective SSLS accessibility target",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
     context:
-      "Implementation work cites revision 1.3 while a later revision also exists in the document corpus. No accepted decision names which is effective.",
+      "Implementation work cites ULW-AS-001 revision 1.3, which names no external accessibility version or conformance level, and SSLS references elsewhere name WCAG 2.1 Level AA as the current internal target. WP-038 raised FND-016 and prepared docs/wp-038/DEC-012-BRIEF.md.",
     decision:
-      "Not decided. The owner must declare the effective revision and the disposition of work already accepted against the earlier one. Required no later than WP-041 (accessibility baseline).",
+      "ACCEPTED BY OWNER. Adopt WCAG 2.2 Level AA as the current internal SSLS accessibility design and validation target for new and actively governed implementation. This supersedes older SSLS references naming WCAG 2.1 Level AA as the current internal target; historical artifacts remain unchanged and retain their original version-bound wording. This establishes an internal engineering and accessibility requirement only. It does not establish WCAG 2.2 conformance, ADA compliance, Section 504 or Section 508 compliance, an independent accessibility review, an ACR or VPAT result, procurement acceptance, district approval, or certification of any kind. Automated, AI-assisted, or self-performed accessibility checks remain evidence only within their tested scope, and independent accessibility validation remains required at the applicable later gate. Where a verified external obligation requires a different or more specific standard, the verified external obligation controls that use case.",
     consequences: [
-      "Until declared, no conformance statement may name a revision as satisfied.",
-      "A change of effective revision may reopen previously accepted interface work.",
-      "Open and non-blocking for WP-006 closure and WP-037 execution.",
+      "New and actively governed implementation is designed and self-tested against WCAG 2.2 Level AA as an internal target.",
+      "No conformance, compliance, ACR, VPAT, procurement, or district-approval claim is created; independent validation remains required at the applicable later gate.",
+      "FND-016 is partially resolved: the absence of a named target is closed, while coverage mapping, testing, stale references in ULW-AS-001 v1.3 itself, and independent validation remain unresolved.",
+      "FND-010 is not resolved: which revision of the interface acceptance standard is effective remains undeclared and is routed forward.",
     ],
-    authorityClass: "research-candidate",
+    authorityClass: "current-summary",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["ULW-AS-001"],
     synthetic: false,
   },
+
   {
     id: "DEC-013",
     title: "Reconcile the historical and current gate taxonomies",
