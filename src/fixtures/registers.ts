@@ -120,8 +120,9 @@ export const FINDINGS: FindingRecord[] = [
     description:
       "A candidate plan specified a reviewed documentation-only first commit before any application code. The repository instead begins with a platform template scaffold followed by application work, with no recorded first-commit ratification. Containment intent is met in substance; the review step was not performed.",
     boundary:
-      "Does not assert contamination. No legacy ancestry, committed secrets, or legacy backend bindings were found in the root commit.",
-    resolutionState: "conflicted",
+      "Does not assert contamination. No legacy ancestry, committed secrets, or legacy backend bindings were found in the root commit. DEC-010 (2026-08-19) accepted the actual root commit as the controlled origin; the divergence is dispositioned, not cured, and the missing first-commit review step is not retroactively performed.",
+    resolutionState: "confirmed",
+
     requiredDecision: "DEC-010",
     evidenceReferences: ["EV-009", "EV-010"],
     synthetic: false,
@@ -171,7 +172,7 @@ export const FINDINGS: FindingRecord[] = [
       "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-016", "EV-017"],
+    evidenceReferences: ["EV-016", "EV-017", "EV-018"],
     synthetic: false,
   },
   {
@@ -187,7 +188,7 @@ export const FINDINGS: FindingRecord[] = [
       "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-016"],
+    evidenceReferences: ["EV-018"],
     synthetic: false,
   },
   {
@@ -203,7 +204,7 @@ export const FINDINGS: FindingRecord[] = [
       "Not a defect in the check, which does exactly what it declares. It is a scope limit that a later evidence pipeline must close by separating immutable execution evidence from the current baseline summary.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-016"],
+    evidenceReferences: ["EV-018"],
     synthetic: false,
   },
   {
@@ -219,7 +220,7 @@ export const FINDINGS: FindingRecord[] = [
       "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness.",
     resolutionState: "unknown",
     requiredDecision: null,
-    evidenceReferences: ["EV-016"],
+    evidenceReferences: ["EV-018"],
     synthetic: false,
   },
 ];
@@ -428,20 +429,37 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-016",
-    title: "Current SSOT binding and re-executed build and test evidence — commit 9a257f7",
+    title: "Superseded SSOT binding and build and test evidence — commit 9a257f7",
     kind: "automated-test",
     subject:
-      "Re-bound current-state record and its three manifests, with build, test, and lint executed at the bound source tree",
+      "Re-bound current-state record and its three manifests, with build, test, and lint executed at that source tree",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "stale",
+    supports:
+      "That the current-state record, provenance report, build manifest, and test and build status once declared commit 9a257f7; that the binding check reported PASS for that commit; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
+    doesNotSupport:
+      "Any statement about the present repository. Superseded by EV-018 and retained unrewritten as historical execution evidence.",
+    authorityClass: "historical-evidence",
+    synthetic: false,
+  },
+  {
+    id: "EV-018",
+    title: "Owner-authorization pass: decisions recorded and evidence re-executed — commit c1f0601",
+    kind: "automated-test",
+    subject:
+      "DEC-010 and DEC-014 recorded as accepted, exit criteria reconciled, and the four bound documents re-bound with build, test, lint, and both binding-check controls re-executed",
     collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "confirmed",
     supports:
-      "That the current-state record, provenance report, build manifest, and test and build status all declare commit 9a257f7; that the binding check reports PASS for that commit; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
+      "That DEC-010 and DEC-014 are recorded as accepted owner decisions; that the current-state record, provenance report, build manifest, and test and build status all declare commit c1f0601; that the binding check reports PASS for that commit and exits non-zero for a commit no document declares; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
     doesNotSupport:
-      "Correctness, accessibility conformance, security, authority, or approval. Executor-run, not independent, and no longer current once a further commit lands.",
+      "Correctness, accessibility conformance, security, compliance, release readiness, gate closure, or merge enforcement. It does not establish that any figure inside a bound document was captured at the declared commit. Executor-run, not independent, and no longer current once a further commit lands.",
     authorityClass: "current-summary",
     synthetic: false,
   },
+
   {
     id: "EV-017",
     title: "Negative control for the SSOT binding guard",
@@ -662,19 +680,21 @@ export const DECISIONS: DecisionRecord[] = [
   {
     id: "DEC-010",
     title: "Authorize the go-forward software source of truth and classify every other lineage",
-    state: "required",
-    decidedOn: null,
-    decidedBy: null,
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
     context:
-      "Exactly one repository holds executable code, with fully recoverable provenance and a passing build and test suite. Its origin diverges from a candidate first-commit plan that was never executed, and other referenced lineages could not be located from inside this project.",
+      "Exactly one repository holds executable code, with fully recoverable provenance to its root commit and a passing build and test suite. Its origin diverges from a candidate first-commit plan that was never executed, and other referenced lineages could not be located from inside this project. The executor recommended this adoption and could not close it.",
     decision:
-      "Not decided. The owner must name the authorized go-forward source-code lineage, classify every other discoverable lineage, and state the disposition of the actual repository origin.",
+      "The current Lovable-managed SSLS repository is adopted as the go-forward software source of truth. Historical repository and bootstrap artifacts remain historical governance and evidence lineage and do not control current executable implementation. Any subsequently discovered prior repository must be inventoried and explicitly dispositioned before use. The actual root commit is accepted as the controlled origin; the never-executed first-commit plan does not govern.",
     consequences: [
-      "Until decided, no lineage may be described as the authorized source of truth.",
-      "Existing evidence remains bound to the current baseline commit regardless of the outcome.",
-      "The decision confers no security, privacy, accessibility, or compliance certification.",
+      "The current repository may be named the authorized source-code lineage in internal records.",
+      "Historical lineages are evidence, not codebases; none may be used as an implementation source without an explicit disposition.",
+      "A newly discovered prior repository is quarantined for forensic classification until dispositioned.",
+      "The decision confers no security, privacy, accessibility, or compliance certification, authorizes no release or live data, and does not close a gate.",
+      "Provenance evidence remains executor/self-verified; independent validation is still absent.",
     ],
-    authorityClass: "research-candidate",
+    authorityClass: "accepted-decision",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
@@ -690,10 +710,11 @@ export const DECISIONS: DecisionRecord[] = [
     context:
       "The governing program register is ratified by reference, but no artifact carrying its text exists in either plane. Requirement labels, gate definitions, and work-package identifiers are cited from a document that cannot be produced.",
     decision:
-      "Not decided. The owner must either locate the ratified text and mirror it as the canonical copy, or author it under explicit ratification.",
+      "Not decided. The owner must either locate the ratified text and mirror it as the canonical copy, or author it under explicit ratification. Routed to WP-008 (authority reconciliation) if not resolved sooner.",
     consequences: [
       "Until resolved, program citations cannot be independently checked.",
       "Ratification by reference remains in force; this does not invalidate the existing ratification decision.",
+      "Open and non-blocking for WP-006 closure and WP-037 execution; blocking for gate closure.",
     ],
     authorityClass: "research-candidate",
     recordState: "current",
@@ -711,10 +732,11 @@ export const DECISIONS: DecisionRecord[] = [
     context:
       "Implementation work cites revision 1.3 while a later revision also exists in the document corpus. No accepted decision names which is effective.",
     decision:
-      "Not decided. The owner must declare the effective revision and the disposition of work already accepted against the earlier one.",
+      "Not decided. The owner must declare the effective revision and the disposition of work already accepted against the earlier one. Required no later than WP-041 (accessibility baseline).",
     consequences: [
       "Until declared, no conformance statement may name a revision as satisfied.",
       "A change of effective revision may reopen previously accepted interface work.",
+      "Open and non-blocking for WP-006 closure and WP-037 execution.",
     ],
     authorityClass: "research-candidate",
     recordState: "current",
@@ -732,10 +754,11 @@ export const DECISIONS: DecisionRecord[] = [
     context:
       "A historical gate sequence left its second gate open. The current program proceeds under a separately named gate covering overlapping subject matter. No decision maps one taxonomy onto the other.",
     decision:
-      "Not decided. The owner must state whether the current gate supersedes, incorporates, or runs independently of the open historical gate, and record the disposition of historical gate evidence.",
+      "Not decided. The owner must state whether the current gate supersedes, incorporates, or runs independently of the open historical gate, and record the disposition of historical gate evidence. Routed to WP-008 (authority and gate-lineage reconciliation).",
     consequences: [
       "Until decided, the historical gate remains open and its evidence has no stated status under the current program.",
       "No statement may assert that the historical gate was completed.",
+      "Open and non-blocking for WP-006 closure and WP-037 execution; blocking for gate closure.",
     ],
     authorityClass: "research-candidate",
     recordState: "current",
@@ -744,7 +767,32 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-FND-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-014",
+    title: "Owner closure of WP-006 current-state SSOT and repository provenance",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
+    context:
+      "WP-006 was executed under DEC-007 following owner closure of WP-000. The reconciled exit-criteria matrix records eighteen criteria met, one not applicable, one explicitly NOT VERIFIED (repository branch-protection enforcement of the declared-binding check), and one blocked on an owner decision. That blocking criterion is resolved by DEC-010. All evidence is executor/self-verified.",
+    decision:
+      "WP-006 is closed on its current evidence package and the executor recommendation. WP-037 (Evidence and Verification Pipeline) becomes the next eligible work package and is not started by this decision. Recorded limitations are carried forward unchanged: declared-binding identity is not semantic freshness, and a workflow existing in the repository is not branch-protection enforcement.",
+    consequences: [
+      "WP-006 status is OWNER CLOSED; WP-037 is NEXT ELIGIBLE and not executed.",
+      "Closure carries no security, privacy, accessibility, compliance, release, or readiness claim.",
+      "FND-011 through FND-014 remain open and are inherited by WP-037.",
+      "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this closure.",
+      "Historical evidence records stay bound to the commits at which they were produced and are not rewritten.",
+    ],
+    authorityClass: "accepted-decision",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-FND-001", "SSLS-BPP-001"],
+    synthetic: false,
+  },
 ];
+
 
 
 

@@ -1,6 +1,6 @@
 # Build Manifest
 
-All values inspected at commit `9a257f754e97b9cddf9a474009c5947488102c04` on 2026-08-19 (UTC).
+All values inspected at commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a` on 2026-08-19 02:13–02:14 UTC.
 This capture supersedes the captures at `6aa254e` (2026-08-19 01:40 UTC) and `70c1f89`
 (2026-08-17), both now historical.
 Results below were executed at this commit, not reused from an earlier run.
@@ -38,11 +38,11 @@ Results below were executed at this commit, not reused from an earlier run.
 |---|---|
 | Tracked files | 372 |
 | Files under `src/` | 211 (209 TypeScript/TSX) |
-| TypeScript/TSX lines under `src/` | 35,912 |
+| TypeScript/TSX lines under `src/` | 36,916 |
 | Files under `docs/` | 130 (including this work package's outputs) |
 | Route files | 30 (including `__root.tsx`) |
 
 ## Binding rule
 
-Every result above is bound to `9a257f7`. After any commit to any ref, these results become
+Every result above is bound to `c1f0601`. After any commit to any ref, these results become
 historical and must be re-executed before being reported as current.
