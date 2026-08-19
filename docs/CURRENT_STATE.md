@@ -160,10 +160,11 @@ of its own.
 
 ## Verification recorded
 
-- Vitest: 279 tests passing across 11 files, covering registered routes, detail
+- Vitest: 324 tests passing across 14 files, covering registered routes, detail
   routes, unrecorded identifiers, authority discipline, gate discipline,
   prohibited metrics, search authorization order, declared-binding freshness,
-  evidence schema, applicability, expiry, reuse, and the verification gate.
+  evidence schema, applicability, expiry, reuse, the verification gate, and governed-package
+  integrity, provenance, and non-promotion.
   Production build succeeds.
 - Accessibility: see `docs/ACCESSIBILITY_EVIDENCE.md`. Automated only.
 
