@@ -29,7 +29,7 @@ function esc(value: string): string {
 function packageRegister(records: GovernedPackageRecord[], boundary: string): string {
   const sections = records.map((record) =>
     [
-      `## ${record.package_id} — ${esc(record.title)}`,
+      `## ${record.package_id} — ${esc(record.title)} (${record.authority_role})`,
       "",
       table(
         [
@@ -100,7 +100,7 @@ function completenessBoundary(records: GovernedPackageRecord[]): string {
     HEADER("Package completeness boundary"),
     "",
     ...records.flatMap((record) => [
-      `## ${record.package_id} — v${record.version}`,
+      `## ${record.package_id} — v${record.version} (${record.authority_role})`,
       "",
       esc(record.completeness_boundary),
       "",
@@ -125,7 +125,7 @@ function nonClaimBoundary(records: GovernedPackageRecord[]): string {
     "package, changes a gate, or authorizes a successor package.",
     "",
     ...records.flatMap((record) => [
-      `## ${record.package_id} — v${record.version}`,
+      `## ${record.package_id} — v${record.version} (${record.authority_role})`,
       "",
       ...record.non_claims.map((claim) => `- ${esc(claim)}`),
       "",

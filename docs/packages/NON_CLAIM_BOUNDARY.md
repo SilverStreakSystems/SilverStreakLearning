@@ -8,7 +8,7 @@ Inclusion in a package, file recency, a successful digest match, and a passing t
 independent of authority. None of them promotes a record, closes a finding, closes a work
 package, changes a gate, or authorizes a successor package.
 
-## PKG-002 — v0.3.0
+## PKG-002 — v0.3.0 (SYNCHRONIZED-REFERENCE)
 
 - This package does not supersede the canonical registers and is not a competing source of truth.
 - This package never closes a finding, and no parent-package state change closes a finding.
@@ -20,7 +20,7 @@ package, changes a gate, or authorizes a successor package.
 - Hash verification is a file-identity check only and is not independent validation of the package contents.
 - DEC-012 names WCAG 2.2 Level AA as an internal target only; it establishes no conformance and no ADA Title II compliance.
 
-## PKG-001 — v0.2.0
+## PKG-001 — v0.2.0 (HISTORICAL-EVIDENCE)
 
 - This historical package is not current authority and is not the current synchronized package.
 - Nothing in this record claims the unsupplied artifacts are available, readable, or verified.

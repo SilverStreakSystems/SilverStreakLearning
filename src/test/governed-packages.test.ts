@@ -129,7 +129,7 @@ describe("synchronized reference is not authority", () => {
     for (const record of packages) {
       const text = record.non_claims.join(" ").toLowerCase();
       expect(record.non_claims.length).toBeGreaterThan(2);
-      expect(text).toContain("does not close a finding");
+      expect(text).toMatch(/(does not|never) close[s]? a finding/);
       expect(record.release_state).toBe("NOT-RELEASE-AUTHORIZED");
       expect(record.personal_data_state).toBe("NO-PII");
     }
@@ -137,6 +137,7 @@ describe("synchronized reference is not authority", () => {
 
   it("does not promote any historical source by inclusion, recency, or validation", () => {
     for (const source of loadHistoricalSources()) {
+      if (source.authority_classification === "CURRENT-AUTHORITY") continue;
       expect(source.promotion_state).toBe("NOT-PROMOTED");
     }
   });

@@ -8,7 +8,7 @@
 
 Owner-supplied reference packages only. A package summarizes governed state for human reading and is never a machine-readable register. Accepted owner decisions control the canonical registers under src/fixtures/ and data/; those registers control every generated view and every synchronized reference artifact recorded here. Appearing in this file does not promote an artifact, does not close a finding or a work package, does not change Gate A, and does not authorize a successor work package.
 
-## PKG-002 — SSLS 2.0 governed reference package v0.3.0
+## PKG-002 — SSLS 2.0 governed reference package v0.3.0 (SYNCHRONIZED-REFERENCE)
 
 | Field | Value |
 | --- | --- |
@@ -31,7 +31,7 @@ Owner-supplied reference packages only. A package summarizes governed state for 
 | PKA-002 | `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 21520 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH |
 | PKA-003 | `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` | text/plain | 570 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | NOT-APPLICABLE-SELF-HASH-EXCLUDED |
 
-## PKG-001 — SSLS 2.0 governed reference package v0.2.0 (August 5, 2026)
+## PKG-001 — SSLS 2.0 governed reference package v0.2.0 (August 5, 2026) (HISTORICAL-EVIDENCE)
 
 | Field | Value |
 | --- | --- |
