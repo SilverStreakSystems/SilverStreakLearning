@@ -494,7 +494,7 @@ function CommandCenter() {
         <ul className="space-y-2">
           {program.unauthorizedStages.map((entry) => (
             <li key={entry.stageId} className="flex flex-wrap items-start gap-2 text-sm">
-              <StateChip state="refused" />
+              <StateChip state="not-authorized" />
               <span className="measure">
                 {entry.statement}{" "}
                 <span className="text-muted-foreground">
