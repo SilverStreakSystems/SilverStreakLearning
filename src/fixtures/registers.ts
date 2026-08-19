@@ -315,6 +315,54 @@ export const EVIDENCE: EvidenceRecord[] = [
     synthetic: false,
   },
   {
+    id: "EV-013",
+    title: "Superseded SSOT binding — commit 70c1f89",
+    kind: "document-review",
+    subject:
+      "The 2026-08-17 binding of SSLS-FND-001 and its provenance, build, and test manifests",
+    collectedOn: "2026-08-17",
+    collectedBy: "Founder / Operator",
+    state: "stale",
+    supports:
+      "That the current-state record and its three manifests were bound to commit 70c1f89 with build and test evidence executed at that commit. It remains a valid historical statement about that commit only.",
+    doesNotSupport:
+      "Anything about the present state of the repository. This binding is superseded by EV-014 and must not be reported as current.",
+    authorityClass: "historical",
+    synthetic: false,
+  },
+  {
+    id: "EV-014",
+    title: "Current SSOT binding — commit 6aa254e",
+    kind: "automated-test",
+    subject:
+      "Re-executed build and full test suite bound to SSLS-FND-001 and its three manifests",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the current-state record, provenance report, build manifest, and test and build status all declare commit 6aa254e, and that a production build and 210 of 210 tests were executed at that commit.",
+    doesNotSupport:
+      "Correctness, accessibility conformance, security, authority, or approval. Executor-run, not independent, and false as current once a further commit lands.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-015",
+    title: "Automated SSOT binding guard in continuous integration",
+    kind: "automated-test",
+    subject:
+      "Merge-blocking check comparing each bound document's declared commit against the commit under review",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That a stale binding can no longer reach the default branch unnoticed: the check fails the merge when a bound document declares a commit other than the one under review.",
+    doesNotSupport:
+      "That the bound figures are accurate, that the evidence was re-executed honestly, or that any record carries authority. It checks declaration freshness only.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
     id: "EV-012",
     title: "Independent verification of the current-state record",
     kind: "external-validation",
