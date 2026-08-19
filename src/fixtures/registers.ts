@@ -786,7 +786,40 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-033",
+    title: "SSLS v0.3.0 governed package integrity verification and provenance registration",
+    kind: "automated-test",
+    subject:
+      "data/packages/GOVERNED_PACKAGE_SCHEMA.json, data/packages/governed-packages.json, digest recomputation over the three owner-supplied v0.3.0 files, and src/test/governed-packages.test.ts",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the three owner-supplied files dated 2026-08-19 were received and measured; that SHA-256 recomputed by this program over `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` (123,284 bytes) is 9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943 and over `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` (21,520 bytes) is 68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e, each exactly matching the digest printed in `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt`; that the manifest declares no digest for itself; that PKG-002 is registered as a NONCANONICAL SYNCHRONIZED-REFERENCE package containing exactly those three artifacts, with byte sizes, media types, acquisition method OWNER-SUPPLIED-INPUT, retention NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR and governed external locators; and that the predecessor package PKG-001 registers the v0.2.0 DOCX and ZIP as NOT-SUPPLIED with no size, no digest and no repository locator.",
+    doesNotSupport:
+      "That the package narrative is accurate, complete, reviewed, or independently validated; that a digest match validates content rather than file identity; that any byte-identical copy of a supplied file is retained in this repository; that the v0.3.0 package is a complete copy of the earlier four-artifact v0.2.0 package; or that registration promotes the package, closes a finding or work package, changes Gate A, or authorizes a successor package. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-034",
+    title: "v0.3.0 package reconciliation against canonical repository truth",
+    kind: "document-review",
+    subject:
+      "docs/packages/DRIFT_REGISTER.md, the decision, finding, work-package, historical-source and historical-requirement registers, and src/test/governed-packages.test.ts",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That every package-level assertion checked against the canonical registers was reconciled item by item, with the controlling authority named in each row: North Star, Gate A OPEN, WP-038 CLOSED BY OWNER, WP-007 ACTIVE, WP-039 NOT AUTHORIZED, DEC-007/DEC-010/DEC-012/DEC-017/DEC-018 accepted, WCAG 2.2 Level AA as an internal target only, FND-016 partial, FND-017 and FND-018 open, FND-019 repaired, 22 historical sources with three NOT-ACCESSIBLE-TO-EXECUTOR, HS-011 as the Cycle 2 extraction source, and 14 candidate requirements remaining CANDIDATE-PRE-DISPOSITION and NOT-ASSESSED; and that executing tests hold DEC-012, DEC-018, FND-016, FND-017, FND-018 and HREQ-001..HREQ-014 at those states.",
+    doesNotSupport:
+      "That the package text was reviewed in full, that unreconciled package statements are correct, that any repository value was adopted from the package summary, or that agreement between a package and a register creates authority, closes a finding, or validates either record. Executor-run, method document review, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
 
 
 
