@@ -8,6 +8,8 @@
  */
 import { describe, expect, it } from "vitest";
 
+import type { EvidenceType } from "../../scripts/evidence/types.mjs";
+
 import { evaluateApplicability, evaluateReuse } from "../../scripts/evidence/applicability.mjs";
 import { computeExpiry, EXPIRY_POLICY, isExpired } from "../../scripts/evidence/expiry.mjs";
 import {
