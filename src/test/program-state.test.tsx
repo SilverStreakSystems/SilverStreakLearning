@@ -50,7 +50,7 @@ describe("program state register", () => {
   it("states WP-039, a further cycle, and candidate disposition as not authorized", () => {
     const ids = PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId);
     expect(ids).toContain("WP-039");
-    expect(ids).toContain("CYCLE-5");
+    expect(ids).toContain("CYCLE-6");
     expect(ids).toContain("HREQ-DISPOSITION");
   });
 });
