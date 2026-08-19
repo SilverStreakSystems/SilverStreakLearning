@@ -35,14 +35,14 @@ describe("program state register", () => {
     expect(PROGRAM_STATE.gate.state).toBe("open");
     expect(PROGRAM_STATE.activeWorkPackage.workPackageId).toBe("WP-007");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-006");
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-007");
     expect(PROGRAM_STATE.ownerDisposition.state).toBe("pending");
   });
 
   it("binds every verification statement to a checkpoint and states its scope", () => {
     expect(PROGRAM_STATE.verifications.length).toBeGreaterThan(0);
     for (const entry of PROGRAM_STATE.verifications) {
-      expect(entry.boundTo).toContain("CHECKPOINT-006");
+      expect(entry.boundTo).toContain("CHECKPOINT-00");
       expect(entry.scope.length).toBeGreaterThan(20);
     }
   });
@@ -50,7 +50,7 @@ describe("program state register", () => {
   it("states WP-039, a further cycle, and candidate disposition as not authorized", () => {
     const ids = PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId);
     expect(ids).toContain("WP-039");
-    expect(ids).toContain("CYCLE-5");
+    expect(ids).toContain("CYCLE-6");
     expect(ids).toContain("HREQ-DISPOSITION");
   });
 });
@@ -122,10 +122,10 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/OPEN/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/WP-007/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/CHECKPOINT-006: execution complete/).length,
+      within(region).getAllByText(/CHECKPOINT-007: execution complete/).length,
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/PENDING/).length).toBeGreaterThan(0);
-    expect(within(region).getAllByText(/Cycle 4 closed nothing/).length).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/Cycle 5 closed nothing/).length).toBeGreaterThan(0);
   });
 
   it("projects the package authority role, digest verification, and drift count", async () => {

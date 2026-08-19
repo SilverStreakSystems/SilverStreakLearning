@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/fnd-022-owner-review/1.0.0",
+  "title": "SSLS FND-022 Owner Review Packet Schema",
+  "description": "WP-007 cycle 5 schema. The packet makes the Cycle 4 historical candidates and cross-source restatement rows reviewable. Every owner decision field is required and must be null. No field in this schema may express a disposition, a promotion, a merge, a supersession, an elected controlling wording, or any conformance state.",
+  "schema_version": "1.0.0",
+  "work_package": "WP-007",
+  "authority_note": "This packet confers no authority. It restates governed records for review and adds non-binding executor analysis. Only a recorded owner decision may dispose of a candidate or resolve a relationship.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_on",
+    "finding_id",
+    "work_package",
+    "cycle",
+    "authority_note",
+    "packet_boundary",
+    "advisory_note",
+    "owner_option_vocabulary_note",
+    "entry_state",
+    "reconciliation",
+    "candidates",
+    "restatement_review_rows",
+    "unmatched_current_candidates",
+    "refused_in_this_cycle"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_on": { "$ref": "#/$defs/isoDate" },
+    "finding_id": { "const": "FND-022" },
+    "work_package": { "const": "WP-007" },
+    "cycle": { "type": "string", "minLength": 1 },
+    "authority_note": { "type": "string", "minLength": 80 },
+    "packet_boundary": { "type": "string", "minLength": 80 },
+    "advisory_note": { "type": "string", "minLength": 80 },
+    "owner_option_vocabulary_note": { "type": "string", "minLength": 80 },
+    "entry_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_a", "wp_007", "wp_038", "wp_039", "fnd_022", "pkg_001", "hs_023"],
+      "properties": {
+        "gate_a": { "const": "OPEN" },
+        "wp_007": { "const": "ACTIVE" },
+        "wp_038": { "const": "CLOSED BY OWNER" },
+        "wp_039": { "const": "NOT AUTHORIZED" },
+        "fnd_022": { "const": "OPEN" },
+        "pkg_001": { "const": "PARTIAL" },
+        "hs_023": { "const": "NOT-PROMOTED" }
+      }
+    },
+    "reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_count",
+        "candidate_id_range",
+        "restatement_row_count",
+        "relationship_totals",
+        "unmatched_count",
+        "unmatched_counted_in_rows"
+      ],
+      "properties": {
+        "candidate_count": { "const": 16 },
+        "candidate_id_range": { "const": "HREQ-015..HREQ-030" },
+        "restatement_row_count": { "const": 17 },
+        "relationship_totals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"],
+          "properties": {
+            "RESTATES": { "const": 3 },
+            "NARROWS": { "const": 2 },
+            "BROADENS": { "const": 6 },
+            "CONFLICTS": { "const": 0 },
+            "NEW": { "const": 6 }
+          }
+        },
+        "unmatched_count": { "const": 3 },
+        "unmatched_counted_in_rows": { "const": false }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "restatement_review_rows": {
+      "type": "array",
+      "minItems": 17,
+      "maxItems": 17,
+      "items": { "$ref": "#/$defs/reviewRow" }
+    },
+    "unmatched_current_candidates": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/unmatched" }
+    },
+    "refused_in_this_cycle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "requirementId": { "type": "string", "pattern": "^HREQ-\\d{3}$" },
+    "ownerOptions": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "enum": [
+          "RETAIN-HISTORICAL",
+          "ADOPT-AS-CANDIDATE",
+          "MERGE-OR-RESTATEMENT",
+          "NARROW",
+          "SUPERSEDE",
+          "REJECT",
+          "NEEDS-EVIDENCE / DEFER"
+        ]
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "exact_text",
+        "source_id",
+        "source_title",
+        "source_digest",
+        "source_locator",
+        "source_locator_detail",
+        "package_id",
+        "package_artifact_id",
+        "package_completeness",
+        "current_status",
+        "requirement_family",
+        "modality_as_worded",
+        "matched_current_requirement_ids",
+        "relationship_type",
+        "relationship_rows",
+        "relationship_rationale",
+        "substantive_delta",
+        "scope_or_authority_implication",
+        "evidence_gaps",
+        "recorded_ambiguity",
+        "affected_requirements_controls_or_claims",
+        "owner_options",
+        "advisory_recommendation",
+        "advisory_rationale",
+        "impact_if_adopted_or_merged",
+        "impact_if_rejected_or_deferred",
+        "owner_disposition",
+        "owner_rationale",
+        "boundary"
+      ],
+      "properties": {
+        "candidate_id": { "$ref": "#/$defs/requirementId" },
+        "exact_text": { "type": "string", "minLength": 1 },
+        "source_id": { "const": "HS-023" },
+        "source_title": { "type": "string", "minLength": 1 },
+        "source_digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "source_locator": { "type": "string", "minLength": 1 },
+        "source_locator_detail": { "type": "string", "minLength": 1 },
+        "package_id": { "const": "PKG-001" },
+        "package_artifact_id": { "const": "PKA-103" },
+        "package_completeness": { "const": "PARTIAL" },
+        "current_status": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["disposition", "conformance_state", "inherited_authority", "promotion_state"],
+          "properties": {
+            "disposition": { "const": "CANDIDATE-PRE-DISPOSITION" },
+            "conformance_state": { "const": "NOT-ASSESSED" },
+            "inherited_authority": { "const": "HISTORICAL-EVIDENCE" },
+            "promotion_state": { "const": "NOT-PROMOTED" }
+          }
+        },
+        "requirement_family": { "type": "string", "minLength": 1 },
+        "modality_as_worded": { "type": "string", "minLength": 1 },
+        "matched_current_requirement_ids": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/requirementId" }
+        },
+        "relationship_type": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"] }
+        },
+        "relationship_rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^RST-\\d{3}$" }
+        },
+        "relationship_rationale": { "type": "string", "minLength": 1 },
+        "substantive_delta": { "type": "string", "minLength": 1 },
+        "scope_or_authority_implication": { "type": "string", "minLength": 1 },
+        "evidence_gaps": { "type": "string", "minLength": 1 },
+        "recorded_ambiguity": { "type": "string", "minLength": 1 },
+        "affected_requirements_controls_or_claims": { "type": "string", "minLength": 1 },
+        "owner_options": { "$ref": "#/$defs/ownerOptions" },
+        "advisory_recommendation": { "type": "string", "pattern": "^NON-BINDING advisory: " },
+        "advisory_rationale": { "type": "string", "pattern": "^NON-BINDING analysis only\\. " },
+        "impact_if_adopted_or_merged": { "type": "string", "minLength": 1 },
+        "impact_if_rejected_or_deferred": { "type": "string", "minLength": 1 },
+        "owner_disposition": { "type": "null" },
+        "owner_rationale": { "type": "null" },
+        "boundary": { "type": "string", "minLength": 80 }
+      }
+    },
+    "reviewRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation_id",
+        "historical_candidate",
+        "historical_candidate_text",
+        "mapped_current_requirement",
+        "mapped_current_requirement_text",
+        "relationship_classification",
+        "classification_rationale",
+        "source_support",
+        "uncertainty_or_evidence_gap",
+        "owner_question",
+        "owner_options",
+        "owner_disposition",
+        "owner_rationale",
+        "cycle4_classification_preserved"
+      ],
+      "properties": {
+        "relation_id": { "type": "string", "pattern": "^RST-\\d{3}$" },
+        "historical_candidate": { "$ref": "#/$defs/requirementId" },
+        "historical_candidate_text": { "type": "string", "minLength": 1 },
+        "mapped_current_requirement": {
+          "anyOf": [{ "$ref": "#/$defs/requirementId" }, { "type": "null" }]
+        },
+        "mapped_current_requirement_text": {
+          "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+        },
+        "relationship_classification": {
+          "enum": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"]
+        },
+        "classification_rationale": { "type": "string", "minLength": 1 },
+        "source_support": { "type": "string", "minLength": 1 },
+        "uncertainty_or_evidence_gap": { "type": "string", "minLength": 1 },
+        "owner_question": { "type": "string", "minLength": 1 },
+        "owner_options": { "$ref": "#/$defs/ownerOptions" },
+        "owner_disposition": { "type": "null" },
+        "owner_rationale": { "type": "null" },
+        "cycle4_classification_preserved": { "const": true }
+      }
+    },
+    "unmatched": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "source_id",
+        "exact_text",
+        "source_locator",
+        "note",
+        "owner_question",
+        "owner_options",
+        "owner_disposition",
+        "owner_rationale"
+      ],
+      "properties": {
+        "requirement_id": { "$ref": "#/$defs/requirementId" },
+        "source_id": { "const": "HS-011" },
+        "exact_text": { "type": "string", "minLength": 1 },
+        "source_locator": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 },
+        "owner_question": { "type": "string", "minLength": 1 },
+        "owner_options": { "$ref": "#/$defs/ownerOptions" },
+        "owner_disposition": { "type": "null" },
+        "owner_rationale": { "type": "null" }
+      }
+    }
+  }
+}

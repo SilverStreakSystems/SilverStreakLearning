@@ -355,7 +355,7 @@ export const FINDINGS: FindingRecord[] = [
       "Record a disposition for the WP-007 Cycle 4 candidates and restatement index, and state whether a further cycle is authorized.",
     ownerPriorityDirective:
       "Recorded owner instruction of 2026-08-19: WP-007 cannot advance until this disposition is recorded, so it is the highest-priority open action.",
-    evidenceReferences: ["EV-039", "EV-040"],
+    evidenceReferences: ["EV-039", "EV-040", "EV-041"],
     synthetic: false,
   },
 ];
@@ -969,6 +969,22 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That HS-023 is registered as a HISTORICAL-EVIDENCE source bound to the verified PDF digest; that every normative statement on printed pages 20-21 was extracted verbatim into HREQ-015 through HREQ-030, each carrying its source locator, inherited authority, modality as worded, extraction confidence, and ambiguity note; and that data/historical/restatement-index.json records seventeen rows — eleven relating an HS-023 candidate to an HS-011 candidate as RESTATES, NARROWS, or BROADENS, and six recording NEW where no counterpart was found — plus three HS-011 candidates left unmatched.",
     doesNotSupport:
       "That any candidate is required now, correct, current, satisfied, tested, or implemented; that any candidate received a disposition, a conformance state, or promotion; that any two wordings were merged, deduplicated, superseded, or ranked; that any conflict was resolved or any controlling wording elected; that any WCAG, ADA Title II, Section 508, or accessibility conformance claim is made; or that WP-007, Gate A, WP-039, PKG-001 completeness, or any drift row changed state. Executor-run, method manual verbatim extraction plus pairwise comparison, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-041",
+    title: "WP-007 Cycle 5 FND-022 owner disposition packet construction and validation",
+    kind: "automated-test",
+    subject:
+      "data/historical/fnd-022-owner-review.json and its generated projection docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md, checked against the governed Cycle 4 registers.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Automated run",
+    state: "confirmed",
+    supports:
+      "That the packet presents each of the sixteen HS-023 candidates exactly once with its wording, source locator, digest binding, and current status copied unchanged from data/historical/historical-requirements.json; that all seventeen restatement rows are presented with their Cycle 4 classification and basis preserved unchanged; that the three unmatched HS-011 candidates are listed separately and are not counted among the rows; that every owner disposition and owner rationale field is null; that every item carries the same seven review options with none preselected; and that every executor recommendation is labelled NON-BINDING.",
+    doesNotSupport:
+      "That any disposition was recorded, implied, or preselected; that any candidate is required now, correct, current, satisfied, tested, or implemented; that any wording was merged, superseded, narrowed, rejected, or elected as controlling; that HS-023 or PKG-001 gained promotion or completeness; that FND-022, WP-007, or Gate A changed state; that WP-039 is authorized; or that any WCAG, ADA Title II, Section 508, or accessibility conformance claim is made. Executor-run, method schema-bound construction plus automated cross-register reconciliation, independent = false.",
     authorityClass: "current-summary",
     synthetic: false,
   },
