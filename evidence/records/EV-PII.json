@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "5a36887f0aac7933c9f0d86e49ba457346ab2b5a",
+  "tree_hash": "1d9f565fccef92c37e96f1849f571b39c53c76a2",
   "expected_result": "No personal-data-shaped content outside declared synthetic fixtures.",
   "artifact_path": "artifacts/boundary/pii-boundary-scan.json",
-  "artifact_hash": "f34fa65bb05df503e7c64904ea7cdfaa1419648bc475a000594cd9546e9a0560",
+  "artifact_hash": "c78f964d0fc8a9bc042a70a00e2d421d96e76ef93ca3e481b6dfebc962393a70",
   "input_set": {
-    "tracked": "dfae53ca22bcc62c58d446d636a0bbe28f7bb28e37e4d449c052cab3f1419cef"
+    "tracked": "559b7ccd87d772926c025cc8cf3bcfa05b4dc4fcae052d6c77bba44bc6096ee7"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -23,16 +23,16 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "PII_BOUNDARY_SCAN",
-  "commit_sha": "15581bfbab2e7f4f306712ffec5c27b79c954cdb",
+  "commit_sha": "df7b25ef9db1bea371062447a15b69f8ff0e2fa7",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-19T15:27:36.810Z",
+  "timestamp": "2026-08-19T17:26:56.215Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-PII",
   "title": "Personal-data boundary scan over the tracked tree",
   "description": "Pattern scan supporting the zero-real-PII boundary. Matched values are recorded only as digests.",
   "tool": "scripts/evidence/boundary.mjs",
   "command": "bun run evidence:run",
-  "actual_result": "409 files scanned; 0 candidate matches, of which 0 are inside declared synthetic fixtures.",
+  "actual_result": "428 files scanned; 0 candidate matches, of which 0 are inside declared synthetic fixtures.",
   "status": "pass",
   "supports": [
     "That the declared patterns produced the recorded candidate matches over the scanned scope."

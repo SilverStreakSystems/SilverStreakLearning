@@ -1,31 +1,36 @@
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m/dev-server[39m
 
- [32m✓[39m src/test/obligations.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 41[2mms[22m[39m
- [32m✓[39m src/test/historical-requirements.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 17[2mms[22m[39m
- [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 9[2mms[22m[39m
- [32m✓[39m src/test/ssot-binding.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 13[2mms[22m[39m
- [32m✓[39m src/test/historical-sources.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 17[2mms[22m[39m
- [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m37 tests[22m[2m)[22m[32m 27[2mms[22m[39m
- [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 46[2mms[22m[39m
- [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 30[2mms[22m[39m
- [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 614[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 478[2mms[22m[39m
- [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 1079[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 517[2mms[22m[39m
-     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 301[2mms[22m[39m
- [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 2106[2mms[22m[39m
-     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 1049[2mms[22m[39m
-     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 447[2mms[22m[39m
- [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 3424[2mms[22m[39m
-     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 911[2mms[22m[39m
-     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 655[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 1410[2mms[22m[39m
- [32m✓[39m src/test/shell.test.tsx [2m([22m[2m81 tests[22m[2m)[22m[33m 6809[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/' with its heading [33m 480[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 521[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 316[2mms[22m[39m
+ [32m✓[39m src/test/obligations.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m src/test/historical-requirements.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/test/governed-packages.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m37 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m src/test/ssot-binding.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m src/test/historical-sources.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 734[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 567[2mms[22m[39m
+ [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 1238[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 582[2mms[22m[39m
+     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 341[2mms[22m[39m
+ [32m✓[39m src/test/program-state.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[33m 1653[2mms[22m[39m
+     [33m[2m✓[22m[39m prints the recorded instruction next to the promoted action [33m 567[2mms[22m[39m
+ [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 2310[2mms[22m[39m
+     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 1102[2mms[22m[39m
+     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 544[2mms[22m[39m
+ [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 3573[2mms[22m[39m
+     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 973[2mms[22m[39m
+     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 724[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 1439[2mms[22m[39m
+ [32m✓[39m src/test/shell.test.tsx [2m([22m[2m81 tests[22m[2m)[22m[33m 8314[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/' with its heading [33m 556[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 584[2mms[22m[39m
+     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 470[2mms[22m[39m
+     [33m[2m✓[22m[39m uses plain-language navigation labels without unexplained abbreviations [33m 338[2mms[22m[39m
+     [33m[2m✓[22m[39m states the no-personal-data boundary on '/capabilities' [33m 308[2mms[22m[39m
 
-[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
-[2m      Tests [22m [1m[32m304 passed[39m[22m[90m (304)[39m
-[2m   Start at [22m 15:27:13
-[2m   Duration [22m 13.93s[2m (transform 4.42s, setup 12.71s, import 10.00s, tests 14.23s, environment 56.88s)[22m
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m341 passed[39m[22m[90m (341)[39m
+[2m   Start at [22m 17:26:30
+[2m   Duration [22m 16.72s[2m (transform 4.79s, setup 18.79s, import 13.10s, tests 18.07s, environment 75.72s)[22m
