@@ -336,10 +336,29 @@ export const FINDINGS: FindingRecord[] = [
       "DEC-019 authorizes WP-007 Cycle 4 and names three required inputs: SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx, and SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt. None was present in the executor's supplied-input surface at entry (EV-037); only the already registered v0.3.0 artifacts were available. The locked Cycle 4 outcome requires cryptographic verification of those files and extraction from Section 11 of the v0.2.0 PDF, so neither package acquisition nor requirement extraction can be executed. Cycle 4 is therefore BLOCKED at entry, before any register edit. The owner-declared digests are held as declared values only and were not measured.",
     boundary:
       "This record states an input-availability blockage only. It does not decline or amend DEC-019, does not close or change WP-007, Gate A, or WP-039, does not register, verify, promote, or infer the content of any August 5 v0.2.0 artifact, does not create an HREQ candidate or a restatement relationship, and does not resolve or change FND-001 through FND-020 or PDR-001 through PDR-004.",
-    resolutionState: "blocked",
+    resolutionState: "confirmed",
+    requiredDecision: null,
+    evidenceReferences: ["EV-037", "EV-038", "EV-039"],
+    synthetic: false,
+  },
+  {
+    id: "FND-022",
+    title:
+      "Disposition WP-007 Cycle 4: sixteen new requirement candidates and seventeen cross-source restatement rows await owner review.",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "WP-007 Cycle 4 executed its locked target under DEC-019. The three authorized August 5 v0.2.0 inputs were supplied and each measured digest matched the declared value (EV-039); PKG-001 now carries PKA-103, PKA-104, and PKA-105 as verified, with the DOCX and ZIP still not supplied; HS-023 is registered as a historical source; HREQ-015 through HREQ-030 were extracted verbatim from Section 11 of the v0.2.0 PDF; and data/historical/restatement-index.json records seventeen relationships between the HS-023 and HS-011 candidates (EV-040). Every candidate remains CANDIDATE-PRE-DISPOSITION and NOT-ASSESSED, and every restatement row is a read relationship only. Only a recorded owner decision can dispose of a candidate, elect a controlling wording, or resolve a conflict.",
+    boundary:
+      "This record states an open owner obligation. It does not dispose of any candidate, does not merge or supersede any wording, does not promote HS-023 or PKG-001, does not close WP-007, does not advance Gate A, does not authorize WP-039, and asserts no accessibility conformance of any kind.",
+    resolutionState: "not-verified",
     requiredDecision:
-      "Supply the three authorized August 5 v0.2.0 files for independent digest verification, or amend the Cycle 4 authorization.",
-    evidenceReferences: ["EV-037"],
+      "Record a disposition for the WP-007 Cycle 4 candidates and restatement index, and state whether a further cycle is authorized.",
+    ownerPriorityDirective:
+      "Recorded owner instruction of 2026-08-19: WP-007 cannot advance until this disposition is recorded, so it is the highest-priority open action.",
+    evidenceReferences: ["EV-039", "EV-040"],
     synthetic: false,
   },
 ];
@@ -920,6 +939,39 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That the three supplied files measured 9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943, 68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e, and 3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130, matching the two digests the manifest declares and the digests already registered under PKG-002, so the supply is byte-identical to the existing artifacts and no second package record was created; that all fourteen PDF sections and all eleven workbook sheets were read and reconciled against the canonical registers, with the agreeing propositions recorded in the reconciled list of data/packages/package-drift.json and the differing ones recorded as drift rows PDR-005 and PDR-006; and that the supplied set does not contain any August 5 v0.2.0 artifact, so the three inputs DEC-019 names for Cycle 4 remain unavailable and FND-021 remains open.",
     doesNotSupport:
       "That the package or any historical source gained authority or was promoted, that any requirement candidate was extracted or given a disposition, that any drift row was resolved, that any finding was closed, that Gate A, WP-007, or WP-039 changed state, or that Cycle 4's locked outcome was executed in any part. The v0.3.0 Section 10 accessibility text was not used as a substitute extraction source. Executor-run, method manual forensic read plus automated digest measurement, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-039",
+    title: "August 5 v0.2.0 partial package: independent digest verification at Cycle 4 entry",
+    kind: "manual-check",
+    subject:
+      "The three files supplied by the owner on 2026-08-19 — 03-SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, 01-SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx, and 02-SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt — measured with sha256sum before any register edit and compared against the digests DEC-019 declares.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the PDF measured 2c83e6b666a2857922c6b80be830f3e3738b24b76c49ae638df2c84d6827b044 at 787,831 bytes, the workbook measured f717dab3ad928ccd3bdcc96cf7b0054cc343edee276c4fbeb91063b4caf43dc1 at 36,546 bytes, and the manifest measured 914b65e39895cbd225cf1211df242bae3804fc4fd561483f78a92987413d09a8 at 491 bytes, each matching the value DEC-019 declares; that the PDF carries 38 printed pages and its Section 11 on printed pages 20-21 is titled Accessibility, matching the extraction surface DEC-019 authorizes; and that the artifacts are registered under PKG-001 as PKA-103, PKA-104, and PKA-105.",
+    doesNotSupport:
+      "That the v0.2.0 DOCX or ZIP named by the manifest were supplied, read, or verified — both remain NOT-SUPPLIED; that PKG-001 is complete; that the package or any artifact gained authority, was promoted, or became canonical; that the workbook was used as an extraction surface; or that any accessibility conformance follows. A digest match is a file-identity check only. Executor-run, method sha256sum plus pdftotext page inspection, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-040",
+    title:
+      "WP-007 Cycle 4 bounded extraction and cross-source restatement index",
+    kind: "manual-check",
+    subject:
+      "Section 11 of PKA-103 on printed pages 20-21, read verbatim into requirement candidates, and those candidates read against the HS-011 candidates HREQ-001 through HREQ-014.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That HS-023 is registered as a HISTORICAL-EVIDENCE source bound to the verified PDF digest; that every normative statement on printed pages 20-21 was extracted verbatim into HREQ-015 through HREQ-030, each carrying its source locator, inherited authority, modality as worded, extraction confidence, and ambiguity note; and that data/historical/restatement-index.json records seventeen rows — eleven relating an HS-023 candidate to an HS-011 candidate as RESTATES, NARROWS, or BROADENS, and six recording NEW where no counterpart was found — plus three HS-011 candidates left unmatched.",
+    doesNotSupport:
+      "That any candidate is required now, correct, current, satisfied, tested, or implemented; that any candidate received a disposition, a conformance state, or promotion; that any two wordings were merged, deduplicated, superseded, or ranked; that any conflict was resolved or any controlling wording elected; that any WCAG, ADA Title II, Section 508, or accessibility conformance claim is made; or that WP-007, Gate A, WP-039, PKG-001 completeness, or any drift row changed state. Executor-run, method manual verbatim extraction plus pairwise comparison, independent = false.",
     authorityClass: "current-summary",
     synthetic: false,
   },

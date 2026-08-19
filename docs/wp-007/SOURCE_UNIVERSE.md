@@ -34,3 +34,4 @@ WP-007 cycle 1 inventories the bounded source universe only: the current Lovable
 | HS-020 | Build prompt and execution prompt inputs supplied through the operator session | chat-history | `operator session inputs: Build Prompts 001-005 and the WP-037, WP-038 and WP-007 execution prompts` |
 | HS-021 | Published preview and production surfaces | external-service | `https://vision-trunk.lovable.app and the project preview URL` |
 | HS-022 | Legacy SSLS 1.x application code | bootstrap-artifact | `not present in this repository; referenced historically in docs/wp-006/IMPLEMENTATION_INVENTORY.md` |
+| HS-023 | SSLS 2.0 comprehensive clean-room rewrite v0.2.0 (August 5, 2026, historical), Section 11 accessibility | bootstrap-artifact | `owner-supplied historical input PKA-103 within PKG-001: SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, Section 11 on printed pages 20-21` |

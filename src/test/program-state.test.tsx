@@ -35,22 +35,23 @@ describe("program state register", () => {
     expect(PROGRAM_STATE.gate.state).toBe("open");
     expect(PROGRAM_STATE.activeWorkPackage.workPackageId).toBe("WP-007");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-003");
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-006");
     expect(PROGRAM_STATE.ownerDisposition.state).toBe("pending");
   });
 
   it("binds every verification statement to a checkpoint and states its scope", () => {
     expect(PROGRAM_STATE.verifications.length).toBeGreaterThan(0);
     for (const entry of PROGRAM_STATE.verifications) {
-      expect(entry.boundTo).toContain("CHECKPOINT-003");
+      expect(entry.boundTo).toContain("CHECKPOINT-006");
       expect(entry.scope.length).toBeGreaterThan(20);
     }
   });
 
-  it("states WP-039 and Cycle 4 as not authorized", () => {
+  it("states WP-039, a further cycle, and candidate disposition as not authorized", () => {
     const ids = PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId);
     expect(ids).toContain("WP-039");
-    expect(ids).toContain("CYCLE-4");
+    expect(ids).toContain("CYCLE-5");
+    expect(ids).toContain("HREQ-DISPOSITION");
   });
 });
 
@@ -107,7 +108,7 @@ describe("Action Center synchronization", () => {
     ).toBeInTheDocument();
     expect(
       screen.getAllByText(
-        /Review and disposition WP-007 Cycle 3; authorize or decline the proposed bounded Cycle 4 extraction/,
+        /Disposition WP-007 Cycle 4: sixteen new requirement candidates and seventeen cross-source restatement rows await owner review/,
       ).length,
     ).toBeGreaterThan(0);
   });
@@ -121,10 +122,10 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/OPEN/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/WP-007/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/CHECKPOINT-003: execution complete/).length,
+      within(region).getAllByText(/CHECKPOINT-006: execution complete/).length,
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/PENDING/).length).toBeGreaterThan(0);
-    expect(within(region).getAllByText(/Cycle 3 closed nothing/).length).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/Cycle 4 closed nothing/).length).toBeGreaterThan(0);
   });
 
   it("projects the package authority role, digest verification, and drift count", async () => {
@@ -152,7 +153,7 @@ describe("Command Center synchronization", () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Next defensible action/i });
     expect(
-      within(region).getByText(/1\. Review and disposition WP-007 Cycle 3/),
+      within(region).getByText(/1\. Disposition WP-007 Cycle 4/),
     ).toBeInTheDocument();
   });
 
@@ -187,10 +188,10 @@ describe("Command Center synchronization", () => {
 
 describe("single source of truth", () => {
   it("keeps the pending obligation on the findings register, not on the surfaces", () => {
-    const finding = FINDINGS.find((record) => record.id === "FND-020");
-    expect(finding?.resolutionState).toBe("blocked");
+    const finding = FINDINGS.find((record) => record.id === "FND-022");
+    expect(finding?.resolutionState).toBe("not-verified");
     expect(finding?.ownerPriorityDirective).toBeTruthy();
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("FND-020");
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("FND-022");
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toBe(finding?.title);
   });
 });

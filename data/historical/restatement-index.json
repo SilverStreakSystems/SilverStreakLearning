@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0.0",
+  "generated_on": "2026-08-19",
+  "index_boundary": "WP-007 cycle 4 cross-source restatement index. Each row states how one candidate wording from HS-023 reads against one candidate wording from HS-011. The index relates records; it never merges, deduplicates, edits, deletes, or ranks them, never elects a controlling wording, never assigns a disposition or a conformance state, and never resolves a conflict. Only a recorded owner decision may do any of those things.",
+  "relationship_vocabulary_note": "RESTATES means the two wordings state the same expectation. NARROWS means the subject wording is more specific or more limited than the related wording. BROADENS means the subject wording is more general or wider in scope. CONFLICTS means the two wordings cannot both be satisfied as written. NEW means the executor found no counterpart in the other source.",
+  "relations": [
+    {
+      "relation_id": "RST-001",
+      "subject_requirement": "HREQ-016",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-001",
+      "related_source": "HS-011",
+      "relationship": "RESTATES",
+      "basis": "Both statements require semantic landmark structure; the v0.2.0 wording adds headings to the same bullet.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-002",
+      "subject_requirement": "HREQ-016",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-002",
+      "related_source": "HS-011",
+      "relationship": "BROADENS",
+      "basis": "'Semantic headings' covers heading structure generally, where the HS-011 row states the narrower rule of exactly one top-level heading per view.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-003",
+      "subject_requirement": "HREQ-017",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-003",
+      "related_source": "HS-011",
+      "relationship": "BROADENS",
+      "basis": "The v0.2.0 bullet names the skip link only; the HS-011 row additionally fixes its tab position and its target.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-004",
+      "subject_requirement": "HREQ-018",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-004",
+      "related_source": "HS-011",
+      "relationship": "BROADENS",
+      "basis": "The v0.2.0 bullet extends keyboard operability to controls, where the HS-011 row states navigation between sections.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-005",
+      "subject_requirement": "HREQ-019",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-006",
+      "related_source": "HS-011",
+      "relationship": "BROADENS",
+      "basis": "The v0.2.0 bullet requires a visible focus indicator without the dual-color treatment the HS-011 row specifies.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-006",
+      "subject_requirement": "HREQ-022",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-007",
+      "related_source": "HS-011",
+      "relationship": "RESTATES",
+      "basis": "Both state the same prohibition on color-only status.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-007",
+      "subject_requirement": "HREQ-023",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-012",
+      "related_source": "HS-011",
+      "relationship": "BROADENS",
+      "basis": "'Contrast review' names an activity, where the HS-011 row names measured contrast ratios.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-008",
+      "subject_requirement": "HREQ-024",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-010",
+      "related_source": "HS-011",
+      "relationship": "NARROWS",
+      "basis": "The v0.2.0 bullet fixes reflow at a 320-pixel width, where the HS-011 row states responsive reflow without a figure.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-009",
+      "subject_requirement": "HREQ-026",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-009",
+      "related_source": "HS-011",
+      "relationship": "RESTATES",
+      "basis": "Both require reduced-motion support.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-010",
+      "subject_requirement": "HREQ-027",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-008",
+      "related_source": "HS-011",
+      "relationship": "NARROWS",
+      "basis": "The v0.2.0 bullet limits the no-content-loss expectation to horizontal table scrolling, where the HS-011 row states that essential text is not truncated anywhere.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-011",
+      "subject_requirement": "HREQ-030",
+      "subject_source": "HS-023",
+      "related_requirement": "HREQ-011",
+      "related_source": "HS-011",
+      "relationship": "BROADENS",
+      "basis": "The v0.2.0 sentence states what accessibility evidence must record for any scenario, where the HS-011 row names a screen reader walkthrough as one such activity.",
+      "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
+    },
+    {
+      "relation_id": "RST-012",
+      "subject_requirement": "HREQ-015",
+      "subject_source": "HS-023",
+      "related_requirement": null,
+      "related_source": null,
+      "relationship": "NEW",
+      "basis": "The August 5 target sentence has no counterpart in the HS-011 restatement; FND-016 records that HS-011 names no WCAG version in its own text.",
+      "boundary": "Records that the executor found no counterpart wording in the other extracted source. Absence of a counterpart is not evidence that the statement is new to the program, correct, required, or unmet."
+    },
+    {
+      "relation_id": "RST-013",
+      "subject_requirement": "HREQ-020",
+      "subject_source": "HS-023",
+      "related_requirement": null,
+      "related_source": null,
+      "relationship": "NEW",
+      "basis": "Programmatic names are not stated as a separate row in the HS-011 restatement.",
+      "boundary": "Records that the executor found no counterpart wording in the other extracted source. Absence of a counterpart is not evidence that the statement is new to the program, correct, required, or unmet."
+    },
+    {
+      "relation_id": "RST-014",
+      "subject_requirement": "HREQ-021",
+      "subject_source": "HS-023",
+      "related_requirement": null,
+      "related_source": null,
+      "relationship": "NEW",
+      "basis": "Table captions and header cells are not stated in the HS-011 restatement.",
+      "boundary": "Records that the executor found no counterpart wording in the other extracted source. Absence of a counterpart is not evidence that the statement is new to the program, correct, required, or unmet."
+    },
+    {
+      "relation_id": "RST-015",
+      "subject_requirement": "HREQ-025",
+      "subject_source": "HS-023",
+      "related_requirement": null,
+      "related_source": null,
+      "relationship": "NEW",
+      "basis": "Touch target sizing is not stated in the HS-011 restatement.",
+      "boundary": "Records that the executor found no counterpart wording in the other extracted source. Absence of a counterpart is not evidence that the statement is new to the program, correct, required, or unmet."
+    },
+    {
+      "relation_id": "RST-016",
+      "subject_requirement": "HREQ-028",
+      "subject_source": "HS-023",
+      "related_requirement": null,
+      "related_source": null,
+      "relationship": "NEW",
+      "basis": "Plain-language refusal and error wording is not stated as an accessibility row in the HS-011 restatement.",
+      "boundary": "Records that the executor found no counterpart wording in the other extracted source. Absence of a counterpart is not evidence that the statement is new to the program, correct, required, or unmet."
+    },
+    {
+      "relation_id": "RST-017",
+      "subject_requirement": "HREQ-029",
+      "subject_source": "HS-023",
+      "related_requirement": null,
+      "related_source": null,
+      "relationship": "NEW",
+      "basis": "Auto-updating content and announcement are not stated in the HS-011 restatement.",
+      "boundary": "Records that the executor found no counterpart wording in the other extracted source. Absence of a counterpart is not evidence that the statement is new to the program, correct, required, or unmet."
+    }
+  ],
+  "unmatched_related_candidates": [
+    {
+      "requirement_id": "HREQ-005",
+      "source_id": "HS-011",
+      "note": "Mobile navigation reachability and labelling is not stated as a separate bullet in v0.2.0 Section 11."
+    },
+    {
+      "requirement_id": "HREQ-013",
+      "source_id": "HS-011",
+      "note": "The adopted-standard authority statement is an HS-011 framing row with no Section 11 counterpart."
+    },
+    {
+      "requirement_id": "HREQ-014",
+      "source_id": "HS-011",
+      "note": "The compliance-claim refusal is an HS-011 framing row; v0.2.0 states its own refusal inside HREQ-015 rather than as a separate row."
+    }
+  ]
+}

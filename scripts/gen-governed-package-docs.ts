@@ -57,8 +57,9 @@ function packageRegister(records: GovernedPackageRecord[], boundary: string): st
           artifact.byte_size === null ? "—" : `${artifact.byte_size}`,
           artifact.retention_state,
           artifact.integrity_state,
+          record.authority_role,
         ]),
-        ["ID", "Filename", "Media type", "Bytes", "Retention", "Integrity"],
+        ["ID", "Filename", "Media type", "Bytes", "Retention", "Integrity", "Package role"],
       ),
       "",
     ].join("\n"),
@@ -72,7 +73,7 @@ function packageRegister(records: GovernedPackageRecord[], boundary: string): st
 function integrityManifest(records: GovernedPackageRecord[]): string {
   const rows = records.flatMap((record) =>
     record.artifacts.map((artifact) => [
-      record.package_id,
+      `${record.package_id} (${record.authority_role})`,
       `\`${esc(artifact.filename)}\``,
       artifact.declared_sha256 ? `\`${artifact.declared_sha256}\`` : "not declared",
       artifact.sha256 ? `\`${artifact.sha256}\`` : "not measured",
@@ -107,7 +108,8 @@ function completenessBoundary(records: GovernedPackageRecord[]): string {
       "### Per-artifact limitations",
       "",
       ...record.artifacts.flatMap((artifact) => [
-        `**${artifact.artifact_id} — \`${esc(artifact.filename)}\`**`,
+        `**${artifact.artifact_id} (${record.package_id}, ${record.authority_role}) — ` +
+          `\`${esc(artifact.filename)}\`**`,
         "",
         ...artifact.limitations.map((limitation) => `- ${esc(limitation)}`),
         "",

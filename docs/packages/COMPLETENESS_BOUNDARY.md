@@ -10,32 +10,49 @@ The v0.3.0 package consists of exactly three supplied files: the governed rewrit
 
 ### Per-artifact limitations
 
-**PKA-001 — `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf`**
+**PKA-001 (PKG-002, SYNCHRONIZED-REFERENCE) — `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf`**
 
 - The repository holds no binary-artifact retention convention, so no byte-identical copy is stored and no repository locator exists for this file.
 - The external file carries an owner-name attribution on its cover; that attribution is not transcribed into repository records under the zero-real-PII boundary.
 - Digest verification proves file identity only; it proves nothing about the accuracy of the narrative.
 
-**PKA-002 — `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx`**
+**PKA-002 (PKG-002, SYNCHRONIZED-REFERENCE) — `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx`**
 
 - Not retained as a binary in the repository; registered by digest and governed external locator only.
 - Workbook formulas recompute inside the workbook and are not executed by any repository validation.
 
-**PKA-003 — `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt`**
+**PKA-003 (PKG-002, SYNCHRONIZED-REFERENCE) — `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt`**
 
 - The manifest declares no digest for itself; a self-hash would be circular, so its recorded digest is a measurement by this program and not a manifest claim.
 - The manifest names no DOCX or ZIP for v0.3.0.
 
 ## PKG-001 — v0.2.0 (HISTORICAL-EVIDENCE)
 
-The v0.2.0 manifest named a DOCX and a ZIP that were not supplied to this program for the v0.3.0 rewrite. Both are registered as NOT-SUPPLIED with no measured size, no digest, and no repository locator. No content of either file is inferred, quoted, or claimed.
+The v0.2.0 manifest names four artifacts: a ZIP, a DOCX, a PDF, and an XLSX. On 2026-08-19 the owner supplied three files under DEC-019 — the PDF, the XLSX, and the manifest itself — and each measured digest matched the value DEC-019 declares. The DOCX and the ZIP were not supplied, remain registered as NOT-SUPPLIED with no measured size and no digest, and no content of either is inferred, quoted, or claimed. v0.2.0 is therefore registered as a partial historical source package, not a complete copy of the four-artifact set.
 
 ### Per-artifact limitations
 
-**PKA-101 — `v0.2.0 DOCX named by the prior manifest`**
+**PKA-101 (PKG-001, HISTORICAL-EVIDENCE) — `v0.2.0 DOCX named by the prior manifest`**
 
 - Not supplied, not read, not inferred. Its exact filename and digest are unknown to this program.
 
-**PKA-102 — `v0.2.0 ZIP named by the prior manifest`**
+**PKA-102 (PKG-001, HISTORICAL-EVIDENCE) — `v0.2.0 ZIP named by the prior manifest`**
 
 - Not supplied, not read, not inferred. Its exact filename and digest are unknown to this program.
+
+**PKA-103 (PKG-001, HISTORICAL-EVIDENCE) — `SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf`**
+
+- The repository holds no binary-artifact retention convention, so no byte-identical copy is stored and no repository locator exists for this file.
+- Digest verification proves file identity only; it proves nothing about the accuracy of the narrative.
+- Only Section 11 was read as an extraction surface. No other section of this document was extracted, and nothing outside Section 11 is represented here.
+
+**PKA-104 (PKG-001, HISTORICAL-EVIDENCE) — `SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx`**
+
+- Not retained in the repository; no repository locator exists for this file.
+- No extraction surface. DEC-019 names Section 11 of the PDF only, so no workbook sheet was extracted into a requirement candidate.
+- Digest verification proves file identity only.
+
+**PKA-105 (PKG-001, HISTORICAL-EVIDENCE) — `SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt`**
+
+- A manifest cannot print its own digest, so no declared value exists for this file; the recorded digest is the executor's own measurement and matches the value DEC-019 observes.
+- The manifest names a ZIP and a DOCX that were not supplied; naming them is not evidence that they are reachable.

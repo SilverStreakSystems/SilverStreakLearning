@@ -85,12 +85,22 @@ describe("v0.3.0 package integrity", () => {
     expect(v030Types.some((type) => type.includes("wordprocessingml"))).toBe(false);
     expect(v030.completeness_boundary.toLowerCase()).toContain("not supplied");
 
+    // Cycle 4 supplied and digest-verified three of the five v0.2.0 artifacts.
+    // The DOCX and the ZIP were never supplied and must stay unmeasured.
+    const supplied = ["PKA-103", "PKA-104", "PKA-105"];
     for (const artifact of v020.artifacts) {
-      expect(artifact.retention_state).toBe("NOT-SUPPLIED");
-      expect(artifact.sha256).toBeNull();
-      expect(artifact.byte_size).toBeNull();
-      expect(artifact.integrity_state).toBe("NOT-VERIFIABLE-FILE-NOT-SUPPLIED");
+      if (supplied.includes(artifact.artifact_id)) {
+        expect(artifact.retention_state).toBe("NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR");
+        expect(artifact.sha256).toMatch(/^[0-9a-f]{64}$/);
+        expect(artifact.byte_size).toBeGreaterThan(0);
+      } else {
+        expect(artifact.retention_state).toBe("NOT-SUPPLIED");
+        expect(artifact.sha256).toBeNull();
+        expect(artifact.byte_size).toBeNull();
+        expect(artifact.integrity_state).toBe("NOT-VERIFIABLE-FILE-NOT-SUPPLIED");
+      }
     }
+    expect(v020.completeness_boundary.toLowerCase()).toContain("partial");
   });
 
   it("keeps the v0.3.0 and v0.2.0 packages distinguishable and correctly ordered", () => {
@@ -180,9 +190,9 @@ describe("package integration changed no owner-reserved state", () => {
 
   it("keeps every candidate historical requirement pre-disposition and not assessed", () => {
     const requirements = loadHistoricalRequirements();
-    expect(requirements).toHaveLength(14);
+    expect(requirements).toHaveLength(30);
     expect(requirements.map((r) => r.requirement_id)).toEqual(
-      Array.from({ length: 14 }, (_, index) => `HREQ-${String(index + 1).padStart(3, "0")}`),
+      Array.from({ length: 30 }, (_, index) => `HREQ-${String(index + 1).padStart(3, "0")}`),
     );
     for (const requirement of requirements) {
       expect(requirement.disposition).toBe("CANDIDATE-PRE-DISPOSITION");
@@ -245,6 +255,6 @@ describe("active documentation carries no stale package or gate reference", () =
     expect(currentState).toContain("PKG-002");
     expect(currentState).toContain("Gate A is not closed");
     expect(currentState).toMatch(/WP-039 is (neither created nor implied|not authorized)/);
-    expect(loadHistoricalSources()).toHaveLength(22);
+    expect(loadHistoricalSources()).toHaveLength(23);
   });
 });

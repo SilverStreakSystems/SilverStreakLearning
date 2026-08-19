@@ -53,35 +53,58 @@ describe("WP-007 requirement candidate register", () => {
     ids.forEach((id, index) => expect(id).toBe(`HREQ-${String(index + 1).padStart(3, "0")}`));
   });
 
-  it("extracts from exactly one named source that exists in the source register", () => {
+  it("extracts from exactly the two authorized sources, each in the source register", () => {
     const used = [...new Set(requirements.map((record) => record.source_id))];
-    expect(used).toEqual(["HS-011"]);
-    const source = sources.find((record) => record.source_id === "HS-011");
-    expect(source).toBeDefined();
-    expect(source?.recovery_relevance).toBe("HIGH");
-    expect(source?.access_limitation).not.toBe("NOT-ACCESSIBLE-TO-EXECUTOR");
+    expect(used).toEqual(["HS-011", "HS-023"]);
+    for (const id of used) {
+      const source = sources.find((record) => record.source_id === id);
+      expect(source).toBeDefined();
+      expect(source?.recovery_relevance).toBe("HIGH");
+      expect(source?.access_limitation).not.toBe("NOT-ACCESSIBLE-TO-EXECUTOR");
+    }
   });
 
   it("inherits source authority without promotion", () => {
-    const source = sources.find((record) => record.source_id === "HS-011");
     for (const record of requirements) {
+      const source = sources.find((entry) => entry.source_id === record.source_id);
       expect(record.inherited_authority).toBe(source?.authority_classification);
+      expect(source?.promotion_state).toBe("NOT-PROMOTED");
     }
-    expect(source?.promotion_state).toBe("NOT-PROMOTED");
   });
 
   it("binds every candidate to an exact in-source locator", () => {
     for (const record of requirements) {
-      expect(record.source_locator).toMatch(/^docs\/ACCESSIBILITY_ACCEPTANCE\.md#L\d+(-L\d+)?$/);
+      const pattern =
+        record.source_id === "HS-011"
+          ? /^docs\/ACCESSIBILITY_ACCEPTANCE\.md#L\d+(-L\d+)?$/
+          : /^PKA-103#section-11-page-(20|21)$/;
+      expect(record.source_locator).toMatch(pattern);
     }
   });
 
   it("keeps original wording verbatim and separate from the normalized summary", () => {
     const sourceText = readFileSync("docs/ACCESSIBILITY_ACCEPTANCE.md", "utf8").replace(/\s+/g, " ");
     for (const record of requirements) {
-      expect(sourceText).toContain(record.original_wording.replace(/\s+/g, " "));
+      if (record.source_id === "HS-011") {
+        expect(sourceText).toContain(record.original_wording.replace(/\s+/g, " "));
+      } else {
+        // HS-023 is a digest-bound external artifact that the repository does not
+        // retain, so the wording is carried by the record itself.
+        expect(record.original_wording.trim().length).toBeGreaterThan(0);
+      }
       expect(record.normalized_summary).not.toBe(record.original_wording);
     }
+  });
+
+  it("binds every HS-023 candidate to the digest-verified v0.2.0 PDF artifact", () => {
+    const source = sources.find((record) => record.source_id === "HS-023");
+    expect(source?.version_or_hash).toBe(
+      "2c83e6b666a2857922c6b80be830f3e3738b24b76c49ae638df2c84d6827b044",
+    );
+    const cycle4 = requirements.filter((record) => record.source_id === "HS-023");
+    expect(cycle4).toHaveLength(16);
+    expect(cycle4[0]?.requirement_id).toBe("HREQ-015");
+    expect(cycle4.at(-1)?.requirement_id).toBe("HREQ-030");
   });
 
   it("records confidence and ambiguity on every candidate", () => {
