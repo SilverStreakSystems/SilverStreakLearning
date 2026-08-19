@@ -114,7 +114,7 @@ of its own.
   was removed; semver now resolves 1.1.18 and 5.0.9 side by side, both advisory-free, and lint
   executes again at **686 problems (672 errors, 14 warnings)** — FND-014 remains open and advisory.
   Recorded as EV-029.
-- **WP-007 — Historical Requirement Conformance Recovery: IN PROGRESS, cycle 1 target MET.**
+- **WP-007 — Historical Requirement Conformance Recovery: IN PROGRESS, cycles 1 and 2 targets MET.**
   Entered under DEC-018 with Gate A open. Two entry defects were repaired first: the stale
   `docs/wp-038/HANDOFF_TO_WP-039.md` locator was renamed to `docs/wp-038/HANDOFF_TO_WP-007.md`
   with active references updated (EV-030, documentation lineage STL-006), and FND-016's structured
