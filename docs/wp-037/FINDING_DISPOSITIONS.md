@@ -63,3 +63,15 @@ WP-037 does not resolve them and must not be read as resolving them.
 Acceptance proof for FND-011 and FND-013: evaluated against a later head, ten of fourteen records
 from the `1f7c51e` run remained CURRENT purely on unchanged declared input sets, with no rebinding.
 The four STALE records were the tree-wide and docs-scoped scans, which declare those inputs by design.
+
+## Vulnerability criterion — bounded recovery pass (DEC-015)
+
+**Disposition: NOT COMPLETED. Unchanged by the recovery pass.**
+
+`bun audit` still returns HTTP 404; `EV-VULN` is preserved verbatim as a failed evidence-producing
+attempt. The recovery scan authorized by DEC-015 completed against the npm bulk advisory service
+(EV-021 / `EV-VULN-RECOVERY`, HTTP 200) and returned five unremediated high-severity advisories.
+
+*Residual:* the criterion is not satisfied by the existence of a completed scan. The findings are
+untriaged, the declared scanner still cannot execute here, and no criterion is weakened to permit
+closure. WP-037 stays HOLD.

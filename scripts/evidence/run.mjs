@@ -12,7 +12,7 @@
  *   bun run evidence:run --fast          skip build, tests, typecheck, lint
  *   bun run evidence:run --commit=<sha>  record against an explicit commit
  */
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 import { buildBaseline, renderBaselineMarkdown } from "./baseline.mjs";
@@ -34,6 +34,7 @@ import {
   collectDependencyInventory,
   collectLicensePosture,
   collectSbom,
+  collectVulnerabilityRecoveryScan,
   collectVulnerabilityScan,
 } from "./supply-chain.mjs";
 import { GENERATED_MARKER, nowIso, resolveCommit, sha256 } from "./util.mjs";
@@ -47,7 +48,7 @@ function write(relativePath, content) {
   return target;
 }
 
-function main() {
+async function main() {
   const fast = process.argv.includes("--fast");
   const commit = resolveCommit();
 
@@ -63,7 +64,14 @@ function main() {
 
   console.log(`SSLS evidence pipeline — commit ${commit}${fast ? " (fast mode)" : ""}`);
 
-  rmSync(OUTPUT_DIR, { recursive: true, force: true });
+  // Regenerate the current bundle, but never delete archived producing runs:
+  // `evidence/runs/<sha>/` records are immutable and permanently bound.
+  if (existsSync(OUTPUT_DIR)) {
+    for (const entry of readdirSync(OUTPUT_DIR)) {
+      if (entry === "runs") continue;
+      rmSync(join(OUTPUT_DIR, entry), { recursive: true, force: true });
+    }
+  }
 
   const collected = [];
   const extras = {};
@@ -97,6 +105,11 @@ function main() {
   extras.sbomComponents = sbom.componentCount;
 
   step("vulnerability scan", () => collectVulnerabilityScan(context));
+
+  process.stdout.write("  vulnerability scan (recovery source) ... ");
+  const recovery = await collectVulnerabilityRecoveryScan(context);
+  collected.push(recovery);
+  console.log(recovery.record.status);
 
   const licenses = step("licence inventory", () => collectLicensePosture(context));
   extras.licensesRequiringReview = licenses.payload.requires_legal_review;
@@ -184,4 +197,4 @@ function main() {
   process.exit(failed.length > 0 ? 1 : 0);
 }
 
-main();
+await main();

@@ -8,6 +8,7 @@ Authority class: current summary. Executor-produced, self-verified, `independent
 | --- | --- | --- | --- |
 | EV-019 | WP-037 pipeline implementation — producing run | Confirmed | Permanently bound to commit `1f7c51e`; archived at `evidence/runs/1f7c51e/` |
 | EV-020 | Public deployment reachability observation | Confirmed | Single HTTPS fetch of the published surface |
+| EV-021 | Vulnerability scan — bounded recovery pass (npm bulk advisory service) | Confirmed | Resolved versions in `bun.lock`; authorized by DEC-015 |
 | EV-018 | Predecessor owner-authorization pass | Confirmed | Commit `c1f0601` (WP-006 lineage) |
 
 ## Pipeline-produced execution records (`evidence/records/`)
@@ -22,7 +23,8 @@ Authority class: current summary. Executor-produced, self-verified, `independent
 | EV-DEPS | DEPENDENCY_INVENTORY | pass |
 | EV-SBOM | SBOM | pass — CycloneDX JSON |
 | EV-LICENSE | LICENSE_SCAN | pass — inventory only, no legal opinion |
-| EV-VULN | VULNERABILITY_SCAN | **not-completed** — external advisory feed unavailable |
+| EV-VULN | VULNERABILITY_SCAN | **not-completed** — `bun audit` advisory endpoint returned HTTP 404; preserved verbatim as a failed attempt |
+| EV-VULN-RECOVERY | VULNERABILITY_SCAN | review-required — HTTP 200; 5 matched high-severity advisories, unremediated and untriaged |
 | EV-SECRET | SECRET_SCAN | pass — digests and locations only, never matched values |
 | EV-PII | PII_BOUNDARY_SCAN | pass — synthetic-data boundary |
 | EV-PROVENANCE | SOURCE_PROVENANCE | pass |
@@ -38,4 +40,6 @@ Authority class: current summary. Executor-produced, self-verified, `independent
 ## Immutability
 
 Records are bound to the commit and input hashes at which they executed. They are superseded, never
-rewritten. `EV-VULN` is preserved exactly as produced, including its NOT COMPLETED result.
+rewritten. `EV-VULN` is preserved exactly as produced, including its NOT COMPLETED result. `EV-VULN-RECOVERY`
+is additive and does not supersede it. `EV-019` stays permanently bound to `1f7c51e` with
+`independent = false`.
