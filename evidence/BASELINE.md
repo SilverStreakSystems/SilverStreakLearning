@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-19T05:09:20.533Z |
-| Commit | `8edaf87f1b3a07e283b6d99cd3b8cfd4f76910a1` |
-| Tree hash | `62192ffa99d62a6a2a0b136337b06cfd82aef890` |
+| Generated at | 2026-08-19T05:12:19.466Z |
+| Commit | `835cc6ea666538ba24495272e4bc02b2b18dc2f2` |
+| Tree hash | `74b7c64a3e2a5c7a04a4035fee084a2815216f58` |
 | Working tree dirty | true |
-| Input-set digest | `b3c448a635890999974ffc038b44879365859d8d4541fcae58b9c31874be187b` |
+| Input-set digest | `9f2c021b8bdbb047cb2cfb45d33bd31821d5ddfa15e9c8ab2450e32a89e31eae` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,21 +18,21 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 403 |
-| Tracked files | 470 |
+| Commits | 408 |
+| Tracked files | 448 |
 | Source files | 213 |
 | Test files | 10 |
 | Route modules | 31 |
-| Documentation files | 148 |
+| Documentation files | 152 |
 
 ## Derived state
 
 | Subject | Recorded result |
 |---|---|
-| Build | Exit code 0. Duration 6538 ms. |
-| Tests | Exit code 0. Test counts not parsed.  Duration 15030 ms. |
+| Build | Exit code 0. Duration 6790 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 17647 ms. |
 | Type check | Exit code 0. |
-| Lint | 687 problems across 104 files: 673 errors, 14 warnings, 668 auto-fixable. |
+| Lint | 677 problems across 103 files: 663 errors, 14 warnings, 658 auto-fixable. |
 | Routes | 29 |
 | SBOM components | 74 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
