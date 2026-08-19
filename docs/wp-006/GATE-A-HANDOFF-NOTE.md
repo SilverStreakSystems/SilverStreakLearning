@@ -1,20 +1,20 @@
 # Gate A Handoff Note — WP-006 to WP-037
 
-Prepared at commit `9a257f754e97b9cddf9a474009c5947488102c04`, 2026-08-19.
-This note takes effect only if WP-006 is owner-closed. WP-037 is not started here.
+Prepared at commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a`, 2026-08-19.
+In effect: WP-006 is owner-closed by DEC-014. WP-037 is NEXT ELIGIBLE and is **not** started here.
 
 ## Next eligible work package
 
-**WP-037 — Evidence & Verification Pipeline**, eligible on owner closure of WP-006 and not before.
+**WP-037 — Evidence & Verification Pipeline**. Eligibility condition satisfied by DEC-014. Not executed.
 
 ## Inputs WP-037 inherits
 
 | Input | Where it lives | Condition on inheritance |
 |---|---|---|
-| Go-forward repository identity | `PROVENANCE_REPORT.md`, `REPOSITORY_MANIFEST.md` | Authoritative only once DEC-010 is accepted; until then it is a recommendation |
-| Current baseline manifest | `SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md`, `BUILD_MANIFEST.md` | Candidate authority; bound to `9a257f7` |
+| Go-forward repository identity | `PROVENANCE_REPORT.md`, `REPOSITORY_MANIFEST.md` | Authoritative under DEC-010 (accepted 2026-08-19) |
+| Current baseline manifest | `SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md`, `BUILD_MANIFEST.md` | Candidate authority; bound to `c1f0601` |
 | Evidence schema | `EVIDENCE_INDEX.md` plus the in-app evidence record shape | Method separation must be preserved: automated, document review, executor observation, independent |
-| Binding lineage | EV-013 (`70c1f89`, stale), EV-014 (`6aa254e`, stale), EV-015 (guard), EV-016 (`9a257f7`, current), EV-017 (negative control) | Historical evidence is never rebound; only current summaries are |
+| Binding lineage | EV-013 (`70c1f89`, stale), EV-014 (`6aa254e`, stale), EV-015 (guard), EV-016 (`c1f0601`, current), EV-017 (negative control) | Historical evidence is never rebound; only current summaries are |
 | Binding-guard implementation | `scripts/ssot-binding.mjs`, `scripts/check-ssot-binding.mjs`, `.github/workflows/ssot-binding.yml`, `src/test/ssot-binding.test.ts` | Reuse rather than replace; the parser is the current contract for declaration forms |
 | Semantic-freshness limitation | FND-013, `SSOT_BINDING_GUARD.md` | Open. WP-037 is the intended resolver |
 | Declaration-drift limitation | FND-011 | Open. Expected to be dissolved by the split below rather than patched |
