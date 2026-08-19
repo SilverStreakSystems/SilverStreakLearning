@@ -1,5 +1,5 @@
 /**
- * WP-007 cycle 5 documentation projection.
+ * WP-007 cycle 5 review packet and cycle 6 owner disposition projection.
  *
  * The canonical data lives in `data/historical/fnd-022-owner-review.json`.
  * This document is generated from it and must never be hand-edited.
@@ -18,13 +18,30 @@ function esc(value: string): string {
 function main() {
   const packet = loadOwnerReviewFile();
   const options = (list: readonly string[]) => list.join(" · ");
+  const counts = new Map<string, number>();
+  for (const candidate of packet.candidates) {
+    counts.set(candidate.owner_disposition, (counts.get(candidate.owner_disposition) ?? 0) + 1);
+  }
+  const dispositionCounts = [...counts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 
   const body = [
-    "# FND-022 owner disposition packet — WP-007 Cycle 5",
+    "# FND-022 owner disposition packet — WP-007 Cycle 5 review, Cycle 6 dispositions recorded",
     "",
     "> Generated from `data/historical/fnd-022-owner-review.json` by",
     "> `scripts/gen-fnd-022-packet.ts`. Do not edit by hand.",
-    "> This packet prepares a decision. It records none.",
+    "> Cycle 5 prepared the decision. Cycle 6 transcribes the owner decision",
+    "> recorded as DEC-020 in `data/historical/fnd-022-owner-dispositions.json`.",
+    "> This document originates no decision.",
+    "",
+    "## Owner decision of record",
+    "",
+    `- Decision: ${packet.owner_decision.decision_id}, recorded ${packet.owner_decision.recorded_on} by ${packet.owner_decision.recorded_by}.`,
+    `- Canonical record: \`${packet.owner_decision.canonical_record}\`.`,
+    `- ${packet.owner_decision.note}`,
+    "",
+    "| Disposition | Candidates |",
+    "| --- | --- |",
+    ...dispositionCounts.map(([value, count]) => `| ${value} | ${count} |`),
     "",
     "## Packet boundary",
     "",
@@ -84,8 +101,8 @@ function main() {
       `- ${c.advisory_recommendation}`,
       `- ${c.advisory_rationale}`,
       `- Owner options: ${options(c.owner_options)}`,
-      `- Owner disposition: _not recorded_`,
-      `- Owner rationale: _not recorded_`,
+      `- Owner disposition (${packet.owner_decision.decision_id}): ${c.owner_disposition}`,
+      `- Owner rationale: ${c.owner_rationale}`,
       "",
     ]),
     "## Restatement row review",
@@ -96,7 +113,7 @@ function main() {
       (r) =>
         `| ${r.relation_id} | ${r.historical_candidate} | ${r.relationship_classification} | ${
           r.mapped_current_requirement ?? "none found"
-        } | ${esc(r.owner_question)} | not recorded |`,
+        } | ${esc(r.owner_question)} | ${r.owner_disposition} |`,
     ),
     "",
     "Every row above preserves its Cycle 4 classification unchanged. Full rationale,",
@@ -107,7 +124,7 @@ function main() {
     "| Requirement | Owner question | Disposition |",
     "| --- | --- | --- |",
     ...packet.unmatched_current_candidates.map(
-      (u) => `| ${u.requirement_id} | ${esc(u.owner_question)} | not recorded |`,
+      (u) => `| ${u.requirement_id} | ${esc(u.owner_question)} | ${u.owner_disposition} — ${esc(u.owner_rationale)} |`,
     ),
     "",
     "## Refused in this cycle",

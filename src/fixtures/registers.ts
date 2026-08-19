@@ -349,13 +349,28 @@ export const FINDINGS: FindingRecord[] = [
     description:
       "WP-007 Cycle 4 executed its locked target under DEC-019. The three authorized August 5 v0.2.0 inputs were supplied and each measured digest matched the declared value (EV-039); PKG-001 now carries PKA-103, PKA-104, and PKA-105 as verified, with the DOCX and ZIP still not supplied; HS-023 is registered as a historical source; HREQ-015 through HREQ-030 were extracted verbatim from Section 11 of the v0.2.0 PDF; and data/historical/restatement-index.json records seventeen relationships between the HS-023 and HS-011 candidates (EV-040). Every candidate remains CANDIDATE-PRE-DISPOSITION and NOT-ASSESSED, and every restatement row is a read relationship only. Only a recorded owner decision can dispose of a candidate, elect a controlling wording, or resolve a conflict.",
     boundary:
-      "This record states an open owner obligation. It does not dispose of any candidate, does not merge or supersede any wording, does not promote HS-023 or PKG-001, does not close WP-007, does not advance Gate A, does not authorize WP-039, and asserts no accessibility conformance of any kind.",
+      "This record states an owner obligation that has been discharged by DEC-020. Discharge records that a disposition exists. It does not implement or assess any candidate, does not promote HS-023 or PKG-001, does not close WP-007, does not advance Gate A, does not authorize WP-039 or a further cycle, and asserts no accessibility conformance of any kind.",
+    resolutionState: "confirmed",
+    requiredDecision: null,
+    evidenceReferences: ["EV-039", "EV-040", "EV-041", "EV-042"],
+    synthetic: false,
+  },
+  {
+    id: "FND-023",
+    title:
+      "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "DEC-020 disposed of HREQ-025 as NEEDS-EVIDENCE / DEFER: the historical wording 'touch targets appropriate to context' names no minimum dimension, no exceptions, and no verification method, so it cannot be tested as worded. The deferral is recorded in data/historical/fnd-022-owner-dispositions.json, which names what is required before reconsideration: a named touch-target dimension, the exceptions that apply to it, and a stated verification method. This record carries that open gap so it is not lost when FND-022 is discharged.",
+    boundary:
+      "This record states an open evidence gap only. It does not adopt, reject, or reinstate HREQ-025, does not block the deferral, does not require any interface change, does not close or reopen WP-007 or Gate A, and asserts no accessibility conformance.",
     resolutionState: "blocked",
     requiredDecision:
-      "Record a disposition for the WP-007 Cycle 4 candidates and restatement index, and state whether a further cycle is authorized.",
-    ownerPriorityDirective:
-      "Recorded owner instruction of 2026-08-19: WP-007 cannot advance until this disposition is recorded, so it is the highest-priority open action.",
-    evidenceReferences: ["EV-039", "EV-040", "EV-041"],
+      "Record a testable touch-target dimension, its exceptions, and a verification method, or record that HREQ-025 stays deferred.",
+    evidenceReferences: ["EV-042"],
     synthetic: false,
   },
 ];
@@ -985,6 +1000,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-042",
+    title: "WP-007 Cycle 6 FND-022 owner disposition recording and mechanical validation",
+    kind: "automated-test",
+    subject:
+      "data/historical/fnd-022-owner-dispositions.json, the transcribed owner fields of data/historical/fnd-022-owner-review.json, and the regenerated projection docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md, checked against the governed Cycle 4 registers and the two JSON Schema documents that bind them.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Automated run",
+    state: "confirmed",
+    supports:
+      "That the owner dispositions recorded in DEC-020 are transcribed for all sixteen candidates HREQ-015 through HREQ-030, all seventeen restatement rows RST-001 through RST-017, and all three unmatched HS-011 rows, with candidate totals of five RETAIN-HISTORICAL, three MERGE-OR-RESTATEMENT, seven ADOPT-AS-CANDIDATE, one NEEDS-EVIDENCE / DEFER and zero NARROW, SUPERSEDE, or REJECT; that every extracted wording, source identity, digest, locator, and Cycle 4 relationship classification is unchanged; that the review packet and the canonical disposition record agree item by item; and that the generated Markdown projection reproduces byte-identically from the JSON.",
+    doesNotSupport:
+      "That any candidate is implemented, satisfied, tested, or assessed; that HS-023 gained promotion or PKG-001 gained completeness; that EV-003 was run; that WP-007 or Gate A closed; that WP-039 or any further cycle is authorized; or that any WCAG, ADA Title II, Section 508, or accessibility conformance claim is made. Executor-run, method schema-bound transcription plus automated cross-register reconciliation, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 export const DECISIONS: DecisionRecord[] = [
@@ -1401,6 +1432,30 @@ export const DECISIONS: DecisionRecord[] = [
       "Cycle 4 is authorized as scoped and is bounded to the named August 5 v0.2.0 inputs and to Section 11 — Accessibility of the authorized v0.2.0 PDF.",
       "FND-020 carries a proposition broader than Cycle 3 review alone, so under the owner's own instruction it is neither closed nor rewritten by this decision; its lineage is preserved unchanged.",
       "No historical source is promoted, no HREQ receives an owner disposition, and no finding is closed by this decision.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "WP-007"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-020",
+    title: "Record the FND-022 owner disposition matrix for the WP-007 Cycle 4 historical candidates",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
+    context:
+      "WP-007 Cycle 5 assembled the sixteen HS-023 candidates HREQ-015 through HREQ-030, the seventeen cross-source restatement rows RST-001 through RST-017, and the three unmatched HS-011 rows into the schema-bound review packet recorded as EV-041, with every owner field null. The owner authorized one bounded Cycle 6 disposition pass covering all three sets and supplied the decisions verbatim.",
+    decision:
+      "RECORDED BY OWNER. The complete disposition matrix is transcribed to data/historical/fnd-022-owner-dispositions.json and projected into data/historical/fnd-022-owner-review.json and docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md. Candidates: RETAIN-HISTORICAL for HREQ-015, HREQ-017, HREQ-019, HREQ-023, and HREQ-027; MERGE-OR-RESTATEMENT for HREQ-016, HREQ-022, and HREQ-026, recording lineage to the controlling current requirements and creating no duplicate active requirement; ADOPT-AS-CANDIDATE for HREQ-018, HREQ-020, HREQ-021, HREQ-024, HREQ-028, HREQ-029, and HREQ-030, each remaining a candidate and NOT-ASSESSED; NEEDS-EVIDENCE / DEFER for HREQ-025. Rows RST-001 through RST-017 carry the conclusions the owner stated, with every Cycle 4 classification preserved. The three unmatched HS-011 rows HREQ-005, HREQ-013, and HREQ-014 carry NO-ACTION-CURRENT-STANDS and keep their current authority unchanged. This decision closes neither WP-007 nor Gate A, authorizes neither WP-039 nor any Cycle 7, implements nothing, promotes nothing, and makes no accessibility, security, legal, district-readiness, or release claim.",
+    consequences: [
+      "FND-022 is discharged; the obligation it carried is recorded as decided, evidenced by EV-042.",
+      "The seven ADOPT-AS-CANDIDATE outcomes remain candidates that are NOT-ASSESSED and NOT-IMPLEMENTED; adoption states intent to govern the wording, not that the build satisfies it.",
+      "The deferred touch-target gap behind HREQ-025 is carried forward as FND-023 and remains open.",
+      "HS-023 remains NOT-PROMOTED, PKG-001 remains PARTIAL with the DOCX and ZIP not supplied, and EV-003 remains NOT-RUN.",
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039 remains NOT AUTHORIZED; no successor cycle is authorized.",
     ],
     authorityClass: "current-summary",
     recordState: "current",

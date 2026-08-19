@@ -1,0 +1,452 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_on": "2026-08-19",
+  "recorded_by": "Founder / Operator",
+  "decision_id": "DEC-020",
+  "finding_id": "FND-022",
+  "work_package": "WP-007",
+  "cycle": "Cycle 6",
+  "authority_note": "The dispositions below are the owner's recorded decisions of 2026-08-19, transcribed without substitution, reinterpretation, expansion, or omission. The executor holds no authority to dispose of a candidate; this file records what the owner decided and nothing else.",
+  "boundary": "This record states owner dispositions only. It does not implement any adopted candidate, does not assert that any candidate is met, tested, or implemented, does not promote HS-023, does not complete PKG-001, does not change any Cycle 4 relationship classification, does not alter any extracted wording, provenance, digest, or locator, does not close WP-007 or Gate A, does not authorize WP-039 or any successor cycle, and asserts no WCAG, ADA Title II, Section 508, accessibility, security, legal, district-readiness, or release conformance of any kind.",
+  "disposition_vocabulary": [
+    "RETAIN-HISTORICAL",
+    "ADOPT-AS-CANDIDATE",
+    "MERGE-OR-RESTATEMENT",
+    "NARROW",
+    "SUPERSEDE",
+    "REJECT",
+    "NEEDS-EVIDENCE / DEFER"
+  ],
+  "unmatched_conclusion_vocabulary": [
+    "NO-ACTION-CURRENT-STANDS"
+  ],
+  "candidate_dispositions": [
+    {
+      "candidate_id": "HREQ-015",
+      "exact_text": "Minimum target: WCAG 2.2 AA-informed implementation, without an independent conformance claim until tested.",
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "DEC-012 remains the sole controlling statement of the WCAG 2.2 Level AA internal target; HREQ-015 remains historical corroboration and creates no second target or conformance claim.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-016",
+      "exact_text": "semantic headings and landmarks",
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "Preserve HREQ-001 and HREQ-002 as the controlling, more testable expectations; record HREQ-016 as historical lineage, not a third requirement.",
+      "controlling_requirement_ids": [
+        "HREQ-001",
+        "HREQ-002"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-017",
+      "exact_text": "skip link",
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-003 remains controlling because it states the skip-link position and target more specifically.",
+      "controlling_requirement_ids": [
+        "HREQ-003"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-018",
+      "exact_text": "keyboard-operable navigation and controls",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry keyboard operability for navigation and controls forward as a governed candidate requiring definition of the control set and an acceptance test before implementation or conformance assessment.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-019",
+      "exact_text": "visible focus",
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-006 remains controlling as the stronger dual-color visible-focus rule.",
+      "controlling_requirement_ids": [
+        "HREQ-006"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-020",
+      "exact_text": "programmatic names",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry programmatic names forward as a governed candidate requiring scoped elements and a verification method.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-021",
+      "exact_text": "table captions and header cells",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry table captions and header cells forward as a governed candidate requiring table scope and caption/visible-heading rules.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-022",
+      "exact_text": "status not conveyed by color alone",
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "Treat both sources as one prohibition; HREQ-007 remains the controlling current wording.",
+      "controlling_requirement_ids": [
+        "HREQ-007"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-023",
+      "exact_text": "contrast review",
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-012 remains controlling; the historical phrase contrast review adds no measurable ratio, tool, owner, or cadence.",
+      "controlling_requirement_ids": [
+        "HREQ-012"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-024",
+      "exact_text": "200% zoom and 320-pixel reflow",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry the 200% zoom and 320-pixel reflow expectation forward as a governed candidate; measurement environment and pass conditions remain required before assessment.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-025",
+      "exact_text": "touch targets appropriate to context",
+      "owner_disposition": "NEEDS-EVIDENCE / DEFER",
+      "owner_rationale": "Do not adopt an untestable appropriate-to-context rule. Preserve the gap requiring a named touch-target dimension, exceptions, and verification method.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-026",
+      "exact_text": "reduced-motion support",
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "Record one reduced-motion expectation with two sources; HREQ-009 remains controlling until a more testable formulation is approved.",
+      "controlling_requirement_ids": [
+        "HREQ-009"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-027",
+      "exact_text": "no content loss in horizontal table scrolling",
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "Treat horizontal table scrolling as historical evidence of a narrower case already governed by HREQ-008; do not weaken HREQ-008.",
+      "controlling_requirement_ids": [
+        "HREQ-008"
+      ],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-028",
+      "exact_text": "plain-language refusal and error states",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry plain-language refusal and error states forward as a governed candidate requiring an approved plain-language measure or style rule.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-029",
+      "exact_text": "no auto-updating content without announcement",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry announcement of auto-updating content forward as a governed candidate before any live-updating surface is built; announcement mechanism and target assistive technology remain undefined.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    },
+    {
+      "candidate_id": "HREQ-030",
+      "exact_text": "Accessibility evidence must include scenario, browser/assistive technology where used, result, finding, and version.",
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry the accessibility-evidence field set forward as a governed candidate. It governs evidence structure only and does not imply evidence exists; EV-003 remains NOT-RUN.",
+      "controlling_requirement_ids": [],
+      "post_disposition_state": {
+        "extraction_record_unchanged": true,
+        "conformance_state": "NOT-ASSESSED",
+        "promotion_state": "NOT-PROMOTED",
+        "implementation_state": "NOT-IMPLEMENTED"
+      }
+    }
+  ],
+  "relationship_row_conclusions": [
+    {
+      "relation_id": "RST-001",
+      "historical_candidate": "HREQ-016",
+      "cycle4_classification": "RESTATES",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "MERGE-OR-RESTATEMENT",
+      "controlling_requirement": "HREQ-001",
+      "note": "HREQ-001 controlling."
+    },
+    {
+      "relation_id": "RST-002",
+      "historical_candidate": "HREQ-016",
+      "cycle4_classification": "BROADENS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "MERGE-OR-RESTATEMENT",
+      "controlling_requirement": "HREQ-002",
+      "note": "HREQ-002 remains the narrower controlling heading rule."
+    },
+    {
+      "relation_id": "RST-003",
+      "historical_candidate": "HREQ-017",
+      "cycle4_classification": "BROADENS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "RETAIN-HISTORICAL",
+      "controlling_requirement": "HREQ-003",
+      "note": "HREQ-003 controlling."
+    },
+    {
+      "relation_id": "RST-004",
+      "historical_candidate": "HREQ-018",
+      "cycle4_classification": "BROADENS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Extension to controls carried forward, not implemented."
+    },
+    {
+      "relation_id": "RST-005",
+      "historical_candidate": "HREQ-019",
+      "cycle4_classification": "BROADENS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "RETAIN-HISTORICAL",
+      "controlling_requirement": "HREQ-006",
+      "note": "HREQ-006 controlling."
+    },
+    {
+      "relation_id": "RST-006",
+      "historical_candidate": "HREQ-022",
+      "cycle4_classification": "RESTATES",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "MERGE-OR-RESTATEMENT",
+      "controlling_requirement": "HREQ-007",
+      "note": "HREQ-007 controlling with dual-source lineage."
+    },
+    {
+      "relation_id": "RST-007",
+      "historical_candidate": "HREQ-023",
+      "cycle4_classification": "BROADENS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "RETAIN-HISTORICAL",
+      "controlling_requirement": "HREQ-012",
+      "note": "HREQ-012 controlling."
+    },
+    {
+      "relation_id": "RST-008",
+      "historical_candidate": "HREQ-024",
+      "cycle4_classification": "NARROWS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Numeric 320-pixel narrowing remains a candidate."
+    },
+    {
+      "relation_id": "RST-009",
+      "historical_candidate": "HREQ-026",
+      "cycle4_classification": "RESTATES",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "MERGE-OR-RESTATEMENT",
+      "controlling_requirement": "HREQ-009",
+      "note": "HREQ-009 controlling with dual-source lineage."
+    },
+    {
+      "relation_id": "RST-010",
+      "historical_candidate": "HREQ-027",
+      "cycle4_classification": "NARROWS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "RETAIN-HISTORICAL",
+      "controlling_requirement": "HREQ-008",
+      "note": "HREQ-008 remains the broader controlling rule."
+    },
+    {
+      "relation_id": "RST-011",
+      "historical_candidate": "HREQ-030",
+      "cycle4_classification": "BROADENS",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Evidence-shape rule carried forward without asserting evidence exists."
+    },
+    {
+      "relation_id": "RST-012",
+      "historical_candidate": "HREQ-015",
+      "cycle4_classification": "NEW",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "RETAIN-HISTORICAL",
+      "controlling_requirement": null,
+      "note": "DEC-012 controlling."
+    },
+    {
+      "relation_id": "RST-013",
+      "historical_candidate": "HREQ-020",
+      "cycle4_classification": "NEW",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Carried forward as a governed candidate."
+    },
+    {
+      "relation_id": "RST-014",
+      "historical_candidate": "HREQ-021",
+      "cycle4_classification": "NEW",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Carried forward as a governed candidate."
+    },
+    {
+      "relation_id": "RST-015",
+      "historical_candidate": "HREQ-025",
+      "cycle4_classification": "NEW",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "NEEDS-EVIDENCE / DEFER",
+      "controlling_requirement": null,
+      "note": "Deferred pending a named touch-target dimension, exceptions, and verification method."
+    },
+    {
+      "relation_id": "RST-016",
+      "historical_candidate": "HREQ-028",
+      "cycle4_classification": "NEW",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Carried forward as a governed candidate."
+    },
+    {
+      "relation_id": "RST-017",
+      "historical_candidate": "HREQ-029",
+      "cycle4_classification": "NEW",
+      "cycle4_classification_preserved": true,
+      "owner_conclusion": "ADOPT-AS-CANDIDATE",
+      "controlling_requirement": null,
+      "note": "Carried forward as a governed candidate."
+    }
+  ],
+  "unmatched_conclusions": [
+    {
+      "requirement_id": "HREQ-005",
+      "source_id": "HS-011",
+      "owner_conclusion": "NO-ACTION-CURRENT-STANDS",
+      "owner_rationale": "HREQ-005 remains unchanged and controlling. Absence from HS-023 is silence, not supersession.",
+      "authority_unchanged": true
+    },
+    {
+      "requirement_id": "HREQ-013",
+      "source_id": "HS-011",
+      "owner_conclusion": "NO-ACTION-CURRENT-STANDS",
+      "owner_rationale": "HREQ-013 remains unchanged as adopted-standard authority framing and stays outside historical restatement disposition.",
+      "authority_unchanged": true
+    },
+    {
+      "requirement_id": "HREQ-014",
+      "source_id": "HS-011",
+      "owner_conclusion": "NO-ACTION-CURRENT-STANDS",
+      "owner_rationale": "HREQ-014 remains unchanged as the controlling compliance-claim refusal. The refusal embedded in HREQ-015 is subordinate historical corroboration, not a second controlling refusal.",
+      "authority_unchanged": true
+    }
+  ],
+  "totals": {
+    "candidate_count": 16,
+    "RETAIN-HISTORICAL": 5,
+    "MERGE-OR-RESTATEMENT": 3,
+    "ADOPT-AS-CANDIDATE": 7,
+    "NEEDS-EVIDENCE / DEFER": 1,
+    "NARROW": 0,
+    "SUPERSEDE": 0,
+    "REJECT": 0,
+    "relationship_row_count": 17,
+    "unmatched_conclusion_count": 3
+  },
+  "deferred_evidence_gap": {
+    "candidate_id": "HREQ-025",
+    "finding_id": "FND-023",
+    "gap": "The historical wording 'touch targets appropriate to context' names no minimum dimension, no exceptions, and no verification method, so it cannot be tested as worded.",
+    "required_before_reconsideration": "A named touch-target dimension, the exceptions that apply to it, and a stated verification method."
+  },
+  "non_effects": [
+    "No candidate is implemented, satisfied, tested, or assessed by this record.",
+    "HS-023 remains NOT-PROMOTED and PKG-001 remains PARTIAL.",
+    "EV-003 remains NOT-RUN.",
+    "No Cycle 4 relationship classification, extracted wording, provenance value, digest, or locator is changed.",
+    "WP-007 is not closed, Gate A is not closed, WP-039 is not authorized, and no Cycle 7 is authorized.",
+    "No accessibility, WCAG, ADA Title II, Section 508, security, legal, district-readiness, production-readiness, or release claim is made."
+  ]
+}

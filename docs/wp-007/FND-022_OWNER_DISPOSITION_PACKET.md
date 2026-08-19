@@ -1,24 +1,39 @@
-# FND-022 owner disposition packet — WP-007 Cycle 5
+# FND-022 owner disposition packet — WP-007 Cycle 5 review, Cycle 6 dispositions recorded
 
 > Generated from `data/historical/fnd-022-owner-review.json` by
 > `scripts/gen-fnd-022-packet.ts`. Do not edit by hand.
-> This packet prepares a decision. It records none.
+> Cycle 5 prepared the decision. Cycle 6 transcribes the owner decision
+> recorded as DEC-020 in `data/historical/fnd-022-owner-dispositions.json`.
+> This document originates no decision.
+
+## Owner decision of record
+
+- Decision: DEC-020, recorded 2026-08-19 by Founder / Operator.
+- Canonical record: `data/historical/fnd-022-owner-dispositions.json`.
+- Owner fields below are transcribed from the canonical Cycle 6 disposition record. This packet remains a projection surface and originates no decision.
+
+| Disposition | Candidates |
+| --- | --- |
+| ADOPT-AS-CANDIDATE | 7 |
+| MERGE-OR-RESTATEMENT | 3 |
+| NEEDS-EVIDENCE / DEFER | 1 |
+| RETAIN-HISTORICAL | 5 |
 
 ## Packet boundary
 
-Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things.
+Projection surface only. Every descriptive field in this record is copied unchanged from a governed register or is non-binding executor analysis, and every owner field is transcribed unchanged from the canonical Cycle 6 disposition record. No field in this packet originates a disposition, promotes a source, completes a package, implements or assesses any candidate, changes any Cycle 4 classification, or asserts any accessibility conformance. Only a recorded owner decision may dispose of anything, and DEC-020 is the decision this packet transcribes.
 
 ## Authority
 
-DEC-019 is the accepted authority for the Cycle 4 extraction this packet reviews. This packet is prepared under a bounded Cycle 5 owner instruction that authorizes preparation of a non-dispositive review packet only. It carries no authority of its own and records no owner decision.
+DEC-019 is the accepted authority for the Cycle 4 extraction this packet reviews. DEC-020 is the accepted authority for the owner dispositions transcribed into the owner fields below. This packet carries no authority of its own: it prepared a decision in Cycle 5 and reports one in Cycle 6.
 
 ## Advisory notice
 
-Every advisory_recommendation and advisory_rationale field in this packet is NON-BINDING executor analysis. It is not an owner decision, does not preselect an owner option, and is written into no governed disposition field anywhere in this repository.
+Every advisory_recommendation and advisory_rationale field in this packet is NON-BINDING executor analysis. It is not an owner decision, does not preselect an owner option, and is written into no governed disposition field anywhere in this repository. The advisory fields are preserved unchanged for audit comparison against the recorded owner decisions; where they differ, the owner decision governs.
 
 ## Owner option vocabulary
 
-The repository has no controlled owner-disposition vocabulary for historical candidates. The seven options presented here are plain-language review options only. They are not governed status values, they are not written into any register, and presenting them assigns nothing.
+The seven options presented on each item are the plain-language review vocabulary the owner was offered in Cycle 5, and the unmatched current rows carry the separate conclusion NO-ACTION-CURRENT-STANDS. Presenting an option assigns nothing; only the owner value recorded in DEC-020 and transcribed here states what was decided.
 
 Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER.
 
@@ -65,8 +80,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: RETAIN-HISTORICAL
 - NON-BINDING analysis only. DEC-012 is the accepted, current statement of the target. Adopting a 2026-08-05 historical restatement of the same target would create a second source of truth for one concept without adding a testable expectation.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): RETAIN-HISTORICAL
+- Owner rationale: DEC-012 remains the sole controlling statement of the WCAG 2.2 Level AA internal target; HREQ-015 remains historical corroboration and creates no second target or conformance claim.
 
 ### HREQ-016 — accessibility-interface (MUST as worded)
 
@@ -86,8 +101,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: MERGE-OR-RESTATEMENT
 - NON-BINDING analysis only. The historical wording says nothing the two HS-011 rows do not already say more precisely; recording it as a restatement preserves lineage without adding a duplicate expectation.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): MERGE-OR-RESTATEMENT
+- Owner rationale: Preserve HREQ-001 and HREQ-002 as the controlling, more testable expectations; record HREQ-016 as historical lineage, not a third requirement.
 
 ### HREQ-017 — accessibility-interface (MUST as worded)
 
@@ -107,8 +122,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: RETAIN-HISTORICAL
 - NON-BINDING analysis only. Adopting a less specific wording alongside a more specific one weakens the testable rule without adding information.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): RETAIN-HISTORICAL
+- Owner rationale: HREQ-003 remains controlling because it states the skip-link position and target more specifically.
 
 ### HREQ-018 — accessibility-interface (MUST as worded)
 
@@ -128,8 +143,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. The extension to controls is a substantive addition, not a restatement, and it is testable once a control set is named.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry keyboard operability for navigation and controls forward as a governed candidate requiring definition of the control set and an acceptance test before implementation or conformance assessment.
 
 ### HREQ-019 — accessibility-interface (MUST as worded)
 
@@ -149,8 +164,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: RETAIN-HISTORICAL
 - NON-BINDING analysis only. The current row is the stronger and more specific statement of the same expectation.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): RETAIN-HISTORICAL
+- Owner rationale: HREQ-006 remains controlling as the stronger dual-color visible-focus rule.
 
 ### HREQ-020 — accessibility-interface (MUST as worded)
 
@@ -170,8 +185,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. It closes a named gap in the current contract and is mechanically checkable for a defined element set.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry programmatic names forward as a governed candidate requiring scoped elements and a verification method.
 
 ### HREQ-021 — accessibility-interface (MUST as worded)
 
@@ -191,8 +206,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. The interface is table-dense and no current row covers table semantics.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry table captions and header cells forward as a governed candidate requiring table scope and caption/visible-heading rules.
 
 ### HREQ-022 — accessibility-interface (PROHIBITION as worded)
 
@@ -212,8 +227,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: MERGE-OR-RESTATEMENT
 - NON-BINDING analysis only. Two identical prohibitions should be recorded as one expectation with two sources rather than two rules.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): MERGE-OR-RESTATEMENT
+- Owner rationale: Treat both sources as one prohibition; HREQ-007 remains the controlling current wording.
 
 ### HREQ-023 — accessibility-interface (MUST as worded)
 
@@ -233,8 +248,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: RETAIN-HISTORICAL
 - NON-BINDING analysis only. An unquantified activity is weaker than the measured ratio the current row already states.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): RETAIN-HISTORICAL
+- Owner rationale: HREQ-012 remains controlling; the historical phrase contrast review adds no measurable ratio, tool, owner, or cadence.
 
 ### HREQ-024 — accessibility-interface (MUST as worded)
 
@@ -254,8 +269,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. It is the single most testable addition in the historical set and directly supports the existing mobile-viewport rule.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry the 200% zoom and 320-pixel reflow expectation forward as a governed candidate; measurement environment and pass conditions remain required before assessment.
 
 ### HREQ-025 — accessibility-interface (MUST as worded)
 
@@ -275,8 +290,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: NEEDS-EVIDENCE / DEFER
 - NON-BINDING analysis only. Adopting an untestable sizing rule would add an expectation no evidence could ever discharge; a decision needs a named minimum first.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): NEEDS-EVIDENCE / DEFER
+- Owner rationale: Do not adopt an untestable appropriate-to-context rule. Preserve the gap requiring a named touch-target dimension, exceptions, and verification method.
 
 ### HREQ-026 — accessibility-interface (MUST as worded)
 
@@ -296,8 +311,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: MERGE-OR-RESTATEMENT
 - NON-BINDING analysis only. One expectation with two sources is clearer than two identical rows.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): MERGE-OR-RESTATEMENT
+- Owner rationale: Record one reduced-motion expectation with two sources; HREQ-009 remains controlling until a more testable formulation is approved.
 
 ### HREQ-027 — accessibility-interface (PROHIBITION as worded)
 
@@ -317,8 +332,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: RETAIN-HISTORICAL
 - NON-BINDING analysis only. The current prohibition already covers this case more broadly; recording the narrow case as history avoids weakening it.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): RETAIN-HISTORICAL
+- Owner rationale: Treat horizontal table scrolling as historical evidence of a narrower case already governed by HREQ-008; do not weaken HREQ-008.
 
 ### HREQ-028 — accessibility-interface (MUST as worded)
 
@@ -338,8 +353,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. It matches existing practice and would make that practice a stated, reviewable expectation rather than an unwritten habit.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry plain-language refusal and error states forward as a governed candidate requiring an approved plain-language measure or style rule.
 
 ### HREQ-029 — accessibility-interface (PROHIBITION as worded)
 
@@ -359,8 +374,8 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. Recording it now is cheap and prevents a later live-status surface from being built without an announcement path.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry announcement of auto-updating content forward as a governed candidate before any live-updating surface is built; announcement mechanism and target assistive technology remain undefined.
 
 ### HREQ-030 — evidence-verification (MUST as worded)
 
@@ -380,30 +395,30 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 - NON-BINDING advisory: ADOPT-AS-CANDIDATE
 - NON-BINDING analysis only. It is the only historical statement that would make future accessibility evidence structurally comparable, and the repository already has an evidence schema to carry it.
 - Owner options: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MERGE-OR-RESTATEMENT · NARROW · SUPERSEDE · REJECT · NEEDS-EVIDENCE / DEFER
-- Owner disposition: _not recorded_
-- Owner rationale: _not recorded_
+- Owner disposition (DEC-020): ADOPT-AS-CANDIDATE
+- Owner rationale: Carry the accessibility-evidence field set forward as a governed candidate. It governs evidence structure only and does not imply evidence exists; EV-003 remains NOT-RUN.
 
 ## Restatement row review
 
 | Row | Historical | Reads as | Current | Owner question | Disposition |
 | --- | --- | --- | --- | --- | --- |
-| RST-001 | HREQ-016 | RESTATES | HREQ-001 | Are HREQ-016 and HREQ-001 one expectation with two sources, or two expectations to be carried separately? | not recorded |
-| RST-002 | HREQ-016 | BROADENS | HREQ-002 | Does the broader 'semantic headings' wording of HREQ-016 change anything about the exactly-one-H1 rule in HREQ-002, or is HREQ-002 the controlling statement of heading structure? | not recorded |
-| RST-003 | HREQ-017 | BROADENS | HREQ-003 | Should the specific skip-link rule in HREQ-003 remain the controlling statement, with HREQ-017 retained as history only? | not recorded |
-| RST-004 | HREQ-018 | BROADENS | HREQ-004 | Should keyboard operability be extended from navigation (HREQ-004) to controls as HREQ-018 words it, and if so under what acceptance test? | not recorded |
-| RST-005 | HREQ-019 | BROADENS | HREQ-006 | Does the dual-color focus requirement in HREQ-006 remain controlling, with HREQ-019 retained as the weaker historical wording? | not recorded |
-| RST-006 | HREQ-022 | RESTATES | HREQ-007 | HREQ-022 and HREQ-007 state the same prohibition. Should they be recorded as one expectation with two sources? | not recorded |
-| RST-007 | HREQ-023 | BROADENS | HREQ-012 | Does the 'contrast review' activity in HREQ-023 add anything to the measured-ratio row HREQ-012, or is it subsumed by it? | not recorded |
-| RST-008 | HREQ-024 | NARROWS | HREQ-010 | Should the numeric 320-pixel reflow width in HREQ-024 be added to the reflow expectation that HREQ-010 states without a figure? | not recorded |
-| RST-009 | HREQ-026 | RESTATES | HREQ-009 | HREQ-026 and HREQ-009 state the same reduced-motion expectation. Should they be recorded as one? | not recorded |
-| RST-010 | HREQ-027 | NARROWS | HREQ-008 | Does the narrower table-scroll case in HREQ-027 need to be carried separately, or is it already covered by the general no-truncation rule HREQ-008? | not recorded |
-| RST-011 | HREQ-030 | BROADENS | HREQ-011 | Should the evidence field list in HREQ-030 govern accessibility evidence generally, of which the HREQ-011 walkthrough is one instance? | not recorded |
-| RST-012 | HREQ-015 | NEW | none found | HREQ-015 names a WCAG 2.2 AA-informed target with no counterpart in HS-011. Does DEC-012 already state this target authoritatively, making the historical sentence evidence only? | not recorded |
-| RST-013 | HREQ-020 | NEW | none found | HREQ-020 (programmatic names) has no counterpart. Should it be carried as a new candidate expectation? | not recorded |
-| RST-014 | HREQ-021 | NEW | none found | HREQ-021 (table captions and header cells) has no counterpart. Should it be carried as a new candidate expectation for register tables? | not recorded |
-| RST-015 | HREQ-025 | NEW | none found | HREQ-025 (touch targets) has no counterpart and states no minimum dimension. Should it be deferred pending a named figure? | not recorded |
-| RST-016 | HREQ-028 | NEW | none found | HREQ-028 (plain-language refusal and error states) has no counterpart. Should existing practice become a stated expectation? | not recorded |
-| RST-017 | HREQ-029 | NEW | none found | HREQ-029 (announcement of auto-updating content) has no counterpart. Should it be carried forward before any live-updating surface is built? | not recorded |
+| RST-001 | HREQ-016 | RESTATES | HREQ-001 | Are HREQ-016 and HREQ-001 one expectation with two sources, or two expectations to be carried separately? | MERGE-OR-RESTATEMENT |
+| RST-002 | HREQ-016 | BROADENS | HREQ-002 | Does the broader 'semantic headings' wording of HREQ-016 change anything about the exactly-one-H1 rule in HREQ-002, or is HREQ-002 the controlling statement of heading structure? | MERGE-OR-RESTATEMENT |
+| RST-003 | HREQ-017 | BROADENS | HREQ-003 | Should the specific skip-link rule in HREQ-003 remain the controlling statement, with HREQ-017 retained as history only? | RETAIN-HISTORICAL |
+| RST-004 | HREQ-018 | BROADENS | HREQ-004 | Should keyboard operability be extended from navigation (HREQ-004) to controls as HREQ-018 words it, and if so under what acceptance test? | ADOPT-AS-CANDIDATE |
+| RST-005 | HREQ-019 | BROADENS | HREQ-006 | Does the dual-color focus requirement in HREQ-006 remain controlling, with HREQ-019 retained as the weaker historical wording? | RETAIN-HISTORICAL |
+| RST-006 | HREQ-022 | RESTATES | HREQ-007 | HREQ-022 and HREQ-007 state the same prohibition. Should they be recorded as one expectation with two sources? | MERGE-OR-RESTATEMENT |
+| RST-007 | HREQ-023 | BROADENS | HREQ-012 | Does the 'contrast review' activity in HREQ-023 add anything to the measured-ratio row HREQ-012, or is it subsumed by it? | RETAIN-HISTORICAL |
+| RST-008 | HREQ-024 | NARROWS | HREQ-010 | Should the numeric 320-pixel reflow width in HREQ-024 be added to the reflow expectation that HREQ-010 states without a figure? | ADOPT-AS-CANDIDATE |
+| RST-009 | HREQ-026 | RESTATES | HREQ-009 | HREQ-026 and HREQ-009 state the same reduced-motion expectation. Should they be recorded as one? | MERGE-OR-RESTATEMENT |
+| RST-010 | HREQ-027 | NARROWS | HREQ-008 | Does the narrower table-scroll case in HREQ-027 need to be carried separately, or is it already covered by the general no-truncation rule HREQ-008? | RETAIN-HISTORICAL |
+| RST-011 | HREQ-030 | BROADENS | HREQ-011 | Should the evidence field list in HREQ-030 govern accessibility evidence generally, of which the HREQ-011 walkthrough is one instance? | ADOPT-AS-CANDIDATE |
+| RST-012 | HREQ-015 | NEW | none found | HREQ-015 names a WCAG 2.2 AA-informed target with no counterpart in HS-011. Does DEC-012 already state this target authoritatively, making the historical sentence evidence only? | RETAIN-HISTORICAL |
+| RST-013 | HREQ-020 | NEW | none found | HREQ-020 (programmatic names) has no counterpart. Should it be carried as a new candidate expectation? | ADOPT-AS-CANDIDATE |
+| RST-014 | HREQ-021 | NEW | none found | HREQ-021 (table captions and header cells) has no counterpart. Should it be carried as a new candidate expectation for register tables? | ADOPT-AS-CANDIDATE |
+| RST-015 | HREQ-025 | NEW | none found | HREQ-025 (touch targets) has no counterpart and states no minimum dimension. Should it be deferred pending a named figure? | NEEDS-EVIDENCE / DEFER |
+| RST-016 | HREQ-028 | NEW | none found | HREQ-028 (plain-language refusal and error states) has no counterpart. Should existing practice become a stated expectation? | ADOPT-AS-CANDIDATE |
+| RST-017 | HREQ-029 | NEW | none found | HREQ-029 (announcement of auto-updating content) has no counterpart. Should it be carried forward before any live-updating surface is built? | ADOPT-AS-CANDIDATE |
 
 Every row above preserves its Cycle 4 classification unchanged. Full rationale,
 source support, and recorded uncertainty for each row are in the JSON packet.
@@ -412,17 +427,16 @@ source support, and recorded uncertainty for each row are in the JSON packet.
 
 | Requirement | Owner question | Disposition |
 | --- | --- | --- |
-| HREQ-005 | HREQ-005 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | not recorded |
-| HREQ-013 | HREQ-013 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | not recorded |
-| HREQ-014 | HREQ-014 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | not recorded |
+| HREQ-005 | HREQ-005 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-005 remains unchanged and controlling. Absence from HS-023 is silence, not supersession. |
+| HREQ-013 | HREQ-013 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-013 remains unchanged as adopted-standard authority framing and stays outside historical restatement disposition. |
+| HREQ-014 | HREQ-014 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-014 remains unchanged as the controlling compliance-claim refusal. The refusal embedded in HREQ-015 is subordinate historical corroboration, not a second controlling refusal. |
 
 ## Refused in this cycle
 
-- recording, simulating, or implying an owner disposition;
-- preselecting any owner option;
+- originating, simulating, or inferring any owner disposition; every owner field here is transcribed from DEC-020 and from no other source;
+- implementing, satisfying, testing, or assessing any adopted candidate; each remains a candidate and NOT-ASSESSED;
 - promoting HS-023 or PKG-001, or changing the partial state of PKG-001;
-- adopting, merging, deduplicating, superseding, narrowing, rejecting, or retiring any requirement;
-- changing any Cycle 4 relationship classification;
+- changing any extracted wording, provenance value, digest, locator, or Cycle 4 relationship classification;
 - re-extracting Section 11 or re-ingesting any August 5 or July source artifact;
-- closing FND-022, WP-007, or Gate A, or authorizing WP-039;
+- closing WP-007 or Gate A, authorizing WP-039, or authorizing any further cycle;
 - asserting WCAG, ADA Title II, Section 508, or any other accessibility conformance.
