@@ -65,3 +65,25 @@ role, feature, deployment, or claim was added. The PDF and workbook are not regi
 - Authorization of the next WP-007 cycle target proposed above.
 - The package's own proposed next cycle (registering and extracting from the August 5 v0.2 set)
   remains unauthorized and depends on those files being supplied; they are currently NOT-SUPPLIED.
+
+## Re-verification pass — 2026-08-19 (owner resupplied the same package)
+
+The owner resupplied the three v0.3.0 files. No new cycle target was authorized, so this is
+recorded here rather than as a new checkpoint.
+
+Executor-recomputed digests over the resupplied files:
+
+| File | Recomputed SHA-256 | Registered artifact | Result |
+| --- | --- | --- | --- |
+| `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` | `9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943` | PKA-001 | MATCH |
+| `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` | `68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e` | PKA-002 | MATCH |
+| `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` | `3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130` | PKA-003 | MATCH (manifest does not print its own digest) |
+
+The files are byte-identical to the artifacts already registered under PKG-002, so no second
+package record was created and no register value changed. Supersession search found no accepted
+decision or canonical record later than Cycle 3 that would alter the entry state, and no active
+document presents Gate 0 as the current gate, WP-038 as active, WP-039 as authorized, or the
+August 5 v0.2.0 package as the current synchronized package.
+
+Recorded as **EV-036** and pinned by an executing invariant in
+`src/test/governed-packages.test.ts`. Nothing was promoted, closed, disposed, or released.
