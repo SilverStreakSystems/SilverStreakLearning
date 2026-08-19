@@ -979,7 +979,7 @@ export const DECISIONS: DecisionRecord[] = [
       "If not accepted: WP-037 remains HOLD and WP-038 remains NOT AUTHORIZED.",
       "The published surface remains classified PUBLIC PROTOTYPE either way; closure is not release authorization.",
     ],
-    authorityClass: "proposed-decision",
+    authorityClass: "current-summary",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
