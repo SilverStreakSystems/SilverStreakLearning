@@ -67,10 +67,10 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "324 of 324 tests passed across 14 files.",
+      statement: "340 of 340 tests passed across 15 files.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
-      boundTo: "CHECKPOINT-003, recorded 2026-08-19",
+      boundTo: "CHECKPOINT-003 and the Cycle 3 synchronization pass, executed 2026-08-19",
       source: {
         recordId: "EV-033",
         locator: "docs/wp-007/CHECKPOINT-003.md; src/fixtures/registers.ts — EV-033",
@@ -82,7 +82,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       statement: "The production build succeeded.",
       scope:
         "A build of the repository at that checkpoint. It is not a deployment, a release, or an approval to release.",
-      boundTo: "CHECKPOINT-003, recorded 2026-08-19",
+      boundTo: "CHECKPOINT-003 and the Cycle 3 synchronization pass, executed 2026-08-19",
       source: {
         recordId: "EV-033",
         locator: "docs/wp-007/CHECKPOINT-003.md",
@@ -95,7 +95,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
         "Both digests declared for the v0.3.0 package were independently recomputed and matched.",
       scope:
         "File identity only. A digest match establishes that the measured bytes are the declared bytes. It establishes no authority, approval, completeness, or correctness of the package content.",
-      boundTo: "CHECKPOINT-003, recorded 2026-08-19",
+      boundTo: "CHECKPOINT-003 and the Cycle 3 synchronization pass, executed 2026-08-19",
       source: {
         recordId: "EV-033",
         locator: "data/packages/governed-packages.json — PKG-002",

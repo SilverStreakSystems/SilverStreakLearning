@@ -174,3 +174,24 @@ of its own.
 
 Release, public claim, human validation, and any blended readiness figure. None
 of these exist and none may be inferred from the tests passing.
+
+## Command Center and Action Center synchronization (2026-08-19)
+
+The Command Center (`/`) and the Action Center (`/actions`) project the post–WP-007
+Cycle 3 state from canonical structured registers only:
+
+- `src/fixtures/program.ts` (shape in `src/domain/program-state.ts`) carries gate state,
+  active work package, latest checkpoint, pending owner disposition, checkpoint-bound
+  verification statements, explicitly unauthorized stages, and the publication boundary.
+  Each field names the record it reports.
+- `data/packages/governed-packages.json` and `data/packages/package-drift.json` carry the
+  governed package and its four unresolved drift rows. `docs/packages/DRIFT_REGISTER.md`
+  is now generated from the latter rather than hand-maintained.
+- The pending owner obligation is carried once, on FND-020 in the findings register, and
+  is surfaced first in the Action Center by the recorded owner priority directive printed
+  beside it.
+
+Recorded as EV-035. The synchronization changed no governed state: Gate A remains open,
+WP-007 remains active, the Cycle 3 disposition remains pending, every drift row remains
+unresolved, PKG-002 remains a noncanonical synchronized reference, and Cycle 4 and WP-039
+remain unauthorized.
