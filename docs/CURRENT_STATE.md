@@ -52,10 +52,15 @@ of its own.
   artifacts remain historical governance and evidence lineage.
 - **WP-037 — Evidence and Verification Pipeline: EXECUTED, HOLD — EXIT CRITERION UNRESOLVED.**
   The pipeline is implemented and reproduced (`bun run evidence:run`, `bun run evidence:verify`:
-  14 records, fail=0, review-required=2, not-completed=1, baseline CURRENT, verification PASSED).
-  Closure is not recorded: the vulnerability criterion remains NOT COMPLETED because the external
-  advisory feed is unavailable in this environment. DEC-015 is prepared and awaits owner
-  disposition. WP-038 is not authorized and not started.
+  15 records, fail=0, review-required=3, not-completed=1, baseline CURRENT).
+  **DEC-015 is ACCEPTED BY OWNER as a HOLD disposition**, not a waiver, exception, or closure. It
+  authorized one bounded evidence-recovery pass, which executed: an authoritative advisory query
+  against the npm bulk advisory service completed with HTTP 200 over the 563 versions resolved in
+  `bun.lock` and returned **five unremediated high-severity advisories** (brace-expansion 1.1.16 and
+  5.0.8, js-yaml 4.3.0, nanoid 3.3.16), recorded as EV-021 / `EV-VULN-RECOVERY`. `EV-VULN` is
+  preserved verbatim as a failed attempt (`bun audit`, HTTP 404) and is not a clean result.
+  The vulnerability criterion remains **NOT COMPLETED**: findings are untriaged and unremediated,
+  and no exit criterion is weakened to permit closure. WP-038 is **NOT AUTHORIZED and NOT STARTED**.
 - DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
   DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
   respectively. None is resolved by WP-006 closure.
