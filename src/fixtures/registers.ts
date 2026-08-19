@@ -304,7 +304,28 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-023", "EV-029"],
     synthetic: false,
   },
+  {
+    id: "FND-020",
+    title:
+      "Review and disposition WP-007 Cycle 3; authorize or decline the proposed bounded Cycle 4 extraction.",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "WP-007 Cycle 3 execution is complete and recorded in `docs/wp-007/CHECKPOINT-003.md`: the v0.3.0 package is registered as PKG-002, both declared digests were recomputed and matched, four drift rows are recorded unresolved, and the cycle closed nothing. No owner disposition has been supplied. WP-007 therefore remains active and the bounded Cycle 4 extraction proposed at the end of Cycle 3 remains unauthorized.",
+    boundary:
+      "This record carries the pending obligation only. It asserts no disposition, does not accept or decline the cycle, does not close WP-007, does not change Gate A, does not resolve any drift row, does not promote PKG-002, and does not authorize Cycle 4 or WP-039.",
+    resolutionState: "blocked",
+    requiredDecision:
+      "Record acceptance or decline of WP-007 Cycle 3, and separately authorize or decline the proposed bounded Cycle 4 extraction.",
+    evidenceReferences: ["EV-033", "EV-034", "EV-035"],
+    ownerPriorityDirective:
+      "Recorded owner instruction of 2026-08-19: this obligation is the highest-priority open action until a disposition is recorded.",
+    synthetic: false,
+  },
 ];
+
 
 
 
