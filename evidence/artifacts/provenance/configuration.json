@@ -1,0 +1,21 @@
+{
+  "workflows": [
+    {
+      "file": ".github/workflows/ssot-binding.yml",
+      "hash": "c834092136f8f7fd583b20d9239390b648d8f0baaa12921bbec9062ed17ddcad"
+    }
+  ],
+  "build_config": {
+    "file": "vite.config.ts",
+    "hash": "694f17daf64d3bf3481ee838ce69c26c593c60c0ed45a19209754fe5a742bcf0"
+  },
+  "test_config": {
+    "file": "vitest.config.ts",
+    "hash": "22e65f109ef35d9bfcb1c2c03e90306dad6fddcfffbe96fa36916bbd4e8b26a6"
+  },
+  "lint_config": {
+    "file": "eslint.config.js",
+    "hash": "3266245a1ff610a0b37dbb8b8c77b93a125e0d8758b9838cfd04b2e0a1397d56"
+  },
+  "branch_protection": "REQUIRED MERGE ENFORCEMENT - NOT VERIFIED"
+}

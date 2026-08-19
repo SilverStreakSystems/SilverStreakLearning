@@ -1,0 +1,34 @@
+{
+  "boundary": "Zero real personal data. All fixture data is synthetic and flagged synthetic.",
+  "scope": "Git-tracked files in the current tree, excluding the scanner's own pattern definitions.",
+  "files_scanned": 343,
+  "patterns": [
+    {
+      "id": "email-address",
+      "label": "Email address"
+    },
+    {
+      "id": "us-phone",
+      "label": "Telephone number"
+    },
+    {
+      "id": "ssn",
+      "label": "National identifier pattern"
+    },
+    {
+      "id": "date-of-birth",
+      "label": "Date-of-birth field"
+    },
+    {
+      "id": "student-identifier",
+      "label": "Student identifier field"
+    }
+  ],
+  "matches": [],
+  "fixture_matches": 0,
+  "limitations": [
+    "Pattern matching cannot distinguish real personal data from synthetic data that resembles it.",
+    "Every match is a candidate for human review, not a determination that personal data is present.",
+    "Absence of matches does not establish that the boundary holds; it establishes that these patterns did not fire."
+  ]
+}
