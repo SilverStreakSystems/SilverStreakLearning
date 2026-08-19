@@ -1,0 +1,36 @@
+name: SSOT Binding Guard
+
+# Blocks a merge when the declared binding commit inside the canonical
+# current-state record does not match the repository HEAD under review.
+# Freshness only: this workflow confers no authority, approval, or validation.
+
+on:
+  pull_request:
+    branches: ["**"]
+  push:
+    branches: ["**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ssot-binding:
+    name: SSOT declared binding matches HEAD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the commit under review
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify SSOT binding
+        env:
+          SSOT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node scripts/check-ssot-binding.mjs
