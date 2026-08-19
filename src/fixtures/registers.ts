@@ -170,7 +170,7 @@ export const FINDINGS: FindingRecord[] = [
       "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again. WP-037 disposition: RESOLVED — ORIGINAL FAILURE MODE SUPERSEDED BY THE INPUT-AWARE EVIDENCE MODEL. Applicability is now decided by declared input-set hashes, so a documentation-only commit leaves build, test, typecheck, SBOM, and dependency evidence CURRENT without any re-binding.",
     boundary:
       "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured. The resolution applies to pipeline-produced evidence only: the predecessor declared-binding guard over WP-006 prose documents still compares commit strings and is retained for compatibility, so hand-bound legacy documents remain subject to the original drift.",
-    resolutionState: "resolved",
+    resolutionState: "confirmed",
     requiredDecision: null,
     evidenceReferences: ["EV-016", "EV-017", "EV-018", "EV-019"],
     synthetic: false,
@@ -202,7 +202,7 @@ export const FINDINGS: FindingRecord[] = [
       "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one. WP-037 disposition: RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; NARRATIVE SEMANTIC ACCURACY REMAINS HUMAN-GOVERNED. Repository identity, current commit, tracked/source/test/doc counts, route modules, dependency identity, evidence applicability, and evidence expiry are now regenerated from the tree on every run and are never hand-edited.",
     boundary:
       "Not a defect in the check, which does exactly what it declares. Hand-written prose in governance documents is still authored by a human and can still be semantically wrong at a correct commit; no automated control asserts otherwise.",
-    resolutionState: "resolved",
+    resolutionState: "confirmed",
     requiredDecision: null,
     evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
