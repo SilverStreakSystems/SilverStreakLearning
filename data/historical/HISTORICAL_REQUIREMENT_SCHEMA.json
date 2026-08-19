@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/historical-requirement/1.0.0",
+  "title": "SSLS Historical Requirement Candidate Schema",
+  "description": "WP-007 cycle 2 canonical schema. A record states what a named historical source says, where it says it, and how confidently that was read. Original wording, normalized summary, inherited authority, family, modality, confidence and ambiguity are independent dimensions and are never collapsed. No field expresses conformance, satisfaction, promotion, or owner disposition.",
+  "schema_version": "1.0.0",
+  "work_package": "WP-007",
+  "authority_note": "Extraction confers no authority. A candidate inherits its source's classification unchanged. Only a recorded owner decision may assign REQUIRED-NOW, REMEDIATION, TARGET-STATE, UNNECESSARY or SUPERSEDED.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_on",
+    "extraction_boundary",
+    "source_selection_rationale",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_on": { "$ref": "#/$defs/isoDate" },
+    "extraction_boundary": { "type": "string", "minLength": 1 },
+    "source_selection_rationale": { "type": "string", "minLength": 1 },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "requirementFamily": {
+      "enum": [
+        "accessibility-interface",
+        "governance-authority",
+        "evidence-verification",
+        "data-boundary",
+        "claim-discipline",
+        "architecture-structure",
+        "operations-workflow"
+      ]
+    },
+    "modality": { "enum": ["MUST", "SHOULD", "MAY", "PROHIBITION", "UNSTATED"] },
+    "extractionConfidence": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+    "ambiguity": {
+      "enum": ["NONE", "TERMINOLOGY", "SCOPE", "VERIFIABILITY", "AUTHORITY-BOUNDARY"]
+    },
+    "inheritedAuthority": {
+      "enum": ["CURRENT-AUTHORITY", "HISTORICAL-EVIDENCE", "RESEARCH-INPUT", "REFERENCE-ONLY"]
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "source_id",
+        "source_locator",
+        "inherited_authority",
+        "inheritance_note",
+        "original_wording",
+        "normalized_summary",
+        "requirement_family",
+        "modality",
+        "extraction_confidence",
+        "extraction_confidence_reason",
+        "ambiguity",
+        "ambiguity_note",
+        "disposition",
+        "conformance_state",
+        "extracted_on",
+        "boundary"
+      ],
+      "properties": {
+        "requirement_id": { "type": "string", "pattern": "^HREQ-\\d{3}$" },
+        "source_id": { "type": "string", "pattern": "^HS-\\d{3}$" },
+        "source_locator": { "type": "string", "minLength": 1 },
+        "inherited_authority": { "$ref": "#/$defs/inheritedAuthority" },
+        "inheritance_note": { "type": "string", "minLength": 1 },
+        "original_wording": { "type": "string", "minLength": 1 },
+        "normalized_summary": { "type": "string", "minLength": 1 },
+        "requirement_family": { "$ref": "#/$defs/requirementFamily" },
+        "modality": { "$ref": "#/$defs/modality" },
+        "extraction_confidence": { "$ref": "#/$defs/extractionConfidence" },
+        "extraction_confidence_reason": { "type": "string", "minLength": 1 },
+        "ambiguity": { "$ref": "#/$defs/ambiguity" },
+        "ambiguity_note": { "type": "string", "minLength": 1 },
+        "disposition": { "const": "CANDIDATE-PRE-DISPOSITION" },
+        "conformance_state": { "const": "NOT-ASSESSED" },
+        "extracted_on": { "$ref": "#/$defs/isoDate" },
+        "boundary": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
