@@ -114,6 +114,21 @@ of its own.
   was removed; semver now resolves 1.1.18 and 5.0.9 side by side, both advisory-free, and lint
   executes again at **686 problems (672 errors, 14 warnings)** — FND-014 remains open and advisory.
   Recorded as EV-029.
+- **WP-007 — Historical Requirement Conformance Recovery: IN PROGRESS, cycle 1 target MET.**
+  Entered under DEC-018 with Gate A open. Two entry defects were repaired first: the stale
+  `docs/wp-038/HANDOFF_TO_WP-039.md` locator was renamed to `docs/wp-038/HANDOFF_TO_WP-007.md`
+  with active references updated (EV-030, documentation lineage STL-006), and FND-016's structured
+  resolution state was corrected to `partial` to match the owner disposition already recorded in
+  its text. Cycle 1 established a canonical historical-source universe: schema
+  `data/historical/HISTORICAL_SOURCE_SCHEMA.json` v1.0.0, register
+  `data/historical/historical-sources.json` with 22 classified sources, invariant tests in
+  `src/test/historical-sources.test.ts`, and a projection under `docs/wp-007/` (EV-031). Three
+  sources are `NOT-ACCESSIBLE-TO-EXECUTOR` — the WP-006-named prior repository and bootstrap
+  artifacts, the owner-supplied Drive folder, and legacy application code — and carry no version,
+  no content claim, and `UNKNOWN` recovery relevance. No historical source is promoted, no
+  requirement extraction has occurred, no gate or work package is closed, and WP-039 is neither
+  created nor implied. See `docs/wp-007/ENTRY_SPECIFICATION.md` and
+  `docs/wp-007/CHECKPOINT-001.md`.
 - Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
   authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.

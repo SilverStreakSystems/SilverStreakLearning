@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/historical-source/1.0.0",
+  "title": "SSLS Historical Source Universe Schema",
+  "description": "WP-007 canonical schema. Locator, version, authority classification, access limitation, recovery relevance and promotion state are independent dimensions and are never collapsed. No field in this schema expresses compliance, conformance, or promotion of a historical source into current authority.",
+  "schema_version": "1.0.0",
+  "work_package": "WP-007",
+  "authority_note": "This schema records where sources are and what they are. It confers no authority. Only a recorded owner decision can classify a source as CURRENT-AUTHORITY.",
+  "type": "object",
+  "required": ["schema_version", "generated_on", "universe_boundary", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_on": { "$ref": "#/$defs/isoDate" },
+    "universe_boundary": { "type": "string", "minLength": 1 },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "sourceFamily": {
+      "enum": [
+        "repository",
+        "governance-document",
+        "machine-register",
+        "application-register",
+        "bootstrap-artifact",
+        "external-drive-folder",
+        "chat-history",
+        "external-service"
+      ]
+    },
+    "authorityClassification": {
+      "enum": [
+        "CURRENT-AUTHORITY",
+        "HISTORICAL-EVIDENCE",
+        "RESEARCH-INPUT",
+        "REFERENCE-ONLY",
+        "REFUSED"
+      ]
+    },
+    "accessLimitation": {
+      "enum": ["FULL", "READ-ONLY", "PARTIAL", "NOT-ACCESSIBLE-TO-EXECUTOR", "UNKNOWN"]
+    },
+    "immutability": { "enum": ["IMMUTABLE", "APPEND-ONLY", "MUTABLE"] },
+    "recoveryRelevance": { "enum": ["HIGH", "MEDIUM", "LOW", "NONE", "UNKNOWN"] },
+    "promotionState": { "enum": ["NOT-PROMOTED", "PROMOTED-BY-DECISION"] },
+    "piiStatus": {
+      "enum": ["NO-REAL-PII-ASSERTED", "UNINSPECTED", "REAL-PII-SUSPECTED", "REAL-PII-CONFIRMED"]
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "title",
+        "source_family",
+        "exact_locator",
+        "version_or_hash",
+        "authority_classification",
+        "classification_basis",
+        "classification_evidence",
+        "access_limitation",
+        "access_note",
+        "immutability",
+        "recovery_relevance",
+        "recovery_relevance_reason",
+        "promotion_state",
+        "pii_status",
+        "inventoried_on",
+        "boundary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^HS-\\d{3}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "source_family": { "$ref": "#/$defs/sourceFamily" },
+        "exact_locator": { "type": "string", "minLength": 1 },
+        "version_or_hash": { "type": "string", "minLength": 1 },
+        "authority_classification": { "$ref": "#/$defs/authorityClassification" },
+        "classification_basis": { "type": "string", "minLength": 1 },
+        "classification_evidence": { "type": "array", "items": { "type": "string" } },
+        "access_limitation": { "$ref": "#/$defs/accessLimitation" },
+        "access_note": { "type": "string", "minLength": 1 },
+        "immutability": { "$ref": "#/$defs/immutability" },
+        "recovery_relevance": { "$ref": "#/$defs/recoveryRelevance" },
+        "recovery_relevance_reason": { "type": "string", "minLength": 1 },
+        "promotion_state": { "$ref": "#/$defs/promotionState" },
+        "pii_status": { "$ref": "#/$defs/piiStatus" },
+        "inventoried_on": { "$ref": "#/$defs/isoDate" },
+        "boundary": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
