@@ -838,31 +838,33 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-015",
-    title: "Proposed owner closure of WP-037 evidence and verification pipeline",
-    state: "required",
-    decidedOn: null,
-    decidedBy: "Awaiting Founder / Operator",
+    title: "Owner disposition of WP-037: HOLD, with one bounded evidence-recovery pass authorized",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
     context:
-      "WP-037 was authorized as next eligible by DEC-014 under DEC-007 and the DEC-010 software SSOT. Executor verification at the current head records: 254 of 254 tests passing across 10 test files, production build exit 0, fourteen evidence records with zero failures, two review-required results and one not-completed result, and a baseline manifest regenerated from the declared input sets. One fresh vulnerability-scan attempt was made and the advisory feed returned HTTP 404, so the scanner executed but no advisory result was obtained. No frozen, pre-registered WP-037 exit-criterion wording requiring a completed vulnerability result was located in the repository; the criterion is therefore reported as NOT COMPLETED rather than reinterpreted.",
+      "WP-037 was authorized as next eligible by DEC-014 under DEC-007 and the DEC-010 software SSOT. Executor verification recorded a passing build, a passing test suite, and a regenerated baseline, but the vulnerability criterion did not complete: bun audit returned HTTP 404 from its advisory endpoint. The executor recommended HOLD. This decision was prepared as a proposed closure and is revised here by the owner. It is not a waiver, not an exception, not a retroactive reinterpretation of the WP-037 exit criteria, and not a basis for closure.",
     decision:
-      "Question for the owner: should WP-037 be closed and WP-038 (Regulatory, Standards and Obligation Baseline) become next eligible, accepting the vulnerability-scan result as NOT COMPLETED due to an unavailable external feed? This decision is prepared by the executor and is not self-accepted.",
+      "WP-037 remains OPEN / HOLD and WP-038 remains NOT AUTHORIZED and must not begin. The vulnerability criterion remains PARTIAL / NOT COMPLETED: the bun audit 404 is a failed evidence-producing attempt, is preserved verbatim with its tool, timestamp, commit, and environment metadata, and may never be represented as a clean vulnerability result. No exit criterion may be weakened, inferred, reconstructed, or retroactively rewritten to permit closure; the absence of frozen Case 1 wording does not authorize the weaker interpretation, and no new exception is created to make a gate pass. One bounded evidence-recovery pass is authorized: inspect the package-manager and lockfile configuration, identify an authoritative advisory source compatible with the repository, execute one controlled scan, capture the complete raw result with tool, version, source, timestamp, commit, configuration, exit status, manifest, and hashes, register the result as new evidence without modifying EV-019, regenerate applicability, the evidence bundle, and the exit-criteria matrix, and verify internal consistency and hash integrity. The pass may not begin WP-038, add product functionality, alter declared inputs to avoid the failed scan, suppress, fabricate, substitute, or summarize away findings, treat unavailable advisory data as a pass, create a new closure rule, or self-close WP-037.",
     consequences: [
-      "If accepted: WP-037 is CLOSED BY OWNER and WP-038 becomes NEXT ELIGIBLE; the vulnerability limitation is carried forward unresolved.",
-      "FND-011 is dispositioned RESOLVED for pipeline-produced evidence, with legacy hand-bound documents still subject to declaration drift.",
-      "FND-013 is dispositioned RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; narrative semantic accuracy remains human-governed.",
-      "FND-012 remains OPEN: branch-protection enforcement is not verified and may not be claimed.",
-      "FND-014 remains OPEN / ADVISORY: repository-wide lint reports 677 problems; WP-037 files report zero.",
-      "Public deployment classification is PUBLIC PROTOTYPE. Publication is not release authority.",
-      "Closure creates no compliance, certification, security, accessibility-conformance, or independent-validation claim.",
+      "WP-037 is HOLD. WP-038 is NOT STARTED / NOT AUTHORIZED.",
+      "EV-VULN is preserved exactly as produced: bun audit, HTTP 404, status not-completed. It is a failed attempt, not a clean result.",
+      "The bounded recovery pass executed and completed against the npm bulk advisory service; it is recorded as new evidence EV-021 (pipeline record EV-VULN-RECOVERY) and returned five unremediated high-severity advisories. A completed scan is not closure: the criterion stays NOT COMPLETED until the findings are dispositioned under the frozen criteria by the owner.",
+      "EV-019 remains permanently bound to commit 1f7c51e with independent = false; it is neither rebound nor relabelled, and the archived producing run is preserved.",
+      "EV-020 and the publication boundary stand as recorded: PUBLIC PROTOTYPE only, with no production, district-ready, compliance, or certification claim, and existing refusal language intact.",
+      "FND-012 remains OPEN / NOT VERIFIED. Branch-protection and merge enforcement remain unknown and may not be inferred from repository files, workflow configuration, or successful CI runs.",
+      "FND-014 remains OPEN / ADVISORY. WP-037-controlled files introduce zero new lint debt; the repository-wide count is retained as existing debt and the repository is not characterized as lint-clean.",
       "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this decision.",
+      "This decision creates no compliance, certification, security, accessibility-conformance, release, or independent-validation claim.",
     ],
-    authorityClass: "gated-future",
+    authorityClass: "approved-governance",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
+
 ];
 
 export const CLAIMS: ClaimRecord[] = [
