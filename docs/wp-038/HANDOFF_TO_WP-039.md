@@ -1,7 +1,10 @@
 # WP-038 handoff
 
-No successor work package is authorised. DEC-017 authorised generation and execution of WP-038 only.
-The next package becomes eligible only on a recorded owner decision closing WP-038.
+WP-038 is CLOSED BY OWNER under DEC-018 (accepted 2026-08-19). The next eligible work package is
+**WP-007 — Historical Requirement Conformance Recovery**, subject to verification that no later
+accepted decision supersedes the current Build Program sequence. Eligibility follows the accepted
+program sequence, not numerical order: WP-039 is not authorized because its number follows WP-038.
+
 
 ## Carried forward
 
