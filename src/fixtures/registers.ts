@@ -857,7 +857,7 @@ export const DECISIONS: DecisionRecord[] = [
       "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this decision.",
       "This decision creates no compliance, certification, security, accessibility-conformance, release, or independent-validation claim.",
     ],
-    authorityClass: "approved-governance",
+    authorityClass: "accepted-decision",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
