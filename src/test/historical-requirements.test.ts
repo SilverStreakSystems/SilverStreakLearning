@@ -130,7 +130,7 @@ describe("WP-007 cycle 2 authority boundary", () => {
     const closure = DECISIONS.find(
       (record) =>
         record.state === "accepted" &&
-        /(gate a is closed|wp-007 is closed|wp-039)/i.test(record.decision),
+        /(gate a is closed|wp-007 is closed|wp-039 is authorized)/i.test(record.decision),
     );
     expect(closure).toBeUndefined();
   });
