@@ -158,6 +158,70 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-008"],
     synthetic: false,
   },
+  {
+    id: "FND-011",
+    title: "Declared binding drifts from HEAD on every authoring commit",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again.",
+    boundary:
+      "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured.",
+    resolutionState: "not-verified",
+    requiredDecision: null,
+    evidenceReferences: ["EV-016", "EV-017"],
+    synthetic: false,
+  },
+  {
+    id: "FND-012",
+    title: "Required-merge enforcement of the binding check is not verified",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "A workflow that runs the binding check exists in the repository. Whether the hosting platform requires that check to pass before a merge is a repository-settings fact that cannot be read from repository content, so merge enforcement is recorded as not verified.",
+    boundary:
+      "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed.",
+    resolutionState: "not-verified",
+    requiredDecision: null,
+    evidenceReferences: ["EV-016"],
+    synthetic: false,
+  },
+  {
+    id: "FND-013",
+    title: "Binding identity does not establish semantic freshness",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one.",
+    boundary:
+      "Not a defect in the check, which does exactly what it declares. It is a scope limit that a later evidence pipeline must close by separating immutable execution evidence from the current baseline summary.",
+    resolutionState: "not-verified",
+    requiredDecision: null,
+    evidenceReferences: ["EV-016"],
+    synthetic: false,
+  },
+  {
+    id: "FND-014",
+    title: "Repository-wide lint does not pass",
+    severity: "advisory",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L7"],
+    description:
+      "A full lint run reports 683 problems across the repository, overwhelmingly formatter differences rather than logic defects, and 664 of them are auto-fixable. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes.",
+    boundary:
+      "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness.",
+    resolutionState: "unknown",
+    requiredDecision: null,
+    evidenceReferences: ["EV-016"],
+    synthetic: false,
+  },
 ];
 
 
@@ -332,18 +396,18 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-014",
-    title: "Current SSOT binding — commit 6aa254e",
+    title: "Superseded SSOT binding — commit 6aa254e",
     kind: "automated-test",
     subject:
       "Re-executed build and full test suite bound to SSLS-FND-001 and its three manifests",
     collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
-    state: "confirmed",
+    state: "stale",
     supports:
-      "That the current-state record, provenance report, build manifest, and test and build status all declare commit 6aa254e, and that a production build and 210 of 210 tests were executed at that commit.",
+      "That the current-state record, provenance report, build manifest, and test and build status all declared commit 6aa254e, and that a production build and 210 of 210 tests were executed at that commit. It remains a valid historical statement about that commit only.",
     doesNotSupport:
-      "Correctness, accessibility conformance, security, authority, or approval. Executor-run, not independent, and false as current once a further commit lands.",
-    authorityClass: "current-summary",
+      "Anything about the present state of the repository. This binding is superseded by EV-016 and must not be reported as current.",
+    authorityClass: "historical-evidence",
     synthetic: false,
   },
   {
@@ -356,9 +420,40 @@ export const EVIDENCE: EvidenceRecord[] = [
     collectedBy: "Founder / Operator",
     state: "confirmed",
     supports:
-      "That a stale binding can no longer reach the default branch unnoticed: the check fails the merge when a bound document declares a commit other than the one under review.",
+      "That an executable check exists which fails when a bound document declares a commit other than the one under review, and that a workflow runs it on push and on pull request using the pull-request head commit.",
     doesNotSupport:
-      "That the bound figures are accurate, that the evidence was re-executed honestly, or that any record carries authority. It checks declaration freshness only.",
+      "That the bound figures are accurate, that merge protection requires this check, or that any record carries authority. It checks declared commit identity only; required-merge enforcement is not verified (FND-012) and semantic freshness is out of its scope (FND-013).",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-016",
+    title: "Current SSOT binding and re-executed build and test evidence — commit 9a257f7",
+    kind: "automated-test",
+    subject:
+      "Re-bound current-state record and its three manifests, with build, test, and lint executed at the bound source tree",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the current-state record, provenance report, build manifest, and test and build status all declare commit 9a257f7; that the binding check reports PASS for that commit; that a production build succeeded and 217 of 217 tests passed across 9 files; and that a full lint run reported 683 problems, recorded as FND-014 rather than as a pass.",
+    doesNotSupport:
+      "Correctness, accessibility conformance, security, authority, or approval. Executor-run, not independent, and no longer current once a further commit lands.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-017",
+    title: "Negative control for the SSOT binding guard",
+    kind: "automated-test",
+    subject: "Failure path of the declared-binding check",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the check fails as designed: run against a commit no document declares, it exited 1 and reported every bound document in a textual mismatch state rather than passing silently. No governed record was altered to produce the failure.",
+    doesNotSupport:
+      "That the check blocks a real merge, which depends on repository settings that were not inspected.",
     authorityClass: "current-summary",
     synthetic: false,
   },
