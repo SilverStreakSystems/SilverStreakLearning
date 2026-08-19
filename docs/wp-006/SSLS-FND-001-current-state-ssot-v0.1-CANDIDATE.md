@@ -3,7 +3,7 @@
 - **Version:** v0.1
 - **Authority class:** CANDIDATE
 - **Record state:** current (re-bound 2026-08-19; supersedes the `70c1f89` binding of 2026-08-17)
-- **Bound to commit:** `6aa254e6f9ceeb06c60ae08827118fa5bf52001d`
+- **Bound to commit:** `9a257f754e97b9cddf9a474009c5947488102c04`
 - **Produced by:** WP-006 under SSLS-BPP-001 v2.0 (ratified by DEC-007)
 - **Evidence method:** executor-produced. No independent validation.
 
@@ -32,7 +32,7 @@ becomes false the moment the bound commit changes.
 | Candidate id | REPO-CAND-001 |
 | Role | Only lineage containing executable SSLS code |
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — platform template scaffold |
-| HEAD at this record | `6aa254e6f9ceeb06c60ae08827118fa5bf52001d` |
+| HEAD at this record | `9a257f754e97b9cddf9a474009c5947488102c04` |
 | Branch | single working branch |
 | Commits | 294 |
 | Working tree | clean at capture |

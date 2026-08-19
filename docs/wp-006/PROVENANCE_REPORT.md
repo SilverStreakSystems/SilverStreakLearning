@@ -11,7 +11,7 @@ This does not substitute for a CI evidence architecture; that is WP-037 and is n
 | Safe locator | `git.private.lovable-gcp.code.storage/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` (remote `origin`; the checked-out URL embeds a scoped access token, which is deliberately not reproduced here) | [C] |
 | Secondary remote | `s3://lovable-repositories/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` | [C] |
 | Branch | `edit/edt-d7ef09cb-7b9d-43c9-8422-aee6050dc107` | [C] |
-| HEAD commit | `6aa254e6f9ceeb06c60ae08827118fa5bf52001d` | [C] |
+| HEAD commit | `9a257f754e97b9cddf9a474009c5947488102c04` | [C] |
 | Parent commits | `70a11c889c61a71627fe9752b65e74feb1b7e901`, `cce526f4e051a301d01df34ab314114a803af961` (merge commit "Completed WP-006 SSOT findings", 2026-08-17 07:10:14 UTC) | [C] |
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — "template: tanstack_start_ts_current-58df4fe22702", 2026-08-16 09:16:43 +0200 | [C] |
 | Commit count on branch | 294 | [C] |
