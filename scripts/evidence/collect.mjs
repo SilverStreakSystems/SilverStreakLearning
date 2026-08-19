@@ -50,7 +50,11 @@ function base(context, evidenceType, fields) {
   });
 }
 
-export function makeContext({ commit, environment = "lovable-sandbox", producer = "SSLS evidence pipeline" }) {
+export function makeContext({
+  commit,
+  environment = "lovable-sandbox",
+  producer = "SSLS evidence pipeline",
+}) {
   return {
     commit,
     environment,
@@ -71,7 +75,8 @@ export function collectBuild(context) {
     record: base(context, "BUILD", {
       evidence_id: "EV-BUILD",
       title: "Production build execution",
-      description: "Production build executed against the declared source, config, and lockfile inputs.",
+      description:
+        "Production build executed against the declared source, config, and lockfile inputs.",
       tool: "vite (via bun run build)",
       tool_version: toolVersion("bun"),
       command: "bun run build",
@@ -108,7 +113,8 @@ export function collectTests(context) {
       tool_version: toolVersion("bun"),
       command: "bun run test",
       expected_result: "Every test passes and the runner exits 0.",
-      actual_result: `Exit code ${result.code}. ${summary ? `${summary[1]} tests passed of ${summary[2] ?? summary[1]}.` : "Test counts not parsed."} ${filesMatch ? `${filesMatch[1]} test files.` : ""} Duration ${durationMs} ms.`.trim(),
+      actual_result:
+        `Exit code ${result.code}. ${summary ? `${summary[1]} tests passed of ${summary[2] ?? summary[1]}.` : "Test counts not parsed."} ${filesMatch ? `${filesMatch[1]} test files.` : ""} Duration ${durationMs} ms.`.trim(),
       status: result.ok ? "pass" : "fail",
       supports: [
         "The declared test suite executed with the recorded outcome at the declared input set.",
@@ -286,9 +292,15 @@ export function collectConfiguration(context) {
   const workflows = matchTracked(context.files, { prefixes: [".github/workflows/"] });
   const payload = {
     workflows: workflows.map((file) => ({ file, hash: hashFile(file) })),
-    build_config: existsSync("vite.config.ts") ? { file: "vite.config.ts", hash: hashFile("vite.config.ts") } : null,
-    test_config: existsSync("vitest.config.ts") ? { file: "vitest.config.ts", hash: hashFile("vitest.config.ts") } : null,
-    lint_config: existsSync("eslint.config.js") ? { file: "eslint.config.js", hash: hashFile("eslint.config.js") } : null,
+    build_config: existsSync("vite.config.ts")
+      ? { file: "vite.config.ts", hash: hashFile("vite.config.ts") }
+      : null,
+    test_config: existsSync("vitest.config.ts")
+      ? { file: "vitest.config.ts", hash: hashFile("vitest.config.ts") }
+      : null,
+    lint_config: existsSync("eslint.config.js")
+      ? { file: "eslint.config.js", hash: hashFile("eslint.config.js") }
+      : null,
     branch_protection: "REQUIRED MERGE ENFORCEMENT - NOT VERIFIED",
   };
 
@@ -296,14 +308,17 @@ export function collectConfiguration(context) {
     record: base(context, "CONFIGURATION", {
       evidence_id: "EV-CONFIG",
       title: "Build, test, lint, and CI workflow configuration inventory",
-      description: "Configuration files and workflow definitions present in the tracked tree, with content hashes.",
+      description:
+        "Configuration files and workflow definitions present in the tracked tree, with content hashes.",
       tool: "scripts/evidence/collect.mjs",
       tool_version: "1.0.0",
       command: "bun run evidence:run",
       expected_result: "Every configuration input identified and hashed.",
       actual_result: `${workflows.length} CI workflow files; build, test, and lint configuration present.`,
       status: "pass",
-      supports: ["Which configuration and workflow files exist in the tracked tree, and their hashes."],
+      supports: [
+        "Which configuration and workflow files exist in the tracked tree, and their hashes.",
+      ],
       does_not_support: [
         "That any workflow is required by branch protection. Workflow presence is not merge enforcement (FND-012).",
       ],

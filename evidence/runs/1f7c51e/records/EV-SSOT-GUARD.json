@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "expires_at": null,
+  "tool_version": "1.0.0",
+  "tree_hash": "1e8283317118733d01c69c3f554a285888dc897b",
+  "expected_result": "Reported as a review condition, not as a freshness proof.",
+  "artifact_path": "artifacts/provenance/ssot-binding.log",
+  "artifact_hash": "8e89f77b427d4dc35cb925ecbd1e1d8bfae1d6368e734dfca058bd42d6bd4911",
+  "input_set": {
+    "docs": "f4ab50f4d7d20c9b84f70d1f294886d9c5d5d2395d7f0c191c0ce603b74bec4b",
+    "pipeline": "953b128a6a37ca652fc0c8fc06b30b321df2dc842e3c8af64dbaf1b1c9867295"
+  },
+  "related_requirements": [],
+  "related_decisions": [],
+  "related_tasks": [],
+  "related_validations": [],
+  "related_findings": [
+    "FND-011",
+    "FND-012",
+    "FND-013"
+  ],
+  "related_claims": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "reproduction": "node scripts/check-ssot-binding.mjs",
+  "synthetic_data_only": true,
+  "independent": false,
+  "producer_type": "pipeline",
+  "method": "automated",
+  "evidence_id": "EV-SSOT-GUARD",
+  "evidence_type": "SSOT_BINDING",
+  "commit_sha": "1f7c51e8350b27207cc304de953dd7387ccba437",
+  "environment": "lovable-sandbox",
+  "timestamp": "2026-08-19T02:49:07.954Z",
+  "producer": "SSLS evidence pipeline",
+  "title": "Predecessor declared-binding guard execution",
+  "description": "The WP-006 guard retained as a compatibility layer. It compares declared commit strings and is superseded for freshness purposes by input-aware applicability.",
+  "tool": "scripts/check-ssot-binding.mjs",
+  "command": "node scripts/check-ssot-binding.mjs",
+  "actual_result": "Exit code 1.",
+  "status": "review-required",
+  "supports": [
+    "Whether the WP-006 bound documents declare the commit under review."
+  ],
+  "does_not_support": [
+    "Semantic freshness of any figure inside those documents, and merge enforcement of the check."
+  ]
+}

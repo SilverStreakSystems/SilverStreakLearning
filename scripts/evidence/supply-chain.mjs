@@ -123,7 +123,9 @@ export function collectDependencyInventory(context) {
       expected_result: "Every declared dependency enumerated with its declared range.",
       actual_result: `${direct.length} runtime and ${dev.length} development dependencies declared; ${installed.length} packages resolved in node_modules.`,
       status: "pass",
-      supports: ["The declared and resolved dependency set at the recorded manifest and lockfile hashes."],
+      supports: [
+        "The declared and resolved dependency set at the recorded manifest and lockfile hashes.",
+      ],
       does_not_support: [
         "That the dependency set is secure, licence-compatible, minimal, or free of unused packages.",
       ],
@@ -165,7 +167,10 @@ export function collectSbom(context) {
       properties: [
         { name: "ssls:commit", value: context.commit },
         { name: "ssls:manifest-hash", value: hashFile("package.json") },
-        ...lockfileIdentity().map((lock) => ({ name: `ssls:lockfile:${lock.file}`, value: lock.hash })),
+        ...lockfileIdentity().map((lock) => ({
+          name: `ssls:lockfile:${lock.file}`,
+          value: lock.hash,
+        })),
       ],
     },
     components,
@@ -178,7 +183,8 @@ export function collectSbom(context) {
     record: base(context, "SBOM", {
       evidence_id: "EV-SBOM",
       title: "CycloneDX software bill of materials",
-      description: "Dependency inventory in CycloneDX 1.5 JSON, generated from the manifest and resolved packages.",
+      description:
+        "Dependency inventory in CycloneDX 1.5 JSON, generated from the manifest and resolved packages.",
       tool: "ssls-evidence-pipeline (CycloneDX 1.5 writer)",
       tool_version: "1.0.0",
       command: "bun run evidence:run",
@@ -222,7 +228,9 @@ export function collectVulnerabilityScan(context) {
 
   const total = Object.values(severities).reduce((a, b) => a + b, 0);
   const payload = {
-    scan_status: completed ? "COMPLETED" : "SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE",
+    scan_status: completed
+      ? "COMPLETED"
+      : "SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE",
     scanner: "bun audit",
     advisory_source: "npm registry advisory feed",
     external_network_dependency: true,
@@ -242,7 +250,8 @@ export function collectVulnerabilityScan(context) {
     record: base(context, "VULNERABILITY_SCAN", {
       evidence_id: "EV-VULN",
       title: "Dependency vulnerability scan",
-      description: "Advisory scan over the resolved dependency set, recorded without risk interpretation.",
+      description:
+        "Advisory scan over the resolved dependency set, recorded without risk interpretation.",
       tool: "bun audit",
       tool_version: run("bun", ["--version"]).stdout.trim() || "UNKNOWN",
       command: "bun audit --json",
@@ -286,7 +295,12 @@ export function collectLicensePosture(context) {
     else if (PERMISSIVE.has(declared)) posture = "COMMONLY PERMISSIVE";
     else posture = "UNCLASSIFIED - REQUIRES LEGAL REVIEW";
 
-    return { name, version: installed?.version ?? "UNKNOWN", declared_license: declared ?? "UNKNOWN", posture };
+    return {
+      name,
+      version: installed?.version ?? "UNKNOWN",
+      declared_license: declared ?? "UNKNOWN",
+      posture,
+    };
   });
 
   const review = entries.filter((entry) => entry.posture.includes("REQUIRES LEGAL REVIEW"));

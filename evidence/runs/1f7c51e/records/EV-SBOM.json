@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "expires_at": null,
+  "tool_version": "1.0.0",
+  "tree_hash": "1e8283317118733d01c69c3f554a285888dc897b",
+  "expected_result": "One component entry per declared dependency.",
+  "artifact_path": "artifacts/sbom/sbom.cdx.json",
+  "artifact_hash": "5123ccf23d471a10c0f44ee0279dd1dc30ad63480ed86ee3c1457de3137ae71b",
+  "input_set": {
+    "manifest": "6351fa90c648b55cce0b0bbf16906b43a7334bc2b5bb29c39ac91dff549c0a0a",
+    "lockfile": "6a5f5aee9b73f58c9afff2ab1a15ea049050bd20b5fbfee7aff7a65e3f7a842d"
+  },
+  "related_requirements": [],
+  "related_decisions": [],
+  "related_tasks": [],
+  "related_validations": [],
+  "related_findings": [],
+  "related_claims": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "reproduction": "bun run evidence:run",
+  "synthetic_data_only": true,
+  "independent": false,
+  "producer_type": "pipeline",
+  "method": "automated",
+  "evidence_type": "SBOM",
+  "commit_sha": "1f7c51e8350b27207cc304de953dd7387ccba437",
+  "environment": "lovable-sandbox",
+  "timestamp": "2026-08-19T02:49:07.979Z",
+  "producer": "SSLS evidence pipeline",
+  "evidence_id": "EV-SBOM",
+  "title": "CycloneDX software bill of materials",
+  "description": "Dependency inventory in CycloneDX 1.5 JSON, generated from the manifest and resolved packages.",
+  "tool": "ssls-evidence-pipeline (CycloneDX 1.5 writer)",
+  "command": "bun run evidence:run",
+  "actual_result": "74 components emitted; 0 without a resolved version.",
+  "status": "pass",
+  "supports": [
+    "A dependency inventory for the recorded manifest and lockfile state."
+  ],
+  "does_not_support": [
+    "Security, licence compatibility, or supply-chain integrity. An SBOM is an inventory, not an assurance."
+  ]
+}

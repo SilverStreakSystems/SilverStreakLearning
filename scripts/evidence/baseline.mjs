@@ -41,7 +41,11 @@ export function buildBaseline(context, records, extras = {}) {
     evidence_id: record.evidence_id,
     evidence_type: record.evidence_type,
     status: record.status,
-    ...evaluateApplicability(record, { inputSets, environment: context.environment, commit: context.commit }),
+    ...evaluateApplicability(record, {
+      inputSets,
+      environment: context.environment,
+      commit: context.commit,
+    }),
   }));
 
   const notCurrent = applicability.filter((entry) => entry.state !== "CURRENT");
@@ -57,7 +61,8 @@ export function buildBaseline(context, records, extras = {}) {
     working_tree_dirty: workingTreeDirty(),
     authority: {
       class: "candidate",
-      basis: "Derived record under SSLS-BPP-001 v2.0 (DEC-007). Repository SSOT adopted by DEC-010.",
+      basis:
+        "Derived record under SSLS-BPP-001 v2.0 (DEC-007). Repository SSOT adopted by DEC-010.",
       note: "Authority is declared, never derived from a passing check.",
     },
     repository: {
@@ -96,7 +101,9 @@ export function buildBaseline(context, records, extras = {}) {
     },
     freshness: {
       state: notCurrent.length === 0 ? "CURRENT" : "REVIEW REQUIRED",
-      not_current: notCurrent.map((entry) => `${entry.evidence_id}: ${entry.state} — ${entry.reason}`),
+      not_current: notCurrent.map(
+        (entry) => `${entry.evidence_id}: ${entry.state} — ${entry.reason}`,
+      ),
       rule: "The baseline is current when every cited record is CURRENT for the present input sets. Re-derivation, not rebinding, is what makes it current.",
     },
     boundaries: [
@@ -111,7 +118,10 @@ export function buildBaseline(context, records, extras = {}) {
 /** Human-readable rendering of the baseline. Generated; never hand-edited. */
 export function renderBaselineMarkdown(baseline) {
   const rows = baseline.applicability
-    .map((entry) => `| ${entry.evidence_id} | ${entry.evidence_type} | ${entry.status} | ${entry.state} |`)
+    .map(
+      (entry) =>
+        `| ${entry.evidence_id} | ${entry.evidence_type} | ${entry.status} | ${entry.state} |`,
+    )
     .join("\n");
 
   const repo = baseline.repository;

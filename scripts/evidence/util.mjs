@@ -82,11 +82,7 @@ export function resolveCommit() {
 }
 
 export function resolveBranch() {
-  return (
-    process.env.GITHUB_REF_NAME ??
-    git(["rev-parse", "--abbrev-ref", "HEAD"]) ??
-    "UNKNOWN"
-  );
+  return process.env.GITHUB_REF_NAME ?? git(["rev-parse", "--abbrev-ref", "HEAD"]) ?? "UNKNOWN";
 }
 
 export function rootCommit() {

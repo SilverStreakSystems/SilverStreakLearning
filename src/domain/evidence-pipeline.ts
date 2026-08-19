@@ -17,8 +17,10 @@ export const EVIDENCE_LAYERS = [
     id: "layer-a",
     name: "Immutable execution evidence",
     rule: "Bound permanently to the commit and input set where it was produced.",
-    lifecycle: "Never rebound, never edited. A correction is a new record that supersedes the old one.",
-    staleMeaning: "Its declared inputs changed. The record itself remains true of the tree it examined.",
+    lifecycle:
+      "Never rebound, never edited. A correction is a new record that supersedes the old one.",
+    staleMeaning:
+      "Its declared inputs changed. The record itself remains true of the tree it examined.",
   },
   {
     id: "layer-b",
@@ -51,7 +53,11 @@ export const APPLICABILITY_MEANING: Record<ApplicabilityState, string> = {
 
 /** The four reported evidence methods. Independence is declared, never inferred. */
 export const PIPELINE_METHODS = [
-  { id: "automated", label: "Automated", note: "Executed by the pipeline against declared inputs." },
+  {
+    id: "automated",
+    label: "Automated",
+    note: "Executed by the pipeline against declared inputs.",
+  },
   { id: "manual", label: "Manual", note: "Performed and recorded by the operator." },
   {
     id: "assistive-technology",
@@ -153,7 +159,8 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
     declaredInputs: ["manifest", "lockfile"],
     validity: "Invalidated by a manifest or lockfile change.",
     supports: "A dependency inventory for the recorded dependency state.",
-    doesNotSupport: "Security or supply-chain integrity. An SBOM is an inventory, not an assurance.",
+    doesNotSupport:
+      "Security or supply-chain integrity. An SBOM is an inventory, not an assurance.",
     reusable: true,
   },
   {
@@ -239,11 +246,17 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
 export const REUSE_CONDITIONS = [
   { id: "type-permits-reuse", statement: "The evidence type is declared reusable across commits." },
   { id: "inputs-unchanged", statement: "Every declared input hash is unchanged." },
-  { id: "environment-applicable", statement: "The recording environment covers the environment under review." },
+  {
+    id: "environment-applicable",
+    statement: "The recording environment covers the environment under review.",
+  },
   { id: "not-expired", statement: "The declared validity window has not ended." },
   { id: "not-superseded", statement: "No later artifact replaces it for the same scope." },
   { id: "no-invalidating-finding", statement: "No open finding invalidates the result." },
-  { id: "proposition-within-supports", statement: "The proposition cited lies within what the record supports." },
+  {
+    id: "proposition-within-supports",
+    statement: "The proposition cited lies within what the record supports.",
+  },
 ] as const;
 
 /** What the pipeline refuses to do, stated so the refusal is checkable. */

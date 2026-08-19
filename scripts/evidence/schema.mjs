@@ -152,7 +152,12 @@ export function validateEvidenceRecord(record) {
     fail("expires_at", "Expiry must be null or an ISO-8601 instant.");
   }
 
-  if (record.timestamp && record.expires_at && isIso(record.timestamp) && isIso(record.expires_at)) {
+  if (
+    record.timestamp &&
+    record.expires_at &&
+    isIso(record.timestamp) &&
+    isIso(record.expires_at)
+  ) {
     if (Date.parse(record.expires_at) <= Date.parse(record.timestamp)) {
       fail("expires_at", "Expiry must be later than the execution timestamp.");
     }

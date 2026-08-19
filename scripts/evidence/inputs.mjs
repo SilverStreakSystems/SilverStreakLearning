@@ -78,7 +78,6 @@ export function computeInputSets(files = trackedFiles()) {
     // The generated evidence output is excluded so that writing evidence does
     // not invalidate the evidence that was just written.
     tracked: hashPathSet(files.filter((file) => !file.startsWith("evidence/"))).hash,
-
   };
 }
 

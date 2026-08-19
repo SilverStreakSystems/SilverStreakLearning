@@ -40,7 +40,11 @@ const SECRET_PATTERNS = [
   { id: "openai-key", label: "OpenAI-style key", pattern: /\bsk-[A-Za-z0-9]{32,}\b/g },
   { id: "slack-token", label: "Slack token", pattern: /\bxox[abprs]-[A-Za-z0-9-]{10,}\b/g },
   { id: "google-api-key", label: "Google API key", pattern: /\bAIza[0-9A-Za-z_-]{35}\b/g },
-  { id: "private-key-block", label: "Private key block", pattern: /-----BEGIN [A-Z ]*PRIVATE KEY-----/g },
+  {
+    id: "private-key-block",
+    label: "Private key block",
+    pattern: /-----BEGIN [A-Z ]*PRIVATE KEY-----/g,
+  },
   {
     id: "supabase-service-key",
     label: "Service-role style key",
@@ -60,7 +64,6 @@ const SECRET_PATTERNS = [
     pattern:
       /\b(?:api[_-]?key|secret|password|passwd|token|client[_-]?secret)\b\s*[:=]\s*["'](?=[^"'\n]*\d)[A-Za-z0-9_\-+/=.]{16,}["']/gi,
   },
-
 ];
 
 const PII_PATTERNS = [
@@ -163,7 +166,8 @@ export function collectSecretScan(context) {
   const files = context.files ?? trackedFiles();
   const { scanned, matches } = scan(files, SECRET_PATTERNS, { skipSelfReferential: true });
   const payload = {
-    scope: "Git-tracked files in the current tree, excluding the scanner's own pattern definitions.",
+    scope:
+      "Git-tracked files in the current tree, excluding the scanner's own pattern definitions.",
     files_scanned: scanned,
     patterns: SECRET_PATTERNS.map((p) => ({ id: p.id, label: p.label })),
     matches,
@@ -179,7 +183,8 @@ export function collectSecretScan(context) {
     record: base(context, "SECRET_SCAN", {
       evidence_id: "EV-SECRET",
       title: "Secret exposure scan over the tracked tree",
-      description: "Pattern scan for credential-shaped literals. Matched values are never recorded.",
+      description:
+        "Pattern scan for credential-shaped literals. Matched values are never recorded.",
       tool: "scripts/evidence/boundary.mjs",
       tool_version: "1.0.0",
       command: "bun run evidence:run",
@@ -208,7 +213,8 @@ export function collectPiiBoundaryScan(context) {
   const fixtureMatches = matches.filter((match) => match.file.startsWith("src/fixtures/"));
   const payload = {
     boundary: "Zero real personal data. All fixture data is synthetic and flagged synthetic.",
-    scope: "Git-tracked files in the current tree, excluding the scanner's own pattern definitions.",
+    scope:
+      "Git-tracked files in the current tree, excluding the scanner's own pattern definitions.",
     files_scanned: scanned,
     patterns: PII_PATTERNS.map((p) => ({ id: p.id, label: p.label })),
     matches,

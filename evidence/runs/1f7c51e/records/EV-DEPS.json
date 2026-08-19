@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "expires_at": null,
+  "tool_version": "1.0.0",
+  "tree_hash": "1e8283317118733d01c69c3f554a285888dc897b",
+  "expected_result": "Every declared dependency enumerated with its declared range.",
+  "artifact_path": "artifacts/sbom/dependency-inventory.json",
+  "artifact_hash": "a33128d655ddf263abea5c37fd36a34e41ddc300a86db62b5016996353cb8749",
+  "input_set": {
+    "manifest": "6351fa90c648b55cce0b0bbf16906b43a7334bc2b5bb29c39ac91dff549c0a0a",
+    "lockfile": "6a5f5aee9b73f58c9afff2ab1a15ea049050bd20b5fbfee7aff7a65e3f7a842d"
+  },
+  "related_requirements": [],
+  "related_decisions": [],
+  "related_tasks": [],
+  "related_validations": [],
+  "related_findings": [],
+  "related_claims": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "reproduction": "bun run evidence:run",
+  "synthetic_data_only": true,
+  "independent": false,
+  "producer_type": "pipeline",
+  "method": "automated",
+  "evidence_type": "DEPENDENCY_INVENTORY",
+  "commit_sha": "1f7c51e8350b27207cc304de953dd7387ccba437",
+  "environment": "lovable-sandbox",
+  "timestamp": "2026-08-19T02:49:07.963Z",
+  "producer": "SSLS evidence pipeline",
+  "evidence_id": "EV-DEPS",
+  "title": "Dependency inventory derived from manifest and lockfile",
+  "description": "Direct and resolved dependency counts with manifest and lockfile hashes.",
+  "tool": "scripts/evidence/supply-chain.mjs",
+  "command": "bun run evidence:run",
+  "actual_result": "52 runtime and 22 development dependencies declared; 472 packages resolved in node_modules.",
+  "status": "pass",
+  "supports": [
+    "The declared and resolved dependency set at the recorded manifest and lockfile hashes."
+  ],
+  "does_not_support": [
+    "That the dependency set is secure, licence-compatible, minimal, or free of unused packages."
+  ]
+}
