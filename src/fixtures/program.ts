@@ -36,8 +36,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   },
   latestCheckpoint: {
     checkpointId: "CHECKPOINT-007",
-    title:
-      "WP-007 Cycle 5 — FND-022 owner disposition review packet",
+    title: "WP-007 Cycle 5 — FND-022 owner disposition review packet",
     completedOn: "2026-08-19",
     outcome:
       "Cycle 5 execution is complete: the sixteen Cycle 4 candidates, the seventeen restatement rows, and the three unmatched current candidates are assembled into a schema-bound review packet with source binding, substantive delta, evidence gaps, affected records, review options, and non-binding executor analysis for each item.",
@@ -63,12 +62,21 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       { recordId: "CHECKPOINT-007", locator: "docs/wp-007/CHECKPOINT-007.md", route: null },
       {
         recordId: "FND-022-PACKET",
-        locator: "docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md; data/historical/fnd-022-owner-review.json",
+        locator:
+          "docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md; data/historical/fnd-022-owner-review.json",
         route: null,
       },
       { recordId: "CHECKPOINT-006", locator: "docs/wp-007/CHECKPOINT-006.md", route: null },
-      { recordId: "HREQ-015..HREQ-030", locator: "data/historical/historical-requirements.json", route: null },
-      { recordId: "RST-001..RST-017", locator: "data/historical/restatement-index.json", route: null },
+      {
+        recordId: "HREQ-015..HREQ-030",
+        locator: "data/historical/historical-requirements.json",
+        route: null,
+      },
+      {
+        recordId: "RST-001..RST-017",
+        locator: "data/historical/restatement-index.json",
+        route: null,
+      },
       { recordId: "PDR-001..PDR-006", locator: "data/packages/package-drift.json", route: null },
     ],
   },
@@ -115,7 +123,11 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     {
       stageId: "WP-039",
       statement: "WP-039 is not authorized. No record in this repository authorizes it.",
-      source: { recordId: "DEC-018", locator: "docs/wp-007/REFUSED_CLAIMS.md", route: "/decisions" },
+      source: {
+        recordId: "DEC-018",
+        locator: "docs/wp-007/REFUSED_CLAIMS.md",
+        route: "/decisions",
+      },
     },
     {
       stageId: "HREQ-DISPOSITION",
@@ -131,7 +143,11 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       stageId: "CYCLE-6",
       statement:
         "No cycle beyond the bounded Cycle 5 review-packet preparation is authorized. DEC-019 authorizes Cycle 4 only, Cycle 5 was authorized to prepare a decision and not to record one, and the historical v0.2.0 DOCX and ZIP, neither supplied, remain unread.",
-      source: { recordId: "CHECKPOINT-007", locator: "docs/wp-007/CHECKPOINT-007.md", route: "/decisions" },
+      source: {
+        recordId: "CHECKPOINT-007",
+        locator: "docs/wp-007/CHECKPOINT-007.md",
+        route: "/decisions",
+      },
     },
     {
       stageId: "PKG-002-PROMOTION",
@@ -147,7 +163,11 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       stageId: "DRIFT-RESOLUTION",
       statement:
         "Resolution of the recorded package drift rows is not authorized. Each remains unresolved.",
-      source: { recordId: "PDR-001..PDR-006", locator: "data/packages/package-drift.json", route: null },
+      source: {
+        recordId: "PDR-001..PDR-006",
+        locator: "data/packages/package-drift.json",
+        route: null,
+      },
     },
   ],
   publicationBoundary:
