@@ -2,7 +2,8 @@
 
 - **Version:** v0.1
 - **Authority class:** CANDIDATE
-- **Record state:** current (re-bound 2026-08-19; supersedes the `70c1f89` binding of 2026-08-17)
+- **Record state:** current (re-bound 2026-08-19 02:06 UTC; supersedes the `6aa254e` binding of
+  2026-08-19 01:40 UTC, which superseded the `70c1f89` binding of 2026-08-17)
 - **Bound to commit:** `9a257f754e97b9cddf9a474009c5947488102c04`
 - **Produced by:** WP-006 under SSLS-BPP-001 v2.0 (ratified by DEC-007)
 - **Evidence method:** executor-produced. No independent validation.
@@ -34,7 +35,7 @@ becomes false the moment the bound commit changes.
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — platform template scaffold |
 | HEAD at this record | `9a257f754e97b9cddf9a474009c5947488102c04` |
 | Branch | single working branch |
-| Commits | 294 |
+| Commits | 311 |
 | Working tree | clean at capture |
 | Legacy SSLS ancestry | none detected |
 | Authorized as SSOT | **Not yet.** Pending DEC-010 / DQ-R01 |
@@ -45,18 +46,18 @@ Detail: `PROVENANCE_REPORT.md`, `REPOSITORY_MANIFEST.md`.
 
 | Area | Status |
 |---|---|
-| Source files | 210 |
+| Source files | 211 (209 TypeScript/TSX, 35,912 lines) |
 | Route files | 30, of which 29 addressable |
 | Registered navigation paths | 19 |
 | Domain modules | authority, layers, artifacts, traceability, registers, capability architecture, shared objects, value streams, workspaces, experience |
 | Fixtures | 30+ files, all synthetic |
-| Test suites | 8, 210 tests, all passing at HEAD |
+| Test suites | 9, 217 tests, all passing at the bound commit |
 | Build | succeeds at HEAD |
 | State management | none — route-local only |
 | Authentication | none |
 | Persistence | none |
 | Live integrations | none |
-| CI pipeline | none |
+| CI pipeline | one workflow: the SSOT declared-binding guard. No build, test, or lint job in CI. Required-merge enforcement not verified (FND-012). |
 
 Detail: `IMPLEMENTATION_INVENTORY.md`, `ROUTE_MANIFEST.md`, `BUILD_MANIFEST.md`,
 `TEST_BUILD_STATUS.md`.
@@ -72,8 +73,8 @@ fixtures. Detail: `DATA_BACKEND_STATUS.md`.
 | Register | Current content |
 |---|---|
 | Decisions | DEC-001…DEC-009 accepted or resolved; DEC-010…DEC-013 recorded as decision-required by WP-006 |
-| Findings | FND-001…FND-005 from earlier passes; FND-006…FND-010 raised by WP-006 |
-| Evidence | EV-001…EV-007 from earlier passes; EV-008…EV-012 from WP-006 |
+| Findings | FND-001…FND-005 from earlier passes; FND-006…FND-014 raised by WP-006 |
+| Evidence | EV-001…EV-007 from earlier passes; EV-008…EV-017 from WP-006 |
 | Claims | Candidate claims register with a permitted set and an explicit prohibited set |
 
 ## 6. Known contradictions between planes
