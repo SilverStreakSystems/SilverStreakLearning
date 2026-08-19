@@ -50,25 +50,34 @@ of its own.
   by DEC-014 (2026-08-19), following DEC-010, which adopts the current Lovable-managed
   repository as the go-forward software source of truth. Historical repository and bootstrap
   artifacts remain historical governance and evidence lineage.
-- **WP-037 — Evidence and Verification Pipeline is the next eligible work package only**;
-  it is not executed and no later work package is authorized.
+- **WP-037 — Evidence and Verification Pipeline: EXECUTED, HOLD — EXIT CRITERION UNRESOLVED.**
+  The pipeline is implemented and reproduced (`bun run evidence:run`, `bun run evidence:verify`:
+  14 records, fail=0, review-required=2, not-completed=1, baseline CURRENT, verification PASSED).
+  Closure is not recorded: the vulnerability criterion remains NOT COMPLETED because the external
+  advisory feed is unavailable in this environment. DEC-015 is prepared and awaits owner
+  disposition. WP-038 is not authorized and not started.
 - DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
   DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
   respectively. None is resolved by WP-006 closure.
-- Open limitations carried forward: declared-binding identity is not semantic freshness
-  (FND-013); a CI workflow existing in the repository is **not** branch-protection enforcement,
-  which remains NOT VERIFIED (FND-012); declared bindings drift on each authoring commit
-  (FND-011); repository-wide lint does not pass (FND-014, advisory, pre-existing).
+- Finding dispositions after WP-037: **FND-011 resolved** for pipeline-produced evidence (legacy
+  hand-bound documents still drift); **FND-013 resolved for machine-derived baseline facts**, with
+  narrative semantic accuracy still human-governed; **FND-012 remains open and NOT VERIFIED** —
+  a CI workflow existing in the repository is not branch-protection enforcement; **FND-014 remains
+  open and advisory** — repository-wide lint does not pass, while WP-037 files report zero problems.
+- Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
+  authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.
   No production, district, or compliance claims.
 
 ## Verification recorded
 
-- Vitest: 217 tests passing across 9 files, covering registered routes, detail
+- Vitest: 254 tests passing across 10 files, covering registered routes, detail
   routes, unrecorded identifiers, authority discipline, gate discipline,
   prohibited metrics, search authorization order, declared-binding freshness,
-  and rendering invariants. Production build succeeds.
+  evidence schema, applicability, expiry, reuse, and the verification gate.
+  Production build succeeds.
 - Accessibility: see `docs/ACCESSIBILITY_EVIDENCE.md`. Automated only.
+
 
 
 ## Not established
