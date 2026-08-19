@@ -1,6 +1,6 @@
 # Current test and build status
 
-Bound to commit `70c1f891c5d341c60132d0109979042004425a4b`, executed 2026-08-17 06:57–07:02 UTC in
+Bound to commit `6aa254e6f9ceeb06c60ae08827118fa5bf52001d`, executed 2026-08-19 01:40–01:41 UTC in
 the Lovable sandbox by the Founder / Operator agent session. Evidence method: automated, executor-run.
 Not independent.
 
@@ -23,7 +23,7 @@ Not independent.
 | Passed | 210 |
 | Failed | 0 |
 | Skipped | 0 |
-| Duration | 12.41 s |
+| Duration | 14.53 s |
 
 Suites: `shell.test.tsx` (81), `governance.test.tsx`, `capability-architecture.test.tsx`,
 `shared-objects.test.tsx`, `value-streams.test.tsx`, `workspaces.test.tsx` (25),
@@ -40,7 +40,12 @@ Suites: `shell.test.tsx` (81), `governance.test.tsx`, `capability-architecture.t
 | Measured contrast ratios | Not Run |
 | Independent verification of any kind | Not Run |
 
+## Supersession
+
+This capture replaces the 2026-08-17 capture at `70c1f89` as current test and build evidence.
+That earlier capture remains a valid historical statement about its own commit.
+
 ## Binding rule
 
-These results establish the state of `70c1f89` only. Any later commit invalidates them as current
+These results establish the state of `6aa254e` only. Any later commit invalidates them as current
 evidence.
