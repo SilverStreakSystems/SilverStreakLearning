@@ -318,8 +318,8 @@ describe("verification gate", () => {
 
   it("records review-required and not-completed without failing the gate", () => {
     const records = fullSet();
-    records[1].status = "review-required";
-    records[2].status = "not-completed";
+    records[1]!.status = "review-required";
+    records[2]!.status = "not-completed";
     const result = verifyEvidenceSet({
       records,
       baseline: baseline(),
