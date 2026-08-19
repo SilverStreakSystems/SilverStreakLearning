@@ -28,6 +28,8 @@ const v020 = packages.find((record) => record.package_id === "PKG-001")!;
 
 const DECLARED_PDF_SHA = "9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943";
 const DECLARED_XLSX_SHA = "68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e";
+// Computed by the executor over the manifest file itself; the manifest cannot print its own digest.
+const DECLARED_MANIFEST_SHA = "3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130";
 
 describe("governed package schema", () => {
   it("declares a versioned schema that matches the register", () => {
