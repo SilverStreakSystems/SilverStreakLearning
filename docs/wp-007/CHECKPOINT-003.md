@@ -89,3 +89,19 @@ not supplied and is not the current synchronized package.
 
 Recorded as **EV-036** and pinned by an executing invariant in
 `src/test/governed-packages.test.ts`. Nothing was promoted, closed, disposed, or released.
+
+### Validation executed during the re-verification pass
+
+- Vitest: **341 of 341 tests pass across 15 files**, including the new re-verification invariant.
+- Typecheck: clean. Production build: succeeds.
+- Lint executes: **704 problems (690 errors, 14 warnings, 685 auto-fixable)**. FND-014 remains
+  open; the figure recorded against EV-029 was 686 at that earlier commit, so the executed count
+  has grown and the finding is not narrowed by this pass.
+- Evidence pipeline: 15 records, **fail=0, review-required=2 (lint, SSOT binding guard),
+  not-completed=1 (vulnerability scan, external source unavailable)**. Baseline freshness CURRENT;
+  evidence verification PASSED against the current input sets.
+- Package digest verification: three of three files match (table above).
+- Schema validation: every governed-package record validates.
+- Unchanged limitations: FND-012 branch-protection verification not performed, FND-014 lint debt,
+  `bun audit` not completing, and no independent accessibility, security, privacy, legal, or
+  district-readiness validation. None was converted to PASS.
