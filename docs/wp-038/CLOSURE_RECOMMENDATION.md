@@ -1,8 +1,12 @@
 # WP-038 closure recommendation
 
-**Status: EXECUTOR-COMPLETE — OWNER CLOSURE DECISION REQUIRED.**
+**Status: CLOSED BY OWNER — DEC-018 accepted 2026-08-19 (Founder / Operator).**
 
-WP-038 does not self-close. Only a recorded owner decision closes it.
+The recommendation below was PROMOTE TO OWNER CLOSURE and was dispositioned accordingly. DEC-012 was
+accepted in the same disposition, adopting WCAG 2.2 Level AA as the current internal accessibility
+design and validation target with no conformance claim. FND-016 is recorded as partially resolved by
+DEC-012; FND-017 and FND-018 remain open. WP-038 did not self-close.
+
 
 ## What was produced
 
@@ -44,9 +48,13 @@ executor-produced, single-source and point-in-time.
 **PROMOTE TO OWNER CLOSURE**, with all limitations preserved: criteria 22 and 23 NOT COMPLETED,
 CNF-001, CNF-005 and CNF-006 open, SRC-004 CONFLICTED, and FND-012 and FND-014 carried unchanged.
 
-## Proposed owner decisions
+## Owner disposition (2026-08-19)
 
-- **DEC-018** — close WP-038 by owner, adopting the obligation register as the canonical regulatory
-  baseline, creating no compliance claim, and authorising the next work package only.
-- **DEC-012** — bind ULW-AS-001 v1.3 to WCAG 2.2 Level AA as an internal engineering target that
-  creates no conformance claim. See `DEC-012-BRIEF.md`.
+- **DEC-018 — ACCEPTED.** WP-038 CLOSED BY OWNER. Next eligible: WP-007 — Historical Requirement
+  Conformance Recovery, subject to sequence verification. WP-039 is not authorized by number.
+  Gate A remains open.
+- **DEC-012 — ACCEPTED.** WCAG 2.2 Level AA is the current internal accessibility design and
+  validation target. No conformance, ADA, 504/508, ACR/VPAT, procurement, district-approval, or
+  certification claim. Where a verified external obligation names a different or more specific
+  standard, that obligation controls. See `DEC-012-BRIEF.md`.
+

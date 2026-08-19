@@ -150,11 +150,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "Repository work cites version 1.3 of the interface acceptance standard while the document corpus also holds a later revision. No accepted decision names which revision is effective, so acceptance criteria may be measured against a superseded version.",
+      "Repository work cites version 1.3 of the interface acceptance standard while the document corpus also holds a later revision. No accepted decision names which revision is effective, so acceptance criteria may be measured against a superseded version. DEC-012 (accepted 2026-08-19) names WCAG 2.2 Level AA as the external internal target; it does not declare which ULW-AS-001 revision is effective, so this finding remains open and is routed forward.",
     boundary:
       "Does not assert that the interface fails either revision, and does not promote the later revision.",
     resolutionState: "conflicted",
-    requiredDecision: "DEC-012",
+    requiredDecision: null,
+
     evidenceReferences: ["EV-008"],
     synthetic: false,
   },
@@ -246,14 +247,15 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L5", "L7"],
     description:
-      "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. A brief proposing an internal target is at docs/wp-038/DEC-012-BRIEF.md; the binding is DEC-012 and remains open.",
+      "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. Disposition after DEC-012 (accepted 2026-08-19): PARTIALLY RESOLVED. The absent-target portion is resolved — WCAG 2.2 Level AA is now the named internal SSLS accessibility design and validation target. The remaining portions are unresolved: ULW-AS-001 v1.3 itself still carries no version binding in its own text, its criteria have not been mapped to WCAG 2.2 success criteria, coverage against ADA Title II's WCAG 2.1 Level AA reference is still unstated, and no independent accessibility validation exists.",
     boundary:
-      "This does not assert that the interface fails any success criterion, nor that binding a version would create a conformance claim. Binding fixes what may be measured, not what has been validated.",
+      "This does not assert that the interface fails any success criterion, nor that binding a version creates a conformance claim. DEC-012 fixes what may be measured, not what has been validated. The finding may not be closed on the strength of DEC-012 alone.",
     resolutionState: "unknown",
-    requiredDecision: "DEC-012",
+    requiredDecision: null,
     evidenceReferences: ["EV-026"],
     synthetic: false,
   },
+
   {
     id: "FND-017",
     title: "The BEFORE LIVE PII gate assumes student data is the first binding trigger",
@@ -975,26 +977,28 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-012",
-    title: "Declare the effective revision of the interface acceptance standard",
-    state: "required",
-    decidedOn: null,
-    decidedBy: null,
+    title: "Effective SSLS accessibility target",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
     context:
-      "Implementation work cites revision 1.3 while a later revision also exists in the document corpus. No accepted decision names which is effective.",
+      "Implementation work cites ULW-AS-001 revision 1.3, which names no external accessibility version or conformance level, and SSLS references elsewhere name WCAG 2.1 Level AA as the current internal target. WP-038 raised FND-016 and prepared docs/wp-038/DEC-012-BRIEF.md.",
     decision:
-      "Not decided. The owner must declare the effective revision and the disposition of work already accepted against the earlier one. Required no later than WP-041 (accessibility baseline).",
+      "ACCEPTED BY OWNER. Adopt WCAG 2.2 Level AA as the current internal SSLS accessibility design and validation target for new and actively governed implementation. This supersedes older SSLS references naming WCAG 2.1 Level AA as the current internal target; historical artifacts remain unchanged and retain their original version-bound wording. This establishes an internal engineering and accessibility requirement only. It does not establish WCAG 2.2 conformance, ADA compliance, Section 504 or Section 508 compliance, an independent accessibility review, an ACR or VPAT result, procurement acceptance, district approval, or certification of any kind. Automated, AI-assisted, or self-performed accessibility checks remain evidence only within their tested scope, and independent accessibility validation remains required at the applicable later gate. Where a verified external obligation requires a different or more specific standard, the verified external obligation controls that use case.",
     consequences: [
-      "Until declared, no conformance statement may name a revision as satisfied.",
-      "A change of effective revision may reopen previously accepted interface work.",
-      "Open and non-blocking for WP-006 closure and WP-037 execution.",
+      "New and actively governed implementation is designed and self-tested against WCAG 2.2 Level AA as an internal target.",
+      "No conformance, compliance, ACR, VPAT, procurement, or district-approval claim is created; independent validation remains required at the applicable later gate.",
+      "FND-016 is partially resolved: the absence of a named target is closed, while coverage mapping, testing, stale references in ULW-AS-001 v1.3 itself, and independent validation remain unresolved.",
+      "FND-010 is not resolved: which revision of the interface acceptance standard is effective remains undeclared and is routed forward.",
     ],
-    authorityClass: "research-candidate",
+    authorityClass: "current-summary",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["ULW-AS-001"],
     synthetic: false,
   },
+
   {
     id: "DEC-013",
     title: "Reconcile the historical and current gate taxonomies",
@@ -1118,26 +1122,28 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-018",
-    title: "Close WP-038 and adopt the obligation baseline",
-    state: "required",
-    decidedOn: null,
+    title: "Close WP-038 and authorize progression",
+    state: "accepted",
+    decidedOn: "2026-08-19",
     decidedBy: "Founder / Operator",
     context:
-      "WP-038 — Regulatory, Standards & Obligation Baseline is executor-complete under DEC-017. The canonical registers under data/governance hold 43 primary-source-verified external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger classes, and 16 gaps, projected into docs/wp-038 and covered by 21 executing register-integrity tests. Findings FND-016, FND-017 and FND-018 are raised and open. No owner decision has closed the package, and DEC-012 (binding ULW-AS-001 v1.3 to a named WCAG version and level) remains open with a brief at docs/wp-038/DEC-012-BRIEF.md.",
+      "WP-038 — Regulatory, Standards & Obligation Baseline is executor-complete under DEC-017 and its locked cycle target was achieved. The canonical registers under data/governance hold 43 primary-source-verified external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger classes, and 16 gaps, projected into docs/wp-038 and covered by executing register-integrity tests. 279 of 279 tests passed, typecheck and production build passed, the evidence pipeline completed with its review-required and unavailable checks preserved, lint executes again at 686 pre-existing problems, and the bun audit limitation remains disclosed.",
     decision:
-      "PROPOSED, NOT ACCEPTED. Proposed wording for owner disposition: close WP-038 on the evidence produced, adopt data/governance/obligations.json and external-authorities.json as the canonical obligation baseline for planning and gate design only, keep FND-016, FND-017 and FND-018 open with their routed work packages, keep DEC-012 open, and name the next eligible work package. The executor may not accept this decision.",
+      "ACCEPTED BY OWNER. WP-038 — Regulatory, Standards & Obligation Baseline is CLOSED BY OWNER on the machine-readable obligation baseline, verified authority register, findings, conflicts, stale-reference reconciliation, Claims Register controls, application-register propagation, executing tests, and registered evidence. Closure recognizes that WP-038 outputs are represented in the canonical application registers; that FND-016, FND-017 and FND-018 remain visible unless separately resolved against their exact propositions and evidence; that DEC-012 establishes WCAG 2.2 Level AA as the current internal accessibility target without creating a conformance claim; that the obligation baseline is a governed planning and engineering input and is not legal advice, certification, district approval, procurement approval, or proof of compliance; that public claims remain constrained by the Claims Register; that the founder-only, private, no-PII, synthetic-data boundary remains in force; and that the FND-019 / EV-029 dependency repair is bounded technical evidence, not independent security validation. Next eligible work package, subject to verification that no later accepted decision supersedes the current Build Program sequence: WP-007 — Historical Requirement Conformance Recovery. Numerical order does not confer authority; WP-039 is not authorized.",
     consequences: [
-      "Adoption of an obligation baseline is a planning input. It creates no compliance, legal, conformance, certification, district-readiness, or independent-review claim, and no obligation is asserted to be satisfied.",
-      "Interpretation of each obligation is AI-assisted and executor-recorded against a cited primary source. It is not legal advice and has had no independent or professional review.",
-      "Until this decision is accepted, WP-038 remains EXECUTOR-COMPLETE and no work package after it is authorized.",
+      "WP-038 is CLOSED BY OWNER; WP-007 — Historical Requirement Conformance Recovery is NEXT ELIGIBLE.",
+      "Gate A remains open. Closure is not release authority and authorizes no work package other than the one named.",
+      "Adoption of the obligation baseline creates no compliance, legal, conformance, certification, district-readiness, or independent-review claim, and no obligation is asserted to be satisfied.",
+      "FND-016 (partially resolved by DEC-012), FND-017 and FND-018 remain open and are carried forward as limitations; FND-012 and FND-014 are unchanged.",
     ],
     authorityClass: "current-summary",
-    recordState: "candidate",
+    recordState: "current",
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
+
 ];
 
 

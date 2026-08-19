@@ -72,9 +72,11 @@ of its own.
   DEC-017 does not close Gate A, does not authorize later work packages, and creates no security,
   privacy, accessibility, compliance, certification, district-readiness, or independent-validation
   claim. The published surface remains **PUBLIC PROTOTYPE**.
-- DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
-  DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
-  respectively. None is resolved by WP-006 closure.
+- DEC-011 (program register text) and DEC-013 (gate lineage) remain **open**, both routed to WP-008.
+  Neither is resolved by WP-006 closure. DEC-012 is now **accepted** (see the WP-038 entry below);
+  it names an internal accessibility target and does not declare which ULW-AS-001 revision is
+  effective, so FND-010 stays open.
+
 - Finding dispositions after WP-037: **FND-011 resolved** for pipeline-produced evidence (legacy
   hand-bound documents still drift); **FND-013 resolved for machine-derived baseline facts**, with
   narrative semantic accuracy still human-governed; **FND-012 remains open and NOT VERIFIED** —
@@ -82,18 +84,30 @@ of its own.
   open and advisory** — repository-wide lint does not pass (677 problems, no new debt from this work),
   while WP-037 files report zero problems; **FND-015 REMEDIATED** — the five dependency advisories
   are absent from the post-remediation rescan.
-- **WP-038 — Regulatory, Standards and Obligation Baseline: EXECUTOR-COMPLETE — OWNER CLOSURE
-  DECISION REQUIRED.** The canonical registers under `data/governance/` hold 43 primary-source
+- **WP-038 — Regulatory, Standards and Obligation Baseline: CLOSED BY OWNER** under **DEC-018
+  (accepted 2026-08-19)**. The canonical registers under `data/governance/` hold 43 primary-source
   external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger
-  classes, and 16 gaps, projected into `docs/wp-038/` and covered by 21 executing register-integrity
+  classes, and 16 gaps, projected into `docs/wp-038/` and covered by executing register-integrity
   tests. Registered as EV-026 (authority register), EV-027 (register integrity tests), and EV-028
   (data-collection inspection: no personal-data collection path, one first-party sidebar cookie).
-  New findings **FND-016** (ULW-AS-001 v1.3 unbound to a WCAG version and level, routed to DEC-012),
-  **FND-017** (BEFORE LIVE PII gate may fire after the first binding Massachusetts obligation), and
-  **FND-018** (CycloneDX named without a specification version) are **open**. **DEC-018 is drafted
-  and NOT ACCEPTED**: WP-038 is not closed, and no work package after it is authorized. Obligation
-  interpretation is AI-assisted and executor-recorded. It is not legal advice, not independent
-  review, and asserts no compliance with any obligation.
+  Closure creates no compliance, legal, certification, procurement, district-approval, or
+  independent-review claim; obligation interpretation is AI-assisted and executor-recorded.
+  **DEC-012 is ACCEPTED (2026-08-19)**: WCAG 2.2 Level AA is the current internal SSLS accessibility
+  design and validation target for new and actively governed implementation, superseding older
+  internal references to WCAG 2.1 Level AA. It establishes no WCAG 2.2 conformance, ADA, Section 504
+  or 508 compliance, ACR/VPAT result, procurement acceptance, district approval, or certification,
+  and independent accessibility validation remains required at the applicable later gate. Where a
+  verified external obligation requires a different or more specific standard, that obligation
+  controls. **FND-016 is PARTIALLY RESOLVED** — the absence of a named target is closed by DEC-012,
+  while ULW-AS-001 v1.3's own unbound text, criterion-level mapping to WCAG 2.2, coverage against
+  ADA Title II's WCAG 2.1 AA reference, and independent validation remain unresolved. **FND-017**
+  (BEFORE LIVE PII gate may fire after the first binding Massachusetts obligation) and **FND-018**
+  (CycloneDX named without a specification version) remain **open**. **FND-010** remains open and
+  conflicted: DEC-012 does not declare which ULW-AS-001 revision is effective.
+  **WP-007 — Historical Requirement Conformance Recovery is NEXT ELIGIBLE**, subject to verification
+  that no later accepted decision supersedes the Build Program sequence. WP-039 is not authorized by
+  numerical order. Gate A remains open.
+
 - **FND-019 (REPAIRED, this cycle):** the WP-037 minimum-necessary pin (EV-023) forced
   brace-expansion 5.0.9 on all consumers and broke ESLint through minimatch 3.1.5
   (`TypeError: expand is not a function`), so the lint check could not execute. The flat override
