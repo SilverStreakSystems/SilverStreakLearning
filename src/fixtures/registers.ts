@@ -324,6 +324,24 @@ export const FINDINGS: FindingRecord[] = [
       "Recorded owner instruction of 2026-08-19: this obligation is the highest-priority open action until a disposition is recorded.",
     synthetic: false,
   },
+  {
+    id: "FND-021",
+    title:
+      "Supply the three authorized August 5 v0.2.0 inputs so WP-007 Cycle 4 can execute its locked target.",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "DEC-019 authorizes WP-007 Cycle 4 and names three required inputs: SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx, and SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt. None was present in the executor's supplied-input surface at entry (EV-037); only the already registered v0.3.0 artifacts were available. The locked Cycle 4 outcome requires cryptographic verification of those files and extraction from Section 11 of the v0.2.0 PDF, so neither package acquisition nor requirement extraction can be executed. Cycle 4 is therefore BLOCKED at entry, before any register edit. The owner-declared digests are held as declared values only and were not measured.",
+    boundary:
+      "This record states an input-availability blockage only. It does not decline or amend DEC-019, does not close or change WP-007, Gate A, or WP-039, does not register, verify, promote, or infer the content of any August 5 v0.2.0 artifact, does not create an HREQ candidate or a restatement relationship, and does not resolve or change FND-001 through FND-020 or PDR-001 through PDR-004.",
+    resolutionState: "blocked",
+    requiredDecision:
+      "Supply the three authorized August 5 v0.2.0 files for independent digest verification, or amend the Cycle 4 authorization.",
+    evidenceReferences: ["EV-037"],
+    synthetic: false,
+  },
 ];
 
 
@@ -872,6 +890,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-037",
+    title: "WP-007 Cycle 4 entry verification and authorized-input availability check",
+    kind: "manual-check",
+    subject:
+      "Repository entry state at the Cycle 4 authorization, and the availability of the three authorized August 5 v0.2.0 inputs named by DEC-019: SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx, and SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That entry verification was executed before any Cycle 4 edit: Gate A is OPEN, WP-038 is CLOSED BY OWNER, WP-007 is ACTIVE, WP-039 is NOT AUTHORIZED, and no later accepted decision supersedes DEC-019; that the next unused identifiers were confirmed as HREQ-015, HS-023, EV-037, and docs/wp-007/CHECKPOINT-004.md; and that none of the three authorized August 5 v0.2.0 inputs was present in the executor's supplied-input surface, which held only the already registered v0.3.0 PDF, workbook, and manifest.",
+    doesNotSupport:
+      "That any August 5 v0.2.0 digest was recomputed or verified, that any v0.2.0 artifact was acquired, registered, or read, that any requirement was extracted, or that any restatement comparison was performed. The owner-declared digests are recorded as declared values only and were not measured by this program. Executor-run, method manual availability check, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 
@@ -1276,6 +1310,29 @@ export const DECISIONS: DecisionRecord[] = [
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-019",
+    title: "Accept WP-007 Cycle 3 and authorize WP-007 Cycle 4 only",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
+    context:
+      "WP-007 Cycle 3 executed the v0.3.0 governed package integration and synchronization recorded in docs/wp-007/CHECKPOINT-003.md, and a re-verification pass at entry HEAD 3955257 established that the owner-resupplied v0.3.0 PDF, workbook, and manifest were byte-identical to the already registered PKA-001, PKA-002, and PKA-003. No duplicate package was created and no canonical register value changed. The owner supplied a disposition on 2026-08-19 together with an authorization for a single bounded successor cycle.",
+    decision:
+      "ACCEPTED BY OWNER. WP-007 Cycle 3 is accepted as ACHIEVED against its locked package-identity and inspectability target only. WP-007 Cycle 4 — August 5 v0.2.0 Partial Historical Package Acquisition, Bounded Accessibility Requirement Extraction, and Cross-Source Restatement Index — is authorized, and only that cycle is authorized. Acceptance does not close WP-007, does not close Gate A, does not authorize WP-039, does not promote v0.3.0 to canonical authority, does not resolve PDR-001 through PDR-004, and does not resolve or close FND-010, FND-012, FND-014, FND-016, FND-017, FND-018, or any other finding. It expands no accessibility, security, privacy, compliance, or release claim and authorizes no deployment, publication, district use, personal data, or AI product capability.",
+    consequences: [
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039 remains NOT AUTHORIZED.",
+      "Cycle 4 is authorized as scoped and is bounded to the named August 5 v0.2.0 inputs and to Section 11 — Accessibility of the authorized v0.2.0 PDF.",
+      "FND-020 carries a proposition broader than Cycle 3 review alone, so under the owner's own instruction it is neither closed nor rewritten by this decision; its lineage is preserved unchanged.",
+      "No historical source is promoted, no HREQ receives an owner disposition, and no finding is closed by this decision.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "WP-007"],
     synthetic: false,
   },
 
