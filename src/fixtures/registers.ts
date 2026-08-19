@@ -169,7 +169,7 @@ export const FINDINGS: FindingRecord[] = [
       "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again.",
     boundary:
       "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured.",
-    resolutionState: "open",
+    resolutionState: "not-verified",
     requiredDecision: null,
     evidenceReferences: ["EV-016", "EV-017"],
     synthetic: false,
@@ -185,7 +185,7 @@ export const FINDINGS: FindingRecord[] = [
       "A workflow that runs the binding check exists in the repository. Whether the hosting platform requires that check to pass before a merge is a repository-settings fact that cannot be read from repository content, so merge enforcement is recorded as not verified.",
     boundary:
       "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed.",
-    resolutionState: "open",
+    resolutionState: "not-verified",
     requiredDecision: null,
     evidenceReferences: ["EV-016"],
     synthetic: false,
@@ -201,7 +201,7 @@ export const FINDINGS: FindingRecord[] = [
       "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one.",
     boundary:
       "Not a defect in the check, which does exactly what it declares. It is a scope limit that a later evidence pipeline must close by separating immutable execution evidence from the current baseline summary.",
-    resolutionState: "open",
+    resolutionState: "not-verified",
     requiredDecision: null,
     evidenceReferences: ["EV-016"],
     synthetic: false,
@@ -209,7 +209,7 @@ export const FINDINGS: FindingRecord[] = [
   {
     id: "FND-014",
     title: "Repository-wide lint does not pass",
-    severity: "quality",
+    severity: "advisory",
     raisedOn: "2026-08-19",
     raisedBy: "Founder / Operator",
     affectedLayers: ["L7"],
@@ -217,7 +217,7 @@ export const FINDINGS: FindingRecord[] = [
       "A full lint run reports 683 problems across the repository, overwhelmingly formatter differences rather than logic defects, and 664 of them are auto-fixable. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes.",
     boundary:
       "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness.",
-    resolutionState: "open",
+    resolutionState: "unknown",
     requiredDecision: null,
     evidenceReferences: ["EV-016"],
     synthetic: false,
