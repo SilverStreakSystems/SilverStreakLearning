@@ -45,6 +45,22 @@ function ActionCenter() {
       />
 
       <Section
+        id="standing"
+        title="Program standing behind these obligations"
+        description="Obligations are only defensible against the work package that is actually active."
+      >
+        <dl className="grid gap-4 text-sm md:grid-cols-2 xl:grid-cols-3">
+          {PROGRAM_STANDING.map((entry) => (
+            <div key={entry.id}>
+              <dt className="font-semibold">{entry.label}</dt>
+              <dd className="text-sm">{entry.value}</dd>
+              <dd className="mt-1 text-xs text-muted-foreground">{entry.basis}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      <Section
         id="order"
         title="How this list is ordered"
         description="Position in the list below is the whole ranking rule. There is no weighting, no learned model, and no opaque score."
