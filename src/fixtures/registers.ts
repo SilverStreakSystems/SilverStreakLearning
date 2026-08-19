@@ -360,9 +360,6 @@ export const FINDINGS: FindingRecord[] = [
   },
 ];
 
-
-
-
 export const EVIDENCE: EvidenceRecord[] = [
   {
     id: "EV-001",
@@ -814,7 +811,8 @@ export const EVIDENCE: EvidenceRecord[] = [
     id: "EV-031",
     title: "WP-007 historical-source universe register and invariant tests",
     kind: "automated-test",
-    subject: "data/historical/ schema and register, loader, projection, and register-integrity tests",
+    subject:
+      "data/historical/ schema and register, loader, projection, and register-integrity tests",
     collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "confirmed",
@@ -957,8 +955,7 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-040",
-    title:
-      "WP-007 Cycle 4 bounded extraction and cross-source restatement index",
+    title: "WP-007 Cycle 4 bounded extraction and cross-source restatement index",
     kind: "manual-check",
     subject:
       "Section 11 of PKA-103 on printed pages 20-21, read verbatim into requirement candidates, and those candidates read against the HS-011 candidates HREQ-001 through HREQ-014.",
@@ -989,11 +986,6 @@ export const EVIDENCE: EvidenceRecord[] = [
     synthetic: false,
   },
 ];
-
-
-
-
-
 
 export const DECISIONS: DecisionRecord[] = [
   {
@@ -1417,9 +1409,7 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001", "WP-007"],
     synthetic: false,
   },
-
 ];
-
 
 export const CLAIMS: ClaimRecord[] = [
   {

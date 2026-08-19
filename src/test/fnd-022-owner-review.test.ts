@@ -60,15 +60,11 @@ describe("FND-022 owner review packet — structure", () => {
       index.unmatched_related_candidates.map((u) => u.requirement_id).sort(),
     );
     expect(packet.reconciliation.unmatched_counted_in_rows).toBe(false);
-    expect(packet.reconciliation.unmatched_count).toBe(
-      packet.unmatched_current_candidates.length,
-    );
+    expect(packet.reconciliation.unmatched_count).toBe(packet.unmatched_current_candidates.length);
   });
 
   it("reconciles its declared totals with the governed registers", () => {
-    for (const [relationship, total] of Object.entries(
-      packet.reconciliation.relationship_totals,
-    )) {
+    for (const [relationship, total] of Object.entries(packet.reconciliation.relationship_totals)) {
       expect(index.relations.filter((r) => r.relationship === relationship)).toHaveLength(total);
     }
     expect(packet.reconciliation.restatement_row_count).toBe(index.relations.length);

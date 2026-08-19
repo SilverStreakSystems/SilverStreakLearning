@@ -48,7 +48,9 @@ function main() {
     "",
     "| Item | State |",
     "| --- | --- |",
-    ...Object.entries(packet.entry_state).map(([k, v]) => `| ${k.replace(/_/g, " ").toUpperCase()} | ${v} |`),
+    ...Object.entries(packet.entry_state).map(
+      ([k, v]) => `| ${k.replace(/_/g, " ").toUpperCase()} | ${v} |`,
+    ),
     "",
     "## Reconciliation against the Cycle 4 record",
     "",
@@ -67,7 +69,9 @@ function main() {
       `- Source: ${c.source_id}, ${c.source_title}, ${c.source_locator}; artifact ${c.package_artifact_id} of ${c.package_id} (${c.package_completeness}); digest \`${c.source_digest}\`.`,
       `- Current status: ${c.current_status.disposition}, ${c.current_status.conformance_state}, authority ${c.current_status.inherited_authority}, source ${c.current_status.promotion_state}.`,
       `- Mapped current requirements: ${
-        c.matched_current_requirement_ids.length ? c.matched_current_requirement_ids.join(", ") : "none"
+        c.matched_current_requirement_ids.length
+          ? c.matched_current_requirement_ids.join(", ")
+          : "none"
       } (${c.relationship_type.join(", ")}; rows ${c.relationship_rows.join(", ")}).`,
       `- Cycle 4 basis: ${c.relationship_rationale}`,
       `- Substantive delta: ${c.substantive_delta}`,
