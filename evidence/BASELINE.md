@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-19T02:39:13.986Z |
-| Commit | `96aaef6fbf59bfff02e25cb764a21c220335b2e9` |
-| Tree hash | `da84440384ac03e2f522d54420cb5802061d9878` |
+| Generated at | 2026-08-19T02:39:36.993Z |
+| Commit | `35e66ad34595b8e160a866aab508392ec2015c49` |
+| Tree hash | `b9eae69c7cf95883c3a8be9b261cebadc769b395` |
 | Working tree dirty | true |
-| Input-set digest | `0077e5a037a45656c70b115fe49cf043ef25a598275feb7727a6992e1c991ae2` |
+| Input-set digest | `41263ad2f9483e126501a30cd3a80e01331dd4e20bf41defb717691c1c18ed5a` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,8 +18,8 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 354 |
-| Tracked files | 396 |
+| Commits | 356 |
+| Tracked files | 409 |
 | Source files | 211 |
 | Test files | 9 |
 | Route modules | 31 |
@@ -37,7 +37,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | SBOM components | 74 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
 | Licences requiring review | 0 |
-| Secret scan candidates | 3 |
+| Secret scan candidates | 0 |
 | Personal-data scan candidates | 0 |
 | Backend | No database or backend is configured in the tracked tree. |
 
@@ -53,7 +53,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | EV-SBOM | SBOM | pass | CURRENT |
 | EV-VULN | VULNERABILITY_SCAN | not-completed | CURRENT |
 | EV-LICENSE | LICENSE_SCAN | pass | CURRENT |
-| EV-SECRET | SECRET_SCAN | review-required | CURRENT |
+| EV-SECRET | SECRET_SCAN | pass | CURRENT |
 | EV-PII | PII_BOUNDARY_SCAN | pass | CURRENT |
 
 
