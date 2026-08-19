@@ -349,8 +349,9 @@ describe("in-app pipeline contract", () => {
 
   it("keeps the surfaced checks aligned with the pipeline input declarations", () => {
     for (const check of PIPELINE_CHECKS) {
-      expect(declaredSets(check.evidenceType).sort()).toEqual([...check.declaredInputs].sort());
-      expect(isReusable(check.evidenceType)).toBe(check.reusable);
+      const type = check.evidenceType as EvidenceType;
+      expect(declaredSets(type).sort()).toEqual([...check.declaredInputs].sort());
+      expect(isReusable(type)).toBe(check.reusable);
     }
   });
 
