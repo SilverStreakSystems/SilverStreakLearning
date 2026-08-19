@@ -54,9 +54,13 @@ const SECRET_PATTERNS = [
   {
     id: "generic-assigned-secret",
     label: "Assigned credential literal",
+    // High-entropy shape only: a credential-like key assigned an unbroken
+    // 16+ character value containing a digit. Design tokens and prose
+    // assigned to a `token` key do not meet that shape.
     pattern:
-      /\b(?:api[_-]?key|secret|password|passwd|token|client[_-]?secret)\b\s*[:=]\s*["'][^"'\n]{12,}["']/gi,
+      /\b(?:api[_-]?key|secret|password|passwd|token|client[_-]?secret)\b\s*[:=]\s*["'](?=[^"'\n]*\d)[A-Za-z0-9_\-+/=.]{16,}["']/gi,
   },
+
 ];
 
 const PII_PATTERNS = [
