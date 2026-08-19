@@ -824,7 +824,35 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-FND-001", "SSLS-BPP-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-015",
+    title: "Proposed owner closure of WP-037 evidence and verification pipeline",
+    state: "proposed",
+    decidedOn: null,
+    decidedBy: "Awaiting Founder / Operator",
+    context:
+      "WP-037 was authorized as next eligible by DEC-014 under DEC-007 and the DEC-010 software SSOT. Executor verification at the current head records: 254 of 254 tests passing across 10 test files, production build exit 0, fourteen evidence records with zero failures, two review-required results and one not-completed result, and a baseline manifest regenerated from the declared input sets. One fresh vulnerability-scan attempt was made and the advisory feed returned HTTP 404, so the scanner executed but no advisory result was obtained. No frozen, pre-registered WP-037 exit-criterion wording requiring a completed vulnerability result was located in the repository; the criterion is therefore reported as NOT COMPLETED rather than reinterpreted.",
+    decision:
+      "Question for the owner: should WP-037 be closed and WP-038 (Regulatory, Standards and Obligation Baseline) become next eligible, accepting the vulnerability-scan result as NOT COMPLETED due to an unavailable external feed? This decision is prepared by the executor and is not self-accepted.",
+    consequences: [
+      "If accepted: WP-037 is CLOSED BY OWNER and WP-038 becomes NEXT ELIGIBLE; the vulnerability limitation is carried forward unresolved.",
+      "FND-011 is dispositioned RESOLVED for pipeline-produced evidence, with legacy hand-bound documents still subject to declaration drift.",
+      "FND-013 is dispositioned RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; narrative semantic accuracy remains human-governed.",
+      "FND-012 remains OPEN: branch-protection enforcement is not verified and may not be claimed.",
+      "FND-014 remains OPEN / ADVISORY: repository-wide lint reports 683 problems; WP-037 files report zero.",
+      "Public deployment classification is PUBLIC PROTOTYPE. Publication is not release authority.",
+      "Closure creates no compliance, certification, security, accessibility-conformance, or independent-validation claim.",
+      "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this decision.",
+    ],
+    authorityClass: "proposed-decision",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001"],
+    synthetic: false,
+  },
 ];
+
 
 
 
