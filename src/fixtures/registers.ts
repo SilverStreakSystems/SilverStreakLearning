@@ -172,7 +172,7 @@ export const FINDINGS: FindingRecord[] = [
       "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-016", "EV-017"],
+    evidenceReferences: ["EV-016", "EV-017", "EV-018"],
     synthetic: false,
   },
   {
@@ -188,7 +188,7 @@ export const FINDINGS: FindingRecord[] = [
       "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-016"],
+    evidenceReferences: ["EV-018"],
     synthetic: false,
   },
   {
@@ -204,7 +204,7 @@ export const FINDINGS: FindingRecord[] = [
       "Not a defect in the check, which does exactly what it declares. It is a scope limit that a later evidence pipeline must close by separating immutable execution evidence from the current baseline summary.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-016"],
+    evidenceReferences: ["EV-018"],
     synthetic: false,
   },
   {
@@ -220,7 +220,7 @@ export const FINDINGS: FindingRecord[] = [
       "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness.",
     resolutionState: "unknown",
     requiredDecision: null,
-    evidenceReferences: ["EV-016"],
+    evidenceReferences: ["EV-018"],
     synthetic: false,
   },
 ];

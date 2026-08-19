@@ -47,7 +47,8 @@ that, and no automated check substitutes for it.
 | EV-013 | Superseded binding at `70c1f89` — historical evidence, state stale |
 | EV-014 | Superseded binding at `6aa254e` — historical evidence, state stale |
 | EV-015 | This guard — current summary, state confirmed |
-| EV-016 | Current binding at `9a257f7` with re-executed build, test, and lint — current summary |
+| EV-016 | Superseded binding at `9a257f7` — historical evidence, state stale |
+| EV-018 | Current binding at `c1f0601` with re-executed build, test, lint, and both controls — current summary |
 | EV-017 | Negative control: guard failure path exercised without touching a governed record |
 
 ## Verification at the current binding, 2026-08-19 02:06 UTC
@@ -56,7 +57,7 @@ that, and no automated check substitutes for it.
 |---|---|---|---|
 | Drift detection (before re-bind) | `node scripts/check-ssot-binding.mjs` at HEAD `7acb5d6` | exit 1 | exit 1, four `[MISMATCH]` rows |
 | Negative | `node scripts/check-ssot-binding.mjs --head=deadbeef…deadbeef` | exit 1 | exit 1, four `[MISMATCH]` rows; no governed record modified |
-| Positive | `node scripts/check-ssot-binding.mjs --head=9a257f75…c04` | exit 0 | exit 0, four `[OK]` rows, verdict PASS |
+| Positive | `node scripts/check-ssot-binding.mjs --head=c1f06016…39a` | exit 0 | exit 0, four `[OK]` rows, verdict PASS |
 
 Environment: Lovable sandbox, Node 22, executor-run. Not independent. Evidence: EV-016, EV-017.
 
