@@ -250,7 +250,7 @@ export const FINDINGS: FindingRecord[] = [
       "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. Disposition after DEC-012 (accepted 2026-08-19): PARTIALLY RESOLVED. The absent-target portion is resolved — WCAG 2.2 Level AA is now the named internal SSLS accessibility design and validation target. The remaining portions are unresolved: ULW-AS-001 v1.3 itself still carries no version binding in its own text, its criteria have not been mapped to WCAG 2.2 success criteria, coverage against ADA Title II's WCAG 2.1 Level AA reference is still unstated, and no independent accessibility validation exists.",
     boundary:
       "This does not assert that the interface fails any success criterion, nor that binding a version creates a conformance claim. DEC-012 fixes what may be measured, not what has been validated. The finding may not be closed on the strength of DEC-012 alone.",
-    resolutionState: "unknown",
+    resolutionState: "partial",
     requiredDecision: null,
     evidenceReferences: ["EV-026"],
     synthetic: false,
@@ -737,6 +737,36 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That `bunx eslint . -f json` crashed with `TypeError: expand is not a function` (exit 2, no report emitted) while the flat override pinned brace-expansion to 5.0.9, because minimatch 3.1.5 requires the 1.x default function export; that removing the flat override lets semver resolve brace-expansion 1.1.18 for minimatch 3.1.5 and 5.0.9 for minimatch 10.2.6; that an advisory query for both versions returned no advisories; and that after the change lint completed with 686 problems (672 errors, 14 warnings), 279 of 279 tests passed, typecheck reported no errors, the production build succeeded, and the pipeline recorded fail=0, review-required=2, not-completed=1 with baseline CURRENT.",
     doesNotSupport:
       "That lint passes, that the repository is free of vulnerabilities, or that any advisory source is complete. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-030",
+    title: "WP-038 handoff locator correction and residual WP-039 reference search",
+    kind: "manual-check",
+    subject: "Rename of docs/wp-038/HANDOFF_TO_WP-039.md and every active reference to it",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That `docs/wp-038/HANDOFF_TO_WP-039.md` was renamed in place to `docs/wp-038/HANDOFF_TO_WP-007.md`, that the active locators in `docs/wp-038/README.md` and `scripts/gen-obligation-docs.ts` were updated to the new filename, and that a repository-wide search for the string WP-039 afterwards returned only refusal statements — each asserting that WP-039 is not authorized — plus immutable lint evidence under `evidence/artifacts/`, which is never edited. Recorded as documentation lineage STL-006.",
+    doesNotSupport:
+      "That WP-039 exists, is planned, or is authorized; that the rename changes any authority; or that historical documents were rewritten. Executor-run, method manual plus repository search, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-031",
+    title: "WP-007 historical-source universe register and invariant tests",
+    kind: "automated-test",
+    subject: "data/historical/ schema and register, loader, projection, and register-integrity tests",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That `data/historical/HISTORICAL_SOURCE_SCHEMA.json` v1.0.0 and `data/historical/historical-sources.json` exist and validate, that 22 sources across the declared bounded universe each carry an exact locator, version or hash, authority classification with basis, access limitation, immutability, recovery relevance with reason, promotion state, personal-data status and boundary, that executing tests in `src/test/historical-sources.test.ts` enforce those invariants, and that the documents under `docs/wp-007/` are projected from the register by `scripts/gen-historical-source-docs.ts`.",
+    doesNotSupport:
+      "That any inventoried source has been read, verified, or reproduced; that the universe is complete beyond its declared boundary; that unreachable sources contain anything in particular; or that any source gained authority by being recorded. Executor-run, method automated, independent = false.",
     authorityClass: "current-summary",
     synthetic: false,
   },

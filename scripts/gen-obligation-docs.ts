@@ -150,7 +150,7 @@ Every document in this directory whose header says so is a projection of that da
 | \`DEC-012-BRIEF.md\` | Decision brief prepared for the owner |
 | \`EXIT_CRITERIA_MATRIX.md\` | Exit criteria and their state |
 | \`CLOSURE_RECOMMENDATION.md\` | Recommendation, with limitations preserved |
-| \`HANDOFF_TO_WP-039.md\` | What carries forward |
+| \`HANDOFF_TO_WP-007.md\` | What carries forward |
 ${OBLIGATION_DOMAINS.map((d) => `| \`domain-${d}.md\` | ${DOMAIN_TITLES[d]} obligations |`).join("\n")}
 
 ## Boundaries
