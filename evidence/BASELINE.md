@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-19T02:39:36.993Z |
-| Commit | `35e66ad34595b8e160a866aab508392ec2015c49` |
-| Tree hash | `b9eae69c7cf95883c3a8be9b261cebadc769b395` |
+| Generated at | 2026-08-19T02:49:08.235Z |
+| Commit | `1f7c51e8350b27207cc304de953dd7387ccba437` |
+| Tree hash | `1e8283317118733d01c69c3f554a285888dc897b` |
 | Working tree dirty | true |
-| Input-set digest | `41263ad2f9483e126501a30cd3a80e01331dd4e20bf41defb717691c1c18ed5a` |
+| Input-set digest | `1d38039e428b336b4d27635afce89f9e9d6eb8ce148347d66bf6ff90b67ba963` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,21 +18,21 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 356 |
-| Tracked files | 409 |
-| Source files | 211 |
-| Test files | 9 |
+| Commits | 390 |
+| Tracked files | 433 |
+| Source files | 213 |
+| Test files | 10 |
 | Route modules | 31 |
-| Documentation files | 132 |
+| Documentation files | 146 |
 
 ## Derived state
 
 | Subject | Recorded result |
 |---|---|
-| Build | NOT COLLECTED |
-| Tests | NOT COLLECTED |
-| Type check | NOT COLLECTED |
-| Lint | NOT COLLECTED |
+| Build | Exit code 0. Duration 8316 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 17103 ms. |
+| Type check | Exit code 0. |
+| Lint | 730 problems across 115 files: 716 errors, 14 warnings, 711 auto-fixable. |
 | Routes | 29 |
 | SBOM components | 74 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
@@ -45,6 +45,10 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Evidence | Type | Result | Applicability |
 |---|---|---|---|
+| EV-BUILD | BUILD | pass | CURRENT |
+| EV-TEST | TEST | pass | CURRENT |
+| EV-TYPECHECK | TYPECHECK | pass | CURRENT |
+| EV-LINT | LINT | review-required | CURRENT |
 | EV-ROUTES | ROUTE_INVENTORY | pass | CURRENT |
 | EV-PROVENANCE | SOURCE_PROVENANCE | pass | CURRENT |
 | EV-CONFIG | CONFIGURATION | pass | CURRENT |
