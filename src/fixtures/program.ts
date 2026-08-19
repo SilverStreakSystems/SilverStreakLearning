@@ -35,17 +35,17 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     },
   },
   latestCheckpoint: {
-    checkpointId: "CHECKPOINT-006",
+    checkpointId: "CHECKPOINT-007",
     title:
-      "WP-007 Cycle 4 — August 5 v0.2.0 partial package acquisition, bounded Section 11 extraction, and cross-source restatement index",
+      "WP-007 Cycle 5 — FND-022 owner disposition review packet",
     completedOn: "2026-08-19",
     outcome:
-      "Cycle 4 execution is complete: the three authorized August 5 v0.2.0 inputs were supplied and digest-verified, PKG-001 is registered as a partial historical package, HS-023 is registered as a source, HREQ-015 through HREQ-030 were extracted verbatim from Section 11, and seventeen cross-source restatement rows were recorded.",
+      "Cycle 5 execution is complete: the sixteen Cycle 4 candidates, the seventeen restatement rows, and the three unmatched current candidates are assembled into a schema-bound review packet with source binding, substantive delta, evidence gaps, affected records, review options, and non-binding executor analysis for each item.",
     closedNothing:
-      "Cycle 4 closed nothing. No candidate received a disposition or a conformance state, no wording was merged, superseded, or elected as controlling, no drift row was resolved, no work package or gate changed state, and no successor work package was authorized.",
+      "Cycle 5 closed nothing. It records no owner disposition, preselects no option, promotes nothing, merges or supersedes no wording, changes no Cycle 4 classification, resolves no drift row, and changes no work package or gate state.",
     source: {
-      recordId: "CHECKPOINT-006",
-      locator: "docs/wp-007/CHECKPOINT-006.md",
+      recordId: "CHECKPOINT-007",
+      locator: "docs/wp-007/CHECKPOINT-007.md",
       route: null,
     },
   },
@@ -60,6 +60,12 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       route: "/findings",
     },
     supportingSources: [
+      { recordId: "CHECKPOINT-007", locator: "docs/wp-007/CHECKPOINT-007.md", route: null },
+      {
+        recordId: "FND-022-PACKET",
+        locator: "docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md; data/historical/fnd-022-owner-review.json",
+        route: null,
+      },
       { recordId: "CHECKPOINT-006", locator: "docs/wp-007/CHECKPOINT-006.md", route: null },
       { recordId: "HREQ-015..HREQ-030", locator: "data/historical/historical-requirements.json", route: null },
       { recordId: "RST-001..RST-017", locator: "data/historical/restatement-index.json", route: null },
