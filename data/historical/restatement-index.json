@@ -11,7 +11,7 @@
       "related_requirement": "HREQ-001",
       "related_source": "HS-011",
       "relationship": "RESTATES",
-      "basis": "Both statements require semantic landmark structure; the v0.2.0 wording adds headings to the same bullet.",
+      "basis": "Both statements require semantic landmark structure; the historical v0.2.0 wording adds headings to the same bullet.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
@@ -31,7 +31,7 @@
       "related_requirement": "HREQ-003",
       "related_source": "HS-011",
       "relationship": "BROADENS",
-      "basis": "The v0.2.0 bullet names the skip link only; the HS-011 row additionally fixes its tab position and its target.",
+      "basis": "The historical v0.2.0 bullet names the skip link only; the HS-011 row additionally fixes its tab position and its target.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
@@ -41,7 +41,7 @@
       "related_requirement": "HREQ-004",
       "related_source": "HS-011",
       "relationship": "BROADENS",
-      "basis": "The v0.2.0 bullet extends keyboard operability to controls, where the HS-011 row states navigation between sections.",
+      "basis": "The historical v0.2.0 bullet extends keyboard operability to controls, where the HS-011 row states navigation between sections.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
@@ -51,7 +51,7 @@
       "related_requirement": "HREQ-006",
       "related_source": "HS-011",
       "relationship": "BROADENS",
-      "basis": "The v0.2.0 bullet requires a visible focus indicator without the dual-color treatment the HS-011 row specifies.",
+      "basis": "The historical v0.2.0 bullet requires a visible focus indicator without the dual-color treatment the HS-011 row specifies.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
@@ -81,7 +81,7 @@
       "related_requirement": "HREQ-010",
       "related_source": "HS-011",
       "relationship": "NARROWS",
-      "basis": "The v0.2.0 bullet fixes reflow at a 320-pixel width, where the HS-011 row states responsive reflow without a figure.",
+      "basis": "The historical v0.2.0 bullet fixes reflow at a 320-pixel width, where the HS-011 row states responsive reflow without a figure.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
@@ -101,7 +101,7 @@
       "related_requirement": "HREQ-008",
       "related_source": "HS-011",
       "relationship": "NARROWS",
-      "basis": "The v0.2.0 bullet limits the no-content-loss expectation to horizontal table scrolling, where the HS-011 row states that essential text is not truncated anywhere.",
+      "basis": "The historical v0.2.0 bullet limits the no-content-loss expectation to horizontal table scrolling, where the HS-011 row states that essential text is not truncated anywhere.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
@@ -111,7 +111,7 @@
       "related_requirement": "HREQ-011",
       "related_source": "HS-011",
       "relationship": "BROADENS",
-      "basis": "The v0.2.0 sentence states what accessibility evidence must record for any scenario, where the HS-011 row names a screen reader walkthrough as one such activity.",
+      "basis": "The historical v0.2.0 sentence states what accessibility evidence must record for any scenario, where the HS-011 row names a screen reader walkthrough as one such activity.",
       "boundary": "Records a read relationship between two candidate wordings. Neither record is merged, deduplicated, edited, deleted, ranked, or elected as controlling, and neither gains a disposition or any conformance meaning from this row."
     },
     {
