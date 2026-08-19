@@ -26,7 +26,7 @@ Verified entry state:
 | WP-039 NOT AUTHORIZED | DEC-018; `docs/wp-007/REFUSED_CLAIMS.md` | CONFIRMED |
 
 Next unused identifiers verified at entry: HREQ-015, HS-023, EV-037, FND-021, DEC-019,
-`docs/wp-007/CHECKPOINT-004.md`. The August 5 v0.2.0 PDF, workbook, and manifest have no
+`docs/wp-007/CHECKPOINT-004.md`. The historical, not-current August 5 v0.2.0 PDF, workbook, and manifest have no
 existing package-artifact or historical-source registration; PKG-001 registers only the
 named-but-not-supplied DOCX (PKA-101) and ZIP (PKA-102).
 
