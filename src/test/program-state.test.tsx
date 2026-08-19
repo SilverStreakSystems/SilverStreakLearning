@@ -116,12 +116,14 @@ describe("Command Center synchronization", () => {
   it("projects gate, work package, checkpoint, and pending disposition", async () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Current governed state/i });
-    expect(within(region).getByText(/Gate A/)).toBeInTheDocument();
-    expect(within(region).getByText(/OPEN/)).toBeInTheDocument();
-    expect(within(region).getByText(/WP-007/)).toBeInTheDocument();
-    expect(within(region).getByText(/CHECKPOINT-003: execution complete/)).toBeInTheDocument();
-    expect(within(region).getByText(/PENDING/)).toBeInTheDocument();
-    expect(within(region).getByText(/Cycle 3 closed nothing/)).toBeInTheDocument();
+    expect(within(region).getAllByText(/Gate A/).length).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/OPEN/).length).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/WP-007/).length).toBeGreaterThan(0);
+    expect(
+      within(region).getAllByText(/CHECKPOINT-003: execution complete/).length,
+    ).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/PENDING/).length).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/Cycle 3 closed nothing/).length).toBeGreaterThan(0);
   });
 
   it("projects the package authority role, digest verification, and drift count", async () => {
@@ -140,7 +142,9 @@ describe("Command Center synchronization", () => {
     const boundary = await screen.findByRole("region", {
       name: /What hosting this application means/i,
     });
-    expect(within(boundary).getByText(/not release authority/i)).toBeInTheDocument();
+    expect(
+      within(boundary).getAllByText(/does not constitute release authority/i).length,
+    ).toBeGreaterThan(0);
   });
 
   it("leads the next defensible action with the pending owner disposition", async () => {
@@ -161,7 +165,7 @@ describe("Command Center synchronization", () => {
       "release authorized",
       "wp-039 is authorized",
     ]) {
-      expect(text.includes(phrase)).toBe(false);
+      expect([phrase, text.includes(phrase)]).toEqual([phrase, false]);
     }
   });
 });

@@ -191,9 +191,19 @@ describe("action center", () => {
   });
 
   it("orders actions by named factors only, never by a score", () => {
-    for (let index = 1; index < actions.length; index += 1) {
-      expect(priorityRank(actions[index]!.topFactor)).toBeGreaterThanOrEqual(
-        priorityRank(actions[index - 1]!.topFactor),
+    // A recorded owner directive may place an obligation first. It is a named
+    // human instruction printed next to the action, not a computed score, and
+    // it is the only input allowed above the factor order. Everything below it
+    // is still ordered strictly by factor rank.
+    const directed = actions.filter((action) => action.ownerPriorityDirective);
+    for (const action of directed) {
+      expect(action.ownerPriorityDirective!.trim()).not.toBe("");
+      expect(actions.indexOf(action)).toBeLessThan(directed.length);
+    }
+    const byFactor = actions.filter((action) => !action.ownerPriorityDirective);
+    for (let index = 1; index < byFactor.length; index += 1) {
+      expect(priorityRank(byFactor[index]!.topFactor)).toBeGreaterThanOrEqual(
+        priorityRank(byFactor[index - 1]!.topFactor),
       );
     }
     expect(PRIORITY_FACTORS[0]).toBe("safety-security-privacy-accessibility-stop");
