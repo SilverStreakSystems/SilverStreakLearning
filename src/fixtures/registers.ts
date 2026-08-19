@@ -966,19 +966,21 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-017",
-    title: "Proposed owner closure of WP-037 evidence and verification pipeline",
-    state: "required",
-    decidedOn: null,
-    decidedBy: null,
+    title: "Close WP-037 and authorize progression to WP-038",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
     context:
-      "Under DEC-016 the five high-severity advisories were triaged (EV-022) and remediated by minimum-necessary pinning (EV-023). The post-remediation rescan matched zero advisories (EV-024) and regression verification recorded no failure (EV-025). The vulnerability exit criterion, which concerns completed vulnerability evidence rather than the absence of all vulnerability, now has a completed scan with a recorded result and a remediated finding. Every other frozen criterion retains the state recorded at WP-037 execution.",
+      "Under DEC-016 the five high-severity advisories reported by EV-021 were triaged (EV-022) and remediated by minimum-necessary pinning (EV-023). The post-remediation advisory scan completed and matched no advisories in its recorded scope at that point in time (EV-024); regression verification recorded no failure (EV-025). The pipeline is implemented and reproducible, immutable execution evidence is separated from current baseline state, and input-aware applicability is functioning.",
     decision:
-      "DECISION REQUIRED. Proposed: close WP-037 by owner on the recorded evidence, with the limitations carried forward unchanged — FND-012 OPEN / NOT VERIFIED (branch-protection enforcement unproven), FND-014 OPEN / ADVISORY (repository-wide lint does not pass, 677 problems, no new debt from this package), bun audit still unable to execute in this environment with EV-VULN preserved as a failed attempt, and all evidence executor-produced with independent = false. On acceptance WP-038 becomes NEXT ELIGIBLE. This decision is not accepted by the executor and confers no security, compliance, certification, release, or independent-validation status.",
+      "ACCEPTED BY OWNER. WP-037 — Evidence & Verification Pipeline is CLOSED BY OWNER on the evidence produced through DEC-016 remediation. The closure recognises that FND-011 is resolved for pipeline-produced evidence with legacy residuals preserved; FND-013 is resolved for machine-derived baseline facts while narrative semantic accuracy remains human-governed; FND-012 remains OPEN / NOT VERIFIED because required branch-protection enforcement has not been evidenced; FND-014 remains OPEN / ADVISORY because repository-wide lint debt remains; bun audit remains unable to complete in this environment and that limitation is preserved unchanged; the vulnerability evidence is automated, point-in-time, and not independent security validation; and the published SSLS surface remains a PUBLIC PROTOTYPE, not a production release. Next eligible work package: WP-038 — Regulatory, Standards & Obligation Baseline. This decision authorizes generation and execution of WP-038 only. It does not close Gate A and does not authorize later work packages. It creates no security, privacy, accessibility, compliance, certification, district-readiness, or independent-validation claim.",
     consequences: [
-      "If accepted: WP-037 CLOSED BY OWNER and WP-038 — Regulatory, Standards & Obligation Baseline becomes NEXT ELIGIBLE.",
-      "If not accepted: WP-037 remains HOLD and WP-038 remains NOT AUTHORIZED.",
-      "The published surface remains classified PUBLIC PROTOTYPE either way; closure is not release authorization.",
+      "WP-037 is CLOSED BY OWNER; WP-038 — Regulatory, Standards & Obligation Baseline is NEXT ELIGIBLE and authorized for generation and execution.",
+      "Gate A remains open and work packages after WP-038 remain unauthorized.",
+      "FND-012 and FND-014 remain open and are carried forward as limitations, not resolved by closure.",
+      "The published surface remains classified PUBLIC PROTOTYPE; closure is not release authorization.",
     ],
+
     authorityClass: "current-summary",
     recordState: "current",
     supersedes: [],
