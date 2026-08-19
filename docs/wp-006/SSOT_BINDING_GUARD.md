@@ -45,5 +45,34 @@ that, and no automated check substitutes for it.
 | Record | Meaning |
 |---|---|
 | EV-013 | Superseded binding at `70c1f89` — historical evidence, state stale |
-| EV-014 | Current binding at `6aa254e` — current summary, state confirmed |
+| EV-014 | Superseded binding at `6aa254e` — historical evidence, state stale |
 | EV-015 | This guard — current summary, state confirmed |
+| EV-016 | Current binding at `9a257f7` with re-executed build, test, and lint — current summary |
+| EV-017 | Negative control: guard failure path exercised without touching a governed record |
+
+## Verification at the current binding, 2026-08-19 02:06 UTC
+
+| Control | Command | Expected | Actual |
+|---|---|---|---|
+| Drift detection (before re-bind) | `node scripts/check-ssot-binding.mjs` at HEAD `7acb5d6` | exit 1 | exit 1, four `[MISMATCH]` rows |
+| Negative | `node scripts/check-ssot-binding.mjs --head=deadbeef…deadbeef` | exit 1 | exit 1, four `[MISMATCH]` rows; no governed record modified |
+| Positive | `node scripts/check-ssot-binding.mjs --head=9a257f75…c04` | exit 0 | exit 0, four `[OK]` rows, verdict PASS |
+
+Environment: Lovable sandbox, Node 22, executor-run. Not independent. Evidence: EV-016, EV-017.
+
+## CI enforcement status
+
+| Question | Determination | Basis |
+|---|---|---|
+| A. Implemented in repository CI | Yes | `.github/workflows/ssot-binding.yml` |
+| B. Runs on push | Yes | `on: push: branches: ["**"]` |
+| C. Runs on pull request | Yes | `on: pull_request: branches: ["**"]` |
+| D. Uses the pull-request head, not the synthetic merge commit | Yes | `SSOT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}` and checkout of the same ref |
+| E. Branch protection requires the check before merge | **REQUIRED MERGE ENFORCEMENT — NOT VERIFIED** | Repository settings are not inspectable from repository content. Recorded as FND-012; not inferred from the workflow file. |
+
+## Declaration drift
+
+Because the platform commits once per authoring turn, the declared commit falls behind the head under
+review immediately after each re-bind. That is FND-011. Two dispositions are available and neither is
+taken here: re-bind only on release or gate-closure branches, or split immutable execution evidence
+from the current baseline summary. The second is routed to WP-037.
