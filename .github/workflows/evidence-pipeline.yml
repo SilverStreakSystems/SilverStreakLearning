@@ -1,0 +1,62 @@
+name: SSLS Evidence Pipeline
+
+# Collects execution evidence and verifies that the committed evidence set is
+# applicable to the current input sets. Presence of this workflow is not merge
+# enforcement: branch protection is configured outside the repository and is
+# recorded as FND-012.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: evidence-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  evidence:
+    name: Collect and verify evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies from the lockfile
+        run: bun install --frozen-lockfile
+
+      - name: Collect evidence
+        id: collect
+        run: bun run evidence:run
+        env:
+          SSLS_EVIDENCE_COMMIT: ${{ github.sha }}
+
+      - name: Verify evidence applicability
+        run: bun run evidence:verify
+        env:
+          SSLS_EVIDENCE_COMMIT: ${{ github.sha }}
+
+      - name: Predecessor declared-binding guard (compatibility)
+        continue-on-error: true
+        run: bun run check:ssot-binding
+
+      - name: Publish evidence artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssls-evidence-${{ github.sha }}
+          path: evidence/
+          retention-days: 90
+          if-no-files-found: error

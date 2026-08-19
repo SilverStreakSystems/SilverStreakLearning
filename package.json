@@ -11,8 +11,9 @@
     "lint": "eslint .",
     "test": "vitest run",
     "check:ssot-binding": "node scripts/check-ssot-binding.mjs",
-    "format": "prettier --write ."
-
+    "format": "prettier --write .",
+    "evidence:run": "node scripts/evidence/run.mjs",
+    "evidence:verify": "node scripts/evidence/verify.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

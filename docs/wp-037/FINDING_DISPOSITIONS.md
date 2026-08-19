@@ -1,0 +1,52 @@
+# Finding Dispositions
+
+What WP-037 does to each limitation inherited from WP-006, and what remains afterwards.
+
+## FND-011 — Declaration drift between documents and repository state
+
+**Disposition: dissolved by architecture.**
+
+The commit under evidence is resolved at execution time and the baseline is regenerated rather than
+hand-declared. There is no declared commit string left in the pipeline for a human to forget to
+update, so the drift condition has no surface to occur on.
+
+*Residual:* predecessor WP-006 documents retain their hand-declared bindings and are unchanged.
+Those documents remain historical evidence, and they are not rebound.
+
+## FND-012 — CI workflow existence is not merge enforcement
+
+**Disposition: open, and not resolvable from repository content.**
+
+The pipeline records which workflow files exist and their hashes, and states in the same record that
+presence is not enforcement. `branch_protection` is recorded literally as
+`REQUIRED MERGE ENFORCEMENT - NOT VERIFIED`.
+
+*Residual:* branch protection is configured outside the repository. Closing this finding requires
+evidence from a party with access to repository settings.
+
+## FND-013 — Semantic freshness could not be established by string comparison
+
+**Disposition: addressed.**
+
+Freshness is decided by declared input-set hashes plus expiry policy. A documentation-only commit no
+longer invalidates build evidence, and a source change no longer passes unnoticed behind a matching
+commit string.
+
+*Residual:* input sets are declared by the pipeline. A real dependency omitted from a declaration
+would not be detected as a change. The declarations are therefore reviewable content, and the
+`pipeline` input set is itself hashed so changes to them are visible.
+
+## FND-014 — Repository-wide lint is not passing
+
+**Disposition: baselined, not resolved.**
+
+Lint is collected as a debt baseline with counts of errors, warnings, auto-fixable problems, and
+affected files, and is recorded with status `review-required`. It is never rendered as a pass.
+
+*Residual:* recording debt does not reduce it. A lint remediation decision has not been taken.
+
+## Not dispositioned here
+
+DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and DEC-013
+(gate lineage reconciliation) remain open and are routed as recorded in the WP-006 closure package.
+WP-037 does not resolve them and must not be read as resolving them.

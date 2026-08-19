@@ -1,4 +1,6 @@
 export * from "./authority";
+export * from "./evidence-pipeline";
+
 export * from "./layer";
 export * from "./artifact";
 export * from "./capability-architecture";

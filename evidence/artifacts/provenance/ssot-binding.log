@@ -1,0 +1,17 @@
+SSOT binding guard
+Commit under review: 1f7c51e8350b27207cc304de953dd7387ccba437
+
+[MISMATCH] docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md — declared c1f06016c5eb4e4b19e9b5821f525be4131d639a
+[MISMATCH] docs/wp-006/PROVENANCE_REPORT.md — declared c1f06016c5eb4e4b19e9b5821f525be4131d639a
+[MISMATCH] docs/wp-006/BUILD_MANIFEST.md — declared c1f06016c5eb4e4b19e9b5821f525be4131d639a
+[MISMATCH] docs/wp-006/TEST_BUILD_STATUS.md — declared c1f06016c5eb4e4b19e9b5821f525be4131d639a
+
+FAIL — at least one bound document does not declare the commit under review.
+
+How to clear this check:
+  1. Re-execute build and test evidence at the commit under review.
+  2. Update the binding commit and the captured figures in each listed document.
+  3. Record the previous binding as superseded in the governance registers.
+
+This guard checks binding freshness only. It does not approve, validate, or
+release anything, and it does not confer authority on the record.
