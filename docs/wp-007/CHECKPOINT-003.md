@@ -81,9 +81,11 @@ Executor-recomputed digests over the resupplied files:
 
 The files are byte-identical to the artifacts already registered under PKG-002, so no second
 package record was created and no register value changed. Supersession search found no accepted
-decision or canonical record later than Cycle 3 that would alter the entry state, and no active
-document presents Gate 0 as the current gate, WP-038 as active, WP-039 as authorized, or the
-August 5 v0.2.0 package as the current synchronized package.
+decision or canonical record later than Cycle 3 that would alter the entry state. Stale-reference
+searches for the superseded gate label, for WP-038 as active, for WP-039 as authorized, and for
+the prior August 5 package returned no active claim: Gate A is the current gate, WP-038 is closed
+by owner, WP-039 is unauthorized, and the earlier v0.2.0 set remains historical evidence that was
+not supplied and is not the current synchronized package.
 
 Recorded as **EV-036** and pinned by an executing invariant in
 `src/test/governed-packages.test.ts`. Nothing was promoted, closed, disposed, or released.
