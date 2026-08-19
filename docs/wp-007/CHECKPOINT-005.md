@@ -29,8 +29,8 @@ created**, because registering identical bytes a second time would manufacture a
 identity. A digest match is a file-identity check only; it says nothing about the accuracy of
 the package contents.
 
-The supplied set contains **no August 5 v0.2.0 artifact**. The three inputs DEC-019 names for
-Cycle 4 are still unavailable, so FND-021 remains open and Cycle 4's locked outcome — v0.2.0
+The supplied set contains **no historical August 5 v0.2.0 artifact**. The three inputs DEC-019 names for
+Cycle 4 are still unavailable, so FND-021 remains open and Cycle 4's locked outcome — historical v0.2.0
 digest verification, partial historical package registration, Section 11 extraction from
 HREQ-015, and the cross-source restatement index — was not executed in any part.
 
@@ -58,15 +58,15 @@ sheet's EV-026..EV-032 scope). Two new differences were recorded as drift, not c
 | PDR-005 | The workbook states lint debt as 686 problems (672 errors, 14 warnings); the current repository state records 704. | Executed repository validation | UNRESOLVED |
 | PDR-006 | DEC-019 locks extraction to "Section 11 — Accessibility, printed pages 20–21", but Section 11 of the v0.3.0 PDF is "Security, privacy, and release boundary" and accessibility is Section 10. | Owner decision required | UNRESOLVED |
 
-PDR-006 is consistent with DEC-019 describing the August 5 v0.2.0 document rather than this
-one, but that cannot be confirmed while the v0.2.0 PDF is unavailable, so it is recorded and
+PDR-006 is consistent with DEC-019 describing the historical August 5 v0.2.0 document rather than this
+one, but that cannot be confirmed while the historical v0.2.0 PDF is unavailable, so it is recorded and
 left open. PDR-001..PDR-004 are unchanged; the workbook's Control Room and Validation sheets
 restate the same 304-test figure already carried by PDR-001, and its Next Action sheet
 restates the same proposal already carried by PDR-004.
 
 ## 5. Refusals
 
-- **No requirement was extracted.** HREQ-015 onward is reserved for the authorized v0.2.0
+- **No requirement was extracted.** HREQ-015 onward is reserved for the authorized historical v0.2.0
   Section 11 source. Substituting the v0.3.0 Section 10 accessibility text would swap in a
   source the owner did not authorize, so it was refused. Whether to authorize that
   substitution is an owner decision that has not been made.
@@ -102,12 +102,12 @@ non-mutation invariants continue to execute unchanged.
 
 ## 9. Owner review required
 
-1. Re-supply the three August 5 v0.2.0 files so Cycle 4 can execute as authorized (FND-021).
+1. Re-supply the three historical August 5 v0.2.0 files so Cycle 4 can execute as authorized (FND-021).
 2. Or record a decision on PDR-006: whether the Cycle 4 extraction target should be re-pointed
    to a bounded section of the already-verified v0.3.0 PDF instead. This is owner-reserved and
    is not assumed here.
 
 ## 10. Next defensible target
 
-On receipt of the three v0.2.0 files, or a re-pointing decision, execute the bounded extraction
+On receipt of the three historical v0.2.0 files, or a re-pointing decision, execute the bounded extraction
 from HREQ-015 with the cross-source restatement index against HREQ-001..HREQ-014.
