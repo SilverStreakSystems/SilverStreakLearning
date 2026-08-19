@@ -10,20 +10,21 @@ This does not substitute for a CI evidence architecture; that is WP-037 and is n
 | Repository | Lovable-managed private Git repository for project `87c55369-0a52-4467-a48b-f8adcfd7d11e` | [C] |
 | Safe locator | `git.private.lovable-gcp.code.storage/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` (remote `origin`; the checked-out URL embeds a scoped access token, which is deliberately not reproduced here) | [C] |
 | Secondary remote | `s3://lovable-repositories/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` | [C] |
-| Branch | `edit/edt-d7ef09cb-7b9d-43c9-8422-aee6050dc107` | [C] |
+| Branch | `edit/edt-32665212-9bdf-4b4a-90ea-b94f5470ba9b` | [C] |
 | HEAD commit | `9a257f754e97b9cddf9a474009c5947488102c04` | [C] |
-| Parent commits | `70a11c889c61a71627fe9752b65e74feb1b7e901`, `cce526f4e051a301d01df34ab314114a803af961` (merge commit "Completed WP-006 SSOT findings", 2026-08-17 07:10:14 UTC) | [C] |
+| Parent commit | `5011a40cd9990cd3e68998d7237442822ba6b749` ("Update plan", 2026-08-19 02:02:40 UTC) | [C] |
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — "template: tanstack_start_ts_current-58df4fe22702", 2026-08-16 09:16:43 +0200 | [C] |
-| Commit count on branch | 294 | [C] |
-| Commit date distribution | 1 commit 2026-08-16, 293 commits 2026-08-17 | [C] |
-| HEAD tree hash | `8ff51275baa0167fb25b31481ffb641c4b03a833` | [C] |
+| Commit count on branch | 311 | [C] |
+| Commit date distribution | 1 commit 2026-08-16, 293 commits 2026-08-17, 17 commits 2026-08-19 | [C] |
+| HEAD tree hash | `cfc5aec6fe212c330d3a70e416876d2458100cde` | [C] |
 | Lockfile hash | `bun.lock` sha256 `591f58340f2ccd70a596f7a8e2ff8b0eeeb62a667cb4fe8a660a111a0d58fd13` | [C] |
-| Manifest hash | `package.json` sha256 `eae91b5184064609178ad5d2b529678013349c898d0ccc55f9251e22ec7241fa` | [C] |
-| Tracked files | 366 | [C] |
+| Manifest hash | `package.json` sha256 `0ab32261ed51046c4556e280e76c17a2aa99b8825dbcf9ccd31ad8ae9a9dd029` | [C] |
+| Tracked files | 372 | [C] |
 | Build environment | Lovable sandbox, Bun toolchain, Vite 8 build targeting a Cloudflare Worker runtime via Nitro | [C] |
-| Inspection timestamp | 2026-08-19 01:39–01:41 UTC (re-bind pass) | [C] |
-| Build result | `vite build` succeeded at HEAD | [C] |
-| Test result | `vitest run` — 210 passed / 210, 8 files, at HEAD | [C] |
+| Inspection timestamp | 2026-08-19 02:04–02:06 UTC (closure-reconciliation pass) | [C] |
+| Build result | `vite build` succeeded; exit 0 | [C] |
+| Test result | `vitest run` — 217 passed / 217, 9 files, 14.48 s | [C] |
+| Source-tree delta since evidence execution | Test and build were executed at `7acb5d6`; the only change between `7acb5d6` and this HEAD is the addition of an archived plan document under `.lovable/plan/`. No file under `src/`, `scripts/`, or `package.json` differs. | [C] |
 | Project visibility | Private (no published deployment recorded) | [C] |
 | Preview locator | `https://id-preview--87c55369-0a52-4467-a48b-f8adcfd7d11e.lovable.app` | [C] |
 | Published locator | None | [C] |
