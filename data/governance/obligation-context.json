@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "generated_marker": "CANONICAL - hand maintained under WP-038",
+  "conflicts": [
+    {
+      "conflict_id": "CNF-001",
+      "title": "eCFR currency metadata inconsistent for Title 34",
+      "source_ids": ["SRC-002", "SRC-003", "SRC-004"],
+      "description": "Live eCFR pages blocked automated retrieval, and search metadata reported inconsistent last-amended and currency dates across Title 34 pages in a single session. Currency was established from the govinfo annual CFR edition and the Cornell mirror instead. SRC-004 is therefore recorded CONFLICTED.",
+      "resolution_owner": "Founder / Operator, with qualified legal review",
+      "resolution_route": "Manual eCFR check before any determination relies on the amendment state of 34 CFR Part 99, 98 or 300.",
+      "state": "OPEN"
+    },
+    {
+      "conflict_id": "CNF-002",
+      "title": "CycloneDX ratified standard and latest specification are different versions",
+      "source_ids": ["SRC-028"],
+      "description": "ECMA-424 first edition corresponds to CycloneDX 1.6, while OWASP released specification v1.7 in October 2025 without Ecma ratification, and a 2.0 release was announced but not released. Current version depends on which authority is meant.",
+      "resolution_owner": "Founder / Operator",
+      "resolution_route": "The evidence pipeline must state the CycloneDX specVersion it emits rather than referring to CycloneDX generally.",
+      "state": "ROUTED"
+    },
+    {
+      "conflict_id": "CNF-003",
+      "title": "Massachusetts personal information is narrower than education-record PII",
+      "source_ids": ["SRC-007", "SRC-011", "SRC-012"],
+      "description": "Personal information under c. 93H and 201 CMR 17.00 requires a name combined with a Social Security number, driver's licence or state ID, or financial account number. Most student-record data does not meet that definition, yet is fully covered by 603 CMR 23.00 and FERPA. Conflating the two regimes would misstate both.",
+      "resolution_owner": "Founder / Operator, with qualified legal review",
+      "resolution_route": "The register keeps the two regimes on separate obligation records and never merges their triggers.",
+      "state": "RESOLVED"
+    },
+    {
+      "conflict_id": "CNF-004",
+      "title": "Regulated accessibility version differs from the current W3C Recommendation",
+      "source_ids": ["SRC-016", "SRC-017", "SRC-018"],
+      "description": "ADA Title II and the HHS Section 504 rule both name WCAG 2.1 Level AA. The current W3C Recommendation is WCAG 2.2. Building only to the regulated version leaves a re-test cycle; building to 2.2 exceeds what regulation names.",
+      "resolution_owner": "Founder / Operator",
+      "resolution_route": "Owner decision recorded through OBL-014, binding ULW-AS-001 v1.3 to a named WCAG version.",
+      "state": "ROUTED"
+    },
+    {
+      "conflict_id": "CNF-005",
+      "title": "EOTSS accessibility policy scope unresolved",
+      "source_ids": ["SRC-015"],
+      "description": "The Massachusetts enterprise accessibility policy binds executive-branch agencies. Whether and how it reaches school districts or their vendors was not established, and the policy version and conformance level were not retrieved.",
+      "resolution_owner": "Founder / Operator, with qualified legal review",
+      "resolution_route": "Retrieve the policy text and its scope clause before any Massachusetts procurement response.",
+      "state": "OPEN"
+    },
+    {
+      "conflict_id": "CNF-006",
+      "title": "COPPA statutory citation range varies across FTC pages",
+      "source_ids": ["SRC-005"],
+      "description": "FTC materials cite both 15 U.S.C. 6501-6505 and 6501-6506 for the same statute.",
+      "resolution_owner": "Founder / Operator",
+      "resolution_route": "Confirm against the U.S. Code before the citation appears in any formal memo.",
+      "state": "OPEN"
+    }
+  ],
+  "stale_references": [
+    {
+      "stale_id": "STL-001",
+      "project_reference": "ULW-AS-001 v1.3 as the accessibility standard, with no stated WCAG version binding",
+      "located_in": "docs/ACCESSIBILITY_ACCEPTANCE.md, docs/design-system/08-accessibility-and-validation.md, src/test/accessibility.test.ts",
+      "verified_current": "WCAG 2.2 is the current W3C Recommendation. ADA Title II and the HHS Section 504 rule name WCAG 2.1 Level AA.",
+      "disposition": "NARROW",
+      "finding_id": "FND-016",
+      "notes": "The internal standard is not wrong. It is unbound to an external version, which makes its coverage unstateable."
+    },
+    {
+      "stale_id": "STL-002",
+      "project_reference": "Trigger gate wording BEFORE LIVE PII in the capability architecture",
+      "located_in": "docs/capability-architecture/TRIGGER_GATES.md",
+      "verified_current": "The first binding obligation may attach through Massachusetts narrow personal information, including operator payroll or payment data, before any student PII exists.",
+      "disposition": "NARROW",
+      "finding_id": "FND-017",
+      "notes": "The gate name implies student data is the first trigger. OBL-009 shows it may not be."
+    },
+    {
+      "stale_id": "STL-003",
+      "project_reference": "CycloneDX described without a specification version",
+      "located_in": "docs/wp-037/SUPPLY_CHAIN_EVIDENCE.md",
+      "verified_current": "ECMA-424 corresponds to CycloneDX 1.6; OWASP v1.7 was released October 2025 and is not Ecma ratified.",
+      "disposition": "CORRECT",
+      "finding_id": "FND-018",
+      "notes": "Routed through CNF-002. The emitted specVersion must be named."
+    },
+    {
+      "stale_id": "STL-004",
+      "project_reference": "Zero-PII boundary asserted across governance documents",
+      "located_in": "docs/CURRENT_STATE.md, docs/wp-006/DATA_BACKEND_STATUS.md, docs/trust/",
+      "verified_current": "Verified accurate at WP-038 with one refinement: the interface sets a first-party sidebar preference cookie, and platform error reporting is invoked only when the host injects it.",
+      "disposition": "VERIFIED",
+      "finding_id": null,
+      "notes": "Recorded so that a future no-cookies claim is not made by accident."
+    },
+    {
+      "stale_id": "STL-005",
+      "project_reference": "References to WCAG without a version or level",
+      "located_in": "docs/design-system/09-conformance.md",
+      "verified_current": "Any accessibility statement must name both a version and a conformance level to be meaningful.",
+      "disposition": "NARROW",
+      "finding_id": "FND-016",
+      "notes": "Rolled into FND-016 rather than raised separately."
+    }
+  ],
+  "data_triggers": [
+    {
+      "data_class": "Student identity and demographic data",
+      "current_use": false,
+      "future_candidate_use": true,
+      "sensitivity": "high",
+      "obligation_domains": ["student-privacy", "records-retention", "interoperability"],
+      "prerequisite_review": "Legal review plus an executed district data privacy agreement",
+      "minimum_necessary": "Identifier, enrolment relationship and program status only. No free-text narrative in the first model.",
+      "retention_question": "Which record type is the transcript equivalent and which is the temporary record?",
+      "disclosure_question": "Who may see a student outside the assigned service relationship, and under what recorded purpose?"
+    },
+    {
+      "data_class": "Special-education and multilingual-learner program data",
+      "current_use": false,
+      "future_candidate_use": true,
+      "sensitivity": "high",
+      "obligation_domains": ["student-privacy", "records-retention", "interoperability"],
+      "prerequisite_review": "Legal review; IDEA confidentiality analysis; Ed-Fi domain mapping",
+      "minimum_necessary": "Program participation and service delivery facts. Not clinical narrative.",
+      "retention_question": "What triggers destruction when services end?",
+      "disclosure_question": "How is disability status prevented from leaking through interface projections and search?"
+    },
+    {
+      "data_class": "Staff and operator identity",
+      "current_use": false,
+      "future_candidate_use": true,
+      "sensitivity": "elevated",
+      "obligation_domains": ["security", "procurement"],
+      "prerequisite_review": "Security review before any authentication is added",
+      "minimum_necessary": "Account identifier and acting capacity. No personal contact detail beyond what authentication requires.",
+      "retention_question": "How long does an inactive account persist?",
+      "disclosure_question": "Is any operator identity rendered on a public surface?"
+    },
+    {
+      "data_class": "Payroll, payment or government identifier data",
+      "current_use": false,
+      "future_candidate_use": true,
+      "sensitivity": "high",
+      "obligation_domains": ["security", "records-retention"],
+      "prerequisite_review": "201 CMR 17.00 written information security program must exist first",
+      "minimum_necessary": "Handled by a processor wherever possible rather than held.",
+      "retention_question": "What is the disposal standard, including third-party disposal?",
+      "disclosure_question": "Who inside the organisation can reach it?"
+    },
+    {
+      "data_class": "Product telemetry and usage analytics",
+      "current_use": false,
+      "future_candidate_use": true,
+      "sensitivity": "elevated",
+      "obligation_domains": ["student-privacy", "public-surface"],
+      "prerequisite_review": "Privacy review; surveillance-metric refusal rules already prohibit individual monitoring",
+      "minimum_necessary": "Aggregate system health only. No per-student or per-staff behavioural profile.",
+      "retention_question": "What is the shortest useful retention window?",
+      "disclosure_question": "Could an aggregate be re-identified in a small district or low-incidence program?"
+    },
+    {
+      "data_class": "Support correspondence and free text",
+      "current_use": false,
+      "future_candidate_use": true,
+      "sensitivity": "elevated",
+      "obligation_domains": ["student-privacy", "records-retention"],
+      "prerequisite_review": "Privacy review",
+      "minimum_necessary": "Free text is the least controllable data class and should be bounded or avoided.",
+      "retention_question": "Does correspondence containing student detail become part of the education record?",
+      "disclosure_question": "How is inadvertent student PII in free text detected and removed?"
+    }
+  ]
+}
