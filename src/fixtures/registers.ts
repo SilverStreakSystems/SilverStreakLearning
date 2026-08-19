@@ -1120,26 +1120,28 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-018",
-    title: "Close WP-038 and adopt the obligation baseline",
-    state: "required",
-    decidedOn: null,
+    title: "Close WP-038 and authorize progression",
+    state: "accepted",
+    decidedOn: "2026-08-19",
     decidedBy: "Founder / Operator",
     context:
-      "WP-038 — Regulatory, Standards & Obligation Baseline is executor-complete under DEC-017. The canonical registers under data/governance hold 43 primary-source-verified external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger classes, and 16 gaps, projected into docs/wp-038 and covered by 21 executing register-integrity tests. Findings FND-016, FND-017 and FND-018 are raised and open. No owner decision has closed the package, and DEC-012 (binding ULW-AS-001 v1.3 to a named WCAG version and level) remains open with a brief at docs/wp-038/DEC-012-BRIEF.md.",
+      "WP-038 — Regulatory, Standards & Obligation Baseline is executor-complete under DEC-017 and its locked cycle target was achieved. The canonical registers under data/governance hold 43 primary-source-verified external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger classes, and 16 gaps, projected into docs/wp-038 and covered by executing register-integrity tests. 279 of 279 tests passed, typecheck and production build passed, the evidence pipeline completed with its review-required and unavailable checks preserved, lint executes again at 686 pre-existing problems, and the bun audit limitation remains disclosed.",
     decision:
-      "PROPOSED, NOT ACCEPTED. Proposed wording for owner disposition: close WP-038 on the evidence produced, adopt data/governance/obligations.json and external-authorities.json as the canonical obligation baseline for planning and gate design only, keep FND-016, FND-017 and FND-018 open with their routed work packages, keep DEC-012 open, and name the next eligible work package. The executor may not accept this decision.",
+      "ACCEPTED BY OWNER. WP-038 — Regulatory, Standards & Obligation Baseline is CLOSED BY OWNER on the machine-readable obligation baseline, verified authority register, findings, conflicts, stale-reference reconciliation, Claims Register controls, application-register propagation, executing tests, and registered evidence. Closure recognizes that WP-038 outputs are represented in the canonical application registers; that FND-016, FND-017 and FND-018 remain visible unless separately resolved against their exact propositions and evidence; that DEC-012 establishes WCAG 2.2 Level AA as the current internal accessibility target without creating a conformance claim; that the obligation baseline is a governed planning and engineering input and is not legal advice, certification, district approval, procurement approval, or proof of compliance; that public claims remain constrained by the Claims Register; that the founder-only, private, no-PII, synthetic-data boundary remains in force; and that the FND-019 / EV-029 dependency repair is bounded technical evidence, not independent security validation. Next eligible work package, subject to verification that no later accepted decision supersedes the current Build Program sequence: WP-007 — Historical Requirement Conformance Recovery. Numerical order does not confer authority; WP-039 is not authorized.",
     consequences: [
-      "Adoption of an obligation baseline is a planning input. It creates no compliance, legal, conformance, certification, district-readiness, or independent-review claim, and no obligation is asserted to be satisfied.",
-      "Interpretation of each obligation is AI-assisted and executor-recorded against a cited primary source. It is not legal advice and has had no independent or professional review.",
-      "Until this decision is accepted, WP-038 remains EXECUTOR-COMPLETE and no work package after it is authorized.",
+      "WP-038 is CLOSED BY OWNER; WP-007 — Historical Requirement Conformance Recovery is NEXT ELIGIBLE.",
+      "Gate A remains open. Closure is not release authority and authorizes no work package other than the one named.",
+      "Adoption of the obligation baseline creates no compliance, legal, conformance, certification, district-readiness, or independent-review claim, and no obligation is asserted to be satisfied.",
+      "FND-016 (partially resolved by DEC-012), FND-017 and FND-018 remain open and are carried forward as limitations; FND-012 and FND-014 are unchanged.",
     ],
     authorityClass: "current-summary",
-    recordState: "candidate",
+    recordState: "current",
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
+
 ];
 
 
