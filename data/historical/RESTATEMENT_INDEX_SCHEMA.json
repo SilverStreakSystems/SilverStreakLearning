@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/restatement-index/1.0.0",
+  "title": "SSLS Cross-Source Restatement Index Schema",
+  "description": "WP-007 cycle 4 canonical schema. A row states how one candidate wording reads against a candidate wording from another source. Relationship, basis and boundary are independent dimensions and are never collapsed. No field expresses conformance, satisfaction, promotion, merge, precedence, or owner disposition.",
+  "schema_version": "1.0.0",
+  "work_package": "WP-007",
+  "authority_note": "Relating two candidates confers no authority on either and elects no controlling wording. Only a recorded owner decision may reconcile, supersede, or dispose of a requirement candidate.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_on",
+    "index_boundary",
+    "relationship_vocabulary_note",
+    "relations",
+    "unmatched_related_candidates"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_on": { "$ref": "#/$defs/isoDate" },
+    "index_boundary": { "type": "string", "minLength": 1 },
+    "relationship_vocabulary_note": { "type": "string", "minLength": 1 },
+    "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "unmatched_related_candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/unmatched" }
+    }
+  },
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "requirementId": { "type": "string", "pattern": "^HREQ-\\d{3}$" },
+    "sourceId": { "type": "string", "pattern": "^HS-\\d{3}$" },
+    "relationship": { "enum": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"] },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation_id",
+        "subject_requirement",
+        "subject_source",
+        "related_requirement",
+        "related_source",
+        "relationship",
+        "basis",
+        "boundary"
+      ],
+      "properties": {
+        "relation_id": { "type": "string", "pattern": "^RST-\\d{3}$" },
+        "subject_requirement": { "$ref": "#/$defs/requirementId" },
+        "subject_source": { "$ref": "#/$defs/sourceId" },
+        "related_requirement": {
+          "oneOf": [{ "$ref": "#/$defs/requirementId" }, { "type": "null" }]
+        },
+        "related_source": { "oneOf": [{ "$ref": "#/$defs/sourceId" }, { "type": "null" }] },
+        "relationship": { "$ref": "#/$defs/relationship" },
+        "basis": { "type": "string", "minLength": 1 },
+        "boundary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "unmatched": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement_id", "source_id", "note"],
+      "properties": {
+        "requirement_id": { "$ref": "#/$defs/requirementId" },
+        "source_id": { "$ref": "#/$defs/sourceId" },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -23,5 +23,8 @@ package, changes a gate, or authorizes a successor package.
 ## PKG-001 — v0.2.0 (HISTORICAL-EVIDENCE)
 
 - This historical package is not current authority and is not the current synchronized package.
-- Nothing in this record claims the unsupplied artifacts are available, readable, or verified.
+- Nothing in this record claims the unsupplied DOCX and ZIP are available, readable, or verified.
 - This record does not promote any historical source and does not close a finding.
+- Digest verification is a file-identity check only and is not independent validation of the package contents.
+- Supply and verification of two artifacts does not make the package complete and does not close WP-007, advance Gate A, or authorize WP-039.
+- Extraction of accessibility wording from this package establishes no accessibility conformance and no WCAG or ADA Title II claim.

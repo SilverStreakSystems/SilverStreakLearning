@@ -28,6 +28,7 @@
 | HS-020 | RESEARCH-INPUT | NOT-PROMOTED | They originate the work packages, but only what was recorded into the repository registers carries authority; the session text itself is an input, not a record. | DEC-007 |
 | HS-021 | REFERENCE-ONLY | NOT-PROMOTED | EV-020 classifies the published surface as PUBLIC PROTOTYPE; publication is not release authority and the deployed build is a projection of the repository. | EV-020 |
 | HS-022 | REFUSED | NOT-PROMOTED | The clean-slate posture carries no structures forward by default, and the WP-007 anti-targets forbid restoring legacy code. Refusal is recorded so the absence is deliberate rather than an oversight. | DEC-010 |
+| HS-023 | HISTORICAL-EVIDENCE | NOT-PROMOTED | DEC-019 authorizes acquisition and bounded extraction of this August 5 artifact as a historical source. It predates DEC-010, DEC-012 and DEC-018 and states no current authority over any register. | DEC-019, EV-039, EV-040 |
 
 Classification records how much authority a source carries now. Age, volume, and effort never
 upgrade it; only a recorded owner decision can.

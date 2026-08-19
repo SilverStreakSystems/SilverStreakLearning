@@ -28,3 +28,4 @@
 | HS-020 | `NOT-AVAILABLE` | HIGH | Requirement wording that was summarized rather than recorded verbatim survives only here. | 2026-08-19 |
 | HS-021 | `NOT-AVAILABLE` | NONE | It contains no requirement text that is not already in the repository. | 2026-08-19 |
 | HS-022 | `NOT-AVAILABLE` | UNKNOWN | Unreachable and out of scope; requirement recovery from running code is not an authorized method in this cycle. | 2026-08-19 |
+| HS-023 | `2c83e6b666a2857922c6b80be830f3e3738b24b76c49ae638df2c84d6827b044` | HIGH | It carries the August 5 statement of accessibility expectations against which the repository-carried ULW-AS-001 restatement in HS-011 can be compared. | 2026-08-19 |

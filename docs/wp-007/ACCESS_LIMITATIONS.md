@@ -28,5 +28,6 @@
 | HS-020 | PARTIAL | IMMUTABLE | NO-REAL-PII-ASSERTED | Recoverable through session history search only. Uploaded attachments are not retained as repository files and cannot be re-read at will. |
 | HS-021 | PARTIAL | MUTABLE | NO-REAL-PII-ASSERTED | Reachable as rendered output only; the deployed bundle is not a separate source of requirement text. |
 | HS-022 | NOT-ACCESSIBLE-TO-EXECUTOR | IMMUTABLE | UNINSPECTED | No copy is reachable, and none is sought under the current anti-targets. |
+| HS-023 | PARTIAL | IMMUTABLE | NO-REAL-PII-ASSERTED | The file was supplied as an external input and read in place; it is not retained in the repository, so the wording is reachable through the quoted candidate records and the digest binding only. DEC-019 authorizes Section 11 as the extraction surface, so the remaining 37 pages are not an extraction surface in this cycle. |
 
 Sources recorded `NOT-ACCESSIBLE-TO-EXECUTOR` carry no version, no hash, and no content claim.

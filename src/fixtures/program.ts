@@ -35,45 +35,47 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     },
   },
   latestCheckpoint: {
-    checkpointId: "CHECKPOINT-003",
-    title: "WP-007 Cycle 3 — v0.3.0 governed package integration and synchronization",
+    checkpointId: "CHECKPOINT-006",
+    title:
+      "WP-007 Cycle 4 — August 5 v0.2.0 partial package acquisition, bounded Section 11 extraction, and cross-source restatement index",
     completedOn: "2026-08-19",
     outcome:
-      "Cycle 3 execution is complete: the v0.3.0 package is registered as a synchronized reference, reconciled row by row, and covered by executing invariants.",
+      "Cycle 4 execution is complete: the three authorized August 5 v0.2.0 inputs were supplied and digest-verified, PKG-001 is registered as a partial historical package, HS-023 is registered as a source, HREQ-015 through HREQ-030 were extracted verbatim from Section 11, and seventeen cross-source restatement rows were recorded.",
     closedNothing:
-      "Cycle 3 closed nothing. No finding, work package, gate, drift row, or candidate requirement changed state, and no successor work package was authorized.",
+      "Cycle 4 closed nothing. No candidate received a disposition or a conformance state, no wording was merged, superseded, or elected as controlling, no drift row was resolved, no work package or gate changed state, and no successor work package was authorized.",
     source: {
-      recordId: "CHECKPOINT-003",
-      locator: "docs/wp-007/CHECKPOINT-003.md",
+      recordId: "CHECKPOINT-006",
+      locator: "docs/wp-007/CHECKPOINT-006.md",
       route: null,
     },
   },
   ownerDisposition: {
     subject:
-      "WP-007 Cycle 3 execution, and the bounded Cycle 4 extraction proposed at the end of it",
+      "WP-007 Cycle 4 execution: sixteen requirement candidates from HS-023 and the seventeen-row cross-source restatement index",
     state: "pending",
     requiredOf: "Founder / Operator",
     obligationSource: {
-      recordId: "FND-020",
-      locator: "src/fixtures/registers.ts — FINDINGS, FND-020",
+      recordId: "FND-022",
+      locator: "src/fixtures/registers.ts — FINDINGS, FND-022",
       route: "/findings",
     },
     supportingSources: [
-      { recordId: "CHECKPOINT-003", locator: "docs/wp-007/CHECKPOINT-003.md", route: null },
-      { recordId: "WP-007", locator: "docs/wp-007/ENTRY_SPECIFICATION.md", route: null },
+      { recordId: "CHECKPOINT-006", locator: "docs/wp-007/CHECKPOINT-006.md", route: null },
+      { recordId: "HREQ-015..HREQ-030", locator: "data/historical/historical-requirements.json", route: null },
+      { recordId: "RST-001..RST-017", locator: "data/historical/restatement-index.json", route: null },
       { recordId: "PDR-001..PDR-006", locator: "data/packages/package-drift.json", route: null },
     ],
   },
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "340 of 340 tests passed across 15 files.",
+      statement: "353 of 353 tests passed across 16 files.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
-      boundTo: "CHECKPOINT-003 and the Cycle 3 synchronization pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",
       source: {
         recordId: "EV-033",
-        locator: "docs/wp-007/CHECKPOINT-003.md; src/fixtures/registers.ts — EV-033",
+        locator: "docs/wp-007/CHECKPOINT-006.md; src/fixtures/registers.ts — EV-040",
         route: "/evidence",
       },
     },
@@ -82,23 +84,23 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       statement: "The production build succeeded.",
       scope:
         "A build of the repository at that checkpoint. It is not a deployment, a release, or an approval to release.",
-      boundTo: "CHECKPOINT-003 and the Cycle 3 synchronization pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",
       source: {
-        recordId: "EV-033",
-        locator: "docs/wp-007/CHECKPOINT-003.md",
+        recordId: "EV-040",
+        locator: "docs/wp-007/CHECKPOINT-006.md",
         route: "/evidence",
       },
     },
     {
       verificationId: "PV-DIGEST",
       statement:
-        "Both digests declared for the v0.3.0 package were independently recomputed and matched.",
+        "All three digests declared for the supplied August 5 v0.2.0 artifacts were independently recomputed and matched.",
       scope:
         "File identity only. A digest match establishes that the measured bytes are the declared bytes. It establishes no authority, approval, completeness, or correctness of the package content.",
-      boundTo: "CHECKPOINT-003 and the Cycle 3 synchronization pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",
       source: {
-        recordId: "EV-033",
-        locator: "data/packages/governed-packages.json — PKG-002",
+        recordId: "EV-039",
+        locator: "data/packages/governed-packages.json — PKG-001",
         route: "/evidence",
       },
     },
@@ -110,10 +112,20 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       source: { recordId: "DEC-018", locator: "docs/wp-007/REFUSED_CLAIMS.md", route: "/decisions" },
     },
     {
-      stageId: "CYCLE-4",
+      stageId: "HREQ-DISPOSITION",
       statement:
-        "The proposed bounded Cycle 4 extraction is a proposal only, awaiting explicit owner authorization. It has not started.",
-      source: { recordId: "CHECKPOINT-003", locator: "docs/wp-007/CHECKPOINT-003.md", route: null },
+        "Disposition of the extracted requirement candidates is not authorized. HREQ-001 through HREQ-030 remain pre-disposition and not assessed, and no restatement row elects a controlling wording.",
+      source: {
+        recordId: "RST-001..RST-017",
+        locator: "data/historical/restatement-index.json",
+        route: null,
+      },
+    },
+    {
+      stageId: "CYCLE-5",
+      statement:
+        "No cycle beyond Cycle 4 is authorized. DEC-019 authorizes Cycle 4 only, and the unsupplied v0.2.0 DOCX and ZIP remain unread.",
+      source: { recordId: "DEC-019", locator: "docs/wp-007/CHECKPOINT-006.md", route: "/decisions" },
     },
     {
       stageId: "PKG-002-PROMOTION",
@@ -136,11 +148,11 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     "The hosted application is a public prototype under repository governance. Hosting it does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made.",
   nextDefensibleOwnerAction: {
     action:
-      "Review and disposition WP-007 Cycle 3; authorize or decline the proposed bounded Cycle 4 extraction.",
-    why: "WP-007 cannot advance, and Cycle 4 cannot begin, until the owner records a disposition. Nothing else in the current posture unblocks more work.",
+      "Disposition WP-007 Cycle 4: sixteen new requirement candidates and seventeen cross-source restatement rows await owner review.",
+    why: "WP-007 cannot advance and no candidate can leave pre-disposition until the owner records a disposition. Nothing else in the current posture unblocks more work.",
     source: {
-      recordId: "FND-020",
-      locator: "src/fixtures/registers.ts — FINDINGS, FND-020",
+      recordId: "FND-022",
+      locator: "src/fixtures/registers.ts — FINDINGS, FND-022",
       route: "/findings",
     },
   },

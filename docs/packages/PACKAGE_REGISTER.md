@@ -25,13 +25,13 @@ Owner-supplied reference packages only. A package summarizes governed state for 
 
 ### Artifacts
 
-| ID | Filename | Media type | Bytes | Retention | Integrity |
-| --- | --- | --- | --- | --- | --- |
-| PKA-001 | `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` | application/pdf | 123284 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH |
-| PKA-002 | `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 21520 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH |
-| PKA-003 | `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` | text/plain | 570 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | NOT-APPLICABLE-SELF-HASH-EXCLUDED |
+| ID | Filename | Media type | Bytes | Retention | Integrity | Package role |
+| --- | --- | --- | --- | --- | --- | --- |
+| PKA-001 | `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` | application/pdf | 123284 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH | SYNCHRONIZED-REFERENCE |
+| PKA-002 | `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 21520 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH | SYNCHRONIZED-REFERENCE |
+| PKA-003 | `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` | text/plain | 570 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | NOT-APPLICABLE-SELF-HASH-EXCLUDED | SYNCHRONIZED-REFERENCE |
 
-## PKG-001 — SSLS 2.0 governed reference package v0.2.0 (August 5, 2026) (HISTORICAL-EVIDENCE)
+## PKG-001 — SSLS 2.0 clean-room rewrite package v0.2.0 (August 5, 2026), partially supplied (HISTORICAL-EVIDENCE)
 
 | Field | Value |
 | --- | --- |
@@ -42,13 +42,16 @@ Owner-supplied reference packages only. A package summarizes governed state for 
 | Predecessor | — |
 | Personal data | NO-PII |
 | Release | NOT-RELEASE-AUTHORIZED |
-| Evidence | EV-033 |
+| Evidence | EV-033, EV-039, EV-040 |
 
 **Relationship to the canonical registers.** Predecessor package retained for lineage only. It is not the current synchronized package and states nothing about present repository truth.
 
 ### Artifacts
 
-| ID | Filename | Media type | Bytes | Retention | Integrity |
-| --- | --- | --- | --- | --- | --- |
-| PKA-101 | `v0.2.0 DOCX named by the prior manifest` | application/vnd.openxmlformats-officedocument.wordprocessingml.document | — | NOT-SUPPLIED | NOT-VERIFIABLE-FILE-NOT-SUPPLIED |
-| PKA-102 | `v0.2.0 ZIP named by the prior manifest` | application/zip | — | NOT-SUPPLIED | NOT-VERIFIABLE-FILE-NOT-SUPPLIED |
+| ID | Filename | Media type | Bytes | Retention | Integrity | Package role |
+| --- | --- | --- | --- | --- | --- | --- |
+| PKA-101 | `v0.2.0 DOCX named by the prior manifest` | application/vnd.openxmlformats-officedocument.wordprocessingml.document | — | NOT-SUPPLIED | NOT-VERIFIABLE-FILE-NOT-SUPPLIED | HISTORICAL-EVIDENCE |
+| PKA-102 | `v0.2.0 ZIP named by the prior manifest` | application/zip | — | NOT-SUPPLIED | NOT-VERIFIABLE-FILE-NOT-SUPPLIED | HISTORICAL-EVIDENCE |
+| PKA-103 | `SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf` | application/pdf | 787831 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH | HISTORICAL-EVIDENCE |
+| PKA-104 | `SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx` | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 36546 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | VERIFIED-MATCH | HISTORICAL-EVIDENCE |
+| PKA-105 | `SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt` | text/plain | 491 | NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR | NOT-APPLICABLE-SELF-HASH-EXCLUDED | HISTORICAL-EVIDENCE |
