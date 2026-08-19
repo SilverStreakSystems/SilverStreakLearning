@@ -286,7 +286,24 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-026", "EV-027"],
     synthetic: false,
   },
+  {
+    id: "FND-019",
+    title: "The WP-037 brace-expansion pin disabled the lint check",
+    severity: "structural",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L7"],
+    description:
+      "The minimum-necessary pin recorded in EV-023 forced brace-expansion 5.0.9 on every consumer. minimatch 3.1.5, reached through the ESLint config-array, requires the 1.x default function export, so ESLint aborted with `TypeError: expand is not a function` and the pipeline recorded LINT as not-completed rather than review-required. The flat override was removed so semver resolves 1.1.18 for minimatch 3.1.5 and 5.0.9 for minimatch 10.2.6; both versions return no advisories, and lint executes again. Recorded in EV-029. Disposition: REPAIRED.",
+    boundary:
+      "Repair restores the ability to run the check. It does not make lint pass — FND-014 stands, now at 686 problems — and asserts nothing about the completeness of any advisory source. It also does not assert that flat overrides are safe in general; a future pin must be checked against every consumer's expected export shape.",
+    resolutionState: "confirmed",
+    requiredDecision: null,
+    evidenceReferences: ["EV-023", "EV-029"],
+    synthetic: false,
+  },
 ];
+
 
 
 export const EVIDENCE: EvidenceRecord[] = [
