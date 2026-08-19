@@ -44,7 +44,11 @@ inside the project. DEC-009 accepts this bounded unknown for the current phase.
 
 ## Limitations
 
-- All hashes and results are bound to `6aa254e`, re-executed 2026-08-19. This capture supersedes the
-  2026-08-17 capture at `70c1f89`, which is now historical. These values may not be reported as
-  current after any further commit.
+- All hashes and results are bound to `9a257f7`, captured 2026-08-19 02:04–02:06 UTC. This capture
+  supersedes the `6aa254e` capture of 2026-08-19 01:39–01:41 UTC, which supersedes the `70c1f89`
+  capture of 2026-08-17. Both earlier captures remain valid statements about their own commits and
+  must not be reported as current.
+- These values may not be reported as current after any further commit. The platform commits once
+  per authoring turn, so this document is expected to fall out of binding on the next commit; that is
+  declaration drift (FND-011), not evidence corruption.
 - Self-inspection cannot establish independence, authorization, or conformance.
