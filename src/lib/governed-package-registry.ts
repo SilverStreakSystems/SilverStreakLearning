@@ -8,7 +8,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import type { GovernedPackageRecord } from "@/domain/governed-package";
+import type { GovernedPackageRecord, PackageDriftFile } from "@/domain/governed-package";
 
 const DATA_DIR = join(process.cwd(), "data", "packages");
 
@@ -37,4 +37,10 @@ export function loadGovernedPackageSchema(): Record<string, unknown> {
 
 export function findGovernedPackage(packageId: string): GovernedPackageRecord | undefined {
   return loadGovernedPackages().find((record) => record.package_id === packageId);
+}
+
+export function loadPackageDriftFile(): PackageDriftFile {
+  return JSON.parse(
+    readFileSync(join(DATA_DIR, "package-drift.json"), "utf8"),
+  ) as PackageDriftFile;
 }
