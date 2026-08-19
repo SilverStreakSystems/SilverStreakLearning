@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0.0",
+  "generated_on": "2026-08-19",
+  "package_boundary": "Owner-supplied reference packages only. A package summarizes governed state for human reading and is never a machine-readable register. Accepted owner decisions control the canonical registers under src/fixtures/ and data/; those registers control every generated view and every synchronized reference artifact recorded here. Appearing in this file does not promote an artifact, does not close a finding or a work package, does not change Gate A, and does not authorize a successor work package.",
+  "records": [
+    {
+      "package_id": "PKG-002",
+      "title": "SSLS 2.0 governed reference package v0.3.0",
+      "version": "0.3.0",
+      "state_date": "2026-08-19",
+      "authority_role": "SYNCHRONIZED-REFERENCE",
+      "canonical_status": "NONCANONICAL",
+      "register_relationship": "Mirrors the canonical application registers for human reading. Where the package narrative and a canonical register differ, the accepted owner decision and the register control, and the difference is recorded as drift in docs/packages/DRIFT_REGISTER.md.",
+      "predecessor_package": "PKG-001",
+      "declared_contents": ["PKA-001", "PKA-002", "PKA-003"],
+      "completeness_boundary": "The v0.3.0 package consists of exactly three supplied files: the governed rewrite PDF, the control workbook, and the SHA-256 manifest. The DOCX and ZIP named by the earlier v0.2.0 manifest were not supplied for this rewrite, are not part of v0.3.0, and are not represented as available v0.3.0 artifacts. v0.3.0 is therefore not a complete copy of the earlier four-artifact package.",
+      "personal_data_state": "NO-PII",
+      "release_state": "NOT-RELEASE-AUTHORIZED",
+      "evidence_references": ["EV-033", "EV-034"],
+      "non_claims": [
+        "This package does not supersede the canonical registers and is not a competing source of truth.",
+        "This package never closes a finding, and no parent-package state change closes a finding.",
+        "This package never closes a work package and does not close WP-007.",
+        "This package does not authorize WP-039 or any successor work package.",
+        "This package does not advance Gate A, which remains open.",
+        "This package establishes no compliance, conformance, certification, security, privacy, accessibility, district-readiness, or learning-outcome claim.",
+        "This package carries no release authority and authorizes no deployment, publication, or provider handoff.",
+        "Hash verification is a file-identity check only and is not independent validation of the package contents.",
+        "DEC-012 names WCAG 2.2 Level AA as an internal target only; it establishes no conformance and no ADA Title II compliance."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "PKA-001",
+          "filename": "SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf",
+          "media_type": "application/pdf",
+          "byte_size": 123284,
+          "sha256": "9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943",
+          "declared_sha256": "9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943",
+          "integrity_state": "VERIFIED-MATCH",
+          "acquisition_method": "OWNER-SUPPLIED-INPUT",
+          "retention_state": "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
+          "locator": "owner-supplied input: SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf, supplied 2026-08-19, digest-bound",
+          "role": "Human-readable synchronized specification and boundary statement.",
+          "limitations": [
+            "The repository holds no binary-artifact retention convention, so no byte-identical copy is stored and no repository locator exists for this file.",
+            "The external file carries an owner-name attribution on its cover; that attribution is not transcribed into repository records under the zero-real-PII boundary.",
+            "Digest verification proves file identity only; it proves nothing about the accuracy of the narrative."
+          ]
+        },
+        {
+          "artifact_id": "PKA-002",
+          "filename": "SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx",
+          "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "byte_size": 21520,
+          "sha256": "68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e",
+          "declared_sha256": "68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e",
+          "integrity_state": "VERIFIED-MATCH",
+          "acquisition_method": "OWNER-SUPPLIED-INPUT",
+          "retention_state": "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
+          "locator": "owner-supplied input: SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx, supplied 2026-08-19, digest-bound",
+          "role": "Operational control view with a formula-backed status summary and bounded registers, across eleven sheets.",
+          "limitations": [
+            "Not retained as a binary in the repository; registered by digest and governed external locator only.",
+            "Workbook formulas recompute inside the workbook and are not executed by any repository validation."
+          ]
+        },
+        {
+          "artifact_id": "PKA-003",
+          "filename": "SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt",
+          "media_type": "text/plain",
+          "byte_size": 570,
+          "sha256": "3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130",
+          "declared_sha256": null,
+          "integrity_state": "NOT-APPLICABLE-SELF-HASH-EXCLUDED",
+          "acquisition_method": "OWNER-SUPPLIED-INPUT",
+          "retention_state": "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
+          "locator": "owner-supplied input: SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt, supplied 2026-08-19",
+          "role": "Integrity manifest declaring the digests of the PDF and the workbook, plus package notes.",
+          "limitations": [
+            "The manifest declares no digest for itself; a self-hash would be circular, so its recorded digest is a measurement by this program and not a manifest claim.",
+            "The manifest names no DOCX or ZIP for v0.3.0."
+          ]
+        }
+      ]
+    },
+    {
+      "package_id": "PKG-001",
+      "title": "SSLS 2.0 governed reference package v0.2.0 (August 5, 2026)",
+      "version": "0.2.0",
+      "state_date": "2026-08-05",
+      "authority_role": "HISTORICAL-EVIDENCE",
+      "canonical_status": "NONCANONICAL",
+      "register_relationship": "Predecessor package retained for lineage only. It is not the current synchronized package and states nothing about present repository truth.",
+      "predecessor_package": null,
+      "declared_contents": ["PKA-101", "PKA-102"],
+      "completeness_boundary": "The v0.2.0 manifest named a DOCX and a ZIP that were not supplied to this program for the v0.3.0 rewrite. Both are registered as NOT-SUPPLIED with no measured size, no digest, and no repository locator. No content of either file is inferred, quoted, or claimed.",
+      "personal_data_state": "NO-PII",
+      "release_state": "NOT-RELEASE-AUTHORIZED",
+      "evidence_references": ["EV-033"],
+      "non_claims": [
+        "This historical package is not current authority and is not the current synchronized package.",
+        "Nothing in this record claims the unsupplied artifacts are available, readable, or verified.",
+        "This record does not promote any historical source and does not close a finding."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "PKA-101",
+          "filename": "v0.2.0 DOCX named by the prior manifest",
+          "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "byte_size": null,
+          "sha256": null,
+          "declared_sha256": null,
+          "integrity_state": "NOT-VERIFIABLE-FILE-NOT-SUPPLIED",
+          "acquisition_method": "OWNER-SUPPLIED-INPUT",
+          "retention_state": "NOT-SUPPLIED",
+          "locator": "named by the v0.2.0 manifest; not supplied to this program",
+          "role": "Named by the prior manifest; content unknown to this program.",
+          "limitations": [
+            "Not supplied, not read, not inferred. Its exact filename and digest are unknown to this program."
+          ]
+        },
+        {
+          "artifact_id": "PKA-102",
+          "filename": "v0.2.0 ZIP named by the prior manifest",
+          "media_type": "application/zip",
+          "byte_size": null,
+          "sha256": null,
+          "declared_sha256": null,
+          "integrity_state": "NOT-VERIFIABLE-FILE-NOT-SUPPLIED",
+          "acquisition_method": "OWNER-SUPPLIED-INPUT",
+          "retention_state": "NOT-SUPPLIED",
+          "locator": "named by the v0.2.0 manifest; not supplied to this program",
+          "role": "Named by the prior manifest; content unknown to this program.",
+          "limitations": [
+            "Not supplied, not read, not inferred. Its exact filename and digest are unknown to this program."
+          ]
+        }
+      ]
+    }
+  ]
+}
