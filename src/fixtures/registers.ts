@@ -855,6 +855,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-036",
+    title: "Independent re-verification of the owner-resupplied v0.3.0 package against the registered digests",
+    kind: "automated-test",
+    subject:
+      "Owner-resupplied SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf, SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx, and SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt, compared against PKA-001, PKA-002, and PKA-003 in data/packages/governed-packages.json; pinned by src/test/governed-packages.test.ts.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the three files resupplied by the owner on 2026-08-19 are byte-identical to the artifacts already registered under PKG-002: SHA-256 9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943 for the PDF, 68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e for the workbook, and 3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130 for the manifest, which the manifest itself does not print because a manifest cannot hash itself; that no new, changed, or additional v0.3.0 artifact was supplied and therefore no second package record was created; and that an executing test now pins the registered digests to the literal manifest values, the three-file completeness boundary, and the absence of any fabricated repository locator.",
+    doesNotSupport:
+      "That the package gained authority, that any register, finding, requirement, gate, work package, or claim changed state, that a drift row was resolved, or that the retained-copy question was reopened. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 
