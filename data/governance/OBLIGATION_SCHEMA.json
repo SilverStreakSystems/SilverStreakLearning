@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/obligation/1.0.0",
+  "title": "SSLS Obligation and External Authority Schema",
+  "description": "WP-038 canonical schema. Source facts, applicability, control status and evidence status are independent dimensions and are never collapsed. No field in this schema expresses compliance.",
+  "schema_version": "1.0.0",
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "sourceAuthorityType": {
+      "enum": [
+        "statute",
+        "regulation",
+        "official-guidance",
+        "standard",
+        "voluntary-framework",
+        "attestation-standard",
+        "procurement-expectation",
+        "market-expectation",
+        "contractual",
+        "internal-policy"
+      ]
+    },
+    "sourceStatus": {
+      "enum": ["VERIFIED-CURRENT", "VERIFIED-HISTORICAL", "SUPERSEDED", "UNVERIFIED", "CONFLICTED"]
+    },
+    "lifecycle": {
+      "enum": [
+        "EFFECTIVE",
+        "ADOPTED-NOT-YET-EFFECTIVE",
+        "PROPOSED-PENDING",
+        "WITHDRAWN",
+        "NOT-APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "jurisdiction": {
+      "enum": [
+        "US-FEDERAL",
+        "US-MA",
+        "US-STATE-OTHER",
+        "US-LOCAL-DISTRICT",
+        "INTERNATIONAL",
+        "NOT-JURISDICTIONAL"
+      ]
+    },
+    "applicability": {
+      "enum": [
+        "APPLIES-NOW",
+        "APPLIES-AT-PILOT",
+        "APPLIES-AT-LAUNCH",
+        "CONDITIONAL",
+        "REFERENCE",
+        "NOT-APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "controlStatus": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL",
+        "SPECIFICATION-ONLY",
+        "MISSING",
+        "DEFERRED",
+        "NOT-APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "evidenceStatus": {
+      "enum": [
+        "CURRENT",
+        "STALE",
+        "EXPIRED",
+        "SUPERSEDED",
+        "INAPPLICABLE",
+        "UNKNOWN",
+        "NOT-PRODUCED"
+      ]
+    },
+    "controlFamily": {
+      "enum": [
+        "GOVERNANCE",
+        "PRIVACY",
+        "IDENTITY & ACCESS",
+        "DATA MINIMIZATION",
+        "RETENTION & DELETION",
+        "ACCESSIBILITY",
+        "SECURITY",
+        "VULNERABILITY MANAGEMENT",
+        "SOFTWARE SUPPLY CHAIN",
+        "INCIDENT RESPONSE",
+        "BUSINESS CONTINUITY",
+        "VENDOR MANAGEMENT",
+        "INTEROPERABILITY",
+        "AI GOVERNANCE",
+        "CLAIMS / TRANSPARENCY",
+        "EDUCATIONAL VALIDITY",
+        "HUMAN REVIEW"
+      ]
+    },
+    "reviewRequirement": {
+      "enum": [
+        "LEGAL REVIEW REQUIRED",
+        "PRIVACY REVIEW REQUIRED",
+        "SECURITY REVIEW REQUIRED",
+        "ACCESSIBILITY REVIEW REQUIRED",
+        "PROCUREMENT REVIEW REQUIRED",
+        "EDUCATION POLICY REVIEW REQUIRED"
+      ]
+    },
+    "externalAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "title",
+        "issuing_body",
+        "source_type",
+        "citation",
+        "source_url",
+        "source_version",
+        "source_effective_date",
+        "publication_date",
+        "verified_on",
+        "verification_method",
+        "jurisdiction",
+        "source_status",
+        "lifecycle",
+        "section_locators",
+        "source_statement",
+        "reproduction_boundary",
+        "supersedes",
+        "superseded_by",
+        "notes"
+      ],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^SRC-\\d{3}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "issuing_body": { "type": "string", "minLength": 1 },
+        "source_type": { "$ref": "#/$defs/sourceAuthorityType" },
+        "citation": { "type": "string", "minLength": 1 },
+        "source_url": { "type": "string", "pattern": "^https://" },
+        "source_version": { "type": "string", "minLength": 1 },
+        "source_effective_date": { "type": "string" },
+        "publication_date": { "type": "string" },
+        "verified_on": { "$ref": "#/$defs/isoDate" },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "jurisdiction": { "$ref": "#/$defs/jurisdiction" },
+        "source_status": { "$ref": "#/$defs/sourceStatus" },
+        "lifecycle": { "$ref": "#/$defs/lifecycle" },
+        "section_locators": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "source_statement": { "type": "string", "minLength": 1 },
+        "reproduction_boundary": { "type": "string", "minLength": 1 },
+        "supersedes": { "type": "array", "items": { "type": "string" } },
+        "superseded_by": { "type": ["string", "null"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "obligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "obligation_id",
+        "domain",
+        "title",
+        "source_id",
+        "source_authority",
+        "source_type",
+        "citation",
+        "source_url",
+        "source_version",
+        "source_effective_date",
+        "verified_on",
+        "jurisdiction",
+        "applicability_state",
+        "applicability_trigger",
+        "current_phase_applicability",
+        "future_phase_applicability",
+        "subject",
+        "obligation_summary",
+        "source_statement_boundary",
+        "ssls_interpretation",
+        "required_control",
+        "current_control",
+        "control_family",
+        "control_status",
+        "mapped_work_package",
+        "evidence_requirement",
+        "minimum_evidence_method",
+        "evidence_status",
+        "owner_candidate",
+        "claim_implication",
+        "prohibited_claim",
+        "review_requirement",
+        "review_trigger",
+        "review_date",
+        "supersedes",
+        "superseded_by",
+        "notes"
+      ],
+      "properties": {
+        "obligation_id": { "type": "string", "pattern": "^OBL-\\d{3}$" },
+        "domain": {
+          "enum": [
+            "student-privacy",
+            "accessibility",
+            "security",
+            "supply-chain",
+            "interoperability",
+            "ai-governance",
+            "records-retention",
+            "procurement",
+            "public-surface"
+          ]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "source_id": { "type": "string", "pattern": "^SRC-\\d{3}$" },
+        "source_authority": { "type": "string", "minLength": 1 },
+        "source_type": { "$ref": "#/$defs/sourceAuthorityType" },
+        "citation": { "type": "string", "minLength": 1 },
+        "source_url": { "type": "string", "pattern": "^https://" },
+        "source_version": { "type": "string" },
+        "source_effective_date": { "type": "string" },
+        "verified_on": { "$ref": "#/$defs/isoDate" },
+        "jurisdiction": { "$ref": "#/$defs/jurisdiction" },
+        "applicability_state": { "$ref": "#/$defs/applicability" },
+        "applicability_trigger": { "type": "string", "minLength": 1 },
+        "current_phase_applicability": { "type": "string", "minLength": 1 },
+        "future_phase_applicability": { "type": "string", "minLength": 1 },
+        "subject": { "type": "string", "minLength": 1 },
+        "obligation_summary": { "type": "string", "minLength": 1 },
+        "source_statement_boundary": { "type": "string", "minLength": 1 },
+        "ssls_interpretation": { "type": "string", "minLength": 1 },
+        "required_control": { "type": "string", "minLength": 1 },
+        "current_control": { "type": "string", "minLength": 1 },
+        "control_family": { "$ref": "#/$defs/controlFamily" },
+        "control_status": { "$ref": "#/$defs/controlStatus" },
+        "mapped_work_package": { "type": "string" },
+        "evidence_requirement": { "type": "string", "minLength": 1 },
+        "minimum_evidence_method": { "type": "string", "minLength": 1 },
+        "evidence_status": { "$ref": "#/$defs/evidenceStatus" },
+        "owner_candidate": { "type": "string", "minLength": 1 },
+        "claim_implication": { "type": "string", "minLength": 1 },
+        "prohibited_claim": { "type": "string", "minLength": 1 },
+        "review_requirement": {
+          "oneOf": [{ "$ref": "#/$defs/reviewRequirement" }, { "type": "null" }]
+        },
+        "review_trigger": { "type": "string", "minLength": 1 },
+        "review_date": { "type": "string", "minLength": 1 },
+        "supersedes": { "type": "array", "items": { "type": "string" } },
+        "superseded_by": { "type": ["string", "null"] },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_marker", "records"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_marker": { "type": "string" },
+    "record_kind": { "enum": ["external-authority", "obligation"] },
+    "records": {
+      "type": "array",
+      "items": {
+        "oneOf": [{ "$ref": "#/$defs/externalAuthority" }, { "$ref": "#/$defs/obligation" }]
+      }
+    }
+  }
+}
