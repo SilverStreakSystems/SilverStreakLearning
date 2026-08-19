@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/fnd-022-owner-disposition/1.0.0",
+  "title": "SSLS FND-022 Owner Disposition Record Schema",
+  "description": "WP-007 cycle 6 canonical schema. The record transcribes the owner dispositions of DEC-020 for the sixteen HS-023 candidates, the seventeen cross-source restatement rows, and the three unmatched HS-011 rows. Disposition, lineage, and post-disposition state are independent dimensions and are never collapsed. No field may express promotion, package completeness, implementation, satisfaction, or any conformance state.",
+  "schema_version": "1.0.0",
+  "work_package": "WP-007",
+  "authority_note": "This record carries a transcription of an owner decision. The executor originates no disposition. Adoption as a candidate confers no implementation, no assessment, and no conformance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "recorded_on",
+    "recorded_by",
+    "decision_id",
+    "finding_id",
+    "work_package",
+    "cycle",
+    "authority_note",
+    "boundary",
+    "disposition_vocabulary",
+    "unmatched_conclusion_vocabulary",
+    "candidate_dispositions",
+    "relationship_row_conclusions",
+    "unmatched_conclusions",
+    "totals",
+    "deferred_evidence_gap",
+    "non_effects"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "recorded_on": { "$ref": "#/$defs/isoDate" },
+    "recorded_by": { "type": "string", "minLength": 1 },
+    "decision_id": { "type": "string", "pattern": "^DEC-\\d{3}$" },
+    "finding_id": { "const": "FND-022" },
+    "work_package": { "const": "WP-007" },
+    "cycle": { "type": "string", "minLength": 1 },
+    "authority_note": { "type": "string", "minLength": 80 },
+    "boundary": { "type": "string", "minLength": 80 },
+    "disposition_vocabulary": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": { "$ref": "#/$defs/disposition" }
+    },
+    "unmatched_conclusion_vocabulary": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": { "const": "NO-ACTION-CURRENT-STANDS" }
+    },
+    "candidate_dispositions": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": { "$ref": "#/$defs/candidateDisposition" }
+    },
+    "relationship_row_conclusions": {
+      "type": "array",
+      "minItems": 17,
+      "maxItems": 17,
+      "items": { "$ref": "#/$defs/rowConclusion" }
+    },
+    "unmatched_conclusions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/unmatchedConclusion" }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_count",
+        "RETAIN-HISTORICAL",
+        "MERGE-OR-RESTATEMENT",
+        "ADOPT-AS-CANDIDATE",
+        "NEEDS-EVIDENCE / DEFER",
+        "NARROW",
+        "SUPERSEDE",
+        "REJECT",
+        "relationship_row_count",
+        "unmatched_conclusion_count"
+      ],
+      "properties": {
+        "candidate_count": { "const": 16 },
+        "RETAIN-HISTORICAL": { "const": 5 },
+        "MERGE-OR-RESTATEMENT": { "const": 3 },
+        "ADOPT-AS-CANDIDATE": { "const": 7 },
+        "NEEDS-EVIDENCE / DEFER": { "const": 1 },
+        "NARROW": { "const": 0 },
+        "SUPERSEDE": { "const": 0 },
+        "REJECT": { "const": 0 },
+        "relationship_row_count": { "const": 17 },
+        "unmatched_conclusion_count": { "const": 3 }
+      }
+    },
+    "deferred_evidence_gap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "finding_id", "gap", "required_before_reconsideration"],
+      "properties": {
+        "candidate_id": { "$ref": "#/$defs/requirementId" },
+        "finding_id": { "type": "string", "pattern": "^FND-\\d{3}$" },
+        "gap": { "type": "string", "minLength": 1 },
+        "required_before_reconsideration": { "type": "string", "minLength": 1 }
+      }
+    },
+    "non_effects": {
+      "type": "array",
+      "minItems": 5,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "requirementId": { "type": "string", "pattern": "^HREQ-\\d{3}$" },
+    "disposition": {
+      "enum": [
+        "RETAIN-HISTORICAL",
+        "ADOPT-AS-CANDIDATE",
+        "MERGE-OR-RESTATEMENT",
+        "NARROW",
+        "SUPERSEDE",
+        "REJECT",
+        "NEEDS-EVIDENCE / DEFER"
+      ]
+    },
+    "candidateDisposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "exact_text",
+        "owner_disposition",
+        "owner_rationale",
+        "controlling_requirement_ids",
+        "post_disposition_state"
+      ],
+      "properties": {
+        "candidate_id": { "$ref": "#/$defs/requirementId" },
+        "exact_text": { "type": "string", "minLength": 1 },
+        "owner_disposition": { "$ref": "#/$defs/disposition" },
+        "owner_rationale": { "type": "string", "minLength": 1 },
+        "controlling_requirement_ids": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/requirementId" }
+        },
+        "post_disposition_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "extraction_record_unchanged",
+            "conformance_state",
+            "promotion_state",
+            "implementation_state"
+          ],
+          "properties": {
+            "extraction_record_unchanged": { "const": true },
+            "conformance_state": { "const": "NOT-ASSESSED" },
+            "promotion_state": { "const": "NOT-PROMOTED" },
+            "implementation_state": { "const": "NOT-IMPLEMENTED" }
+          }
+        }
+      }
+    },
+    "rowConclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation_id",
+        "historical_candidate",
+        "cycle4_classification",
+        "cycle4_classification_preserved",
+        "owner_conclusion",
+        "controlling_requirement",
+        "note"
+      ],
+      "properties": {
+        "relation_id": { "type": "string", "pattern": "^RST-\\d{3}$" },
+        "historical_candidate": { "$ref": "#/$defs/requirementId" },
+        "cycle4_classification": {
+          "enum": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"]
+        },
+        "cycle4_classification_preserved": { "const": true },
+        "owner_conclusion": { "$ref": "#/$defs/disposition" },
+        "controlling_requirement": {
+          "anyOf": [{ "$ref": "#/$defs/requirementId" }, { "type": "null" }]
+        },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "unmatchedConclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "source_id",
+        "owner_conclusion",
+        "owner_rationale",
+        "authority_unchanged"
+      ],
+      "properties": {
+        "requirement_id": { "$ref": "#/$defs/requirementId" },
+        "source_id": { "const": "HS-011" },
+        "owner_conclusion": { "const": "NO-ACTION-CURRENT-STANDS" },
+        "owner_rationale": { "type": "string", "minLength": 1 },
+        "authority_unchanged": { "const": true }
+      }
+    }
+  }
+}
