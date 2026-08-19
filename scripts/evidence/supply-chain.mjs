@@ -336,3 +336,206 @@ export function collectLicensePosture(context) {
     payload,
   };
 }
+
+/* ------------------------------------------------------------------------ */
+/* Vulnerability recovery scan (WP-037 bounded evidence-recovery pass)        */
+/*                                                                           */
+/* `bun audit` depends on a registry endpoint that is unavailable in this     */
+/* environment (HTTP 404). This collector queries the authoritative npm       */
+/* bulk advisory endpoint directly over the versions resolved in bun.lock.    */
+/* It is ADDITIVE: EV-VULN is produced unchanged and is never overwritten.    */
+/* ------------------------------------------------------------------------ */
+
+const ADVISORY_ENDPOINT = "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk";
+
+/** Parse the resolved name@version set out of bun.lock (JSONC). */
+export function resolvedVersionsFromLockfile(lockText) {
+  const lock = JSON.parse(lockText.replace(/,(\s*[}\]])/g, "$1"));
+  const out = {};
+  for (const entry of Object.values(lock.packages ?? {})) {
+    const spec = Array.isArray(entry) ? entry[0] : null;
+    if (typeof spec !== "string") continue;
+    const at = spec.lastIndexOf("@");
+    if (at <= 0) continue;
+    const name = spec.slice(0, at);
+    const version = spec.slice(at + 1);
+    if (!/^\d+\.\d+\.\d+/.test(version)) continue;
+    (out[name] ??= new Set()).add(version);
+  }
+  return Object.fromEntries(
+    Object.entries(out)
+      .map(([name, versions]) => [name, [...versions].sort()])
+      .sort((a, b) => a[0].localeCompare(b[0])),
+  );
+}
+
+function core(version) {
+  const [main] = String(version).split("-");
+  const parts = main.split(".").map((n) => Number.parseInt(n, 10) || 0);
+  return [parts[0] ?? 0, parts[1] ?? 0, parts[2] ?? 0];
+}
+
+function compare(a, b) {
+  const x = core(a);
+  const y = core(b);
+  for (let i = 0; i < 3; i += 1) {
+    if (x[i] !== y[i]) return x[i] < y[i] ? -1 : 1;
+  }
+  return 0;
+}
+
+/** Minimal comparator-set matcher for advisory `vulnerable_versions` strings. */
+export function versionMatchesRange(version, range) {
+  const text = String(range ?? "").trim();
+  if (text === "" || text === "*") return true;
+  return text.split("||").some((clause) =>
+    clause
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean)
+      .every((comparator) => {
+        const match = /^(>=|<=|>|<|=)?\s*v?(.+)$/.exec(comparator);
+        if (!match) return false;
+        const operator = match[1] ?? "=";
+        const result = compare(version, match[2]);
+        if (operator === ">=") return result >= 0;
+        if (operator === "<=") return result <= 0;
+        if (operator === ">") return result > 0;
+        if (operator === "<") return result < 0;
+        return result === 0;
+      }),
+  );
+}
+
+export async function collectVulnerabilityRecoveryScan(context) {
+  const lockPresent = existsSync("bun.lock");
+  const resolved = lockPresent
+    ? resolvedVersionsFromLockfile(readFileSync("bun.lock", "utf8"))
+    : {};
+  const versionCount = Object.values(resolved).reduce((total, list) => total + list.length, 0);
+
+  let status = "not-completed";
+  let httpStatus = null;
+  let advisories = null;
+  let failure = null;
+
+  if (!lockPresent) {
+    failure = "bun.lock is absent; no resolved dependency set to query.";
+  } else {
+    try {
+      const response = await fetch(ADVISORY_ENDPOINT, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(resolved),
+      });
+      httpStatus = response.status;
+      const text = await response.text();
+      if (response.ok) {
+        advisories = JSON.parse(text);
+        status = "completed";
+      } else {
+        failure = `advisory request failed (status ${response.status})`;
+      }
+    } catch (error) {
+      failure = `advisory request failed: ${String(error?.message ?? error)}`;
+    }
+  }
+
+  const severities = { critical: 0, high: 0, moderate: 0, low: 0, info: 0 };
+  const findings = [];
+
+  for (const [name, list] of Object.entries(advisories ?? {})) {
+    for (const advisory of list ?? []) {
+      const affected = (resolved[name] ?? []).filter((version) =>
+        versionMatchesRange(version, advisory.vulnerable_versions),
+      );
+      if (affected.length === 0) continue;
+      const severity = String(advisory.severity ?? "info").toLowerCase();
+      if (severity in severities) severities[severity] += 1;
+      findings.push({
+        package: name,
+        resolved_versions_affected: affected,
+        advisory_id: advisory.id ?? null,
+        advisory_url: advisory.url ?? null,
+        title: advisory.title ?? null,
+        severity,
+        vulnerable_versions: advisory.vulnerable_versions ?? null,
+        cwe: advisory.cwe ?? [],
+        cvss: advisory.cvss ?? null,
+      });
+    }
+  }
+
+  findings.sort((a, b) => `${a.package}${a.advisory_id}`.localeCompare(`${b.package}${b.advisory_id}`));
+  const total = findings.length;
+
+  const payload = {
+    scan_status:
+      status === "completed"
+        ? "COMPLETED"
+        : "SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE",
+    scanner: "scripts/evidence/supply-chain.mjs (npm bulk advisory client)",
+    advisory_source: ADVISORY_ENDPOINT,
+    advisory_source_authority: "npm public registry advisory service (GitHub Advisory Database)",
+    external_network_dependency: true,
+    http_status: httpStatus,
+    failure,
+    package_manager: "bun",
+    query_input: {
+      lockfile: "bun.lock",
+      lockfile_hash: lockPresent ? hashFile("bun.lock") : null,
+      manifest_hash: hashFile("package.json"),
+      packages_queried: Object.keys(resolved).length,
+      versions_queried: versionCount,
+      request_body_hash: sha256(JSON.stringify(resolved)),
+    },
+    findings_by_severity: severities,
+    matched_findings: total,
+    findings,
+    limitations: [
+      "Coverage is limited to advisories published by this source for the resolved npm dependency set.",
+      "Version matching uses a comparator-set matcher over release versions; pre-release precedence is not modelled.",
+      "A scanner result is not a risk interpretation; triage is a separate, human step.",
+      "Absence of advisories is not absence of vulnerability.",
+      "This record does not supersede EV-VULN, which is preserved exactly as produced.",
+    ],
+    raw_response: advisories,
+  };
+
+  const content = JSON.stringify(payload, null, 2);
+
+  return {
+    record: base(context, "VULNERABILITY_SCAN", {
+      evidence_id: "EV-VULN-RECOVERY",
+      title: "Dependency vulnerability scan — recovery pass via npm bulk advisory endpoint",
+      description:
+        "Advisory query over the versions resolved in bun.lock, executed under the WP-037 bounded evidence-recovery authorization. Additive to EV-VULN, which is preserved unchanged.",
+      tool: "scripts/evidence/supply-chain.mjs (npm bulk advisory client)",
+      tool_version: "1.0.0",
+      command: "bun run evidence:run",
+      expected_result:
+        "The advisory service responds and advisories are matched against resolved versions.",
+      actual_result:
+        status === "completed"
+          ? `Scan completed against ${versionCount} resolved versions of ${Object.keys(resolved).length} packages. ${total} matched advisories: ${JSON.stringify(severities)}.`
+          : `SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. ${failure ?? ""}`.trim(),
+      status: status === "completed" ? (total > 0 ? "review-required" : "pass") : "not-completed",
+      supports:
+        status === "completed"
+          ? [
+              "The advisories reported by this source, for the versions resolved in bun.lock, at the recorded time.",
+            ]
+          : ["That a recovery scan was attempted against this source and did not complete."],
+      does_not_support: [
+        "That the application is secure, that no vulnerability exists, that any advisory has been triaged, or that any gate may be closed.",
+      ],
+      artifact_path: "vulnerability/advisory-recovery.json",
+      artifact_hash: sha256(content),
+      reproduction: "bun run evidence:run",
+    }),
+    artifact: { path: "vulnerability/advisory-recovery.json", content },
+    completed: status === "completed",
+    findings,
+    severities,
+  };
+}
