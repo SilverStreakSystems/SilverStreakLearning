@@ -1,8 +1,8 @@
 # WP-037 → WP-038 Handoff
 
-Next package: **WP-038 — Regulatory, Standards & Obligation Baseline.** **NOT AUTHORIZED and NOT
-STARTED.** DEC-015 (accepted 2026-08-19) records WP-037 as HOLD; this handoff becomes effective only
-on a future recorded owner closure of WP-037.
+Next package: **WP-038 — Regulatory, Standards & Obligation Baseline.** **NEXT ELIGIBLE and
+AUTHORIZED for generation and execution.** DEC-017 (accepted 2026-08-19) closes WP-037 by owner and
+authorizes WP-038 only. Gate A is not closed and no later work package is authorized.
 
 ## Carried forward
 
@@ -24,16 +24,19 @@ on a future recorded owner closure of WP-037.
 - **DEC-011** — open; routed to WP-008 if unresolved sooner.
 - **DEC-012** — open; due no later than WP-041.
 - **DEC-013** — open; routed to WP-008.
-- **DEC-015** — ACCEPTED BY OWNER as a HOLD disposition. Not a waiver and not a closure.
+- **DEC-015** — ACCEPTED BY OWNER as a HOLD disposition, preserved intact as historical record.
+- **DEC-016** — ACCEPTED BY OWNER. Triage and bounded remediation authority; superseded DEC-015 only
+  as current remediation authority.
+- **DEC-017** — ACCEPTED BY OWNER. WP-037 CLOSED BY OWNER; WP-038 authorized for generation and
+  execution only. Creates no security, privacy, accessibility, compliance, certification,
+  district-readiness, or independent-validation claim.
 - **FND-012** — open. Branch-protection enforcement is not verified and may not be claimed.
 - **FND-014** — open / advisory. Repository-wide lint does not pass; WP-037 files report zero problems.
-- **Vulnerability criterion** — NOT COMPLETED. `bun audit` returns HTTP 404 (EV-VULN, preserved
-  verbatim). The bounded recovery scan (EV-021 / `EV-VULN-RECOVERY`) completed and reported five
-  unremediated high-severity advisories: brace-expansion 1.1.16 and 5.0.8, js-yaml 4.3.0,
-  nanoid 3.3.16. WP-038 must not treat the dependency set as clean or as triaged.
-
-## Dispositioned, with residuals
-
+- **Vulnerability criterion** — COMPLETED on recorded evidence. `bun audit` still returns HTTP 404
+  (EV-VULN, preserved verbatim as a failed attempt). The five advisories reported by EV-021 were
+  triaged (EV-022) and remediated (EV-023); the post-remediation scan matched no advisories in its
+  recorded scope at that point in time (EV-024), with regression verification in EV-025. This is
+  automated, point-in-time, single-source evidence and is not independent security validation.
 - **FND-011** — resolved for pipeline-produced evidence. Legacy hand-bound WP-006 documents remain
   subject to declaration drift and are not rebound.
 - **FND-013** — resolved for machine-derived baseline facts. Narrative semantic accuracy remains
