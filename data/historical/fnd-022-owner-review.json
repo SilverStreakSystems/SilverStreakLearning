@@ -1310,13 +1310,12 @@
     }
   ],
   "refused_in_this_cycle": [
-    "recording, simulating, or implying an owner disposition;",
-    "preselecting any owner option;",
+    "originating, simulating, or inferring any owner disposition; every owner field here is transcribed from DEC-020 and from no other source;",
+    "implementing, satisfying, testing, or assessing any adopted candidate; each remains a candidate and NOT-ASSESSED;",
     "promoting HS-023 or PKG-001, or changing the partial state of PKG-001;",
-    "adopting, merging, deduplicating, superseding, narrowing, rejecting, or retiring any requirement;",
-    "changing any Cycle 4 relationship classification;",
+    "changing any extracted wording, provenance value, digest, locator, or Cycle 4 relationship classification;",
     "re-extracting Section 11 or re-ingesting any August 5 or July source artifact;",
-    "closing FND-022, WP-007, or Gate A, or authorizing WP-039;",
+    "closing WP-007 or Gate A, authorizing WP-039, or authorizing any further cycle;",
     "asserting WCAG, ADA Title II, Section 508, or any other accessibility conformance."
   ],
   "owner_decision": {
