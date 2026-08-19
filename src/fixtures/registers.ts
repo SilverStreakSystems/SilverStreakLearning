@@ -872,6 +872,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-037",
+    title: "WP-007 Cycle 4 entry verification and authorized-input availability check",
+    kind: "manual-check",
+    subject:
+      "Repository entry state at the Cycle 4 authorization, and the availability of the three authorized August 5 v0.2.0 inputs named by DEC-019: SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx, and SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That entry verification was executed before any Cycle 4 edit: Gate A is OPEN, WP-038 is CLOSED BY OWNER, WP-007 is ACTIVE, WP-039 is NOT AUTHORIZED, and no later accepted decision supersedes DEC-019; that the next unused identifiers were confirmed as HREQ-015, HS-023, EV-037, and docs/wp-007/CHECKPOINT-004.md; and that none of the three authorized August 5 v0.2.0 inputs was present in the executor's supplied-input surface, which held only the already registered v0.3.0 PDF, workbook, and manifest.",
+    doesNotSupport:
+      "That any August 5 v0.2.0 digest was recomputed or verified, that any v0.2.0 artifact was acquired, registered, or read, that any requirement was extracted, or that any restatement comparison was performed. The owner-declared digests are recorded as declared values only and were not measured by this program. Executor-run, method manual availability check, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 
