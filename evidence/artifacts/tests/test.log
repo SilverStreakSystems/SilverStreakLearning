@@ -1,29 +1,28 @@
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m/dev-server[39m
 
- [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 14[2mms[22m[39m
- [32m✓[39m src/test/ssot-binding.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 13[2mms[22m[39m
- [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m37 tests[22m[2m)[22m[32m 44[2mms[22m[39m
- [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 56[2mms[22m[39m
- [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 44[2mms[22m[39m
- [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 1058[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 818[2mms[22m[39m
- [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 1516[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 835[2mms[22m[39m
-     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 430[2mms[22m[39m
- [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 2676[2mms[22m[39m
-     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 1420[2mms[22m[39m
-     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 540[2mms[22m[39m
- [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 4437[2mms[22m[39m
-     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 1352[2mms[22m[39m
-     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 769[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 1811[2mms[22m[39m
- [32m✓[39m src/test/shell.test.tsx [2m([22m[2m81 tests[22m[2m)[22m[33m 9199[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/' with its heading [33m 898[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 549[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 564[2mms[22m[39m
-     [33m[2m✓[22m[39m uses plain-language navigation labels without unexplained abbreviations [33m 314[2mms[22m[39m
+ [32m✓[39m src/test/ssot-binding.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m37 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 43[2mms[22m[39m
+ [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 893[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 691[2mms[22m[39m
+ [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 1346[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 650[2mms[22m[39m
+     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 395[2mms[22m[39m
+ [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 2878[2mms[22m[39m
+     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 1286[2mms[22m[39m
+     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 631[2mms[22m[39m
+ [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 4820[2mms[22m[39m
+     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 1200[2mms[22m[39m
+     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 872[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 2084[2mms[22m[39m
+ [32m✓[39m src/test/shell.test.tsx [2m([22m[2m81 tests[22m[2m)[22m[33m 9325[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/' with its heading [33m 667[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 640[2mms[22m[39m
+     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 474[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m10 passed[39m[22m[90m (10)[39m
 [2m      Tests [22m [1m[32m254 passed[39m[22m[90m (254)[39m
-[2m   Start at [22m 06:18:04
-[2m   Duration [22m 17.90s[2m (transform 7.11s, setup 10.41s, import 13.53s, tests 19.06s, environment 49.95s)[22m
+[2m   Start at [22m 06:22:58
+[2m   Duration [22m 16.12s[2m (transform 6.77s, setup 9.87s, import 13.02s, tests 19.40s, environment 34.35s)[22m
