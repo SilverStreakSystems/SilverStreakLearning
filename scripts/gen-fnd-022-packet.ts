@@ -124,7 +124,8 @@ function main() {
     "| Requirement | Owner question | Disposition |",
     "| --- | --- | --- |",
     ...packet.unmatched_current_candidates.map(
-      (u) => `| ${u.requirement_id} | ${esc(u.owner_question)} | ${u.owner_disposition} — ${esc(u.owner_rationale)} |`,
+      (u) =>
+        `| ${u.requirement_id} | ${esc(u.owner_question)} | ${u.owner_disposition} — ${esc(u.owner_rationale)} |`,
     ),
     "",
     "## Refused in this cycle",

@@ -63,10 +63,7 @@ describe("DEC-020 disposition record — completeness", () => {
   it("records the exact disposition totals the owner stated", () => {
     const counts = new Map<string, number>();
     for (const decision of record.candidate_dispositions) {
-      counts.set(
-        decision.owner_disposition,
-        (counts.get(decision.owner_disposition) ?? 0) + 1,
-      );
+      counts.set(decision.owner_disposition, (counts.get(decision.owner_disposition) ?? 0) + 1);
     }
     expect(counts.get("RETAIN-HISTORICAL")).toBe(5);
     expect(counts.get("MERGE-OR-RESTATEMENT")).toBe(3);
@@ -108,9 +105,9 @@ describe("DEC-020 disposition record — changes nothing it may not change", () 
       expect(source, decision.candidate_id).toBeDefined();
       expect(decision.exact_text).toBe(source!.original_wording);
       expect(decision.post_disposition_state.extraction_record_unchanged).toBe(true);
-      expect(packet.candidates.find((c) => c.candidate_id === decision.candidate_id)?.exact_text).toBe(
-        source!.original_wording,
-      );
+      expect(
+        packet.candidates.find((c) => c.candidate_id === decision.candidate_id)?.exact_text,
+      ).toBe(source!.original_wording);
     }
   });
 

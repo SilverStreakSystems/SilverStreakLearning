@@ -63,7 +63,9 @@ function CommandCenter() {
   const evidenceRun = EVIDENCE.filter(
     (record) => record.state === "confirmed" || record.state === "partial",
   );
-  const evidenceNotRun = EVIDENCE.filter((record) => record.state !== "confirmed" && record.state !== "partial");
+  const evidenceNotRun = EVIDENCE.filter(
+    (record) => record.state !== "confirmed" && record.state !== "partial",
+  );
   const refusedClaims = CLAIMS.filter((claim) => claim.posture === "refused");
   const openActions = buildActions();
   const openNotifications = buildNotifications();
@@ -85,7 +87,6 @@ function CommandCenter() {
         title="Command Center"
         summary="What is currently authoritative, what is only built, what has actually been checked, and what decision comes next. Readiness is reported on separate axes and is never combined into a single score."
       />
-
 
       <Section
         id="program-state"

@@ -32,9 +32,9 @@ describe("WP-007 restatement index schema", () => {
 
 describe("WP-007 cross-source restatement index", () => {
   it("validates every row against the schema rules", () => {
-    expect(file.relations.flatMap((row) => validateRestatementRelation(row, requirementIds))).toEqual(
-      [],
-    );
+    expect(
+      file.relations.flatMap((row) => validateRestatementRelation(row, requirementIds)),
+    ).toEqual([]);
   });
 
   it("assigns stable, unique, sequential RST identifiers", () => {
@@ -90,7 +90,10 @@ describe("WP-007 cross-source restatement index", () => {
   it("carries no merge, precedence, or conformance vocabulary", () => {
     // Boundary prose states these words only as refusals, so the check reads the
     // executor's own findings: the basis written for each row.
-    const text = file.relations.map((row) => row.basis).join(" ").toLowerCase();
+    const text = file.relations
+      .map((row) => row.basis)
+      .join(" ")
+      .toLowerCase();
     for (const phrase of PROHIBITED_RESTATEMENT_CLAIMS) {
       expect(text).not.toContain(phrase);
     }

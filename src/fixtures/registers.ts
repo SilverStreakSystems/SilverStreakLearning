@@ -357,8 +357,7 @@ export const FINDINGS: FindingRecord[] = [
   },
   {
     id: "FND-023",
-    title:
-      "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
+    title: "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
     severity: "governance",
     raisedOn: "2026-08-19",
     raisedBy: "Founder / Operator",
@@ -1442,7 +1441,8 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-020",
-    title: "Record the FND-022 owner disposition matrix for the WP-007 Cycle 4 historical candidates",
+    title:
+      "Record the FND-022 owner disposition matrix for the WP-007 Cycle 4 historical candidates",
     state: "accepted",
     decidedOn: "2026-08-19",
     decidedBy: "Founder / Operator",

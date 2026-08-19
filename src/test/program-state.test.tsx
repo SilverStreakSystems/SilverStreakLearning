@@ -20,10 +20,7 @@ import {
   unresolvedDriftRows,
   verifiedDigestArtifacts,
 } from "@/lib/package-projection";
-import {
-  loadGovernedPackageFile,
-  loadPackageDriftFile,
-} from "@/lib/governed-package-registry";
+import { loadGovernedPackageFile, loadPackageDriftFile } from "@/lib/governed-package-registry";
 
 describe("program state register", () => {
   it("is structurally valid and makes no prohibited claim", () => {
@@ -153,9 +150,7 @@ describe("Command Center synchronization", () => {
   it("leads the next defensible action with the deferred touch-target gap", async () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Next defensible action/i });
-    expect(
-      within(region).getByText(/1\. Define a testable touch-target rule/),
-    ).toBeInTheDocument();
+    expect(within(region).getByText(/1\. Define a testable touch-target rule/)).toBeInTheDocument();
   });
 
   it("makes no release, production, certification, or district-use claim", async () => {

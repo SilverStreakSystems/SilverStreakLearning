@@ -178,8 +178,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   publicationBoundary:
     "The hosted application is a public prototype under repository governance. Hosting it does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made.",
   nextDefensibleOwnerAction: {
-    action:
-      "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
+    action: "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
     why: "DEC-020 discharged FND-022 and authorized nothing further. The one gap it deferred is the only open obligation the current posture carries, and no successor cycle is authorized until the owner records the next authorization.",
     source: {
       recordId: "FND-023",
