@@ -909,4 +909,45 @@ export const CLAIMS: ClaimRecord[] = [
     state: "refused",
     reason: "Only a small candidate slice exists, explicitly labeled as candidate.",
   },
+  {
+    id: "CLM-008",
+    claim:
+      "SSLS has an automated evidence pipeline that binds execution evidence to defined implementation inputs and evaluates current evidence applicability.",
+    posture: "supported",
+    state: "confirmed",
+    reason:
+      "The pipeline in scripts/evidence produces immutable execution records with declared input-set hashes, and the verification gate reports CURRENT, STALE, EXPIRED, SUPERSEDED, INAPPLICABLE, or UNKNOWN per record. Evidenced by EV-019 and 37 pipeline test cases.",
+  },
+  {
+    id: "CLM-009",
+    claim: "Evidence in this repository is always current.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "Evidence is current only while its declared inputs are unchanged and its expiry has not passed. Records go STALE, EXPIRED, or UNKNOWN by design.",
+  },
+  {
+    id: "CLM-010",
+    claim: "Merge protection is active and governance compliance is proven by continuous integration.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "Workflow files exist in the repository; branch-protection enforcement is a repository-settings fact that has not been evidenced (FND-012). Running a check is not proof of governance compliance.",
+  },
+  {
+    id: "CLM-011",
+    claim: "The dependency set has been scanned and no vulnerability exists.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "The scanner executed and the advisory feed returned HTTP 404. The record is NOT COMPLETED; absence of a result is not absence of a vulnerability.",
+  },
+  {
+    id: "CLM-012",
+    claim: "Repository provenance has been independently validated.",
+    posture: "refused",
+    state: "refused",
+    reason: "All provenance evidence is executor-produced and self-verified. independent = false on every record.",
+  },
 ];
+
