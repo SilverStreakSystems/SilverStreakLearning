@@ -9,7 +9,7 @@
   ],
   "direct_dependencies": 52,
   "direct_dev_dependencies": 22,
-  "resolved_packages": 472,
+  "resolved_packages": 471,
   "dependencies": [
     {
       "name": "@eslint/js",
