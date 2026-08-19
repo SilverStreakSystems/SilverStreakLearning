@@ -72,9 +72,11 @@ of its own.
   DEC-017 does not close Gate A, does not authorize later work packages, and creates no security,
   privacy, accessibility, compliance, certification, district-readiness, or independent-validation
   claim. The published surface remains **PUBLIC PROTOTYPE**.
-- DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
-  DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
-  respectively. None is resolved by WP-006 closure.
+- DEC-011 (program register text) and DEC-013 (gate lineage) remain **open**, both routed to WP-008.
+  Neither is resolved by WP-006 closure. DEC-012 is now **accepted** (see the WP-038 entry below);
+  it names an internal accessibility target and does not declare which ULW-AS-001 revision is
+  effective, so FND-010 stays open.
+
 - Finding dispositions after WP-037: **FND-011 resolved** for pipeline-produced evidence (legacy
   hand-bound documents still drift); **FND-013 resolved for machine-derived baseline facts**, with
   narrative semantic accuracy still human-governed; **FND-012 remains open and NOT VERIFIED** —
