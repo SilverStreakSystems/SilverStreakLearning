@@ -1,6 +1,6 @@
 # Build Manifest
 
-All values inspected at commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a` on 2026-08-19 (UTC).
+All values inspected at commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a` on 2026-08-19 02:13–02:14 UTC.
 This capture supersedes the captures at `6aa254e` (2026-08-19 01:40 UTC) and `70c1f89`
 (2026-08-17), both now historical.
 Results below were executed at this commit, not reused from an earlier run.

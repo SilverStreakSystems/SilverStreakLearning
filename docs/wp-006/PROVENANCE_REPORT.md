@@ -21,7 +21,7 @@ This does not substitute for a CI evidence architecture; that is WP-037 and is n
 | Manifest hash | `package.json` sha256 `0ab32261ed51046c4556e280e76c17a2aa99b8825dbcf9ccd31ad8ae9a9dd029` | [C] |
 | Tracked files | 372 | [C] |
 | Build environment | Lovable sandbox, Bun toolchain, Vite 8 build targeting a Cloudflare Worker runtime via Nitro | [C] |
-| Inspection timestamp | 2026-08-19 02:04–02:06 UTC (closure-reconciliation pass) | [C] |
+| Inspection timestamp | 2026-08-19 02:13–02:14 UTC (owner-authorization pass) | [C] |
 | Build result | `vite build` succeeded; exit 0 | [C] |
 | Test result | `vitest run` — 217 passed / 217, 9 files, 14.48 s | [C] |
 | Source-tree delta since evidence execution | Test and build were executed at `7acb5d6`; the only change between `7acb5d6` and this HEAD is the addition of an archived plan document under `.lovable/plan/`. No file under `src/`, `scripts/`, or `package.json` differs. | [C] |
@@ -44,7 +44,7 @@ inside the project. DEC-009 accepts this bounded unknown for the current phase.
 
 ## Limitations
 
-- All hashes and results are bound to `c1f0601`, captured 2026-08-19 02:04–02:06 UTC. This capture
+- All hashes and results are bound to `c1f0601`, captured 2026-08-19 02:13–02:14 UTC. This capture
   supersedes the `6aa254e` capture of 2026-08-19 01:39–01:41 UTC, which supersedes the `70c1f89`
   capture of 2026-08-17. Both earlier captures remain valid statements about their own commits and
   must not be reported as current.
