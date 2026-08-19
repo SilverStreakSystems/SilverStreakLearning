@@ -222,6 +222,22 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
+  {
+    id: "FND-015",
+    title: "Five high-severity dependency advisories reported against the resolved dependency set",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L7"],
+    description:
+      "The WP-037 bounded recovery scan (EV-021) matched five high-severity advisories over the versions resolved in bun.lock: brace-expansion 1.1.16 (GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895), brace-expansion 5.0.8 (GHSA-rgw5-rvv9-x895), js-yaml 4.3.0 (GHSA-5p4m-2wfm-xmqj), and nanoid 3.3.16 (GHSA-2v37-7h3g-55p8). All five were transitive, none direct. Under DEC-016 each was triaged (EV-022) and remediated by minimum-necessary version pinning (EV-023): brace-expansion to 5.0.9, js-yaml to 4.3.1, nanoid to 3.3.18. A post-remediation scan against the same advisory source (EV-024) matched zero advisories, and full verification (EV-025) recorded no regression. Disposition: REMEDIATED.",
+    boundary:
+      "Remediation removes the five named advisories from the recorded dependency set at the recorded time and advisory source. It does not assert that the application is secure, that no other vulnerability exists, that reachability or exploitability were determined (both remain UNKNOWN for all five), or that any advisory source is complete.",
+    resolutionState: "confirmed",
+    requiredDecision: null,
+    evidenceReferences: ["EV-021", "EV-022", "EV-023", "EV-024", "EV-025"],
+    synthetic: false,
+  },
 ];
 
 export const EVIDENCE: EvidenceRecord[] = [
@@ -531,6 +547,68 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That an authoritative advisory query completed with HTTP 200 over the resolved dependency set at manifest hash 35e8c7d4 and lockfile hash 591f5834, and returned five matched advisories, all severity high: brace-expansion 1.1.16 (GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895), brace-expansion 5.0.8 (GHSA-rgw5-rvv9-x895), js-yaml 4.3.0 (GHSA-5p4m-2wfm-xmqj), and nanoid 3.3.16 (GHSA-2v37-7h3g-55p8). The full raw response and per-finding detail are recorded at evidence/artifacts/vulnerability/advisory-recovery.json and hashed in evidence/records/EV-VULN-RECOVERY.json.",
     doesNotSupport:
       "Security, remediation, triage, exploitability, compliance, certification, or closure of any gate. It does not supersede EV-VULN, which remains a preserved failed attempt (bun audit, HTTP 404). Executor-run, method automated, independent = false. Matched advisories are unremediated and untriaged; the vulnerability criterion is not satisfied by the existence of this scan alone.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-022",
+    title: "Advisory triage record — the five WP-037 high-severity findings",
+    kind: "document-review",
+    subject:
+      "The five advisories matched by EV-021, triaged per-advisory before any dependency was changed",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That each advisory was recorded with its identifier, package, installed version, dependency path, direct/transitive status, severity, fixed version, affected behaviour, and remediation route before remediation began, and that reachability and exploitability were recorded UNKNOWN [U] for all five rather than inferred. All five are transitive: brace-expansion via minimatch under eslint and @typescript-eslint/typescript-estree, js-yaml via @eslint/eslintrc and xmlbuilder2, nanoid via postcss. The full triage table is at docs/wp-037/VULNERABILITY_TRIAGE.md.",
+    doesNotSupport:
+      "Security, exploitability, reachability, risk acceptance, independent security review, or closure of any gate. Triage is a classification of scanner output, not an assessment of the running system.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-023",
+    title: "Dependency remediation — minimum-necessary version pinning under DEC-016",
+    kind: "automated-test",
+    subject: "package.json overrides and the regenerated bun.lock resolution graph",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That three override entries were added to package.json — brace-expansion 5.0.9, js-yaml 4.3.1, nanoid 3.3.18 — and that the resulting lockfile delta is exactly seven resolution changes and no others: brace-expansion 1.1.16 to 5.0.9, js-yaml 4.3.0 to 4.3.1, nanoid 3.3.16 to 3.3.18, balanced-match 1.0.2 to 4.0.4, removal of the duplicate brace-expansion 5.0.8 and its balanced-match 4.0.4 subtree, and removal of concat-map 0.0.1. No direct dependency version was changed, no framework was migrated, and no unrelated package was upgraded.",
+    doesNotSupport:
+      "That the changed packages are free of undiscovered defects, that pinning is permanent, or that any claim of security follows. Overrides constrain resolution; they do not audit code.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-024",
+    title: "Dependency vulnerability rescan — WP-037 post-remediation pass",
+    kind: "automated-test",
+    subject:
+      "The 560 package versions resolved in bun.lock across 526 packages after remediation, queried against https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the advisory query completed with HTTP 200 over the post-remediation dependency set at manifest hash 9d672fbe and lockfile hash 38d150fa, and that no known dependency vulnerabilities were reported by the npm bulk advisory service (GitHub Advisory Database) against that recorded dependency set at 2026-08-19T06:13:46Z: zero matched advisories at every severity. The five advisories recorded in EV-021 are absent from this result. The raw response is at evidence/artifacts/vulnerability/advisory-recovery.json.",
+    doesNotSupport:
+      "That the application is secure, that no vulnerability exists, that the advisory source is complete, that undisclosed or future advisories are absent, or that any gate may close. It does not supersede EV-VULN, which remains a preserved failed attempt (bun audit, HTTP 404, still failing in this environment). Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-025",
+    title: "Post-remediation regression verification",
+    kind: "automated-test",
+    subject: "Typecheck, test suite, production build, lint, and the regenerated evidence bundle",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That after remediation the typecheck reported zero errors, 254 of 254 tests passed across 10 files, the production build succeeded, and a full lint run reported 677 problems (663 errors, 14 warnings) against 683 before this work package — a reduction, with no new lint debt introduced. The evidence pipeline regenerated 15 records with fail=0, review-required=2 (lint, predecessor binding guard), not-completed=1 (bun audit), and baseline freshness CURRENT. Route inventory, SBOM component identity apart from the seven remediated resolutions, and licence posture are unchanged.",
+    doesNotSupport:
+      "Release readiness, security, compliance, accessibility conformance, or independent validation. A passing suite is evidence about the suite, not about the product.",
     authorityClass: "current-summary",
     synthetic: false,
   },
@@ -863,6 +941,51 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-016",
+    title: "WP-037 vulnerability findings triage and bounded remediation authorization",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
+    context:
+      "DEC-015 recorded WP-037 as HOLD and authorized a single bounded evidence-recovery pass. That pass executed and returned five unremediated, untriaged high-severity advisories, which exhausted its authorization. The executor returned BLOCKED rather than self-authorizing a second pass. This decision supplies the missing authority.",
+    decision:
+      "Authorize one bounded sequence and nothing else: triage the five advisories, apply the minimum necessary dependency remediation, verify for regression, rescan, reconcile the evidence bundle and the frozen WP-037 exit matrix, and prepare a closure decision for owner disposition. DEC-016 supersedes DEC-015 only as current remediation authority; DEC-015 is preserved intact as the historical HOLD disposition and its constraints on evidence immutability, claim wording, and self-closure remain binding. The executor may not begin WP-038, may not close WP-037, may not perform unrelated upgrades or framework migrations, and must return any breaking or major upgrade as OWNER DECISION REQUIRED rather than applying it.",
+    consequences: [
+      "WP-037 remains open until a separate accepted owner decision closes it. WP-038 remains NOT STARTED.",
+      "EV-VULN and EV-021 are preserved verbatim; remediation produces new records EV-022 through EV-025.",
+      "A clean rescan supports only the wording recorded in CLM-013 and creates no security, compliance, or certification claim.",
+      "FND-012 remains OPEN / NOT VERIFIED and FND-014 remains OPEN / ADVISORY.",
+    ],
+    authorityClass: "accepted-decision",
+    recordState: "current",
+    supersedes: ["DEC-015"],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-017",
+    title: "Proposed owner closure of WP-037 evidence and verification pipeline",
+    state: "required",
+    decidedOn: null,
+    decidedBy: null,
+    context:
+      "Under DEC-016 the five high-severity advisories were triaged (EV-022) and remediated by minimum-necessary pinning (EV-023). The post-remediation rescan matched zero advisories (EV-024) and regression verification recorded no failure (EV-025). The vulnerability exit criterion, which concerns completed vulnerability evidence rather than the absence of all vulnerability, now has a completed scan with a recorded result and a remediated finding. Every other frozen criterion retains the state recorded at WP-037 execution.",
+    decision:
+      "DECISION REQUIRED. Proposed: close WP-037 by owner on the recorded evidence, with the limitations carried forward unchanged — FND-012 OPEN / NOT VERIFIED (branch-protection enforcement unproven), FND-014 OPEN / ADVISORY (repository-wide lint does not pass, 677 problems, no new debt from this package), bun audit still unable to execute in this environment with EV-VULN preserved as a failed attempt, and all evidence executor-produced with independent = false. On acceptance WP-038 becomes NEXT ELIGIBLE. This decision is not accepted by the executor and confers no security, compliance, certification, release, or independent-validation status.",
+    consequences: [
+      "If accepted: WP-037 CLOSED BY OWNER and WP-038 — Regulatory, Standards & Obligation Baseline becomes NEXT ELIGIBLE.",
+      "If not accepted: WP-037 remains HOLD and WP-038 remains NOT AUTHORIZED.",
+      "The published surface remains classified PUBLIC PROTOTYPE either way; closure is not release authorization.",
+    ],
+    authorityClass: "proposed-decision",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001"],
+    synthetic: false,
+  },
 ];
 
 export const CLAIMS: ClaimRecord[] = [
@@ -957,5 +1080,14 @@ export const CLAIMS: ClaimRecord[] = [
     state: "refused",
     reason:
       "All provenance evidence is executor-produced and self-verified. independent = false on every record.",
+  },
+  {
+    id: "CLM-013",
+    claim:
+      "No known dependency vulnerabilities were reported by the npm bulk advisory service against the dependency set recorded in bun.lock at 2026-08-19T06:13:46Z.",
+    posture: "supported",
+    state: "confirmed",
+    reason:
+      "EV-024 records a completed HTTP 200 query over 560 resolved versions across 526 packages with zero matched advisories. The wording is bound to that scanner, that advisory source, that dependency set, and that timestamp, and asserts nothing about security, completeness of the advisory source, or later intelligence.",
   },
 ];
