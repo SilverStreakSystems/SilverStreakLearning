@@ -82,6 +82,26 @@
       "assertion": "Package contains exactly three files; v0.2.0 DOCX and ZIP not supplied",
       "canonical_locator": "data/packages/governed-packages.json — PKG-002, PKG-001",
       "result": "AGREES"
+    },
+    {
+      "assertion": "Workbook Boundaries sheet: no PII, no AI product capability, no release authorization, historical evidence not promoted, work-package closure owner-reserved",
+      "canonical_locator": "src/fixtures/posture.ts; docs/wp-007/REFUSED_CLAIMS.md; DEC-018",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Workbook Work Packages sheet: WP-038 CLOSED BY OWNER, WP-007 ACTIVE, WP-039 NOT AUTHORIZED",
+      "canonical_locator": "src/fixtures/program.ts; DEC-018",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Workbook Validation sheet: bun audit NOT COMPLETED (HTTP 404) and independent validation NOT RUN",
+      "canonical_locator": "evidence/records/EV-VULN.json; docs/wp-037/VULNERABILITY_TRIAGE.md",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Workbook Evidence sheet lists EV-026..EV-032 only",
+      "canonical_locator": "src/fixtures/registers.ts — EVIDENCE (EV-026..EV-038)",
+      "result": "AGREES"
     }
   ],
   "drift": [
@@ -124,6 +144,26 @@
       "controlling_authority": "Owner decision required",
       "disposition": "UNRESOLVED",
       "disposition_note": "Proposal only. Nothing executed against it."
+    },
+    {
+      "drift_id": "PDR-005",
+      "package_id": "PKG-002",
+      "item": "Lint problem count: the workbook states \"686 problems: 672 errors, 14 warnings\"",
+      "package_locator": "Workbook — Control Room current limitations; Findings sheet FND-014; Validation sheet",
+      "repository_locator": "FND-014; docs/wp-007/CHECKPOINT-003.md and CHECKPOINT-004.md (704 problems at the current state)",
+      "controlling_authority": "Executed repository validation",
+      "disposition": "UNRESOLVED",
+      "disposition_note": "The package figure is version-bound to the Cycle 2 state and is stale by count only; FND-014 itself remains open on its own proposition. The package is not edited and the finding is not reconciled by this observation. PDR-002 records the PDF's omission of any lint figure; this row records the workbook's stated figure."
+    },
+    {
+      "drift_id": "PDR-006",
+      "package_id": "PKG-002",
+      "item": "Section numbering: DEC-019 locks extraction to \"Section 11 — Accessibility, printed pages 20-21\", but Section 11 of the v0.3.0 PDF is \"Security, privacy, and release boundary\" and accessibility is Section 10",
+      "package_locator": "PDF sections 10 and 11 (14 sections total)",
+      "repository_locator": "DEC-019; docs/wp-007/CHECKPOINT-004.md; FND-021",
+      "controlling_authority": "Owner decision required",
+      "disposition": "UNRESOLVED",
+      "disposition_note": "Consistent with the reading that DEC-019 describes the August 5 v0.2.0 document, not this one. That cannot be confirmed while the v0.2.0 PDF is unavailable, so the numbering discrepancy is recorded and not resolved. No substitution of the v0.3.0 Section 10 text as an extraction source is authorized or made."
     }
   ]
 }
