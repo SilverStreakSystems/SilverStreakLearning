@@ -274,7 +274,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     title: "Repository provenance inspection at the current baseline",
     kind: "manual-check",
     subject: "Repository origin, history, branch, and working-tree state",
-    collectedOn: "2026-08-17",
+    collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "confirmed",
     supports:
@@ -289,7 +289,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     title: "Build and test execution bound to the current baseline",
     kind: "automated-test",
     subject: "Production build and full test suite at the recorded commit",
-    collectedOn: "2026-08-17",
+    collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "confirmed",
     supports:
