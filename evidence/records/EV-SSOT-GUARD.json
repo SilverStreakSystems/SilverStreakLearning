@@ -2,13 +2,13 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "d42d481a0113bdaac797768cde08e5b014201713",
+  "tree_hash": "19bf3201a56843f029023a77f1681c0152de0a36",
   "expected_result": "Reported as a review condition, not as a freshness proof.",
   "artifact_path": "artifacts/provenance/ssot-binding.log",
-  "artifact_hash": "9823caa71c009b97134f9b67d6e0b776decb38e7f25223a26cab440292bea15e",
+  "artifact_hash": "551d6d9d2a99abfc1463798ecf60248ab30ad8e8f3cb81da40e18b0cc966613e",
   "input_set": {
     "docs": "fea7a11446fc49cb99bda54f4d86d12cacc064921bb304bf5403bfa6e5bcad77",
-    "pipeline": "b296d75b7c1d0653acca611bfe6b3484776f19f1c16a5d75f19013088086c65a"
+    "pipeline": "eb7c44dd5e07dbb0282d590fcdb2dadd7b906f34e814d128c468bd9f343fafe9"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -29,9 +29,9 @@
   "method": "automated",
   "evidence_id": "EV-SSOT-GUARD",
   "evidence_type": "SSOT_BINDING",
-  "commit_sha": "09ee2bdce5b28f9175649a9cb18aee0fa8cb0623",
+  "commit_sha": "d92ea9f9143ec23779bb33b058baa4e07a3ea313",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-19T05:40:24.770Z",
+  "timestamp": "2026-08-19T05:41:39.417Z",
   "producer": "SSLS evidence pipeline",
   "title": "Predecessor declared-binding guard execution",
   "description": "The WP-006 guard retained as a compatibility layer. It compares declared commit strings and is superseded for freshness purposes by input-aware applicability.",
