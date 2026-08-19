@@ -150,11 +150,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "Repository work cites version 1.3 of the interface acceptance standard while the document corpus also holds a later revision. No accepted decision names which revision is effective, so acceptance criteria may be measured against a superseded version.",
+      "Repository work cites version 1.3 of the interface acceptance standard while the document corpus also holds a later revision. No accepted decision names which revision is effective, so acceptance criteria may be measured against a superseded version. DEC-012 (accepted 2026-08-19) names WCAG 2.2 Level AA as the external internal target; it does not declare which ULW-AS-001 revision is effective, so this finding remains open and is routed forward.",
     boundary:
       "Does not assert that the interface fails either revision, and does not promote the later revision.",
     resolutionState: "conflicted",
-    requiredDecision: "DEC-012",
+    requiredDecision: null,
+
     evidenceReferences: ["EV-008"],
     synthetic: false,
   },
