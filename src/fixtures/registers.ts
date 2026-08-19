@@ -839,6 +839,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-035",
+    title: "Command Center and Action Center synchronization to the post-Cycle-3 program state",
+    kind: "automated-test",
+    subject:
+      "src/domain/program-state.ts, src/fixtures/program.ts, data/packages/package-drift.json, src/lib/package-projection.ts, src/routes/index.tsx, src/routes/actions.tsx, and src/test/program-state.test.tsx",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the Command Center and the Action Center project gate state, active work package, latest checkpoint, pending owner disposition, governed-package authority role and canonical status, unresolved drift count, and checkpoint-bound verification from canonical structured registers rather than from component constants or narrative Markdown; that the four recorded drift rows are carried as structured records PDR-001..PDR-004 in `data/packages/package-drift.json` from which `docs/packages/DRIFT_REGISTER.md` is now generated; that the pending owner obligation is carried once, on FND-020 in the findings register, and appears exactly once in the Action Center; and that executing invariants hold Gate A open, WP-007 active, the owner disposition pending, PKG-002 NONCANONICAL, four drift rows unresolved, and no WP-039, release, production, certification, district-use, or compliance-conformance claim on either surface.",
+    doesNotSupport:
+      "That any owner disposition was supplied or inferred, that WP-007 or Gate A changed state, that any drift row was resolved, that PKG-002 was promoted, that Cycle 4 or WP-039 is authorized, or that a synchronized surface validates the state it reports. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 
