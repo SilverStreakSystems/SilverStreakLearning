@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "expires_at": "2026-08-26T13:08:27.987Z",
+  "expires_at": "2026-08-26T13:10:50.575Z",
   "tool_version": "1.3.3",
-  "tree_hash": "9213c4e1bd8a8371618e6a2af53c5c1e5d3da738",
+  "tree_hash": "d287fcbcdb283012614fbd3f7abca88ff4752d6f",
   "expected_result": "Scanner completes and reports advisory counts by severity.",
   "artifact_path": "artifacts/vulnerability/audit.json",
-  "artifact_hash": "5a43481356e0de4e18157f2085e32e9f2cb9cf758cf43f0021f9754e639c26bd",
+  "artifact_hash": "82069e435a9838b8e0e05b63b73956ab9d8472d3d54b074691ce400d52642802",
   "input_set": {
-    "manifest": "ac3bc0680c1d8427cd6ab518b82aecd4a428ee2bf7100d1409b637f044111305",
-    "lockfile": "c558a61a07624d4661cf2cf0711425daac1642552986a10b3ea8f56c49117044"
+    "manifest": "28d628550e6729460807a4aea294add51c116e942f216b760f2371b7269e3c74",
+    "lockfile": "65d788da2317211a8b0f96b96049df5abe4ccbeb522e126cc96e7252e52c93d7"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -24,9 +24,9 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "VULNERABILITY_SCAN",
-  "commit_sha": "cb3c7f5c03c5012a2138251d9378761ba1593358",
+  "commit_sha": "c7b0fa3cda6341a7fad9afab989bdec9fa231fd7",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-19T13:08:27.987Z",
+  "timestamp": "2026-08-19T13:10:50.575Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-VULN",
   "title": "Dependency vulnerability scan",
