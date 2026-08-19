@@ -71,7 +71,9 @@ exception was created.
 - All evidence executor-produced: `independent = false` throughout.
 - Published surface remains **PUBLIC PROTOTYPE** (EV-020). Closure is not release authorization.
 
-## Owner action
+## Owner disposition — recorded
 
-Accept, decline, or revise **DEC-017**. On acceptance: WP-037 CLOSED BY OWNER and WP-038 becomes
-NEXT ELIGIBLE. Until then WP-037 remains open and WP-038 must not begin.
+**DEC-017 accepted 2026-08-19 by the Founder / Operator. WP-037 is CLOSED BY OWNER.**
+WP-038 — Regulatory, Standards & Obligation Baseline is **NEXT ELIGIBLE**, authorized for
+generation and execution only. Gate A is not closed and no later work package is authorized.
+The limitations listed above are carried forward unchanged and are not resolved by closure.

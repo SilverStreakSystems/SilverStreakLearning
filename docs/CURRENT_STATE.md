@@ -63,8 +63,15 @@ of its own.
   clean, 254/254 tests, a successful build, and lint debt reduced from 683 to 677 problems (EV-025).
   `EV-VULN` is preserved verbatim as a failed attempt (`bun audit`, HTTP 404) and is not a clean
   result. The vulnerability exit criterion now reconciles to **PASS on completed evidence**;
-  FND-015 is **REMEDIATED**. WP-037 is **not closed** — **DEC-017 is DECISION REQUIRED**, and
-  **WP-038 remains NOT AUTHORIZED and NOT STARTED**.
+  FND-015 is **REMEDIATED**.
+- **WP-037 is CLOSED BY OWNER** under **DEC-017 (accepted 2026-08-19)**. The closure carries forward
+  unchanged limitations: FND-012 OPEN / NOT VERIFIED, FND-014 OPEN / ADVISORY, `bun audit` still
+  unable to complete in this environment, and vulnerability evidence that is automated,
+  point-in-time, and not independent security validation. **WP-038 — Regulatory, Standards &
+  Obligation Baseline is NEXT ELIGIBLE** and authorized for generation and execution only.
+  DEC-017 does not close Gate A, does not authorize later work packages, and creates no security,
+  privacy, accessibility, compliance, certification, district-readiness, or independent-validation
+  claim. The published surface remains **PUBLIC PROTOTYPE**.
 - DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
   DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
   respectively. None is resolved by WP-006 closure.
