@@ -327,7 +327,7 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That the current-state record and its three manifests were bound to commit 70c1f89 with build and test evidence executed at that commit. It remains a valid historical statement about that commit only.",
     doesNotSupport:
       "Anything about the present state of the repository. This binding is superseded by EV-014 and must not be reported as current.",
-    authorityClass: "historical",
+    authorityClass: "historical-evidence",
     synthetic: false,
   },
   {
