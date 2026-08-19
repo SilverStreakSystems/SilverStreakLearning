@@ -357,8 +357,7 @@ export const FINDINGS: FindingRecord[] = [
   },
   {
     id: "FND-023",
-    title:
-      "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
+    title: "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
     severity: "governance",
     raisedOn: "2026-08-19",
     raisedBy: "Founder / Operator",
@@ -1012,7 +1011,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     supports:
       "That the owner dispositions recorded in DEC-020 are transcribed for all sixteen candidates HREQ-015 through HREQ-030, all seventeen restatement rows RST-001 through RST-017, and all three unmatched HS-011 rows, with candidate totals of five RETAIN-HISTORICAL, three MERGE-OR-RESTATEMENT, seven ADOPT-AS-CANDIDATE, one NEEDS-EVIDENCE / DEFER and zero NARROW, SUPERSEDE, or REJECT; that every extracted wording, source identity, digest, locator, and Cycle 4 relationship classification is unchanged; that the review packet and the canonical disposition record agree item by item; and that the generated Markdown projection reproduces byte-identically from the JSON.",
     doesNotSupport:
-      "That any candidate is implemented, satisfied, tested, or assessed; that HS-023 gained promotion or PKG-001 gained completeness; that EV-003 was run; that WP-007 or Gate A closed; that WP-039 or any further cycle is authorized; or that any WCAG, ADA Title II, Section 508, or accessibility conformance claim is made. Executor-run, method schema-bound transcription plus automated cross-register reconciliation, independent = false.",
+      "That any candidate is implemented, satisfied, tested, or assessed; that HS-023 gained promotion or PKG-001 gained completeness; that EV-003 was run; that WP-007 or Gate A closed; that WP-039 or any further cycle is authorized; or that any WCAG, ADA Title II, Section 508, or accessibility conformance claim is made. Executor-run, method schema-bound transcription plus automated cross-register reconciliation, independent = false. Checks actually executed on 2026-08-19: full suite 381 of 381 tests across 18 files; focused disposition, review-packet, restatement and program-state suites 55 of 55; Draft 2020-12 schema validation of both changed structured artifacts; tsgo --noEmit clean; production build succeeded; eslint zero errors on all nine touched source files; repository-wide lint still reports 699 problems, the known FND-014 debt, down from 711 at entry; and three documentation generators rerun with no diff.",
     authorityClass: "current-summary",
     synthetic: false,
   },
@@ -1442,7 +1441,8 @@ export const DECISIONS: DecisionRecord[] = [
   },
   {
     id: "DEC-020",
-    title: "Record the FND-022 owner disposition matrix for the WP-007 Cycle 4 historical candidates",
+    title:
+      "Record the FND-022 owner disposition matrix for the WP-007 Cycle 4 historical candidates",
     state: "accepted",
     decidedOn: "2026-08-19",
     decidedBy: "Founder / Operator",

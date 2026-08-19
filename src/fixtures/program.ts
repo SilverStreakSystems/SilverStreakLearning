@@ -88,7 +88,8 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "TESTCOUNT",
+      statement:
+        "381 of 381 automated tests passed across 18 files, measured with a raised per-test timeout because this sandbox times out slow route renders under parallel load.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
       boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
@@ -178,8 +179,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   publicationBoundary:
     "The hosted application is a public prototype under repository governance. Hosting it does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made.",
   nextDefensibleOwnerAction: {
-    action:
-      "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
+    action: "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
     why: "DEC-020 discharged FND-022 and authorized nothing further. The one gap it deferred is the only open obligation the current posture carries, and no successor cycle is authorized until the owner records the next authorization.",
     source: {
       recordId: "FND-023",

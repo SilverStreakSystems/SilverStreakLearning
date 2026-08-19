@@ -63,7 +63,9 @@ function CommandCenter() {
   const evidenceRun = EVIDENCE.filter(
     (record) => record.state === "confirmed" || record.state === "partial",
   );
-  const evidenceNotRun = EVIDENCE.filter((record) => record.state !== "confirmed" && record.state !== "partial");
+  const evidenceNotRun = EVIDENCE.filter(
+    (record) => record.state !== "confirmed" && record.state !== "partial",
+  );
   const refusedClaims = CLAIMS.filter((claim) => claim.posture === "refused");
   const openActions = buildActions();
   const openNotifications = buildNotifications();
@@ -85,7 +87,6 @@ function CommandCenter() {
         title="Command Center"
         summary="What is currently authoritative, what is only built, what has actually been checked, and what decision comes next. Readiness is reported on separate axes and is never combined into a single score."
       />
-
 
       <Section
         id="program-state"
@@ -138,8 +139,10 @@ function CommandCenter() {
           <div className="rounded-md border border-border bg-surface p-4">
             <dt className="flex flex-wrap items-center gap-2 font-display text-base font-semibold">
               Owner disposition
-              <StateChip state="blocked" />
-              <span>PENDING</span>
+              <StateChip
+                state={program.ownerDisposition.state === "pending" ? "blocked" : "confirmed"}
+              />
+              <span>{program.ownerDisposition.state.toUpperCase()}</span>
             </dt>
             <dd className="mt-2 text-sm text-muted-foreground">
               {program.ownerDisposition.subject}. Required of {program.ownerDisposition.requiredOf}.

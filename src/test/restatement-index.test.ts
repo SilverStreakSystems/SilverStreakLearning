@@ -32,9 +32,9 @@ describe("WP-007 restatement index schema", () => {
 
 describe("WP-007 cross-source restatement index", () => {
   it("validates every row against the schema rules", () => {
-    expect(file.relations.flatMap((row) => validateRestatementRelation(row, requirementIds))).toEqual(
-      [],
-    );
+    expect(
+      file.relations.flatMap((row) => validateRestatementRelation(row, requirementIds)),
+    ).toEqual([]);
   });
 
   it("assigns stable, unique, sequential RST identifiers", () => {
@@ -90,7 +90,10 @@ describe("WP-007 cross-source restatement index", () => {
   it("carries no merge, precedence, or conformance vocabulary", () => {
     // Boundary prose states these words only as refusals, so the check reads the
     // executor's own findings: the basis written for each row.
-    const text = file.relations.map((row) => row.basis).join(" ").toLowerCase();
+    const text = file.relations
+      .map((row) => row.basis)
+      .join(" ")
+      .toLowerCase();
     for (const phrase of PROHIBITED_RESTATEMENT_CLAIMS) {
       expect(text).not.toContain(phrase);
     }
@@ -107,10 +110,11 @@ describe("WP-007 cycle 4 register bindings", () => {
     }
   });
 
-  it("resolves the input-availability blockage and opens the disposition obligation", () => {
+  it("resolves the input-availability blockage and discharges the disposition obligation", () => {
     expect(FINDINGS.find((entry) => entry.id === "FND-021")?.resolutionState).toBe("confirmed");
-    const open = FINDINGS.find((entry) => entry.id === "FND-022");
-    expect(open?.resolutionState).toBe("blocked");
-    expect(open?.requiredDecision).toBeTruthy();
+    const discharged = FINDINGS.find((entry) => entry.id === "FND-022");
+    expect(discharged?.resolutionState).toBe("confirmed");
+    expect(discharged?.requiredDecision).toBeNull();
+    expect(discharged?.evidenceReferences).toContain("EV-042");
   });
 });
