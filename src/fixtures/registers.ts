@@ -612,7 +612,53 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-026",
+    title: "External authority register built from cited primary sources",
+    kind: "document-review",
+    subject: "43 external authorities recorded in data/governance/external-authorities.json",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That 43 external authorities were recorded with an identifier, issuing body, citation, retrieval reference, and currency note, spanning federal student privacy, Massachusetts statute and regulation, accessibility standards, security and AI frameworks, and interoperability specifications. Six conflicts and five stale project references were recorded rather than resolved silently.",
+    doesNotSupport:
+      "That the interpretations are legally correct, complete, or current beyond their recorded retrieval date; that any obligation applies or is satisfied; or that legal, professional, or independent review has occurred. Research was AI-assisted and executor-recorded; independent = false.",
+    authorityClass: "research-candidate",
+    synthetic: false,
+  },
+  {
+    id: "EV-027",
+    title: "Obligation register integrity tests",
+    kind: "automated-test",
+    subject: "src/test/obligations.test.ts against the canonical registers under data/governance",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the obligation registers satisfy their declared schema, that identifiers are unique, that every obligation cites an authority present in the authority register, that applicability, control, and evidence states are held on independent axes, and that prohibited claim wording is absent from the register text.",
+    doesNotSupport:
+      "That any obligation is satisfied, that the applicability judgements are correct, or that the register is complete. A schema check is evidence about structure, not about legal substance.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-028",
+    title: "Data-collection inspection of the current prototype surface",
+    kind: "manual-check",
+    subject: "Routes, server entry, forms, storage, analytics and cookie usage in the tracked tree",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That inspection of the tracked source found no personal-data collection path: no account system, no submission form persisting input, no analytics collection, and one first-party sidebar preference cookie. This is consistent with the recorded zero-PII boundary at the inspected commit.",
+    doesNotSupport:
+      "That the platform host collects nothing, that the boundary holds at any later commit, or that any privacy obligation is satisfied. Executor-run inspection; independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
 
 export const DECISIONS: DecisionRecord[] = [
   {
