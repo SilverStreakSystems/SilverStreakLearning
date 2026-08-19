@@ -9,6 +9,7 @@ import {
   FINDINGS,
   FOUNDATION_ARTIFACTS,
   NEXT_DEFENSIBLE_ACTIONS,
+  PROGRAM_STANDING,
   READINESS_AXES,
 } from "@/fixtures";
 import { carriesImplementationAuthority, operatesNow } from "@/domain";
