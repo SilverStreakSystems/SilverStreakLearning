@@ -50,3 +50,16 @@ affected files, and is recorded with status `review-required`. It is never rende
 DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and DEC-013
 (gate lineage reconciliation) remain open and are routed as recorded in the WP-006 closure package.
 WP-037 does not resolve them and must not be read as resolving them.
+
+## Final dispositions recorded at WP-037 verification
+
+| Finding | Disposition | Residual |
+| --- | --- | --- |
+| FND-011 | RESOLVED — ORIGINAL FAILURE MODE SUPERSEDED BY THE INPUT-AWARE EVIDENCE MODEL | Legacy hand-bound WP-006 documents still declare fixed commits and are not rebound |
+| FND-012 | OPEN — REQUIRED MERGE ENFORCEMENT NOT VERIFIED | Requires evidence from a party with repository-settings access |
+| FND-013 | RESOLVED FOR MACHINE-DERIVED BASELINE FACTS | Narrative semantic accuracy remains human-governed |
+| FND-014 | OPEN / ADVISORY | Repository-wide lint reports 677 problems; WP-037 files report zero, so this package adds no new debt |
+
+Acceptance proof for FND-011 and FND-013: evaluated against a later head, ten of fourteen records
+from the `1f7c51e` run remained CURRENT purely on unchanged declared input sets, with no rebinding.
+The four STALE records were the tree-wide and docs-scoped scans, which declare those inputs by design.

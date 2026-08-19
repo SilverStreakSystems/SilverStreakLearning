@@ -156,8 +156,16 @@ describe("applicability", () => {
 
   it("is EXPIRED once the declared window has passed", () => {
     const result = evaluateApplicability(
-      record({ evidence_type: "VULNERABILITY_SCAN", input_set: { manifest: "m", lockfile: "l" }, expires_at: "2026-08-21T00:00:00.000Z" }),
-      { inputSets: { manifest: "m", lockfile: "l" }, at: "2026-09-01T00:00:00.000Z", commit: COMMIT },
+      record({
+        evidence_type: "VULNERABILITY_SCAN",
+        input_set: { manifest: "m", lockfile: "l" },
+        expires_at: "2026-08-21T00:00:00.000Z",
+      }),
+      {
+        inputSets: { manifest: "m", lockfile: "l" },
+        at: "2026-09-01T00:00:00.000Z",
+        commit: COMMIT,
+      },
     );
     expect(result.state).toBe("EXPIRED");
   });
@@ -240,19 +248,66 @@ describe("expiry policy", () => {
 });
 
 describe("verification gate", () => {
-  const inputSets = { ...MATCHING_INPUTS, tracked: "t1", manifest: "m", lockfile: "l1", routes: "r", config: "c1", workflows: "w", tests: "t", docs: "d", pipeline: "p" };
+  const inputSets = {
+    ...MATCHING_INPUTS,
+    tracked: "t1",
+    manifest: "m",
+    lockfile: "l1",
+    routes: "r",
+    config: "c1",
+    workflows: "w",
+    tests: "t",
+    docs: "d",
+    pipeline: "p",
+  };
 
   function fullSet() {
     return [
-      record({ evidence_id: "EV-BUILD", evidence_type: "BUILD", input_set: { source: "s1", config: "c1", lockfile: "l1" } }),
-      record({ evidence_id: "EV-TEST", evidence_type: "TEST", input_set: { source: "s1", tests: "t", config: "c1", lockfile: "l1" } }),
-      record({ evidence_id: "EV-PROV", evidence_type: "SOURCE_PROVENANCE", input_set: { tracked: "t1" } }),
-      record({ evidence_id: "EV-DEPS", evidence_type: "DEPENDENCY_INVENTORY", input_set: { manifest: "m", lockfile: "l1" } }),
-      record({ evidence_id: "EV-SBOM", evidence_type: "SBOM", input_set: { manifest: "m", lockfile: "l1" } }),
-      record({ evidence_id: "EV-SECRET", evidence_type: "SECRET_SCAN", input_set: { tracked: "t1" } }),
-      record({ evidence_id: "EV-PII", evidence_type: "PII_BOUNDARY_SCAN", input_set: { tracked: "t1" } }),
-      record({ evidence_id: "EV-ROUTES", evidence_type: "ROUTE_INVENTORY", input_set: { routes: "r" } }),
-      record({ evidence_id: "EV-CONFIG", evidence_type: "CONFIGURATION", input_set: { config: "c1", workflows: "w" } }),
+      record({
+        evidence_id: "EV-BUILD",
+        evidence_type: "BUILD",
+        input_set: { source: "s1", config: "c1", lockfile: "l1" },
+      }),
+      record({
+        evidence_id: "EV-TEST",
+        evidence_type: "TEST",
+        input_set: { source: "s1", tests: "t", config: "c1", lockfile: "l1" },
+      }),
+      record({
+        evidence_id: "EV-PROV",
+        evidence_type: "SOURCE_PROVENANCE",
+        input_set: { tracked: "t1" },
+      }),
+      record({
+        evidence_id: "EV-DEPS",
+        evidence_type: "DEPENDENCY_INVENTORY",
+        input_set: { manifest: "m", lockfile: "l1" },
+      }),
+      record({
+        evidence_id: "EV-SBOM",
+        evidence_type: "SBOM",
+        input_set: { manifest: "m", lockfile: "l1" },
+      }),
+      record({
+        evidence_id: "EV-SECRET",
+        evidence_type: "SECRET_SCAN",
+        input_set: { tracked: "t1" },
+      }),
+      record({
+        evidence_id: "EV-PII",
+        evidence_type: "PII_BOUNDARY_SCAN",
+        input_set: { tracked: "t1" },
+      }),
+      record({
+        evidence_id: "EV-ROUTES",
+        evidence_type: "ROUTE_INVENTORY",
+        input_set: { routes: "r" },
+      }),
+      record({
+        evidence_id: "EV-CONFIG",
+        evidence_type: "CONFIGURATION",
+        input_set: { config: "c1", workflows: "w" },
+      }),
     ];
   }
 

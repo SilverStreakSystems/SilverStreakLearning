@@ -56,7 +56,9 @@ export function verifyEvidenceSet({ records, baseline, inputSets, commit, enviro
     const { valid, errors } = validateEvidenceRecord(record);
     if (!valid) {
       for (const error of errors) {
-        problems.push(`${record.evidence_id}: schema violation on ${error.field} — ${error.message}`);
+        problems.push(
+          `${record.evidence_id}: schema violation on ${error.field} — ${error.message}`,
+        );
       }
     }
   }

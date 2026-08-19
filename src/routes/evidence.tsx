@@ -24,7 +24,6 @@ import {
   REUSE_CONDITIONS,
 } from "@/domain";
 
-
 export const Route = createFileRoute("/evidence")({
   head: () => ({
     meta: [
@@ -177,7 +176,6 @@ function EvidenceRegister() {
       </Section>
 
       <Section id="register" title="Register">
-
         <RegistryTable
           caption="Evidence records with kind, collection date, state, and authority class"
           headers={["Evidence", "Kind", "Subject", "Collected", "State", "Authority"]}

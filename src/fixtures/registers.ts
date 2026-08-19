@@ -103,8 +103,7 @@ export const FINDINGS: FindingRecord[] = [
     affectedLayers: ["L1"],
     description:
       "A historical gate sequence closed its first gate and left its second gate open. The current program proceeds under a separately named gate. No accepted decision maps one taxonomy onto the other, so an open historical gate coexists with a proceeding current gate.",
-    boundary:
-      "Does not assert that either taxonomy is wrong, and does not rename either one.",
+    boundary: "Does not assert that either taxonomy is wrong, and does not rename either one.",
     resolutionState: "conflicted",
     requiredDecision: "DEC-013",
     evidenceReferences: ["EV-008"],
@@ -167,12 +166,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again.",
+      "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again. WP-037 disposition: RESOLVED — ORIGINAL FAILURE MODE SUPERSEDED BY THE INPUT-AWARE EVIDENCE MODEL. Applicability is now decided by declared input-set hashes, so a documentation-only commit leaves build, test, typecheck, SBOM, and dependency evidence CURRENT without any re-binding.",
     boundary:
-      "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured.",
-    resolutionState: "not-verified",
+      "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured. The resolution applies to pipeline-produced evidence only: the predecessor declared-binding guard over WP-006 prose documents still compares commit strings and is retained for compatibility, so hand-bound legacy documents remain subject to the original drift.",
+    resolutionState: "confirmed",
     requiredDecision: null,
-    evidenceReferences: ["EV-016", "EV-017", "EV-018"],
+    evidenceReferences: ["EV-016", "EV-017", "EV-018", "EV-019"],
     synthetic: false,
   },
   {
@@ -183,12 +182,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "A workflow that runs the binding check exists in the repository. Whether the hosting platform requires that check to pass before a merge is a repository-settings fact that cannot be read from repository content, so merge enforcement is recorded as not verified.",
+      "A workflow that runs the binding check exists in the repository. Whether the hosting platform requires that check to pass before a merge is a repository-settings fact that cannot be read from repository content, so merge enforcement is recorded as not verified. Re-affirmed under WP-037: the evidence pipeline workflow exists as a file and records 'REQUIRED MERGE ENFORCEMENT - NOT VERIFIED' in its own configuration provenance artifact.",
     boundary:
-      "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed.",
+      "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed. The existence of CI workflow files is not evidence of branch protection.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-018"],
+    evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
   {
@@ -199,12 +198,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one.",
+      "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one. WP-037 disposition: RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; NARRATIVE SEMANTIC ACCURACY REMAINS HUMAN-GOVERNED. Repository identity, current commit, tracked/source/test/doc counts, route modules, dependency identity, evidence applicability, and evidence expiry are now regenerated from the tree on every run and are never hand-edited.",
     boundary:
-      "Not a defect in the check, which does exactly what it declares. It is a scope limit that a later evidence pipeline must close by separating immutable execution evidence from the current baseline summary.",
-    resolutionState: "not-verified",
+      "Not a defect in the check, which does exactly what it declares. Hand-written prose in governance documents is still authored by a human and can still be semantically wrong at a correct commit; no automated control asserts otherwise.",
+    resolutionState: "confirmed",
     requiredDecision: null,
-    evidenceReferences: ["EV-018"],
+    evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
   {
@@ -215,16 +214,15 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L7"],
     description:
-      "A full lint run reports 683 problems across the repository, overwhelmingly formatter differences rather than logic defects, and 664 of them are auto-fixable. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes.",
+      "A full lint run reports 677 problems across the repository (663 errors, 14 warnings), overwhelmingly formatter differences rather than logic defects. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes. Scoped separately under WP-037: the WP-037 files (scripts/evidence, src/domain/evidence-pipeline.ts, src/test/evidence-pipeline.test.ts, src/routes/evidence.tsx) report zero lint problems, so this work package contributes no new lint debt.",
     boundary:
-      "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness.",
+      "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness. Repository-wide lint must not be reported as passing.",
     resolutionState: "unknown",
     requiredDecision: null,
-    evidenceReferences: ["EV-018"],
+    evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
 ];
-
 
 export const EVIDENCE: EvidenceRecord[] = [
   {
@@ -383,8 +381,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     id: "EV-013",
     title: "Superseded SSOT binding — commit 70c1f89",
     kind: "document-review",
-    subject:
-      "The 2026-08-17 binding of SSLS-FND-001 and its provenance, build, and test manifests",
+    subject: "The 2026-08-17 binding of SSLS-FND-001 and its provenance, build, and test manifests",
     collectedOn: "2026-08-17",
     collectedBy: "Founder / Operator",
     state: "stale",
@@ -399,8 +396,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     id: "EV-014",
     title: "Superseded SSOT binding — commit 6aa254e",
     kind: "automated-test",
-    subject:
-      "Re-executed build and full test suite bound to SSLS-FND-001 and its three manifests",
+    subject: "Re-executed build and full test suite bound to SSLS-FND-001 and its three manifests",
     collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "stale",
@@ -489,8 +485,39 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "gated-future",
     synthetic: false,
   },
+  {
+    id: "EV-019",
+    title:
+      "WP-037 evidence and verification pipeline implementation — producing run at commit 1f7c51e",
+    kind: "automated-test",
+    subject:
+      "The evidence pipeline executed end to end: fourteen immutable execution records, a derived baseline manifest, an evidence index, and the verification gate",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That at commit 1f7c51e the pipeline produced fourteen evidence records with zero failures, two review-required results (repository lint at 730 problems, predecessor SSOT binding guard exit 1) and one not-completed result (vulnerability advisory feed unavailable); that a production build exited 0 and 254 of 254 tests passed across 10 test files; and that the baseline manifest was derived, not hand-written, from the ten declared input sets. The producing run is archived unmodified at evidence/runs/1f7c51e.",
+    doesNotSupport:
+      "Security, compliance, certification, accessibility conformance, release readiness, merge enforcement, or independent validation. It does not support the claim that no vulnerability exists, since the advisory feed did not respond. Executor-run, method automated, independent = false. This record stays bound to 1f7c51e and is never rebound to a later commit.",
+    authorityClass: "historical-evidence",
+    synthetic: false,
+  },
+  {
+    id: "EV-020",
+    title: "Public deployment reachability observation",
+    kind: "document-review",
+    subject: "The published Lovable surface at https://vision-trunk.lovable.app",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the published URL responded 200 over HTTPS; that its document title is 'Command Center | SSLS Foundation Shell'; that the footer states 'Not production ready, not district validated, not independently accessibility validated, not security certified'; and that the refused-claims surface renders production-ready, district-validated, legally-compliant, and security-certified as REFUSED. Observed classification: PUBLIC PROTOTYPE.",
+    doesNotSupport:
+      "Production readiness, release authorization, compliance, certification, pilot status, or independent validation. Publication is not release authority. It observes one fetch at one moment and asserts nothing about availability, uptime, or access control.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
-
 
 export const DECISIONS: DecisionRecord[] = [
   {
@@ -791,11 +818,34 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-FND-001", "SSLS-BPP-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-015",
+    title: "Proposed owner closure of WP-037 evidence and verification pipeline",
+    state: "required",
+    decidedOn: null,
+    decidedBy: "Awaiting Founder / Operator",
+    context:
+      "WP-037 was authorized as next eligible by DEC-014 under DEC-007 and the DEC-010 software SSOT. Executor verification at the current head records: 254 of 254 tests passing across 10 test files, production build exit 0, fourteen evidence records with zero failures, two review-required results and one not-completed result, and a baseline manifest regenerated from the declared input sets. One fresh vulnerability-scan attempt was made and the advisory feed returned HTTP 404, so the scanner executed but no advisory result was obtained. No frozen, pre-registered WP-037 exit-criterion wording requiring a completed vulnerability result was located in the repository; the criterion is therefore reported as NOT COMPLETED rather than reinterpreted.",
+    decision:
+      "Question for the owner: should WP-037 be closed and WP-038 (Regulatory, Standards and Obligation Baseline) become next eligible, accepting the vulnerability-scan result as NOT COMPLETED due to an unavailable external feed? This decision is prepared by the executor and is not self-accepted.",
+    consequences: [
+      "If accepted: WP-037 is CLOSED BY OWNER and WP-038 becomes NEXT ELIGIBLE; the vulnerability limitation is carried forward unresolved.",
+      "FND-011 is dispositioned RESOLVED for pipeline-produced evidence, with legacy hand-bound documents still subject to declaration drift.",
+      "FND-013 is dispositioned RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; narrative semantic accuracy remains human-governed.",
+      "FND-012 remains OPEN: branch-protection enforcement is not verified and may not be claimed.",
+      "FND-014 remains OPEN / ADVISORY: repository-wide lint reports 677 problems; WP-037 files report zero.",
+      "Public deployment classification is PUBLIC PROTOTYPE. Publication is not release authority.",
+      "Closure creates no compliance, certification, security, accessibility-conformance, or independent-validation claim.",
+      "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this decision.",
+    ],
+    authorityClass: "gated-future",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001"],
+    synthetic: false,
+  },
 ];
-
-
-
-
 
 export const CLAIMS: ClaimRecord[] = [
   {
@@ -847,5 +897,47 @@ export const CLAIMS: ClaimRecord[] = [
     posture: "refused",
     state: "refused",
     reason: "Only a small candidate slice exists, explicitly labeled as candidate.",
+  },
+  {
+    id: "CLM-008",
+    claim:
+      "SSLS has an automated evidence pipeline that binds execution evidence to defined implementation inputs and evaluates current evidence applicability.",
+    posture: "supported",
+    state: "confirmed",
+    reason:
+      "The pipeline in scripts/evidence produces immutable execution records with declared input-set hashes, and the verification gate reports CURRENT, STALE, EXPIRED, SUPERSEDED, INAPPLICABLE, or UNKNOWN per record. Evidenced by EV-019 and 37 pipeline test cases.",
+  },
+  {
+    id: "CLM-009",
+    claim: "Evidence in this repository is always current.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "Evidence is current only while its declared inputs are unchanged and its expiry has not passed. Records go STALE, EXPIRED, or UNKNOWN by design.",
+  },
+  {
+    id: "CLM-010",
+    claim:
+      "Merge protection is active and governance compliance is proven by continuous integration.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "Workflow files exist in the repository; branch-protection enforcement is a repository-settings fact that has not been evidenced (FND-012). Running a check is not proof of governance compliance.",
+  },
+  {
+    id: "CLM-011",
+    claim: "The dependency set has been scanned and no vulnerability exists.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "The scanner executed and the advisory feed returned HTTP 404. The record is NOT COMPLETED; absence of a result is not absence of a vulnerability.",
+  },
+  {
+    id: "CLM-012",
+    claim: "Repository provenance has been independently validated.",
+    posture: "refused",
+    state: "refused",
+    reason:
+      "All provenance evidence is executor-produced and self-verified. independent = false on every record.",
   },
 ];
