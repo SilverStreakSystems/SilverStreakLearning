@@ -125,7 +125,7 @@ describe("Command Center synchronization", () => {
       within(region).getAllByText(/CHECKPOINT-007: execution complete/).length,
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/PENDING/).length).toBeGreaterThan(0);
-    expect(within(region).getAllByText(/Cycle 4 closed nothing/).length).toBeGreaterThan(0);
+    expect(within(region).getAllByText(/Cycle 5 closed nothing/).length).toBeGreaterThan(0);
   });
 
   it("projects the package authority role, digest verification, and drift count", async () => {
