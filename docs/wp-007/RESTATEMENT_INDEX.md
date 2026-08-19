@@ -48,9 +48,9 @@ RESTATES means the two wordings state the same expectation. NARROWS means the su
 
 | Candidate | Source | Note |
 | --- | --- | --- |
-| HREQ-005 | HS-011 | Mobile navigation reachability and labelling is not stated as a separate bullet in v0.2.0 Section 11. |
+| HREQ-005 | HS-011 | Mobile navigation reachability and labelling is not stated as a separate bullet in the historical v0.2.0 Section 11. |
 | HREQ-013 | HS-011 | The adopted-standard authority statement is an HS-011 framing row with no Section 11 counterpart. |
-| HREQ-014 | HS-011 | The compliance-claim refusal is an HS-011 framing row; v0.2.0 states its own refusal inside HREQ-015 rather than as a separate row. |
+| HREQ-014 | HS-011 | The compliance-claim refusal is an HS-011 framing row; the historical v0.2.0 document states its own refusal inside HREQ-015 rather than as a separate row. |
 
 ## Refused in this cycle
 

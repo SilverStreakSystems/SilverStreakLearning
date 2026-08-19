@@ -179,7 +179,7 @@
     {
       "requirement_id": "HREQ-005",
       "source_id": "HS-011",
-      "note": "Mobile navigation reachability and labelling is not stated as a separate bullet in v0.2.0 Section 11."
+      "note": "Mobile navigation reachability and labelling is not stated as a separate bullet in the historical v0.2.0 Section 11."
     },
     {
       "requirement_id": "HREQ-013",
@@ -189,7 +189,7 @@
     {
       "requirement_id": "HREQ-014",
       "source_id": "HS-011",
-      "note": "The compliance-claim refusal is an HS-011 framing row; v0.2.0 states its own refusal inside HREQ-015 rather than as a separate row."
+      "note": "The compliance-claim refusal is an HS-011 framing row; the historical v0.2.0 document states its own refusal inside HREQ-015 rather than as a separate row."
     }
   ]
 }
