@@ -200,12 +200,24 @@ describe("WP-038 governance register linkage", () => {
     }
   });
 
-  it("keeps the WP-038 closure decision unaccepted", () => {
+  it("records the owner disposition of WP-038 without self-closing findings", () => {
     const decision = DECISIONS.find((record) => record.id === "DEC-018");
     expect(decision).toBeDefined();
-    expect(decision?.state).toBe("required");
-    expect(decision?.decidedOn).toBeNull();
+    expect(decision?.state).toBe("accepted");
+    expect(decision?.decidedOn).toBe("2026-08-19");
+    expect(decision?.decidedBy).toBe("Founder / Operator");
+
     const dec012 = DECISIONS.find((record) => record.id === "DEC-012");
-    expect(dec012?.state).not.toBe("accepted");
+    expect(dec012?.state).toBe("accepted");
+    expect(dec012?.decision).toContain("WCAG 2.2 Level AA");
+    expect(dec012?.decision).toContain("does not establish WCAG 2.2 conformance");
+
+    // Findings do not close with their parent work package.
+    for (const id of ["FND-016", "FND-017", "FND-018"]) {
+      const finding = FINDINGS.find((record) => record.id === id);
+      expect(finding).toBeDefined();
+      expect(finding?.resolutionState).not.toBe("resolved");
+    }
   });
 });
+
