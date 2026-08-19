@@ -5,6 +5,7 @@ export * from "./deliverable-types";
 export * from "./registers";
 export * from "./traceability";
 export * from "./posture";
+export * from "./program";
 export * from "./shared-object";
 export * from "./value-stream";
 export * from "./experience";

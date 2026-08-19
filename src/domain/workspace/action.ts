@@ -127,10 +127,21 @@ export interface ActionItem {
     governingRule: string;
     nextLegitimateAction: string;
   } | null;
+  /**
+   * A recorded owner instruction that this obligation is placed first,
+   * overriding the factor order. It is copied verbatim from the canonical
+   * register record so the reason for position one is readable on the surface.
+   * It is a named human directive, never a computed score.
+   */
+  ownerPriorityDirective: string | null;
   synthetic: boolean;
 }
 
 export function compareActions(a: ActionItem, b: ActionItem): number {
+  // A recorded owner directive is the only input that outranks the factor
+  // order, and it is always shown next to the action it promotes.
+  const byDirective = Number(Boolean(b.ownerPriorityDirective)) - Number(Boolean(a.ownerPriorityDirective));
+  if (byDirective !== 0) return byDirective;
   const byFactor = priorityRank(a.topFactor) - priorityRank(b.topFactor);
   if (byFactor !== 0) return byFactor;
   if (a.dueBy && b.dueBy) return a.dueBy.localeCompare(b.dueBy);
