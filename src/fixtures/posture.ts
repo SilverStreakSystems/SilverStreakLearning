@@ -4,7 +4,11 @@ import type { VerificationState } from "@/domain";
 export const AUTHORIZED_POSTURE: { statement: string; detail: string }[] = [
   { statement: "Clean-slate rebuild", detail: "No structures are carried forward by default." },
   { statement: "Founder and developer operator only", detail: "One authorized human user." },
-  { statement: "Private internal workspace", detail: "Not published, not shared, not marketed." },
+  {
+    statement: "Public prototype under repository governance",
+    detail:
+      "Hosted so the founder operator can inspect it. Hosting is not release authority, and the boundary is stated in full on the Command Center.",
+  },
   {
     statement: "No personal data",
     detail: "No student, family, educator, or staff personal information of any kind.",
