@@ -7,7 +7,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-import type { GovernedPackageRecord } from "../src/domain/governed-package";
+import type { GovernedPackageRecord, PackageDriftFile } from "../src/domain/governed-package";
 import { loadGovernedPackageFile, loadPackageDriftFile } from "../src/lib/governed-package-registry";
 
 const OUT_DIR = join(process.cwd(), "docs", "packages");
@@ -133,7 +133,7 @@ function nonClaimBoundary(records: GovernedPackageRecord[]): string {
   ].join("\n");
 }
 
-function driftRegister(drift: import("@/domain/governed-package").PackageDriftFile): string {
+function driftRegister(drift: PackageDriftFile): string {
   const lines: string[] = [
     "# v0.3.0 package reconciliation and drift register",
     "",
