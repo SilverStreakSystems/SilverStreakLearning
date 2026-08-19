@@ -857,7 +857,8 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-036",
-    title: "Independent re-verification of the owner-resupplied v0.3.0 package against the registered digests",
+    title:
+      "Independent re-verification of the owner-resupplied v0.3.0 package against registered digests",
     kind: "automated-test",
     subject:
       "Owner-resupplied SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf, SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx, and SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt, compared against PKA-001, PKA-002, and PKA-003 in data/packages/governed-packages.json; pinned by src/test/governed-packages.test.ts.",
