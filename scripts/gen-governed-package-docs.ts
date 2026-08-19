@@ -7,8 +7,8 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-import type { GovernedPackageRecord } from "../src/domain/governed-package";
-import { loadGovernedPackageFile } from "../src/lib/governed-package-registry";
+import type { GovernedPackageRecord, PackageDriftFile } from "../src/domain/governed-package";
+import { loadGovernedPackageFile, loadPackageDriftFile } from "../src/lib/governed-package-registry";
 
 const OUT_DIR = join(process.cwd(), "docs", "packages");
 
@@ -133,8 +133,40 @@ function nonClaimBoundary(records: GovernedPackageRecord[]): string {
   ].join("\n");
 }
 
+function driftRegister(drift: PackageDriftFile): string {
+  const lines: string[] = [
+    "# v0.3.0 package reconciliation and drift register",
+    "",
+    `Generated from \`data/packages/package-drift.json\` (schema ${drift.schema_version}). Edit the register, not this file. Recorded as EV-034.`,
+    "",
+    drift.register_purpose,
+    "",
+    "## Reconciled — package agrees with the canonical record",
+    "",
+    "| Assertion in PKG-002 | Canonical locator | Result |",
+    "| --- | --- | --- |",
+    ...drift.reconciled.map(
+      (row) => `| ${row.assertion} | ${row.canonical_locator} | ${row.result} |`,
+    ),
+    "",
+    `## Drift — ${drift.drift.filter((row) => row.disposition === "UNRESOLVED").length} unresolved, recorded and not resolved`,
+    "",
+    "| ID | Item | Package locator | Repository locator | Controlling authority | Disposition | Note |",
+    "| --- | --- | --- | --- | --- | --- | --- |",
+    ...drift.drift.map(
+      (row) =>
+        `| ${row.drift_id} | ${row.item} | ${row.package_locator} | ${row.repository_locator} | ${row.controlling_authority} | ${row.disposition} | ${row.disposition_note} |`,
+    ),
+    "",
+    "No drift row was resolved by this cycle. Resolving a drift row is an owner decision or a",
+    "later executed validation, never an edit made to make the two planes agree.",
+  ];
+  return lines.join("\n");
+}
+
 function main(): void {
   const file = loadGovernedPackageFile();
+  const drift = loadPackageDriftFile();
   mkdirSync(OUT_DIR, { recursive: true });
 
   const outputs: Array<[string, string]> = [
@@ -142,6 +174,7 @@ function main(): void {
     ["INTEGRITY_MANIFEST.md", integrityManifest(file.records)],
     ["COMPLETENESS_BOUNDARY.md", completenessBoundary(file.records)],
     ["NON_CLAIM_BOUNDARY.md", nonClaimBoundary(file.records)],
+    ["DRIFT_REGISTER.md", driftRegister(drift)],
   ];
 
   for (const [name, content] of outputs) {

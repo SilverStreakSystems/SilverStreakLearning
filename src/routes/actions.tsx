@@ -48,6 +48,11 @@ function ActionCenter() {
         title="How this list is ordered"
         description="Position in the list below is the whole ranking rule. There is no weighting, no learned model, and no opaque score."
       >
+        <p className="measure mb-3 text-sm text-muted-foreground">
+          One input sits above this list: an obligation carrying a recorded owner instruction is
+          placed first, and the instruction is printed next to it. It is a named human directive,
+          never a computed score.
+        </p>
         <ol className="measure list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
           {PRIORITY_FACTORS.map((factor) => (
             <li key={factor}>{PRIORITY_FACTOR_LABEL[factor]}</li>
@@ -68,11 +73,21 @@ function ActionCenter() {
         ) : (
           <RegistryTable
             caption="Open obligations with kind, reason, authority basis, canonical source, and ranking factor."
-            headers={["Obligation", "Kind", "Why", "Authority basis", "Canonical source", "Rank factor"]}
+            headers={[
+              "Obligation",
+              "Kind",
+              "Why",
+              "Authority basis",
+              "Canonical source",
+              "Position basis",
+            ]}
           >
             {actions.map((action) => (
               <tr key={action.actionId}>
                 <RowHeader>
+                  {action.ownerPriorityDirective ? (
+                    <span className="mb-1 block font-mono text-xs">[OWNER-DIRECTED FIRST]</span>
+                  ) : null}
                   {action.title}
                   <span className="mt-1 block text-xs font-normal text-muted-foreground">
                     {action.whatNeedsAttention}
@@ -93,7 +108,19 @@ function ActionCenter() {
                   </span>
                 </Cell>
                 <Cell>
-                  {priorityRank(action.topFactor)}. {PRIORITY_FACTOR_LABEL[action.topFactor]}
+                  {action.ownerPriorityDirective ? (
+                    <>
+                      Placed first by recorded owner instruction.
+                      <span className="mt-1 block text-xs text-muted-foreground">
+                        {action.ownerPriorityDirective} Its factor is otherwise{" "}
+                        {priorityRank(action.topFactor)}. {PRIORITY_FACTOR_LABEL[action.topFactor]}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      {priorityRank(action.topFactor)}. {PRIORITY_FACTOR_LABEL[action.topFactor]}
+                    </>
+                  )}
                 </Cell>
               </tr>
             ))}

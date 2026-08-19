@@ -304,7 +304,28 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-023", "EV-029"],
     synthetic: false,
   },
+  {
+    id: "FND-020",
+    title:
+      "Review and disposition WP-007 Cycle 3; authorize or decline the proposed bounded Cycle 4 extraction.",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "WP-007 Cycle 3 execution is complete and recorded in `docs/wp-007/CHECKPOINT-003.md`: the v0.3.0 package is registered as PKG-002, both declared digests were recomputed and matched, four drift rows are recorded unresolved, and the cycle closed nothing. No owner disposition has been supplied. WP-007 therefore remains active and the bounded Cycle 4 extraction proposed at the end of Cycle 3 remains unauthorized.",
+    boundary:
+      "This record carries the pending obligation only. It asserts no disposition, does not accept or decline the cycle, does not close WP-007, does not change Gate A, does not resolve any drift row, does not promote PKG-002, and does not authorize Cycle 4 or WP-039.",
+    resolutionState: "blocked",
+    requiredDecision:
+      "Record acceptance or decline of WP-007 Cycle 3, and separately authorize or decline the proposed bounded Cycle 4 extraction.",
+    evidenceReferences: ["EV-033", "EV-034", "EV-035"],
+    ownerPriorityDirective:
+      "Recorded owner instruction of 2026-08-19: this obligation is the highest-priority open action until a disposition is recorded.",
+    synthetic: false,
+  },
 ];
+
 
 
 
@@ -815,6 +836,22 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That every package-level assertion checked against the canonical registers was reconciled item by item, with the controlling authority named in each row: North Star, Gate A OPEN, WP-038 CLOSED BY OWNER, WP-007 ACTIVE, WP-039 NOT AUTHORIZED, DEC-007/DEC-010/DEC-012/DEC-017/DEC-018 accepted, WCAG 2.2 Level AA as an internal target only, FND-016 partial, FND-017 and FND-018 open, FND-019 repaired, 22 historical sources with three NOT-ACCESSIBLE-TO-EXECUTOR, HS-011 as the Cycle 2 extraction source, and 14 candidate requirements remaining CANDIDATE-PRE-DISPOSITION and NOT-ASSESSED; and that executing tests hold DEC-012, DEC-018, FND-016, FND-017, FND-018 and HREQ-001..HREQ-014 at those states.",
     doesNotSupport:
       "That the package text was reviewed in full, that unreconciled package statements are correct, that any repository value was adopted from the package summary, or that agreement between a package and a register creates authority, closes a finding, or validates either record. Executor-run, method document review, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-035",
+    title: "Command Center and Action Center synchronization to the post-Cycle-3 program state",
+    kind: "automated-test",
+    subject:
+      "src/domain/program-state.ts, src/fixtures/program.ts, data/packages/package-drift.json, src/lib/package-projection.ts, src/routes/index.tsx, src/routes/actions.tsx, and src/test/program-state.test.tsx",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the Command Center and the Action Center project gate state, active work package, latest checkpoint, pending owner disposition, governed-package authority role and canonical status, unresolved drift count, and checkpoint-bound verification from canonical structured registers rather than from component constants or narrative Markdown; that the four recorded drift rows are carried as structured records PDR-001..PDR-004 in `data/packages/package-drift.json` from which `docs/packages/DRIFT_REGISTER.md` is now generated; that the pending owner obligation is carried once, on FND-020 in the findings register, and appears exactly once in the Action Center; and that executing invariants hold Gate A open, WP-007 active, the owner disposition pending, PKG-002 NONCANONICAL, four drift rows unresolved, and no WP-039, release, production, certification, district-use, or compliance-conformance claim on either surface.",
+    doesNotSupport:
+      "That any owner disposition was supplied or inferred, that WP-007 or Gate A changed state, that any drift row was resolved, that PKG-002 was promoted, that Cycle 4 or WP-039 is authorized, or that a synchronized surface validates the state it reports. Executor-run, method automated, independent = false.",
     authorityClass: "current-summary",
     synthetic: false,
   },

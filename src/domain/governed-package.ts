@@ -180,3 +180,43 @@ export function validateGovernedPackage(record: GovernedPackageRecord): string[]
 export function packageCarriesImplementationAuthority(): false {
   return false;
 }
+
+/* ------------------------------------------------------- package drift ---- */
+
+/**
+ * A reconciliation row: a package assertion that matches the canonical record.
+ * Agreement between a package and a register creates no authority.
+ */
+export interface PackageReconciledRow {
+  assertion: string;
+  canonical_locator: string;
+  result: "AGREES";
+}
+
+/**
+ * A recorded difference between a package assertion and the canonical record.
+ * `UNRESOLVED` is the only state this program may write: resolving a drift row
+ * is an owner decision or a later executed validation.
+ */
+export interface PackageDriftRow {
+  drift_id: string;
+  package_id: string;
+  item: string;
+  package_locator: string;
+  repository_locator: string;
+  controlling_authority: string;
+  disposition: "UNRESOLVED" | "RESOLVED-BY-OWNER-DECISION" | "RESOLVED-BY-EXECUTED-VALIDATION";
+  disposition_note: string;
+}
+
+export interface PackageDriftFile {
+  schema_version: string;
+  generated_on: string;
+  register_purpose: string;
+  reconciled: PackageReconciledRow[];
+  drift: PackageDriftRow[];
+}
+
+export function unresolvedDrift(rows: PackageDriftRow[]): PackageDriftRow[] {
+  return rows.filter((row) => row.disposition === "UNRESOLVED");
+}

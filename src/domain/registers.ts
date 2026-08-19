@@ -21,6 +21,12 @@ export interface FindingRecord {
   boundary: string;
   resolutionState: VerificationState;
   requiredDecision: string | null;
+  /**
+   * A recorded owner instruction that this obligation outranks the standard
+   * factor order in the Action Center. It is a named, auditable input written
+   * by the owner, never a computed score and never derived from activity.
+   */
+  ownerPriorityDirective?: string;
   evidenceReferences: string[];
   synthetic: boolean;
 }

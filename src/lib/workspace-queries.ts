@@ -77,6 +77,7 @@ export function buildActions(): ActionItem[] {
       topFactor:
         finding.severity === "governance" ? "governance-gate-blocker" : "cross-stream-dependency",
       restriction: null,
+      ownerPriorityDirective: finding.ownerPriorityDirective ?? null,
       synthetic: finding.synthetic,
     });
   }
@@ -99,6 +100,7 @@ export function buildActions(): ActionItem[] {
       stageId: null,
       topFactor: "governance-gate-blocker",
       restriction: null,
+      ownerPriorityDirective: null,
       synthetic: decision.synthetic,
     });
   }
@@ -121,6 +123,7 @@ export function buildActions(): ActionItem[] {
       stageId: null,
       topFactor: "safety-security-privacy-accessibility-stop",
       restriction: null,
+      ownerPriorityDirective: null,
       synthetic: record.synthetic,
     });
   }
@@ -143,6 +146,7 @@ export function buildActions(): ActionItem[] {
       stageId: null,
       topFactor: "strategic-importance",
       restriction: null,
+      ownerPriorityDirective: null,
       synthetic: true,
     });
   }

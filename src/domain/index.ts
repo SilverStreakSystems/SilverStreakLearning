@@ -7,6 +7,8 @@ export * from "./capability-architecture";
 export * from "./deliverable-type";
 export * from "./traceability";
 export * from "./registers";
+export * from "./governed-package";
+export * from "./program-state";
 export * from "./future-workspace";
 export * from "./shared-object";
 export * from "./value-stream";
