@@ -47,6 +47,7 @@ function record(overrides = {}) {
     environment: "lovable-sandbox",
     timestamp: "2026-08-20T00:00:00.000Z",
     tool: "vite",
+    producer: "ssls-evidence-pipeline",
     command: "bun run build",
     actual_result: "Exit code 0.",
     status: "pass",
