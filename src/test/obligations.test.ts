@@ -184,7 +184,9 @@ describe("WP-038 governance register linkage", () => {
     for (const id of ["FND-016", "FND-017", "FND-018"]) {
       const finding = FINDINGS.find((record) => record.id === id);
       expect(finding).toBeDefined();
-      expect(finding?.resolutionState).toBe("unknown");
+      // FND-016 is partially resolved by DEC-012; none of the three is resolved.
+      expect(["unknown", "partial"]).toContain(finding?.resolutionState);
+      expect(finding?.resolutionState).not.toBe("resolved");
       expect(finding?.evidenceReferences.length).toBeGreaterThan(0);
       for (const reference of finding?.evidenceReferences ?? []) {
         expect(evidenceIds.has(reference)).toBe(true);
