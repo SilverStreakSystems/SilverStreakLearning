@@ -85,7 +85,7 @@ pre-disposition and not assessed, and all six package drift rows remain unresolv
 - changing any Cycle 4 relationship classification;
 - promoting HS-023 or PKG-001, or changing the partial state of PKG-001;
 - re-extracting Section 11 or re-ingesting any August 5 or July source artifact;
-- reading or inferring the content of the unsupplied v0.2.0 DOCX and ZIP;
+- reading or inferring the content of the historical v0.2.0 DOCX and ZIP, neither supplied;
 - asserting WCAG, ADA Title II, Section 508, or any other accessibility conformance;
 - closing FND-022 or WP-007, advancing Gate A, or authorizing WP-039.
 
