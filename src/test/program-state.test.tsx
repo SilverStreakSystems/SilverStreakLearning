@@ -157,10 +157,15 @@ describe("Command Center synchronization", () => {
 
   it("makes no release, production, certification, or district-use claim", async () => {
     const { container } = await renderRoute("/");
+    // The refused-claims section names these phrases in order to refuse them.
+    // Everything outside it must not state them at all.
+    const refused = container.querySelector("#claims");
+    refused?.remove();
     const text = container.textContent?.toLowerCase() ?? "";
     for (const phrase of [
       "production ready",
       "district validated",
+      "certified",
       "independently validated",
       "release authorized",
       "wp-039 is authorized",
