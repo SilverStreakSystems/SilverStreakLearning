@@ -11,6 +11,7 @@ may be made in product copy, documentation, decks, proposals, or public material
 | CLM-P-002 | "A secret scan and a deterministic pattern sweep were executed against the current source tree and the repository's commit history on 2026-08-17, and returned no findings." | Internal | WP-000-scan-evidence, Scans 1–5 | Executor-recorded (automated, not independent) |
 | CLM-P-003 | "The project has no backend, database, storage, or third-party connection configured." | Internal | WP-000 credential rotation log, inventory scope | Executor-recorded |
 | CLM-P-004 | "Registry, workspace, and capability content in the shell is synthetic." | Internal | Fixture `synthetic` flags; Scan 6 | Executor-recorded |
+| CLM-P-005 | "An automated repository check verifies that designated current-state documents declare the commit under review." | Internal | EV-015, EV-016, EV-017; `docs/wp-006/SSOT_BINDING_GUARD.md` | Executor-recorded (automated, not independent) |
 
 ## Prohibited claims
 
@@ -32,6 +33,11 @@ None of the following may be stated in any form, including hedged or implied for
 | CLM-X-012 | All exposed data was inaccessible | No exposure identified, but inaccessibility is unprovable |
 | CLM-X-013 | All third-party copies were removed | EXP-003 is UNKNOWN |
 | CLM-X-014 | Privacy compliant / breach cleared / production safe | Reserved terminology, unsupported |
+| CLM-X-015 | SSOT freshness is guaranteed | The check compares a declared commit string; it cannot establish that any figure inside a document is current (FND-013) |
+| CLM-X-016 | Merge protection is active | Branch-protection settings are not inspectable from repository content (FND-012) |
+| CLM-X-017 | Evidence is always current | Evidence is bound to the commit at which it was produced and goes stale on the next commit (FND-011) |
+| CLM-X-018 | CI proves governance compliance | A workflow executes a check; it confers no authority, approval, or conformance |
+| CLM-X-019 | Repository provenance is independently validated | All provenance evidence is executor-produced self-inspection (R-11) |
 
 ## Rules
 
