@@ -324,6 +324,24 @@ export const FINDINGS: FindingRecord[] = [
       "Recorded owner instruction of 2026-08-19: this obligation is the highest-priority open action until a disposition is recorded.",
     synthetic: false,
   },
+  {
+    id: "FND-021",
+    title:
+      "Supply the three authorized August 5 v0.2.0 inputs so WP-007 Cycle 4 can execute its locked target.",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1"],
+    description:
+      "DEC-019 authorizes WP-007 Cycle 4 and names three required inputs: SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf, SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx, and SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt. None was present in the executor's supplied-input surface at entry (EV-037); only the already registered v0.3.0 artifacts were available. The locked Cycle 4 outcome requires cryptographic verification of those files and extraction from Section 11 of the v0.2.0 PDF, so neither package acquisition nor requirement extraction can be executed. Cycle 4 is therefore BLOCKED at entry, before any register edit. The owner-declared digests are held as declared values only and were not measured.",
+    boundary:
+      "This record states an input-availability blockage only. It does not decline or amend DEC-019, does not close or change WP-007, Gate A, or WP-039, does not register, verify, promote, or infer the content of any August 5 v0.2.0 artifact, does not create an HREQ candidate or a restatement relationship, and does not resolve or change FND-001 through FND-020 or PDR-001 through PDR-004.",
+    resolutionState: "blocked",
+    requiredDecision:
+      "Supply the three authorized August 5 v0.2.0 files for independent digest verification, or amend the Cycle 4 authorization.",
+    evidenceReferences: ["EV-037"],
+    synthetic: false,
+  },
 ];
 
 
