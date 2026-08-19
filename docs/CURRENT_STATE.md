@@ -94,6 +94,12 @@ of its own.
   and NOT ACCEPTED**: WP-038 is not closed, and no work package after it is authorized. Obligation
   interpretation is AI-assisted and executor-recorded. It is not legal advice, not independent
   review, and asserts no compliance with any obligation.
+- **FND-019 (REPAIRED, this cycle):** the WP-037 minimum-necessary pin (EV-023) forced
+  brace-expansion 5.0.9 on all consumers and broke ESLint through minimatch 3.1.5
+  (`TypeError: expand is not a function`), so the lint check could not execute. The flat override
+  was removed; semver now resolves 1.1.18 and 5.0.9 side by side, both advisory-free, and lint
+  executes again at **686 problems (672 errors, 14 warnings)** — FND-014 remains open and advisory.
+  Recorded as EV-029.
 - Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
   authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.
@@ -101,7 +107,7 @@ of its own.
 
 ## Verification recorded
 
-- Vitest: 254 tests passing across 10 files, covering registered routes, detail
+- Vitest: 279 tests passing across 11 files, covering registered routes, detail
   routes, unrecorded identifiers, authority discipline, gate discipline,
   prohibited metrics, search authorization order, declared-binding freshness,
   evidence schema, applicability, expiry, reuse, and the verification gate.
