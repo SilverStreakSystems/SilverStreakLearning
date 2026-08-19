@@ -305,7 +305,7 @@ describe("verification gate", () => {
 
   it("fails on a recorded failure", () => {
     const records = fullSet();
-    records[0].status = "fail";
+    records[0]!.status = "fail";
     const result = verifyEvidenceSet({
       records,
       baseline: baseline(),
