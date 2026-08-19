@@ -126,9 +126,19 @@ of its own.
   sources are `NOT-ACCESSIBLE-TO-EXECUTOR` — the WP-006-named prior repository and bootstrap
   artifacts, the owner-supplied Drive folder, and legacy application code — and carry no version,
   no content claim, and `UNKNOWN` recovery relevance. No historical source is promoted, no
-  requirement extraction has occurred, no gate or work package is closed, and WP-039 is neither
-  created nor implied. See `docs/wp-007/ENTRY_SPECIFICATION.md` and
-  `docs/wp-007/CHECKPOINT-001.md`.
+  gate or work package is closed, and WP-039 is neither created nor implied. Cycle 2 added the
+  canonical historical-requirement schema `data/historical/HISTORICAL_REQUIREMENT_SCHEMA.json`
+  v1.0.0 and register `data/historical/historical-requirements.json`: 14 candidate requirements,
+  HREQ-001..HREQ-014, extracted from exactly one named HIGH-relevance reachable source, HS-011
+  (`docs/ACCESSIBILITY_ACCEPTANCE.md`), each with an exact line locator, verbatim original wording
+  held separate from a normalized summary, `HISTORICAL-EVIDENCE` authority inherited without
+  promotion, a requirement family, the modality as worded, extraction confidence and ambiguity.
+  The owner-preferred August 5, 2026 clean-room v0.2 source is not reachable through any governed
+  repository mechanism, so it was not opened, inferred, or simulated; the rationale is recorded in
+  `docs/wp-007/CYCLE2_SOURCE_SELECTION.md`. Every candidate remains
+  `CANDIDATE-PRE-DISPOSITION` and `NOT-ASSESSED`; no owner disposition and no conformance state is
+  assigned (EV-032). See `docs/wp-007/ENTRY_SPECIFICATION.md`, `docs/wp-007/CHECKPOINT-001.md` and
+  `docs/wp-007/CHECKPOINT-002.md`.
 - Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
   authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.
