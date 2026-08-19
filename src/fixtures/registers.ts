@@ -489,7 +489,39 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "gated-future",
     synthetic: false,
   },
+  {
+    id: "EV-019",
+    title: "WP-037 evidence and verification pipeline implementation — producing run at commit 1f7c51e",
+    kind: "automated-test",
+    subject:
+      "The evidence pipeline executed end to end: fourteen immutable execution records, a derived baseline manifest, an evidence index, and the verification gate",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That at commit 1f7c51e the pipeline produced fourteen evidence records with zero failures, two review-required results (repository lint at 730 problems, predecessor SSOT binding guard exit 1) and one not-completed result (vulnerability advisory feed unavailable); that a production build exited 0 and 254 of 254 tests passed across 10 test files; and that the baseline manifest was derived, not hand-written, from the ten declared input sets. The producing run is archived unmodified at evidence/runs/1f7c51e.",
+    doesNotSupport:
+      "Security, compliance, certification, accessibility conformance, release readiness, merge enforcement, or independent validation. It does not support the claim that no vulnerability exists, since the advisory feed did not respond. Executor-run, method automated, independent = false. This record stays bound to 1f7c51e and is never rebound to a later commit.",
+    authorityClass: "historical-evidence",
+    synthetic: false,
+  },
+  {
+    id: "EV-020",
+    title: "Public deployment reachability observation",
+    kind: "document-review",
+    subject: "The published Lovable surface at https://vision-trunk.lovable.app",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the published URL responded 200 over HTTPS; that its document title is 'Command Center | SSLS Foundation Shell'; that the footer states 'Not production ready, not district validated, not independently accessibility validated, not security certified'; and that the refused-claims surface renders production-ready, district-validated, legally-compliant, and security-certified as REFUSED. Observed classification: PUBLIC PROTOTYPE.",
+    doesNotSupport:
+      "Production readiness, release authorization, compliance, certification, pilot status, or independent validation. Publication is not release authority. It observes one fetch at one moment and asserts nothing about availability, uptime, or access control.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
 
 
 export const DECISIONS: DecisionRecord[] = [
