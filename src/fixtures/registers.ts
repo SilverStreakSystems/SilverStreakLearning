@@ -1278,6 +1278,29 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-019",
+    title: "Accept WP-007 Cycle 3 and authorize WP-007 Cycle 4 only",
+    state: "accepted",
+    decidedOn: "2026-08-19",
+    decidedBy: "Founder / Operator",
+    context:
+      "WP-007 Cycle 3 executed the v0.3.0 governed package integration and synchronization recorded in docs/wp-007/CHECKPOINT-003.md, and a re-verification pass at entry HEAD 3955257 established that the owner-resupplied v0.3.0 PDF, workbook, and manifest were byte-identical to the already registered PKA-001, PKA-002, and PKA-003. No duplicate package was created and no canonical register value changed. The owner supplied a disposition on 2026-08-19 together with an authorization for a single bounded successor cycle.",
+    decision:
+      "ACCEPTED BY OWNER. WP-007 Cycle 3 is accepted as ACHIEVED against its locked package-identity and inspectability target only. WP-007 Cycle 4 — August 5 v0.2.0 Partial Historical Package Acquisition, Bounded Accessibility Requirement Extraction, and Cross-Source Restatement Index — is authorized, and only that cycle is authorized. Acceptance does not close WP-007, does not close Gate A, does not authorize WP-039, does not promote v0.3.0 to canonical authority, does not resolve PDR-001 through PDR-004, and does not resolve or close FND-010, FND-012, FND-014, FND-016, FND-017, FND-018, or any other finding. It expands no accessibility, security, privacy, compliance, or release claim and authorizes no deployment, publication, district use, personal data, or AI product capability.",
+    consequences: [
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039 remains NOT AUTHORIZED.",
+      "Cycle 4 is authorized as scoped and is bounded to the named August 5 v0.2.0 inputs and to Section 11 — Accessibility of the authorized v0.2.0 PDF.",
+      "FND-020 carries a proposition broader than Cycle 3 review alone, so under the owner's own instruction it is neither closed nor rewritten by this decision; its lineage is preserved unchanged.",
+      "No historical source is promoted, no HREQ receives an owner disposition, and no finding is closed by this decision.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "WP-007"],
+    synthetic: false,
+  },
 
 ];
 
