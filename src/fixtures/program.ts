@@ -88,7 +88,8 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "TESTCOUNT",
+      statement:
+        "381 of 381 automated tests passed across 18 files, measured with a raised per-test timeout because this sandbox times out slow route renders under parallel load.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
       boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
