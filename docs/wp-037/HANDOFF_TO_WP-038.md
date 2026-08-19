@@ -1,7 +1,8 @@
 # WP-037 → WP-038 Handoff
 
-Next package: **WP-038 — Regulatory, Standards & Obligation Baseline.** Not executed here. This
-handoff becomes effective only on a recorded owner closure of WP-037.
+Next package: **WP-038 — Regulatory, Standards & Obligation Baseline.** **NOT AUTHORIZED and NOT
+STARTED.** DEC-015 (accepted 2026-08-19) records WP-037 as HOLD; this handoff becomes effective only
+on a future recorded owner closure of WP-037.
 
 ## Carried forward
 
@@ -23,11 +24,13 @@ handoff becomes effective only on a recorded owner closure of WP-037.
 - **DEC-011** — open; routed to WP-008 if unresolved sooner.
 - **DEC-012** — open; due no later than WP-041.
 - **DEC-013** — open; routed to WP-008.
-- **DEC-015** — prepared, awaiting owner disposition of WP-037 closure.
+- **DEC-015** — ACCEPTED BY OWNER as a HOLD disposition. Not a waiver and not a closure.
 - **FND-012** — open. Branch-protection enforcement is not verified and may not be claimed.
 - **FND-014** — open / advisory. Repository-wide lint does not pass; WP-037 files report zero problems.
-- **Vulnerability-scan limitation** — unresolved. Scanner executes; advisory feed unavailable in this
-  environment. WP-038 must not treat the dependency set as scanned.
+- **Vulnerability criterion** — NOT COMPLETED. `bun audit` returns HTTP 404 (EV-VULN, preserved
+  verbatim). The bounded recovery scan (EV-021 / `EV-VULN-RECOVERY`) completed and reported five
+  unremediated high-severity advisories: brace-expansion 1.1.16 and 5.0.8, js-yaml 4.3.0,
+  nanoid 3.3.16. WP-038 must not treat the dependency set as clean or as triaged.
 
 ## Dispositioned, with residuals
 
