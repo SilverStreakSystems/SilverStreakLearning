@@ -139,17 +139,32 @@ of its own.
   `CANDIDATE-PRE-DISPOSITION` and `NOT-ASSESSED`; no owner disposition and no conformance state is
   assigned (EV-032). See `docs/wp-007/ENTRY_SPECIFICATION.md`, `docs/wp-007/CHECKPOINT-001.md` and
   `docs/wp-007/CHECKPOINT-002.md`.
+- **WP-007 cycle 3 — v0.3.0 governed package integration and synchronization.** The
+  owner-supplied SSLS 2.0 v0.3.0 reference package is registered as **PKG-002** in the canonical
+  register `data/packages/governed-packages.json` under schema `GOVERNED_PACKAGE_SCHEMA.json`
+  v1.0.0, classified **SYNCHRONIZED-REFERENCE / NONCANONICAL**. Both digests declared in
+  `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` were recomputed and matched exactly; the manifest
+  declares no digest for itself. The package contains exactly three files; the DOCX and ZIP named
+  by the earlier, historical v0.2.0 manifest were not supplied and are registered as NOT-SUPPLIED
+  under predecessor package PKG-001 with no size, no digest and no repository locator. No binary
+  is retained in the repository, so each artifact carries a governed external locator only.
+  Reconciliation against the canonical registers is recorded in `docs/packages/DRIFT_REGISTER.md`;
+  no repository value was adopted from the package summary. Registered as EV-033 (integrity and
+  provenance) and EV-034 (reconciliation). Registration promotes nothing, closes no finding and no
+  work package, and WP-039 is not authorized.
 - Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
   authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.
   No production, district, or compliance claims.
 
+
 ## Verification recorded
 
-- Vitest: 279 tests passing across 11 files, covering registered routes, detail
+- Vitest: 324 tests passing across 14 files, covering registered routes, detail
   routes, unrecorded identifiers, authority discipline, gate discipline,
   prohibited metrics, search authorization order, declared-binding freshness,
-  evidence schema, applicability, expiry, reuse, and the verification gate.
+  evidence schema, applicability, expiry, reuse, the verification gate, and governed-package
+  integrity, provenance, and non-promotion.
   Production build succeeds.
 - Accessibility: see `docs/ACCESSIBILITY_EVIDENCE.md`. Automated only.
 

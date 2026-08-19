@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreaklearning.systems/schema/governed-package/1.0.0",
+  "title": "SSLS Governed Reference Package Schema",
+  "description": "Canonical schema for owner-supplied reference packages. A package summarizes governed state for human reading; it is never a register. Authority role, canonical status, retention, and integrity are independent dimensions and are never collapsed. No field in this schema expresses promotion, closure, conformance, or release authority.",
+  "schema_version": "1.0.0",
+  "work_package": "WP-007",
+  "authority_note": "Accepted owner decisions control canonical machine-readable registers, which control generated views and synchronized reference artifacts. A record in this file confers no authority and cannot close a finding, close a work package, change a gate, or authorize a successor package.",
+  "type": "object",
+  "required": ["schema_version", "generated_on", "package_boundary", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_on": { "$ref": "#/$defs/isoDate" },
+    "package_boundary": { "type": "string", "minLength": 1 },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "authorityRole": { "enum": ["SYNCHRONIZED-REFERENCE", "HISTORICAL-EVIDENCE"] },
+    "canonicalStatus": { "enum": ["CANONICAL", "NONCANONICAL"] },
+    "acquisitionMethod": { "enum": ["OWNER-SUPPLIED-INPUT", "REPOSITORY-GENERATED"] },
+    "retentionState": {
+      "enum": [
+        "RETAINED-IN-REPOSITORY",
+        "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
+        "NOT-SUPPLIED"
+      ]
+    },
+    "integrityState": {
+      "enum": [
+        "VERIFIED-MATCH",
+        "NOT-APPLICABLE-SELF-HASH-EXCLUDED",
+        "NOT-VERIFIABLE-FILE-NOT-SUPPLIED"
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "filename",
+        "media_type",
+        "byte_size",
+        "sha256",
+        "declared_sha256",
+        "integrity_state",
+        "acquisition_method",
+        "retention_state",
+        "locator",
+        "role",
+        "limitations"
+      ],
+      "properties": {
+        "artifact_id": { "type": "string", "pattern": "^PKA-\\d{3}$" },
+        "filename": { "type": "string", "minLength": 1 },
+        "media_type": { "type": "string", "minLength": 1 },
+        "byte_size": { "type": ["integer", "null"], "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "declared_sha256": { "$ref": "#/$defs/sha256" },
+        "integrity_state": { "$ref": "#/$defs/integrityState" },
+        "acquisition_method": { "$ref": "#/$defs/acquisitionMethod" },
+        "retention_state": { "$ref": "#/$defs/retentionState" },
+        "locator": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_id",
+        "title",
+        "version",
+        "state_date",
+        "authority_role",
+        "canonical_status",
+        "register_relationship",
+        "predecessor_package",
+        "declared_contents",
+        "completeness_boundary",
+        "personal_data_state",
+        "release_state",
+        "evidence_references",
+        "non_claims",
+        "artifacts"
+      ],
+      "properties": {
+        "package_id": { "type": "string", "pattern": "^PKG-\\d{3}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "state_date": { "$ref": "#/$defs/isoDate" },
+        "authority_role": { "$ref": "#/$defs/authorityRole" },
+        "canonical_status": { "$ref": "#/$defs/canonicalStatus" },
+        "register_relationship": { "type": "string", "minLength": 1 },
+        "predecessor_package": { "type": ["string", "null"] },
+        "declared_contents": { "type": "array", "items": { "type": "string" } },
+        "completeness_boundary": { "type": "string", "minLength": 40 },
+        "personal_data_state": { "enum": ["NO-PII", "CONTAINS-PERSONAL-IDENTIFIER"] },
+        "release_state": { "const": "NOT-RELEASE-AUTHORIZED" },
+        "evidence_references": { "type": "array", "items": { "type": "string" } },
+        "non_claims": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "artifacts": { "type": "array", "items": { "$ref": "#/$defs/artifact" } }
+      }
+    }
+  }
+}
