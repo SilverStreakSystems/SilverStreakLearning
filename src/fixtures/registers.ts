@@ -103,8 +103,7 @@ export const FINDINGS: FindingRecord[] = [
     affectedLayers: ["L1"],
     description:
       "A historical gate sequence closed its first gate and left its second gate open. The current program proceeds under a separately named gate. No accepted decision maps one taxonomy onto the other, so an open historical gate coexists with a proceeding current gate.",
-    boundary:
-      "Does not assert that either taxonomy is wrong, and does not rename either one.",
+    boundary: "Does not assert that either taxonomy is wrong, and does not rename either one.",
     resolutionState: "conflicted",
     requiredDecision: "DEC-013",
     evidenceReferences: ["EV-008"],
@@ -223,9 +222,7 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
-
 ];
-
 
 export const EVIDENCE: EvidenceRecord[] = [
   {
@@ -384,8 +381,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     id: "EV-013",
     title: "Superseded SSOT binding — commit 70c1f89",
     kind: "document-review",
-    subject:
-      "The 2026-08-17 binding of SSLS-FND-001 and its provenance, build, and test manifests",
+    subject: "The 2026-08-17 binding of SSLS-FND-001 and its provenance, build, and test manifests",
     collectedOn: "2026-08-17",
     collectedBy: "Founder / Operator",
     state: "stale",
@@ -400,8 +396,7 @@ export const EVIDENCE: EvidenceRecord[] = [
     id: "EV-014",
     title: "Superseded SSOT binding — commit 6aa254e",
     kind: "automated-test",
-    subject:
-      "Re-executed build and full test suite bound to SSLS-FND-001 and its three manifests",
+    subject: "Re-executed build and full test suite bound to SSLS-FND-001 and its three manifests",
     collectedOn: "2026-08-19",
     collectedBy: "Founder / Operator",
     state: "stale",
@@ -492,7 +487,8 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-019",
-    title: "WP-037 evidence and verification pipeline implementation — producing run at commit 1f7c51e",
+    title:
+      "WP-037 evidence and verification pipeline implementation — producing run at commit 1f7c51e",
     kind: "automated-test",
     subject:
       "The evidence pipeline executed end to end: fourteen immutable execution records, a derived baseline manifest, an evidence index, and the verification gate",
@@ -522,8 +518,6 @@ export const EVIDENCE: EvidenceRecord[] = [
     synthetic: false,
   },
 ];
-
-
 
 export const DECISIONS: DecisionRecord[] = [
   {
@@ -853,11 +847,6 @@ export const DECISIONS: DecisionRecord[] = [
   },
 ];
 
-
-
-
-
-
 export const CLAIMS: ClaimRecord[] = [
   {
     id: "CLM-001",
@@ -928,7 +917,8 @@ export const CLAIMS: ClaimRecord[] = [
   },
   {
     id: "CLM-010",
-    claim: "Merge protection is active and governance compliance is proven by continuous integration.",
+    claim:
+      "Merge protection is active and governance compliance is proven by continuous integration.",
     posture: "refused",
     state: "refused",
     reason:
@@ -947,7 +937,7 @@ export const CLAIMS: ClaimRecord[] = [
     claim: "Repository provenance has been independently validated.",
     posture: "refused",
     state: "refused",
-    reason: "All provenance evidence is executor-produced and self-verified. independent = false on every record.",
+    reason:
+      "All provenance evidence is executor-produced and self-verified. independent = false on every record.",
   },
 ];
-
