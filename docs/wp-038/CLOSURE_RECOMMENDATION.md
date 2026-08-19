@@ -1,8 +1,12 @@
 # WP-038 closure recommendation
 
-**Status: EXECUTOR-COMPLETE — OWNER CLOSURE DECISION REQUIRED.**
+**Status: CLOSED BY OWNER — DEC-018 accepted 2026-08-19 (Founder / Operator).**
 
-WP-038 does not self-close. Only a recorded owner decision closes it.
+The recommendation below was PROMOTE TO OWNER CLOSURE and was dispositioned accordingly. DEC-012 was
+accepted in the same disposition, adopting WCAG 2.2 Level AA as the current internal accessibility
+design and validation target with no conformance claim. FND-016 is recorded as partially resolved by
+DEC-012; FND-017 and FND-018 remain open. WP-038 did not self-close.
+
 
 ## What was produced
 
