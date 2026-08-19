@@ -238,7 +238,56 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-021", "EV-022", "EV-023", "EV-024", "EV-025"],
     synthetic: false,
   },
+  {
+    id: "FND-016",
+    title: "ULW-AS-001 v1.3 is not bound to a named WCAG version and level",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L5", "L7"],
+    description:
+      "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. A brief proposing an internal target is at docs/wp-038/DEC-012-BRIEF.md; the binding is DEC-012 and remains open.",
+    boundary:
+      "This does not assert that the interface fails any success criterion, nor that binding a version would create a conformance claim. Binding fixes what may be measured, not what has been validated.",
+    resolutionState: "unknown",
+    requiredDecision: "DEC-012",
+    evidenceReferences: ["EV-026"],
+    synthetic: false,
+  },
+  {
+    id: "FND-017",
+    title: "The BEFORE LIVE PII gate assumes student data is the first binding trigger",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L4", "L6"],
+    description:
+      "The capability architecture gates controls on BEFORE LIVE PII, which reads as student personal information. Massachusetts narrow personal information, including operator payroll or payment data, may attach 201 CMR 17.00 duties before any student data exists, so the gate can fire later than the first real obligation. Recorded in WP-038 as STL-002.",
+    boundary:
+      "No such data exists in the current posture and none is proposed. This is a gate-wording defect, not an assertion that any obligation currently applies.",
+    resolutionState: "unknown",
+    requiredDecision: null,
+    evidenceReferences: ["EV-026"],
+    synthetic: false,
+  },
+  {
+    id: "FND-018",
+    title: "CycloneDX is named without a specification version",
+    severity: "advisory",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L7"],
+    description:
+      "WP-037 supply-chain documentation names CycloneDX with no specification version, while ECMA-424 corresponds to CycloneDX 1.6 and OWASP v1.7 (October 2025) is not Ecma ratified. The emitted SBOM therefore cannot be checked against a declared target version. Recorded in WP-038 as STL-003.",
+    boundary:
+      "The SBOM was produced and is inspectable; this concerns the declared target version only, and asserts nothing about SBOM completeness or accuracy.",
+    resolutionState: "unknown",
+    requiredDecision: null,
+    evidenceReferences: ["EV-026", "EV-027"],
+    synthetic: false,
+  },
 ];
+
 
 export const EVIDENCE: EvidenceRecord[] = [
   {
