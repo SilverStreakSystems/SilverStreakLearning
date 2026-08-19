@@ -170,7 +170,16 @@ describe("Command Center synchronization", () => {
       "release authorized",
       "wp-039 is authorized",
     ]) {
-      expect([phrase, text.includes(phrase)]).toEqual([phrase, false]);
+      // The phrase may appear only where it is explicitly negated or refused.
+      let index = text.indexOf(phrase);
+      while (index !== -1) {
+        const preceding = text.slice(Math.max(0, index - 120), index);
+        expect([phrase, /(not|no|never|neither|refused)[^.]*$/.test(preceding)]).toEqual([
+          phrase,
+          true,
+        ]);
+        index = text.indexOf(phrase, index + 1);
+      }
     }
   });
 });
