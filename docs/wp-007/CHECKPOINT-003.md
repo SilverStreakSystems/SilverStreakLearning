@@ -65,3 +65,43 @@ role, feature, deployment, or claim was added. The PDF and workbook are not regi
 - Authorization of the next WP-007 cycle target proposed above.
 - The package's own proposed next cycle (registering and extracting from the August 5 v0.2 set)
   remains unauthorized and depends on those files being supplied; they are currently NOT-SUPPLIED.
+
+## Re-verification pass — 2026-08-19 (owner resupplied the same package)
+
+The owner resupplied the three v0.3.0 files. No new cycle target was authorized, so this is
+recorded here rather than as a new checkpoint.
+
+Executor-recomputed digests over the resupplied files:
+
+| File | Recomputed SHA-256 | Registered artifact | Result |
+| --- | --- | --- | --- |
+| `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` | `9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943` | PKA-001 | MATCH |
+| `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` | `68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e` | PKA-002 | MATCH |
+| `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` | `3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130` | PKA-003 | MATCH (manifest does not print its own digest) |
+
+The files are byte-identical to the artifacts already registered under PKG-002, so no second
+package record was created and no register value changed. Supersession search found no accepted
+decision or canonical record later than Cycle 3 that would alter the entry state. Stale-reference
+searches for the superseded gate label, for WP-038 as active, for WP-039 as authorized, and for
+the prior August 5 package returned no active claim: Gate A is the current gate, WP-038 is closed
+by owner, WP-039 is unauthorized, and the earlier v0.2.0 set remains historical evidence that was
+not supplied and is not the current synchronized package.
+
+Recorded as **EV-036** and pinned by an executing invariant in
+`src/test/governed-packages.test.ts`. Nothing was promoted, closed, disposed, or released.
+
+### Validation executed during the re-verification pass
+
+- Vitest: **341 of 341 tests pass across 15 files**, including the new re-verification invariant.
+- Typecheck: clean. Production build: succeeds.
+- Lint executes: **704 problems (690 errors, 14 warnings, 685 auto-fixable)**. FND-014 remains
+  open; the figure recorded against EV-029 was 686 at that earlier commit, so the executed count
+  has grown and the finding is not narrowed by this pass.
+- Evidence pipeline: 15 records, **fail=0, review-required=2 (lint, SSOT binding guard),
+  not-completed=1 (vulnerability scan, external source unavailable)**. Baseline freshness CURRENT;
+  evidence verification PASSED against the current input sets.
+- Package digest verification: three of three files match (table above).
+- Schema validation: every governed-package record validates.
+- Unchanged limitations: FND-012 branch-protection verification not performed, FND-014 lint debt,
+  `bun audit` not completing, and no independent accessibility, security, privacy, legal, or
+  district-readiness validation. None was converted to PASS.

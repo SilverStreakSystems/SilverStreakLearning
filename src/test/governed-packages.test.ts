@@ -28,6 +28,8 @@ const v020 = packages.find((record) => record.package_id === "PKG-001")!;
 
 const DECLARED_PDF_SHA = "9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943";
 const DECLARED_XLSX_SHA = "68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e";
+// Computed by the executor over the manifest file itself; the manifest cannot print its own digest.
+const DECLARED_MANIFEST_SHA = "3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130";
 
 describe("governed package schema", () => {
   it("declares a versioned schema that matches the register", () => {
@@ -96,6 +98,24 @@ describe("v0.3.0 package integrity", () => {
     expect(v020.authority_role).toBe("HISTORICAL-EVIDENCE");
     expect(v030.predecessor_package).toBe("PKG-001");
     expect(v020.state_date < v030.state_date).toBe(true);
+  });
+
+  it("re-verifies the resupplied package without creating a second record (EV-036)", () => {
+    // The owner resupplied the same three files on 2026-08-19. Re-computed digests were
+    // byte-identical to the registered values, so the register must still hold exactly one
+    // v0.3.0 package record carrying those digests.
+    expect(packages.filter((record) => record.version === "0.3.0")).toHaveLength(1);
+
+    const manifest = v030.artifacts.find((a) => a.filename.endsWith(".txt"))!;
+    expect(manifest.sha256).toBe(DECLARED_MANIFEST_SHA);
+
+    const reverification = EVIDENCE.find((record) => record.id === "EV-036")!;
+    expect(reverification.state).toBe("confirmed");
+    expect(reverification.authorityClass).toBe("current-summary");
+    expect(reverification.supports).toContain(DECLARED_PDF_SHA);
+    expect(reverification.supports).toContain(DECLARED_XLSX_SHA);
+    expect(reverification.supports).toContain(DECLARED_MANIFEST_SHA);
+    expect(reverification.doesNotSupport.toLowerCase()).toContain("gained authority");
   });
 
   it("fabricates no repository locator for a file that was not retained", () => {
