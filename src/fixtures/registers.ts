@@ -517,7 +517,25 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-021",
+    title:
+      "Dependency vulnerability scan — WP-037 bounded recovery pass against the npm bulk advisory service",
+    kind: "automated-test",
+    subject:
+      "The 563 package versions resolved in bun.lock across 527 packages, queried against https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That an authoritative advisory query completed with HTTP 200 over the resolved dependency set at manifest hash 35e8c7d4 and lockfile hash 591f5834, and returned five matched advisories, all severity high: brace-expansion 1.1.16 (GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895), brace-expansion 5.0.8 (GHSA-rgw5-rvv9-x895), js-yaml 4.3.0 (GHSA-5p4m-2wfm-xmqj), and nanoid 3.3.16 (GHSA-2v37-7h3g-55p8). The full raw response and per-finding detail are recorded at evidence/artifacts/vulnerability/advisory-recovery.json and hashed in evidence/records/EV-VULN-RECOVERY.json.",
+    doesNotSupport:
+      "Security, remediation, triage, exploitability, compliance, certification, or closure of any gate. It does not supersede EV-VULN, which remains a preserved failed attempt (bun audit, HTTP 404). Executor-run, method automated, independent = false. Matched advisories are unremediated and untriaged; the vulnerability criterion is not satisfied by the existence of this scan alone.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
 
 export const DECISIONS: DecisionRecord[] = [
   {
