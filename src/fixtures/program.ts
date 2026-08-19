@@ -35,31 +35,36 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     },
   },
   latestCheckpoint: {
-    checkpointId: "CHECKPOINT-007",
-    title: "WP-007 Cycle 5 — FND-022 owner disposition review packet",
+    checkpointId: "CHECKPOINT-008",
+    title: "WP-007 Cycle 6 — FND-022 owner dispositions recorded",
     completedOn: "2026-08-19",
     outcome:
-      "Cycle 5 execution is complete: the sixteen Cycle 4 candidates, the seventeen restatement rows, and the three unmatched current candidates are assembled into a schema-bound review packet with source binding, substantive delta, evidence gaps, affected records, review options, and non-binding executor analysis for each item.",
+      "Cycle 6 execution is complete: the owner disposition matrix of DEC-020 is transcribed for all sixteen Cycle 4 candidates, all seventeen restatement rows, and all three unmatched current rows, with five RETAIN-HISTORICAL, three MERGE-OR-RESTATEMENT, seven ADOPT-AS-CANDIDATE, one NEEDS-EVIDENCE / DEFER, and no NARROW, SUPERSEDE, or REJECT.",
     closedNothing:
-      "Cycle 5 closed nothing. It records no owner disposition, preselects no option, promotes nothing, merges or supersedes no wording, changes no Cycle 4 classification, resolves no drift row, and changes no work package or gate state.",
+      "Cycle 6 closed nothing beyond the FND-022 obligation. It implements and assesses no candidate, promotes nothing, completes no package, changes no Cycle 4 classification or extracted wording, resolves no drift row, closes neither WP-007 nor Gate A, and authorizes no successor cycle.",
     source: {
-      recordId: "CHECKPOINT-007",
-      locator: "docs/wp-007/CHECKPOINT-007.md",
+      recordId: "CHECKPOINT-008",
+      locator: "docs/wp-007/CHECKPOINT-008.md",
       route: null,
     },
   },
   ownerDisposition: {
     subject:
-      "WP-007 Cycle 4 execution: sixteen requirement candidates from HS-023 and the seventeen-row cross-source restatement index",
-    state: "pending",
+      "WP-007 Cycle 4 execution: sixteen requirement candidates from HS-023, the seventeen-row cross-source restatement index, and the three unmatched HS-011 rows",
+    state: "accepted",
     requiredOf: "Founder / Operator",
     obligationSource: {
-      recordId: "FND-022",
-      locator: "src/fixtures/registers.ts — FINDINGS, FND-022",
-      route: "/findings",
+      recordId: "DEC-020",
+      locator: "src/fixtures/registers.ts — DECISIONS, DEC-020",
+      route: "/decisions",
     },
     supportingSources: [
-      { recordId: "CHECKPOINT-007", locator: "docs/wp-007/CHECKPOINT-007.md", route: null },
+      { recordId: "CHECKPOINT-008", locator: "docs/wp-007/CHECKPOINT-008.md", route: null },
+      {
+        recordId: "FND-022-DISPOSITIONS",
+        locator: "data/historical/fnd-022-owner-dispositions.json",
+        route: null,
+      },
       {
         recordId: "FND-022-PACKET",
         locator:
@@ -83,13 +88,13 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "366 of 366 tests passed across 17 files.",
+      statement: "TESTCOUNT",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
-      boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
       source: {
-        recordId: "EV-041",
-        locator: "docs/wp-007/CHECKPOINT-007.md; src/fixtures/registers.ts — EV-041",
+        recordId: "EV-042",
+        locator: "docs/wp-007/CHECKPOINT-008.md; src/fixtures/registers.ts — EV-042",
         route: "/evidence",
       },
     },
@@ -98,10 +103,10 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       statement: "The production build succeeded.",
       scope:
         "A build of the repository at that checkpoint. It is not a deployment, a release, or an approval to release.",
-      boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
       source: {
         recordId: "EV-040",
-        locator: "docs/wp-007/CHECKPOINT-007.md",
+        locator: "docs/wp-007/CHECKPOINT-008.md",
         route: "/evidence",
       },
     },
@@ -111,7 +116,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
         "All three digests declared for the supplied August 5 v0.2.0 artifacts were independently recomputed and matched.",
       scope:
         "File identity only. A digest match establishes that the measured bytes are the declared bytes. It establishes no authority, approval, completeness, or correctness of the package content.",
-      boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
       source: {
         recordId: "EV-039",
         locator: "data/packages/governed-packages.json — PKG-001",
@@ -130,22 +135,22 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       },
     },
     {
-      stageId: "HREQ-DISPOSITION",
+      stageId: "HREQ-IMPLEMENTATION",
       statement:
-        "Disposition of the extracted requirement candidates is not authorized. HREQ-001 through HREQ-030 remain pre-disposition and not assessed, and no restatement row elects a controlling wording.",
+        "Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, and no accessibility conformance is claimed for any of them.",
       source: {
-        recordId: "RST-001..RST-017",
-        locator: "data/historical/restatement-index.json",
-        route: null,
+        recordId: "DEC-020",
+        locator: "data/historical/fnd-022-owner-dispositions.json",
+        route: "/decisions",
       },
     },
     {
-      stageId: "CYCLE-6",
+      stageId: "CYCLE-7",
       statement:
-        "No cycle beyond the bounded Cycle 5 review-packet preparation is authorized. DEC-019 authorizes Cycle 4 only, Cycle 5 was authorized to prepare a decision and not to record one, and the historical v0.2.0 DOCX and ZIP, neither supplied, remain unread.",
+        "No cycle beyond the bounded Cycle 6 disposition pass is authorized. Cycle 6 was authorized to record the owner decisions and nothing else, and the historical v0.2.0 DOCX and ZIP, neither supplied, remain unread.",
       source: {
-        recordId: "CHECKPOINT-007",
-        locator: "docs/wp-007/CHECKPOINT-007.md",
+        recordId: "CHECKPOINT-008",
+        locator: "docs/wp-007/CHECKPOINT-008.md",
         route: "/decisions",
       },
     },
@@ -174,11 +179,11 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     "The hosted application is a public prototype under repository governance. Hosting it does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made.",
   nextDefensibleOwnerAction: {
     action:
-      "Disposition WP-007 Cycle 4: sixteen new requirement candidates and seventeen cross-source restatement rows await owner review.",
-    why: "WP-007 cannot advance and no candidate can leave pre-disposition until the owner records a disposition. Nothing else in the current posture unblocks more work.",
+      "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
+    why: "DEC-020 discharged FND-022 and authorized nothing further. The one gap it deferred is the only open obligation the current posture carries, and no successor cycle is authorized until the owner records the next authorization.",
     source: {
-      recordId: "FND-022",
-      locator: "src/fixtures/registers.ts — FINDINGS, FND-022",
+      recordId: "FND-023",
+      locator: "src/fixtures/registers.ts — FINDINGS, FND-023",
       route: "/findings",
     },
   },
