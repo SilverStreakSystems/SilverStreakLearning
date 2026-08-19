@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "generated_on": "2026-08-19",
+  "register_purpose": "Canonical machine-readable reconciliation of the SSLS 2.0 v0.3.0 governed reference package (PKG-002) against the canonical repository records. The canonical register and the accepted owner decision control in every case. A drift row is recorded, never silently reconciled: resolving one is an owner decision or a later executed validation, never an edit made to make the two planes agree.",
+  "reconciled": [
+    {
+      "assertion": "North Star: Make Learning Visible",
+      "canonical_locator": "src/fixtures/artifacts.ts — FND-NORTHSTAR-001",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Gate A open",
+      "canonical_locator": "docs/CURRENT_STATE.md; DEC-018 in src/fixtures/registers.ts",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "WP-038 closed by owner",
+      "canonical_locator": "DEC-018",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "WP-007 active",
+      "canonical_locator": "docs/wp-007/ENTRY_SPECIFICATION.md; docs/CURRENT_STATE.md",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "WP-039 not authorized",
+      "canonical_locator": "DEC-018; docs/wp-007/REFUSED_CLAIMS.md",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "DEC-007, DEC-010, DEC-012, DEC-017, DEC-018 accepted",
+      "canonical_locator": "src/fixtures/registers.ts — DECISIONS",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "WCAG 2.2 Level AA is an internal target only",
+      "canonical_locator": "DEC-012",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Accessibility non-claim boundary in full",
+      "canonical_locator": "DEC-012; docs/ACCESSIBILITY_EVIDENCE.md",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "FND-016 partially resolved",
+      "canonical_locator": "src/fixtures/registers.ts — FND-016 (resolutionState: partial)",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "FND-017 and FND-018 open",
+      "canonical_locator": "FND-017, FND-018 (resolutionState: unknown)",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "FND-019 repaired",
+      "canonical_locator": "FND-019 (resolutionState: confirmed, repair recorded); EV-029",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "22 historical sources; 3 NOT-ACCESSIBLE-TO-EXECUTOR",
+      "canonical_locator": "data/historical/historical-sources.json (22 records, 3 inaccessible)",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "HS-011 was the Cycle 2 extraction source",
+      "canonical_locator": "data/historical/historical-requirements.json; docs/wp-007/CYCLE2_SOURCE_SELECTION.md",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "14 candidates, HREQ-001..HREQ-014, pre-disposition and not assessed",
+      "canonical_locator": "data/historical/historical-requirements.json",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Evidence EV-026..EV-032 registered",
+      "canonical_locator": "src/fixtures/registers.ts — EVIDENCE",
+      "result": "AGREES"
+    },
+    {
+      "assertion": "Package contains exactly three files; v0.2.0 DOCX and ZIP not supplied",
+      "canonical_locator": "data/packages/governed-packages.json — PKG-002, PKG-001",
+      "result": "AGREES"
+    }
+  ],
+  "drift": [
+    {
+      "drift_id": "PDR-001",
+      "package_id": "PKG-002",
+      "item": "Test count: the package states \"304 of 304 pass\"",
+      "package_locator": "PDF section 9.2",
+      "repository_locator": "docs/wp-007/CHECKPOINT-003.md and the executed evidence baseline under evidence/",
+      "controlling_authority": "Executed repository validation",
+      "disposition": "UNRESOLVED",
+      "disposition_note": "The package figure is version-bound to the Cycle 2 state and is stale by count only. The package is not edited; the current count is carried by the latest checkpoint and the evidence baseline."
+    },
+    {
+      "drift_id": "PDR-002",
+      "package_id": "PKG-002",
+      "item": "Lint problem count",
+      "package_locator": "Not stated in the package",
+      "repository_locator": "FND-014; EV-029 (686 problems)",
+      "controlling_authority": "Executed repository validation",
+      "disposition": "UNRESOLVED",
+      "disposition_note": "No conflict. Recorded so the omission is visible."
+    },
+    {
+      "drift_id": "PDR-003",
+      "package_id": "PKG-002",
+      "item": "Owner-name attribution on the PDF cover",
+      "package_locator": "PDF page 1",
+      "repository_locator": "Repository records use the actor label \"Founder / Operator\"",
+      "controlling_authority": "Zero-real-PII repository boundary",
+      "disposition": "UNRESOLVED",
+      "disposition_note": "Not transcribed. Recorded as a per-artifact limitation on PKA-001 and as a reason the binary is not retained."
+    },
+    {
+      "drift_id": "PDR-004",
+      "package_id": "PKG-002",
+      "item": "Proposed next WP-007 cycle named in the package",
+      "package_locator": "PDF section 12",
+      "repository_locator": "Not authorized anywhere in the repository",
+      "controlling_authority": "Owner decision required",
+      "disposition": "UNRESOLVED",
+      "disposition_note": "Proposal only. Nothing executed against it."
+    }
+  ]
+}
