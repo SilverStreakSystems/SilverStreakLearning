@@ -4,11 +4,11 @@ rendering chunks...
 computing gzip size...
 dist/client/assets/styles-Izvvdt70.css                               81.91 kB │ gzip:  14.46 kB
 dist/client/assets/not-found-i5RsCZif.js                              0.11 kB │ gzip:   0.11 kB
-dist/client/assets/capabilities-D_BjqJqu.js                           0.14 kB │ gzip:   0.13 kB
-dist/client/assets/design-system-D_BjqJqu.js                          0.14 kB │ gzip:   0.13 kB
-dist/client/assets/objects-D_BjqJqu.js                                0.14 kB │ gzip:   0.13 kB
-dist/client/assets/value-streams-D_BjqJqu.js                          0.14 kB │ gzip:   0.13 kB
-dist/client/assets/workspaces-D_BjqJqu.js                             0.14 kB │ gzip:   0.13 kB
+dist/client/assets/capabilities-CnNMiaWe.js                           0.14 kB │ gzip:   0.13 kB
+dist/client/assets/design-system-CnNMiaWe.js                          0.14 kB │ gzip:   0.13 kB
+dist/client/assets/objects-CnNMiaWe.js                                0.14 kB │ gzip:   0.13 kB
+dist/client/assets/value-streams-CnNMiaWe.js                          0.14 kB │ gzip:   0.13 kB
+dist/client/assets/workspaces-CnNMiaWe.js                             0.14 kB │ gzip:   0.13 kB
 dist/client/assets/workspaces._workspaceId-BH4ZoS3I.js                0.33 kB │ gzip:   0.25 kB
 dist/client/assets/registers-DOMwnue3.js                              0.41 kB │ gzip:   0.25 kB
 dist/client/assets/objects._typeId-WA4QeVTi.js                        0.58 kB │ gzip:   0.38 kB
@@ -26,40 +26,40 @@ dist/client/assets/authority-badge-CXYaAZZ5.js                        1.73 kB �
 dist/client/assets/dependency-BqOtR2Po.js                             1.92 kB │ gzip:   0.85 kB
 dist/client/assets/page-C9wyFAB6.js                                   1.98 kB │ gzip:   0.74 kB
 dist/client/assets/help-BKKd8ySx.js                                   2.18 kB │ gzip:   0.85 kB
-dist/client/assets/findings-Bh-GFPnk.js                               2.36 kB │ gzip:   0.92 kB
-dist/client/assets/decisions-CwStSsWI.js                              2.66 kB │ gzip:   1.01 kB
-dist/client/assets/boundaries-noEtHsPX.js                             2.67 kB │ gzip:   1.03 kB
+dist/client/assets/findings-Dg5aU4JQ.js                               2.36 kB │ gzip:   0.92 kB
+dist/client/assets/decisions-CzF6u841.js                              2.66 kB │ gzip:   1.01 kB
+dist/client/assets/boundaries-Dum31AF5.js                             2.67 kB │ gzip:   1.03 kB
 dist/client/assets/posture-CrrErLZF.js                                2.88 kB │ gzip:   1.27 kB
-dist/client/assets/actions-B-opc-3U.js                                2.96 kB │ gzip:   1.22 kB
-dist/client/assets/design-system.templates._templateId-CV-PUcwB.js    3.07 kB │ gzip:   1.26 kB
+dist/client/assets/actions-DLE_nlNL.js                                2.96 kB │ gzip:   1.22 kB
+dist/client/assets/design-system.templates._templateId-DZgzt2VX.js    3.07 kB │ gzip:   1.26 kB
 dist/client/assets/projection-CBa6W3Pt.js                             3.41 kB │ gzip:   1.31 kB
-dist/client/assets/profile-CASkyjhW.js                                3.54 kB │ gzip:   1.16 kB
-dist/client/assets/search-DXcZDFZV.js                                 3.67 kB │ gzip:   1.55 kB
+dist/client/assets/profile-Bt_dyFP5.js                                3.54 kB │ gzip:   1.15 kB
+dist/client/assets/search-BF7FELHy.js                                 3.67 kB │ gzip:   1.55 kB
 dist/client/assets/future-architecture-B7nUkCjV.js                    3.91 kB │ gzip:   1.44 kB
-dist/client/assets/notifications-cw0po-0K.js                          3.92 kB │ gzip:   1.55 kB
+dist/client/assets/notifications-DK308AWg.js                          3.92 kB │ gzip:   1.55 kB
 dist/client/assets/authority-BSU5jwyc.js                              4.17 kB │ gzip:   1.58 kB
 dist/client/assets/workspaces.index-CgNiWgpI.js                       4.25 kB │ gzip:   1.43 kB
-dist/client/assets/objects._typeId-CNOWMxJa.js                        4.94 kB │ gzip:   1.71 kB
+dist/client/assets/objects._typeId-B3XQbsS7.js                        4.94 kB │ gzip:   1.71 kB
 dist/client/assets/capability-controls-D2nQ80kx.js                    4.95 kB │ gzip:   1.61 kB
 dist/client/assets/authority-DCfZqfqj.js                              5.12 kB │ gzip:   1.72 kB
 dist/client/assets/dependencies-DPaaYjc-.js                           5.29 kB │ gzip:   1.68 kB
-dist/client/assets/workspaces._workspaceId-DarBER0f.js                5.32 kB │ gzip:   1.66 kB
+dist/client/assets/workspaces._workspaceId-B-4g9Wfy.js                5.32 kB │ gzip:   1.66 kB
 dist/client/assets/preload-helper-Gz4FfcYz.js                         5.75 kB │ gzip:   2.16 kB
 dist/client/assets/foundation-map-pB4kmJ4L.js                         6.22 kB │ gzip:   2.28 kB
 dist/client/assets/traceability-n9SwK9m5.js                           6.94 kB │ gzip:   2.48 kB
 dist/client/assets/grid-CVOJJxio.js                                   6.99 kB │ gzip:   2.45 kB
 dist/client/assets/capability-architecture-CepVn-aJ.js                7.43 kB │ gzip:   2.91 kB
 dist/client/assets/link-B1Jmn2M3.js                                   7.81 kB │ gzip:   3.33 kB
-dist/client/assets/routes-am0cZDNg.js                                 8.08 kB │ gzip:   2.08 kB
+dist/client/assets/routes-DwhqWt9L.js                                 8.08 kB │ gzip:   2.08 kB
 dist/client/assets/capacities-DISudhi9.js                             8.95 kB │ gzip:   2.47 kB
 dist/client/assets/artifacts-C1xAbssm.js                              9.23 kB │ gzip:   2.42 kB
 dist/client/assets/object-controls-BOMNtM8g.js                        9.80 kB │ gzip:   3.28 kB
-dist/client/assets/capabilities._capabilityId-BGOFuIm-.js            10.09 kB │ gzip:   2.69 kB
+dist/client/assets/capabilities._capabilityId-BE-TRyzW.js            10.09 kB │ gzip:   2.69 kB
 dist/client/assets/value-stream-controls-CDJuAkBE.js                 10.40 kB │ gzip:   3.39 kB
-dist/client/assets/value-streams._streamId-Lgz2oyCe.js               10.56 kB │ gzip:   2.91 kB
-dist/client/assets/workspace-queries-PgvZ-vFp.js                     11.42 kB │ gzip:   3.90 kB
+dist/client/assets/value-streams._streamId-CHn2van8.js               10.56 kB │ gzip:   2.91 kB
+dist/client/assets/workspace-queries-DwSidt6x.js                     11.42 kB │ gzip:   3.90 kB
 dist/client/assets/utilities-CaLUyaeC.js                             12.01 kB │ gzip:   3.86 kB
-dist/client/assets/evidence-BAvtrJqO.js                              15.67 kB │ gzip:   4.93 kB
+dist/client/assets/evidence-Ib8bkD6d.js                              15.67 kB │ gzip:   4.93 kB
 dist/client/assets/design-system-controls-BYocwMD1.js                15.91 kB │ gzip:   5.24 kB
 dist/client/assets/capabilities.index-BG9mDURz.js                    26.60 kB │ gzip:   7.42 kB
 dist/client/assets/useStore-B8VQ1jaU.js                              26.65 kB │ gzip:   9.48 kB
@@ -67,14 +67,14 @@ dist/client/assets/utils-BtRqtsxU.js                                 27.25 kB �
 dist/client/assets/workspaces-BAaDBfTI.js                            34.06 kB │ gzip:   8.98 kB
 dist/client/assets/value-streams.index-qCbe_UWl.js                   34.13 kB │ gzip:   9.78 kB
 dist/client/assets/object-queries-5M_4RhKz.js                        42.97 kB │ gzip:  11.36 kB
-dist/client/assets/design-system.index-Doh9Fj6E.js                   47.71 kB │ gzip:  12.74 kB
-dist/client/assets/objects.index-CNM5_mTh.js                         59.18 kB │ gzip:  16.54 kB
-dist/client/assets/registers-D9amJKUi.js                             70.69 kB │ gzip:  19.30 kB
+dist/client/assets/design-system.index-MCLN9qoI.js                   47.71 kB │ gzip:  12.74 kB
+dist/client/assets/objects.index-BlN4d27h.js                         59.18 kB │ gzip:  16.54 kB
+dist/client/assets/registers-BynFJXeV.js                             72.42 kB │ gzip:  19.79 kB
 dist/client/assets/value-stream-queries-B25EN_cO.js                 105.16 kB │ gzip:  27.00 kB
 dist/client/assets/capability-queries-Dx7RVEAe.js                   137.00 kB │ gzip:  35.93 kB
-dist/client/assets/index-kepu4h42.js                                333.09 kB │ gzip: 102.87 kB
+dist/client/assets/index-CnyVucwE.js                                333.09 kB │ gzip: 102.86 kB
 
-✓ built in 2.52s
+✓ built in 1.89s
 vite v8.2.0 building ssr environment for production...
 [2Ktransforming...✓ 233 modules transformed.
 rendering chunks...
@@ -97,7 +97,7 @@ node_modules/.nitro/vite/services/ssr/assets/objects.index-CYS6_4f8.js          
 node_modules/.nitro/vite/services/ssr/assets/value-streams.index-DMVPv8aw.js                    1.14 kB │ gzip:  0.56 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities.index-BYICccYv.js                     1.14 kB │ gzip:  0.55 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities._capabilityId-FVf1IxbR.js             1.39 kB │ gzip:  0.61 kB
-node_modules/.nitro/vite/services/ssr/assets/workspaces._workspaceId-Dcd3PSRI.js                1.41 kB │ gzip:  0.59 kB
+node_modules/.nitro/vite/services/ssr/assets/workspaces._workspaceId-BFVtw1Dt.js                1.41 kB │ gzip:  0.59 kB
 node_modules/.nitro/vite/services/ssr/assets/value-streams._streamId-DdXnbD1M.js                1.56 kB │ gzip:  0.66 kB
 node_modules/.nitro/vite/services/ssr/assets/start-RKGGYzjZ.js                                  1.57 kB │ gzip:  0.71 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system.templates._templateId-BkHc2gXz.js    1.65 kB │ gzip:  0.68 kB
@@ -111,18 +111,18 @@ node_modules/.nitro/vite/services/ssr/assets/page-CMm0zr-A.js                   
 node_modules/.nitro/vite/services/ssr/assets/createCsrfMiddleware-B2To0gPJ.js                   3.19 kB │ gzip:  1.01 kB
 node_modules/.nitro/vite/services/ssr/assets/help-CEcNFP6V.js                                   3.38 kB │ gzip:  1.09 kB
 node_modules/.nitro/vite/services/ssr/assets/posture-VrfpcR5v.js                                3.67 kB │ gzip:  1.53 kB
-node_modules/.nitro/vite/services/ssr/assets/findings-0-sN1KRw.js                               3.98 kB │ gzip:  1.21 kB
+node_modules/.nitro/vite/services/ssr/assets/findings-D28yBqm3.js                               3.98 kB │ gzip:  1.21 kB
 node_modules/.nitro/vite/services/ssr/assets/projection-BcL4wGJj.js                             4.02 kB │ gzip:  1.43 kB
-node_modules/.nitro/vite/services/ssr/assets/boundaries-B-LvwzT6.js                             4.02 kB │ gzip:  1.32 kB
-node_modules/.nitro/vite/services/ssr/assets/decisions-znzrKqzs.js                              4.54 kB │ gzip:  1.34 kB
-node_modules/.nitro/vite/services/ssr/assets/actions-CZ0ZEpj3.js                                4.54 kB │ gzip:  1.55 kB
+node_modules/.nitro/vite/services/ssr/assets/boundaries-B8wHoE8J.js                             4.02 kB │ gzip:  1.32 kB
+node_modules/.nitro/vite/services/ssr/assets/decisions-DRwDgZU1.js                              4.54 kB │ gzip:  1.34 kB
+node_modules/.nitro/vite/services/ssr/assets/actions-DVKJypYd.js                                4.54 kB │ gzip:  1.55 kB
 node_modules/.nitro/vite/services/ssr/index.js                                                  4.61 kB │ gzip:  1.92 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system.templates._templateId--514Zoqm.js    4.72 kB │ gzip:  1.58 kB
-node_modules/.nitro/vite/services/ssr/assets/search-Q5z7hwXd.js                                 5.31 kB │ gzip:  1.89 kB
+node_modules/.nitro/vite/services/ssr/assets/search-DmwlmCCA.js                                 5.31 kB │ gzip:  1.89 kB
 node_modules/.nitro/vite/services/ssr/assets/authority-Pv0L0w5Z.js                              5.43 kB │ gzip:  1.86 kB
-node_modules/.nitro/vite/services/ssr/assets/profile-BFoxevLn.js                                5.66 kB │ gzip:  1.53 kB
+node_modules/.nitro/vite/services/ssr/assets/profile-BDXp9tuZ.js                                5.66 kB │ gzip:  1.53 kB
 node_modules/.nitro/vite/services/ssr/assets/future-architecture-BKpu7UFm.js                    5.99 kB │ gzip:  1.88 kB
-node_modules/.nitro/vite/services/ssr/assets/notifications-D4QlJkEi.js                          6.05 kB │ gzip:  1.98 kB
+node_modules/.nitro/vite/services/ssr/assets/notifications-5t7LMEtG.js                          6.05 kB │ gzip:  1.98 kB
 node_modules/.nitro/vite/services/ssr/assets/dependencies-GUhRzKoY.js                           6.37 kB │ gzip:  1.89 kB
 node_modules/.nitro/vite/services/ssr/assets/workspaces.index-CKWn2dj1.js                       6.75 kB │ gzip:  1.92 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system.index-7Ql4O93b.js                    6.84 kB │ gzip:  2.44 kB
@@ -130,35 +130,35 @@ node_modules/.nitro/vite/services/ssr/assets/objects._typeId-CwhVHTZC.js        
 node_modules/.nitro/vite/services/ssr/assets/foundation-map-BDXy0ymZ.js                         8.24 kB │ gzip:  2.68 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-controls-DUhgGe2i.js                    8.47 kB │ gzip:  2.35 kB
 node_modules/.nitro/vite/services/ssr/assets/authority-C5iMh--P.js                              8.64 kB │ gzip:  2.17 kB
-node_modules/.nitro/vite/services/ssr/assets/workspaces._workspaceId-lOon24wE.js                8.81 kB │ gzip:  2.14 kB
+node_modules/.nitro/vite/services/ssr/assets/workspaces._workspaceId-DE0lj2Gz.js                8.81 kB │ gzip:  2.14 kB
 node_modules/.nitro/vite/services/ssr/assets/grid-kZmpPmgw.js                                   8.95 kB │ gzip:  2.73 kB
 node_modules/.nitro/vite/services/ssr/assets/traceability-Egj_b_e8.js                           9.61 kB │ gzip:  2.89 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-architecture-BiAvo19A.js                9.72 kB │ gzip:  3.45 kB
-node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DD0_XWai.js            10.20 kB │ gzip:  1.74 kB
+node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Cpqhiw_m.js            10.20 kB │ gzip:  1.75 kB
 node_modules/.nitro/vite/services/ssr/assets/capacities-CZTeMMiY.js                            10.29 kB │ gzip:  2.69 kB
 node_modules/.nitro/vite/services/ssr/assets/artifacts-h593lOI2.js                             10.92 kB │ gzip:  2.67 kB
-node_modules/.nitro/vite/services/ssr/assets/routes-CDHpdNpA.js                                12.86 kB │ gzip:  2.83 kB
+node_modules/.nitro/vite/services/ssr/assets/routes-p3TDH1Y7.js                                12.86 kB │ gzip:  2.82 kB
 node_modules/.nitro/vite/services/ssr/assets/utilities-B37s75Vf.js                             13.84 kB │ gzip:  4.12 kB
 node_modules/.nitro/vite/services/ssr/assets/value-stream-controls-C04DmY_e.js                 15.16 kB │ gzip:  4.34 kB
 node_modules/.nitro/vite/services/ssr/assets/object-controls-BaQHaa0e.js                       15.37 kB │ gzip:  4.53 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities._capabilityId-CmM0cN6y.js            16.84 kB │ gzip:  3.30 kB
-node_modules/.nitro/vite/services/ssr/assets/workspace-queries-BZZVBPgQ.js                     16.99 kB │ gzip:  5.07 kB
+node_modules/.nitro/vite/services/ssr/assets/workspace-queries-C4Sa2ehF.js                     16.99 kB │ gzip:  5.07 kB
 node_modules/.nitro/vite/services/ssr/assets/value-streams._streamId-D9oTUf89.js               17.69 kB │ gzip:  3.82 kB
-node_modules/.nitro/vite/services/ssr/assets/evidence-CmmjNTxM.js                              20.93 kB │ gzip:  5.71 kB
+node_modules/.nitro/vite/services/ssr/assets/evidence-BKM0r0g4.js                              20.93 kB │ gzip:  5.71 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system-controls-BaPfu-wp.js                21.13 kB │ gzip:  6.30 kB
-node_modules/.nitro/vite/services/ssr/assets/router-Dd1A4LX0.js                                31.76 kB │ gzip:  7.33 kB
+node_modules/.nitro/vite/services/ssr/assets/router-WKeUhvK4.js                                31.76 kB │ gzip:  7.33 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities.index-CPf1ZbEO.js                    36.18 kB │ gzip:  8.67 kB
 node_modules/.nitro/vite/services/ssr/assets/workspaces-0HdHBftJ.js                            39.16 kB │ gzip:  9.49 kB
 node_modules/.nitro/vite/services/ssr/assets/value-streams.index-BAGvEhCY.js                   47.72 kB │ gzip: 11.76 kB
 node_modules/.nitro/vite/services/ssr/assets/object-queries-D1yi-eu7.js                        50.91 kB │ gzip: 12.56 kB
-node_modules/.nitro/vite/services/ssr/assets/server-B0F5DPXs.js                                56.40 kB │ gzip: 14.53 kB
+node_modules/.nitro/vite/services/ssr/assets/server-PeSr-9dn.js                                56.40 kB │ gzip: 14.53 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system.index-DGjl3XEb.js                   67.06 kB │ gzip: 15.14 kB
-node_modules/.nitro/vite/services/ssr/assets/registers-D5BB0hbq.js                             75.27 kB │ gzip: 19.63 kB
+node_modules/.nitro/vite/services/ssr/assets/registers-DPTl4zdq.js                             77.05 kB │ gzip: 20.17 kB
 node_modules/.nitro/vite/services/ssr/assets/objects.index-ZYQJz4n_.js                         79.82 kB │ gzip: 19.52 kB
 node_modules/.nitro/vite/services/ssr/assets/value-stream-queries-Ch3I2VKo.js                 124.55 kB │ gzip: 29.26 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-queries-fmMwUK3o.js                   156.58 kB │ gzip: 37.68 kB
 
-✓ built in 1.70s
+✓ built in 1.33s
 
 [nitro] ◐ Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-19)
 [nitro] ✔ Generated public dist/client
@@ -187,7 +187,7 @@ dist/server/_ssr/design-system.templates._templateId-2ww8irXC.mjs    1.21 kB │
 dist/server/_ssr/value-streams.index-DMVPv8aw.mjs                    1.21 kB │ gzip:   0.61 kB
 dist/server/_ssr/capabilities.index-BYICccYv.mjs                     1.22 kB │ gzip:   0.59 kB
 dist/server/_ssr/capabilities._capabilityId-FVf1IxbR.mjs             1.46 kB │ gzip:   0.66 kB
-dist/server/_ssr/workspaces._workspaceId-Dcd3PSRI.mjs                1.49 kB │ gzip:   0.64 kB
+dist/server/_ssr/workspaces._workspaceId-BFVtw1Dt.mjs                1.49 kB │ gzip:   0.64 kB
 dist/server/_ssr/start-RKGGYzjZ.mjs                                  1.53 kB │ gzip:   0.70 kB
 dist/server/_ssr/value-streams._streamId-DdXnbD1M.mjs                1.63 kB │ gzip:   0.71 kB
 dist/server/_ssr/design-system.templates._templateId-BkHc2gXz.mjs    1.73 kB │ gzip:   0.73 kB
@@ -203,17 +203,17 @@ dist/server/_ssr/posture-VrfpcR5v.mjs                                3.71 kB │
 dist/server/_ssr/help-CEcNFP6V.mjs                                   3.86 kB │ gzip:   1.14 kB
 dist/server/_ssr/projection-BcL4wGJj.mjs                             4.05 kB │ gzip:   1.46 kB
 dist/server/_ssr/ssr.mjs                                             4.55 kB │ gzip:   1.92 kB
-dist/server/_ssr/boundaries-B-LvwzT6.mjs                             4.81 kB │ gzip:   1.39 kB
-dist/server/_ssr/findings-0-sN1KRw.mjs                               4.83 kB │ gzip:   1.30 kB
-dist/server/_ssr/actions-CZ0ZEpj3.mjs                                5.32 kB │ gzip:   1.64 kB
-dist/server/_ssr/decisions-znzrKqzs.mjs                              5.45 kB │ gzip:   1.42 kB
+dist/server/_ssr/boundaries-B8wHoE8J.mjs                             4.81 kB │ gzip:   1.39 kB
+dist/server/_ssr/findings-D28yBqm3.mjs                               4.83 kB │ gzip:   1.30 kB
+dist/server/_ssr/actions-DVKJypYd.mjs                                5.32 kB │ gzip:   1.64 kB
+dist/server/_ssr/decisions-DRwDgZU1.mjs                              5.45 kB │ gzip:   1.42 kB
 dist/server/_ssr/authority-Pv0L0w5Z.mjs                              5.47 kB │ gzip:   1.90 kB
 dist/server/_ssr/design-system.templates._templateId--514Zoqm.mjs    5.58 kB │ gzip:   1.66 kB
-dist/server/_ssr/search-Q5z7hwXd.mjs                                 6.13 kB │ gzip:   1.99 kB
+dist/server/_ssr/search-DmwlmCCA.mjs                                 6.13 kB │ gzip:   1.99 kB
 dist/server/_ssr/dependencies-GUhRzKoY.mjs                           6.38 kB │ gzip:   1.91 kB
-dist/server/_ssr/notifications-D4QlJkEi.mjs                          6.65 kB │ gzip:   2.05 kB
+dist/server/_ssr/notifications-5t7LMEtG.mjs                          6.65 kB │ gzip:   2.04 kB
 dist/server/_ssr/future-architecture-BKpu7UFm.mjs                    6.74 kB │ gzip:   1.94 kB
-dist/server/_ssr/profile-BFoxevLn.mjs                                6.83 kB │ gzip:   1.61 kB
+dist/server/_ssr/profile-BDXp9tuZ.mjs                                6.83 kB │ gzip:   1.61 kB
 dist/server/_ssr/design-system.index-7Ql4O93b.mjs                    7.47 kB │ gzip:   2.52 kB
 dist/server/_ssr/workspaces.index-CKWn2dj1.mjs                       8.02 kB │ gzip:   2.00 kB
 dist/server/_ssr/grid-kZmpPmgw.mjs                                   8.98 kB │ gzip:   2.75 kB
@@ -224,32 +224,32 @@ dist/server/_ssr/objects._typeId-CwhVHTZC.mjs                        9.81 kB │
 dist/server/_libs/h3-v2+rou3+srvx.mjs                                9.89 kB │ gzip:   3.06 kB
 dist/server/_ssr/traceability-Egj_b_e8.mjs                          10.17 kB │ gzip:   2.94 kB
 dist/server/_ssr/authority-C5iMh--P.mjs                             10.19 kB │ gzip:   2.25 kB
-dist/server/_tanstack-start-manifest_v-DD0_XWai.mjs                 10.26 kB │ gzip:   1.78 kB
+dist/server/_tanstack-start-manifest_v-Cpqhiw_m.mjs                 10.26 kB │ gzip:   1.78 kB
 dist/server/_ssr/capacities-CZTeMMiY.mjs                            10.32 kB │ gzip:   2.72 kB
-dist/server/_ssr/workspaces._workspaceId-lOon24wE.mjs               10.44 kB │ gzip:   2.23 kB
+dist/server/_ssr/workspaces._workspaceId-DE0lj2Gz.mjs               10.44 kB │ gzip:   2.23 kB
 dist/server/_ssr/artifacts-h593lOI2.mjs                             10.96 kB │ gzip:   2.71 kB
 dist/server/_libs/tanstack__history.mjs                             12.09 kB │ gzip:   3.48 kB
 dist/server/_ssr/utilities-B37s75Vf.mjs                             13.87 kB │ gzip:   4.16 kB
-dist/server/_ssr/routes-CDHpdNpA.mjs                                15.21 kB │ gzip:   2.93 kB
+dist/server/_ssr/routes-p3TDH1Y7.mjs                                15.21 kB │ gzip:   2.93 kB
 dist/server/_ssr/value-stream-controls-C04DmY_e.mjs                 15.91 kB │ gzip:   4.40 kB
 dist/server/_ssr/object-controls-BaQHaa0e.mjs                       16.20 kB │ gzip:   4.60 kB
 dist/server/_libs/h3+rou3+srvx.mjs                                  16.61 kB │ gzip:   4.80 kB
-dist/server/_ssr/workspace-queries-BZZVBPgQ.mjs                     16.98 kB │ gzip:   5.10 kB
+dist/server/_ssr/workspace-queries-C4Sa2ehF.mjs                     16.98 kB │ gzip:   5.10 kB
 dist/server/_libs/react+tanstack__react-query.mjs                   17.65 kB │ gzip:   4.63 kB
 dist/server/_ssr/capabilities._capabilityId-CmM0cN6y.mjs            20.13 kB │ gzip:   3.42 kB
 dist/server/_ssr/value-streams._streamId-D9oTUf89.mjs               21.24 kB │ gzip:   3.95 kB
 dist/server/_ssr/design-system-controls-BaPfu-wp.mjs                21.46 kB │ gzip:   6.36 kB
-dist/server/_ssr/evidence-CmmjNTxM.mjs                              22.81 kB │ gzip:   5.78 kB
-dist/server/index.mjs                                               26.58 kB │ gzip:   6.63 kB
-dist/server/_ssr/router-Dd1A4LX0.mjs                                31.99 kB │ gzip:   7.32 kB
+dist/server/_ssr/evidence-BKM0r0g4.mjs                              22.81 kB │ gzip:   5.78 kB
+dist/server/index.mjs                                               26.58 kB │ gzip:   6.62 kB
+dist/server/_ssr/router-WKeUhvK4.mjs                                31.99 kB │ gzip:   7.32 kB
 dist/server/_ssr/workspaces-0HdHBftJ.mjs                            39.19 kB │ gzip:   9.52 kB
 dist/server/_ssr/capabilities.index-CPf1ZbEO.mjs                    39.32 kB │ gzip:   8.78 kB
 dist/server/_libs/tanstack__query-core.mjs                          48.17 kB │ gzip:  10.70 kB
 dist/server/_ssr/object-queries-D1yi-eu7.mjs                        50.77 kB │ gzip:  12.55 kB
 dist/server/_ssr/value-streams.index-BAGvEhCY.mjs                   52.86 kB │ gzip:  11.87 kB
-dist/server/_ssr/server-B0F5DPXs.mjs                                54.69 kB │ gzip:  14.38 kB
+dist/server/_ssr/server-PeSr-9dn.mjs                                54.69 kB │ gzip:  14.38 kB
 dist/server/_ssr/design-system.index-DGjl3XEb.mjs                   74.88 kB │ gzip:  15.39 kB
-dist/server/_ssr/registers-D5BB0hbq.mjs                             75.31 kB │ gzip:  19.66 kB
+dist/server/_ssr/registers-DPTl4zdq.mjs                             77.09 kB │ gzip:  20.20 kB
 dist/server/_libs/@tanstack/router-core+[...].mjs                   80.27 kB │ gzip:  20.17 kB
 dist/server/_ssr/objects.index-ZYQJz4n_.mjs                         86.01 kB │ gzip:  19.72 kB
 dist/server/_libs/tailwind-merge.mjs                                88.13 kB │ gzip:  15.66 kB
@@ -257,7 +257,7 @@ dist/server/_ssr/value-stream-queries-Ch3I2VKo.mjs                 124.42 kB │
 dist/server/_ssr/capability-queries-fmMwUK3o.mjs                   156.49 kB │ gzip:  37.68 kB
 dist/server/_libs/@tanstack/react-router+[...].mjs                 649.67 kB │ gzip: 137.07 kB
 
-✓ built in 291ms
+✓ built in 285ms
 [nitro] ℹ Using auto generated worker name: tanstack-start-ts
 ℹ Generated dist/server/wrangler.json
 ℹ Generated .wrangler/deploy/config.json
