@@ -32,10 +32,10 @@ named-but-not-supplied DOCX (PKA-101) and ZIP (PKA-102).
 
 ## 2. Locked target
 
-Cryptographically verify the three supplied August 5 v0.2.0 files, register them as one
+Cryptographically verify the three supplied August 5 historical v0.2.0 files, register them as one
 partial historical package without duplication, deny current canonical authority, then
 extract every candidate requirement inside Section 11 — Accessibility (printed pages
-20–21) of the verified v0.2.0 PDF and build a non-dispositive cross-source restatement
+20–21) of the verified historical v0.2.0 PDF and build a non-dispositive cross-source restatement
 index against HREQ-001..HREQ-014.
 
 ## 3. Blocking condition
@@ -43,7 +43,7 @@ index against HREQ-001..HREQ-014.
 The three authorized inputs were **not supplied** to the executor. The supplied-input
 surface at entry contained only the already registered v0.3.0 artifacts (the governed
 rewrite PDF, the control workbook, and the v0.3.0 manifest) plus unrelated earlier
-material. No August 5 v0.2.0 file was present, so:
+material. No August 5 historical v0.2.0 file was present, so:
 
 - no digest could be recomputed and no declared digest could be confirmed;
 - no package or source record could be created, because creating one would register an
@@ -111,18 +111,18 @@ written because no extraction occurred.
 - Availability was determined from the executor's supplied-input surface. It states nothing
   about whether the files exist elsewhere in the owner's possession.
 - Nothing here evaluates the correctness, completeness, or accessibility content of the
-  v0.2.0 package.
+  historical v0.2.0 package.
 - No accessibility conformance is inferred from any "WCAG 2.2 AA-informed" historical
   language. DEC-012 keeps WCAG 2.2 Level AA an internal target only.
 
 ## 10. Target evaluation
 
-**BLOCKED.** The locked Cycle 4 outcome requires verified v0.2.0 bytes; none were available.
+**BLOCKED.** The locked Cycle 4 outcome requires verified historical v0.2.0 bytes; none were available.
 Package acquisition: not executed. Extraction: not executed. Restatement index: not executed.
 
 ## 11. Owner review required
 
-1. Re-supply the three authorized August 5 v0.2.0 files so their digests can be independently
+1. Re-supply the three authorized August 5 historical v0.2.0 files so their digests can be independently
    recomputed against the declared values (FND-021).
 2. Confirm whether FND-020 should remain open on its broader proposition or be superseded by
    a narrower successor obligation — an owner decision, not an executor edit.
