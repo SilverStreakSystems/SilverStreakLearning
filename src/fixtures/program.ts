@@ -69,7 +69,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "340 of 340 tests passed across 15 files.",
+      statement: "353 of 353 tests passed across 16 files.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
       boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",

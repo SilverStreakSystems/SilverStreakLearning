@@ -95,3 +95,8 @@ six package drift rows remain unresolved.
 
 Record a disposition for the Cycle 4 candidates and restatement index (FND-022),
 and state whether any further cycle is authorized.
+
+## Verification at this checkpoint
+
+353 of 353 tests passed across 16 files (machine-verified only; no human, independent,
+accessibility, security, legal, or district review is covered).
