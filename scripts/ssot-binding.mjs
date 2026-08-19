@@ -7,8 +7,7 @@
  */
 
 /** Path of the canonical current-state record, relative to the repository root. */
-export const SSOT_RECORD_PATH =
-  "docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md";
+export const SSOT_RECORD_PATH = "docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md";
 
 /** Documents that must declare the same binding commit as the SSOT record. */
 export const BOUND_DOCUMENT_PATHS = [
