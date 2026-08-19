@@ -129,7 +129,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       stageId: "DRIFT-RESOLUTION",
       statement:
         "Resolution of the recorded package drift rows is not authorized. Each remains unresolved.",
-      source: { recordId: "PDR-001..PDR-004", locator: "data/packages/package-drift.json", route: null },
+      source: { recordId: "PDR-001..PDR-006", locator: "data/packages/package-drift.json", route: null },
     },
   ],
   publicationBoundary:
