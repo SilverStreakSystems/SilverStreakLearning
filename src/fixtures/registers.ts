@@ -167,12 +167,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again.",
+      "The current-state record and its three manifests declare one commit. The platform commits once per authoring turn, so the declared commit falls behind the head under review immediately after each re-bind, and the binding check reports mismatch until the documents are re-bound again. WP-037 disposition: RESOLVED — ORIGINAL FAILURE MODE SUPERSEDED BY THE INPUT-AWARE EVIDENCE MODEL. Applicability is now decided by declared input-set hashes, so a documentation-only commit leaves build, test, typecheck, SBOM, and dependency evidence CURRENT without any re-binding.",
     boundary:
-      "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured.",
-    resolutionState: "not-verified",
+      "This is declaration drift, not corrupted evidence. It does not assert that any captured figure was wrong at the commit where it was captured. The resolution applies to pipeline-produced evidence only: the predecessor declared-binding guard over WP-006 prose documents still compares commit strings and is retained for compatibility, so hand-bound legacy documents remain subject to the original drift.",
+    resolutionState: "resolved",
     requiredDecision: null,
-    evidenceReferences: ["EV-016", "EV-017", "EV-018"],
+    evidenceReferences: ["EV-016", "EV-017", "EV-018", "EV-019"],
     synthetic: false,
   },
   {
@@ -183,12 +183,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "A workflow that runs the binding check exists in the repository. Whether the hosting platform requires that check to pass before a merge is a repository-settings fact that cannot be read from repository content, so merge enforcement is recorded as not verified.",
+      "A workflow that runs the binding check exists in the repository. Whether the hosting platform requires that check to pass before a merge is a repository-settings fact that cannot be read from repository content, so merge enforcement is recorded as not verified. Re-affirmed under WP-037: the evidence pipeline workflow exists as a file and records 'REQUIRED MERGE ENFORCEMENT - NOT VERIFIED' in its own configuration provenance artifact.",
     boundary:
-      "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed.",
+      "Does not assert that enforcement is absent. It records that its presence is unproven and may not be claimed. The existence of CI workflow files is not evidence of branch protection.",
     resolutionState: "not-verified",
     requiredDecision: null,
-    evidenceReferences: ["EV-018"],
+    evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
   {
@@ -199,12 +199,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one.",
+      "The binding check compares a declared commit string against the commit under review. It cannot detect a document that declares the correct commit while carrying route counts, test counts, dependency counts, capability counts, or backend statements captured at an earlier one. WP-037 disposition: RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; NARRATIVE SEMANTIC ACCURACY REMAINS HUMAN-GOVERNED. Repository identity, current commit, tracked/source/test/doc counts, route modules, dependency identity, evidence applicability, and evidence expiry are now regenerated from the tree on every run and are never hand-edited.",
     boundary:
-      "Not a defect in the check, which does exactly what it declares. It is a scope limit that a later evidence pipeline must close by separating immutable execution evidence from the current baseline summary.",
-    resolutionState: "not-verified",
+      "Not a defect in the check, which does exactly what it declares. Hand-written prose in governance documents is still authored by a human and can still be semantically wrong at a correct commit; no automated control asserts otherwise.",
+    resolutionState: "resolved",
     requiredDecision: null,
-    evidenceReferences: ["EV-018"],
+    evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
   {
@@ -215,14 +215,15 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L7"],
     description:
-      "A full lint run reports 683 problems across the repository, overwhelmingly formatter differences rather than logic defects, and 664 of them are auto-fixable. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes.",
+      "A full lint run reports 683 problems across the repository (669 errors, 14 warnings), overwhelmingly formatter differences rather than logic defects. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes. Scoped separately under WP-037: the WP-037 files (scripts/evidence, src/domain/evidence-pipeline.ts, src/test/evidence-pipeline.test.ts, src/routes/evidence.tsx) report zero lint problems, so this work package contributes no new lint debt.",
     boundary:
-      "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness.",
+      "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness. Repository-wide lint must not be reported as passing.",
     resolutionState: "unknown",
     requiredDecision: null,
-    evidenceReferences: ["EV-018"],
+    evidenceReferences: ["EV-018", "EV-019"],
     synthetic: false,
   },
+
 ];
 
 
