@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "expires_at": "2026-08-26T05:37:24.723Z",
+  "tool_version": "1.0.0",
+  "tree_hash": "c390937ef3928fdc41421e90d6747c24599b9240",
+  "expected_result": "The advisory service responds and advisories are matched against resolved versions.",
+  "artifact_path": "artifacts/vulnerability/advisory-recovery.json",
+  "artifact_hash": "397b4df17d21db4b2b05525a3e15bf277b2d68f24dfb0eb9a47a0f667e6af5df",
+  "input_set": {
+    "manifest": "6351fa90c648b55cce0b0bbf16906b43a7334bc2b5bb29c39ac91dff549c0a0a",
+    "lockfile": "6a5f5aee9b73f58c9afff2ab1a15ea049050bd20b5fbfee7aff7a65e3f7a842d"
+  },
+  "related_requirements": [],
+  "related_decisions": [],
+  "related_tasks": [],
+  "related_validations": [],
+  "related_findings": [],
+  "related_claims": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "reproduction": "bun run evidence:run",
+  "synthetic_data_only": true,
+  "independent": false,
+  "producer_type": "pipeline",
+  "method": "automated",
+  "evidence_type": "VULNERABILITY_SCAN",
+  "commit_sha": "b60b32ff0bb8404f17fe49d3918dd0b7d3296328",
+  "environment": "lovable-sandbox",
+  "timestamp": "2026-08-19T05:37:24.723Z",
+  "producer": "SSLS evidence pipeline",
+  "evidence_id": "EV-VULN-RECOVERY",
+  "title": "Dependency vulnerability scan — recovery pass via npm bulk advisory endpoint",
+  "description": "Advisory query over the versions resolved in bun.lock, executed under the WP-037 bounded evidence-recovery authorization. Additive to EV-VULN, which is preserved unchanged.",
+  "tool": "scripts/evidence/supply-chain.mjs (npm bulk advisory client)",
+  "command": "bun run evidence:run",
+  "actual_result": "Scan completed against 563 resolved versions of 527 packages. 5 matched advisories: {\"critical\":0,\"high\":5,\"moderate\":0,\"low\":0,\"info\":0}.",
+  "status": "review-required",
+  "supports": [
+    "The advisories reported by this source, for the versions resolved in bun.lock, at the recorded time."
+  ],
+  "does_not_support": [
+    "That the application is secure, that no vulnerability exists, that any advisory has been triaged, or that any gate may be closed."
+  ]
+}
