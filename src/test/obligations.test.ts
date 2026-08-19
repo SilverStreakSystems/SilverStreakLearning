@@ -13,6 +13,7 @@ import {
   loadObligationContext,
   loadObligations,
 } from "@/lib/obligation-registry";
+import { DECISIONS, EVIDENCE, FINDINGS } from "@/fixtures/registers";
 
 const authorities = loadAuthorities();
 const obligations = loadObligations();
@@ -162,5 +163,49 @@ describe("WP-038 conflicts, stale references and data triggers", () => {
       expect(record.current_use).toBe(false);
       expect(record.prerequisite_review.length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe("WP-038 governance register linkage", () => {
+  const findingIds = new Set(FINDINGS.map((record) => record.id));
+  const evidenceIds = new Set(EVIDENCE.map((record) => record.id));
+
+  it("records every stale reference finding in the canonical finding register", () => {
+    const raised = context.stale_references
+      .map((record) => record.finding_id)
+      .filter((id): id is string => Boolean(id));
+    expect(raised.length).toBeGreaterThan(0);
+    for (const id of raised) {
+      expect(findingIds.has(id)).toBe(true);
+    }
+  });
+
+  it("binds each WP-038 finding to registered evidence and keeps it open", () => {
+    for (const id of ["FND-016", "FND-017", "FND-018"]) {
+      const finding = FINDINGS.find((record) => record.id === id);
+      expect(finding).toBeDefined();
+      expect(finding?.resolutionState).toBe("unknown");
+      expect(finding?.evidenceReferences.length).toBeGreaterThan(0);
+      for (const reference of finding?.evidenceReferences ?? []) {
+        expect(evidenceIds.has(reference)).toBe(true);
+      }
+    }
+  });
+
+  it("states what each WP-038 evidence record cannot support", () => {
+    for (const id of ["EV-026", "EV-027", "EV-028"]) {
+      const record = EVIDENCE.find((item) => item.id === id);
+      expect(record).toBeDefined();
+      expect(record?.doesNotSupport.length).toBeGreaterThan(20);
+    }
+  });
+
+  it("keeps the WP-038 closure decision unaccepted", () => {
+    const decision = DECISIONS.find((record) => record.id === "DEC-018");
+    expect(decision).toBeDefined();
+    expect(decision?.state).toBe("required");
+    expect(decision?.decidedOn).toBeNull();
+    const dec012 = DECISIONS.find((record) => record.id === "DEC-012");
+    expect(dec012?.state).not.toBe("accepted");
   });
 });

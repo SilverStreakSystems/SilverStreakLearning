@@ -238,7 +238,73 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-021", "EV-022", "EV-023", "EV-024", "EV-025"],
     synthetic: false,
   },
+  {
+    id: "FND-016",
+    title: "ULW-AS-001 v1.3 is not bound to a named WCAG version and level",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L5", "L7"],
+    description:
+      "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. A brief proposing an internal target is at docs/wp-038/DEC-012-BRIEF.md; the binding is DEC-012 and remains open.",
+    boundary:
+      "This does not assert that the interface fails any success criterion, nor that binding a version would create a conformance claim. Binding fixes what may be measured, not what has been validated.",
+    resolutionState: "unknown",
+    requiredDecision: "DEC-012",
+    evidenceReferences: ["EV-026"],
+    synthetic: false,
+  },
+  {
+    id: "FND-017",
+    title: "The BEFORE LIVE PII gate assumes student data is the first binding trigger",
+    severity: "governance",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L4", "L6"],
+    description:
+      "The capability architecture gates controls on BEFORE LIVE PII, which reads as student personal information. Massachusetts narrow personal information, including operator payroll or payment data, may attach 201 CMR 17.00 duties before any student data exists, so the gate can fire later than the first real obligation. Recorded in WP-038 as STL-002.",
+    boundary:
+      "No such data exists in the current posture and none is proposed. This is a gate-wording defect, not an assertion that any obligation currently applies.",
+    resolutionState: "unknown",
+    requiredDecision: null,
+    evidenceReferences: ["EV-026"],
+    synthetic: false,
+  },
+  {
+    id: "FND-018",
+    title: "CycloneDX is named without a specification version",
+    severity: "advisory",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L7"],
+    description:
+      "WP-037 supply-chain documentation names CycloneDX with no specification version, while ECMA-424 corresponds to CycloneDX 1.6 and OWASP v1.7 (October 2025) is not Ecma ratified. The emitted SBOM therefore cannot be checked against a declared target version. Recorded in WP-038 as STL-003.",
+    boundary:
+      "The SBOM was produced and is inspectable; this concerns the declared target version only, and asserts nothing about SBOM completeness or accuracy.",
+    resolutionState: "unknown",
+    requiredDecision: null,
+    evidenceReferences: ["EV-026", "EV-027"],
+    synthetic: false,
+  },
+  {
+    id: "FND-019",
+    title: "The WP-037 brace-expansion pin disabled the lint check",
+    severity: "structural",
+    raisedOn: "2026-08-19",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L7"],
+    description:
+      "The minimum-necessary pin recorded in EV-023 forced brace-expansion 5.0.9 on every consumer. minimatch 3.1.5, reached through the ESLint config-array, requires the 1.x default function export, so ESLint aborted with `TypeError: expand is not a function` and the pipeline recorded LINT as not-completed rather than review-required. The flat override was removed so semver resolves 1.1.18 for minimatch 3.1.5 and 5.0.9 for minimatch 10.2.6; both versions return no advisories, and lint executes again. Recorded in EV-029. Disposition: REPAIRED.",
+    boundary:
+      "Repair restores the ability to run the check. It does not make lint pass — FND-014 stands, now at 686 problems — and asserts nothing about the completeness of any advisory source. It also does not assert that flat overrides are safe in general; a future pin must be checked against every consumer's expected export shape.",
+    resolutionState: "confirmed",
+    requiredDecision: null,
+    evidenceReferences: ["EV-023", "EV-029"],
+    synthetic: false,
+  },
 ];
+
+
 
 export const EVIDENCE: EvidenceRecord[] = [
   {
@@ -612,7 +678,69 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-026",
+    title: "External authority register built from cited primary sources",
+    kind: "document-review",
+    subject: "43 external authorities recorded in data/governance/external-authorities.json",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That 43 external authorities were recorded with an identifier, issuing body, citation, retrieval reference, and currency note, spanning federal student privacy, Massachusetts statute and regulation, accessibility standards, security and AI frameworks, and interoperability specifications. Six conflicts and five stale project references were recorded rather than resolved silently.",
+    doesNotSupport:
+      "That the interpretations are legally correct, complete, or current beyond their recorded retrieval date; that any obligation applies or is satisfied; or that legal, professional, or independent review has occurred. Research was AI-assisted and executor-recorded; independent = false.",
+    authorityClass: "research-candidate",
+    synthetic: false,
+  },
+  {
+    id: "EV-027",
+    title: "Obligation register integrity tests",
+    kind: "automated-test",
+    subject: "src/test/obligations.test.ts against the canonical registers under data/governance",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the obligation registers satisfy their declared schema, that identifiers are unique, that every obligation cites an authority present in the authority register, that applicability, control, and evidence states are held on independent axes, and that prohibited claim wording is absent from the register text.",
+    doesNotSupport:
+      "That any obligation is satisfied, that the applicability judgements are correct, or that the register is complete. A schema check is evidence about structure, not about legal substance.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-028",
+    title: "Data-collection inspection of the current prototype surface",
+    kind: "manual-check",
+    subject: "Routes, server entry, forms, storage, analytics and cookie usage in the tracked tree",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That inspection of the tracked source found no personal-data collection path: no account system, no submission form persisting input, no analytics collection, and one first-party sidebar preference cookie. This is consistent with the recorded zero-PII boundary at the inspected commit.",
+    doesNotSupport:
+      "That the platform host collects nothing, that the boundary holds at any later commit, or that any privacy obligation is satisfied. Executor-run inspection; independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-029",
+    title: "Lint regression repair and post-repair verification",
+    kind: "automated-test",
+    subject: "The brace-expansion resolution, ESLint execution, tests, build and advisory rescan",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That `bunx eslint . -f json` crashed with `TypeError: expand is not a function` (exit 2, no report emitted) while the flat override pinned brace-expansion to 5.0.9, because minimatch 3.1.5 requires the 1.x default function export; that removing the flat override lets semver resolve brace-expansion 1.1.18 for minimatch 3.1.5 and 5.0.9 for minimatch 10.2.6; that an advisory query for both versions returned no advisories; and that after the change lint completed with 686 problems (672 errors, 14 warnings), 279 of 279 tests passed, typecheck reported no errors, the production build succeeded, and the pipeline recorded fail=0, review-required=2, not-completed=1 with baseline CURRENT.",
+    doesNotSupport:
+      "That lint passes, that the repository is free of vulnerabilities, or that any advisory source is complete. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
+
 
 export const DECISIONS: DecisionRecord[] = [
   {
@@ -988,7 +1116,30 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-018",
+    title: "Close WP-038 and adopt the obligation baseline",
+    state: "required",
+    decidedOn: null,
+    decidedBy: "Founder / Operator",
+    context:
+      "WP-038 — Regulatory, Standards & Obligation Baseline is executor-complete under DEC-017. The canonical registers under data/governance hold 43 primary-source-verified external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger classes, and 16 gaps, projected into docs/wp-038 and covered by 21 executing register-integrity tests. Findings FND-016, FND-017 and FND-018 are raised and open. No owner decision has closed the package, and DEC-012 (binding ULW-AS-001 v1.3 to a named WCAG version and level) remains open with a brief at docs/wp-038/DEC-012-BRIEF.md.",
+    decision:
+      "PROPOSED, NOT ACCEPTED. Proposed wording for owner disposition: close WP-038 on the evidence produced, adopt data/governance/obligations.json and external-authorities.json as the canonical obligation baseline for planning and gate design only, keep FND-016, FND-017 and FND-018 open with their routed work packages, keep DEC-012 open, and name the next eligible work package. The executor may not accept this decision.",
+    consequences: [
+      "Adoption of an obligation baseline is a planning input. It creates no compliance, legal, conformance, certification, district-readiness, or independent-review claim, and no obligation is asserted to be satisfied.",
+      "Interpretation of each obligation is AI-assisted and executor-recorded against a cited primary source. It is not legal advice and has had no independent or professional review.",
+      "Until this decision is accepted, WP-038 remains EXECUTOR-COMPLETE and no work package after it is authorized.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "candidate",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001"],
+    synthetic: false,
+  },
 ];
+
 
 export const CLAIMS: ClaimRecord[] = [
   {
