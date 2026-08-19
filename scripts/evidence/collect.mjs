@@ -34,7 +34,6 @@ function base(context, evidenceType, fields) {
   const timestamp = nowIso();
   return createEvidenceRecord({
     evidence_id: fields.evidence_id,
-    schema_version: undefined,
     evidence_type: evidenceType,
     commit_sha: context.commit,
     tree_hash: context.treeHash,

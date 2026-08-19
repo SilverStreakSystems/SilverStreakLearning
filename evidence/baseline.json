@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0.0",
+  "generated_marker": "GENERATED - DO NOT HAND EDIT",
+  "layer": "B — current baseline manifest (derived; regenerated, never hand-edited)",
+  "generated_at": "2026-08-19T02:39:13.986Z",
+  "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+  "short_commit": "96aaef6",
+  "tree_hash": "da84440384ac03e2f522d54420cb5802061d9878",
+  "working_tree_dirty": true,
+  "authority": {
+    "class": "candidate",
+    "basis": "Derived record under SSLS-BPP-001 v2.0 (DEC-007). Repository SSOT adopted by DEC-010.",
+    "note": "Authority is declared, never derived from a passing check."
+  },
+  "repository": {
+    "root_commit": "3190f7973cc6626912c8de24731514df0608a5d9",
+    "commit_count": 354,
+    "tracked_files": 396,
+    "source_files": 211,
+    "test_files": 9,
+    "doc_files": 132,
+    "route_modules": 31
+  },
+  "input_sets": {
+    "source": "7df407f3628d270d3a4e9546e360f70f5007854db379c2cfd5019313f4d8062b",
+    "tests": "b87727054ecc540f6a82441de9df9ceb4cd5d9c15bf24579243a776ec1b5bcac",
+    "config": "18d69c1bc843942922b9cf82101d582da06a9a662d0a9501691c2224e49fef21",
+    "lockfile": "6a5f5aee9b73f58c9afff2ab1a15ea049050bd20b5fbfee7aff7a65e3f7a842d",
+    "manifest": "6351fa90c648b55cce0b0bbf16906b43a7334bc2b5bb29c39ac91dff549c0a0a",
+    "routes": "a0e724c67bc44c70c571c904a081f07711be4b81530cda769a13b41c2b8072a4",
+    "pipeline": "919cbd582241dc6b52f883787d0b1a29025cd3e9afb329e1114f2a04f1091637",
+    "workflows": "092ca0cefdb5778688054675aac8cb9c0cb873fdbc2993b4a212740c37d3e5a6",
+    "docs": "f7b702b61f996a8683e91ac005f819c7f2014160c8c2b66086b14f84892fc01e",
+    "tracked": "9e2ca2c319247754bc146a0c2ec04f42101c0fe60e04d8c2dfc47c48aa256804"
+  },
+  "input_set_digest": "0077e5a037a45656c70b115fe49cf043ef25a598275feb7727a6992e1c991ae2",
+  "evidence_cited": [
+    {
+      "evidence_id": "EV-ROUTES",
+      "evidence_type": "ROUTE_INVENTORY",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.601Z",
+      "artifact_path": "artifacts/provenance/routes.json"
+    },
+    {
+      "evidence_id": "EV-PROVENANCE",
+      "evidence_type": "SOURCE_PROVENANCE",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.682Z",
+      "artifact_path": "artifacts/provenance/provenance.json"
+    },
+    {
+      "evidence_id": "EV-CONFIG",
+      "evidence_type": "CONFIGURATION",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.683Z",
+      "artifact_path": "artifacts/provenance/configuration.json"
+    },
+    {
+      "evidence_id": "EV-SSOT-GUARD",
+      "evidence_type": "SSOT_BINDING",
+      "status": "review-required",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.780Z",
+      "artifact_path": "artifacts/provenance/ssot-binding.log"
+    },
+    {
+      "evidence_id": "EV-DEPS",
+      "evidence_type": "DEPENDENCY_INVENTORY",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.784Z",
+      "artifact_path": "artifacts/sbom/dependency-inventory.json"
+    },
+    {
+      "evidence_id": "EV-SBOM",
+      "evidence_type": "SBOM",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.797Z",
+      "artifact_path": "artifacts/sbom/sbom.cdx.json"
+    },
+    {
+      "evidence_id": "EV-VULN",
+      "evidence_type": "VULNERABILITY_SCAN",
+      "status": "not-completed",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.846Z",
+      "artifact_path": "artifacts/vulnerability/audit.json"
+    },
+    {
+      "evidence_id": "EV-LICENSE",
+      "evidence_type": "LICENSE_SCAN",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.854Z",
+      "artifact_path": "artifacts/licenses/licenses.json"
+    },
+    {
+      "evidence_id": "EV-SECRET",
+      "evidence_type": "SECRET_SCAN",
+      "status": "review-required",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.917Z",
+      "artifact_path": "artifacts/boundary/secret-scan.json"
+    },
+    {
+      "evidence_id": "EV-PII",
+      "evidence_type": "PII_BOUNDARY_SCAN",
+      "status": "pass",
+      "commit_sha": "96aaef6fbf59bfff02e25cb764a21c220335b2e9",
+      "timestamp": "2026-08-19T02:39:13.981Z",
+      "artifact_path": "artifacts/boundary/pii-boundary-scan.json"
+    }
+  ],
+  "applicability": [
+    {
+      "evidence_id": "EV-ROUTES",
+      "evidence_type": "ROUTE_INVENTORY",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-PROVENANCE",
+      "evidence_type": "SOURCE_PROVENANCE",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-CONFIG",
+      "evidence_type": "CONFIGURATION",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-SSOT-GUARD",
+      "evidence_type": "SSOT_BINDING",
+      "status": "review-required",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-DEPS",
+      "evidence_type": "DEPENDENCY_INVENTORY",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-SBOM",
+      "evidence_type": "SBOM",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-VULN",
+      "evidence_type": "VULNERABILITY_SCAN",
+      "status": "not-completed",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-LICENSE",
+      "evidence_type": "LICENSE_SCAN",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-SECRET",
+      "evidence_type": "SECRET_SCAN",
+      "status": "review-required",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    },
+    {
+      "evidence_id": "EV-PII",
+      "evidence_type": "PII_BOUNDARY_SCAN",
+      "status": "pass",
+      "state": "CURRENT",
+      "reason": "All declared inputs are unchanged and validity has not ended.",
+      "changedInputs": []
+    }
+  ],
+  "derived": {
+    "build": "NOT COLLECTED",
+    "tests": "NOT COLLECTED",
+    "typecheck": "NOT COLLECTED",
+    "lint": "NOT COLLECTED",
+    "routes": 29,
+    "dependencies": 74,
+    "sbom_components": 74,
+    "vulnerability_scan": "SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE.",
+    "licenses_requiring_review": 0,
+    "secret_scan_matches": 3,
+    "pii_scan_matches": 0,
+    "backend": "No database or backend is configured in the tracked tree."
+  },
+  "freshness": {
+    "state": "CURRENT",
+    "not_current": [],
+    "rule": "The baseline is current when every cited record is CURRENT for the present input sets. Re-derivation, not rebinding, is what makes it current."
+  },
+  "boundaries": [
+    "No production data, no personal data, and no live integration is in scope.",
+    "No result in this manifest constitutes certification, conformance, or release readiness.",
+    "Workflow presence is not merge enforcement; branch protection is not verifiable from repository content (FND-012).",
+    "Independence is declared. Every record here is executor-produced and not independent."
+  ]
+}
