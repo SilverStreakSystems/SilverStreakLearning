@@ -9,7 +9,6 @@ import {
   priorityRank,
   validateActions,
 } from "@/domain";
-import { PROGRAM_STANDING } from "@/fixtures";
 import { ACTIVE_CAPACITY, buildActions } from "@/lib/workspace-queries";
 
 export const Route = createFileRoute("/actions")({
@@ -43,22 +42,6 @@ function ActionCenter() {
         title="Action Center"
         summary={`Obligations owed by the ${ACTIVE_CAPACITY.name.toLowerCase()}. Each one is projected from a canonical register record: this surface creates no tasks of its own.`}
       />
-
-      <Section
-        id="standing"
-        title="Program standing behind these obligations"
-        description="Obligations are only defensible against the work package that is actually active."
-      >
-        <dl className="grid gap-4 text-sm md:grid-cols-2 xl:grid-cols-3">
-          {PROGRAM_STANDING.map((entry) => (
-            <div key={entry.id}>
-              <dt className="font-semibold">{entry.label}</dt>
-              <dd className="text-sm">{entry.value}</dd>
-              <dd className="mt-1 text-xs text-muted-foreground">{entry.basis}</dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
 
       <Section
         id="order"

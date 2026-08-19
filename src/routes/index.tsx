@@ -9,7 +9,6 @@ import {
   FINDINGS,
   FOUNDATION_ARTIFACTS,
   NEXT_DEFENSIBLE_ACTIONS,
-  PROGRAM_STANDING,
   READINESS_AXES,
 } from "@/fixtures";
 import { carriesImplementationAuthority, operatesNow } from "@/domain";
@@ -104,22 +103,6 @@ function CommandCenter() {
               </Link>
             </dd>
           </div>
-        </dl>
-      </Section>
-
-      <Section
-        id="program"
-        title="Program standing"
-        description="The state of the governing build program as recorded. Closure here means an owner decision, never a certification."
-      >
-        <dl className="grid gap-4 text-sm md:grid-cols-2 xl:grid-cols-3">
-          {PROGRAM_STANDING.map((entry) => (
-            <div key={entry.id}>
-              <dt className="font-semibold">{entry.label}</dt>
-              <dd className="text-sm">{entry.value}</dd>
-              <dd className="mt-1 text-xs text-muted-foreground">{entry.basis}</dd>
-            </div>
-          ))}
         </dl>
       </Section>
 
