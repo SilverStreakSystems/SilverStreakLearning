@@ -138,8 +138,10 @@ function CommandCenter() {
           <div className="rounded-md border border-border bg-surface p-4">
             <dt className="flex flex-wrap items-center gap-2 font-display text-base font-semibold">
               Owner disposition
-              <StateChip state="blocked" />
-              <span>PENDING</span>
+              <StateChip
+                state={program.ownerDisposition.state === "pending" ? "blocked" : "confirmed"}
+              />
+              <span>{program.ownerDisposition.state.toUpperCase()}</span>
             </dt>
             <dd className="mt-2 text-sm text-muted-foreground">
               {program.ownerDisposition.subject}. Required of {program.ownerDisposition.requiredOf}.

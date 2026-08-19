@@ -4,6 +4,8 @@ import { loadHistoricalRequirementFile } from "@/lib/historical-requirement-regi
 import { loadRestatementIndexFile } from "@/lib/restatement-registry";
 import {
   OWNER_REVIEW_OPTIONS,
+  UNMATCHED_CONCLUSION,
+  loadOwnerDispositionFile,
   loadOwnerReviewFile,
   loadOwnerReviewSchema,
 } from "@/lib/fnd-022-review-registry";
@@ -11,6 +13,7 @@ import {
 const packet = loadOwnerReviewFile();
 const index = loadRestatementIndexFile();
 const requirements = loadHistoricalRequirementFile().records;
+const dispositions = loadOwnerDispositionFile();
 
 describe("FND-022 owner review packet — structure", () => {
   it("declares the schema version the schema file declares", () => {
@@ -71,27 +74,56 @@ describe("FND-022 owner review packet — structure", () => {
   });
 });
 
-describe("FND-022 owner review packet — decides nothing", () => {
-  const decisionCarriers = [
-    ...packet.candidates,
-    ...packet.restatement_review_rows,
-    ...packet.unmatched_current_candidates,
-  ];
+describe("FND-022 owner review packet — transcribes DEC-020 and originates nothing", () => {
+  it("names DEC-020 and the canonical disposition record as the source of every owner field", () => {
+    expect(packet.owner_decision.decision_id).toBe(dispositions.decision_id);
+    expect(packet.owner_decision.recorded_on).toBe(dispositions.recorded_on);
+    expect(packet.owner_decision.recorded_by).toBe(dispositions.recorded_by);
+    expect(packet.owner_decision.canonical_record).toBe(
+      "data/historical/fnd-022-owner-dispositions.json",
+    );
+  });
 
-  it("leaves every owner disposition and rationale null", () => {
-    for (const item of decisionCarriers) {
-      expect(item.owner_disposition).toBeNull();
-      expect(item.owner_rationale).toBeNull();
+  it("transcribes every candidate disposition and rationale unchanged", () => {
+    expect(packet.candidates).toHaveLength(dispositions.candidate_dispositions.length);
+    for (const candidate of packet.candidates) {
+      const decision = dispositions.candidate_dispositions.find(
+        (d) => d.candidate_id === candidate.candidate_id,
+      );
+      expect(decision, candidate.candidate_id).toBeDefined();
+      expect(candidate.owner_disposition).toBe(decision!.owner_disposition);
+      expect(candidate.owner_rationale).toBe(decision!.owner_rationale);
+      expect(candidate.exact_text).toBe(decision!.exact_text);
     }
   });
 
-  it("offers the full option set to every item and preselects none", () => {
-    for (const item of decisionCarriers) {
+  it("transcribes every relationship-row conclusion and unmatched conclusion unchanged", () => {
+    for (const row of packet.restatement_review_rows) {
+      const decision = dispositions.relationship_row_conclusions.find(
+        (d) => d.relation_id === row.relation_id,
+      );
+      expect(decision, row.relation_id).toBeDefined();
+      expect(row.owner_disposition).toBe(decision!.owner_conclusion);
+      expect(row.relationship_classification).toBe(decision!.cycle4_classification);
+    }
+    for (const unmatched of packet.unmatched_current_candidates) {
+      const decision = dispositions.unmatched_conclusions.find(
+        (d) => d.requirement_id === unmatched.requirement_id,
+      );
+      expect(decision, unmatched.requirement_id).toBeDefined();
+      expect(unmatched.owner_disposition).toBe(UNMATCHED_CONCLUSION);
+      expect(unmatched.owner_rationale).toBe(decision!.owner_rationale);
+    }
+  });
+
+  it("keeps every owner value inside the presented option vocabulary", () => {
+    for (const item of [...packet.candidates, ...packet.restatement_review_rows]) {
       expect(item.owner_options).toEqual([...OWNER_REVIEW_OPTIONS]);
+      expect(OWNER_REVIEW_OPTIONS).toContain(item.owner_disposition);
     }
   });
 
-  it("labels every recommendation as non-binding", () => {
+  it("labels every recommendation as non-binding executor analysis", () => {
     for (const candidate of packet.candidates) {
       expect(candidate.advisory_recommendation.startsWith("NON-BINDING advisory: ")).toBe(true);
       expect(candidate.advisory_rationale.startsWith("NON-BINDING analysis only. ")).toBe(true);
@@ -104,14 +136,14 @@ describe("FND-022 owner review packet — decides nothing", () => {
     for (const candidate of packet.candidates) {
       expect(candidate.current_status.inherited_authority).toBe("HISTORICAL-EVIDENCE");
       expect(candidate.current_status.promotion_state).toBe("NOT-PROMOTED");
+      expect(candidate.current_status.conformance_state).toBe("NOT-ASSESSED");
       expect(candidate.package_completeness).toBe("PARTIAL");
     }
     expect(packet.entry_state["hs_023"]).toBe("NOT-PROMOTED");
     expect(packet.entry_state["pkg_001"]).toBe("PARTIAL");
   });
 
-  it("keeps the finding, the work package, and the gate open", () => {
-    expect(packet.entry_state["fnd_022"]).toBe("OPEN");
+  it("keeps the work package and the gate open", () => {
     expect(packet.entry_state["wp_007"]).toBe("ACTIVE");
     expect(packet.entry_state["gate_a"]).toBe("OPEN");
     expect(packet.entry_state["wp_039"]).toBe("NOT AUTHORIZED");
@@ -124,10 +156,11 @@ describe("FND-022 owner review packet — decides nothing", () => {
     }
   });
 
-  it("states its refusals", () => {
+  it("states its refusals, including originating any disposition of its own", () => {
     expect(packet.refused_in_this_cycle.length).toBeGreaterThanOrEqual(5);
     const refusals = packet.refused_in_this_cycle.join(" ").toLowerCase();
-    expect(refusals).toContain("owner disposition");
-    expect(refusals).toContain("closing fnd-022");
+    expect(refusals).toContain("originating, simulating, or inferring any owner disposition");
+    expect(refusals).toContain("closing wp-007 or gate a");
+    expect(refusals).toContain("implementing, satisfying, testing, or assessing any adopted");
   });
 });
