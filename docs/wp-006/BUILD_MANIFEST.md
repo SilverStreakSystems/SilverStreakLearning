@@ -1,6 +1,7 @@
 # Build Manifest
 
-All values inspected at commit `6aa254e6f9ceeb06c60ae08827118fa5bf52001d` on 2026-08-17 (UTC).
+All values inspected at commit `6aa254e6f9ceeb06c60ae08827118fa5bf52001d` on 2026-08-19 (UTC).
+This capture supersedes the earlier capture at `70c1f89`, which is now historical.
 Results below were executed at this commit, not reused from an earlier run.
 
 | Field | Value | Status |
@@ -25,7 +26,7 @@ Results below were executed at this commit, not reused from an earlier run.
 | Build command | `bun run build` (`vite build`) | [C] |
 | Test command | `bun run test` (`vitest run`) | [C] |
 | Build result | Succeeded; Nitro emitted worker output and client bundle | [C] |
-| Test result | 8 files, 210 tests, 210 passed, 0 failed, 0 skipped; duration 12.41 s | [C] |
+| Test result | 8 files, 210 tests, 210 passed, 0 failed, 0 skipped; duration 14.53 s | [C] |
 | Lint result | Not executed in this pass — status Unknown for this commit | [U] |
 | Typecheck result | Not executed separately; the build compiled without error | [I] |
 
@@ -33,10 +34,10 @@ Results below were executed at this commit, not reused from an earlier run.
 
 | Measure | Value |
 |---|---|
-| Tracked files | 348 |
-| Files under `src/` | 210 |
-| TypeScript/TSX lines under `src/` | 35,556 |
-| Files under `docs/` | 111 (before this work package's additions) |
+| Tracked files | 366 |
+| Files under `src/` | 210 (208 TypeScript/TSX) |
+| TypeScript/TSX lines under `src/` | 35,798 |
+| Files under `docs/` | 129 (including this work package's outputs) |
 | Route files | 30 (including `__root.tsx`) |
 
 ## Binding rule
