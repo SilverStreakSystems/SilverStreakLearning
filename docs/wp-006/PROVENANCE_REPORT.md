@@ -11,7 +11,7 @@ This does not substitute for a CI evidence architecture; that is WP-037 and is n
 | Safe locator | `git.private.lovable-gcp.code.storage/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` (remote `origin`; the checked-out URL embeds a scoped access token, which is deliberately not reproduced here) | [C] |
 | Secondary remote | `s3://lovable-repositories/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` | [C] |
 | Branch | `edit/edt-f97ae920-46a2-4498-aa4f-4b8f70b79817` | [C] |
-| HEAD commit | `70c1f891c5d341c60132d0109979042004425a4b` | [C] |
+| HEAD commit | `6aa254e6f9ceeb06c60ae08827118fa5bf52001d` | [C] |
 | Parent commit | `f7c859d37667a38868979180ae97923cf00c1d74` | [C] |
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — "template: tanstack_start_ts_current-58df4fe22702", 2026-08-16 09:16:43 +0200 | [C] |
 | Commit count on branch | 283 | [C] |
@@ -43,6 +43,6 @@ inside the project. DEC-009 accepts this bounded unknown for the current phase.
 
 ## Limitations
 
-- All hashes and results are bound to `70c1f89`. They may not be reported as current after any
+- All hashes and results are bound to `6aa254e`. They may not be reported as current after any
   further commit.
 - Self-inspection cannot establish independence, authorization, or conformance.

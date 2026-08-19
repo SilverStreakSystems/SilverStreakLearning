@@ -1,6 +1,6 @@
 # Build Manifest
 
-All values inspected at commit `70c1f891c5d341c60132d0109979042004425a4b` on 2026-08-17 (UTC).
+All values inspected at commit `6aa254e6f9ceeb06c60ae08827118fa5bf52001d` on 2026-08-17 (UTC).
 Results below were executed at this commit, not reused from an earlier run.
 
 | Field | Value | Status |
@@ -41,5 +41,5 @@ Results below were executed at this commit, not reused from an earlier run.
 
 ## Binding rule
 
-Every result above is bound to `70c1f89`. After any commit to any ref, these results become
+Every result above is bound to `6aa254e`. After any commit to any ref, these results become
 historical and must be re-executed before being reported as current.

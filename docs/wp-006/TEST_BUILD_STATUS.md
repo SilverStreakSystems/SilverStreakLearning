@@ -1,6 +1,6 @@
 # Current test and build status
 
-Bound to commit `70c1f891c5d341c60132d0109979042004425a4b`, executed 2026-08-17 06:57–07:02 UTC in
+Bound to commit `6aa254e6f9ceeb06c60ae08827118fa5bf52001d`, executed 2026-08-17 06:57–07:02 UTC in
 the Lovable sandbox by the Founder / Operator agent session. Evidence method: automated, executor-run.
 Not independent.
 
@@ -42,5 +42,5 @@ Suites: `shell.test.tsx` (81), `governance.test.tsx`, `capability-architecture.t
 
 ## Binding rule
 
-These results establish the state of `70c1f89` only. Any later commit invalidates them as current
+These results establish the state of `6aa254e` only. Any later commit invalidates them as current
 evidence.
