@@ -58,6 +58,6 @@ RESTATES means the two wordings state the same expectation. NARROWS means the su
 - electing a controlling wording or resolving a conflict between sources;
 - assigning any disposition or conformance state to any candidate;
 - promoting HS-023 or PKG-001, or treating either as current authority;
-- inferring anything about the unsupplied v0.2.0 DOCX and ZIP;
+- inferring anything about the historical v0.2.0 DOCX and ZIP, neither supplied;
 - asserting WCAG, ADA Title II, Section 508, or any other accessibility conformance;
 - closing WP-007, advancing Gate A, or authorizing WP-039.
