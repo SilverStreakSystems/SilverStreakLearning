@@ -2,79 +2,76 @@
 
 ## Recommendation
 
-**HOLD**
+**PROMOTE TO OWNER CLOSURE**
 
-Recorded owner disposition: **DEC-015, accepted 2026-08-19 — HOLD.** DEC-015 is not a waiver, an
-exception, a retroactive reinterpretation of the exit criteria, or a basis for closure.
+Executor recommendation only. WP-037 is not closed by this document. Closure requires an accepted
+owner decision — prepared as **DEC-017**, state *decision required*.
 
-## Basis
+## Authority chain
 
-Every WP-037 deliverable other than the vulnerability criterion reconciles to PASS with cited source
-and evidence. The blocking condition is narrow and specific.
+- DEC-007 accepted — governing program SSLS-BPP-001 v2.0.
+- DEC-010 accepted — go-forward software SSOT.
+- DEC-014 accepted — WP-006 closed by owner; WP-037 authorized.
+- **DEC-015 accepted, preserved intact** — HOLD disposition; authorized one bounded recovery pass.
+- **DEC-016 accepted** — triage and bounded remediation authority. Supersedes DEC-015 only as
+  current remediation authority; DEC-015's constraints on immutability, claim wording, and
+  self-closure remain binding.
 
-### The original attempt remains a failed attempt
+## What changed since the HOLD
 
-- `bun audit --json`, invoked by `scripts/evidence/supply-chain.mjs`, still fails in this
-  environment: `audit request failed (status 404)`.
-- `EV-VULN` is preserved verbatim: `status: not-completed`,
-  `actual_result: "SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE."`, with its tool,
-  version, timestamp, commit, and environment metadata intact.
-- A 404 is never represented as a clean vulnerability result.
+### The original attempt is still a failed attempt
 
-### The bounded recovery pass authorized by DEC-015
+`bun audit --json` still fails in this environment (`audit request failed (status 404)`).
+`EV-VULN` is preserved verbatim: `status: not-completed`. A 404 is never represented as a clean
+result, and this remediation does not convert it into one.
 
-Executed once, additively, without modifying EV-019 or EV-VULN:
+### The five advisories were triaged, then remediated
 
-- Source: `https://registry.npmjs.org/-/npm/v1/security/advisories/bulk` (npm public registry
-  advisory service, backed by the GitHub Advisory Database).
-- Input: the 563 versions resolved across 527 packages in `bun.lock`; declared inputs unchanged.
-- Result: HTTP 200. Complete raw response captured at
-  `evidence/artifacts/vulnerability/advisory-recovery.json`, hashed in
-  `evidence/records/EV-VULN-RECOVERY.json`, registered as **EV-021**.
-- Matched advisories: **5, all high severity**, all unremediated and untriaged.
+EV-021 recorded five high-severity advisories over the pre-remediation dependency set. Under
+DEC-016 each was triaged before any change (EV-022), with reachability and exploitability recorded
+UNKNOWN rather than inferred. All five were transitive; none was a direct dependency.
 
-| Package | Resolved version | Advisory | Severity |
+Minimum-necessary remediation (EV-023) — three `overrides` entries applied through `bun install`,
+seven lockfile resolution changes and no others:
+
+| Package | Current | Target | Advisories removed |
 | --- | --- | --- | --- |
-| brace-expansion | 1.1.16 | GHSA-mh99-v99m-4gvg | high |
-| brace-expansion | 1.1.16 | GHSA-rgw5-rvv9-x895 | high |
-| brace-expansion | 5.0.8 | GHSA-rgw5-rvv9-x895 | high |
-| js-yaml | 4.3.0 | GHSA-5p4m-2wfm-xmqj | high |
-| nanoid | 3.3.16 | GHSA-2v37-7h3g-55p8 | high |
+| brace-expansion | 1.1.16, 5.0.8 | 5.0.9 | GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895 (both majors) |
+| js-yaml | 4.3.0 | 4.3.1 | GHSA-5p4m-2wfm-xmqj |
+| nanoid | 3.3.16 | 3.3.18 | GHSA-2v37-7h3g-55p8 |
 
-Nothing is suppressed, summarized away, or substituted. All five are transitive development-time
-dependencies of the resolved tree; that observation is context, not triage, and does not reduce the
-findings.
+No breaking or major upgrade was required, so nothing exceeded the DEC-016 boundary.
 
-## Why a completed scan does not close the criterion
+### The rescan completed with no matched advisories
 
-The criterion is not "a scan ran". The recovery pass produced an authoritative result, and that
-result reports unremediated high-severity advisories. Closing on that basis would require either
-weakening the criterion or creating a new exception — both prohibited by DEC-015. The criterion
-therefore remains **NOT COMPLETED**, and `bun audit`, the pipeline's declared scanner, still cannot
-execute in this environment.
+EV-024: HTTP 200 against the npm bulk advisory service over 560 resolved versions across 526
+packages, manifest hash `9d672fbe`, lockfile hash `38d150fa`, **0 matched advisories at every
+severity**. The five EV-021 findings are absent; no new advisory appeared.
 
-## What would change the recommendation
+### No regression
 
-Only one of the following, and only on evidence:
+EV-025: typecheck clean, 254/254 tests across 10 files, production build succeeded, repository lint
+677 problems against 683 before (pre-existing debt, reduced, no new debt), route inventory
+unchanged, licence posture unchanged, pipeline fail=0 with baseline freshness CURRENT.
 
-1. The five advisories are remediated or dispositioned by the owner against the frozen criteria, and
-   a fresh scan records that state.
-2. The owner records a new, explicit decision on the vulnerability criterion. That decision is the
-   owner's to make and is not prepared, inferred, or self-accepted here.
+## Why the vulnerability criterion now reconciles to PASS
 
-## Owner escalation
+The criterion concerns **completed vulnerability evidence**, not the non-existence of vulnerability.
+It previously failed because no scan completed and, once one did, its findings were unremediated and
+untriaged. Both conditions are now discharged on evidence: a completed scan exists, its findings
+were triaged, remediated, and confirmed absent by rescan. The criterion wording is unchanged and no
+exception was created.
 
-- **Attempted source 1:** `bun audit --json` → HTTP 404. Endpoint unavailable in this environment.
-- **Attempted source 2:** npm bulk advisory endpoint → HTTP 200, 5 high-severity advisories.
-- **Available alternatives not executed:** GitHub Dependabot alerts (requires repository-settings
-  access, outside repository content, same access boundary as FND-012); OSV.dev batch query as a
-  second independent corroborating source.
-- **Decision genuinely required:** whether to remediate the five advisories before WP-037 closure,
-  or to record a bounded, evidence-cited acceptance of them. Not whether to reinterpret the
-  criterion.
+## Limitations carried into closure, not resolved by it
 
-## Non-claims
+- **FND-012 — OPEN / NOT VERIFIED.** Branch-protection enforcement remains unproven.
+- **FND-014 — OPEN / ADVISORY.** Repository-wide lint does not pass.
+- `bun audit`, the pipeline's originally declared scanner, still cannot execute here.
+- One advisory source, point-in-time, no reachability analysis, no code audit.
+- All evidence executor-produced: `independent = false` throughout.
+- Published surface remains **PUBLIC PROTOTYPE** (EV-020). Closure is not release authorization.
 
-This recommendation creates no security, compliance, certification, accessibility-conformance,
-release, or independent-validation claim. Nothing here closes a gate. WP-038 remains NOT AUTHORIZED
-and NOT STARTED.
+## Owner action
+
+Accept, decline, or revise **DEC-017**. On acceptance: WP-037 CLOSED BY OWNER and WP-038 becomes
+NEXT ELIGIBLE. Until then WP-037 remains open and WP-038 must not begin.

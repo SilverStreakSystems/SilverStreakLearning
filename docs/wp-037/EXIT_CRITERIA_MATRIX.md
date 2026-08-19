@@ -3,7 +3,7 @@
 States used: PASS, FAIL, NOT VERIFIED, NOT COMPLETED, N/A. No blended score is calculated and no
 criterion is modified.
 
-**Owner disposition, DEC-015 (accepted 2026-08-19).** WP-037 is HOLD. No criterion below may be
+**Owner disposition, DEC-015 (accepted 2026-08-19).** WP-037 was placed on HOLD. No criterion below may be
 weakened, inferred, reconstructed, or retroactively rewritten to permit closure, and the absence of
 frozen Case 1 wording does not authorize the weaker interpretation.
 
@@ -13,8 +13,11 @@ the WP-037 execution prompt, reconciled row by row. Because no pre-registered wo
 vulnerability criterion, it is **not** reinterpreted in the executor's favour: see row 15 and
 `CLOSURE_RECOMMENDATION.md`.
 
-**Regenerated after the bounded recovery pass authorized by DEC-015.** Row 15 is updated to record
-the recovery evidence; no other row changed state.
+**Regenerated after the bounded remediation authorized by DEC-016 (accepted 2026-08-19).** Row 15 is
+updated to record triage, remediation, and a completed post-remediation rescan with zero matched
+advisories, and moves to PASS on the executed-evidence criterion. No other row changed state:
+row 19 remains NOT VERIFIED for enforcement (FND-012), row 20 remains FAIL (advisory) (FND-014),
+row 21 remains N/A. Executor reconciliation only; WP-037 is not closed here.
 
 | # | Criterion | State | Evidence | Method | Source/input state | Limitation | Finding |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -32,7 +35,7 @@ the recovery evidence; no other row changed state.
 | 12 | License posture | PASS | `evidence/artifacts/licenses/licenses.json`; EV-LICENSE | automated | manifest, lockfile CURRENT | Inventory, not legal review | — |
 | 13 | Secret scan | PASS | EV-SECRET; boundary controls in `scripts/evidence/boundary.mjs` | automated | tracked CURRENT | Pattern-based; absence of match is not proof of absence | — |
 | 14 | Synthetic-data boundary scan | PASS | EV-PII; positive and negative control tests | automated | tracked CURRENT | Pattern-based | — |
-| 15 | Vulnerability scanning | **NOT COMPLETED** | EV-VULN preserved unchanged (`bun audit`, HTTP 404, failed attempt); EV-021 / `EV-VULN-RECOVERY` — bounded recovery scan, HTTP 200, 5 matched high-severity advisories, unremediated and untriaged | automated | manifest, lockfile CURRENT | A completed scan is not a satisfied criterion: `bun audit` still cannot execute in this environment, and the recovered findings are neither triaged nor remediated | Carried as an unresolved criterion under DEC-015 (HOLD) |
+| 15 | Vulnerability scanning | **PASS** | EV-VULN preserved unchanged (`bun audit`, HTTP 404, failed attempt); EV-021 recovery scan (5 high advisories); EV-022 triage; EV-023 remediation; EV-024 post-remediation rescan — HTTP 200, 526 packages / 560 resolved versions, 0 matched advisories; EV-025 regression verification | automated | manifest, lockfile CURRENT | Completed vulnerability evidence against one advisory source at one time. Not a security review, not proof that no vulnerability exists; `bun audit` still cannot execute in this environment and reachability/exploitability remain UNKNOWN | FND-015 REMEDIATED |
 | 16 | Synthetic fixture generator | PASS | `src/fixtures/**`; synthetic flags on every governed record | automated | source CURRENT | — | — |
 | 17 | Claim eligibility | PASS | Claims Register CLM-008 through CLM-012; claim-overreach test | automated | source, tests CURRENT | Register is human-authored | — |
 | 18 | Gate evidence eligibility | PASS | reuse contract, 7 conditions, `evaluateReuse` | automated | source CURRENT | Eligibility is not gate closure | — |

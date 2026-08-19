@@ -50,17 +50,21 @@ of its own.
   by DEC-014 (2026-08-19), following DEC-010, which adopts the current Lovable-managed
   repository as the go-forward software source of truth. Historical repository and bootstrap
   artifacts remain historical governance and evidence lineage.
-- **WP-037 — Evidence and Verification Pipeline: EXECUTED, HOLD — EXIT CRITERION UNRESOLVED.**
-  The pipeline is implemented and reproduced (`bun run evidence:run`, `bun run evidence:verify`:
-  15 records, fail=0, review-required=3, not-completed=1, baseline CURRENT).
-  **DEC-015 is ACCEPTED BY OWNER as a HOLD disposition**, not a waiver, exception, or closure. It
-  authorized one bounded evidence-recovery pass, which executed: an authoritative advisory query
-  against the npm bulk advisory service completed with HTTP 200 over the 563 versions resolved in
-  `bun.lock` and returned **five unremediated high-severity advisories** (brace-expansion 1.1.16 and
-  5.0.8, js-yaml 4.3.0, nanoid 3.3.16), recorded as EV-021 / `EV-VULN-RECOVERY`. `EV-VULN` is
-  preserved verbatim as a failed attempt (`bun audit`, HTTP 404) and is not a clean result.
-  The vulnerability criterion remains **NOT COMPLETED**: findings are untriaged and unremediated,
-  and no exit criterion is weakened to permit closure. WP-038 is **NOT AUTHORIZED and NOT STARTED**.
+- **WP-037 — Evidence and Verification Pipeline: EXECUTED AND REMEDIATED — OWNER CLOSURE DECISION REQUIRED.**
+  The pipeline is implemented and reproduced (`bun run evidence:run`: 15 records, fail=0,
+  review-required=2, not-completed=1, baseline CURRENT).
+  **DEC-015 is preserved as the accepted HOLD disposition.** **DEC-016 (accepted 2026-08-19)**
+  authorized triage and bounded remediation only, and supersedes DEC-015 solely as current
+  remediation authority. Under it the five high-severity advisories reported by EV-021
+  (brace-expansion 1.1.16 and 5.0.8, js-yaml 4.3.0, nanoid 3.3.16) were triaged (EV-022) and
+  remediated by minimum-necessary pinning to brace-expansion 5.0.9, js-yaml 4.3.1, and nanoid 3.3.18
+  (EV-023). The post-remediation rescan completed with HTTP 200 over 560 resolved versions across
+  526 packages and **0 matched advisories** (EV-024); regression verification recorded typecheck
+  clean, 254/254 tests, a successful build, and lint debt reduced from 683 to 677 problems (EV-025).
+  `EV-VULN` is preserved verbatim as a failed attempt (`bun audit`, HTTP 404) and is not a clean
+  result. The vulnerability exit criterion now reconciles to **PASS on completed evidence**;
+  FND-015 is **REMEDIATED**. WP-037 is **not closed** — **DEC-017 is DECISION REQUIRED**, and
+  **WP-038 remains NOT AUTHORIZED and NOT STARTED**.
 - DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
   DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
   respectively. None is resolved by WP-006 closure.
@@ -68,7 +72,9 @@ of its own.
   hand-bound documents still drift); **FND-013 resolved for machine-derived baseline facts**, with
   narrative semantic accuracy still human-governed; **FND-012 remains open and NOT VERIFIED** —
   a CI workflow existing in the repository is not branch-protection enforcement; **FND-014 remains
-  open and advisory** — repository-wide lint does not pass, while WP-037 files report zero problems.
+  open and advisory** — repository-wide lint does not pass (677 problems, no new debt from this work),
+  while WP-037 files report zero problems; **FND-015 REMEDIATED** — the five dependency advisories
+  are absent from the post-remediation rescan.
 - Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
   authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.
