@@ -11,7 +11,19 @@ import { StateChip, StateLegend } from "@/components/governance/state-chip";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { Field, SyntheticMarker } from "@/components/governance/markers";
 import { EVIDENCE } from "@/fixtures";
-import { EVIDENCE_KIND_LABEL } from "@/domain";
+import {
+  APPLICABILITY_MEANING,
+  APPLICABILITY_STATES,
+  EVIDENCE_KIND_LABEL,
+  EVIDENCE_LAYERS,
+  PIPELINE_AUTHORITY,
+  PIPELINE_CHECKS,
+  PIPELINE_FINDING_RESOLUTIONS,
+  PIPELINE_METHODS,
+  PIPELINE_REFUSALS,
+  REUSE_CONDITIONS,
+} from "@/domain";
+
 
 export const Route = createFileRoute("/evidence")({
   head: () => ({
