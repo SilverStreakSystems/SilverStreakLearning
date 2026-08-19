@@ -163,7 +163,7 @@
       "repository_locator": "DEC-019; docs/wp-007/CHECKPOINT-004.md; FND-021",
       "controlling_authority": "Owner decision required",
       "disposition": "UNRESOLVED",
-      "disposition_note": "Consistent with the reading that DEC-019 describes the August 5 v0.2.0 document, not this one. That cannot be confirmed while the v0.2.0 PDF is unavailable, so the numbering discrepancy is recorded and not resolved. No substitution of the v0.3.0 Section 10 text as an extraction source is authorized or made."
+      "disposition_note": "Consistent with the reading that DEC-019 describes the historical, not-current August 5 v0.2.0 document, not this one. That cannot be confirmed while the historical v0.2.0 PDF is unavailable, so the numbering discrepancy is recorded and not resolved. No substitution of the v0.3.0 Section 10 text as an extraction source is authorized or made."
     }
   ]
 }
