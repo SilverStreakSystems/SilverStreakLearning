@@ -466,7 +466,9 @@ export async function collectVulnerabilityRecoveryScan(context) {
     }
   }
 
-  findings.sort((a, b) => `${a.package}${a.advisory_id}`.localeCompare(`${b.package}${b.advisory_id}`));
+  findings.sort((a, b) =>
+    `${a.package}${a.advisory_id}`.localeCompare(`${b.package}${b.advisory_id}`),
+  );
   const total = findings.length;
 
   const payload = {

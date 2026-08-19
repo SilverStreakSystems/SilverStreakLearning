@@ -536,7 +536,6 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
 ];
 
-
 export const DECISIONS: DecisionRecord[] = [
   {
     id: "DEC-001",
@@ -864,7 +863,6 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001"],
     synthetic: false,
   },
-
 ];
 
 export const CLAIMS: ClaimRecord[] = [
