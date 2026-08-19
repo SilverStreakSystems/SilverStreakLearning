@@ -133,7 +133,7 @@ describe("Command Center synchronization", () => {
     expect(within(pkg).getByText(/SYNCHRONIZED-REFERENCE/)).toBeInTheDocument();
     expect(within(pkg).getByText(/NONCANONICAL/)).toBeInTheDocument();
     expect(within(pkg).getByText(/establishes file identity only/i)).toBeInTheDocument();
-    expect(await screen.findByRole("region", { name: /4 unresolved/i })).toBeInTheDocument();
+    expect(await screen.findByRole("region", { name: /6 unresolved/i })).toBeInTheDocument();
   });
 
   it("states what is not authorized and what hosting does not mean", async () => {
