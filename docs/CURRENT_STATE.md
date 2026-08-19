@@ -82,6 +82,18 @@ of its own.
   open and advisory** — repository-wide lint does not pass (677 problems, no new debt from this work),
   while WP-037 files report zero problems; **FND-015 REMEDIATED** — the five dependency advisories
   are absent from the post-remediation rescan.
+- **WP-038 — Regulatory, Standards and Obligation Baseline: EXECUTOR-COMPLETE — OWNER CLOSURE
+  DECISION REQUIRED.** The canonical registers under `data/governance/` hold 43 primary-source
+  external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger
+  classes, and 16 gaps, projected into `docs/wp-038/` and covered by 21 executing register-integrity
+  tests. Registered as EV-026 (authority register), EV-027 (register integrity tests), and EV-028
+  (data-collection inspection: no personal-data collection path, one first-party sidebar cookie).
+  New findings **FND-016** (ULW-AS-001 v1.3 unbound to a WCAG version and level, routed to DEC-012),
+  **FND-017** (BEFORE LIVE PII gate may fire after the first binding Massachusetts obligation), and
+  **FND-018** (CycloneDX named without a specification version) are **open**. **DEC-018 is drafted
+  and NOT ACCEPTED**: WP-038 is not closed, and no work package after it is authorized. Obligation
+  interpretation is AI-assisted and executor-recorded. It is not legal advice, not independent
+  review, and asserts no compliance with any obligation.
 - Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
   authority.
 - Gate A is not closed. No database enabled. No release authority. No independent validation.
