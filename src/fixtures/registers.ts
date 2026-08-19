@@ -246,14 +246,15 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L5", "L7"],
     description:
-      "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. A brief proposing an internal target is at docs/wp-038/DEC-012-BRIEF.md; the binding is DEC-012 and remains open.",
+      "The accessibility acceptance contract adopted under DEC-001 names no WCAG version or conformance level, so its coverage against WCAG 2.2, and against the WCAG 2.1 Level AA target named by ADA Title II, cannot be stated. Recorded in WP-038 as STL-001. Disposition after DEC-012 (accepted 2026-08-19): PARTIALLY RESOLVED. The absent-target portion is resolved — WCAG 2.2 Level AA is now the named internal SSLS accessibility design and validation target. The remaining portions are unresolved: ULW-AS-001 v1.3 itself still carries no version binding in its own text, its criteria have not been mapped to WCAG 2.2 success criteria, coverage against ADA Title II's WCAG 2.1 Level AA reference is still unstated, and no independent accessibility validation exists.",
     boundary:
-      "This does not assert that the interface fails any success criterion, nor that binding a version would create a conformance claim. Binding fixes what may be measured, not what has been validated.",
+      "This does not assert that the interface fails any success criterion, nor that binding a version creates a conformance claim. DEC-012 fixes what may be measured, not what has been validated. The finding may not be closed on the strength of DEC-012 alone.",
     resolutionState: "unknown",
-    requiredDecision: "DEC-012",
+    requiredDecision: null,
     evidenceReferences: ["EV-026"],
     synthetic: false,
   },
+
   {
     id: "FND-017",
     title: "The BEFORE LIVE PII gate assumes student data is the first binding trigger",
