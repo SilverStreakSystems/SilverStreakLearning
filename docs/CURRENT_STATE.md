@@ -46,17 +46,30 @@ of its own.
   security, privacy, legal, or compliance certification.
 - Residual external-copy uncertainty is **accepted** by DEC-009 for the current private,
   founder-only, zero-real-PII phase. It is bounded, not resolved.
-- **Gate A may proceed. WP-006 — Current-State SSOT and Repository Provenance is the next
-  eligible work package only**; it is not executed and no later work package is authorized.
-- No database enabled. No release authority. No independent validation. No production,
-  district, or compliance claims.
+- **WP-006 — Current-State SSOT and Repository Provenance: executed and CLOSED BY OWNER**
+  by DEC-014 (2026-08-19), following DEC-010, which adopts the current Lovable-managed
+  repository as the go-forward software source of truth. Historical repository and bootstrap
+  artifacts remain historical governance and evidence lineage.
+- **WP-037 — Evidence and Verification Pipeline is the next eligible work package only**;
+  it is not executed and no later work package is authorized.
+- DEC-011 (program register text), DEC-012 (effective accessibility standard revision), and
+  DEC-013 (gate lineage) remain **open**, routed to WP-008, no later than WP-041, and WP-008
+  respectively. None is resolved by WP-006 closure.
+- Open limitations carried forward: declared-binding identity is not semantic freshness
+  (FND-013); a CI workflow existing in the repository is **not** branch-protection enforcement,
+  which remains NOT VERIFIED (FND-012); declared bindings drift on each authoring commit
+  (FND-011); repository-wide lint does not pass (FND-014, advisory, pre-existing).
+- Gate A is not closed. No database enabled. No release authority. No independent validation.
+  No production, district, or compliance claims.
 
 ## Verification recorded
 
-- Vitest: 210 tests passing across 8 files, covering registered routes, detail
+- Vitest: 217 tests passing across 9 files, covering registered routes, detail
   routes, unrecorded identifiers, authority discipline, gate discipline,
-  prohibited metrics, search authorization order, and rendering invariants.
+  prohibited metrics, search authorization order, declared-binding freshness,
+  and rendering invariants. Production build succeeds.
 - Accessibility: see `docs/ACCESSIBILITY_EVIDENCE.md`. Automated only.
+
 
 ## Not established
 
