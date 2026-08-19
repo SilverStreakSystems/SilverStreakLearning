@@ -101,7 +101,7 @@ case rather than by a lockfile-specific case. Both are recorded as coverage limi
 - **FND-012 — OPEN, NOT VERIFIED.** Workflow existence is not branch protection.
 - **FND-013 — RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; narrative semantic accuracy remains
   human-governed.**
-- **FND-014 — OPEN / ADVISORY.** Repository-wide lint reports 683 problems (669 errors, 14 warnings)
+- **FND-014 — OPEN / ADVISORY.** Repository-wide lint reports 677 problems (663 errors, 14 warnings)
   at the verification head. WP-037 files (`scripts/evidence`, `src/domain/evidence-pipeline.ts`,
   `src/test/evidence-pipeline.test.ts`, `src/routes/evidence.tsx`) report zero problems: this work
   package introduces no new lint debt.

@@ -214,7 +214,7 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L7"],
     description:
-      "A full lint run reports 683 problems across the repository (669 errors, 14 warnings), overwhelmingly formatter differences rather than logic defects. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes. Scoped separately under WP-037: the WP-037 files (scripts/evidence, src/domain/evidence-pipeline.ts, src/test/evidence-pipeline.test.ts, src/routes/evidence.tsx) report zero lint problems, so this work package contributes no new lint debt.",
+      "A full lint run reports 677 problems across the repository (663 errors, 14 warnings), overwhelmingly formatter differences rather than logic defects. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes. Scoped separately under WP-037: the WP-037 files (scripts/evidence, src/domain/evidence-pipeline.ts, src/test/evidence-pipeline.test.ts, src/routes/evidence.tsx) report zero lint problems, so this work package contributes no new lint debt.",
     boundary:
       "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness. Repository-wide lint must not be reported as passing.",
     resolutionState: "unknown",
@@ -833,7 +833,7 @@ export const DECISIONS: DecisionRecord[] = [
       "FND-011 is dispositioned RESOLVED for pipeline-produced evidence, with legacy hand-bound documents still subject to declaration drift.",
       "FND-013 is dispositioned RESOLVED FOR MACHINE-DERIVED BASELINE FACTS; narrative semantic accuracy remains human-governed.",
       "FND-012 remains OPEN: branch-protection enforcement is not verified and may not be claimed.",
-      "FND-014 remains OPEN / ADVISORY: repository-wide lint reports 683 problems; WP-037 files report zero.",
+      "FND-014 remains OPEN / ADVISORY: repository-wide lint reports 677 problems; WP-037 files report zero.",
       "Public deployment classification is PUBLIC PROTOTYPE. Publication is not release authority.",
       "Closure creates no compliance, certification, security, accessibility-conformance, or independent-validation claim.",
       "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this decision.",
