@@ -120,8 +120,9 @@ export const FINDINGS: FindingRecord[] = [
     description:
       "A candidate plan specified a reviewed documentation-only first commit before any application code. The repository instead begins with a platform template scaffold followed by application work, with no recorded first-commit ratification. Containment intent is met in substance; the review step was not performed.",
     boundary:
-      "Does not assert contamination. No legacy ancestry, committed secrets, or legacy backend bindings were found in the root commit.",
-    resolutionState: "conflicted",
+      "Does not assert contamination. No legacy ancestry, committed secrets, or legacy backend bindings were found in the root commit. DEC-008 (2026-08-19) accepted the actual root commit as the controlled origin; the divergence is dispositioned, not cured, and the missing first-commit review step is not retroactively performed.",
+    resolutionState: "confirmed",
+
     requiredDecision: "DEC-010",
     evidenceReferences: ["EV-009", "EV-010"],
     synthetic: false,
