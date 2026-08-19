@@ -75,10 +75,10 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   verifications: [
     {
       verificationId: "PV-TESTS",
-      statement: "353 of 353 tests passed across 16 files.",
+      statement: "366 of 366 tests passed across 17 files.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
-      boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
       source: {
         recordId: "EV-033",
         locator: "docs/wp-007/CHECKPOINT-006.md; src/fixtures/registers.ts — EV-040",
@@ -90,7 +90,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       statement: "The production build succeeded.",
       scope:
         "A build of the repository at that checkpoint. It is not a deployment, a release, or an approval to release.",
-      boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
       source: {
         recordId: "EV-040",
         locator: "docs/wp-007/CHECKPOINT-006.md",
@@ -103,7 +103,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
         "All three digests declared for the supplied August 5 v0.2.0 artifacts were independently recomputed and matched.",
       scope:
         "File identity only. A digest match establishes that the measured bytes are the declared bytes. It establishes no authority, approval, completeness, or correctness of the package content.",
-      boundTo: "CHECKPOINT-006 and the Cycle 4 extraction pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-007 and the Cycle 5 review-packet pass, executed 2026-08-19",
       source: {
         recordId: "EV-039",
         locator: "data/packages/governed-packages.json — PKG-001",

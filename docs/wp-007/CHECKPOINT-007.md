@@ -96,5 +96,5 @@ further cycle is authorized.
 
 ## Verification at this checkpoint
 
-371 of 371 tests passed across 17 files (machine-verified only; no human,
+366 of 366 tests passed across 17 files (machine-verified only; no human,
 independent, accessibility, security, legal, or district review is covered).
