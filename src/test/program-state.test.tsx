@@ -189,7 +189,7 @@ describe("Command Center synchronization", () => {
 describe("single source of truth", () => {
   it("keeps the pending obligation on the findings register, not on the surfaces", () => {
     const finding = FINDINGS.find((record) => record.id === "FND-022");
-    expect(finding?.resolutionState).toBe("not-verified");
+    expect(finding?.resolutionState).toBe("blocked");
     expect(finding?.ownerPriorityDirective).toBeTruthy();
     expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("FND-022");
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toBe(finding?.title);

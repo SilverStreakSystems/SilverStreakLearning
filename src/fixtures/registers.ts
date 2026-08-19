@@ -350,7 +350,7 @@ export const FINDINGS: FindingRecord[] = [
       "WP-007 Cycle 4 executed its locked target under DEC-019. The three authorized August 5 v0.2.0 inputs were supplied and each measured digest matched the declared value (EV-039); PKG-001 now carries PKA-103, PKA-104, and PKA-105 as verified, with the DOCX and ZIP still not supplied; HS-023 is registered as a historical source; HREQ-015 through HREQ-030 were extracted verbatim from Section 11 of the v0.2.0 PDF; and data/historical/restatement-index.json records seventeen relationships between the HS-023 and HS-011 candidates (EV-040). Every candidate remains CANDIDATE-PRE-DISPOSITION and NOT-ASSESSED, and every restatement row is a read relationship only. Only a recorded owner decision can dispose of a candidate, elect a controlling wording, or resolve a conflict.",
     boundary:
       "This record states an open owner obligation. It does not dispose of any candidate, does not merge or supersede any wording, does not promote HS-023 or PKG-001, does not close WP-007, does not advance Gate A, does not authorize WP-039, and asserts no accessibility conformance of any kind.",
-    resolutionState: "not-verified",
+    resolutionState: "blocked",
     requiredDecision:
       "Record a disposition for the WP-007 Cycle 4 candidates and restatement index, and state whether a further cycle is authorized.",
     ownerPriorityDirective:

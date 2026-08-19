@@ -110,7 +110,7 @@ describe("WP-007 cycle 4 register bindings", () => {
   it("resolves the input-availability blockage and opens the disposition obligation", () => {
     expect(FINDINGS.find((entry) => entry.id === "FND-021")?.resolutionState).toBe("confirmed");
     const open = FINDINGS.find((entry) => entry.id === "FND-022");
-    expect(open?.resolutionState).toBe("not-verified");
+    expect(open?.resolutionState).toBe("blocked");
     expect(open?.requiredDecision).toBeTruthy();
   });
 });
