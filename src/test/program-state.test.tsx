@@ -75,8 +75,9 @@ describe("governed package projection", () => {
     expect(verifiedDigestArtifacts().length).toBeGreaterThan(0);
   });
 
-  it("carries four unresolved drift rows", () => {
-    expect(unresolvedDriftRows()).toHaveLength(4);
+  it("carries six unresolved drift rows", () => {
+    expect(unresolvedDriftRows()).toHaveLength(6);
+    expect(unresolvedDriftRows().map((row) => row.drift_id)).toContain("PDR-006");
   });
 });
 
