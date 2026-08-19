@@ -1,6 +1,6 @@
 # Current test and build status
 
-Bound to commit `9a257f754e97b9cddf9a474009c5947488102c04`, executed 2026-08-19 02:04–02:06 UTC in
+Bound to commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a`, executed 2026-08-19 02:04–02:06 UTC in
 the Lovable sandbox by the Founder / Operator agent session. Evidence method: automated, executor-run.
 Not independent.
 
@@ -52,5 +52,5 @@ manifest file differs, so the results are reported as current for the bound comm
 
 ## Binding rule
 
-These results establish the state of `9a257f7` only. Any later commit invalidates them as current
+These results establish the state of `c1f0601` only. Any later commit invalidates them as current
 evidence.

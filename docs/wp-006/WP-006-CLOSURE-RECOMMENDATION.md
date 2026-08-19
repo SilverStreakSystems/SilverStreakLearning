@@ -19,7 +19,7 @@ The executor does not close WP-006.
 |---|---|
 | Governing authority | SSLS-BPP-001 v2.0 ratified by DEC-007; WP-000 owner-closed by DEC-008; residual unknown accepted by DEC-009. All accepted, current, unsuperseded. |
 | Current-state record | `SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md`, bound to `9a257f7` with refreshed figures |
-| Provenance | Recoverable to root commit `3190f797`; 311 commits; no legacy ancestry |
+| Provenance | Recoverable to root commit `3190f797`; 330 commits; no legacy ancestry |
 | Build and test | `vite build` exit 0; 217 of 217 tests across 9 files |
 | Lint | Not passing repository-wide; recorded as FND-014 rather than absorbed into a pass claim |
 | Binding check | Positive and negative controls both exercised; EV-016, EV-017 |

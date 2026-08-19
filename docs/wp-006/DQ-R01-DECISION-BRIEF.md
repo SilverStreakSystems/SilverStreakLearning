@@ -23,7 +23,7 @@ disposition of every other discoverable source-code lineage?
 | Fact | Status |
 |---|---|
 | Exactly one repository holds executable SSLS code (REPO-CAND-001) | [C] |
-| Its provenance is fully recoverable (root `3190f797`, HEAD `9a257f7`, 311 commits) | [C] |
+| Its provenance is fully recoverable (root `3190f797`, HEAD `9a257f7`, 330 commits) | [C] |
 | Its root commit carries no SSLS legacy ancestry | [C] |
 | It builds and passes 217 tests at the bound source tree | [C] |
 | A declared-binding check exists, runs in CI on push and pull request, and uses the pull-request head | [C] |
@@ -42,7 +42,7 @@ disposition of every other discoverable source-code lineage?
 | Provenance | Fully recoverable to root [C] | Not locatable from inside the project [U] | Would start from a known parent, but discards recovered history [I] | No such repository was discovered [U] |
 | Current implementation | Holds all executable code [C] | Holds none that can be shown [U] | Zero at creation; requires migration [C] | Unknown [U] |
 | No-PII posture | Scanned across tree and history, no findings [C] | Unscannable while unlocated [U] | Inherits whatever is copied; requires a fresh scan [I] | Unknown [U] |
-| History | 311 commits, weak commit messages [C], FND-007 triage | Unknown [U] | Truncated by construction [C] | Unknown [U] |
+| History | 330 commits, weak commit messages [C], FND-007 triage | Unknown [U] | Truncated by construction [C] | Unknown [U] |
 | Contamination risk | No legacy ancestry detected [C] | Cannot be assessed [U] | Low if the copy set is reviewed [I] | Unknown [U] |
 | Test continuity | 217 tests continuous with prior captures [C] | None [U] | Tests survive the copy, history does not [I] | Unknown [U] |
 | Evidence continuity | EV-008…EV-017 bind to this lineage [C] | Would orphan all existing evidence [C] | Every evidence record would need rebinding [C] | Unknown [U] |

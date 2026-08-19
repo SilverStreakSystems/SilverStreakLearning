@@ -11,7 +11,7 @@ This does not substitute for a CI evidence architecture; that is WP-037 and is n
 | Safe locator | `git.private.lovable-gcp.code.storage/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` (remote `origin`; the checked-out URL embeds a scoped access token, which is deliberately not reproduced here) | [C] |
 | Secondary remote | `s3://lovable-repositories/87c55369-0a52-4467-a48b-f8adcfd7d11e.git` | [C] |
 | Branch | `edit/edt-32665212-9bdf-4b4a-90ea-b94f5470ba9b` | [C] |
-| HEAD commit | `9a257f754e97b9cddf9a474009c5947488102c04` | [C] |
+| HEAD commit | `c1f06016c5eb4e4b19e9b5821f525be4131d639a` | [C] |
 | Parent commit | `5011a40cd9990cd3e68998d7237442822ba6b749` ("Update plan", 2026-08-19 02:02:40 UTC) | [C] |
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — "template: tanstack_start_ts_current-58df4fe22702", 2026-08-16 09:16:43 +0200 | [C] |
 | Commit count on branch | 311 | [C] |
@@ -44,7 +44,7 @@ inside the project. DEC-009 accepts this bounded unknown for the current phase.
 
 ## Limitations
 
-- All hashes and results are bound to `9a257f7`, captured 2026-08-19 02:04–02:06 UTC. This capture
+- All hashes and results are bound to `c1f0601`, captured 2026-08-19 02:04–02:06 UTC. This capture
   supersedes the `6aa254e` capture of 2026-08-19 01:39–01:41 UTC, which supersedes the `70c1f89`
   capture of 2026-08-17. Both earlier captures remain valid statements about their own commits and
   must not be reported as current.

@@ -13,7 +13,7 @@ import {
   // @ts-ignore -- plain JS guard module shared with the CI script
 } from "../../scripts/ssot-binding.mjs";
 
-const CURRENT_BINDING = "9a257f754e97b9cddf9a474009c5947488102c04";
+const CURRENT_BINDING = "c1f06016c5eb4e4b19e9b5821f525be4131d639a";
 const SUPERSEDED_BINDING = "6aa254e6f9ceeb06c60ae08827118fa5bf52001d";
 
 describe("SSOT binding guard", () => {

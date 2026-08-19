@@ -4,7 +4,7 @@
 - **Authority class:** CANDIDATE
 - **Record state:** current (re-bound 2026-08-19 02:06 UTC; supersedes the `6aa254e` binding of
   2026-08-19 01:40 UTC, which superseded the `70c1f89` binding of 2026-08-17)
-- **Bound to commit:** `9a257f754e97b9cddf9a474009c5947488102c04`
+- **Bound to commit:** `c1f06016c5eb4e4b19e9b5821f525be4131d639a`
 - **Produced by:** WP-006 under SSLS-BPP-001 v2.0 (ratified by DEC-007)
 - **Evidence method:** executor-produced. No independent validation.
 
@@ -33,7 +33,7 @@ becomes false the moment the bound commit changes.
 | Candidate id | REPO-CAND-001 |
 | Role | Only lineage containing executable SSLS code |
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` — platform template scaffold |
-| HEAD at this record | `9a257f754e97b9cddf9a474009c5947488102c04` |
+| HEAD at this record | `c1f06016c5eb4e4b19e9b5821f525be4131d639a` |
 | Branch | single working branch |
 | Commits | 311 |
 | Working tree | clean at capture |
@@ -46,7 +46,7 @@ Detail: `PROVENANCE_REPORT.md`, `REPOSITORY_MANIFEST.md`.
 
 | Area | Status |
 |---|---|
-| Source files | 211 (209 TypeScript/TSX, 35,912 lines) |
+| Source files | 211 (209 TypeScript/TSX, 36,916 lines) |
 | Route files | 30, of which 29 addressable |
 | Registered navigation paths | 19 |
 | Domain modules | authority, layers, artifacts, traceability, registers, capability architecture, shared objects, value streams, workspaces, experience |
