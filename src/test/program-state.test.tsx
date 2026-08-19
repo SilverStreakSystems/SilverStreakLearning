@@ -83,21 +83,21 @@ describe("governed package projection", () => {
 });
 
 describe("Action Center synchronization", () => {
-  it("carries the owner disposition obligation exactly once, from FND-020", () => {
+  it("carries the owner disposition obligation exactly once, from FND-022", () => {
     const actions = buildActions();
-    const matches = actions.filter((action) => action.canonicalSource.objectId === "FND-020");
+    const matches = actions.filter((action) => action.canonicalSource.objectId === "FND-022");
     expect(matches).toHaveLength(1);
     expect(matches[0]!.ownerPriorityDirective).toBeTruthy();
   });
 
   it("places the owner-directed obligation first, ahead of the factor order", () => {
     const actions = buildActions();
-    expect(actions[0]!.canonicalSource.objectId).toBe("FND-020");
+    expect(actions[0]!.canonicalSource.objectId).toBe("FND-022");
     // The directive is the only thing that lifts it: its own factor does not.
     const withoutDirective = [...actions]
       .map((action) => ({ ...action, ownerPriorityDirective: null }))
       .sort(compareActions);
-    expect(withoutDirective[0]!.canonicalSource.objectId).not.toBe("FND-020");
+    expect(withoutDirective[0]!.canonicalSource.objectId).not.toBe("FND-022");
   });
 
   it("prints the recorded instruction next to the promoted action", async () => {
