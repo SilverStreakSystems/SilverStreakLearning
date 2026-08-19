@@ -706,7 +706,23 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-029",
+    title: "Lint regression repair and post-repair verification",
+    kind: "automated-test",
+    subject: "The brace-expansion resolution, ESLint execution, tests, build and advisory rescan",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That `bunx eslint . -f json` crashed with `TypeError: expand is not a function` (exit 2, no report emitted) while the flat override pinned brace-expansion to 5.0.9, because minimatch 3.1.5 requires the 1.x default function export; that removing the flat override lets semver resolve brace-expansion 1.1.18 for minimatch 3.1.5 and 5.0.9 for minimatch 10.2.6; that an advisory query for both versions returned no advisories; and that after the change lint completed with 686 problems (672 errors, 14 warnings), 279 of 279 tests passed, typecheck reported no errors, the production build succeeded, and the pipeline recorded fail=0, review-required=2, not-completed=1 with baseline CURRENT.",
+    doesNotSupport:
+      "That lint passes, that the repository is free of vulnerabilities, or that any advisory source is complete. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
 
 
 export const DECISIONS: DecisionRecord[] = [
