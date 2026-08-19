@@ -770,7 +770,25 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-032",
+    title: "WP-007 cycle 2 historical requirement candidate schema, register and invariant tests",
+    kind: "automated-test",
+    subject:
+      "data/historical/HISTORICAL_REQUIREMENT_SCHEMA.json, data/historical/historical-requirements.json, loader, projection, and extraction-integrity tests",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That a versioned historical-requirement schema v1.0.0 exists and matches the register; that 14 candidate requirements carrying stable HREQ-001..HREQ-014 identifiers were extracted from exactly one named HIGH-relevance reachable source, HS-011 (`docs/ACCESSIBILITY_ACCEPTANCE.md`); that every candidate carries an exact in-source line locator, verbatim original wording verified by substring match against the live source file, a separate normalized summary, the source's authority classification inherited without upgrade, a requirement family, the modality as worded, extraction confidence with basis and an ambiguity classification with note; that every candidate remains CANDIDATE-PRE-DISPOSITION and NOT-ASSESSED; and that executing tests in `src/test/historical-requirements.test.ts` enforce those invariants while `scripts/gen-historical-requirement-docs.ts` projects the register into `docs/wp-007/`.",
+    doesNotSupport:
+      "That any extracted statement applies now, is met, is owner-accepted, or has any implementation, testing, release or claimability meaning; that the upstream ULW-AS-001 v1.3 text is identical to the repository-carried excerpt; that extraction is complete across the source universe; or that any owner disposition has been assigned. Executor-run, method automated, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
+
+
 
 
 
