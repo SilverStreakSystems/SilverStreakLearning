@@ -61,7 +61,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     supportingSources: [
       { recordId: "CHECKPOINT-003", locator: "docs/wp-007/CHECKPOINT-003.md", route: null },
       { recordId: "WP-007", locator: "docs/wp-007/ENTRY_SPECIFICATION.md", route: null },
-      { recordId: "PDR-001..PDR-004", locator: "data/packages/package-drift.json", route: null },
+      { recordId: "PDR-001..PDR-006", locator: "data/packages/package-drift.json", route: null },
     ],
   },
   verifications: [
@@ -129,7 +129,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       stageId: "DRIFT-RESOLUTION",
       statement:
         "Resolution of the recorded package drift rows is not authorized. Each remains unresolved.",
-      source: { recordId: "PDR-001..PDR-004", locator: "data/packages/package-drift.json", route: null },
+      source: { recordId: "PDR-001..PDR-006", locator: "data/packages/package-drift.json", route: null },
     },
   ],
   publicationBoundary:

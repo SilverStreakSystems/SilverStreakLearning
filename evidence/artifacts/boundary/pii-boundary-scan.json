@@ -1,7 +1,7 @@
 {
   "boundary": "Zero real personal data. All fixture data is synthetic and flagged synthetic.",
   "scope": "Git-tracked files in the current tree, excluding the scanner's own pattern definitions.",
-  "files_scanned": 429,
+  "files_scanned": 431,
   "patterns": [
     {
       "id": "email-address",

@@ -75,8 +75,9 @@ describe("governed package projection", () => {
     expect(verifiedDigestArtifacts().length).toBeGreaterThan(0);
   });
 
-  it("carries four unresolved drift rows", () => {
-    expect(unresolvedDriftRows()).toHaveLength(4);
+  it("carries six unresolved drift rows", () => {
+    expect(unresolvedDriftRows()).toHaveLength(6);
+    expect(unresolvedDriftRows().map((row) => row.drift_id)).toContain("PDR-006");
   });
 });
 
@@ -132,7 +133,7 @@ describe("Command Center synchronization", () => {
     expect(within(pkg).getByText(/SYNCHRONIZED-REFERENCE/)).toBeInTheDocument();
     expect(within(pkg).getByText(/NONCANONICAL/)).toBeInTheDocument();
     expect(within(pkg).getByText(/establishes file identity only/i)).toBeInTheDocument();
-    expect(await screen.findByRole("region", { name: /4 unresolved/i })).toBeInTheDocument();
+    expect(await screen.findByRole("region", { name: /6 unresolved/i })).toBeInTheDocument();
   });
 
   it("states what is not authorized and what hosting does not mean", async () => {

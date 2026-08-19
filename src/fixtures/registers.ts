@@ -906,6 +906,23 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-038",
+    title:
+      "Third owner supply of the v0.3.0 package: digest re-measurement and forensic content reconciliation",
+    kind: "manual-check",
+    subject:
+      "The three files supplied by the owner on 2026-08-19 at 19:29 UTC — SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf, SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx, and SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt — measured against PKA-001, PKA-002, and PKA-003, and read section by section and sheet by sheet against the canonical repository registers.",
+    collectedOn: "2026-08-19",
+    collectedBy: "Founder / Operator",
+    state: "confirmed",
+    supports:
+      "That the three supplied files measured 9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943, 68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e, and 3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130, matching the two digests the manifest declares and the digests already registered under PKG-002, so the supply is byte-identical to the existing artifacts and no second package record was created; that all fourteen PDF sections and all eleven workbook sheets were read and reconciled against the canonical registers, with the agreeing propositions recorded in the reconciled list of data/packages/package-drift.json and the differing ones recorded as drift rows PDR-005 and PDR-006; and that the supplied set does not contain any August 5 v0.2.0 artifact, so the three inputs DEC-019 names for Cycle 4 remain unavailable and FND-021 remains open.",
+    doesNotSupport:
+      "That the package or any historical source gained authority or was promoted, that any requirement candidate was extracted or given a disposition, that any drift row was resolved, that any finding was closed, that Gate A, WP-007, or WP-039 changed state, or that Cycle 4's locked outcome was executed in any part. The v0.3.0 Section 10 accessibility text was not used as a substitute extraction source. Executor-run, method manual forensic read plus automated digest measurement, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 
