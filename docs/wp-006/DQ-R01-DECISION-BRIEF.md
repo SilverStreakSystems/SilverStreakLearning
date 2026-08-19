@@ -1,7 +1,8 @@
 # DQ-R01 — Go-forward software SSOT repository
 
-Decision brief, reconciled 2026-08-19 at commit `9a257f754e97b9cddf9a474009c5947488102c04`.
-Decision-ready and undecided. Owner-only. Status markers: [C] confirmed, [I] supported
+Decision brief, reconciled 2026-08-19 at commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a`.
+**DECIDED — DEC-010 accepted 2026-08-19 by Founder / Operator.** The analysis below is retained as the
+basis of that decision and is not rewritten. Status markers: [C] confirmed, [I] supported
 interpretation, [U] unknown.
 
 ## Question
@@ -23,7 +24,7 @@ disposition of every other discoverable source-code lineage?
 | Fact | Status |
 |---|---|
 | Exactly one repository holds executable SSLS code (REPO-CAND-001) | [C] |
-| Its provenance is fully recoverable (root `3190f797`, HEAD `9a257f7`, 330 commits) | [C] |
+| Its provenance is fully recoverable (root `3190f797`, HEAD `c1f0601`, 330 commits) | [C] |
 | Its root commit carries no SSLS legacy ancestry | [C] |
 | It builds and passes 217 tests at the bound source tree | [C] |
 | A declared-binding check exists, runs in CI on push and pull request, and uses the pull-request head | [C] |
@@ -92,4 +93,13 @@ DEC-013 (gate lineage).
 
 ## Owner disposition
 
-Not recorded. Decision state: **required**.
+**Recorded 2026-08-19 by Founder / Operator. Decision state: accepted (DEC-010).**
+
+Option A adopted as written in the proposed wording above. Historical repository and bootstrap
+artifacts remain historical governance and evidence lineage and do not control current executable
+implementation. Any subsequently discovered prior repository must be inventoried and explicitly
+dispositioned before use.
+
+The disposition carries no security, privacy, accessibility, or compliance certification, authorizes
+no release or live data, and does not close a gate. The unknowns recorded above ([U] rows) are not
+resolved by it.
