@@ -827,7 +827,7 @@ export const DECISIONS: DecisionRecord[] = [
   {
     id: "DEC-015",
     title: "Proposed owner closure of WP-037 evidence and verification pipeline",
-    state: "proposed",
+    state: "required",
     decidedOn: null,
     decidedBy: "Awaiting Founder / Operator",
     context:
@@ -844,7 +844,7 @@ export const DECISIONS: DecisionRecord[] = [
       "Closure creates no compliance, certification, security, accessibility-conformance, or independent-validation claim.",
       "DEC-011, DEC-012, and DEC-013 remain open and are not resolved by this decision.",
     ],
-    authorityClass: "proposed-decision",
+    authorityClass: "gated-future",
     recordState: "current",
     supersedes: [],
     supersededBy: null,
