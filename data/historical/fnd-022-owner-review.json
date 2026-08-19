@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "generated_on": "2026-08-19",
   "finding_id": "FND-022",
   "work_package": "WP-007",
-  "cycle": "Cycle 5",
+  "cycle": "Cycle 5 preparation; Cycle 6 owner dispositions recorded",
   "authority_note": "DEC-019 is the accepted authority for the Cycle 4 extraction this packet reviews. This packet is prepared under a bounded Cycle 5 owner instruction that authorizes preparation of a non-dispositive review packet only. It carries no authority of its own and records no owner decision.",
   "packet_boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things.",
-  "advisory_note": "Every advisory_recommendation and advisory_rationale field in this packet is NON-BINDING executor analysis. It is not an owner decision, does not preselect an owner option, and is written into no governed disposition field anywhere in this repository.",
+  "advisory_note": "Every advisory_recommendation and advisory_rationale field in this packet is NON-BINDING executor analysis. It is not an owner decision, does not preselect an owner option, and is written into no governed disposition field anywhere in this repository. The advisory fields are preserved unchanged for audit comparison against the recorded owner decisions; where they differ, the owner decision governs.",
   "owner_option_vocabulary_note": "The repository has no controlled owner-disposition vocabulary for historical candidates. The seven options presented here are plain-language review options only. They are not governed status values, they are not written into any register, and presenting them assigns nothing.",
   "entry_state": {
     "gate_a": "OPEN",
@@ -77,8 +77,8 @@
       "advisory_rationale": "NON-BINDING analysis only. DEC-012 is the accepted, current statement of the target. Adopting a 2026-08-05 historical restatement of the same target would create a second source of truth for one concept without adding a testable expectation.",
       "impact_if_adopted_or_merged": "A second version-naming statement would exist alongside DEC-012 and would have to be kept synchronized with it.",
       "impact_if_rejected_or_deferred": "Nothing changes. The historical wording stays traceable as evidence that the WCAG 2.2 AA target predates DEC-012.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "DEC-012 remains the sole controlling statement of the WCAG 2.2 Level AA internal target; HREQ-015 remains historical corroboration and creates no second target or conformance claim.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -131,8 +131,8 @@
       "advisory_rationale": "NON-BINDING analysis only. The historical wording says nothing the two HS-011 rows do not already say more precisely; recording it as a restatement preserves lineage without adding a duplicate expectation.",
       "impact_if_adopted_or_merged": "A third, less specific heading and landmark expectation would sit beside two testable ones.",
       "impact_if_rejected_or_deferred": "Lineage is still recorded through RST-001 and RST-002; nothing is lost.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "Preserve HREQ-001 and HREQ-002 as the controlling, more testable expectations; record HREQ-016 as historical lineage, not a third requirement.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -182,8 +182,8 @@
       "advisory_rationale": "NON-BINDING analysis only. Adopting a less specific wording alongside a more specific one weakens the testable rule without adding information.",
       "impact_if_adopted_or_merged": "A weaker parallel statement of an already-testable rule.",
       "impact_if_rejected_or_deferred": "No effect on the current acceptance contract; the historical bullet remains traceable.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-003 remains controlling because it states the skip-link position and target more specifically.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -233,8 +233,8 @@
       "advisory_rationale": "NON-BINDING analysis only. The extension to controls is a substantive addition, not a restatement, and it is testable once a control set is named.",
       "impact_if_adopted_or_merged": "The keyboard expectation would cover all interactive controls, which would require a broader acceptance test than currently exists.",
       "impact_if_rejected_or_deferred": "Keyboard operability of non-navigation controls remains unstated in the acceptance contract.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry keyboard operability for navigation and controls forward as a governed candidate requiring definition of the control set and an acceptance test before implementation or conformance assessment.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -284,8 +284,8 @@
       "advisory_rationale": "NON-BINDING analysis only. The current row is the stronger and more specific statement of the same expectation.",
       "impact_if_adopted_or_merged": "A weaker parallel focus rule would sit beside the dual-color rule.",
       "impact_if_rejected_or_deferred": "No change to the current expectation.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-006 remains controlling as the stronger dual-color visible-focus rule.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -333,8 +333,8 @@
       "advisory_rationale": "NON-BINDING analysis only. It closes a named gap in the current contract and is mechanically checkable for a defined element set.",
       "impact_if_adopted_or_merged": "A new testable accessibility expectation with no current counterpart.",
       "impact_if_rejected_or_deferred": "Accessible naming remains an unstated expectation.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry programmatic names forward as a governed candidate requiring scoped elements and a verification method.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -382,8 +382,8 @@
       "advisory_rationale": "NON-BINDING analysis only. The interface is table-dense and no current row covers table semantics.",
       "impact_if_adopted_or_merged": "A new expectation applying to every rendered register table.",
       "impact_if_rejected_or_deferred": "Table semantics stay outside the acceptance contract.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry table captions and header cells forward as a governed candidate requiring table scope and caption/visible-heading rules.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -433,8 +433,8 @@
       "advisory_rationale": "NON-BINDING analysis only. Two identical prohibitions should be recorded as one expectation with two sources rather than two rules.",
       "impact_if_adopted_or_merged": "A duplicate prohibition.",
       "impact_if_rejected_or_deferred": "Nothing is lost; RST-006 preserves the lineage.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "Treat both sources as one prohibition; HREQ-007 remains the controlling current wording.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -484,8 +484,8 @@
       "advisory_rationale": "NON-BINDING analysis only. An unquantified activity is weaker than the measured ratio the current row already states.",
       "impact_if_adopted_or_merged": "A process expectation with no threshold and no owner.",
       "impact_if_rejected_or_deferred": "Contrast remains governed by the measured-ratio row.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-012 remains controlling; the historical phrase contrast review adds no measurable ratio, tool, owner, or cadence.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -535,8 +535,8 @@
       "advisory_rationale": "NON-BINDING analysis only. It is the single most testable addition in the historical set and directly supports the existing mobile-viewport rule.",
       "impact_if_adopted_or_merged": "A measurable reflow target that current tests do not yet assert.",
       "impact_if_rejected_or_deferred": "Reflow remains stated without a width and stays hard to verify.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry the 200% zoom and 320-pixel reflow expectation forward as a governed candidate; measurement environment and pass conditions remain required before assessment.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -584,8 +584,8 @@
       "advisory_rationale": "NON-BINDING analysis only. Adopting an untestable sizing rule would add an expectation no evidence could ever discharge; a decision needs a named minimum first.",
       "impact_if_adopted_or_merged": "An expectation that cannot be verified as worded.",
       "impact_if_rejected_or_deferred": "Touch target sizing stays unstated; the gap remains recorded here.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "NEEDS-EVIDENCE / DEFER",
+      "owner_rationale": "Do not adopt an untestable appropriate-to-context rule. Preserve the gap requiring a named touch-target dimension, exceptions, and verification method.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -635,8 +635,8 @@
       "advisory_rationale": "NON-BINDING analysis only. One expectation with two sources is clearer than two identical rows.",
       "impact_if_adopted_or_merged": "A duplicate expectation.",
       "impact_if_rejected_or_deferred": "Nothing is lost; RST-009 preserves the lineage.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "Record one reduced-motion expectation with two sources; HREQ-009 remains controlling until a more testable formulation is approved.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -686,8 +686,8 @@
       "advisory_rationale": "NON-BINDING analysis only. The current prohibition already covers this case more broadly; recording the narrow case as history avoids weakening it.",
       "impact_if_adopted_or_merged": "A specific table-scroll case beside a general prohibition.",
       "impact_if_rejected_or_deferred": "Horizontal table scrolling stays covered by the general rule.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "Treat horizontal table scrolling as historical evidence of a narrower case already governed by HREQ-008; do not weaken HREQ-008.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -735,8 +735,8 @@
       "advisory_rationale": "NON-BINDING analysis only. It matches existing practice and would make that practice a stated, reviewable expectation rather than an unwritten habit.",
       "impact_if_adopted_or_merged": "A stated content expectation that current practice already largely meets but no test asserts.",
       "impact_if_rejected_or_deferred": "Refusal language quality stays an unwritten convention.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry plain-language refusal and error states forward as a governed candidate requiring an approved plain-language measure or style rule.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -784,8 +784,8 @@
       "advisory_rationale": "NON-BINDING analysis only. Recording it now is cheap and prevents a later live-status surface from being built without an announcement path.",
       "impact_if_adopted_or_merged": "A forward-looking expectation with little current surface area.",
       "impact_if_rejected_or_deferred": "A future live surface could ship with no announcement expectation on record.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry announcement of auto-updating content forward as a governed candidate before any live-updating surface is built; announcement mechanism and target assistive technology remain undefined.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     },
     {
@@ -835,8 +835,8 @@
       "advisory_rationale": "NON-BINDING analysis only. It is the only historical statement that would make future accessibility evidence structurally comparable, and the repository already has an evidence schema to carry it.",
       "impact_if_adopted_or_merged": "Accessibility evidence would need scenario, browser or assistive technology, result, finding, and version fields.",
       "impact_if_rejected_or_deferred": "Accessibility evidence stays unstructured and hard to compare across runs.",
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carry the accessibility-evidence field set forward as a governed candidate. It governs evidence structure only and does not imply evidence exists; EV-003 remains NOT-RUN.",
       "boundary": "Analysis surface only. Every field in this record is either copied unchanged from a governed register or is non-binding executor analysis. No field in this packet assigns a disposition, promotes a source, merges or supersedes any wording, elects a controlling statement, resolves a relationship, or asserts any accessibility conformance. Only a recorded owner decision may do any of those things."
     }
   ],
@@ -861,8 +861,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "HREQ-001 controlling.",
       "cycle4_classification_preserved": true
     },
     {
@@ -885,8 +885,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "HREQ-002 remains the narrower controlling heading rule.",
       "cycle4_classification_preserved": true
     },
     {
@@ -909,8 +909,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-003 controlling.",
       "cycle4_classification_preserved": true
     },
     {
@@ -933,8 +933,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Extension to controls carried forward, not implemented.",
       "cycle4_classification_preserved": true
     },
     {
@@ -957,8 +957,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-006 controlling.",
       "cycle4_classification_preserved": true
     },
     {
@@ -981,8 +981,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "HREQ-007 controlling with dual-source lineage.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1005,8 +1005,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-012 controlling.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1029,8 +1029,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Numeric 320-pixel narrowing remains a candidate.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1053,8 +1053,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "MERGE-OR-RESTATEMENT",
+      "owner_rationale": "HREQ-009 controlling with dual-source lineage.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1077,8 +1077,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "HREQ-008 remains the broader controlling rule.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1101,8 +1101,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Evidence-shape rule carried forward without asserting evidence exists.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1125,8 +1125,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "RETAIN-HISTORICAL",
+      "owner_rationale": "DEC-012 controlling.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1149,8 +1149,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carried forward as a governed candidate.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1173,8 +1173,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carried forward as a governed candidate.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1197,8 +1197,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "NEEDS-EVIDENCE / DEFER",
+      "owner_rationale": "Deferred pending a named touch-target dimension, exceptions, and verification method.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1221,8 +1221,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carried forward as a governed candidate.",
       "cycle4_classification_preserved": true
     },
     {
@@ -1245,8 +1245,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null,
+      "owner_disposition": "ADOPT-AS-CANDIDATE",
+      "owner_rationale": "Carried forward as a governed candidate.",
       "cycle4_classification_preserved": true
     }
   ],
@@ -1267,8 +1267,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null
+      "owner_disposition": "NO-ACTION-CURRENT-STANDS",
+      "owner_rationale": "HREQ-005 remains unchanged and controlling. Absence from HS-023 is silence, not supersession."
     },
     {
       "requirement_id": "HREQ-013",
@@ -1286,8 +1286,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null
+      "owner_disposition": "NO-ACTION-CURRENT-STANDS",
+      "owner_rationale": "HREQ-013 remains unchanged as adopted-standard authority framing and stays outside historical restatement disposition."
     },
     {
       "requirement_id": "HREQ-014",
@@ -1305,8 +1305,8 @@
         "REJECT",
         "NEEDS-EVIDENCE / DEFER"
       ],
-      "owner_disposition": null,
-      "owner_rationale": null
+      "owner_disposition": "NO-ACTION-CURRENT-STANDS",
+      "owner_rationale": "HREQ-014 remains unchanged as the controlling compliance-claim refusal. The refusal embedded in HREQ-015 is subordinate historical corroboration, not a second controlling refusal."
     }
   ],
   "refused_in_this_cycle": [
@@ -1318,5 +1318,12 @@
     "re-extracting Section 11 or re-ingesting any August 5 or July source artifact;",
     "closing FND-022, WP-007, or Gate A, or authorizing WP-039;",
     "asserting WCAG, ADA Title II, Section 508, or any other accessibility conformance."
-  ]
+  ],
+  "owner_decision": {
+    "decision_id": "DEC-020",
+    "recorded_on": "2026-08-19",
+    "recorded_by": "Founder / Operator",
+    "canonical_record": "data/historical/fnd-022-owner-dispositions.json",
+    "note": "Owner fields below are transcribed from the canonical Cycle 6 disposition record. This packet remains a projection surface and originates no decision."
+  }
 }
