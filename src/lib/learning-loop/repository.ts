@@ -104,8 +104,7 @@ export interface RecoveryExpectation {
 }
 
 export type ExpectationOutcome =
-  | { status: "ok"; expectation: RecoveryExpectation }
-  | { status: "unavailable"; message: string };
+  { status: "ok"; expectation: RecoveryExpectation } | { status: "unavailable"; message: string };
 
 export interface LearningLoopRepository {
   readonly kind: "browser-local" | "in-memory";
@@ -179,8 +178,6 @@ interface EnvelopeSnapshot {
   /** The stored value declares an envelope version this build cannot decode. */
   unsupportedEnvelope: boolean;
 }
-
-
 
 /** Deep copy at the boundary so no caller holds a reference to stored state. */
 function detach(document: LearningLoopDocument): LearningLoopDocument {
@@ -290,7 +287,6 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
     return { status: "ok", document: detach(result.document) };
   }
 
-
   clear(): ClearOutcome {
     if (this.document) this.backup = serializeDocument(this.document);
     this.document = null;
@@ -345,8 +341,7 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
    * decoded at all: it is reported as unsupported with its bytes preserved.
    */
   private readSnapshot():
-    | { status: "ok"; snapshot: EnvelopeSnapshot }
-    | { status: "unavailable"; message: string } {
+    { status: "ok"; snapshot: EnvelopeSnapshot } | { status: "unavailable"; message: string } {
     if (!this.storage)
       return { status: "unavailable", message: "This browser is not allowing local storage." };
     let stored: string | null;
@@ -432,7 +427,6 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
       };
     return { status: "ready", document: result.document };
   }
-
 
   /**
    * The only write path. One `setItem` moves current and backup together, so a
@@ -555,7 +549,10 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
 
     // A confirmation decided against bytes that no longer exist is stale, and a
     // stale confirmation must never overwrite what another tab just wrote.
-    if (expected && (expected.token !== snapshot.snapshot.token || expected.revision !== currentRevision))
+    if (
+      expected &&
+      (expected.token !== snapshot.snapshot.token || expected.revision !== currentRevision)
+    )
       return { status: "conflict", message: CONFLICT_MESSAGE, currentRevision };
 
     const candidate = stamp(next, currentRevision, at);
@@ -596,7 +593,6 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
       return { status: "write-failed", message: "This browser refused to remove the saved data." };
     return { status: "ok" };
   }
-
 }
 
 /** Creates a repository already carrying the deterministic synthetic seed. */

@@ -472,7 +472,10 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
       if (event.value === null) continue;
       const moment = at(event.value);
       if (Number.isNaN(moment)) {
-        push("bad-instant", `${event.id} carries a ${event.label} time that is not a usable instant.`);
+        push(
+          "bad-instant",
+          `${event.id} carries a ${event.label} time that is not a usable instant.`,
+        );
         continue;
       }
       if (moment > clock)

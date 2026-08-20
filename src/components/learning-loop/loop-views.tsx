@@ -8,10 +8,7 @@ import {
   type NextStepProjection,
 } from "@/domain/learning-loop";
 import { buildImportPreview, type ImportPreview } from "@/lib/learning-loop/import-preview";
-import {
-  MAX_IMPORT_BYTES,
-  type RecoveryExpectation,
-} from "@/lib/learning-loop/repository";
+import { MAX_IMPORT_BYTES, type RecoveryExpectation } from "@/lib/learning-loop/repository";
 import type { LearningLoopStore } from "@/lib/learning-loop/use-learning-loop";
 import { formatMoment } from "@/lib/learning-loop/format";
 import { checkImportedRoster } from "@/lib/learning-loop/import-guard";
