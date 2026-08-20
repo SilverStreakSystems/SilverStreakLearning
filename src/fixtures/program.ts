@@ -98,13 +98,13 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     {
       verificationId: "PV-TESTS",
       statement:
-        "381 of 381 automated tests passed across 18 files, measured with a raised per-test timeout because this sandbox times out slow route renders under parallel load.",
+        "TESTCOUNT automated tests passed, measured with a raised per-test timeout because this sandbox times out slow route renders under parallel load.",
       scope:
         "Automated invariant tests executed by this program only. Machine-verified; no human, independent, accessibility, security, legal, or district review is covered.",
-      boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-009 and the Cycle 7 rule-formalization pass, executed 2026-08-20",
       source: {
-        recordId: "EV-042",
-        locator: "docs/wp-007/CHECKPOINT-008.md; src/fixtures/registers.ts — EV-042",
+        recordId: "EV-043",
+        locator: "docs/wp-007/CHECKPOINT-009.md; src/fixtures/registers.ts — EV-043",
         route: "/evidence",
       },
     },
@@ -113,23 +113,23 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       statement: "The production build succeeded.",
       scope:
         "A build of the repository at that checkpoint. It is not a deployment, a release, or an approval to release.",
-      boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
+      boundTo: "CHECKPOINT-009 and the Cycle 7 rule-formalization pass, executed 2026-08-20",
       source: {
-        recordId: "EV-040",
-        locator: "docs/wp-007/CHECKPOINT-008.md",
+        recordId: "EV-043",
+        locator: "docs/wp-007/CHECKPOINT-009.md",
         route: "/evidence",
       },
     },
     {
-      verificationId: "PV-DIGEST",
+      verificationId: "PV-RULE",
       statement:
-        "All three digests declared for the supplied August 5 v0.2.0 artifacts were independently recomputed and matched.",
+        "The touch-target acceptance rule TTR-001 v1.0.0 validates against its Draft 2020-12 schema and against the domain invariants, and its Markdown projection reproduces byte-identically from the JSON.",
       scope:
-        "File identity only. A digest match establishes that the measured bytes are the declared bytes. It establishes no authority, approval, completeness, or correctness of the package content.",
-      boundTo: "CHECKPOINT-008 and the Cycle 6 disposition pass, executed 2026-08-19",
+        "Structural validity of a rule definition only. It measures no interface target, classifies nothing, and establishes no accessibility conformance.",
+      boundTo: "CHECKPOINT-009 and the Cycle 7 rule-formalization pass, executed 2026-08-20",
       source: {
-        recordId: "EV-039",
-        locator: "data/packages/governed-packages.json — PKG-001",
+        recordId: "TTR-001",
+        locator: "data/accessibility/touch-target-rule.json",
         route: "/evidence",
       },
     },
@@ -147,7 +147,7 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     {
       stageId: "HREQ-IMPLEMENTATION",
       statement:
-        "Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, and no accessibility conformance is claimed for any of them.",
+        "Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, HREQ-025 remains NEEDS-EVIDENCE / DEFER and is not rewritten, and no accessibility conformance is claimed for any of them.",
       source: {
         recordId: "DEC-020",
         locator: "data/historical/fnd-022-owner-dispositions.json",
@@ -155,12 +155,22 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       },
     },
     {
-      stageId: "CYCLE-7",
+      stageId: "TOUCH-TARGET-AUDIT",
       statement:
-        "No cycle beyond the bounded Cycle 6 disposition pass is authorized. Cycle 6 was authorized to record the owner decisions and nothing else, and the historical v0.2.0 DOCX and ZIP, neither supplied, remain unread.",
+        "Execution of the TTR-001 verification protocol is not authorized. The protocol is defined and NOT-RUN: no route, component, or control has been measured or classified, so the interface is unmeasured rather than passing.",
       source: {
-        recordId: "CHECKPOINT-008",
-        locator: "docs/wp-007/CHECKPOINT-008.md",
+        recordId: "FND-024",
+        locator: "src/fixtures/registers.ts — FINDINGS, FND-024",
+        route: "/findings",
+      },
+    },
+    {
+      stageId: "CYCLE-8",
+      statement:
+        "No cycle beyond the bounded Cycle 7 rule-formalization pass is authorized. Cycle 7 was authorized to define the touch-target rule and nothing else, and the historical v0.2.0 DOCX and ZIP, neither supplied, remain unread.",
+      source: {
+        recordId: "CHECKPOINT-009",
+        locator: "docs/wp-007/CHECKPOINT-009.md",
         route: "/decisions",
       },
     },
@@ -188,12 +198,14 @@ export const PROGRAM_STATE: ProgramStateRecord = {
   publicationBoundary:
     "The hosted application is a public prototype under repository governance. Hosting it does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made.",
   nextDefensibleOwnerAction: {
-    action: "Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption.",
-    why: "DEC-020 discharged FND-022 and authorized nothing further. The one gap it deferred is the only open obligation the current posture carries, and no successor cycle is authorized until the owner records the next authorization.",
+    action:
+      "The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface.",
+    why: "DEC-021 discharged FND-023 by defining the rule and authorized nothing further. The protocol it defines is NOT-RUN, so the only open obligation the current posture carries is whether the owner authorizes a bounded execution of it or records that it stays unrun.",
     source: {
-      recordId: "FND-023",
-      locator: "src/fixtures/registers.ts — FINDINGS, FND-023",
+      recordId: "FND-024",
+      locator: "src/fixtures/registers.ts — FINDINGS, FND-024",
       route: "/findings",
     },
   },
+
 };
