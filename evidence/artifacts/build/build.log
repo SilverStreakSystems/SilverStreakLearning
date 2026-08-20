@@ -75,7 +75,7 @@ dist/client/assets/registers-Bdxl3cUZ.js                            112.86 kB �
 dist/client/assets/capability-queries-Dx7RVEAe.js                   137.00 kB │ gzip:  35.93 kB
 dist/client/assets/index-BmYqH_h5.js                                333.28 kB │ gzip: 102.95 kB
 
-✓ built in 2.58s
+✓ built in 2.84s
 vite v8.2.0 building ssr environment for production...
 [2Ktransforming...✓ 246 modules transformed.
 rendering chunks...
@@ -160,7 +160,7 @@ node_modules/.nitro/vite/services/ssr/assets/registers-D8m1f1P2.js              
 node_modules/.nitro/vite/services/ssr/assets/value-stream-queries-BzMZb-UT.js                 124.55 kB │ gzip: 29.26 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-queries-fmMwUK3o.js                   156.58 kB │ gzip: 37.68 kB
 
-✓ built in 1.60s
+✓ built in 1.98s
 
 [nitro] ◐ Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-20)
 [nitro] ✔ Generated public dist/client
@@ -242,7 +242,7 @@ dist/server/_ssr/design-system-view-model-BjO2VCLl.mjs              18.69 kB │
 dist/server/_ssr/capabilities._capabilityId-CL5pckHh.mjs            20.08 kB │ gzip:   3.40 kB
 dist/server/_ssr/value-streams._streamId-CLUI8tp5.mjs               21.24 kB │ gzip:   3.94 kB
 dist/server/_ssr/evidence-DvVDaoOK.mjs                              22.95 kB │ gzip:   5.83 kB
-dist/server/index.mjs                                               26.92 kB │ gzip:   6.69 kB
+dist/server/index.mjs                                               26.92 kB │ gzip:   6.68 kB
 dist/server/_ssr/router-C98a0Aoq.mjs                                32.08 kB │ gzip:   7.39 kB
 dist/server/_ssr/workspaces-0HdHBftJ.mjs                            39.19 kB │ gzip:   9.52 kB
 dist/server/_ssr/capabilities.index-BZODm4wX.mjs                    39.27 kB │ gzip:   8.77 kB
@@ -260,7 +260,7 @@ dist/server/_ssr/value-stream-queries-BzMZb-UT.mjs                 124.42 kB │
 dist/server/_ssr/capability-queries-fmMwUK3o.mjs                   156.49 kB │ gzip:  37.68 kB
 dist/server/_libs/@tanstack/react-router+[...].mjs                 649.67 kB │ gzip: 137.07 kB
 
-✓ built in 362ms
+✓ built in 439ms
 [nitro] ℹ Using auto generated worker name: tanstack-start-ts
 ℹ Generated dist/server/wrangler.json
 ℹ Generated .wrangler/deploy/config.json

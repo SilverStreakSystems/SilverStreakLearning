@@ -11,14 +11,19 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
-    "typecheck": "tsgo --noEmit",
-    "verify": "bun run lint && bun run typecheck && bun run test && bun run build && bun run check:current-state",
+    "typecheck": "tsc --noEmit",
+    "verify": "bun run lint && bun run typecheck && bun run test && bun run build && bun run check:current-state && bun run check:generated && bun run evidence:verify",
     "gen:current-state": "bun scripts/gen-current-state.ts",
     "check:current-state": "bun scripts/gen-current-state.ts --check",
     "format": "prettier --write .",
     "evidence:run": "node scripts/evidence/run.mjs",
     "evidence:verify": "node scripts/evidence/verify.mjs",
-    "audit:touch-targets": "bun scripts/accessibility/audit.mjs"
+    "audit:touch-targets": "bun scripts/accessibility/audit.mjs",
+    "gen:all": "node scripts/check-generated.mjs --write",
+    "check:generated": "node scripts/check-generated.mjs",
+    "evidence:output-safety": "node scripts/evidence/output-safety.mjs",
+    "verify:ci": "bun run verify && bun run evidence:ephemeral",
+    "evidence:ephemeral": "node scripts/evidence/ephemeral.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -102,5 +107,10 @@
   "overrides": {
     "js-yaml": "4.3.1",
     "nanoid": "3.3.18"
+  },
+  "packageManager": "bun@1.3.3",
+  "engines": {
+    "bun": ">=1.3.3 <2",
+    "node": ">=22"
   }
 }

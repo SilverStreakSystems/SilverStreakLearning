@@ -39,7 +39,7 @@ import {
 } from "./supply-chain.mjs";
 import { GENERATED_MARKER, nowIso, resolveCommit, sha256 } from "./util.mjs";
 
-const OUTPUT_DIR = "evidence";
+const OUTPUT_DIR = process.env.SSLS_EVIDENCE_DIR || "evidence";
 
 function write(relativePath, content) {
   const target = join(OUTPUT_DIR, relativePath);

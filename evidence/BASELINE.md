@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-20T10:37:05.581Z |
-| Commit | `2309bfdb4a8e27b5818adfb8a0580e367487c8d6` |
-| Tree hash | `b5a69479a7e425334c8acc743c0a0b28dccad07e` |
+| Generated at | 2026-08-20T10:47:58.265Z |
+| Commit | `83c7680da2c45071ef64469918ea7c709e1fcddc` |
+| Tree hash | `13265333f5dcd364218c24baae00747fc41a9f4c` |
 | Working tree dirty | true |
-| Input-set digest | `8684bade66f1770cea396015eead34412ba05d16301ff6aa25508bdc6716624b` |
+| Input-set digest | `9c06f759f033fe4a0e3dadfb940dc5f90b9de848fa5ce829e0cae1bfbedafbcf` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,10 +18,10 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 676 |
-| Tracked files | 534 |
-| Source files | 197 |
-| Test files | 18 |
+| Commits | 694 |
+| Tracked files | 541 |
+| Source files | 198 |
+| Test files | 19 |
 | Route modules | 31 |
 | Documentation files | 210 |
 
@@ -29,16 +29,16 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Subject | Recorded result |
 |---|---|
-| Build | Exit code 0. Duration 7015 ms. |
-| Tests | Exit code 0. Test counts not parsed.  Duration 21356 ms. |
+| Build | Exit code 0. Duration 8132 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 29071 ms. |
 | Type check | Exit code 0. |
-| Lint | 0 problems across 0 files: 0 errors, 0 warnings, 0 auto-fixable. |
+| Lint | 3 problems across 1 files: 3 errors, 0 warnings, 3 auto-fixable. |
 | Routes | 29 |
 | SBOM components | 75 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
 | Licences requiring review | 0 |
-| Secret scan candidates | 0 |
-| Personal-data scan candidates | 0 |
+| Secret scan candidates | 2 |
+| Personal-data scan candidates | 1 |
 | Backend | No database or backend is configured in the tracked tree. |
 
 ## Cited evidence and applicability
@@ -48,7 +48,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | EV-BUILD | BUILD | pass | CURRENT |
 | EV-TEST | TEST | pass | CURRENT |
 | EV-TYPECHECK | TYPECHECK | pass | CURRENT |
-| EV-LINT | LINT | pass | CURRENT |
+| EV-LINT | LINT | review-required | CURRENT |
 | EV-ROUTES | ROUTE_INVENTORY | pass | CURRENT |
 | EV-PROVENANCE | SOURCE_PROVENANCE | pass | CURRENT |
 | EV-CONFIG | CONFIGURATION | pass | CURRENT |
@@ -58,8 +58,8 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | EV-VULN | VULNERABILITY_SCAN | not-completed | CURRENT |
 | EV-VULN-RECOVERY | VULNERABILITY_SCAN | pass | CURRENT |
 | EV-LICENSE | LICENSE_SCAN | pass | CURRENT |
-| EV-SECRET | SECRET_SCAN | pass | CURRENT |
-| EV-PII | PII_BOUNDARY_SCAN | pass | CURRENT |
+| EV-SECRET | SECRET_SCAN | review-required | CURRENT |
+| EV-PII | PII_BOUNDARY_SCAN | review-required | CURRENT |
 
 
 ## Boundaries

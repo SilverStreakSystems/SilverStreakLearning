@@ -2,11 +2,15 @@
   "workflows": [
     {
       "file": ".github/workflows/current-state.yml",
-      "hash": "6a432f351e209e296a3fcfd6bb0603372c81002a61870db8131bb225489bcabc"
+      "hash": "f854195f640cfe50f704a6ad7a7916c52f27f1dfec453550810e4b62bde8b2fb"
     },
     {
       "file": ".github/workflows/evidence-pipeline.yml",
-      "hash": "a88afb5d2d67171ce1631e959bef7e1e4c2e33b3b9fd3c9fa96830367ba6be72"
+      "hash": "b5f8e0350db807ba080a1d6fd3db92b5369c10c77af00a453b7dcb5e45a9f558"
+    },
+    {
+      "file": ".github/workflows/quality-gate.yml",
+      "hash": "029231b94ecc54112ee67fb08e17b75700dcb1eca8fb42905d0bb303060e0738"
     }
   ],
   "build_config": {
