@@ -363,15 +363,33 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1"],
     description:
-      "DEC-020 disposed of HREQ-025 as NEEDS-EVIDENCE / DEFER: the historical wording 'touch targets appropriate to context' names no minimum dimension, no exceptions, and no verification method, so it cannot be tested as worded. The deferral is recorded in data/historical/fnd-022-owner-dispositions.json, which names what is required before reconsideration: a named touch-target dimension, the exceptions that apply to it, and a stated verification method. This record carries that open gap so it is not lost when FND-022 is discharged.",
+      "DEC-020 disposed of HREQ-025 as NEEDS-EVIDENCE / DEFER: the historical wording 'touch targets appropriate to context' names no minimum dimension, no exceptions, and no verification method, so it cannot be tested as worded. The deferral is recorded in data/historical/fnd-022-owner-dispositions.json, which names what is required before reconsideration: a named touch-target dimension, the exceptions that apply to it, and a stated verification method. This record carries that open gap so it is not lost when FND-022 is discharged. DISCHARGED on 2026-08-20 by DEC-021: the named dimension, the exception set, and the verification method are recorded as TTR-001 v1.0.0 in data/accessibility/touch-target-rule.json, evidenced by EV-043. The prior text above is preserved unchanged.",
     boundary:
-      "This record states an open evidence gap only. It does not adopt, reject, or reinstate HREQ-025, does not block the deferral, does not require any interface change, does not close or reopen WP-007 or Gate A, and asserts no accessibility conformance.",
-    resolutionState: "blocked",
-    requiredDecision:
-      "Record a testable touch-target dimension, its exceptions, and a verification method, or record that HREQ-025 stays deferred.",
-    evidenceReferences: ["EV-042"],
+      "This record states an open evidence gap only. It does not adopt, reject, or reinstate HREQ-025, does not block the deferral, does not require any interface change, does not close or reopen WP-007 or Gate A, and asserts no accessibility conformance. Discharge records that the rule definition now exists. It does not run a target-size audit, does not classify any interface target, does not adopt or assess HREQ-025, which remains NEEDS-EVIDENCE / DEFER, and asserts no accessibility conformance of any kind.",
+    resolutionState: "confirmed",
+    requiredDecision: "DEC-021",
+    evidenceReferences: ["EV-042", "EV-043"],
     synthetic: false,
   },
+  {
+    id: "FND-024",
+    title:
+      "The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface.",
+    severity: "governance",
+    raisedOn: "2026-08-20",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "DEC-021 records TTR-001 v1.0.0 with a 44 by 44 CSS pixel default, a 24 by 24 CSS pixel floor, five documented exceptions, and a deterministic audit protocol at 320, 768, and 1366 CSS pixels. The protocol's execution state is NOT-RUN. No route, component, or control in this build has been measured, classified, or recorded against the rule, so no target is PASS and no target is FAIL: every target is simply unmeasured.",
+    boundary:
+      "This record states an unrun verification only. It does not authorize an audit, a cycle, an interface change, or any remediation; it does not assert that the interface fails the rule; and it asserts no accessibility conformance. Only a recorded owner decision may authorize execution.",
+    resolutionState: "blocked",
+    requiredDecision:
+      "Authorize a bounded execution of the TTR-001 verification protocol, or record that it stays unrun.",
+    evidenceReferences: ["EV-043"],
+    synthetic: false,
+  },
+
 ];
 
 export const EVIDENCE: EvidenceRecord[] = [
