@@ -108,3 +108,59 @@ describe("cross-record invariants", () => {
     expect(codes(document).length).toBeGreaterThan(0);
   });
 });
+
+describe("document clock", () => {
+  it("refuses a document saved before one of its own records happened", () => {
+    const document = seed();
+    document.lastUpdatedAt = document.observations[0]!.observedAt;
+    // At least one record in the seed happens after that observation.
+    expect(codes(document)).toContain("record-after-document-clock");
+  });
+
+  it("refuses a last-updated instant that is not a real instant", () => {
+    const document = seed();
+    (document as unknown as { lastUpdatedAt: string }).lastUpdatedAt = "later";
+    expect(codes(document)).toContain("bad-document-clock");
+  });
+});
+
+describe("cross-record gaps closed by the final correctness pass", () => {
+  it("refuses a follow-up linked to a support that was never carried out", () => {
+    const document = seed();
+    const followUp = document.observations.find((row) => row.supportActionId)!;
+    const support = document.supportActions.find(
+      (row) => row.supportActionId === followUp.supportActionId,
+    )!;
+    support.status = "planned";
+    support.completedAt = null;
+    support.completionNote = null;
+    expect(codes(document)).toContain("follow-up-before-completion");
+  });
+
+  it("refuses a follow-up recorded before its support was completed", () => {
+    const document = seed();
+    const followUp = document.observations.find((row) => row.supportActionId)!;
+    const support = document.supportActions.find(
+      (row) => row.supportActionId === followUp.supportActionId,
+    )!;
+    followUp.observedAt = new Date(Date.parse(support.completedAt!) - 60_000).toISOString();
+    expect(codes(document)).toContain("follow-up-before-support");
+  });
+
+  it("refuses a review correction that points at another support's result", () => {
+    const document = seed();
+    const review = document.goalReviews[0]!;
+    const otherSupport = document.supportActions.find(
+      (row) => row.supportActionId !== review.supportActionId,
+    )!;
+    document.goalReviews.push({
+      ...review,
+      goalReviewId: "REV-ZZ9",
+      learnerId: otherSupport.learnerId,
+      goalId: otherSupport.goalId,
+      supportActionId: otherSupport.supportActionId,
+      supersedesGoalReviewId: review.goalReviewId,
+    });
+    expect(codes(document)).toContain("broken-supersession");
+  });
+});

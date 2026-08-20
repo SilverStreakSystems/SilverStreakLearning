@@ -30,6 +30,11 @@ const T = {
   revB1: "2026-01-17T09:45:00.000Z",
   goalC: "2026-01-06T11:00:00.000Z",
   goalD: "2026-01-06T12:00:00.000Z",
+  /**
+   * The document clock. It is at or after every fact in the seed, because the
+   * saved state cannot honestly claim to be older than the records it holds.
+   */
+  saved: "2026-01-18T00:00:00.000Z",
 } as const;
 
 export const SEED_DATASET_ID = "alpha-001-synthetic";
@@ -41,7 +46,7 @@ export function createSeedDocument(): LearningLoopDocument {
     datasetId: SEED_DATASET_ID,
     seedVersion: LEARNING_LOOP_SEED_VERSION,
     revision: 0,
-    lastUpdatedAt: T.created,
+    lastUpdatedAt: T.saved,
     syntheticOnly: true,
     learners: [
       {

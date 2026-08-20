@@ -331,3 +331,68 @@ describe("import size limit", () => {
     expect(serializeDocument(seed()).length).toBeLessThan(MAX_IMPORT_BYTES);
   });
 });
+
+describe("one-snapshot concurrency across two views of the same storage", () => {
+  it("refuses a stale confirmed replacement after another tab committed", () => {
+    const storage = new FakeStorage();
+    const tabA = new BrowserLearningLoopRepository(storage);
+    const tabB = new BrowserLearningLoopRepository(storage);
+    tabA.commit(null, seed(), AT);
+
+    // Tab A opens a confirmation against what it can see right now.
+    const captured = tabA.expectation();
+    expect(captured.status).toBe("ok");
+    const expectation = captured.status === "ok" ? captured.expectation : null;
+
+    // Tab B saves an ordinary edit in the meantime.
+    const edited = seed();
+    edited.learners[0]!.displayLabel = "Sample Learner A (fictional) edited elsewhere";
+    expect(tabB.commit(1, edited, AT).status).toBe("ok");
+    const afterOtherTab = storage.snapshot();
+
+    const replacement = seed();
+    replacement.learners[0]!.displayLabel = "Sample Learner A (fictional) stale replacement";
+    const outcome = tabA.recover(replacement, AT, expectation!);
+    expect(outcome.status).toBe("conflict");
+    // Not one byte of the other tab's write was disturbed.
+    expect(storage.snapshot()).toEqual(afterOtherTab);
+  });
+
+  it("refuses a stale replacement of corrupt bytes that another tab already replaced", () => {
+    const storage = new FakeStorage();
+    const tabA = new BrowserLearningLoopRepository(storage);
+    const tabB = new BrowserLearningLoopRepository(storage);
+    storage.setItem(LEARNING_LOOP_STORAGE_KEY, "{not json");
+
+    const captured = tabA.expectation();
+    const expectation = captured.status === "ok" ? captured.expectation : null;
+    expect(expectation?.token).toBe("{not json");
+    expect(expectation?.revision).toBeNull();
+
+    expect(tabB.recover(seed(), AT).status).toBe("ok");
+    const afterOtherTab = storage.snapshot();
+
+    expect(tabA.recover(seed(), AT, expectation!).status).toBe("conflict");
+    expect(storage.snapshot()).toEqual(afterOtherTab);
+  });
+
+  it("accepts a confirmed replacement when nothing changed since it was opened", () => {
+    const storage = new FakeStorage();
+    const repository = new BrowserLearningLoopRepository(storage);
+    repository.commit(null, seed(), AT);
+    const before = storage.getItem(LEARNING_LOOP_STORAGE_KEY);
+
+    const captured = repository.expectation();
+    const expectation = captured.status === "ok" ? captured.expectation : null;
+    const replacement = seed();
+    replacement.learners[0]!.displayLabel = "Sample Learner A (fictional) replaced";
+    expect(repository.recover(replacement, AT, expectation!).status).toBe("ok");
+
+    const stored = JSON.parse(storage.getItem(LEARNING_LOOP_STORAGE_KEY)!) as StorageEnvelope;
+    expect(isEnvelope(stored)).toBe(true);
+    expect(stored.envelopeVersion).toBe(ENVELOPE_VERSION);
+    // The prior bytes are kept exactly, as the single recovery copy.
+    expect(stored.backup).toBe((JSON.parse(before!) as StorageEnvelope).current);
+    expect(storage.getItem(LEARNING_LOOP_BACKUP_KEY)).toBeNull();
+  });
+});

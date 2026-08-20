@@ -8,7 +8,10 @@ import {
   type NextStepProjection,
 } from "@/domain/learning-loop";
 import { buildImportPreview, type ImportPreview } from "@/lib/learning-loop/import-preview";
-import { MAX_IMPORT_BYTES } from "@/lib/learning-loop/repository";
+import {
+  MAX_IMPORT_BYTES,
+  type RecoveryExpectation,
+} from "@/lib/learning-loop/repository";
 import type { LearningLoopStore } from "@/lib/learning-loop/use-learning-loop";
 import { formatMoment } from "@/lib/learning-loop/format";
 import { checkImportedRoster } from "@/lib/learning-loop/import-guard";
@@ -110,8 +113,13 @@ export function TimelineList({
  */
 export type DestructiveState =
   | { kind: "idle" }
-  | { kind: "confirm-restore" }
-  | { kind: "preview-import"; document: LearningLoopDocument; preview: ImportPreview };
+  | { kind: "confirm-restore"; expected: RecoveryExpectation | null }
+  | {
+      kind: "preview-import";
+      document: LearningLoopDocument;
+      preview: ImportPreview;
+      expected: RecoveryExpectation | null;
+    };
 
 export function DataControls({ store }: { store: LearningLoopStore }) {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -262,6 +270,8 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
       kind: "preview-import",
       document: result.document,
       preview: buildImportPreview(store.document, result.document),
+      // What this preview was computed against. Confirming re-checks it.
+      expected: store.captureExpectation(),
     });
   }
 
@@ -285,7 +295,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             clearMessages();
             setFictionalConfirmed(false);
             if (hasRecords || unreadable) {
-              setDestructive({ kind: "confirm-restore" });
+              setDestructive({ kind: "confirm-restore", expected: store.captureExpectation() });
               return;
             }
             const result = store.restoreDemoData();
@@ -370,7 +380,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             </ActionButton>
             <ActionButton
               onClick={() => {
-                const result = store.restoreDemoData();
+                const result = store.restoreDemoData(destructive.expected);
                 if (!result.ok) {
                   // The confirmation stays open: nothing happened yet.
                   fail(result.problem?.message ?? "Nothing was replaced.");
@@ -447,7 +457,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
                 disabled={!fictionalConfirmed}
                 onClick={() => {
                   if (!fictionalConfirmed) return;
-                  const result = store.replaceAll(destructive.document);
+                  const result = store.replaceAll(destructive.document, destructive.expected);
                   if (!result.ok) {
                     // The preview stays on screen so the import can be retried.
                     fail(result.problem?.message ?? "Import was refused and nothing was replaced.");

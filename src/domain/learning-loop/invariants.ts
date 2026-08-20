@@ -207,6 +207,13 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Observation ${observation.observationId} is linked to support outside its learner and goal.`,
         );
       }
+      // A link to a support that has not been carried out claims follow-up
+      // evidence for something that has not happened yet.
+      if (support && support.status !== "completed")
+        push(
+          "follow-up-before-completion",
+          `Observation ${observation.observationId} is linked to support that is ${support.status}, so it cannot be follow-up evidence.`,
+        );
       if (support?.completedAt && isBefore(observation.observedAt, support.completedAt))
         push(
           "follow-up-before-support",
@@ -396,10 +403,16 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
       const target = reviews.get(review.supersedesGoalReviewId);
       if (!target) {
         push("broken-supersession", `Review ${review.goalReviewId} supersedes an unknown record.`);
-      } else if (target.learnerId !== review.learnerId || target.goalId !== review.goalId) {
+      } else if (
+        target.learnerId !== review.learnerId ||
+        target.goalId !== review.goalId ||
+        // A correction replaces a judgement of the same support. Anything else
+        // would silently retire a judgement about different evidence.
+        target.supportActionId !== review.supportActionId
+      ) {
         push(
           "broken-supersession",
-          `Review ${review.goalReviewId} supersedes a record from another learner or goal.`,
+          `Review ${review.goalReviewId} supersedes a record from another learner, goal, or support.`,
         );
       }
       if (target && isBefore(review.createdAt, target.createdAt))
@@ -422,6 +435,53 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
       .filter((value): value is string => value !== null),
   ))
     push("multiple-successors", `Review ${id} is superseded by more than one record.`);
+
+  // --- document clock ----------------------------------------------------
+  // The document's own stamp is the instant the product treats as "now" for
+  // this saved state. A record dated after it would make the projection answer
+  // from a future the document does not claim to have reached.
+  const clock = at(document.lastUpdatedAt);
+  if (Number.isNaN(clock)) {
+    push("bad-document-clock", "The saved data does not carry a usable last-updated instant.");
+  } else {
+    const events: { id: string; label: string; value: string | null }[] = [
+      ...document.learners.flatMap((row) => [
+        { id: row.learnerId, label: "created", value: row.createdAt },
+        { id: row.learnerId, label: "updated", value: row.updatedAt },
+      ]),
+      ...document.goals.flatMap((row) => [
+        { id: row.goalId, label: "created", value: row.createdAt },
+        { id: row.goalId, label: "updated", value: row.updatedAt },
+      ]),
+      ...document.observations.flatMap((row) => [
+        { id: row.observationId, label: "created", value: row.createdAt },
+        { id: row.observationId, label: "observed", value: row.observedAt },
+      ]),
+      ...document.supportActions.flatMap((row) => [
+        { id: row.supportActionId, label: "created", value: row.createdAt },
+        { id: row.supportActionId, label: "updated", value: row.updatedAt },
+        { id: row.supportActionId, label: "planned", value: row.plannedAt },
+        { id: row.supportActionId, label: "completed", value: row.completedAt },
+      ]),
+      ...document.goalReviews.flatMap((row) => [
+        { id: row.goalReviewId, label: "created", value: row.createdAt },
+        { id: row.goalReviewId, label: "reviewed", value: row.reviewedAt },
+      ]),
+    ];
+    for (const event of events) {
+      if (event.value === null) continue;
+      const moment = at(event.value);
+      if (Number.isNaN(moment)) {
+        push("bad-instant", `${event.id} carries a ${event.label} time that is not a usable instant.`);
+        continue;
+      }
+      if (moment > clock)
+        push(
+          "record-after-document-clock",
+          `${event.id} is ${event.label} after the saved data's own last-updated time.`,
+        );
+    }
+  }
 
   // --- learners ----------------------------------------------------------
   for (const learner of document.learners) {

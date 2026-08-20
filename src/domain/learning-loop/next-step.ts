@@ -19,6 +19,7 @@ import {
   effectiveObservations,
   validateDocumentInvariants,
 } from "./invariants";
+import { parseDocumentShape } from "./records";
 import type {
   GoalReviewRecord,
   LearningGoalRecord,
@@ -303,11 +304,25 @@ export function projectNextStep(
   // R01 — integrity, resolvable learner, and a usable evaluation instant, all
   // before any advice. Only identifiers that actually resolve are cited: an
   // unrecorded learner identifier is not a record and is not treated as one.
-  const integrity = validateDocumentInvariants(document);
-  const learner = document.learners.find((row) => row.learnerId === learnerId);
+  // Shape first, at runtime, before a single field is read. A TypeScript type
+  // is not a guarantee about the value that actually arrived here, and every
+  // later clause reads fields and compares records across families.
+  const shape = parseDocumentShape(document);
+  if (!shape.ok)
+    return project(
+      "REVIEW_DATA_INTEGRITY",
+      learnerId,
+      null,
+      null,
+      `The saved data does not have the expected shape: ${shape.problems[0]?.path ?? "document"}: ${shape.problems[0]?.message ?? "unreadable"}`,
+      [],
+    );
+  const checked = shape.document;
+  const integrity = validateDocumentInvariants(checked);
+  const learner = checked.learners.find((row) => row.learnerId === learnerId);
   const asOfInstant = instant(asOf);
   const evaluationIsUsable =
-    !Number.isNaN(asOfInstant) && asOfInstant >= instant(document.lastUpdatedAt);
+    !Number.isNaN(asOfInstant) && asOfInstant >= instant(checked.lastUpdatedAt);
   if (integrity.length > 0 || !learner || !evaluationIsUsable) {
     let rationale: string;
     if (!learner) rationale = "This learner is not in the saved data, so no step can be projected.";
@@ -328,7 +343,7 @@ export function projectNextStep(
     );
   }
 
-  const snapshot = readLoopSnapshot(document, learnerId, asOf);
+  const snapshot = readLoopSnapshot(checked, learnerId, asOf);
   const goal = snapshot.focusGoal;
 
   // R02 — no goal being worked on.
@@ -379,9 +394,14 @@ export function projectNextStep(
     else
       rationale =
         "The most recent observation on this goal is not the evidence the current support was planned from, so the next support should be planned from what was last seen.";
+    // The trace names the support that produced this answer, including when
+    // that support is the cancelled or unlinked one being stepped away from.
+    // The projected step is not about that support, so it is not the subject;
+    // it is named in the trace because the answer was computed from it.
     return project("PLAN_SUPPORT", learnerId, goalId, null, rationale, [
       goalId,
       driving.observationId,
+      ...(latest ? [latest.record.supportActionId] : []),
     ]);
   }
 

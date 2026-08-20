@@ -43,9 +43,12 @@ function BoundaryBanner() {
 function NavList({
   onNavigate,
   collapsibleGroups = false,
+  idPrefix,
 }: {
   onNavigate?: () => void;
   collapsibleGroups?: boolean;
+  /** The sidebar and the drawer can both be mounted, so element ids differ. */
+  idPrefix: string;
 }) {
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>(
     collapsibleGroups ? { governance: true } : {},
@@ -58,7 +61,7 @@ function NavList({
         if (routes.length === 0) return null;
         const isCollapsible = collapsibleGroups && group.id !== "product";
         const isOpen = !(isCollapsible && collapsed[group.id]);
-        const listId = `nav-group-${group.id}`;
+        const listId = `${idPrefix}-nav-group-${group.id}`;
         return (
           <div key={group.id} data-nav-group={group.id}>
             {isCollapsible ? (
@@ -191,6 +194,7 @@ function MobileNavDrawer({
         </div>
         <nav aria-label="Primary">
           <NavList
+            idPrefix="drawer"
             collapsibleGroups
             onNavigate={() => {
               navigatedRef.current = true;
@@ -216,7 +220,8 @@ export function AppShell({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
 
-      <header className="border-b border-border bg-sidebar">
+      {/* While the drawer is modal, nothing behind it may take focus or a click. */}
+      <header className="border-b border-border bg-sidebar" inert={mobileNavOpen || undefined}>
         <BoundaryBanner />
         <div className="px-4 py-3 lg:px-6">
           <div className="flex items-center justify-between gap-3">
@@ -253,12 +258,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         />
       ) : null}
 
-      <div className="lg:flex">
+      <div className="lg:flex" inert={mobileNavOpen || undefined}>
         <nav
           aria-label="Sections"
           className={cn("hidden w-72 shrink-0 border-r border-border bg-sidebar p-3 lg:block")}
         >
-          <NavList />
+          <NavList idPrefix="sidebar" />
         </nav>
 
         <main
