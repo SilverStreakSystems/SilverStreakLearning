@@ -66,7 +66,9 @@ function LearnersIndex() {
       <StorageNotices store={store} />
 
       {store.state === "loading" ? (
-        <p className="mt-8 text-sm text-muted-foreground">Reading anything saved in this browser…</p>
+        <p className="mt-8 text-sm text-muted-foreground">
+          Reading anything saved in this browser…
+        </p>
       ) : null}
 
       {store.state !== "loading" && !document ? (
@@ -168,11 +170,8 @@ function LearnersIndex() {
                     setLabelError(null);
                     store.apply(
                       (current, now) =>
-                        createLearner(
-                          current,
-                          { displayLabel: label.trim(), gradeBand },
-                          now,
-                        ).document,
+                        createLearner(current, { displayLabel: label.trim(), gradeBand }, now)
+                          .document,
                     );
                     setLabel("");
                     setAddOpen(false);

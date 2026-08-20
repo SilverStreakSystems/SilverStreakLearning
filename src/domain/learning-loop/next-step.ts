@@ -219,7 +219,10 @@ export function recommendNextStep(
   const citedObservationIds = new Set(
     snapshot.supportActions.flatMap((row) => row.basedOnObservationIds),
   );
-  if (!citedObservationIds.has(snapshot.latestObservation.observationId) && !snapshot.activeSupport) {
+  if (
+    !citedObservationIds.has(snapshot.latestObservation.observationId) &&
+    !snapshot.activeSupport
+  ) {
     const reviewedIds = new Set(snapshot.reviews.flatMap((row) => row.observationIds));
     if (!reviewedIds.has(snapshot.latestObservation.observationId)) {
       return {

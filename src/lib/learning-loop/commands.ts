@@ -151,7 +151,12 @@ export function setGoalStatus(
     ...document,
     goals: document.goals.map((row) =>
       row.goalId === goalId
-        ? { ...row, status, isFocusGoal: status === "active" ? row.isFocusGoal : false, updatedAt: now }
+        ? {
+            ...row,
+            status,
+            isFocusGoal: status === "active" ? row.isFocusGoal : false,
+            updatedAt: now,
+          }
         : row,
     ),
   };

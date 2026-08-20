@@ -50,8 +50,8 @@ export function NextStepCard({
         <div className="flex flex-wrap gap-x-2">
           <dt className="font-semibold">Rule:</dt>
           <dd>
-            {recommendation.ruleId} v{recommendation.ruleVersion}, clause {recommendation.precedence}{" "}
-            ({recommendation.stepCode})
+            {recommendation.ruleId} v{recommendation.ruleVersion}, clause{" "}
+            {recommendation.precedence} ({recommendation.stepCode})
           </dd>
         </div>
         <div className="mt-1 flex flex-wrap gap-x-2">
@@ -194,13 +194,15 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             Importing replaces everything currently saved
           </h3>
           {pending.preview.identical ? (
-            <p className="mt-2 text-sm">This file matches what is already saved. Nothing changes.</p>
+            <p className="mt-2 text-sm">
+              This file matches what is already saved. Nothing changes.
+            </p>
           ) : (
             <ul className="mt-2 flex flex-col gap-1 text-sm">
               {pending.preview.families.map((family) => (
                 <li key={family.family}>
-                  <span className="font-semibold">{family.family}:</span> {family.added.length} added,{" "}
-                  {family.removed.length} removed, {family.changed.length} changed,{" "}
+                  <span className="font-semibold">{family.family}:</span> {family.added.length}{" "}
+                  added, {family.removed.length} removed, {family.changed.length} changed,{" "}
                   {family.unchanged} unchanged
                 </li>
               ))}

@@ -29,8 +29,7 @@ export const Route = createFileRoute("/workspaces/")({
       { title: "Enterprise Workspaces | SSLS" },
       {
         name: "description",
-        content:
-          `${WORKSPACE_COUNT} governed enterprise workspaces, their acting capacities, memberships, and the gates that hold the rest closed.`,
+        content: `${WORKSPACE_COUNT} governed enterprise workspaces, their acting capacities, memberships, and the gates that hold the rest closed.`,
       },
       { property: "og:title", content: "Enterprise Workspaces | SSLS" },
       {

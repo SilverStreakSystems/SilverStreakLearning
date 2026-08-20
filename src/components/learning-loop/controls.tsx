@@ -63,7 +63,9 @@ export function TextLine(props: React.InputHTMLAttributes<HTMLInputElement>) {
 }
 
 export function TextBlock(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
-  return <textarea rows={4} {...props} className={cn(CONTROL_CLASS, "min-h-24", props.className)} />;
+  return (
+    <textarea rows={4} {...props} className={cn(CONTROL_CLASS, "min-h-24", props.className)} />
+  );
 }
 
 export function Choice(props: React.SelectHTMLAttributes<HTMLSelectElement>) {

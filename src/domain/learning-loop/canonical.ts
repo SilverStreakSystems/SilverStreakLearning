@@ -47,19 +47,13 @@ export function serializeDocument(document: LearningLoopDocument): string {
 
 export interface DocumentLoadFailure {
   ok: false;
-  reason:
-    | "not-json"
-    | "unsupported-version"
-    | "schema"
-    | "invariant";
+  reason: "not-json" | "unsupported-version" | "schema" | "invariant";
   message: string;
   schemaProblems?: SchemaProblem[];
   invariantProblems?: InvariantProblem[];
 }
 
-export type DocumentLoadResult =
-  | { ok: true; document: LearningLoopDocument }
-  | DocumentLoadFailure;
+export type DocumentLoadResult = { ok: true; document: LearningLoopDocument } | DocumentLoadFailure;
 
 /**
  * Pure migration dispatcher. Version 1 is the only schema this build has ever

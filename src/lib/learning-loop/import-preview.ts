@@ -32,7 +32,13 @@ function diffFamily<T>(
     else unchanged += 1;
   }
   const removed = [...currentMap.keys()].filter((key) => !incomingMap.has(key));
-  return { family, added: added.sort(), removed: removed.sort(), changed: changed.sort(), unchanged };
+  return {
+    family,
+    added: added.sort(),
+    removed: removed.sort(),
+    changed: changed.sort(),
+    unchanged,
+  };
 }
 
 export interface ImportPreview {
@@ -63,7 +69,12 @@ export function buildImportPreview(
       incoming.supportActions,
       (row) => row.supportActionId,
     ),
-    diffFamily("Results", current?.goalReviews ?? [], incoming.goalReviews, (row) => row.goalReviewId),
+    diffFamily(
+      "Results",
+      current?.goalReviews ?? [],
+      incoming.goalReviews,
+      (row) => row.goalReviewId,
+    ),
   ];
   const totalAdded = families.reduce((sum, row) => sum + row.added.length, 0);
   const totalRemoved = families.reduce((sum, row) => sum + row.removed.length, 0);

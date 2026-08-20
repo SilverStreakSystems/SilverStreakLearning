@@ -49,9 +49,7 @@ export function supersededGoalReviewIds(document: LearningLoopDocument): Set<str
   );
 }
 
-export function effectiveObservations(
-  document: LearningLoopDocument,
-): LearningObservationRecord[] {
+export function effectiveObservations(document: LearningLoopDocument): LearningObservationRecord[] {
   const superseded = supersededObservationIds(document);
   return document.observations.filter((record) => !superseded.has(record.observationId));
 }
@@ -61,10 +59,7 @@ export function effectiveGoalReviews(document: LearningLoopDocument): GoalReview
   return document.goalReviews.filter((record) => !superseded.has(record.goalReviewId));
 }
 
-function chainIsAcyclic(
-  startId: string,
-  next: (id: string) => string | null | undefined,
-): boolean {
+function chainIsAcyclic(startId: string, next: (id: string) => string | null | undefined): boolean {
   const seen = new Set<string>([startId]);
   let cursor = next(startId);
   while (cursor) {
@@ -86,18 +81,26 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
   const reviewIds = document.goalReviews.map((record) => record.goalReviewId);
 
   const allIds = [...learnerIds, ...goalIds, ...observationIds, ...supportIds, ...reviewIds];
-  for (const id of duplicates(allIds)) push("duplicate-id", `Identifier ${id} is used more than once.`);
+  for (const id of duplicates(allIds))
+    push("duplicate-id", `Identifier ${id} is used more than once.`);
 
   for (const id of allIds) {
     const prefix = id.split("-")[0] ?? "";
     if ((RESERVED_GOVERNANCE_PREFIXES as readonly string[]).includes(prefix))
-      push("reserved-prefix", `Identifier ${id} uses a governance prefix reserved outside this product.`);
+      push(
+        "reserved-prefix",
+        `Identifier ${id} uses a governance prefix reserved outside this product.`,
+      );
   }
 
   const learners = new Map(document.learners.map((record) => [record.learnerId, record]));
   const goals = new Map(document.goals.map((record) => [record.goalId, record]));
-  const observations = new Map(document.observations.map((record) => [record.observationId, record]));
-  const supports = new Map(document.supportActions.map((record) => [record.supportActionId, record]));
+  const observations = new Map(
+    document.observations.map((record) => [record.observationId, record]),
+  );
+  const supports = new Map(
+    document.supportActions.map((record) => [record.supportActionId, record]),
+  );
   const reviews = new Map(document.goalReviews.map((record) => [record.goalReviewId, record]));
 
   // --- goals -------------------------------------------------------------
@@ -116,16 +119,25 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
   }
   for (const [learnerId, count] of focusByLearner) {
     if (count > 1)
-      push("multiple-focus-goals", `Learner ${learnerId} has ${count} focus goals; only one is allowed.`);
+      push(
+        "multiple-focus-goals",
+        `Learner ${learnerId} has ${count} focus goals; only one is allowed.`,
+      );
   }
 
   // --- observations ------------------------------------------------------
   for (const observation of document.observations) {
     const goal = goals.get(observation.goalId);
     if (!learners.has(observation.learnerId))
-      push("orphan-observation", `Observation ${observation.observationId} points at unknown learner.`);
+      push(
+        "orphan-observation",
+        `Observation ${observation.observationId} points at unknown learner.`,
+      );
     if (!goal) {
-      push("orphan-observation", `Observation ${observation.observationId} points at unknown goal.`);
+      push(
+        "orphan-observation",
+        `Observation ${observation.observationId} points at unknown goal.`,
+      );
     } else if (goal.learnerId !== observation.learnerId) {
       push(
         "ownership-mismatch",
@@ -135,7 +147,10 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
     if (observation.supportActionId) {
       const support = supports.get(observation.supportActionId);
       if (!support) {
-        push("orphan-observation", `Observation ${observation.observationId} points at unknown support.`);
+        push(
+          "orphan-observation",
+          `Observation ${observation.observationId} points at unknown support.`,
+        );
       } else if (
         support.learnerId !== observation.learnerId ||
         support.goalId !== observation.goalId
@@ -149,8 +164,14 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
     if (observation.supersedesObservationId) {
       const target = observations.get(observation.supersedesObservationId);
       if (!target) {
-        push("broken-supersession", `Observation ${observation.observationId} supersedes an unknown record.`);
-      } else if (target.learnerId !== observation.learnerId || target.goalId !== observation.goalId) {
+        push(
+          "broken-supersession",
+          `Observation ${observation.observationId} supersedes an unknown record.`,
+        );
+      } else if (
+        target.learnerId !== observation.learnerId ||
+        target.goalId !== observation.goalId
+      ) {
         push(
           "broken-supersession",
           `Observation ${observation.observationId} supersedes a record from another learner or goal.`,
@@ -162,7 +183,10 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           (id) => observations.get(id)?.supersedesObservationId ?? null,
         )
       )
-        push("supersession-cycle", `Observation ${observation.observationId} is in a supersession cycle.`);
+        push(
+          "supersession-cycle",
+          `Observation ${observation.observationId} is in a supersession cycle.`,
+        );
     }
   }
   for (const id of duplicates(
@@ -180,12 +204,18 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
     if (!goal) {
       push("orphan-support", `Support ${support.supportActionId} points at unknown goal.`);
     } else if (goal.learnerId !== support.learnerId) {
-      push("ownership-mismatch", `Support ${support.supportActionId} cites another learner's goal.`);
+      push(
+        "ownership-mismatch",
+        `Support ${support.supportActionId} cites another learner's goal.`,
+      );
     }
     for (const observationId of support.basedOnObservationIds) {
       const observation = observations.get(observationId);
       if (!observation) {
-        push("orphan-support", `Support ${support.supportActionId} cites unknown observation ${observationId}.`);
+        push(
+          "orphan-support",
+          `Support ${support.supportActionId} cites unknown observation ${observationId}.`,
+        );
         continue;
       }
       if (observation.learnerId !== support.learnerId || observation.goalId !== support.goalId)
@@ -195,7 +225,10 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
         );
     }
     if (support.status === "completed" && !support.completedAt)
-      push("missing-completion", `Support ${support.supportActionId} is done but carries no completion time.`);
+      push(
+        "missing-completion",
+        `Support ${support.supportActionId} is done but carries no completion time.`,
+      );
     if (support.status !== "completed" && support.completedAt)
       push(
         "false-completion",
@@ -223,12 +256,18 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Review ${review.goalReviewId} reviews support that is not marked done.`,
         );
       if (support.learnerId !== review.learnerId || support.goalId !== review.goalId)
-        push("ownership-mismatch", `Review ${review.goalReviewId} cites support outside its learner and goal.`);
+        push(
+          "ownership-mismatch",
+          `Review ${review.goalReviewId} cites support outside its learner and goal.`,
+        );
     }
     for (const observationId of review.observationIds) {
       const observation = observations.get(observationId);
       if (!observation) {
-        push("orphan-review", `Review ${review.goalReviewId} cites unknown observation ${observationId}.`);
+        push(
+          "orphan-review",
+          `Review ${review.goalReviewId} cites unknown observation ${observationId}.`,
+        );
         continue;
       }
       if (observation.learnerId !== review.learnerId || observation.goalId !== review.goalId) {
@@ -254,7 +293,10 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
         );
       }
       if (
-        !chainIsAcyclic(review.goalReviewId, (id) => reviews.get(id)?.supersedesGoalReviewId ?? null)
+        !chainIsAcyclic(
+          review.goalReviewId,
+          (id) => reviews.get(id)?.supersedesGoalReviewId ?? null,
+        )
       )
         push("supersession-cycle", `Review ${review.goalReviewId} is in a supersession cycle.`);
     }

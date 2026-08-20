@@ -112,15 +112,9 @@ export function useLearningLoop(
     [commit, document],
   );
 
-  const replace = useCallback(
-    (next: LearningLoopDocument) => commit(next),
-    [commit],
-  );
+  const replace = useCallback((next: LearningLoopDocument) => commit(next), [commit]);
 
-  const exportText = useCallback(
-    () => (document ? serializeDocument(document) : null),
-    [document],
-  );
+  const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
 
   return useMemo(
     () => ({

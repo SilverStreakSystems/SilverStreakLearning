@@ -58,7 +58,8 @@ export const Route = createFileRoute("/learners/$learnerId")({
       { property: "og:title", content: "Learner detail | Learning Loop Synthetic Preview" },
       {
         property: "og:description",
-        content: "Synthetic records held in your browser. No real personal data, no account, no server.",
+        content:
+          "Synthetic records held in your browser. No real personal data, no account, no server.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -131,8 +132,7 @@ function LearnerDetail() {
   const recommendation = recommendNextStep(document, learnerId, asOf);
   const snapshot = readLoopSnapshot(document, learnerId, asOf);
   const activeForm = openForm === "none" ? FORM_FOR_STEP[recommendation.stepCode] : openForm;
-  const toggle = (key: Exclude<FormKey, null>) =>
-    setOpenForm(activeForm === key ? null : key);
+  const toggle = (key: Exclude<FormKey, null>) => setOpenForm(activeForm === key ? null : key);
 
   return (
     <div>
@@ -243,8 +243,7 @@ function LearnerDetail() {
           onToggle={() => toggle("goal")}
           onSubmit={(input) => {
             store.apply(
-              (current, now) =>
-                createGoal(current, { learnerId, ...input }, now).document,
+              (current, now) => createGoal(current, { learnerId, ...input }, now).document,
             );
             setOpenForm(null);
           }}
@@ -684,7 +683,8 @@ function SupportForm({
   const [intended, setIntended] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const chosen = selected.length > 0 ? selected : observations.slice(-1).map((row) => row.observationId);
+  const chosen =
+    selected.length > 0 ? selected : observations.slice(-1).map((row) => row.observationId);
 
   return (
     <Disclosure summary="Plan a support" open={open} onToggle={onToggle}>
@@ -880,7 +880,11 @@ function ReviewForm({
   const chosen = selected.length > 0 ? selected : observations.map((row) => row.observationId);
 
   return (
-    <Disclosure summary={`Decide what happened after: ${supportTitle}`} open={open} onToggle={onToggle}>
+    <Disclosure
+      summary={`Decide what happened after: ${supportTitle}`}
+      open={open}
+      onToggle={onToggle}
+    >
       {observations.length === 0 ? (
         <p className="mt-3 text-sm text-muted-foreground">
           Record what you saw after the support before judging it.
@@ -888,7 +892,9 @@ function ReviewForm({
       ) : (
         <>
           <fieldset className="mt-4">
-            <legend className="text-sm font-semibold">Which observations are you judging from?</legend>
+            <legend className="text-sm font-semibold">
+              Which observations are you judging from?
+            </legend>
             {observations.map((row) => (
               <CheckLine
                 key={row.observationId}

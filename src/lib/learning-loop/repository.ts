@@ -35,10 +35,7 @@ export interface LearningLoopRepository {
   readonly kind: "browser-local" | "in-memory";
 }
 
-export function stampRevision(
-  document: LearningLoopDocument,
-  at: string,
-): LearningLoopDocument {
+export function stampRevision(document: LearningLoopDocument, at: string): LearningLoopDocument {
   return canonicalizeDocument({ ...document, revision: document.revision + 1, lastUpdatedAt: at });
 }
 

@@ -26,10 +26,16 @@ export const ID_PREFIX = {
 } as const;
 
 /** Prefixes this namespace must never mint, because governance owns them. */
-export const RESERVED_GOVERNANCE_PREFIXES = ["EV", "EVD", "DEC", "FND", "WP", "CHECKPOINT"] as const;
+export const RESERVED_GOVERNANCE_PREFIXES = [
+  "EV",
+  "EVD",
+  "DEC",
+  "FND",
+  "WP",
+  "CHECKPOINT",
+] as const;
 
-const RFC_3339 =
-  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,6})?(Z|[+-]\d{2}:\d{2})$/;
+const RFC_3339 = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,6})?(Z|[+-]\d{2}:\d{2})$/;
 
 export const timestamp = z
   .string()
