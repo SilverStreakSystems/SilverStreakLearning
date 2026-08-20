@@ -2,7 +2,7 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.0.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "d4af331f43798fbb3faa34d448d2b6aa2acf81377acc2dd18a1bac450883c10b",
+  "fingerprint": "667cc8baa8df9492b649eda0e0771b2b52bc2a156dda2a730630811e2d8f032f",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
@@ -11,18 +11,18 @@
     },
     {
       "path": "src/fixtures/program.ts",
-      "sha256": "59b6ad8c59de5160461447ae0c6b096605225d0e3750d7c2acd50b46e61b3f11",
-      "bytes": 1241
+      "sha256": "79c061cfffe68144ba66ad0d1a1034e0b8e55330ffc08d626da6f7476b40331c",
+      "bytes": 1236
     },
     {
       "path": "src/domain/program-state.ts",
-      "sha256": "62e403d69c7be500c5a2446be73d18b2b31d6e207d8e45cdb9fae83095b5c77f",
-      "bytes": 6245
+      "sha256": "2f6779a69744fdd2d7e7a85bb9ae356cc640cccf113f8eee25b9ee30a1142a33",
+      "bytes": 6261
     },
     {
       "path": "src/domain/program-state-derivation.ts",
-      "sha256": "4ae11b868c50022dc72f2b9bd0bbdec4fda83241ae4a799a2785016a7ab817fa",
-      "bytes": 9780
+      "sha256": "1444b0fdbf5beae7c57a502c8800c0b595c4ef30e8625913fe5831e541e1ff03",
+      "bytes": 9803
     },
     {
       "path": "data/program/program-policy.json",
@@ -71,8 +71,8 @@
     },
     {
       "path": "scripts/gen-current-state.ts",
-      "sha256": "2acca8aaf29aee750cf4afe897ba130d2c4fa75cc5da134368fc6a46b91cd33b",
-      "bytes": 6875
+      "sha256": "3ba79786727c108e2d4b04a4c87138e6ae710a47cd6430f3aa498016ef027bf5",
+      "bytes": 6918
     }
   ]
 }
