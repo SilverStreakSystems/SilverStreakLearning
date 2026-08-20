@@ -44,7 +44,9 @@ import {
 import { formatMoment } from "@/lib/learning-loop/format";
 import {
   useLearningLoop,
+  type CommandRunner,
   type LearningLoopStore,
+  type RunOutcome,
   type StoreProblem,
 } from "@/lib/learning-loop/use-learning-loop";
 
@@ -194,11 +196,17 @@ function UnreadableLearner({ store, learnerId }: { store: LearningLoopStore; lea
   );
 }
 
+/** What a pinned form is working on, kept independent of the projection. */
+type PinnedTarget = { key: "complete" | "review"; supportActionId: string; title: string };
+
 function LearnerDetail() {
   const { learnerId } = Route.useParams();
   const store = useLearningLoop();
   const [openForm, setOpenForm] = useState<FormKey | "none">("none");
   const [notice, setNotice] = useState<string | null>(null);
+  // A form kept mounted and open after a refused write, so the draft in it is
+  // not thrown away when the projection stops offering that step.
+  const [pinned, setPinned] = useState<PinnedTarget | null>(null);
   // Bumped after every successful write, so focus lands on the announced next
   // step once the new page state has actually rendered.
   const [focusTick, setFocusTick] = useState(0);
@@ -234,15 +242,34 @@ function LearnerDetail() {
   const toggle = (key: Exclude<FormKey, null>) => setOpenForm(activeForm === key ? null : key);
 
   /**
+   * Every write action starts here.
+   *
+   * A message left over from a previous action must never be readable as the
+   * outcome of the one just taken, so the success notice and the store-level
+   * problem are both cleared before anything is attempted.
+   */
+  function beginAttempt() {
+    setNotice(null);
+    store.dismissProblem();
+  }
+
+  function attempt<T>(command: CommandRunner<T>): RunOutcome<T> {
+    beginAttempt();
+    return store.run(command);
+  }
+
+  /**
    * One place where a successful write ends.
    *
    * Stale messages are cleared, guidance goes back to automatic so the page
    * offers the newly projected step, and the next step is announced next to
-   * the control that was just used. Focus is offered by a link, not taken.
+   * the control that was just used. Focus is then moved to that announced
+   * heading once the new state has rendered.
    */
   function afterSave(message: string, next: LearningLoopDocument) {
     store.dismissProblem();
     setOpenForm("none");
+    setPinned(null);
     const projected = projectNextStep(next, learnerId, new Date().toISOString());
     setNotice(`${message} Next: ${projected.label}`);
     setFocusTick((tick) => tick + 1);
@@ -250,10 +277,17 @@ function LearnerDetail() {
 
   /**
    * A write that did not happen must not move the person away from their work:
-   * the attempted form is pinned open so the draft they typed stays on screen.
+   * the attempted form is pinned open, and kept mounted even if the projection
+   * would no longer offer it, so the draft they typed stays on screen until
+   * they retry or leave it themselves.
    */
-  function pinnedFailure(key: Exclude<FormKey, null>, report: SubmitReport) {
+  function pinnedFailure(
+    key: Exclude<FormKey, null>,
+    report: SubmitReport,
+    target?: { supportActionId: string; title: string },
+  ) {
     setOpenForm(key);
+    if (target && (key === "complete" || key === "review")) setPinned({ key, ...target });
     return report;
   }
 
@@ -264,6 +298,13 @@ function LearnerDetail() {
   const completedSupports = snapshot.supports.filter((row) => row.state === "completed");
   const latestCompletedSupport = completedSupports.at(-1)?.record ?? null;
   const focusGoal = snapshot.focusGoal;
+
+  // A pinned form outlives the projection that offered it. Nothing else about
+  // the page changes: the same command runs against the same support.
+  const completeTarget: { supportActionId: string; title: string } | null =
+    plannedSupport ?? (pinned?.key === "complete" ? pinned : null);
+  const reviewTarget: { supportActionId: string; title: string } | null =
+    latestCompletedSupport ?? (pinned?.key === "review" ? pinned : null);
 
   return (
     <div>
@@ -308,7 +349,7 @@ function LearnerDetail() {
               </p>
               <ActionButton
                 onClick={() => {
-                  const outcome = store.run((current, context) =>
+                  const outcome = attempt((current, context) =>
                     setGoalStatus(current, focusGoal.goalId, "achieved", context),
                   );
                   if (outcome.ok && outcome.value)
@@ -345,7 +386,7 @@ function LearnerDetail() {
                 <ActionButton
                   tone="secondary"
                   onClick={() => {
-                    const outcome = store.run((current, context) =>
+                    const outcome = attempt((current, context) =>
                       setGoalStatus(current, focusGoal.goalId, "paused", context),
                     );
                     if (outcome.ok && outcome.value)
@@ -382,7 +423,7 @@ function LearnerDetail() {
                       tone="secondary"
                       onClick={() => {
                         // Reactivating and focusing is one change, so it is one write.
-                        const outcome = store.run((current, context) => {
+                        const outcome = attempt((current, context) => {
                           if (goal.status === "active")
                             return setFocusGoal(current, learnerId, goal.goalId, context);
                           const activated = setGoalStatus(current, goal.goalId, "active", context);
@@ -408,7 +449,7 @@ function LearnerDetail() {
           open={activeForm === "goal"}
           onToggle={() => toggle("goal")}
           onSubmit={(input) => {
-            const outcome = store.run((current, context) =>
+            const outcome = attempt((current, context) =>
               createGoal(current, { learnerId, ...input }, context),
             );
             if (!outcome.ok || !outcome.value)
@@ -439,7 +480,7 @@ function LearnerDetail() {
                 message: "Choose a goal before recording an observation.",
                 scope: "field",
               });
-            const outcome = store.run((current, context) =>
+            const outcome = attempt((current, context) =>
               recordObservation(
                 current,
                 { learnerId, goalId: focusGoal.goalId, ...input },
@@ -470,7 +511,7 @@ function LearnerDetail() {
                 message: "Choose a goal before planning a support.",
                 scope: "field",
               });
-            const outcome = store.run((current, context) =>
+            const outcome = attempt((current, context) =>
               planSupport(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
             if (!outcome.ok || !outcome.value)
@@ -483,62 +524,78 @@ function LearnerDetail() {
           }}
         />
 
-        {plannedSupport ? (
+        {completeTarget ? (
           <CompleteSupportForm
+            // One mount per support: the draft in it survives every re-render
+            // and every projection change until that support is finished with.
+            key={`complete-${completeTarget.supportActionId}`}
             open={activeForm === "complete"}
             onToggle={() => toggle("complete")}
-            title={plannedSupport.title}
+            title={completeTarget.title}
             onComplete={(completedAt, note) => {
-              const outcome = store.run((current, context) =>
+              const outcome = attempt((current, context) =>
                 completeSupport(
                   current,
-                  plannedSupport.supportActionId,
+                  completeTarget.supportActionId,
                   completedAt,
                   note,
                   context,
                 ),
               );
               if (!outcome.ok || !outcome.value)
-                return pinnedFailure("complete", reportFrom(outcome.problem, "Nothing was saved."));
+                return pinnedFailure(
+                  "complete",
+                  reportFrom(outcome.problem, "Nothing was saved."),
+                  completeTarget,
+                );
               afterSave("The support was marked done.", outcome.value.document);
               return null;
             }}
             onCancel={(reason) => {
-              const outcome = store.run((current, context) =>
-                cancelSupport(current, plannedSupport.supportActionId, reason, context),
+              const outcome = attempt((current, context) =>
+                cancelSupport(current, completeTarget.supportActionId, reason, context),
               );
               if (!outcome.ok || !outcome.value)
-                return pinnedFailure("complete", reportFrom(outcome.problem, "Nothing was saved."));
+                return pinnedFailure(
+                  "complete",
+                  reportFrom(outcome.problem, "Nothing was saved."),
+                  completeTarget,
+                );
               afterSave("The support was cancelled.", outcome.value.document);
               return null;
             }}
           />
         ) : null}
 
-        {latestCompletedSupport ? (
+        {reviewTarget ? (
           <ReviewForm
+            key={`review-${reviewTarget.supportActionId}`}
             open={activeForm === "review"}
             onToggle={() => toggle("review")}
-            supportTitle={latestCompletedSupport.title}
+            supportTitle={reviewTarget.title}
             observations={snapshot.observations.filter(
-              (row) => row.supportActionId === latestCompletedSupport.supportActionId,
+              (row) => row.supportActionId === reviewTarget.supportActionId,
             )}
             reviews={snapshot.reviews.filter(
-              (row) => row.supportActionId === latestCompletedSupport.supportActionId,
+              (row) => row.supportActionId === reviewTarget.supportActionId,
             )}
             onSubmit={(input) => {
               if (!focusGoal)
-                return pinnedFailure("review", {
-                  message: "Choose a goal before recording a result.",
-                  scope: "field",
-                });
-              const outcome = store.run((current, context) =>
+                return pinnedFailure(
+                  "review",
+                  {
+                    message: "Choose a goal before recording a result.",
+                    scope: "field",
+                  },
+                  reviewTarget,
+                );
+              const outcome = attempt((current, context) =>
                 recordGoalReview(
                   current,
                   {
                     learnerId,
                     goalId: focusGoal.goalId,
-                    supportActionId: latestCompletedSupport.supportActionId,
+                    supportActionId: reviewTarget.supportActionId,
                     ...input,
                   },
                   context,
@@ -548,6 +605,7 @@ function LearnerDetail() {
                 return pinnedFailure(
                   "review",
                   reportFrom(outcome.problem, "The result was not saved."),
+                  reviewTarget,
                 );
               afterSave(
                 input.supersedesGoalReviewId

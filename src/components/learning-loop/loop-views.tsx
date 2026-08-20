@@ -110,12 +110,12 @@ export function TimelineList({
  */
 export type DestructiveState =
   | { kind: "idle" }
-  | { kind: "confirm-restore"; expected: RecoveryExpectation | null }
+  | { kind: "confirm-restore"; expected: RecoveryExpectation }
   | {
       kind: "preview-import";
       document: LearningLoopDocument;
       preview: ImportPreview;
-      expected: RecoveryExpectation | null;
+      expected: RecoveryExpectation;
     };
 
 export function DataControls({ store }: { store: LearningLoopStore }) {
@@ -149,10 +149,14 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
     setNotice(null);
   }
 
+  /** Every new attempt starts from a clean slate of messages, including the
+   * store-level problem, so an old failure can never be read as the result of
+   * the action just taken. */
   function clearMessages() {
     setProblem(null);
     setProblemDetails([]);
     setNotice(null);
+    store.dismissProblem();
   }
 
   function download(text: string, name: string): string | null {
@@ -263,12 +267,20 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
       );
       return;
     }
+    // Fail closed: without a captured expectation there is no way to tell, at
+    // confirm time, whether another tab wrote in between. The confirmation is
+    // not opened at all rather than opened without concurrency protection.
+    const expected = store.captureExpectation();
+    if (expected.status !== "ok") {
+      fail(expected.message);
+      return;
+    }
     setDestructive({
       kind: "preview-import",
       document: result.document,
       preview: buildImportPreview(store.document, result.document),
       // What this preview was computed against. Confirming re-checks it.
-      expected: store.captureExpectation(),
+      expected: expected.expectation,
     });
   }
 
@@ -292,10 +304,16 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             clearMessages();
             setFictionalConfirmed(false);
             if (hasRecords || unreadable) {
-              setDestructive({ kind: "confirm-restore", expected: store.captureExpectation() });
+              // Fail closed: no captured expectation, no confirmation panel.
+              const expected = store.captureExpectation();
+              if (expected.status !== "ok") {
+                fail(expected.message);
+                return;
+              }
+              setDestructive({ kind: "confirm-restore", expected: expected.expectation });
               return;
             }
-            const result = store.restoreDemoData();
+            const result = store.seedInitialData();
             if (!result.ok) {
               fail(result.problem?.message ?? "Nothing was changed.");
               return;

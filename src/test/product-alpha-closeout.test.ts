@@ -220,7 +220,7 @@ describe("current copy tells the truth about Product Alpha 001", () => {
     expect(appShell).toMatch(/PROGRAM_STATE\.publicationBoundary/);
     expect(appShell).toMatch(/PRODUCT-ALPHA-001-SCOPE/);
     expect(appShell).toMatch(/bounded local synthetic proof/);
-    expect(appShell).toMatch(/not backed up, shared, or synchronized/);
+    expect(appShell.replace(/\s+/g, " ")).toMatch(/not backed up, shared, or\s?synchronized/);
     expect(appShell).toMatch(/not production ready/i);
   });
 

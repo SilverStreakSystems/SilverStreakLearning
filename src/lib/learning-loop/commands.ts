@@ -506,6 +506,13 @@ export function recordGoalReview(
     if (!target) return fail("unknown-observation", "The result being corrected does not exist.");
     if (target.goalId !== input.goalId || target.learnerId !== input.learnerId)
       return fail("ownership-mismatch", "That result belongs to a different learner or goal.");
+    // A correction replaces one judgement of one support. Superseding across
+    // supports would silently retire a result about different work.
+    if (target.supportActionId !== input.supportActionId)
+      return fail(
+        "ownership-mismatch",
+        "That result judged a different support, so it cannot be corrected from here.",
+      );
     if (
       document.goalReviews.some(
         (row) => row.supersedesGoalReviewId === input.supersedesGoalReviewId,
