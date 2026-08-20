@@ -130,6 +130,24 @@ describe("navigation and keyboard operation", () => {
     expect(window.document.body.style.overflow).toBe("");
   });
 
+  it("keeps element ids unique and the page behind the drawer out of reach", async () => {
+    const user = userEvent.setup();
+    const { container } = await renderRoute("/");
+    await user.click(screen.getByRole("button", { name: "Menu" }));
+
+    // The sidebar and the drawer are both mounted, so their ids must differ.
+    const ids = Array.from(container.querySelectorAll<HTMLElement>("[id]")).map((node) => node.id);
+    expect(new Set(ids).size).toBe(ids.length);
+
+    // Everything outside the dialog is inert while the dialog is open.
+    expect(container.querySelector("header")).toHaveAttribute("inert");
+    expect(screen.getByRole("main").closest("div[inert]")).toBeTruthy();
+
+    // Collapsed governance links are not in the focus order at all.
+    const drawer = screen.getByRole("dialog", { name: "Primary navigation" });
+    expect(within(drawer).queryByRole("link", { name: "Decisions" })).toBeNull();
+  });
+
   it("uses plain-language navigation labels without unexplained abbreviations", async () => {
     await renderRoute("/");
     const nav = screen.getByRole("navigation", { name: "Sections" });

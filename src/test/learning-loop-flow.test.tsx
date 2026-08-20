@@ -7,7 +7,7 @@
  * the same controls a person would press.
  */
 import { beforeEach, describe, expect, it } from "vitest";
-import { screen, within } from "@testing-library/react";
+import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { renderRoute } from "./render-route";
@@ -174,6 +174,9 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     await user.click(screen.getByRole("button", { name: "Save this observation" }));
 
     expectNextStep({ ruleId: "LLR-001-R04", code: "PLAN_SUPPORT" });
+    // A successful save moves focus onto the newly announced next step, so a
+    // keyboard or screen-reader user is not left where the old form was.
+    await waitFor(() => expect(window.document.getElementById("next-step-heading")).toHaveFocus());
     const baselineObservationId = basisIds().find((id) => id.startsWith("OBS-"))!;
     expect(baselineObservationId).toMatch(/^OBS-/);
 
@@ -241,18 +244,18 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     expect(judgedBoxes[0]).toBeChecked();
     await user.selectOptions(
       screen.getByLabelText(/What does it show\?/),
-      "The success criterion was met",
+      "Progress, criterion not met yet",
     );
     await user.type(
       screen.getByLabelText(/Why do you say that\?/),
-      "The one recorded placement day met the criterion for that day, and a person still has to judge the three-day criterion.",
+      "One recorded placement day went unprompted, which is progress, but the criterion asks for three separate days.",
     );
     await user.click(screen.getByRole("button", { name: "Save this result" }));
 
     // --- the deterministic next action for that result -------------------
     const card = expectNextStep({
-      ruleId: "LLR-001-R12",
-      code: "HUMAN_REVIEW_GOAL_COMPLETION",
+      ruleId: "LLR-001-R11",
+      code: "CONTINUE_SUPPORT_AND_OBSERVE",
     });
     const reviewId = basisIds().find((id) => id.startsWith("REV-"))!;
     // The basis cites the observation the result was judged from, not only the
@@ -263,11 +266,11 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     );
     expect(
       within(card).getByRole("heading", {
-        name: "A person should review whether this goal is finished",
+        name: "Continue the support and keep observing",
       }),
     ).toBeTruthy();
     expect(
-      within(card).getByText(/human decision; this rule set does not close goals/i),
+      within(card).getByText(/progress but the success criterion is not met yet/i),
     ).toBeTruthy();
     expect(within(card).getByText(NEXT_STEP_LIMITATION)).toBeTruthy();
     // The rule set did not close anything: the goal is still being worked on.
@@ -291,7 +294,7 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     expect(headlines[2]).toContain("Support planned:");
     expect(headlines[3]).toContain("Support done:");
     expect(headlines[4]).toContain("Follow-up observation");
-    expect(headlines[5]).toContain("Result recorded: The success criterion was met");
+    expect(headlines[5]).toContain("Result recorded: Progress, criterion not met yet");
     // No mutable current status is retrojected into a past moment.
     expect(entries[0]!.textContent).not.toContain("Criterion met");
     expect(entries[0]!.textContent).toContain("On three separate placement days");
@@ -311,8 +314,8 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
       ).length,
     ).toBeGreaterThan(0);
     expectNextStep({
-      ruleId: "LLR-001-R12",
-      code: "HUMAN_REVIEW_GOAL_COMPLETION",
+      ruleId: "LLR-001-R11",
+      code: "CONTINUE_SUPPORT_AND_OBSERVE",
       basis: ["GOL-C1", supportActionId, reviewId, citedObservationId],
     });
     const reloaded = within(
@@ -320,14 +323,11 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     ).getAllByRole("listitem");
     expect(reloaded.map((entry) => lastRecordId(entry))).toEqual(recordIds);
 
-    // --- closing the goal stays a human act ------------------------------
-    await user.click(screen.getByRole("button", { name: /I judge this goal met — record it/ }));
-    expect(await screen.findByText(/^The goal was recorded as met\. Next: /)).toBeTruthy();
-    const afterClosure = within(
-      screen.getByRole("region", { name: "Everything, in order" }),
-    ).getAllByRole("listitem");
-    // The goal-set entry still describes the criterion, not today's status.
-    expect(afterClosure[0]!.textContent).not.toContain("Criterion met");
-    expect(storedRevision()).toBe(7);
+    // --- the rule set still refuses to close the goal --------------------
+    // Progress is not completion, so no closure control is offered here and the
+    // goal is still shown as being worked on.
+    expect(screen.queryByRole("button", { name: /I judge this goal met/ })).toBeNull();
+    expect(screen.getAllByText(/Working on it/).length).toBeGreaterThan(0);
+    expect(storedRevision()).toBe(6);
   }, 30_000);
 });

@@ -29,6 +29,7 @@ import {
   type LearningLoopRepository,
   type RawOutcome,
   type ReadOutcome,
+  type RecoveryExpectation,
 } from "./repository";
 import { liveContext, type CommandContext } from "./context";
 import type { CommandResult } from "./commands";
@@ -71,10 +72,19 @@ export interface LearningLoopStore {
   /** Set when browser storage was unusable and memory is standing in for it. */
   fallbackNotice: string | null;
   run: <T>(command: CommandRunner<T>) => RunOutcome<T>;
+  /**
+   * What the stored value looks like right now, captured when a destructive
+   * confirmation opens and handed back on confirm so a stale panel cannot
+   * overwrite a change made in another tab meanwhile.
+   */
+  captureExpectation: () => RecoveryExpectation | null;
   /** Atomically replaces everything with the deterministic synthetic dataset. */
-  restoreDemoData: () => RunOutcome<unknown>;
+  restoreDemoData: (expected?: RecoveryExpectation | null) => RunOutcome<unknown>;
   /** Atomically replaces everything with an imported document. */
-  replaceAll: (next: LearningLoopDocument) => RunOutcome<unknown>;
+  replaceAll: (
+    next: LearningLoopDocument,
+    expected?: RecoveryExpectation | null,
+  ) => RunOutcome<unknown>;
   /** A valid canonical document, or null. Never corrupt or newer-schema bytes. */
   exportText: () => string | null;
   /** The stored text exactly as saved, for rescuing unreadable data. */
@@ -238,9 +248,9 @@ export function useLearningLoop(
    * from inside the product. Failure changes nothing.
    */
   const replaceAll = useCallback(
-    (next: LearningLoopDocument): RunOutcome<unknown> => {
+    (next: LearningLoopDocument, expected?: RecoveryExpectation | null): RunOutcome<unknown> => {
       const context = contextFactory();
-      const outcome = repository.recover(next, context.now);
+      const outcome = repository.recover(next, context.now, expected ?? undefined);
       if (outcome.status !== "ok") {
         setProblem(problemFromCommit(outcome));
         return { ok: false, value: null, problem: problemFromCommit(outcome) };
@@ -254,7 +264,15 @@ export function useLearningLoop(
     [contextFactory, repository],
   );
 
-  const restoreDemoData = useCallback(() => replaceAll(createSeedDocument()), [replaceAll]);
+  const restoreDemoData = useCallback(
+    (expected?: RecoveryExpectation | null) => replaceAll(createSeedDocument(), expected),
+    [replaceAll],
+  );
+
+  const captureExpectation = useCallback((): RecoveryExpectation | null => {
+    const outcome = repository.expectation();
+    return outcome.status === "ok" ? outcome.expectation : null;
+  }, [repository]);
 
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);
@@ -272,6 +290,7 @@ export function useLearningLoop(
       ephemeral: repository.ephemeral,
       fallbackNotice,
       run,
+      captureExpectation,
       restoreDemoData,
       replaceAll,
       exportText,
@@ -289,6 +308,7 @@ export function useLearningLoop(
       repository.ephemeral,
       fallbackNotice,
       run,
+      captureExpectation,
       restoreDemoData,
       replaceAll,
       exportText,

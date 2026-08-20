@@ -38,6 +38,16 @@ function seed(): LearningLoopDocument {
 
 const LATE = "2030-01-01T00:00:00.000Z";
 
+/**
+ * Moves the document clock to the latest fact it holds. Fixtures that add
+ * records after the seed's own saved instant must say the document was saved
+ * at least that late, or the document-clock invariant rightly refuses them.
+ */
+function restamp(document: LearningLoopDocument, at: string): LearningLoopDocument {
+  document.lastUpdatedAt = at;
+  return document;
+}
+
 /** Every fixture must be a document the product would actually accept. */
 function valid(document: LearningLoopDocument): LearningLoopDocument {
   expect(parseDocumentShape(document).ok).toBe(true);
@@ -175,15 +185,24 @@ describe("LLR-001 R03 — no baseline observation", () => {
 
   it("wins even when a support already exists on the goal", () => {
     const document = seed();
-    // Move learner A's support onto learner C's unobserved goal is not valid;
-    // instead hide learner A's only observation behind asOf.
-    const beforeObservation = "2026-01-08T00:00:00.000Z";
-    expectClause(projectNextStep(document, "LRN-A", beforeObservation), {
+    // Learner A keeps the observed goal and its planned support, but a second
+    // goal is now the one being worked on and nothing has been observed
+    // against it. Evidence on another goal is not a starting point for this one.
+    const goalA1 = document.goals.find((row) => row.goalId === "GOL-A1")!;
+    goalA1.isFocusGoal = false;
+    document.goals.push({
+      ...goalA1,
+      goalId: "GOL-A2",
+      title: "Fictional second goal",
+      isFocusGoal: true,
+    });
+    valid(document);
+    expectClause(projectNextStep(document, "LRN-A", LATE), {
       code: "RECORD_BASELINE_OBSERVATION",
       learnerId: "LRN-A",
-      goalId: "GOL-A1",
+      goalId: "GOL-A2",
       supportActionId: null,
-      basis: ["GOL-A1"],
+      basis: ["GOL-A2"],
       rationale: /nothing observed against it yet/i,
     });
   });
@@ -219,7 +238,9 @@ describe("LLR-001 R04 — nothing is being tried", () => {
       learnerId: "LRN-A",
       goalId: "GOL-A1",
       supportActionId: null,
-      basis: ["GOL-A1", "OBS-A1"],
+      // The cancelled support is named in the trace: it is why this answer is
+      // "plan again" rather than "carry on".
+      basis: ["GOL-A1", "OBS-A1", "SUP-A1"],
       rationale: /last support on this goal was cancelled/i,
     });
   });
@@ -240,14 +261,28 @@ describe("LLR-001 R05 — a planned support has to be closed off", () => {
 
   it("wins over the follow-up and review clauses that follow it", () => {
     const document = seed();
+    // Learner B's completed support is put back to planned, and the records
+    // that could only exist after completion are removed with it. A valid
+    // document cannot hold follow-up evidence for a support that has not been
+    // carried out, so R05 is the only reachable answer in this state.
     const support = document.supportActions.find((row) => row.supportActionId === "SUP-B1")!;
-    // Learner B's follow-up and result exist, but the support reads as planned
-    // at an instant before it was completed.
-    const beforeCompletion = "2026-01-10T00:00:00.000Z";
-    expect(projectNextStep(document, "LRN-B", beforeCompletion).ruleId).toBe("LLR-001-R05");
-    expect(projectNextStep(document, "LRN-B", beforeCompletion).supportActionId).toBe(
-      support.supportActionId,
-    );
+    support.status = "planned";
+    support.completedAt = null;
+    support.completionNote = null;
+    document.goalReviews = [];
+    document.observations = document.observations.filter((row) => row.observationId !== "OBS-B2");
+    valid(document);
+    const projection = projectNextStep(document, "LRN-B", LATE);
+    expect(projection.ruleId).toBe("LLR-001-R05");
+    expect(projection.supportActionId).toBe(support.supportActionId);
+  });
+
+  it("refuses an earlier evaluation instant instead of reconstructing history", () => {
+    // The five-record model does not record what the goal looked like before
+    // the document's own saved instant, so an earlier asOf is answered at R01.
+    const projection = projectNextStep(seed(), "LRN-B", "2026-01-10T00:00:00.000Z");
+    expect(projection.ruleId).toBe("LLR-001-R01");
+    expect(projection.rationale).toMatch(/cannot reconstruct what the goal looked like/i);
   });
 });
 
@@ -305,7 +340,7 @@ describe("LLR-001 R07 — follow-up evidence that has not been judged", () => {
       observedAt: "2026-01-18T11:00:00.000Z",
       createdAt: "2026-01-18T11:00:00.000Z",
     });
-    valid(document);
+    valid(restamp(document, "2026-01-18T11:00:00.000Z"));
     expectClause(projectNextStep(document, "LRN-B", LATE), {
       code: "REVIEW_OBSERVATIONS",
       learnerId: "LRN-B",
@@ -325,7 +360,7 @@ describe("LLR-001 R07 — follow-up evidence that has not been judged", () => {
       observedAt: "2026-01-19T11:00:00.000Z",
       createdAt: "2026-01-19T11:00:00.000Z",
     });
-    valid(document);
+    valid(restamp(document, "2026-01-19T11:00:00.000Z"));
     expect(projectNextStep(document, "LRN-B", LATE).ruleId).toBe("LLR-001-R07");
   });
 });
@@ -406,7 +441,7 @@ describe("LLR-001 R08..R12 — one clause per recorded result", () => {
       createdAt: "2026-01-20T09:00:00.000Z",
       supersedesGoalReviewId: "REV-B1",
     });
-    valid(document);
+    valid(restamp(document, "2026-01-20T09:00:00.000Z"));
     const projection = projectNextStep(document, "LRN-B", LATE);
     expect(projection.ruleId).toBe("LLR-001-R12");
     expect(projection.basedOnRecordIds).toEqual(["GOL-B1", "OBS-B2", "REV-B2", "SUP-B1"]);
@@ -514,14 +549,16 @@ describe("LLR-001 purity and asOf filtering", () => {
     expect(snapshot.observations.map((row) => row.observationId)).toEqual(["OBS-B1"]);
     expect(snapshot.supports).toEqual([]);
     expect(snapshot.reviews).toEqual([]);
-    expect(projectNextStep(document, "LRN-B", midway).ruleId).toBe("LLR-001-R04");
+    // The snapshot filters, but the projection refuses to answer for an instant
+    // before the document's own saved state rather than pretending to.
+    expect(projectNextStep(document, "LRN-B", midway).ruleId).toBe("LLR-001-R01");
   });
 
   it("hides a recorded result that had not been recorded yet at asOf", () => {
     const document = seed();
     const beforeReview = "2026-01-16T12:00:00.000Z";
     expect(readLoopSnapshot(document, "LRN-B", beforeReview).reviews).toEqual([]);
-    expect(projectNextStep(document, "LRN-B", beforeReview).ruleId).toBe("LLR-001-R07");
+    expect(projectNextStep(document, "LRN-B", beforeReview).ruleId).toBe("LLR-001-R01");
   });
 
   it("reads a support completed after asOf as still planned", () => {
@@ -757,6 +794,9 @@ describe("LLR-001 R04 — the current support must follow from what was last see
 
     const projection = projectNextStep(document, "LRN-B", later);
     expect(projection.ruleId).toBe("LLR-001-R04");
-    expect(projection.basedOnRecordIds).toEqual([support.goalId, "OBS-B9"].sort());
+    // The stale support is named: it is the thing being stepped away from.
+    expect(projection.basedOnRecordIds).toEqual(
+      [support.goalId, "OBS-B9", support.supportActionId].sort(),
+    );
   });
 });

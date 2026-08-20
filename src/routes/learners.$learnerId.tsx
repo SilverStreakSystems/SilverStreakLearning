@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { PageHeader, Section } from "@/components/governance/page";
 import {
@@ -199,6 +199,14 @@ function LearnerDetail() {
   const store = useLearningLoop();
   const [openForm, setOpenForm] = useState<FormKey | "none">("none");
   const [notice, setNotice] = useState<string | null>(null);
+  // Bumped after every successful write, so focus lands on the announced next
+  // step once the new page state has actually rendered.
+  const [focusTick, setFocusTick] = useState(0);
+
+  useEffect(() => {
+    if (focusTick === 0) return;
+    window.document.getElementById("next-step-heading")?.focus();
+  }, [focusTick]);
 
   const document = store.document;
 
@@ -237,6 +245,16 @@ function LearnerDetail() {
     setOpenForm("none");
     const projected = projectNextStep(next, learnerId, new Date().toISOString());
     setNotice(`${message} Next: ${projected.label}`);
+    setFocusTick((tick) => tick + 1);
+  }
+
+  /**
+   * A write that did not happen must not move the person away from their work:
+   * the attempted form is pinned open so the draft they typed stays on screen.
+   */
+  function pinnedFailure(key: Exclude<FormKey, null>, report: SubmitReport) {
+    setOpenForm(key);
+    return report;
   }
 
   const plannedSupport =
@@ -394,7 +412,7 @@ function LearnerDetail() {
               createGoal(current, { learnerId, ...input }, context),
             );
             if (!outcome.ok || !outcome.value)
-              return reportFrom(outcome.problem, "The goal was not saved.");
+              return pinnedFailure("goal", reportFrom(outcome.problem, "The goal was not saved."));
             afterSave("The goal was saved.", outcome.value.document);
             return null;
           }}
@@ -417,7 +435,10 @@ function LearnerDetail() {
           }
           onSubmit={(input) => {
             if (!focusGoal)
-              return { message: "Choose a goal before recording an observation.", scope: "field" };
+              return pinnedFailure("observation", {
+                message: "Choose a goal before recording an observation.",
+                scope: "field",
+              });
             const outcome = store.run((current, context) =>
               recordObservation(
                 current,
@@ -426,7 +447,10 @@ function LearnerDetail() {
               ),
             );
             if (!outcome.ok || !outcome.value)
-              return reportFrom(outcome.problem, "The observation was not saved.");
+              return pinnedFailure(
+                "observation",
+                reportFrom(outcome.problem, "The observation was not saved."),
+              );
             afterSave("The observation was saved.", outcome.value.document);
             return null;
           }}
@@ -442,12 +466,18 @@ function LearnerDetail() {
           }
           onSubmit={(input) => {
             if (!focusGoal)
-              return { message: "Choose a goal before planning a support.", scope: "field" };
+              return pinnedFailure("support", {
+                message: "Choose a goal before planning a support.",
+                scope: "field",
+              });
             const outcome = store.run((current, context) =>
               planSupport(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
             if (!outcome.ok || !outcome.value)
-              return reportFrom(outcome.problem, "The plan was not saved.");
+              return pinnedFailure(
+                "support",
+                reportFrom(outcome.problem, "The plan was not saved."),
+              );
             afterSave("The plan was saved.", outcome.value.document);
             return null;
           }}
@@ -469,7 +499,7 @@ function LearnerDetail() {
                 ),
               );
               if (!outcome.ok || !outcome.value)
-                return reportFrom(outcome.problem, "Nothing was saved.");
+                return pinnedFailure("complete", reportFrom(outcome.problem, "Nothing was saved."));
               afterSave("The support was marked done.", outcome.value.document);
               return null;
             }}
@@ -478,7 +508,7 @@ function LearnerDetail() {
                 cancelSupport(current, plannedSupport.supportActionId, reason, context),
               );
               if (!outcome.ok || !outcome.value)
-                return reportFrom(outcome.problem, "Nothing was saved.");
+                return pinnedFailure("complete", reportFrom(outcome.problem, "Nothing was saved."));
               afterSave("The support was cancelled.", outcome.value.document);
               return null;
             }}
@@ -498,7 +528,10 @@ function LearnerDetail() {
             )}
             onSubmit={(input) => {
               if (!focusGoal)
-                return { message: "Choose a goal before recording a result.", scope: "field" };
+                return pinnedFailure("review", {
+                  message: "Choose a goal before recording a result.",
+                  scope: "field",
+                });
               const outcome = store.run((current, context) =>
                 recordGoalReview(
                   current,
@@ -512,7 +545,10 @@ function LearnerDetail() {
                 ),
               );
               if (!outcome.ok || !outcome.value)
-                return reportFrom(outcome.problem, "The result was not saved.");
+                return pinnedFailure(
+                  "review",
+                  reportFrom(outcome.problem, "The result was not saved."),
+                );
               afterSave(
                 input.supersedesGoalReviewId
                   ? "The correction was saved. The earlier result is kept and marked replaced."
