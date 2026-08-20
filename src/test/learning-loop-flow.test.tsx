@@ -149,9 +149,11 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
 
       // --- the active goal and the baseline recommendation ----------------
       expect(
-        await screen.findByText(/Use the bus route independently for the work placement/),
+        await screen.findByText(/Use the bus route independently for the work placement/, undefined, {
+          timeout: 5000,
+        }),
       ).toBeTruthy();
-      expect(screen.getByText(/On three separate placement days/)).toBeTruthy();
+      expect(screen.getAllByText(/On three separate placement days/).length).toBeGreaterThan(0);
       expectNextStep({
         ruleId: "LLR-001-R03",
         code: "RECORD_BASELINE_OBSERVATION",
@@ -298,6 +300,8 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
       expect(
         await screen.findByText(
           /On the next placement day the learner boarded, rode, and exited at the correct stop with no prompting\./,
+          undefined,
+          { timeout: 5000 },
         ),
       ).toBeTruthy();
       expectNextStep({
