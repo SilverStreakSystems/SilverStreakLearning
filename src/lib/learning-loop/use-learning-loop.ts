@@ -26,11 +26,13 @@ import {
   BrowserLearningLoopRepository,
   InMemoryLearningLoopRepository,
   type CommitOutcome,
+  type ExpectationOutcome,
   type LearningLoopRepository,
   type RawOutcome,
   type ReadOutcome,
   type RecoveryExpectation,
 } from "./repository";
+
 import { liveContext, type CommandContext } from "./context";
 import type { CommandResult } from "./commands";
 
@@ -76,15 +78,22 @@ export interface LearningLoopStore {
    * What the stored value looks like right now, captured when a destructive
    * confirmation opens and handed back on confirm so a stale panel cannot
    * overwrite a change made in another tab meanwhile.
+   *
+   * It is a structured outcome on purpose. A storage read that failed is not
+   * "no expectation": collapsing the two would let a destructive replacement
+   * proceed with no concurrency protection at all.
    */
-  captureExpectation: () => RecoveryExpectation | null;
+  captureExpectation: () => ExpectationOutcome;
   /** Atomically replaces everything with the deterministic synthetic dataset. */
-  restoreDemoData: (expected?: RecoveryExpectation | null) => RunOutcome<unknown>;
+  restoreDemoData: (expected: RecoveryExpectation) => RunOutcome<unknown>;
   /** Atomically replaces everything with an imported document. */
-  replaceAll: (
-    next: LearningLoopDocument,
-    expected?: RecoveryExpectation | null,
-  ) => RunOutcome<unknown>;
+  replaceAll: (next: LearningLoopDocument, expected: RecoveryExpectation) => RunOutcome<unknown>;
+  /**
+   * The first write into empty storage. This is an ordinary commit expecting no
+   * document, not a destructive replacement, so it needs no captured
+   * expectation: if anything is stored meanwhile the commit conflicts.
+   */
+  seedInitialData: () => RunOutcome<unknown>;
   /** A valid canonical document, or null. Never corrupt or newer-schema bytes. */
   exportText: () => string | null;
   /** The stored text exactly as saved, for rescuing unreadable data. */
@@ -95,6 +104,7 @@ export interface LearningLoopStore {
   parseImport: typeof parseDocumentText;
   dismissProblem: () => void;
 }
+
 
 function describeProblems(schema: SchemaProblem[], invariants: InvariantProblem[]): string[] {
   return [
@@ -248,9 +258,9 @@ export function useLearningLoop(
    * from inside the product. Failure changes nothing.
    */
   const replaceAll = useCallback(
-    (next: LearningLoopDocument, expected?: RecoveryExpectation | null): RunOutcome<unknown> => {
+    (next: LearningLoopDocument, expected: RecoveryExpectation): RunOutcome<unknown> => {
       const context = contextFactory();
-      const outcome = repository.recover(next, context.now, expected ?? undefined);
+      const outcome = repository.recover(next, context.now, expected);
       if (outcome.status !== "ok") {
         setProblem(problemFromCommit(outcome));
         return { ok: false, value: null, problem: problemFromCommit(outcome) };
@@ -265,14 +275,27 @@ export function useLearningLoop(
   );
 
   const restoreDemoData = useCallback(
-    (expected?: RecoveryExpectation | null) => replaceAll(createSeedDocument(), expected),
+    (expected: RecoveryExpectation) => replaceAll(createSeedDocument(), expected),
     [replaceAll],
   );
 
-  const captureExpectation = useCallback((): RecoveryExpectation | null => {
-    const outcome = repository.expectation();
-    return outcome.status === "ok" ? outcome.expectation : null;
-  }, [repository]);
+  /**
+   * Seeding empty storage is an ordinary first commit expecting no document.
+   * If anything was written meanwhile the commit conflicts and nothing is lost.
+   */
+  const seedInitialData = useCallback((): RunOutcome<unknown> => {
+    const context = contextFactory();
+    const outcome = commit(null, createSeedDocument(), context.now);
+    if (outcome.status !== "ok")
+      return { ok: false, value: null, problem: problemFromCommit(outcome) };
+    return { ok: true, value: { document: outcome.document }, problem: null };
+  }, [commit, contextFactory]);
+
+  const captureExpectation = useCallback(
+    (): ExpectationOutcome => repository.expectation(),
+    [repository],
+  );
+
 
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);
@@ -293,6 +316,7 @@ export function useLearningLoop(
       captureExpectation,
       restoreDemoData,
       replaceAll,
+      seedInitialData,
       exportText,
       rawText,
       backupText,
@@ -311,6 +335,7 @@ export function useLearningLoop(
       captureExpectation,
       restoreDemoData,
       replaceAll,
+      seedInitialData,
       exportText,
       rawText,
       backupText,

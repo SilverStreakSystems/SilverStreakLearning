@@ -98,23 +98,28 @@ function NavList({
               </p>
             )}
             <ul id={listId} hidden={!isOpen} className="flex flex-col gap-1">
-              {routes.map((route) => (
-                <li key={route.path}>
-                  <Link
-                    to={route.path}
-                    onClick={onNavigate}
-                    activeOptions={{ exact: route.path === "/" }}
-                    activeProps={{
-                      className:
-                        "bg-sidebar-accent text-sidebar-accent-foreground border-l-4 border-sidebar-primary font-semibold",
-                    }}
-                    inactiveProps={{ className: "border-l-4 border-transparent" }}
-                    className="flex min-h-11 items-center rounded-sm px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent"
-                  >
-                    {route.label}
-                  </Link>
-                </li>
-              ))}
+              {/* A collapsed group renders no links at all. A hidden link is
+                  still focusable in some engines, which would put focus on
+                  something nobody can see and would break the drawer trap. */}
+              {isOpen
+                ? routes.map((route) => (
+                    <li key={route.path}>
+                      <Link
+                        to={route.path}
+                        onClick={onNavigate}
+                        activeOptions={{ exact: route.path === "/" }}
+                        activeProps={{
+                          className:
+                            "bg-sidebar-accent text-sidebar-accent-foreground border-l-4 border-sidebar-primary font-semibold",
+                        }}
+                        inactiveProps={{ className: "border-l-4 border-transparent" }}
+                        className="flex min-h-11 items-center rounded-sm px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent"
+                      >
+                        {route.label}
+                      </Link>
+                    </li>
+                  ))
+                : null}
             </ul>
           </div>
         );
@@ -125,6 +130,23 @@ function NavList({
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+/**
+ * The focusable elements a keyboard can actually reach inside the panel.
+ *
+ * Anything inside a hidden or inert subtree is excluded: cycling focus onto an
+ * invisible link is indistinguishable, to the person tabbing, from focus
+ * escaping the drawer entirely.
+ */
+function focusableIn(panel: HTMLElement | null): HTMLElement[] {
+  if (!panel) return [];
+  return Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+    (node) =>
+      !node.closest("[hidden]") &&
+      !node.closest("[inert]") &&
+      node.getAttribute("aria-hidden") !== "true",
+  );
+}
 
 /**
  * The small-screen navigation drawer.
@@ -148,8 +170,7 @@ function MobileNavDrawer({
   const navigatedRef = useRef(false);
 
   useEffect(() => {
-    const first = panelRef.current?.querySelector<HTMLElement>(FOCUSABLE);
-    first?.focus();
+    focusableIn(panelRef.current)[0]?.focus();
     const body = window.document.body;
     const previousOverflow = body.style.overflow;
     body.style.overflow = "hidden";
@@ -172,8 +193,9 @@ function MobileNavDrawer({
         return;
       }
       if (event.key !== "Tab") return;
-      const nodes = Array.from(panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []);
+      const nodes = focusableIn(panelRef.current);
       if (nodes.length === 0) return;
+
       const first = nodes[0]!;
       const last = nodes[nodes.length - 1]!;
       const active = window.document.activeElement;
@@ -230,44 +252,6 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-background">
-      <a
-        href="#main-content"
-        className="sr-only rounded-sm bg-primary px-4 py-3 font-semibold text-primary-foreground focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50"
-      >
-        Skip to main content
-      </a>
-
-      {/* While the drawer is modal, nothing behind it may take focus or a click. */}
-      <header className="border-b border-border bg-sidebar" inert={mobileNavOpen || undefined}>
-        <BoundaryBanner />
-        <div className="px-4 py-3 lg:px-6">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex min-w-0 items-center gap-3">
-              <SSLSMonogram size={36} className="shrink-0 text-ssls-silver-blue" />
-              <div className="min-w-0">
-                <p className="font-display text-base font-bold text-sidebar-foreground">
-                  Silver Streak Learning Systems
-                </p>
-                <p className="text-xs text-sidebar-foreground/85">
-                  Integrated Foundation and Authority Shell
-                </p>
-              </div>
-            </div>
-
-            <button
-              ref={triggerRef}
-              type="button"
-              aria-expanded={mobileNavOpen}
-              aria-haspopup="dialog"
-              onClick={() => setMobileNavOpen(true)}
-              className="min-h-11 min-w-11 rounded-sm border border-sidebar-border px-3 text-sm font-semibold text-sidebar-foreground lg:hidden"
-            >
-              Menu
-            </button>
-          </div>
-        </div>
-      </header>
-
       {mobileNavOpen ? (
         <MobileNavDrawer
           onClose={() => setMobileNavOpen(false)}
@@ -275,34 +259,77 @@ export function AppShell({ children }: { children: ReactNode }) {
         />
       ) : null}
 
-      <div className="lg:flex" inert={mobileNavOpen || undefined}>
-        <nav
-          aria-label="Sections"
-          className={cn("hidden w-72 shrink-0 border-r border-border bg-sidebar p-3 lg:block")}
+      {/* One background wrapper, made inert as a whole while the drawer is
+          modal. Marking only some regions inert leaves the rest — including
+          the skip link — tabbable behind a full-screen overlay. */}
+      <div inert={mobileNavOpen || undefined}>
+        <a
+          href="#main-content"
+          className="sr-only rounded-sm bg-primary px-4 py-3 font-semibold text-primary-foreground focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50"
         >
-          <NavList idPrefix="sidebar" />
-        </nav>
+          Skip to main content
+        </a>
 
-        <main
-          id="main-content"
-          tabIndex={-1}
-          className="w-full flex-1 px-4 py-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:px-8 lg:py-8"
-        >
-          <div className="mx-auto max-w-6xl">{children}</div>
-        </main>
+        <header className="border-b border-border bg-sidebar">
+          <BoundaryBanner />
+          <div className="px-4 py-3 lg:px-6">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex min-w-0 items-center gap-3">
+                <SSLSMonogram size={36} className="shrink-0 text-ssls-silver-blue" />
+                <div className="min-w-0">
+                  <p className="font-display text-base font-bold text-sidebar-foreground">
+                    Silver Streak Learning Systems
+                  </p>
+                  <p className="text-xs text-sidebar-foreground/85">
+                    Integrated Foundation and Authority Shell
+                  </p>
+                </div>
+              </div>
+
+              <button
+                ref={triggerRef}
+                type="button"
+                aria-expanded={mobileNavOpen}
+                aria-haspopup="dialog"
+                onClick={() => setMobileNavOpen(true)}
+                className="min-h-11 min-w-11 rounded-sm border border-sidebar-border px-3 text-sm font-semibold text-sidebar-foreground lg:hidden"
+              >
+                Menu
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div className="lg:flex">
+          <nav
+            aria-label="Sections"
+            className={cn("hidden w-72 shrink-0 border-r border-border bg-sidebar p-3 lg:block")}
+          >
+            <NavList idPrefix="sidebar" />
+          </nav>
+
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="w-full flex-1 px-4 py-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:px-8 lg:py-8"
+          >
+            <div className="mx-auto max-w-6xl">{children}</div>
+          </main>
+        </div>
+
+        <footer className="border-t border-border bg-surface px-4 py-4 text-xs text-muted-foreground lg:px-8">
+          <p>
+            Implemented foundation shell, governed proof scope. Not production ready, not district
+            validated, not independently accessibility validated, not security certified.
+          </p>
+          <p className="mt-2">
+            {PUBLICATION_MARKER} Product Alpha 001 is a bounded local synthetic proof: its records
+            are fictional, are held in this browser only, and are not backed up, shared, or
+            synchronized. Clearing browser storage loses them unless they were exported.{" "}
+            {PRODUCT_ALPHA_SCOPE}
+          </p>
+        </footer>
       </div>
-
-      <footer className="border-t border-border bg-surface px-4 py-4 text-xs text-muted-foreground lg:px-8">
-        <p>
-          Implemented foundation shell, governed proof scope. Not production ready, not district
-          validated, not independently accessibility validated, not security certified.
-        </p>
-        <p className="mt-2">
-          {PUBLICATION_MARKER} Product Alpha 001 is a bounded local synthetic proof: its records are
-          fictional, are held in this browser only, and are not backed up, shared, or synchronized.
-          Clearing browser storage loses them unless they were exported. {PRODUCT_ALPHA_SCOPE}
-        </p>
-      </footer>
     </div>
   );
 }
