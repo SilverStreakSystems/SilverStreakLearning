@@ -163,28 +163,37 @@ claimed. FND-024 records that verification gap.
 ## Current limitations
 
 - No backend, database, authentication, or AI features.
-- No runtime persistence: state is fixture-derived and resets on reload.
+- Governance surfaces are fixture-derived and reset on reload. The Product Alpha
+  001 product surface persists its synthetic data in browser-local storage only:
+  there is no server backup, sharing, or synchronization, and clearing browser
+  storage loses that data unless it was exported first.
 - Touch-target conformance unverified (TTR-001 NOT-RUN, FND-024).
 - Evidence coverage is pattern-bound and self-produced, not independent.
 
-## Next increment
+## Product Alpha 001 — current increment
 
-**Product Alpha 001** — a founder/operator-only synthetic learner
-evidence-to-action vertical slice. Core workflow: synthetic learner list →
-learner detail → goal → support/action → observation/evidence → result →
-timeline → deterministic next action.
+**Product Alpha 001 is implemented as a bounded technical proof** (authorized by
+`DEC-023`, recorded as `CHECKPOINT-010`, evidenced by `EV-046`). A
+founder/operator-only synthetic learner evidence-to-action vertical slice:
+synthetic learner list → learner detail → goal → support/action →
+observation/evidence → result → timeline → deterministic LLR-001 next-step
+projection.
 
 Persistence is browser-local behind a repository interface, with
-seed/reset/export/import.
+seed/reset/export/import. There is no server backup, no sharing, and no
+synchronization; clearing browser storage loses the data unless it was exported.
 
-Explicitly out of scope: authentication, tenant model, cloud database, backend,
-RLS, AI, real PII, district integrations, conformance claim, release claim.
-Backend and authentication are a later architecture decision, taken only after
-the workflow is proven.
+Explicitly out of scope and unauthorized: authentication, tenant model, cloud
+database, backend, RLS, AI, real PII, district integrations, analytics,
+conformance claim, release claim. Backend and authentication are a later
+architecture decision, taken only after the workflow is proven.
 
-Product Alpha 001 is NOT STARTED, and nothing in this repository anticipates its
-schema.
-
+The implementation is a technical proof only. It is **not released, not
+validated, and not certified**: mechanics were tested, usefulness was not. The
+next defensible owner action is a bounded founder/operator walkthrough of the
+loop with recorded usability findings, after which the owner decides between a
+bounded revision and a separately authorized TTR-001 audit. No expansion beyond
+this exact local synthetic proof is authorized.
 
 ## Built with
 
