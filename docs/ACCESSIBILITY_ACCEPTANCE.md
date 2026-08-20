@@ -19,3 +19,20 @@ Authority: Adopted Standard. It constrains this build; it is not authored here.
 
 Nothing above may be restated as a compliance claim. Compliance is refused at
 this stage.
+
+## Touch-target acceptance rule (derived)
+
+Derived from the canonical record `data/accessibility/touch-target-rule.json`.
+The full projection is `docs/accessibility/TOUCH_TARGET_ACCEPTANCE.md`. Edit the
+canonical record, not this section.
+
+| Item | State | How verified |
+| --- | --- | --- |
+| TTR-001 v1.0.0 rule defined: 44 by 44 CSS pixel SHOULD default, 24 by 24 CSS pixel MUST floor | Confirmed | Structured record validated against its Draft 2020-12 schema and domain invariants. |
+| Five documented SC 2.5.8 exceptions enumerated: spacing, equivalent control, inline, user-agent control, essential | Confirmed | Automated test asserts each type appears exactly once. |
+| Compact-target departure band 24 to 43 CSS pixels, rationale required, never below the floor | Confirmed | Automated classification test. |
+| TTR-001 verification protocol executed against this interface at 320, 768, and 1366 CSS pixels | Not Run | No target has been measured, classified, or recorded. Carried as FND-024. |
+
+Defining this rule measures no target in this build and asserts no accessibility
+conformance. HREQ-025 remains NEEDS-EVIDENCE / DEFER and is not adopted.
+
