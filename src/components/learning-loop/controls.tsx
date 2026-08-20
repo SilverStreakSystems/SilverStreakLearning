@@ -22,15 +22,19 @@ export function Field({
   hint,
   error,
   required,
+  controlId,
   children,
 }: {
   label: string;
   hint?: string;
   error?: string | null;
   required?: boolean;
+  /** Supply when an error summary has to link straight to this control. */
+  controlId?: string;
   children: (props: { id: string; describedBy: string | undefined; invalid: boolean }) => ReactNode;
 }) {
-  const id = useId();
+  const generated = useId();
+  const id = controlId ?? generated;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;
   const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
@@ -159,5 +163,64 @@ export function LiveNotice({ message, tone }: { message: string | null; tone: "o
     >
       {message}
     </p>
+  );
+}
+
+export interface FormError {
+  /** The id of the control the message belongs to, for a direct link. */
+  controlId: string;
+  message: string;
+}
+
+/**
+ * The accessible error summary.
+ *
+ * On a refused submit it takes focus, so a screen-reader or keyboard user is
+ * told what went wrong instead of being left on a form that silently did
+ * nothing. Each entry links to the control that has to change. Errors are also
+ * repeated at the field, because a summary alone makes the person hunt.
+ */
+export function ErrorSummary({
+  errors,
+  headingId,
+  summaryRef,
+  title = "That was not saved",
+}: {
+  errors: FormError[];
+  headingId: string;
+  summaryRef?: React.Ref<HTMLDivElement>;
+  title?: string;
+}) {
+  if (errors.length === 0) return null;
+  return (
+    <div
+      ref={summaryRef}
+      tabIndex={-1}
+      role="alert"
+      aria-labelledby={headingId}
+      className="mt-4 rounded-md border-2 border-signal-halted-foreground bg-signal-halted p-4 text-signal-halted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    >
+      <h3 id={headingId} className="font-display text-base font-semibold">
+        {title}
+      </h3>
+      <ul className="measure mt-2 list-disc ps-5 text-sm">
+        {errors.map((error) => (
+          <li key={`${error.controlId}-${error.message}`} className="mt-1 first:mt-0">
+            <a
+              href={`#${error.controlId}`}
+              className="inline-flex min-h-11 items-center font-semibold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              onClick={(event) => {
+                event.preventDefault();
+                const target = window.document.getElementById(error.controlId);
+                target?.focus();
+                target?.scrollIntoView({ block: "center" });
+              }}
+            >
+              {error.message}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

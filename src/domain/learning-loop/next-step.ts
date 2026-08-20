@@ -1,14 +1,18 @@
 /**
- * LLR-001 v1.0.0 — Learning Loop Next-Step Rule.
+ * LLR-001 v1.0.0 — Learning Loop Next-Step Rule Set.
  *
  * A pure, deterministic, total function over (document, learnerId, asOf). It
- * recommends the next step in the loop and always cites the records that
- * produced the recommendation.
+ * projects the next step in the loop and always cites the records that produced
+ * it.
  *
- * This engine is NOT an AI system, NOT a clinical or eligibility judgement, and
- * NOT an approval mechanism. It restates the state of the loop in one sentence.
- * Precedence is fixed and documented: the first rule whose condition holds
- * wins, and no later rule can override it.
+ * This engine is NOT an artificial-intelligence system, NOT a clinical or
+ * eligibility judgement, and NOT an approval mechanism. It writes no state and
+ * it never recommends that the system close a goal: closing a goal is a human
+ * decision taken outside this rule set.
+ *
+ * Precedence is fixed and documented: the first clause whose condition holds
+ * wins, and no later clause can override it. Every time comparison parses the
+ * instant; lexical timestamp comparison is never used.
  */
 import {
   effectiveGoalReviews,
@@ -23,9 +27,13 @@ import type {
   SupportActionRecord,
 } from "./records";
 
-export const NEXT_STEP_RULE_ID = "LLR-001";
-export const NEXT_STEP_RULE_VERSION = "1.0.0";
+export const NEXT_STEP_RULE_SET_ID = "LLR-001";
+export const NEXT_STEP_RULE_SET_VERSION = "1.0.0";
 
+export const NEXT_STEP_LIMITATION =
+  "Deterministic workflow guidance computed from the recorded product data only. It requires human judgement, decides nothing, approves nothing, and is not an artificial-intelligence, clinical, eligibility, or educational determination.";
+
+/** The complete code vocabulary, in fixed precedence order. */
 export const NEXT_STEP_CODES = [
   "REVIEW_DATA_INTEGRITY",
   "SELECT_OR_CREATE_FOCUS_GOAL",
@@ -34,40 +42,115 @@ export const NEXT_STEP_CODES = [
   "COMPLETE_OR_CANCEL_SUPPORT",
   "RECORD_FOLLOW_UP_OBSERVATION",
   "REVIEW_OBSERVATIONS",
-  "CLOSE_GOAL_AS_ACHIEVED",
-  "PLAN_NEXT_SUPPORT_CYCLE",
-  "CHANGE_APPROACH",
-  "GATHER_MORE_EVIDENCE",
+  "COLLECT_MORE_EVIDENCE",
+  "COLLECT_COMPARABLE_EVIDENCE",
+  "ADJUST_SUPPORT",
+  "CONTINUE_SUPPORT_AND_OBSERVE",
+  "HUMAN_REVIEW_GOAL_COMPLETION",
   "REVIEW_LOOP_MANUALLY",
 ] as const;
 export type NextStepCode = (typeof NEXT_STEP_CODES)[number];
 
-export interface NextStepRecommendation {
-  ruleId: typeof NEXT_STEP_RULE_ID;
-  ruleVersion: typeof NEXT_STEP_RULE_VERSION;
-  /** 1-based position in the fixed precedence order that produced this result. */
-  precedence: number;
-  stepCode: NextStepCode;
-  /** Plain-language instruction. No jargon, no abbreviations. */
-  title: string;
-  /** Why this step, stated from the records. */
-  why: string;
-  /** Every record identifier the recommendation depends on. */
-  basisRecordIds: string[];
-  focusGoalId: string | null;
-  activeSupportActionId: string | null;
+/** Clause identifier for each code. One clause, one code. */
+export const NEXT_STEP_RULE_IDS: Record<NextStepCode, string> = {
+  REVIEW_DATA_INTEGRITY: "LLR-001-R01",
+  SELECT_OR_CREATE_FOCUS_GOAL: "LLR-001-R02",
+  RECORD_BASELINE_OBSERVATION: "LLR-001-R03",
+  PLAN_SUPPORT: "LLR-001-R04",
+  COMPLETE_OR_CANCEL_SUPPORT: "LLR-001-R05",
+  RECORD_FOLLOW_UP_OBSERVATION: "LLR-001-R06",
+  REVIEW_OBSERVATIONS: "LLR-001-R07",
+  COLLECT_MORE_EVIDENCE: "LLR-001-R08",
+  COLLECT_COMPARABLE_EVIDENCE: "LLR-001-R09",
+  ADJUST_SUPPORT: "LLR-001-R10",
+  CONTINUE_SUPPORT_AND_OBSERVE: "LLR-001-R11",
+  HUMAN_REVIEW_GOAL_COMPLETION: "LLR-001-R12",
+  REVIEW_LOOP_MANUALLY: "LLR-001-R13",
+};
+
+/** Plain-language instruction for each code. No jargon, no abbreviations. */
+export const NEXT_STEP_LABEL: Record<NextStepCode, string> = {
+  REVIEW_DATA_INTEGRITY: "Check the saved data before going further",
+  SELECT_OR_CREATE_FOCUS_GOAL: "Pick the one goal to work on now",
+  RECORD_BASELINE_OBSERVATION: "Record what you are seeing right now",
+  PLAN_SUPPORT: "Decide what you will change, based on what you saw",
+  COMPLETE_OR_CANCEL_SUPPORT: "Mark the planned support done, or cancel it",
+  RECORD_FOLLOW_UP_OBSERVATION: "Record what you saw after the support happened",
+  REVIEW_OBSERVATIONS: "Decide what the follow-up evidence shows",
+  COLLECT_MORE_EVIDENCE: "Observe again — there was not enough to judge",
+  COLLECT_COMPARABLE_EVIDENCE: "Observe again in comparable conditions",
+  ADJUST_SUPPORT: "Adjust the support and plan the changed version",
+  CONTINUE_SUPPORT_AND_OBSERVE: "Continue the support and keep observing",
+  HUMAN_REVIEW_GOAL_COMPLETION: "A person should review whether this goal is finished",
+  REVIEW_LOOP_MANUALLY: "Look at this goal yourself",
+};
+
+export interface NextStepProjection {
+  ruleSetId: typeof NEXT_STEP_RULE_SET_ID;
+  ruleSetVersion: typeof NEXT_STEP_RULE_SET_VERSION;
+  /** Identifier of the clause that matched. */
+  ruleId: string;
+  learnerId: string;
+  goalId: string | null;
+  supportActionId: string | null;
+  code: NextStepCode;
+  label: string;
+  rationale: string;
+  /** Every record identifier the projection depends on, sorted and unique. */
+  basedOnRecordIds: string[];
+  limitation: typeof NEXT_STEP_LIMITATION;
 }
 
-function byTime<T>(pick: (row: T) => string) {
-  return (a: T, b: T) => pick(a).localeCompare(pick(b));
+function instant(value: string): number {
+  return Date.parse(value);
 }
 
-function latest<T>(rows: T[], pick: (row: T) => string, tieBreak: (row: T) => string): T | null {
-  if (rows.length === 0) return null;
-  return [...rows].sort((a, b) => {
-    const time = pick(a).localeCompare(pick(b));
-    return time !== 0 ? time : tieBreak(a).localeCompare(tieBreak(b));
-  })[rows.length - 1] as T;
+function atOrBefore(moment: string, asOf: string): boolean {
+  return instant(moment) <= instant(asOf);
+}
+
+function latestBy<T>(rows: T[], time: (row: T) => number, id: (row: T) => string): T | null {
+  let best: T | null = null;
+  for (const row of rows) {
+    if (best === null) {
+      best = row;
+      continue;
+    }
+    const delta = time(row) - time(best);
+    if (delta > 0 || (delta === 0 && id(row).localeCompare(id(best)) > 0)) best = row;
+  }
+  return best;
+}
+
+/** The state of one support action as of the projection instant. */
+export type EffectiveSupportState = "planned" | "completed" | "cancelled";
+
+export interface EffectiveSupport {
+  record: SupportActionRecord;
+  state: EffectiveSupportState;
+  /** The instant of the latest event that had happened by `asOf`. */
+  eventAt: string;
+}
+
+/**
+ * Support state as of `asOf`. A completion or cancellation that has not
+ * happened yet is not applied, so a support planned before `asOf` and completed
+ * after it still reads as planned.
+ */
+export function effectiveSupportAt(
+  support: SupportActionRecord,
+  asOf: string,
+): EffectiveSupport | null {
+  if (!atOrBefore(support.plannedAt, asOf)) return null;
+  if (
+    support.status === "completed" &&
+    support.completedAt &&
+    atOrBefore(support.completedAt, asOf)
+  )
+    return { record: support, state: "completed", eventAt: support.completedAt };
+  if (support.status === "cancelled" && atOrBefore(support.updatedAt, asOf))
+    return { record: support, state: "cancelled", eventAt: support.updatedAt };
+  return { record: support, state: "planned", eventAt: support.plannedAt };
 }
 
 export interface LearnerLoopSnapshot {
@@ -75,302 +158,290 @@ export interface LearnerLoopSnapshot {
   focusGoal: LearningGoalRecord | null;
   goals: LearningGoalRecord[];
   observations: LearningObservationRecord[];
-  supportActions: SupportActionRecord[];
+  supports: EffectiveSupport[];
   reviews: GoalReviewRecord[];
   latestObservation: LearningObservationRecord | null;
-  activeSupport: SupportActionRecord | null;
-  latestCompletedSupport: SupportActionRecord | null;
+  /** The latest planned or completed support by event time. Cancellations excluded. */
+  latestActionableSupport: EffectiveSupport | null;
   latestReview: GoalReviewRecord | null;
 }
 
 /**
- * Everything the rule reads, exposed so the interface can show the same facts
- * the recommendation was computed from.
+ * Everything the rule reads, exposed so the interface can show exactly the
+ * facts the projection was computed from.
  */
 export function readLoopSnapshot(
   document: LearningLoopDocument,
   learnerId: string,
   asOf: string,
 ): LearnerLoopSnapshot {
-  const upTo = (moment: string) => moment.localeCompare(asOf) <= 0;
-  const goals = document.goals
-    .filter((goal) => goal.learnerId === learnerId)
-    .sort(byTime((goal) => goal.createdAt));
+  const goals = [...document.goals]
+    .filter((goal) => goal.learnerId === learnerId && atOrBefore(goal.createdAt, asOf))
+    .sort(
+      (a, b) => instant(a.createdAt) - instant(b.createdAt) || a.goalId.localeCompare(b.goalId),
+    );
   const focusGoal = goals.find((goal) => goal.isFocusGoal && goal.status === "active") ?? null;
 
   const observations = focusGoal
     ? effectiveObservations(document)
-        .filter((row) => row.goalId === focusGoal.goalId && upTo(row.observedAt))
-        .sort(byTime((row) => row.observedAt))
-    : [];
-  const supportActions = focusGoal
-    ? document.supportActions
-        .filter((row) => row.goalId === focusGoal.goalId && row.status !== "cancelled")
-        .sort(byTime((row) => row.plannedAt))
-    : [];
-  const reviews = focusGoal
-    ? effectiveGoalReviews(document)
-        .filter((row) => row.goalId === focusGoal.goalId && upTo(row.reviewedAt))
-        .sort(byTime((row) => row.reviewedAt))
+        .filter((row) => row.goalId === focusGoal.goalId && atOrBefore(row.observedAt, asOf))
+        .sort(
+          (a, b) =>
+            instant(a.observedAt) - instant(b.observedAt) ||
+            a.observationId.localeCompare(b.observationId),
+        )
     : [];
 
-  const latestObservation = latest(
-    observations,
-    (row) => row.observedAt,
-    (row) => row.observationId,
-  );
-  const activeSupport = latest(
-    supportActions.filter((row) => row.status === "planned"),
-    (row) => row.plannedAt,
-    (row) => row.supportActionId,
-  );
-  const latestCompletedSupport = latest(
-    supportActions.filter((row) => row.status === "completed" && row.completedAt),
-    (row) => row.completedAt as string,
-    (row) => row.supportActionId,
-  );
-  const latestReview = latest(
-    reviews,
-    (row) => row.reviewedAt,
-    (row) => row.goalReviewId,
-  );
+  const supports = focusGoal
+    ? document.supportActions
+        .filter((row) => row.goalId === focusGoal.goalId)
+        .map((row) => effectiveSupportAt(row, asOf))
+        .filter((row): row is EffectiveSupport => row !== null)
+        .sort(
+          (a, b) =>
+            instant(a.eventAt) - instant(b.eventAt) ||
+            a.record.supportActionId.localeCompare(b.record.supportActionId),
+        )
+    : [];
+
+  const reviews = focusGoal
+    ? effectiveGoalReviews(document)
+        .filter((row) => row.goalId === focusGoal.goalId && atOrBefore(row.reviewedAt, asOf))
+        .sort(
+          (a, b) =>
+            instant(a.reviewedAt) - instant(b.reviewedAt) ||
+            a.goalReviewId.localeCompare(b.goalReviewId),
+        )
+    : [];
 
   return {
     learnerId,
     focusGoal,
     goals,
     observations,
-    supportActions,
+    supports,
     reviews,
-    latestObservation,
-    activeSupport,
-    latestCompletedSupport,
-    latestReview,
+    latestObservation: latestBy(
+      observations,
+      (row) => instant(row.observedAt),
+      (row) => row.observationId,
+    ),
+    latestActionableSupport: latestBy(
+      supports.filter((row) => row.state !== "cancelled"),
+      (row) => instant(row.eventAt),
+      (row) => row.record.supportActionId,
+    ),
+    latestReview: latestBy(
+      reviews,
+      (row) => instant(row.reviewedAt),
+      (row) => row.goalReviewId,
+    ),
+  };
+}
+
+function project(
+  code: NextStepCode,
+  learnerId: string,
+  goalId: string | null,
+  supportActionId: string | null,
+  rationale: string,
+  basedOnRecordIds: string[],
+): NextStepProjection {
+  return {
+    ruleSetId: NEXT_STEP_RULE_SET_ID,
+    ruleSetVersion: NEXT_STEP_RULE_SET_VERSION,
+    ruleId: NEXT_STEP_RULE_IDS[code],
+    learnerId,
+    goalId,
+    supportActionId,
+    code,
+    label: NEXT_STEP_LABEL[code],
+    rationale,
+    basedOnRecordIds: [...new Set(basedOnRecordIds)].sort(),
+    limitation: NEXT_STEP_LIMITATION,
   };
 }
 
 /**
- * The rule. Total: every reachable state resolves to exactly one step, and the
- * final clause is a real fallback rather than an assumption.
+ * The rule set. Total: every reachable state resolves to exactly one clause,
+ * and the final clause is a real fallback rather than an assumption.
  */
-export function recommendNextStep(
+export function projectNextStep(
   document: LearningLoopDocument,
   learnerId: string,
   asOf: string,
-): NextStepRecommendation {
-  const base = {
-    ruleId: NEXT_STEP_RULE_ID,
-    ruleVersion: NEXT_STEP_RULE_VERSION,
-  } as const;
-
-  // 1 — integrity before advice.
+): NextStepProjection {
+  // R01 — integrity before advice.
   const integrity = validateDocumentInvariants(document);
   const learner = document.learners.find((row) => row.learnerId === learnerId);
-  if (integrity.length > 0 || !learner) {
-    return {
-      ...base,
-      precedence: 1,
-      stepCode: "REVIEW_DATA_INTEGRITY",
-      title: "Check the saved data before going further",
-      why: !learner
-        ? "This learner is not in the saved data, so no step can be recommended."
+  if (integrity.length > 0 || !learner)
+    return project(
+      "REVIEW_DATA_INTEGRITY",
+      learnerId,
+      null,
+      null,
+      !learner
+        ? "This learner is not in the saved data, so no step can be projected."
         : `The saved data has ${integrity.length} inconsistency to resolve: ${integrity[0]?.message}`,
-      basisRecordIds: [learnerId],
-      focusGoalId: null,
-      activeSupportActionId: null,
-    };
-  }
+      [learnerId],
+    );
 
   const snapshot = readLoopSnapshot(document, learnerId, asOf);
-  const goalId = snapshot.focusGoal?.goalId ?? null;
+  const goal = snapshot.focusGoal;
 
-  // 2 — no focus goal.
-  if (!snapshot.focusGoal) {
-    return {
-      ...base,
-      precedence: 2,
-      stepCode: "SELECT_OR_CREATE_FOCUS_GOAL",
-      title: "Pick the one goal to work on now",
-      why:
-        snapshot.goals.length === 0
-          ? "This learner has no goals yet."
-          : "This learner has goals, but none is marked as the one being worked on now.",
-      basisRecordIds: [learnerId, ...snapshot.goals.map((goal) => goal.goalId)],
-      focusGoalId: null,
-      activeSupportActionId: null,
-    };
-  }
+  // R02 — no goal being worked on.
+  if (!goal)
+    return project(
+      "SELECT_OR_CREATE_FOCUS_GOAL",
+      learnerId,
+      null,
+      null,
+      snapshot.goals.length === 0
+        ? "This learner has no goals yet."
+        : "This learner has goals, but none is marked as the one being worked on now.",
+      [learnerId, ...snapshot.goals.map((row) => row.goalId)],
+    );
 
-  // 3 — no observation yet.
-  if (!snapshot.latestObservation) {
-    return {
-      ...base,
-      precedence: 3,
-      stepCode: "RECORD_BASELINE_OBSERVATION",
-      title: "Record what you are seeing right now",
-      why: "There is a goal but nothing observed against it yet, so there is no starting point to compare to.",
-      basisRecordIds: [snapshot.focusGoal.goalId],
-      focusGoalId: goalId,
-      activeSupportActionId: null,
-    };
-  }
+  const goalId = goal.goalId;
 
-  // 4 — newest observation not yet acted on.
-  const citedObservationIds = new Set(
-    snapshot.supportActions.flatMap((row) => row.basedOnObservationIds),
-  );
-  if (
-    !citedObservationIds.has(snapshot.latestObservation.observationId) &&
-    !snapshot.activeSupport
-  ) {
-    const reviewedIds = new Set(snapshot.reviews.flatMap((row) => row.observationIds));
-    if (!reviewedIds.has(snapshot.latestObservation.observationId)) {
-      return {
-        ...base,
-        precedence: 4,
-        stepCode: "PLAN_SUPPORT",
-        title: "Decide what you will change based on that observation",
-        why: "The most recent observation has not been used to plan anything yet.",
-        basisRecordIds: [snapshot.focusGoal.goalId, snapshot.latestObservation.observationId],
-        focusGoalId: goalId,
-        activeSupportActionId: null,
-      };
-    }
-  }
+  // R03 — nothing observed against the goal.
+  if (!snapshot.latestObservation)
+    return project(
+      "RECORD_BASELINE_OBSERVATION",
+      learnerId,
+      goalId,
+      null,
+      "There is a goal but nothing observed against it yet, so there is no starting point to compare to.",
+      [goalId],
+    );
 
-  // 5 — support planned but not carried out.
-  if (snapshot.activeSupport) {
-    return {
-      ...base,
-      precedence: 5,
-      stepCode: "COMPLETE_OR_CANCEL_SUPPORT",
-      title: "Mark the planned support done, or cancel it",
-      why: `"${snapshot.activeSupport.title}" is still planned, so nothing can be judged from it yet.`,
-      basisRecordIds: [snapshot.focusGoal.goalId, snapshot.activeSupport.supportActionId],
-      focusGoalId: goalId,
-      activeSupportActionId: snapshot.activeSupport.supportActionId,
-    };
-  }
+  const actionable = snapshot.latestActionableSupport;
 
-  const completed = snapshot.latestCompletedSupport;
-  if (!completed) {
-    return {
-      ...base,
-      precedence: 4,
-      stepCode: "PLAN_SUPPORT",
-      title: "Decide what you will change based on what you observed",
-      why: "There is an observation on this goal but no support has been planned from it.",
-      basisRecordIds: [snapshot.focusGoal.goalId, snapshot.latestObservation.observationId],
-      focusGoalId: goalId,
-      activeSupportActionId: null,
-    };
-  }
+  // R04 — nothing has been planned from what was observed.
+  if (!actionable)
+    return project(
+      "PLAN_SUPPORT",
+      learnerId,
+      goalId,
+      null,
+      snapshot.supports.length > 0
+        ? "The last support on this goal was cancelled, so nothing is currently being tried."
+        : "There is an observation on this goal but no support has been planned from it.",
+      [goalId, snapshot.latestObservation.observationId],
+    );
 
-  // 6 — support done, no follow-up observation.
+  // R05 — support planned but not yet carried out or cancelled.
+  if (actionable.state === "planned")
+    return project(
+      "COMPLETE_OR_CANCEL_SUPPORT",
+      learnerId,
+      goalId,
+      actionable.record.supportActionId,
+      `"${actionable.record.title}" is still planned, so nothing can be judged from it yet.`,
+      [goalId, actionable.record.supportActionId],
+    );
+
+  const completed = actionable.record;
+  const completedAt = actionable.eventAt;
+
+  // R06 — support done, nothing observed since.
   const followUps = snapshot.observations.filter(
     (row) =>
       row.supportActionId === completed.supportActionId &&
-      row.observedAt.localeCompare(completed.completedAt as string) >= 0,
+      instant(row.observedAt) >= instant(completedAt),
   );
-  if (followUps.length === 0) {
-    return {
-      ...base,
-      precedence: 6,
-      stepCode: "RECORD_FOLLOW_UP_OBSERVATION",
-      title: "Record what you saw after the support happened",
-      why: `"${completed.title}" is done, but nothing has been observed since it was carried out.`,
-      basisRecordIds: [snapshot.focusGoal.goalId, completed.supportActionId],
-      focusGoalId: goalId,
-      activeSupportActionId: completed.supportActionId,
-    };
-  }
+  if (followUps.length === 0)
+    return project(
+      "RECORD_FOLLOW_UP_OBSERVATION",
+      learnerId,
+      goalId,
+      completed.supportActionId,
+      `"${completed.title}" is done, but nothing has been observed since it was carried out.`,
+      [goalId, completed.supportActionId],
+    );
 
-  // 7 — follow-up evidence not yet reviewed.
+  // R07 — follow-up evidence not judged yet.
   const reviewsForSupport = snapshot.reviews.filter(
     (row) => row.supportActionId === completed.supportActionId,
   );
-  const reviewedObservationIds = new Set(reviewsForSupport.flatMap((row) => row.observationIds));
-  const unreviewed = followUps.filter((row) => !reviewedObservationIds.has(row.observationId));
-  if (unreviewed.length > 0) {
-    return {
-      ...base,
-      precedence: 7,
-      stepCode: "REVIEW_OBSERVATIONS",
-      title: "Decide what the follow-up evidence shows",
-      why: `${unreviewed.length} observation${unreviewed.length === 1 ? "" : "s"} recorded after "${completed.title}" ${unreviewed.length === 1 ? "has" : "have"} not been judged yet.`,
-      basisRecordIds: [
-        snapshot.focusGoal.goalId,
-        completed.supportActionId,
-        ...unreviewed.map((row) => row.observationId),
-      ],
-      focusGoalId: goalId,
-      activeSupportActionId: completed.supportActionId,
-    };
-  }
+  const judged = new Set(reviewsForSupport.flatMap((row) => row.observationIds));
+  const unjudged = followUps.filter((row) => !judged.has(row.observationId));
+  if (unjudged.length > 0)
+    return project(
+      "REVIEW_OBSERVATIONS",
+      learnerId,
+      goalId,
+      completed.supportActionId,
+      `${unjudged.length} observation${unjudged.length === 1 ? "" : "s"} recorded after "${completed.title}" ${unjudged.length === 1 ? "has" : "have"} not been judged yet.`,
+      [goalId, completed.supportActionId, ...unjudged.map((row) => row.observationId)],
+    );
 
-  const review = latest(
+  const review = latestBy(
     reviewsForSupport,
-    (row) => row.reviewedAt,
+    (row) => instant(row.reviewedAt),
     (row) => row.goalReviewId,
   );
 
-  // 8..12 — act on the recorded result.
   if (review) {
-    const shared = {
-      ...base,
-      focusGoalId: goalId,
-      activeSupportActionId: completed.supportActionId,
-      basisRecordIds: [snapshot.focusGoal.goalId, completed.supportActionId, review.goalReviewId],
-    };
+    const basis = [goalId, completed.supportActionId, review.goalReviewId];
+    // R08..R12 — one distinct branch per recorded result. Insufficient evidence
+    // and mixed are deliberately kept apart: they call for different evidence.
     switch (review.result) {
-      case "criterion-met":
-        return {
-          ...shared,
-          precedence: 8,
-          stepCode: "CLOSE_GOAL_AS_ACHIEVED",
-          title: "Close this goal and choose the next one",
-          why: "The recorded result says the success criterion was met.",
-        };
-      case "progress-observed":
-        return {
-          ...shared,
-          precedence: 9,
-          stepCode: "PLAN_NEXT_SUPPORT_CYCLE",
-          title: "Plan the next round of the same approach",
-          why: "The recorded result says there was progress but the criterion is not met yet.",
-        };
-      case "no-progress-observed":
-        return {
-          ...shared,
-          precedence: 10,
-          stepCode: "CHANGE_APPROACH",
-          title: "Try a different approach",
-          why: "The recorded result says no progress was observed from what was tried.",
-        };
       case "insufficient-evidence":
+        return project(
+          "COLLECT_MORE_EVIDENCE",
+          learnerId,
+          goalId,
+          completed.supportActionId,
+          "The recorded result says there was not enough evidence to judge, so more of the same kind of evidence is needed.",
+          basis,
+        );
       case "mixed":
-        return {
-          ...shared,
-          precedence: 11,
-          stepCode: "GATHER_MORE_EVIDENCE",
-          title: "Observe again before deciding",
-          why:
-            review.result === "mixed"
-              ? "The recorded result was mixed, so one more observation is needed to tell."
-              : "The recorded result says there was not enough to judge.",
-        };
+        return project(
+          "COLLECT_COMPARABLE_EVIDENCE",
+          learnerId,
+          goalId,
+          completed.supportActionId,
+          "The recorded result was mixed across situations, so evidence gathered in comparable conditions is needed to tell them apart.",
+          basis,
+        );
+      case "no-progress-observed":
+        return project(
+          "ADJUST_SUPPORT",
+          learnerId,
+          goalId,
+          completed.supportActionId,
+          "The recorded result says no progress was observed from what was tried, so the support itself needs to change.",
+          basis,
+        );
+      case "progress-observed":
+        return project(
+          "CONTINUE_SUPPORT_AND_OBSERVE",
+          learnerId,
+          goalId,
+          completed.supportActionId,
+          "The recorded result says there was progress but the success criterion is not met yet.",
+          basis,
+        );
+      case "criterion-met":
+        return project(
+          "HUMAN_REVIEW_GOAL_COMPLETION",
+          learnerId,
+          goalId,
+          completed.supportActionId,
+          "The recorded result says the success criterion was met. Whether the goal is finished is a human decision; this rule set does not close goals.",
+          basis,
+        );
     }
   }
 
-  // 13 — genuine fallback. The engine does not guess.
-  return {
-    ...base,
-    precedence: 12,
-    stepCode: "REVIEW_LOOP_MANUALLY",
-    title: "Look at this goal yourself",
-    why: "This combination of records does not match any rule, so no step is being recommended.",
-    basisRecordIds: [snapshot.focusGoal.goalId],
-    focusGoalId: goalId,
-    activeSupportActionId: null,
-  };
+  // R13 — genuine fallback. The rule set does not guess.
+  return project(
+    "REVIEW_LOOP_MANUALLY",
+    learnerId,
+    goalId,
+    completed.supportActionId,
+    "This combination of records does not match any clause, so no step is being projected.",
+    [goalId, completed.supportActionId],
+  );
 }

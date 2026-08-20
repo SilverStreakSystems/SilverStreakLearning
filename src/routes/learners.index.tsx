@@ -1,19 +1,22 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { PageHeader, Section } from "@/components/governance/page";
 import {
   ActionButton,
   Choice,
   Disclosure,
+  ErrorSummary,
   Field,
+  LiveNotice,
   TextLine,
+  type FormError,
 } from "@/components/learning-loop/controls";
 import { DataControls, StorageNotices } from "@/components/learning-loop/loop-views";
 import {
   GRADE_BANDS,
   GRADE_BAND_LABEL,
-  recommendNextStep,
+  projectNextStep,
   type GradeBand,
 } from "@/domain/learning-loop";
 import { createLearner } from "@/lib/learning-loop/commands";
@@ -41,15 +44,52 @@ export const Route = createFileRoute("/learners/")({
   component: LearnersIndex,
 });
 
+const LABEL_FIELD_ID = "new-learner-label";
+
 function LearnersIndex() {
   const store = useLearningLoop();
   const [addOpen, setAddOpen] = useState(false);
   const [label, setLabel] = useState("");
   const [gradeBand, setGradeBand] = useState<GradeBand>("unspecified");
-  const [labelError, setLabelError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FormError[]>([]);
+  const [notice, setNotice] = useState<string | null>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
 
   const document = store.document;
+  // One instant for the whole render, so every row is projected consistently.
   const asOf = new Date().toISOString();
+  const labelError = errors.find((row) => row.controlId === LABEL_FIELD_ID)?.message ?? null;
+
+  function submitLearner() {
+    const found: FormError[] = [];
+    if (label.trim().length === 0)
+      found.push({
+        controlId: LABEL_FIELD_ID,
+        message: "Enter a label so this fictional learner can be told apart.",
+      });
+    if (found.length > 0) {
+      setErrors(found);
+      setNotice(null);
+      // Focus moves to the summary, not silently nowhere.
+      window.setTimeout(() => summaryRef.current?.focus(), 0);
+      return;
+    }
+
+    const outcome = store.run((current, context) =>
+      createLearner(current, { displayLabel: label.trim(), gradeBand }, context),
+    );
+    if (!outcome.ok) {
+      setErrors([
+        { controlId: LABEL_FIELD_ID, message: outcome.problem?.message ?? "Nothing was saved." },
+      ]);
+      window.setTimeout(() => summaryRef.current?.focus(), 0);
+      return;
+    }
+    setErrors([]);
+    setLabel("");
+    setAddOpen(false);
+    setNotice("The learner was added.");
+  }
 
   return (
     <div>
@@ -65,17 +105,23 @@ function LearnersIndex() {
 
       <StorageNotices store={store} />
 
-      {store.state === "loading" ? (
+      {store.status === "loading" ? (
         <p className="mt-8 text-sm text-muted-foreground">
           Reading anything saved in this browser…
         </p>
       ) : null}
 
-      {store.state !== "loading" && !document ? (
+      {store.status !== "loading" && !document ? (
         <Section
           id="get-started"
-          title="Nothing is saved yet"
-          description="Load the four sample learners to see the loop working, or add a fictional learner of your own."
+          title={
+            store.status === "empty" ? "Nothing is saved yet" : "The saved records cannot be read"
+          }
+          description={
+            store.status === "empty"
+              ? "Load the sample learners to see the loop working, or add a fictional learner of your own."
+              : "The saved data has been left exactly as it is. Export it before replacing it with the sample records."
+          }
         >
           <DataControls store={store} />
         </Section>
@@ -90,10 +136,8 @@ function LearnersIndex() {
           >
             <ul className="grid gap-3 md:grid-cols-2">
               {document.learners.map((learner) => {
-                const recommendation = recommendNextStep(document, learner.learnerId, asOf);
-                const focusGoal = document.goals.find(
-                  (goal) => goal.goalId === recommendation.focusGoalId,
-                );
+                const projection = projectNextStep(document, learner.learnerId, asOf);
+                const focusGoal = document.goals.find((goal) => goal.goalId === projection.goalId);
                 return (
                   <li key={learner.learnerId}>
                     <article className="flex h-full flex-col rounded-md border border-border bg-surface p-4">
@@ -116,7 +160,7 @@ function LearnersIndex() {
                       </p>
                       <p className="measure mt-2 text-sm">
                         <span className="font-semibold">Next step: </span>
-                        {recommendation.title}
+                        {projection.label}
                       </p>
                     </article>
                   </li>
@@ -129,10 +173,16 @@ function LearnersIndex() {
               open={addOpen}
               onToggle={() => setAddOpen((open) => !open)}
             >
+              <ErrorSummary
+                errors={errors}
+                headingId="add-learner-errors"
+                summaryRef={summaryRef}
+              />
               <Field
                 label="Label for this fictional learner"
                 hint="Use something obviously made up, such as Sample Learner E."
                 required
+                controlId={LABEL_FIELD_ID}
                 error={labelError}
               >
                 {({ id, describedBy, invalid }) => (
@@ -161,26 +211,10 @@ function LearnersIndex() {
                 )}
               </Field>
               <div className="mt-5">
-                <ActionButton
-                  onClick={() => {
-                    if (label.trim().length === 0) {
-                      setLabelError("Enter a label so this learner can be told apart.");
-                      return;
-                    }
-                    setLabelError(null);
-                    store.apply(
-                      (current, now) =>
-                        createLearner(current, { displayLabel: label.trim(), gradeBand }, now)
-                          .document,
-                    );
-                    setLabel("");
-                    setAddOpen(false);
-                  }}
-                >
-                  Add this learner
-                </ActionButton>
+                <ActionButton onClick={submitLearner}>Add this learner</ActionButton>
               </div>
             </Disclosure>
+            <LiveNotice message={notice} tone="ok" />
           </Section>
 
           <Section
