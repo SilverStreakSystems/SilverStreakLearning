@@ -33,12 +33,7 @@ import { liveContext, type CommandContext } from "./context";
 import type { CommandResult } from "./commands";
 
 export type StoreStatus =
-  | "loading"
-  | "empty"
-  | "ready"
-  | "corrupt"
-  | "unsupported-version"
-  | "unavailable";
+  "loading" | "empty" | "ready" | "corrupt" | "unsupported-version" | "unavailable";
 
 export interface StoreProblem {
   /** What the person reading the screen needs to know. */
@@ -183,7 +178,7 @@ export function useLearningLoop(
   );
 
   const run = useCallback(
-    <T,>(command: CommandRunner<T>): RunOutcome<T> => {
+    <T>(command: CommandRunner<T>): RunOutcome<T> => {
       if (!document) {
         const stale: StoreProblem = {
           message: "There is nothing loaded to change yet.",
@@ -232,10 +227,7 @@ export function useLearningLoop(
     [commit, contextFactory, repository],
   );
 
-  const restoreDemoData = useCallback(
-    () => replaceAll(createSeedDocument()),
-    [replaceAll],
-  );
+  const restoreDemoData = useCallback(() => replaceAll(createSeedDocument()), [replaceAll]);
 
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);

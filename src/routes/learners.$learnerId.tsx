@@ -275,12 +275,7 @@ function LearnerDetail() {
                             return setFocusGoal(current, learnerId, goal.goalId, context);
                           const activated = setGoalStatus(current, goal.goalId, "active", context);
                           if (!activated.ok) return activated;
-                          return setFocusGoal(
-                            activated.document,
-                            learnerId,
-                            goal.goalId,
-                            context,
-                          );
+                          return setFocusGoal(activated.document, learnerId, goal.goalId, context);
                         });
                         setNotice(outcome.ok ? "That goal is now the one being worked on." : null);
                       }}
@@ -325,7 +320,11 @@ function LearnerDetail() {
           onSubmit={(input) => {
             if (!focusGoal) return "Choose a goal before recording an observation.";
             const outcome = store.run((current, context) =>
-              recordObservation(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
+              recordObservation(
+                current,
+                { learnerId, goalId: focusGoal.goalId, ...input },
+                context,
+              ),
             );
             if (!outcome.ok) return outcome.problem?.message ?? "The observation was not saved.";
             setOpenForm(null);
@@ -504,7 +503,12 @@ function GoalForm({
   return (
     <Disclosure summary="Add a goal" open={open} onToggle={onToggle}>
       <ErrorSummary errors={form.errors} headingId="goal-form-errors" summaryRef={form.ref} />
-      <Field label="What is the goal?" required controlId="goal-title" error={form.errorFor("goal-title")}>
+      <Field
+        label="What is the goal?"
+        required
+        controlId="goal-title"
+        error={form.errorFor("goal-title")}
+      >
         {({ id, describedBy, invalid }) => (
           <TextLine
             id={id}
@@ -827,7 +831,9 @@ function SupportForm({
               <span className="ml-1 font-normal text-muted-foreground">(required)</span>
             </legend>
             {form.errorFor("support-basis") ? (
-              <p className="mt-1 text-sm font-semibold">Problem: {form.errorFor("support-basis")}</p>
+              <p className="mt-1 text-sm font-semibold">
+                Problem: {form.errorFor("support-basis")}
+              </p>
             ) : null}
             {observations.map((row) => (
               <CheckLine
@@ -1009,10 +1015,7 @@ function CompleteSupportForm({
               ]);
               return;
             }
-            const report = onComplete(
-              toIso(when, new Date().toISOString()),
-              note.trim() || null,
-            );
+            const report = onComplete(toIso(when, new Date().toISOString()), note.trim() || null);
             if (report) {
               form.show([{ controlId: "complete-when", message: report }]);
               return;

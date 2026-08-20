@@ -491,7 +491,9 @@ export function recordGoalReview(
     if (target.goalId !== input.goalId || target.learnerId !== input.learnerId)
       return fail("ownership-mismatch", "That result belongs to a different learner or goal.");
     if (
-      document.goalReviews.some((row) => row.supersedesGoalReviewId === input.supersedesGoalReviewId)
+      document.goalReviews.some(
+        (row) => row.supersedesGoalReviewId === input.supersedesGoalReviewId,
+      )
     )
       return fail("invalid-input", "That result has already been corrected once.");
   }

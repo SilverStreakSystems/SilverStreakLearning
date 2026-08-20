@@ -69,11 +69,7 @@ export interface LearningLoopRepository {
    * Validates, checks the expected revision against the persisted revision, and
    * stores. `expectedRevision` is null when the caller expects no document.
    */
-  commit(
-    expectedRevision: number | null,
-    next: LearningLoopDocument,
-    at: string,
-  ): CommitOutcome;
+  commit(expectedRevision: number | null, next: LearningLoopDocument, at: string): CommitOutcome;
   clear(): ClearOutcome;
   /** The raw stored text, for recovery export when the document will not parse. */
   readRaw(): string | null;
@@ -150,11 +146,7 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
     return this.backup;
   }
 
-  commit(
-    expectedRevision: number | null,
-    next: LearningLoopDocument,
-    at: string,
-  ): CommitOutcome {
+  commit(expectedRevision: number | null, next: LearningLoopDocument, at: string): CommitOutcome {
     const currentRevision = this.document?.revision ?? null;
     if (currentRevision !== expectedRevision)
       return {
@@ -254,11 +246,7 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
     return { status: "ready", document: result.document };
   }
 
-  commit(
-    expectedRevision: number | null,
-    next: LearningLoopDocument,
-    at: string,
-  ): CommitOutcome {
+  commit(expectedRevision: number | null, next: LearningLoopDocument, at: string): CommitOutcome {
     if (!this.storage)
       return {
         status: "unavailable",

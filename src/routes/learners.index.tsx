@@ -137,9 +137,7 @@ function LearnersIndex() {
             <ul className="grid gap-3 md:grid-cols-2">
               {document.learners.map((learner) => {
                 const projection = projectNextStep(document, learner.learnerId, asOf);
-                const focusGoal = document.goals.find(
-                  (goal) => goal.goalId === projection.goalId,
-                );
+                const focusGoal = document.goals.find((goal) => goal.goalId === projection.goalId);
                 return (
                   <li key={learner.learnerId}>
                     <article className="flex h-full flex-col rounded-md border border-border bg-surface p-4">

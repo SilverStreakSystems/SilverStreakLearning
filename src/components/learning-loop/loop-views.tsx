@@ -217,9 +217,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
                 const result = store.restoreDemoData();
                 setConfirmingRestore(false);
                 setNotice(result.ok ? "The sample records were restored." : null);
-                setProblem(
-                  result.ok ? null : (result.problem?.message ?? "Nothing was replaced."),
-                );
+                setProblem(result.ok ? null : (result.problem?.message ?? "Nothing was replaced."));
               }}
             >
               Replace with the sample records
@@ -286,8 +284,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
 export function StorageNotices({ store }: { store: LearningLoopStore }) {
   const notices: { key: string; message: string; details?: string[] }[] = [];
 
-  if (store.fallbackNotice)
-    notices.push({ key: "fallback", message: store.fallbackNotice });
+  if (store.fallbackNotice) notices.push({ key: "fallback", message: store.fallbackNotice });
   if (store.readProblem) notices.push({ key: "read", message: store.readProblem });
   if (store.problem)
     notices.push({
