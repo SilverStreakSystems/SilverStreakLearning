@@ -50,7 +50,9 @@ export function isDerivedOutput(path) {
 }
 
 /** Controlling inputs of the canonical current-state projection, read from its manifest. */
-export function projectionInputPaths(manifestPath = "data/current-state/current-state-inputs.json") {
+export function projectionInputPaths(
+  manifestPath = "data/current-state/current-state-inputs.json",
+) {
   const paths = [manifestPath];
   if (!existsSync(manifestPath)) return paths;
   try {
