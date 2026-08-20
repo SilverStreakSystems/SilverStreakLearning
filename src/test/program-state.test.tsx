@@ -241,7 +241,7 @@ describe("Command Center synchronization", () => {
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/ACCEPTED/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/This checkpoint closed nothing beyond the iND-023 definition gap/)
+      within(region).getAllByText(/This checkpoint closed nothing beyond the implementation itself/)
         .length,
     ).toBeGreaterThan(0);
   });
