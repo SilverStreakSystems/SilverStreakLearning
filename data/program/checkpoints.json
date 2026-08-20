@@ -73,9 +73,7 @@
       "doc_path": "docs/wp-007/CHECKPOINT-008.md",
       "outcome": null,
       "closed_nothing": null,
-      "evidence_ids": [
-        "EV-042"
-      ]
+      "evidence_ids": ["EV-042"]
     },
     {
       "checkpoint_id": "CHECKPOINT-009",
@@ -84,9 +82,7 @@
       "doc_path": "docs/wp-007/CHECKPOINT-009.md",
       "outcome": "Cycle 7 execution is complete: the owner-authorized touch-target acceptance rule is recorded as one canonical structured record, TTR-001 v1.0.0, carrying a 44 by 44 CSS pixel SHOULD default, a distinct 24 by 24 CSS pixel MUST floor, five documented exceptions, a compact-target departure band of 24 to 43 CSS pixels that cannot reach below the floor, and a deterministic verification protocol at 320, 768, and 1366 CSS pixels whose execution state is NOT-RUN.",
       "closed_nothing": "Cycle 7 closed nothing beyond the FND-023 definition gap. It ran no interface audit, measured and classified no target, changed no interface, adopted, assessed, or implemented no candidate, left HREQ-025 unchanged at NEEDS-EVIDENCE / DEFER, left EV-003 NOT-RUN, closed neither WP-007 nor Gate A, and authorized no successor cycle.",
-      "evidence_ids": [
-        "EV-043"
-      ]
+      "evidence_ids": ["EV-043"]
     },
     {
       "checkpoint_id": "CHECKPOINT-010",
@@ -95,9 +91,7 @@
       "doc_path": "docs/product-alpha-001/CHECKPOINT-010.md",
       "outcome": "Product Alpha 001 is implemented under DEC-023 as one bounded, local-only synthetic vertical slice. Five canonical product record types carry strict schemas and enforced cross-record invariants; observations and results are append-only with explicit supersession; a repository boundary with browser-local and in-memory adapters validates every write; export is byte-stable and import is a previewed replace; and LLR-001 v1.0.0 computes a deterministic next step that always cites the records it read. The /learners and /learners/$learnerId routes present the loop as a working founder-operator workflow.",
       "closed_nothing": "This checkpoint closed nothing beyond the implementation itself. It ran no interface audit, measured and classified no target against TTR-001, left FND-024 open and EV-003 NOT-RUN, left HREQ-025 at NEEDS-EVIDENCE / DEFER, closed neither WP-007 nor Gate A, authorized no successor cycle, and introduced no backend, authentication, tenancy, artificial-intelligence, or real personal data.",
-      "evidence_ids": [
-        "EV-046"
-      ]
+      "evidence_ids": ["EV-046"]
     }
   ],
   "attempts": [

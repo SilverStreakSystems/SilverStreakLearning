@@ -1,8 +1,8 @@
 {
   "manifest_id": "CURRENT-STATE-INPUTS",
-  "manifest_version": "1.0.0",
+  "manifest_version": "1.1.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "8173b83842b347b8716682ee362ec4e244cb7c8cb86c5f647478ef927a7096ea",
+  "fingerprint": "d6f330eb46af31fb51466e9881c3ac57d636b23388463e3967157ff9aa17961c",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
@@ -26,13 +26,13 @@
     },
     {
       "path": "data/program/program-policy.json",
-      "sha256": "9aa1aabfb0aa5dac0b80605695ec7034cff97021cc8243b5815a1cb70488b67c",
-      "bytes": 8057
+      "sha256": "419124ce2f762364973590b4fb450aae0e64d069e403b7787135aa39722ea7bc",
+      "bytes": 8722
     },
     {
       "path": "data/program/checkpoints.json",
-      "sha256": "be98d91c42a222156fc2d298ef8d585072bc6cc6ad20f82254b711a130fde1ef",
-      "bytes": 6294
+      "sha256": "32ab3b3de561cd856481432edf6ad936392e2f26b11cbe5a3fb02599cedb3158",
+      "bytes": 6468
     },
     {
       "path": "data/accessibility/touch-target-rule.json",

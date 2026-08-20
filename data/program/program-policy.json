@@ -13,10 +13,7 @@
       "locator": "src/fixtures/registers.ts — DECISIONS, DEC-018",
       "route": "/decisions"
     },
-    "closure_phrases": [
-      "gate a is closed",
-      "gate a closes"
-    ]
+    "closure_phrases": ["gate a is closed", "gate a closes"]
   },
   "active_work_package": {
     "work_package_id": "WP-007",
@@ -28,10 +25,7 @@
       "locator": "docs/wp-007/ENTRY_SPECIFICATION.md",
       "route": null
     },
-    "closure_phrases": [
-      "wp-007 is closed",
-      "wp-007 closed by owner"
-    ]
+    "closure_phrases": ["wp-007 is closed", "wp-007 closed by owner"]
   },
   "owner_disposition_supporting_sources": [
     {

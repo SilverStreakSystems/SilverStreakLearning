@@ -69,11 +69,7 @@ function WorkspacesRegistry() {
         summary={`${WORKSPACE_COUNT} workspaces, each a purpose-bound projection over shared governed objects. Availability and authority are stored on the record: a workspace does not become current because a page renders.`}
       />
 
-      <Section
-        id="registry"
-        title="Workspace registry"
-        description={IMPLEMENTATION_BREAKDOWN}
-      >
+      <Section id="registry" title="Workspace registry" description={IMPLEMENTATION_BREAKDOWN}>
         <RegistryTable
           caption={`${WORKSPACE_COUNT} enterprise workspaces with availability, implementation state, and fundamental question.`}
           headers={[

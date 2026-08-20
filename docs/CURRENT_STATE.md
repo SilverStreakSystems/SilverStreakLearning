@@ -7,7 +7,7 @@
 
 Controlling decision: DEC-023. State date: 2026-08-20.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `8173b83842b347b8716682ee362ec4e244cb7c8cb86c5f647478ef927a7096ea`.
+Input fingerprint: `d6f330eb46af31fb51466e9881c3ac57d636b23388463e3967157ff9aa17961c`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.
@@ -31,7 +31,7 @@ This checkpoint closed nothing beyond the implementation itself. It ran no inter
 
 An attempt to execute the TTR-001 verification protocol added audit-only tooling under scripts/accessibility/ and a playwright-core development dependency. The browser run exceeded the execution ceiling before any page was measured and was stopped. Further execution is deferred by DEC-022.
 
-No audit artifact exists. No route, component, or control was measured or classified. There is no data/accessibility/touch-target-audit.json, no TTA-001, no EV-044 audit result, and no CHECKPOINT-010. This attempt is dormant development tooling, not an executed audit, a validation, an evidence record, an accessibility result, or a conformance basis.
+No audit artifact exists. No route, component, or control was measured or classified. At the time of ATTEMPT-001 there was no touch-target audit checkpoint and no touch-target audit evidence: no data/accessibility/touch-target-audit.json, no TTA-001, and no EV-044 audit result. The later CHECKPOINT-010 is the unrelated Product Alpha 001 implementation checkpoint and is not touch-target audit evidence. This attempt is dormant development tooling, not an executed audit, a validation, an evidence record, an accessibility result, or a conformance basis.
 
 ## Registers
 
@@ -61,7 +61,7 @@ No audit artifact exists. No route, component, or control was measured or classi
 - **RUNTIME-TRUST-SPINE** — The runtime trust spine remains plan-only. No backend, authentication, database, server-side storage, tenancy, artificial intelligence, or real personal data is authorized. Product Alpha 001, authorized by DEC-023, is a local-only synthetic slice held in one browser and does not implement, start, or imply any part of the runtime trust spine.
 - **PKG-002-PROMOTION** — Promotion of PKG-002 to canonical is not authorized. It remains a synchronized reference.
 - **DRIFT-RESOLUTION** — Resolution of the recorded package drift rows is not authorized. Each remains unresolved.
-- **PRODUCT-ALPHA-001-SCOPE** — Work beyond the authorized Product Alpha 001 slice is not authorized. The slice covers fictional learners, one goal at a time, observations, support actions, results, and the deterministic LLR-001 next step, held in browser-local storage. Accounts, sharing, reporting, export to district systems, artificial-intelligence features, and any real personal data are outside it.
+- **PRODUCT-ALPHA-001-SCOPE** — Work beyond the authorized Product Alpha 001 slice is not authorized. The slice covers fictional learners, one goal at a time, observations, support actions, results, and the deterministic LLR-001 next step, held in browser-local storage. Accounts, sharing, reporting, export to district systems, artificial-intelligence features, and any real personal data are outside it. A bounded PRODUCT-ALPHA-001-EXPANSION stage remains unauthorized: no expansion beyond this exact local synthetic proof is authorized, no new work package is opened for it, and it is not a WP-007 cycle.
 
 ## Publication boundary
 
@@ -69,9 +69,9 @@ PUBLIC SYNTHETIC PROTOTYPE. NO REAL PERSONAL DATA. NOT RELEASED. The published a
 
 ## Next defensible owner action
 
-Use the Product Alpha 001 loop against the synthetic learners, then decide whether the workflow is stable enough to authorize the deferred TTR-001 audit against it.
+Perform a bounded founder/operator walkthrough of Product Alpha 001 and record usability findings; then decide whether the workflow needs a bounded revision or is stable enough for a separately authorized TTR-001 audit.
 
-DEC-022 defers the touch-target audit until a stable user-facing product workflow exists. DEC-023 authorized that workflow and EV-046 records it as implemented, so the deferral condition is now testable rather than hypothetical. The next owner decision is whether the loop is stable enough to measure, or whether it needs another bounded product pass first. FND-024 stays open as deferred debt until an owner decision either authorizes execution or records that it stays unrun.
+The Product Alpha 001 slice authorized by DEC-023 is implemented and mechanically tested. Technical tests establish mechanics only: they do not establish usefulness, workflow stability, learning impact, educational validity, accessibility conformance, privacy or security certification, or any human validation. Only a founder/operator walkthrough can produce that observation, and only a separate owner decision can authorize the deferred TTR-001 audit — nothing here authorizes it. FND-024 stays open as deferred debt until an owner decision either authorizes execution or records that it stays unrun.
 
 ## Refused claims
 
