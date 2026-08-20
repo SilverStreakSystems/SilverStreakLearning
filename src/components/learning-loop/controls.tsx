@@ -104,7 +104,7 @@ export function ActionButton({
   tone = "primary",
   className,
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement> & { tone?: "primary" | "secondary" | "quiet" }) {
+}: React.ComponentPropsWithRef<"button"> & { tone?: "primary" | "secondary" | "quiet" }) {
   const tones = {
     primary: "bg-primary text-primary-foreground hover:opacity-90",
     secondary: "border border-border-strong bg-surface text-foreground hover:bg-muted",
@@ -151,8 +151,10 @@ export function Disclosure({
 export function LiveNotice({ message, tone }: { message: string | null; tone: "ok" | "problem" }) {
   return (
     <p
-      role="status"
-      aria-live="polite"
+      // A failure is announced assertively: it means the person's action did
+      // not happen, which they must not discover later by accident.
+      role={tone === "problem" ? "alert" : "status"}
+      aria-live={tone === "problem" ? "assertive" : "polite"}
       className={cn(
         "measure mt-3 text-sm",
         message ? "block" : "hidden",

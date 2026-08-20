@@ -213,18 +213,29 @@ export function useLearningLoop(
     [commit, contextFactory, document],
   );
 
-  /** Destructive replacement is expected to overwrite, so it expects whatever is there. */
+  /**
+   * Destructive replacement, only ever reached after an explicit confirmation.
+   *
+   * It goes through the repository's recovery transaction rather than `commit`,
+   * because `commit` is right to refuse corrupt or newer-schema stored data and
+   * that refusal would otherwise make unreadable data impossible to recover
+   * from inside the product. Failure changes nothing.
+   */
   const replaceAll = useCallback(
     (next: LearningLoopDocument): RunOutcome<unknown> => {
       const context = contextFactory();
-      const current = repository.read();
-      const expected = current.status === "ready" ? current.document.revision : null;
-      const outcome = commit(expected, next, context.now);
-      if (outcome.status !== "ok")
+      const outcome = repository.recover(next, context.now);
+      if (outcome.status !== "ok") {
+        setProblem(problemFromCommit(outcome));
         return { ok: false, value: null, problem: problemFromCommit(outcome) };
+      }
+      setDocument(outcome.document);
+      setStatus("ready");
+      setReadProblem(null);
+      setProblem(null);
       return { ok: true, value: { document: outcome.document }, problem: null };
     },
-    [commit, contextFactory, repository],
+    [contextFactory, repository],
   );
 
   const restoreDemoData = useCallback(() => replaceAll(createSeedDocument()), [replaceAll]);

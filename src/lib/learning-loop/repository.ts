@@ -70,6 +70,15 @@ export interface LearningLoopRepository {
    * stores. `expectedRevision` is null when the caller expects no document.
    */
   commit(expectedRevision: number | null, next: LearningLoopDocument, at: string): CommitOutcome;
+  /**
+   * The explicit destructive-recovery transaction. Used only after the person
+   * has confirmed a replacement, and the only path that can overwrite corrupt
+   * or newer-schema stored data. It preserves the exact prior bytes as the
+   * single bounded backup, validates the incoming document in full, and
+   * replaces the stored value atomically. On failure the stored value is
+   * unchanged. Normal `commit` never does this: it conflicts instead.
+   */
+  recover(next: LearningLoopDocument, at: string): CommitOutcome;
   clear(): ClearOutcome;
   /** The raw stored text, for recovery export when the document will not parse. */
   readRaw(): string | null;
@@ -158,7 +167,16 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
     const candidate = stamp(next, currentRevision, at);
     const result = validateRuntime(candidate);
     if (!result.ok || !result.document) return invalidOutcome(result);
-    if (this.document) this.backup = serializeDocument(this.document);
+    this.document = result.document;
+    return { status: "ok", document: detach(result.document) };
+  }
+
+  recover(next: LearningLoopDocument, at: string): CommitOutcome {
+    const priorRaw = this.readRaw();
+    const candidate = stamp(next, this.document?.revision ?? null, at);
+    const result = validateRuntime(candidate);
+    if (!result.ok || !result.document) return invalidOutcome(result);
+    if (priorRaw !== null) this.backup = priorRaw;
     this.document = result.document;
     return { status: "ok", document: detach(result.document) };
   }
@@ -274,15 +292,41 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
     const result = validateRuntime(candidate);
     if (!result.ok || !result.document) return invalidOutcome(result);
 
-    const priorRaw = current.status === "ready" ? this.readRaw() : null;
     try {
-      if (priorRaw !== null) this.storage.setItem(LEARNING_LOOP_BACKUP_KEY, priorRaw);
       this.storage.setItem(LEARNING_LOOP_STORAGE_KEY, serializeDocument(result.document));
     } catch {
       return {
         status: "write-failed",
         message:
           "This browser refused to save the change, so nothing was written. Storage may be full or blocked.",
+      };
+    }
+    return { status: "ok", document: result.document };
+  }
+
+  recover(next: LearningLoopDocument, at: string): CommitOutcome {
+    if (!this.storage)
+      return {
+        status: "unavailable",
+        message: "This browser is not allowing local storage, so nothing was saved.",
+      };
+    const current = this.read();
+    const currentRevision = current.status === "ready" ? current.document.revision : null;
+    const candidate = stamp(next, currentRevision, at);
+    const result = validateRuntime(candidate);
+    if (!result.ok || !result.document) return invalidOutcome(result);
+
+    const priorRaw = this.readRaw();
+    const serialized = serializeDocument(result.document);
+    try {
+      // The prior bytes are preserved first, and there is only ever one of them.
+      if (priorRaw !== null) this.storage.setItem(LEARNING_LOOP_BACKUP_KEY, priorRaw);
+      this.storage.setItem(LEARNING_LOOP_STORAGE_KEY, serialized);
+    } catch {
+      return {
+        status: "write-failed",
+        message:
+          "This browser refused to save the replacement, so the saved records were left exactly as they were. Storage may be full or blocked.",
       };
     }
     return { status: "ok", document: result.document };
