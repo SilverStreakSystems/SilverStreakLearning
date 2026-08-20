@@ -33,6 +33,19 @@ import { nowIso, sha256 } from "./util.mjs";
 const MAX_BYTES = 8 * 1024 * 1024;
 const SKIP_SUFFIXES = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".pdf", ".zip", ".lockb"];
 
+/**
+ * The boundary scanner's own output enumerates the pattern definitions it
+ * searches for, so it matches itself by construction. It records matches only
+ * as redacted digests and never the matched value, so it carries no material
+ * to leak. It is declared out of scope here and named in the result.
+ */
+export const SELF_REFERENTIAL_OUTPUTS = ["artifacts/boundary/"];
+
+function isSelfReferential(file, dir) {
+  const rel = relative(resolve(dir), resolve(file));
+  return SELF_REFERENTIAL_OUTPUTS.some((prefix) => rel.startsWith(prefix));
+}
+
 export const OUTPUT_SAFETY_LIMITATIONS = [
   "Pattern matching only. Material in an unrecognised format is not detected.",
   "A clean result means no match by these patterns over the scanned generated tree.",
@@ -40,7 +53,7 @@ export const OUTPUT_SAFETY_LIMITATIONS = [
 ];
 
 /** Recursively list files under a directory, excluding the guard's own result. */
-export function listOutputFiles(dir, { exclude = [] } = {}) {
+export function listOutputFiles(dir, { exclude = [], includeSelfReferential = true } = {}) {
   const root = resolve(dir);
   const excluded = exclude.map((path) => resolve(path));
   const files = [];
@@ -55,7 +68,10 @@ export function listOutputFiles(dir, { exclude = [] } = {}) {
   };
 
   walk(root);
-  return files.map((file) => relative(process.cwd(), file)).sort();
+  return files
+    .filter((file) => includeSelfReferential || !isSelfReferential(file, dir))
+    .map((file) => relative(process.cwd(), file))
+    .sort();
 }
 
 /** Scan a list of files for the given patterns. Matched values are never recorded. */
@@ -108,7 +124,7 @@ export function scanOutputs(files, patterns) {
 /** Run the guard over a generated evidence tree and build its result document. */
 export function runOutputSafety({ dir = "evidence", out = null } = {}) {
   const excluded = out ? [out] : [];
-  const files = listOutputFiles(dir, { exclude: excluded });
+  const files = listOutputFiles(dir, { exclude: excluded, includeSelfReferential: false });
 
   if (files.length === 0) {
     return {
@@ -138,6 +154,7 @@ export function runOutputSafety({ dir = "evidence", out = null } = {}) {
       generated_at: nowIso(),
       scanned_tree: dir,
       result_path_excluded_from_scan: out,
+      self_referential_paths_excluded: SELF_REFERENTIAL_OUTPUTS,
       status: ok ? "pass" : "fail",
       files_discovered: files.length,
       files_scanned: secret.scanned,

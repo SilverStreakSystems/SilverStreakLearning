@@ -12,6 +12,7 @@ export interface OutputSafetyResult {
   generated_at: string;
   scanned_tree: string;
   result_path_excluded_from_scan?: string | null;
+  self_referential_paths_excluded?: string[];
   status: "pass" | "fail";
   reason?: string;
   files_discovered?: number;
@@ -26,7 +27,10 @@ export interface OutputSafetyResult {
 
 export declare const OUTPUT_SAFETY_LIMITATIONS: string[];
 
-export declare function listOutputFiles(dir: string, options?: { exclude?: string[] }): string[];
+export declare function listOutputFiles(
+  dir: string,
+  options?: { exclude?: string[]; includeSelfReferential?: boolean },
+): string[];
 
 export declare function scanOutputs(
   files: string[],
@@ -37,3 +41,5 @@ export declare function runOutputSafety(options?: { dir?: string; out?: string |
   ok: boolean;
   result: OutputSafetyResult;
 };
+
+export declare const SELF_REFERENTIAL_OUTPUTS: string[];
