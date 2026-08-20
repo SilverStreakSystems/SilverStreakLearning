@@ -27,15 +27,7 @@ function expectNextStep(expected: { ruleId: string; code: string; basis?: string
     within(card).getByText(new RegExp(`clause ${expected.ruleId} \\(${expected.code}\\)`)),
   ).toBeTruthy();
   expect(within(card).getByText(NEXT_STEP_LIMITATION)).toBeTruthy();
-  if (expected.basis) {
-    const shown = within(card)
-      .getByText(/^Computed from:$/)
-      .parentElement!.textContent!.replace("Computed from:", "")
-      .trim()
-      .split(", ")
-      .filter(Boolean);
-    expect(shown).toEqual([...expected.basis].sort());
-  }
+  if (expected.basis) expect(basisIds()).toEqual([...expected.basis].sort());
   return card;
 }
 
@@ -44,6 +36,12 @@ function basisIds(): string[] {
   const card = nextStepCard();
   const definition = within(card).getByText(/^Computed from:$/).nextElementSibling!;
   return definition.textContent!.split(", ").filter(Boolean);
+}
+
+/** The record identifier printed at the end of a timeline entry. */
+function lastRecordId(entry: HTMLElement): string {
+  const found = entry.textContent!.match(/(?:GOL|OBS|SUP|REV)-[A-Za-z0-9]+/g)!;
+  return found[found.length - 1]!;
 }
 
 async function openDisclosure(user: ReturnType<typeof userEvent.setup>, name: RegExp | string) {
@@ -269,7 +267,7 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
       const timeline = screen.getByRole("region", { name: "Everything, in order" });
       const entries = within(timeline).getAllByRole("listitem");
       const recordIds = entries.map(
-        (entry) => entry.textContent!.match(/((?:GOL|OBS|SUP|REV)-[A-Za-z0-9]+)\s*$/)![1]!,
+        (entry) => lastRecordId(entry),
       );
       expect(recordIds).toEqual([
         "GOL-C1",
@@ -311,9 +309,7 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
         screen.getByRole("region", { name: "Everything, in order" }),
       ).getAllByRole("listitem");
       expect(
-        reloaded.map(
-          (entry) => entry.textContent!.match(/((?:GOL|OBS|SUP|REV)-[A-Za-z0-9]+)\s*$/)![1]!,
-        ),
+        reloaded.map((entry) => lastRecordId(entry)),
       ).toEqual(recordIds);
 
       // --- closing the goal stays a human act ------------------------------
