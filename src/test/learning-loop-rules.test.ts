@@ -623,6 +623,26 @@ describe("timeline", () => {
  * projection either produced advice it could not honestly support, or stepped
  * over the newest fact to reach an older one.
  */
+/**
+ * An instant strictly after every recorded moment in the document, so fixtures
+ * that append "what happened next" cannot accidentally be dated into the past.
+ */
+function afterEverything(document: LearningLoopDocument): string {
+  const stamps = [
+    document.lastUpdatedAt,
+    ...document.goals.flatMap((row) => [row.createdAt, row.updatedAt]),
+    ...document.observations.flatMap((row) => [row.observedAt, row.createdAt]),
+    ...document.supportActions.flatMap((row) => [
+      row.plannedAt,
+      row.createdAt,
+      row.updatedAt,
+      row.completedAt ?? row.createdAt,
+    ]),
+    ...document.goalReviews.flatMap((row) => [row.reviewedAt, row.createdAt]),
+  ].map((value) => Date.parse(value));
+  return new Date(Math.max(...stamps) + 3_600_000).toISOString();
+}
+
 describe("LLR-001 — current-state projection boundary", () => {
   it("refuses an unusable evaluation instant instead of advising anyway", () => {
     expectClause(projectNextStep(seed(), "LRN-B", "not-a-time"), {
@@ -660,12 +680,12 @@ describe("LLR-001 — supersession is evaluation-time aware", () => {
   it("does not let a correction erase its predecessor from an earlier view", () => {
     const document = seed();
     const original = document.observations.find((row) => row.learnerId === "LRN-A")!;
-    const later = new Date(Date.parse(document.lastUpdatedAt) + 3_600_000).toISOString();
+    const later = afterEverything(document);
     document.observations.push({
       ...original,
       observationId: "OBS-CORRECTION",
+      observedAt: later,
       observationText: "Corrected wording of the same lesson.",
-      observedAt: original.observedAt,
       createdAt: later,
       supersedesObservationId: original.observationId,
       supportActionId: null,
@@ -691,7 +711,7 @@ describe("LLR-001 R04 — the current support must follow from what was last see
     const completed = document.supportActions.find(
       (row) => row.learnerId === "LRN-B" && row.status === "completed",
     )!;
-    const later = new Date(Date.parse(document.lastUpdatedAt) + 3_600_000).toISOString();
+    const later = afterEverything(document);
     const baseline = document.observations.find(
       (row) => row.goalId === completed.goalId && row.supportActionId === null,
     )!;
@@ -719,7 +739,7 @@ describe("LLR-001 R04 — the current support must follow from what was last see
     const document = seed();
     document.goalReviews = document.goalReviews.filter((row) => row.learnerId !== "LRN-B");
     const support = document.supportActions.find((row) => row.learnerId === "LRN-B")!;
-    const later = new Date(Date.parse(document.lastUpdatedAt) + 3_600_000).toISOString();
+    const later = afterEverything(document);
     document.observations.push({
       learnerId: "LRN-B",
       goalId: support.goalId,
