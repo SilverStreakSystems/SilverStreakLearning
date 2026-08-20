@@ -162,6 +162,46 @@ function MissingLearner({ learnerId }: { learnerId: string }) {
   );
 }
 
+/**
+ * Unreadable data is not a missing learner.
+ *
+ * Saying "not recorded" when the stored bytes are corrupt, from a newer
+ * version, or unreachable would invite someone to re-enter records that are
+ * still on disk. This says what happened and points at recovery instead.
+ */
+function UnreadableLearner({
+  store,
+  learnerId,
+}: {
+  store: LearningLoopStore;
+  learnerId: string;
+}) {
+  if (store.status === "empty")
+    return <MissingLearner learnerId={learnerId} />;
+
+  return (
+    <div>
+      <PageHeader
+        title="These records could not be read"
+        summary="The data saved in this browser could not be opened, so nothing about this learner can be shown. Nothing has been changed or deleted."
+      />
+      <StorageNotices store={store} />
+      <p className="measure mt-6 text-sm">
+        Take a copy of the saved data first, then use the recovery controls on the learners page to
+        replace it. Replacing keeps one copy of what was there before.
+      </p>
+      <p className="mt-4">
+        <Link
+          to="/learners"
+          className="inline-flex min-h-11 items-center rounded-sm px-1 font-semibold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          Go to the recovery controls
+        </Link>
+      </p>
+    </div>
+  );
+}
+
 function LearnerDetail() {
   const { learnerId } = Route.useParams();
   const store = useLearningLoop();
@@ -180,8 +220,7 @@ function LearnerDetail() {
   if (!document)
     return (
       <div>
-        <StorageNotices store={store} />
-        <MissingLearner learnerId={learnerId} />
+        <UnreadableLearner store={store} learnerId={learnerId} />
       </div>
     );
   const learner = document.learners.find((row) => row.learnerId === learnerId);
@@ -193,6 +232,20 @@ function LearnerDetail() {
   const snapshot = readLoopSnapshot(document, learnerId, asOf);
   const activeForm = openForm === "none" ? FORM_FOR_STEP[projection.code] : openForm;
   const toggle = (key: Exclude<FormKey, null>) => setOpenForm(activeForm === key ? null : key);
+
+  /**
+   * One place where a successful write ends.
+   *
+   * Stale messages are cleared, guidance goes back to automatic so the page
+   * offers the newly projected step, and the next step is announced next to
+   * the control that was just used. Focus is offered by a link, not taken.
+   */
+  function afterSave(message: string, next: LearningLoopDocument) {
+    store.dismissProblem();
+    setOpenForm("none");
+    const projected = projectNextStep(next, learnerId, new Date().toISOString());
+    setNotice(`${message} Next: ${projected.label}`);
+  }
 
   const plannedSupport =
     snapshot.latestActionableSupport?.state === "planned"
@@ -218,6 +271,22 @@ function LearnerDetail() {
 
       <StorageNotices store={store} />
       <LiveNotice message={notice} tone="ok" />
+      {notice ? (
+        <p className="mt-2 text-sm">
+          <a
+            href="#next-step-heading"
+            className="inline-flex min-h-11 items-center rounded-sm px-1 font-semibold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            onClick={(event) => {
+              event.preventDefault();
+              const target = window.document.getElementById("next-step-heading");
+              target?.focus();
+              target?.scrollIntoView({ block: "center" });
+            }}
+          >
+            Go to the suggested next step
+          </a>
+        </p>
+      ) : null}
 
       <div className="mt-6">
         <NextStepCard projection={projection}>
@@ -326,9 +395,8 @@ function LearnerDetail() {
             const outcome = store.run((current, context) =>
               createGoal(current, { learnerId, ...input }, context),
             );
-            if (!outcome.ok) return outcome.problem?.message ?? "The goal was not saved.";
-            setOpenForm(null);
-            setNotice("The goal was saved.");
+            if (!outcome.ok) return reportFrom(outcome.problem, "The goal was not saved.");
+            afterSave("The goal was saved.", outcome.value.document);
             return null;
           }}
         />
@@ -349,7 +417,8 @@ function LearnerDetail() {
             projection.code === "RECORD_FOLLOW_UP_OBSERVATION" ? projection.supportActionId : null
           }
           onSubmit={(input) => {
-            if (!focusGoal) return "Choose a goal before recording an observation.";
+            if (!focusGoal)
+              return { message: "Choose a goal before recording an observation.", scope: "field" };
             const outcome = store.run((current, context) =>
               recordObservation(
                 current,
@@ -357,9 +426,8 @@ function LearnerDetail() {
                 context,
               ),
             );
-            if (!outcome.ok) return outcome.problem?.message ?? "The observation was not saved.";
-            setOpenForm(null);
-            setNotice("The observation was saved.");
+            if (!outcome.ok) return reportFrom(outcome.problem, "The observation was not saved.");
+            afterSave("The observation was saved.", outcome.value.document);
             return null;
           }}
         />
@@ -373,13 +441,13 @@ function LearnerDetail() {
               : []
           }
           onSubmit={(input) => {
-            if (!focusGoal) return "Choose a goal before planning a support.";
+            if (!focusGoal)
+              return { message: "Choose a goal before planning a support.", scope: "field" };
             const outcome = store.run((current, context) =>
               planSupport(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
-            if (!outcome.ok) return outcome.problem?.message ?? "The plan was not saved.";
-            setOpenForm(null);
-            setNotice("The plan was saved.");
+            if (!outcome.ok) return reportFrom(outcome.problem, "The plan was not saved.");
+            afterSave("The plan was saved.", outcome.value.document);
             return null;
           }}
         />
@@ -399,18 +467,16 @@ function LearnerDetail() {
                   context,
                 ),
               );
-              if (!outcome.ok) return outcome.problem?.message ?? "Nothing was saved.";
-              setOpenForm(null);
-              setNotice("The support was marked done.");
+              if (!outcome.ok) return reportFrom(outcome.problem, "Nothing was saved.");
+              afterSave("The support was marked done.", outcome.value.document);
               return null;
             }}
             onCancel={(reason) => {
               const outcome = store.run((current, context) =>
                 cancelSupport(current, plannedSupport.supportActionId, reason, context),
               );
-              if (!outcome.ok) return outcome.problem?.message ?? "Nothing was saved.";
-              setOpenForm(null);
-              setNotice("The support was cancelled.");
+              if (!outcome.ok) return reportFrom(outcome.problem, "Nothing was saved.");
+              afterSave("The support was cancelled.", outcome.value.document);
               return null;
             }}
           />
@@ -425,7 +491,8 @@ function LearnerDetail() {
               (row) => row.supportActionId === latestCompletedSupport.supportActionId,
             )}
             onSubmit={(input) => {
-              if (!focusGoal) return "Choose a goal before recording a result.";
+              if (!focusGoal)
+                return { message: "Choose a goal before recording a result.", scope: "field" };
               const outcome = store.run((current, context) =>
                 recordGoalReview(
                   current,
@@ -433,15 +500,18 @@ function LearnerDetail() {
                     learnerId,
                     goalId: focusGoal.goalId,
                     supportActionId: latestCompletedSupport.supportActionId,
-                    supersedesGoalReviewId: null,
                     ...input,
                   },
                   context,
                 ),
               );
-              if (!outcome.ok) return outcome.problem?.message ?? "The result was not saved.";
-              setOpenForm(null);
-              setNotice("The result was saved.");
+              if (!outcome.ok) return reportFrom(outcome.problem, "The result was not saved.");
+              afterSave(
+                input.supersedesGoalReviewId
+                  ? "The correction was saved. The earlier result is kept and marked replaced."
+                  : "The result was saved.",
+                outcome.value.document,
+              );
               return null;
             }}
           />
