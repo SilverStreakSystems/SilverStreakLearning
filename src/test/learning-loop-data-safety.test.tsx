@@ -150,7 +150,7 @@ describe("export, import, and previewed replace, through the interface", () => {
 
     const cancel = await screen.findByRole("button", { name: "Cancel the import" });
     expect(cancel).toHaveFocus();
-    expect(screen.getByText(/goalReviews:/i)).toBeTruthy();
+    expect(screen.getByText("Results:").parentElement!.textContent).toContain("1 removed");
 
     await user.click(cancel);
     expect(
@@ -205,7 +205,9 @@ describe("export, import, and previewed replace, through the interface", () => {
       });
     await user.click(confirm);
 
-    expect(await screen.findByText(/refused to save the replacement/i)).toBeTruthy();
+    expect((await screen.findAllByText(/refused to save the replacement/i)).length).toBeGreaterThan(
+      0,
+    );
     expect(storedText()).toBe(bytesBefore);
     expect(storedRevision()).toBe(revisionBefore);
     // The preview is still on screen so the same import can be retried.
@@ -336,8 +338,9 @@ describe("import boundaries and refusals", () => {
   it("refuses a temporally impossible document", async () => {
     const { bytes } = await ready();
     const impossible = createSeedDocument();
-    // An observation recorded before the goal it is attached to existed.
-    impossible.observations[0]!.observedAt = "1999-01-01T00:00:00.000Z";
+    // A support marked finished before it was ever planned.
+    const support = impossible.supportActions.find((row) => row.completedAt)!;
+    support.completedAt = "1999-01-01T00:00:00.000Z";
     const text = JSON.stringify(impossible);
     chooseFile(fakeFile({ size: text.length, text: async () => text }).file);
 
@@ -423,7 +426,7 @@ describe("write failures during ordinary work", () => {
     });
     await user.click(screen.getByRole("button", { name: "Save this observation" }));
 
-    expect(await screen.findByText(/refused to save the change/i)).toBeTruthy();
+    expect((await screen.findAllByText(/refused to save the change/i)).length).toBeGreaterThan(0);
     expect(storedText()).toBe(bytesBefore);
   });
 
@@ -446,7 +449,9 @@ describe("write failures during ordinary work", () => {
 
     await user.click(screen.getByRole("button", { name: "Save this observation" }));
 
-    expect(await screen.findByText(/changed since this form was opened/i)).toBeTruthy();
+    expect(
+      (await screen.findAllByText(/changed since this form was opened/i)).length,
+    ).toBeGreaterThan(0);
     expect(JSON.parse(storedText()!).revision).toBe(moved.revision);
   });
 
