@@ -32,6 +32,22 @@
       "pattern_label": "National identifier pattern",
       "redacted_digest": "01a54629efb95228",
       "disposition": "CANDIDATE - REQUIRES REVIEW"
+    },
+    {
+      "file": "src/test/evidence-output-safety.test.ts",
+      "line": 111,
+      "pattern_id": "date-of-birth",
+      "pattern_label": "Date-of-birth field",
+      "redacted_digest": "ca1674d42bd972be",
+      "disposition": "CANDIDATE - REQUIRES REVIEW"
+    },
+    {
+      "file": "src/test/evidence-output-safety.test.ts",
+      "line": 111,
+      "pattern_id": "date-of-birth",
+      "pattern_label": "Date-of-birth field",
+      "redacted_digest": "54f46400de78efd4",
+      "disposition": "CANDIDATE - REQUIRES REVIEW"
     }
   ],
   "fixture_matches": 0,
