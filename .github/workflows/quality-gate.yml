@@ -65,6 +65,9 @@ jobs:
         env:
           SSLS_EVIDENCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
 
+      - name: Committed evidence output-safety guard (non-writing check mode)
+        run: bun run evidence:output-safety:check
+
       - name: Ephemeral evidence generation, verification and output-safety guard
         run: bun run evidence:ephemeral
         env:

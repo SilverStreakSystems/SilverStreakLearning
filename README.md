@@ -63,7 +63,7 @@ by derivation, never by copy.
 
 | Command | What it does | Expected result |
 | --- | --- | --- |
-| `bun run verify` | the full read-only gate: lint, typecheck, tests, build, current-state check, generated-artefact check, committed-evidence verification, output-safety guard over the committed evidence tree | all pass |
+| `bun run verify` | the full read-only gate: lint, typecheck, tests, build, current-state check, generated-artefact check, committed-evidence verification, and the committed-evidence output-safety guard in non-writing check mode | all pass, and no file is created |
 | `bun run verify:ci` | `verify` plus the ephemeral evidence pass (generation, verification, output-safety guard) | all pass |
 | `bun run lint` | ESLint with Prettier, `--max-warnings 0` | 0 errors, 0 warnings |
 | `bun run lint:fix` | applies the mechanical fixes | rewrites formatting only |
@@ -75,8 +75,10 @@ by derivation, never by copy.
 | `bun run gen:all` | runs every governed generator and keeps the result | updates generated artefacts |
 | `bun run gen:current-state` | regenerates `docs/CURRENT_STATE.md` only | writes the projection |
 
-`verify` is read-only, so it does not run evidence *generation* — generation
-writes artefacts into the committed `evidence/` tree. `verify:ci` is the
+`verify` is read-only: every step of it, including the output-safety guard
+(`--check` mode), leaves no new file and no tracked-tree diff behind. It does
+not run evidence *generation*, because generation writes artefacts into the
+committed `evidence/` tree. `verify:ci` is the
 complete set: it adds `evidence:ephemeral`, which generates a full current-run
 evidence set into a temporary path, verifies it there, and runs the
 output-safety guard over it, writing nothing into the repository.
@@ -99,7 +101,8 @@ recorded, dispositioned finding — it is never left to accumulate.
 | `bun run evidence:run` | `evidence/` (or `$SSLS_EVIDENCE_DIR`) | executes the declared checks and writes Layer A records plus the Layer B baseline |
 | `bun run evidence:verify` | nothing | evaluates whether the committed evidence set is still applicable to the current input sets |
 | `bun run evidence:ephemeral` | a temporary directory only | CI-safe generation + verification + output-safety guard |
-| `bun run evidence:output-safety` | `reports/evidence-output-safety.json` | scans a generated evidence tree for credential- and personal-data-shaped content |
+| `bun run evidence:output-safety` | `reports/evidence-output-safety.json` (git-ignored) | report mode: scans an evidence tree for credential- and personal-data-shaped content and retains the result |
+| `bun run evidence:output-safety:check` | nothing | check mode (`--check`): the identical fail-closed scan of the committed evidence tree, with no report file |
 
 Applicability is decided by declared input-set hashes, not by comparing commit
 strings. Generated outputs (`evidence/`, `dist/`, `docs/CURRENT_STATE.md`, the
@@ -108,9 +111,14 @@ evidence cannot invalidate the evidence just written.
 
 Because those outputs are outside the input hash, leak checking for them is a
 separate, post-generation step: the output-safety guard. It runs after
-generation, over the generated tree only, excludes its own result file (or
-writes it outside the scanned tree), and fails closed when prohibited material
-is found or the scan cannot complete. Pattern scanning does not prove the
+generation, over the scanned tree only, excludes its own result file (written
+either outside that tree or, when the tree is retained for CI upload, at
+`reports/output-safety.json` inside it and excluded from its own scan), and
+fails closed when prohibited material is found, the tree is empty or
+unreadable, or the scan cannot complete. Both the committed evidence tree and
+each newly generated set are scanned: `verify` and both CI workflows run the
+guard over the committed tree, and `evidence:ephemeral` runs it over the
+generated one. Pattern scanning does not prove the
 absence of every secret or item of personal data; a clean result means no match
 by these patterns over that scope.
 
@@ -121,7 +129,7 @@ Verification passing is not certification, conformance, or release readiness.
 | Workflow | Runs |
 | --- | --- |
 | `.github/workflows/quality-gate.yml` | the complete gate on pull requests and pushes to `main` |
-| `.github/workflows/evidence-pipeline.yml` | committed-evidence verification, ephemeral generation, and artefact upload |
+| `.github/workflows/evidence-pipeline.yml` | committed-evidence verification, committed-evidence output-safety, ephemeral generation, and artefact upload (the uploaded tree contains its own guard result) |
 | `.github/workflows/current-state.yml` | the current-state projection check |
 
 All three install from the frozen lockfile with the pinned Bun version, use

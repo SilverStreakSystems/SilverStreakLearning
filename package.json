@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "verify": "bun run lint && bun run typecheck && bun run test && bun run build && bun run check:current-state && bun run check:generated && bun run evidence:verify && bun run evidence:output-safety",
+    "verify": "bun run lint && bun run typecheck && bun run test && bun run build && bun run check:current-state && bun run check:generated && bun run evidence:verify && bun run evidence:output-safety:check",
     "gen:current-state": "bun scripts/gen-current-state.ts",
     "check:current-state": "bun scripts/gen-current-state.ts --check",
     "format": "prettier --write .",
@@ -22,6 +22,7 @@
     "gen:all": "node scripts/check-generated.mjs --write",
     "check:generated": "node scripts/check-generated.mjs",
     "evidence:output-safety": "node scripts/evidence/output-safety.mjs",
+    "evidence:output-safety:check": "node scripts/evidence/output-safety.mjs --check",
     "verify:ci": "bun run verify && bun run evidence:ephemeral",
     "evidence:ephemeral": "node scripts/evidence/ephemeral.mjs"
   },

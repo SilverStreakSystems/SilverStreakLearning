@@ -21,8 +21,15 @@
  * absence of every secret or item of personal data. A clean result means no
  * match by these patterns over this scope.
  *
+ * Two modes:
+ *   report mode (default) writes the result document for deliberate evidence
+ *     generation and retention;
+ *   check mode (`--check` / `--no-write`) performs the identical fail-closed
+ *     scan, prints the result and limitations, and writes nothing at all.
+ *
  * Usage:
  *   node scripts/evidence/output-safety.mjs [--dir=evidence] [--out=reports/evidence-output-safety.json]
+ *   node scripts/evidence/output-safety.mjs --check [--dir=evidence]
  */
 import { mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
@@ -175,9 +182,15 @@ function arg(name, fallback) {
   return hit ? hit.slice(name.length + 3) : fallback;
 }
 
+/** True when the invocation asked for the non-writing check mode. */
+export function isCheckMode(argv) {
+  return argv.includes("--check") || argv.includes("--no-write");
+}
+
 function main() {
   const dir = arg("dir", process.env.SSLS_EVIDENCE_DIR || "evidence");
-  const out = arg("out", "reports/evidence-output-safety.json");
+  const check = isCheckMode(process.argv);
+  const out = check ? null : arg("out", "reports/evidence-output-safety.json");
 
   let outcome;
   try {
@@ -188,14 +201,20 @@ function main() {
     return;
   }
 
-  mkdirSync(dirname(out), { recursive: true });
-  writeFileSync(out, `${JSON.stringify(outcome.result, null, 2)}\n`);
+  if (out) {
+    mkdirSync(dirname(out), { recursive: true });
+    writeFileSync(out, `${JSON.stringify(outcome.result, null, 2)}\n`);
+  }
 
-  console.log(`Evidence output-safety guard — scanned tree ${dir}`);
+  console.log(
+    `Evidence output-safety guard — scanned tree ${dir}` +
+      (check ? " (check mode, no file written)" : ""),
+  );
   console.log(`  files scanned: ${outcome.result.files_scanned ?? 0}`);
   console.log(`  secret matches: ${outcome.result.secret_matches.length}`);
   console.log(`  personal-data matches: ${outcome.result.pii_matches.length}`);
-  console.log(`  result written to ${out} (excluded from the scanned tree)`);
+  if (out) console.log(`  result written to ${out} (excluded from its own scan)`);
+  else console.log("  no result file written (check mode)");
   for (const limitation of OUTPUT_SAFETY_LIMITATIONS) console.log(`  note: ${limitation}`);
 
   if (!outcome.ok) {
