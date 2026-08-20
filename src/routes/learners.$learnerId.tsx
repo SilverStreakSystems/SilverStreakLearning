@@ -301,7 +301,8 @@ function LearnerDetail() {
                   const outcome = store.run((current, context) =>
                     setGoalStatus(current, focusGoal.goalId, "achieved", context),
                   );
-                  setNotice(outcome.ok ? "The goal was recorded as met." : null);
+                  if (outcome.ok && outcome.value)
+                    afterSave("The goal was recorded as met.", outcome.value.document);
                 }}
               >
                 I judge this goal met — record it
@@ -337,7 +338,8 @@ function LearnerDetail() {
                     const outcome = store.run((current, context) =>
                       setGoalStatus(current, focusGoal.goalId, "paused", context),
                     );
-                    setNotice(outcome.ok ? "The goal was paused." : null);
+                    if (outcome.ok && outcome.value)
+                      afterSave("The goal was paused.", outcome.value.document);
                   }}
                 >
                   Pause this goal
@@ -377,7 +379,11 @@ function LearnerDetail() {
                           if (!activated.ok) return activated;
                           return setFocusGoal(activated.document, learnerId, goal.goalId, context);
                         });
-                        setNotice(outcome.ok ? "That goal is now the one being worked on." : null);
+                        if (outcome.ok && outcome.value)
+                          afterSave(
+                            "That goal is now the one being worked on.",
+                            outcome.value.document,
+                          );
                       }}
                     >
                       Work on this one
@@ -395,7 +401,7 @@ function LearnerDetail() {
             const outcome = store.run((current, context) =>
               createGoal(current, { learnerId, ...input }, context),
             );
-            if (!outcome.ok) return reportFrom(outcome.problem, "The goal was not saved.");
+            if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The goal was not saved.");
             afterSave("The goal was saved.", outcome.value.document);
             return null;
           }}
@@ -426,7 +432,7 @@ function LearnerDetail() {
                 context,
               ),
             );
-            if (!outcome.ok) return reportFrom(outcome.problem, "The observation was not saved.");
+            if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The observation was not saved.");
             afterSave("The observation was saved.", outcome.value.document);
             return null;
           }}
@@ -446,7 +452,7 @@ function LearnerDetail() {
             const outcome = store.run((current, context) =>
               planSupport(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
-            if (!outcome.ok) return reportFrom(outcome.problem, "The plan was not saved.");
+            if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The plan was not saved.");
             afterSave("The plan was saved.", outcome.value.document);
             return null;
           }}
@@ -467,7 +473,7 @@ function LearnerDetail() {
                   context,
                 ),
               );
-              if (!outcome.ok) return reportFrom(outcome.problem, "Nothing was saved.");
+              if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "Nothing was saved.");
               afterSave("The support was marked done.", outcome.value.document);
               return null;
             }}
@@ -475,7 +481,7 @@ function LearnerDetail() {
               const outcome = store.run((current, context) =>
                 cancelSupport(current, plannedSupport.supportActionId, reason, context),
               );
-              if (!outcome.ok) return reportFrom(outcome.problem, "Nothing was saved.");
+              if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "Nothing was saved.");
               afterSave("The support was cancelled.", outcome.value.document);
               return null;
             }}
@@ -505,7 +511,7 @@ function LearnerDetail() {
                   context,
                 ),
               );
-              if (!outcome.ok) return reportFrom(outcome.problem, "The result was not saved.");
+              if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The result was not saved.");
               afterSave(
                 input.supersedesGoalReviewId
                   ? "The correction was saved. The earlier result is kept and marked replaced."
