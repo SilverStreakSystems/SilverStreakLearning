@@ -43,3 +43,5 @@ export declare function runOutputSafety(options?: { dir?: string; out?: string |
 };
 
 export declare const SELF_REFERENTIAL_OUTPUTS: string[];
+
+export declare function isCheckMode(argv: string[]): boolean;

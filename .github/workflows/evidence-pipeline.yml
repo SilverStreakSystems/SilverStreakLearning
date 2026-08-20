@@ -46,6 +46,9 @@ jobs:
       - name: Verify the committed evidence set
         run: SSLS_EVIDENCE_DIR=evidence bun run evidence:verify
 
+      - name: Committed evidence output-safety guard (non-writing check mode)
+        run: SSLS_EVIDENCE_DIR=evidence bun run evidence:output-safety:check
+
       - name: Generate and verify current-run evidence ephemerally
         run: bun run evidence:ephemeral --keep
 
