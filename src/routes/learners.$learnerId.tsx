@@ -239,7 +239,13 @@ function LearnerDetail() {
   const projection = projectNextStep(document, learnerId, asOf);
   const snapshot = readLoopSnapshot(document, learnerId, asOf);
   const activeForm = openForm === "none" ? FORM_FOR_STEP[projection.code] : openForm;
-  const toggle = (key: Exclude<FormKey, null>) => setOpenForm(activeForm === key ? null : key);
+  const toggle = (key: Exclude<FormKey, null>) => {
+    const closing = activeForm === key;
+    // Closing a pinned form is the explicit "leave it" action, and is the only
+    // thing besides a successful write that releases the pinned target.
+    if (closing && pinned?.key === key) setPinned(null);
+    setOpenForm(closing ? null : key);
+  };
 
   /**
    * Every write action starts here.
@@ -301,10 +307,13 @@ function LearnerDetail() {
 
   // A pinned form outlives the projection that offered it. Nothing else about
   // the page changes: the same command runs against the same support.
+  // The pinned target wins over anything newly projected. A refreshed document
+  // can project a different planned or latest support, and remounting the open
+  // form onto that other support would throw away the draft being retried.
   const completeTarget: { supportActionId: string; title: string } | null =
-    plannedSupport ?? (pinned?.key === "complete" ? pinned : null);
+    (pinned?.key === "complete" ? pinned : null) ?? plannedSupport;
   const reviewTarget: { supportActionId: string; title: string } | null =
-    latestCompletedSupport ?? (pinned?.key === "review" ? pinned : null);
+    (pinned?.key === "review" ? pinned : null) ?? latestCompletedSupport;
 
   return (
     <div>
@@ -448,6 +457,7 @@ function LearnerDetail() {
         <GoalForm
           open={activeForm === "goal"}
           onToggle={() => toggle("goal")}
+          onAttempt={beginAttempt}
           onSubmit={(input) => {
             const outcome = attempt((current, context) =>
               createGoal(current, { learnerId, ...input }, context),
@@ -468,6 +478,7 @@ function LearnerDetail() {
         <ObservationForm
           open={activeForm === "observation"}
           onToggle={() => toggle("observation")}
+          onAttempt={beginAttempt}
           document={document}
           learnerId={learnerId}
           goalId={focusGoal?.goalId ?? null}
@@ -500,6 +511,7 @@ function LearnerDetail() {
         <SupportForm
           open={activeForm === "support"}
           onToggle={() => toggle("support")}
+          onAttempt={beginAttempt}
           observations={
             focusGoal
               ? effectiveObservations(document).filter((row) => row.goalId === focusGoal.goalId)
@@ -531,6 +543,7 @@ function LearnerDetail() {
             key={`complete-${completeTarget.supportActionId}`}
             open={activeForm === "complete"}
             onToggle={() => toggle("complete")}
+            onAttempt={beginAttempt}
             title={completeTarget.title}
             onComplete={(completedAt, note) => {
               const outcome = attempt((current, context) =>
@@ -572,6 +585,7 @@ function LearnerDetail() {
             key={`review-${reviewTarget.supportActionId}`}
             open={activeForm === "review"}
             onToggle={() => toggle("review")}
+            onAttempt={beginAttempt}
             supportTitle={reviewTarget.title}
             observations={snapshot.observations.filter(
               (row) => row.supportActionId === reviewTarget.supportActionId,
@@ -685,10 +699,14 @@ function LearnerDetail() {
 function GoalForm({
   open,
   onToggle,
+  onAttempt,
   onSubmit,
 }: {
   open: boolean;
   onToggle: () => void;
+  /** Clears any earlier success or failure before this attempt is evaluated,
+   * including before local validation refuses it. */
+  onAttempt: () => void;
   onSubmit: (input: {
     title: string;
     successCriterion: string;
@@ -704,6 +722,7 @@ function GoalForm({
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    onAttempt();
     const found: FormError[] = [];
     if (title.trim().length === 0)
       found.push({ controlId: "goal-title", message: "Write what the goal is." });
@@ -797,6 +816,7 @@ function GoalForm({
 function ObservationForm({
   open,
   onToggle,
+  onAttempt,
   document,
   learnerId,
   goalId,
@@ -805,6 +825,9 @@ function ObservationForm({
 }: {
   open: boolean;
   onToggle: () => void;
+  /** Clears any earlier success or failure before this attempt is evaluated,
+   * including before local validation refuses it. */
+  onAttempt: () => void;
   document: LearningLoopDocument;
   learnerId: string;
   goalId: string | null;
@@ -838,6 +861,7 @@ function ObservationForm({
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    onAttempt();
     const found: FormError[] = [];
     if (text.trim().length === 0)
       found.push({
@@ -1033,11 +1057,15 @@ function CheckGroup({
 function SupportForm({
   open,
   onToggle,
+  onAttempt,
   observations,
   onSubmit,
 }: {
   open: boolean;
   onToggle: () => void;
+  /** Clears any earlier success or failure before this attempt is evaluated,
+   * including before local validation refuses it. */
+  onAttempt: () => void;
   observations: LearningLoopDocument["observations"];
   onSubmit: (input: {
     basedOnObservationIds: string[];
@@ -1059,6 +1087,7 @@ function SupportForm({
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    onAttempt();
     const found: FormError[] = [];
     if (chosen.length === 0)
       found.push({
@@ -1195,12 +1224,16 @@ function SupportForm({
 function CompleteSupportForm({
   open,
   onToggle,
+  onAttempt,
   title,
   onComplete,
   onCancel,
 }: {
   open: boolean;
   onToggle: () => void;
+  /** Clears any earlier success or failure before this attempt is evaluated,
+   * including before local validation refuses it. */
+  onAttempt: () => void;
   title: string;
   onComplete: (completedAt: string, note: string | null) => SubmitReport;
   onCancel: (reason: string) => SubmitReport;
@@ -1213,6 +1246,7 @@ function CompleteSupportForm({
   // and the default (Enter) is the ordinary one: marking it done.
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    onAttempt();
     const intent =
       (event.nativeEvent as SubmitEvent).submitter?.getAttribute("value") === "cancel"
         ? "cancel"
@@ -1306,6 +1340,7 @@ function CompleteSupportForm({
 function ReviewForm({
   open,
   onToggle,
+  onAttempt,
   supportTitle,
   observations,
   reviews,
@@ -1313,6 +1348,9 @@ function ReviewForm({
 }: {
   open: boolean;
   onToggle: () => void;
+  /** Clears any earlier success or failure before this attempt is evaluated,
+   * including before local validation refuses it. */
+  onAttempt: () => void;
   supportTitle: string;
   observations: LearningLoopDocument["observations"];
   reviews: LearningLoopDocument["goalReviews"];
@@ -1338,6 +1376,7 @@ function ReviewForm({
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    onAttempt();
     const found: FormError[] = [];
     if (chosen.length === 0)
       found.push({

@@ -103,8 +103,17 @@ export interface RecoveryExpectation {
   revision: number | null;
 }
 
+/**
+ * An expectation and the decoded document it was captured from, taken from one
+ * snapshot.
+ *
+ * The two are handed back together on purpose: a preview built from a document
+ * read at a different moment than the token it is protected by would describe
+ * a base that the confirmation does not actually guard.
+ */
 export type ExpectationOutcome =
-  { status: "ok"; expectation: RecoveryExpectation } | { status: "unavailable"; message: string };
+  | { status: "ok"; expectation: RecoveryExpectation; read: ReadOutcome }
+  | { status: "unavailable"; message: string };
 
 export interface LearningLoopRepository {
   readonly kind: "browser-local" | "in-memory";
@@ -126,10 +135,12 @@ export interface LearningLoopRepository {
    * replaces the stored value in one write. On failure the stored value is
    * unchanged. Normal `commit` never does this: it conflicts instead.
    *
-   * When `expected` is supplied it is compared against one fresh snapshot
-   * before the write; anything changed returns a conflict and writes nothing.
+   * `expected` is mandatory. It is compared against one fresh snapshot before
+   * the write, and anything changed returns a conflict and writes nothing.
+   * There is no unguarded recovery: the first write into empty storage is an
+   * ordinary `commit(null, ...)`, which conflicts if anything appears meanwhile.
    */
-  recover(next: LearningLoopDocument, at: string, expected?: RecoveryExpectation): CommitOutcome;
+  recover(next: LearningLoopDocument, at: string, expected: RecoveryExpectation): CommitOutcome;
   /** Captures what a pending destructive replacement is being decided against. */
   expectation(): ExpectationOutcome;
   clear(): ClearOutcome;
@@ -271,13 +282,14 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
         token: this.document ? serializeDocument(this.document) : null,
         revision: this.document?.revision ?? null,
       },
+      read: this.read(),
     };
   }
 
-  recover(next: LearningLoopDocument, at: string, expected?: RecoveryExpectation): CommitOutcome {
+  recover(next: LearningLoopDocument, at: string, expected: RecoveryExpectation): CommitOutcome {
     const priorRaw = this.document ? serializeDocument(this.document) : null;
     const currentRevision = this.document?.revision ?? null;
-    if (expected && (expected.token !== priorRaw || expected.revision !== currentRevision))
+    if (expected.token !== priorRaw || expected.revision !== currentRevision)
       return { status: "conflict", message: CONFLICT_MESSAGE, currentRevision };
     const candidate = stamp(next, currentRevision, at);
     const result = validateRuntime(candidate);
@@ -485,6 +497,8 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
         token: snapshot.snapshot.token,
         revision: current.status === "ready" ? current.document.revision : null,
       },
+      // The same snapshot the token came from, decoded once.
+      read: current,
     };
   }
 
@@ -532,7 +546,7 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
     return { status: "ok", document: result.document };
   }
 
-  recover(next: LearningLoopDocument, at: string, expected?: RecoveryExpectation): CommitOutcome {
+  recover(next: LearningLoopDocument, at: string, expected: RecoveryExpectation): CommitOutcome {
     if (!this.storage)
       return {
         status: "unavailable",
@@ -549,10 +563,7 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
 
     // A confirmation decided against bytes that no longer exist is stale, and a
     // stale confirmation must never overwrite what another tab just wrote.
-    if (
-      expected &&
-      (expected.token !== snapshot.snapshot.token || expected.revision !== currentRevision)
-    )
+    if (expected.token !== snapshot.snapshot.token || expected.revision !== currentRevision)
       return { status: "conflict", message: CONFLICT_MESSAGE, currentRevision };
 
     const candidate = stamp(next, currentRevision, at);

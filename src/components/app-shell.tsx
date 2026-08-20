@@ -173,12 +173,27 @@ function MobileNavDrawer({
     focusableIn(panelRef.current)[0]?.focus();
     const body = window.document.body;
     const previousOverflow = body.style.overflow;
+    // The exact prior values are restored on close, including the scroll
+    // position: locking the page must not silently move the reader.
+    const previousScrollY = window.scrollY;
     body.style.overflow = "hidden";
     return () => {
       body.style.overflow = previousOverflow;
+      if (previousScrollY !== window.scrollY && typeof window.scrollTo === "function") {
+        try {
+          window.scrollTo(0, previousScrollY);
+        } catch {
+          /* scroll restoration is a courtesy, never a failure path */
+        }
+      }
       if (navigatedRef.current) {
-        const main = window.document.getElementById("main-content");
-        main?.focus();
+        // Focus belongs on the heading of the page just opened. The heading is
+        // rendered after this drawer unmounts, so the move is queued.
+        window.setTimeout(() => {
+          const main = window.document.getElementById("main-content");
+          const heading = main?.querySelector<HTMLElement>("h1");
+          (heading ?? main)?.focus();
+        }, 0);
         return;
       }
       returnFocusTo?.focus();

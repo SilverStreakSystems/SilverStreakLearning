@@ -275,10 +275,22 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
       fail(expected.message);
       return;
     }
+    // The preview must describe the same base document the expectation
+    // protects. If another tab wrote between what is on screen and this
+    // snapshot, no preview is shown: the screen is refreshed and the import
+    // can be tried again against what is actually stored.
+    const base = expected.read.status === "ready" ? expected.read.document : null;
+    if ((base?.revision ?? null) !== (store.document?.revision ?? null)) {
+      store.refresh();
+      fail(
+        "The saved records changed somewhere else since this page loaded, so nothing was previewed and nothing was changed. The latest saved records are now shown — choose the file again if you still want to replace them.",
+      );
+      return;
+    }
     setDestructive({
       kind: "preview-import",
       document: result.document,
-      preview: buildImportPreview(store.document, result.document),
+      preview: buildImportPreview(base, result.document),
       // What this preview was computed against. Confirming re-checks it.
       expected: expected.expectation,
     });
@@ -308,6 +320,17 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
               const expected = store.captureExpectation();
               if (expected.status !== "ok") {
                 fail(expected.message);
+                return;
+              }
+              const base = expected.read.status === "ready" ? expected.read.document : null;
+              if (
+                store.status === "ready" &&
+                (base?.revision ?? null) !== (store.document?.revision ?? null)
+              ) {
+                store.refresh();
+                fail(
+                  "The saved records changed somewhere else since this page loaded, so nothing was changed. The latest saved records are now shown — try again if you still want to replace them.",
+                );
                 return;
               }
               setDestructive({ kind: "confirm-restore", expected: expected.expectation });
