@@ -169,11 +169,22 @@ claimed. FND-024 records that verification gap.
 
 ## Next increment
 
-**Product Alpha 001** — the first runtime product slice: an authenticated
-founder selects a fictional tenant, inspects a synthetic requirement-to-evidence
-chain, records a disposition, and sees a derived proof posture update, under the
-three truth planes of ADR-001. It is not started, and nothing in this repository
-anticipates its schema.
+**Product Alpha 001** — a founder/operator-only synthetic learner
+evidence-to-action vertical slice. Core workflow: synthetic learner list →
+learner detail → goal → support/action → observation/evidence → result →
+timeline → deterministic next action.
+
+Persistence is browser-local behind a repository interface, with
+seed/reset/export/import.
+
+Explicitly out of scope: authentication, tenant model, cloud database, backend,
+RLS, AI, real PII, district integrations, conformance claim, release claim.
+Backend and authentication are a later architecture decision, taken only after
+the workflow is proven.
+
+Product Alpha 001 is NOT STARTED, and nothing in this repository anticipates its
+schema.
+
 
 ## Built with
 
