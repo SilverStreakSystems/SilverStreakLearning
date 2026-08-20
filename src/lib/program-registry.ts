@@ -8,17 +8,18 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import type {
-  RawCheckpointRegister,
-  RawProgramPolicy,
-} from "@/domain/program-state-derivation";
+import type { RawCheckpointRegister, RawProgramPolicy } from "@/domain/program-state-derivation";
 
 const DATA_DIR = join(process.cwd(), "data", "program");
 
 export function loadCheckpointRegister(): RawCheckpointRegister {
-  return JSON.parse(readFileSync(join(DATA_DIR, "checkpoints.json"), "utf8")) as RawCheckpointRegister;
+  return JSON.parse(
+    readFileSync(join(DATA_DIR, "checkpoints.json"), "utf8"),
+  ) as RawCheckpointRegister;
 }
 
 export function loadProgramPolicy(): RawProgramPolicy {
-  return JSON.parse(readFileSync(join(DATA_DIR, "program-policy.json"), "utf8")) as RawProgramPolicy;
+  return JSON.parse(
+    readFileSync(join(DATA_DIR, "program-policy.json"), "utf8"),
+  ) as RawProgramPolicy;
 }

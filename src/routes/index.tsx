@@ -160,7 +160,9 @@ function CommandCenter() {
           <div className="rounded-md border border-border bg-surface p-4">
             <dt className="flex flex-wrap items-center gap-2 font-display text-base font-semibold">
               {program.auditExecution.ruleId} verification
-              <StateChip state={program.auditExecution.state === "NOT-RUN" ? "blocked" : "confirmed"} />
+              <StateChip
+                state={program.auditExecution.state === "NOT-RUN" ? "blocked" : "confirmed"}
+              />
               <span>{program.auditExecution.state}</span>
             </dt>
             <dd className="mt-2 text-sm text-muted-foreground">
@@ -205,14 +207,12 @@ function CommandCenter() {
             {program.deferredDebt.map((entry) => (
               <li key={entry.recordId}>
                 <span className="font-semibold text-foreground">{entry.recordId}</span> —{" "}
-                {entry.statement}{" "}
-                <span className="text-xs">Source: {entry.source.locator}</span>
+                {entry.statement} <span className="text-xs">Source: {entry.source.locator}</span>
               </li>
             ))}
           </ul>
         </div>
       </Section>
-
 
       <Section
         id="reference-package"

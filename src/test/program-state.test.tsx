@@ -79,11 +79,13 @@ describe("program state is derived, not restated", () => {
 
   it("takes the latest checkpoint and the latest attempt from the checkpoint register", () => {
     const register = loadCheckpointRegister();
-    const latest = [...register.checkpoints].sort((a, b) =>
-      a.completed_on === b.completed_on
-        ? a.checkpoint_id.localeCompare(b.checkpoint_id)
-        : a.completed_on.localeCompare(b.completed_on),
-    ).at(-1);
+    const latest = [...register.checkpoints]
+      .sort((a, b) =>
+        a.completed_on === b.completed_on
+          ? a.checkpoint_id.localeCompare(b.checkpoint_id)
+          : a.completed_on.localeCompare(b.completed_on),
+      )
+      .at(-1);
     expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe(latest?.checkpoint_id);
     expect(PROGRAM_STATE.latestAttempt?.attemptId).toBe("ATTEMPT-001");
     expect(PROGRAM_STATE.latestAttempt?.state).toBe("ABORTED-DEFERRED");
@@ -268,9 +270,7 @@ describe("Command Center synchronization", () => {
   it("leads the next defensible action with baseline recovery, not the deferred audit", async () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Next defensible action/i });
-    expect(
-      within(region).getByText(/1\. Recover the engineering baseline/),
-    ).toBeInTheDocument();
+    expect(within(region).getByText(/1\. Recover the engineering baseline/)).toBeInTheDocument();
   });
 
   it("shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint", async () => {

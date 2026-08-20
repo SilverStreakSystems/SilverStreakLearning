@@ -344,10 +344,13 @@ export function collectSsotBinding(context) {
       tool: "scripts/gen-current-state.ts",
       tool_version: "1.0.0",
       command: "bun scripts/gen-current-state.ts --check",
-      expected_result: "Exit 0 when the projection regenerates with no diff, every declared input resolves, and every superseded document declares itself superseded.",
+      expected_result:
+        "Exit 0 when the projection regenerates with no diff, every declared input resolves, and every superseded document declares itself superseded.",
       actual_result: `Exit code ${result.code}.`,
       status: result.ok ? "pass" : "review-required",
-      supports: ["Whether the canonical current-state document is the deterministic projection of its declared controlling inputs at this tree."],
+      supports: [
+        "Whether the canonical current-state document is the deterministic projection of its declared controlling inputs at this tree.",
+      ],
       does_not_support: [
         "The correctness or authority of any statement inside the projection, and merge enforcement of the check.",
       ],

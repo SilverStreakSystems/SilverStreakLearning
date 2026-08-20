@@ -2,10 +2,7 @@ import policy from "../../data/program/program-policy.json";
 import checkpointRegister from "../../data/program/checkpoints.json";
 
 import { deriveProgramState } from "@/domain/program-state-derivation";
-import type {
-  RawCheckpointRegister,
-  RawProgramPolicy,
-} from "@/domain/program-state-derivation";
+import type { RawCheckpointRegister, RawProgramPolicy } from "@/domain/program-state-derivation";
 import type { ProgramStateRecord } from "@/domain/program-state";
 import { DECISIONS, EVIDENCE, FINDINGS } from "@/fixtures/registers";
 

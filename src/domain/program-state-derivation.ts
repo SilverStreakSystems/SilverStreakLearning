@@ -104,7 +104,11 @@ function locator(raw: RawSourceLocator): SourceLocator {
 
 function byDateThenId<T extends { date: string; id: string }>(rows: T[]): T | null {
   if (rows.length === 0) return null;
-  return [...rows].sort((a, b) => (a.date === b.date ? a.id.localeCompare(b.id) : a.date.localeCompare(b.date))).at(-1) ?? null;
+  return (
+    [...rows]
+      .sort((a, b) => (a.date === b.date ? a.id.localeCompare(b.id) : a.date.localeCompare(b.date)))
+      .at(-1) ?? null
+  );
 }
 
 function mentionsAny(decision: DecisionRecord, phrases: string[]): boolean {
@@ -137,12 +141,13 @@ export function deriveProgramState(inputs: DerivationInputs): ProgramStateRecord
     )?.row ?? null;
 
   const latestDecision =
-    byDateThenId(
-      accepted.map((row) => ({ date: row.decidedOn ?? "", id: row.id, row })),
-    )?.row ?? null;
+    byDateThenId(accepted.map((row) => ({ date: row.decidedOn ?? "", id: row.id, row })))?.row ??
+    null;
   if (!latestDecision) throw new Error("decision register carries no accepted decision");
 
-  const gateClosed = accepted.some((decision) => mentionsAny(decision, policy.gate.closure_phrases));
+  const gateClosed = accepted.some((decision) =>
+    mentionsAny(decision, policy.gate.closure_phrases),
+  );
   const workPackageClosed = accepted.some((decision) =>
     mentionsAny(decision, policy.active_work_package.closure_phrases),
   );

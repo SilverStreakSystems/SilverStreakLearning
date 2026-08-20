@@ -168,7 +168,14 @@ function report(problems: string[], check: boolean) {
     return;
   }
   process.stdout.write(
-    ["Current-state projection check", "", ...problems.map((entry) => `[PROBLEM] ${entry}`), "", "FAIL — regenerate with: bun scripts/gen-current-state.ts", ""].join("\n"),
+    [
+      "Current-state projection check",
+      "",
+      ...problems.map((entry) => `[PROBLEM] ${entry}`),
+      "",
+      "FAIL — regenerate with: bun scripts/gen-current-state.ts",
+      "",
+    ].join("\n"),
   );
   if (check) process.exitCode = 1;
   else process.exitCode = 1;

@@ -130,7 +130,6 @@ export interface ProgramStateRecord {
   };
 }
 
-
 /**
  * Statements the program-state record may never make. Enforced by test.
  */
@@ -174,7 +173,9 @@ export function validateProgramState(record: ProgramStateRecord): string[] {
 
   for (const verification of record.verifications) {
     if (!verification.boundTo.trim())
-      problems.push(`${verification.verificationId}: verification is not bound to a checkpoint or commit`);
+      problems.push(
+        `${verification.verificationId}: verification is not bound to a checkpoint or commit`,
+      );
     if (!verification.scope.trim())
       problems.push(`${verification.verificationId}: verification scope must be stated`);
   }
