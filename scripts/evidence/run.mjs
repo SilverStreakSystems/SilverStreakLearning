@@ -182,7 +182,7 @@ async function main() {
       artifact_hash: record.artifact_hash,
     })),
   };
-  write("index.json", JSON.stringify(index, null, 2));
+  write("evidence-index.json", JSON.stringify(index, null, 2));
 
   const failed = records.filter((record) => record.status === "fail");
   const review = records.filter((record) => record.status === "review-required");

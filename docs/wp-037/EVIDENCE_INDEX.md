@@ -38,7 +38,7 @@ Authority class: current summary. Executor-produced, self-verified, `independent
 ## Derived layer
 
 - `evidence/baseline.json` — regenerated per run from ten declared input sets; never hand-edited.
-- `evidence/index.json` — machine index of records and artifact hashes.
+- `evidence/evidence-index.json` — machine index of records and artifact hashes.
 - `evidence/artifacts/` — build, test, SBOM, license, boundary, and provenance artifacts, each hashed in its record.
 
 ## Immutability

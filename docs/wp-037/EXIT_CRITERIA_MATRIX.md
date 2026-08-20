@@ -27,7 +27,7 @@ row 21 remains N/A. Executor reconciliation only; WP-037 is not closed here.
 | 4 | Applicability calculation | PASS | `scripts/evidence/applicability.mjs`; 8 applicability tests; verify output shows all 14 CURRENT | automated | source, tests CURRENT | Applicability depends on declared input sets | — |
 | 5 | Evidence expiry | PASS | `scripts/evidence/expiry.mjs`; 3 expiry tests | automated | source CURRENT | Expiry windows are policy, not measurement | — |
 | 6 | Evidence supersession | PASS | `superseded_by` handling in applicability; supersession test | automated | source CURRENT | — | — |
-| 7 | Evidence index | PASS | `evidence/index.json` | automated | tracked CURRENT | — | — |
+| 7 | Evidence index | PASS | `evidence/evidence-index.json` | automated | tracked CURRENT | — | — |
 | 8 | Evidence bundle | PASS | `evidence/` bundle regenerated and verified in one run | automated | tracked CURRENT | — | — |
 | 9 | Artifact hashing | PASS | `artifact_hash` on every record; `hashPathSet` in `util.mjs` | automated | source CURRENT | SHA-256 content hashes only | — |
 | 10 | Reproduction process | PASS | `bun run evidence:run` then `bun run evidence:verify` executed once; VERIFICATION PASSED | automated | all sets CURRENT | External feed output varies with time | — |

@@ -14,7 +14,7 @@
 
 ```text
 evidence/
-  index.json                  record index with hashes
+  evidence-index.json         record index with hashes
   baseline.json               Layer B manifest, machine form
   BASELINE.md                 Layer B manifest, human form
   records/EV-*.json           Layer A records, one file each
