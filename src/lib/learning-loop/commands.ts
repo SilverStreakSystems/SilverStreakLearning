@@ -555,7 +555,7 @@ export function createLearner(
           gradeBand: input.gradeBand,
           state: "active",
           synthetic: true,
-          origin: "synthetic",
+          origin: "founder-operator",
           createdAt: context.now,
           updatedAt: context.now,
         },
