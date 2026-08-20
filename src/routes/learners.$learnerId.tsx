@@ -12,11 +12,7 @@ import {
   TextBlock,
   TextLine,
 } from "@/components/learning-loop/controls";
-import {
-  NextStepCard,
-  StorageNotices,
-  TimelineList,
-} from "@/components/learning-loop/loop-views";
+import { NextStepCard, StorageNotices, TimelineList } from "@/components/learning-loop/loop-views";
 import {
   GOAL_STATUS_LABEL,
   GRADE_BAND_LABEL,
@@ -43,6 +39,7 @@ import {
   setFocusGoal,
   setGoalStatus,
 } from "@/lib/learning-loop/commands";
+import { formatMoment } from "@/lib/learning-loop/format";
 import { useLearningLoop } from "@/lib/learning-loop/use-learning-loop";
 
 export const Route = createFileRoute("/learners/$learnerId")({
