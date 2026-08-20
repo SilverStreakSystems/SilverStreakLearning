@@ -50,9 +50,13 @@ async function openDisclosure(user: ReturnType<typeof userEvent.setup>, name: Re
   return button;
 }
 
+/** Reads the revision through the stored envelope's current document. */
 function storedRevision(): number | null {
   const raw = window.localStorage.getItem(LEARNING_LOOP_STORAGE_KEY);
-  return raw ? (JSON.parse(raw) as { revision: number }).revision : null;
+  if (!raw) return null;
+  const envelope = JSON.parse(raw) as { current?: string };
+  if (typeof envelope.current !== "string") return null;
+  return (JSON.parse(envelope.current) as { revision: number }).revision;
 }
 
 describe("learning loop, in the real routes", () => {
@@ -251,7 +255,12 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
       code: "HUMAN_REVIEW_GOAL_COMPLETION",
     });
     const reviewId = basisIds().find((id) => id.startsWith("REV-"))!;
-    expect(basisIds().sort()).toEqual(["GOL-C1", reviewId, supportActionId].sort());
+    // The basis cites the observation the result was judged from, not only the
+    // result record: the shown reasoning must be traceable to its evidence.
+    const citedObservationId = basisIds().find((id) => id.startsWith("OBS-"))!;
+    expect(basisIds().sort()).toEqual(
+      ["GOL-C1", reviewId, supportActionId, citedObservationId].sort(),
+    );
     expect(
       within(card).getByRole("heading", {
         name: "A person should review whether this goal is finished",
@@ -304,7 +313,7 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     expectNextStep({
       ruleId: "LLR-001-R12",
       code: "HUMAN_REVIEW_GOAL_COMPLETION",
-      basis: ["GOL-C1", supportActionId, reviewId],
+      basis: ["GOL-C1", supportActionId, reviewId, citedObservationId],
     });
     const reloaded = within(
       screen.getByRole("region", { name: "Everything, in order" }),
@@ -313,7 +322,7 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
 
     // --- closing the goal stays a human act ------------------------------
     await user.click(screen.getByRole("button", { name: /I judge this goal met — record it/ }));
-    expect(await screen.findByText("The goal was recorded as met.")).toBeTruthy();
+    expect(await screen.findByText(/^The goal was recorded as met\. Next: /)).toBeTruthy();
     const afterClosure = within(
       screen.getByRole("region", { name: "Everything, in order" }),
     ).getAllByRole("listitem");

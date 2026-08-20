@@ -66,9 +66,7 @@ function NavList({
                 type="button"
                 aria-expanded={isOpen}
                 aria-controls={listId}
-                onClick={() =>
-                  setCollapsed((current) => ({ ...current, [group.id]: isOpen }))
-                }
+                onClick={() => setCollapsed((current) => ({ ...current, [group.id]: isOpen }))}
                 className="flex min-h-11 w-full items-center justify-between gap-2 rounded-sm px-3 text-start text-xs font-bold tracking-wide text-sidebar-foreground/85 uppercase focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 <span>{group.label}</span>

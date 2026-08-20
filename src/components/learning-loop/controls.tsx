@@ -112,13 +112,7 @@ export function ActionButton({
     secondary: "border border-border-strong bg-surface text-foreground hover:bg-muted",
     quiet: "border border-transparent text-foreground underline hover:bg-muted",
   } as const;
-  return (
-    <button
-      type="button"
-      {...props}
-      className={cn(BUTTON_BASE, tones[tone], className)}
-    />
-  );
+  return <button type="button" {...props} className={cn(BUTTON_BASE, tones[tone], className)} />;
 }
 
 /** A non-modal disclosure used for the record forms. Keeps focus order linear. */
@@ -225,18 +219,18 @@ export function ErrorSummary({
             {error.controlId === null ? (
               <span className="font-semibold">{error.message}</span>
             ) : (
-            <a
-              href={`#${error.controlId ?? ""}`}
-              className="inline-flex min-h-11 items-center font-semibold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              onClick={(event) => {
-                event.preventDefault();
-                const target = window.document.getElementById(error.controlId ?? "");
-                target?.focus();
-                target?.scrollIntoView({ block: "center" });
-              }}
-            >
-              {error.message}
-            </a>
+              <a
+                href={`#${error.controlId ?? ""}`}
+                className="inline-flex min-h-11 items-center font-semibold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                onClick={(event) => {
+                  event.preventDefault();
+                  const target = window.document.getElementById(error.controlId ?? "");
+                  target?.focus();
+                  target?.scrollIntoView({ block: "center" });
+                }}
+              >
+                {error.message}
+              </a>
             )}
           </li>
         ))}

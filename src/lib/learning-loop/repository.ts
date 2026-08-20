@@ -68,8 +68,7 @@ export type ReadOutcome =
 
 /** Raw access is an outcome too: a read that threw is never reported as "nothing". */
 export type RawOutcome =
-  | { status: "ok"; raw: string | null }
-  | { status: "unavailable"; message: string };
+  { status: "ok"; raw: string | null } | { status: "unavailable"; message: string };
 
 export type CommitOutcome =
   | { status: "ok"; document: LearningLoopDocument }
@@ -116,7 +115,6 @@ export interface LearningLoopRepository {
   readBackup(): RawOutcome;
 }
 
-
 /** Recognises the envelope format. Anything else is a legacy raw document. */
 export function isEnvelope(value: unknown): value is StorageEnvelope {
   if (!value || typeof value !== "object") return false;
@@ -134,7 +132,6 @@ export function isEnvelope(value: unknown): value is StorageEnvelope {
 function detach(document: LearningLoopDocument): LearningLoopDocument {
   return JSON.parse(JSON.stringify(document)) as LearningLoopDocument;
 }
-
 
 interface Validated {
   ok: boolean;
@@ -233,7 +230,6 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
   }
 }
 
-
 function probeStorage(storage: Storage): boolean {
   const probe = `${LEARNING_LOOP_STORAGE_KEY}.probe`;
   try {
@@ -271,10 +267,13 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
    * build may also have left a separate backup key. Both are read here and
    * folded into the in-memory envelope view. Nothing is deleted: the legacy
    * bytes stay where they are until a successful write migrates them.
+   *
+   * The legacy backup key is folded in only while the primary value is absent,
+   * a legacy bare document, or unreadable. Once the primary parses as an
+   * envelope, that envelope alone says what the backup is.
    */
   private readEnvelope():
-    | { status: "ok"; envelope: StorageEnvelope }
-    | { status: "unavailable"; message: string } {
+    { status: "ok"; envelope: StorageEnvelope } | { status: "unavailable"; message: string } {
     if (!this.storage)
       return { status: "unavailable", message: "This browser is not allowing local storage." };
     let stored: string | null;
@@ -305,12 +304,16 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
       };
     }
     if (isEnvelope(parsed)) {
+      // An envelope is authoritative about its own backup, including when that
+      // backup is null. Falling back to the legacy key here would resurrect a
+      // superseded recovery copy whenever the best-effort removal of that key
+      // failed, presenting stale bytes as the snapshot of the last replace.
       return {
         status: "ok",
         envelope: {
           envelopeVersion: ENVELOPE_VERSION,
           current: parsed.current,
-          backup: parsed.backup ?? legacyBackup,
+          backup: parsed.backup,
         },
       };
     }
@@ -363,8 +366,7 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
 
   read(): ReadOutcome {
     const envelope = this.readEnvelope();
-    if (envelope.status !== "ok")
-      return { status: "unavailable", message: envelope.message };
+    if (envelope.status !== "ok") return { status: "unavailable", message: envelope.message };
     const raw = envelope.envelope.current;
     if (raw === null) return { status: "empty" };
 
@@ -491,7 +493,6 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
     return { status: "ok" };
   }
 }
-
 
 /** Creates a repository already carrying the deterministic synthetic seed. */
 export function seededInMemoryRepository(): InMemoryLearningLoopRepository {

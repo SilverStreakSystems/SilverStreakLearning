@@ -260,7 +260,6 @@ export function readLoopSnapshot(
   };
 }
 
-
 function project(
   code: NextStepCode,
   learnerId: string,
@@ -311,8 +310,7 @@ export function projectNextStep(
     !Number.isNaN(asOfInstant) && asOfInstant >= instant(document.lastUpdatedAt);
   if (integrity.length > 0 || !learner || !evaluationIsUsable) {
     let rationale: string;
-    if (!learner)
-      rationale = "This learner is not in the saved data, so no step can be projected.";
+    if (!learner) rationale = "This learner is not in the saved data, so no step can be projected.";
     else if (integrity.length > 0)
       rationale = `The saved data has ${integrity.length} inconsistency to resolve: ${integrity[0]?.message}`;
     else if (Number.isNaN(asOfInstant))
@@ -376,22 +374,18 @@ export function projectNextStep(
     if (latest === null)
       rationale = "There is an observation on this goal but no support has been planned from it.";
     else if (latest.state === "cancelled")
-      rationale = "The last support on this goal was cancelled, so nothing is currently being tried.";
+      rationale =
+        "The last support on this goal was cancelled, so nothing is currently being tried.";
     else
       rationale =
         "The most recent observation on this goal is not the evidence the current support was planned from, so the next support should be planned from what was last seen.";
-    return project(
-      "PLAN_SUPPORT",
-      learnerId,
+    return project("PLAN_SUPPORT", learnerId, goalId, null, rationale, [
       goalId,
-      null,
-      rationale,
-      [goalId, driving.observationId],
-    );
+      driving.observationId,
+    ]);
   }
 
   const actionable = latest;
-
 
   // R05 — support planned but not yet carried out or cancelled.
   if (actionable.state === "planned")
