@@ -183,9 +183,9 @@ describe("posture that must not have moved", () => {
 
   it("keeps HREQ-025 and TTR-001 unchanged", () => {
     const requirements = JSON.parse(read("data/historical/historical-requirements.json")) as {
-      requirements: { requirement_id: string; disposition: string; conformance_state: string }[];
+      records: { requirement_id: string; disposition: string; conformance_state: string }[];
     };
-    const hreq = requirements.requirements.find((row) => row.requirement_id === "HREQ-025");
+    const hreq = requirements.records.find((row) => row.requirement_id === "HREQ-025");
     expect(hreq?.conformance_state).toBe("NOT-ASSESSED");
     expect(hreq?.disposition).toBe("CANDIDATE-PRE-DISPOSITION");
     expect(read("data/accessibility/touch-target-rule.json")).toMatch(/"NOT-RUN"/);
