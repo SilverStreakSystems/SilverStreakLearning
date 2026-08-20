@@ -181,10 +181,7 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Observation ${observation.observationId} is linked to support outside its learner and goal.`,
         );
       }
-      if (
-        support?.completedAt &&
-        isBefore(observation.observedAt, support.completedAt)
-      )
+      if (support?.completedAt && isBefore(observation.observedAt, support.completedAt))
         push(
           "follow-up-before-support",
           `Observation ${observation.observationId} is dated before the support it follows up.`,
