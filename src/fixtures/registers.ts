@@ -1499,7 +1499,32 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001", "WP-007"],
     synthetic: false,
   },
+  {
+    id: "DEC-021",
+    title: "Record the SSLS touch-target acceptance rule that resolves the FND-023 definition gap",
+    state: "accepted",
+    decidedOn: "2026-08-20",
+    decidedBy: "Founder / Operator",
+    context:
+      "DEC-020 deferred HREQ-025 because the historical wording 'touch targets appropriate to context' names no dimension, no exceptions, and no verification method. FND-023 carried that gap forward as the single open obligation. The owner authorized exactly one bounded WP-007 Cycle 7 to define an internally testable rule, using the W3C WCAG 2.2 specification and the Understanding document for Success Criterion 2.5.8 as inputs only.",
+    decision:
+      "RECORDED BY OWNER. The SSLS touch-target acceptance rule is recorded as TTR-001 v1.0.0 in data/accessibility/touch-target-rule.json. Author-controlled standalone pointer targets SHOULD provide at least 44 by 44 CSS pixels; existing stricter adopted requirements continue to control. Every visible, enabled pointer target MUST provide at least 24 by 24 CSS pixels or satisfy exactly one documented exception of type SPACING, EQUIVALENT-CONTROL, INLINE, USER-AGENT-CONTROL, or ESSENTIAL. A standalone author-controlled target between 24 by 24 and 43 by 43 CSS pixels is a departure from the default, acceptable only with a recorded compact-context rationale, and still bound by the 24 by 24 floor. A target below 24 by 24 CSS pixels cannot pass on a compact-context rationale and passes only through one documented exception. A deterministic verification protocol is defined at 320, 768, and 1366 CSS pixels and is NOT-RUN. This decision defines a rule only. It implements nothing, audits nothing, adopts nothing, closes neither WP-007 nor Gate A, authorizes neither WP-039 nor any Cycle 8, and makes no accessibility, WCAG, ADA, Section 508, legal, district-readiness, or release claim.",
+    consequences: [
+      "FND-023 is discharged; the definition gap it carried is recorded as resolved, evidenced by EV-043. Its prior text is preserved unchanged.",
+      "HREQ-025 is unchanged and remains NEEDS-EVIDENCE / DEFER, NOT-ASSESSED, NOT-PROMOTED, and NOT-IMPLEMENTED; its historical wording is not rewritten and not adopted.",
+      "The verification protocol is defined and NOT-RUN. No interface target has been measured or classified, so the interface is unmeasured rather than passing; that unrun state is carried as FND-024.",
+      "EV-003 remains NOT-RUN, HS-023 remains NOT-PROMOTED, and PKG-001 remains PARTIAL.",
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039 remains NOT AUTHORIZED; no successor cycle is authorized.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "WP-007", "TTR-001"],
+    synthetic: false,
+  },
 ];
+
 
 export const CLAIMS: ClaimRecord[] = [
   {
