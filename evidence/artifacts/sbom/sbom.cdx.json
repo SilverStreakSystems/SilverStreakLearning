@@ -3,7 +3,7 @@
   "specVersion": "1.5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-20T10:37:05.046Z",
+    "timestamp": "2026-08-20T10:55:29.696Z",
     "tools": [
       {
         "vendor": "SSLS",
@@ -19,11 +19,11 @@
     "properties": [
       {
         "name": "ssls:commit",
-        "value": "2309bfdb4a8e27b5818adfb8a0580e367487c8d6"
+        "value": "3694a2df999f1598afe86662f584280cf657b2bc"
       },
       {
         "name": "ssls:manifest-hash",
-        "value": "2a545765bdd0389ff2f8593b2295d97f6562d360048f0bbee409d8eb472a4758"
+        "value": "02d1ca10f7eeec754734cd9e950676bd567b70476a0c0e42623481b3392b29a7"
       },
       {
         "name": "ssls:lockfile:bun.lock",

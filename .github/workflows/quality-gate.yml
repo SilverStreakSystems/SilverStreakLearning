@@ -1,0 +1,74 @@
+name: Quality Gate
+
+# The complete engineering quality gate: lint, typecheck, full tests,
+# production build, current-state projection check, deterministic
+# generated-artefact check, committed-evidence verification, and an ephemeral
+# evidence generation + verification + output-safety pass.
+#
+# Presence of this workflow is not merge enforcement. Branch protection is
+# configured outside the repository and is recorded as FND-012. A green run
+# proves these checks passed at this commit; it proves nothing about whether
+# merging is blocked when they fail.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gate:
+    name: Full quality gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the commit under review
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up the pinned Bun toolchain
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+
+      - name: Install dependencies from the frozen lockfile
+        run: bun install --frozen-lockfile
+
+      - name: Lint with zero warnings
+        run: bun run lint
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Full test suite
+        run: bun run test
+
+      - name: Production build
+        run: bun run build
+
+      - name: Current-state projection check
+        run: bun run check:current-state
+
+      - name: Deterministic generated-artefact check
+        run: bun run check:generated
+
+      - name: Committed evidence applicability verification
+        run: bun run evidence:verify
+        env:
+          SSLS_EVIDENCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Ephemeral evidence generation, verification and output-safety guard
+        run: bun run evidence:ephemeral
+        env:
+          SSLS_EVIDENCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Confirm the tree is clean after the gate
+        run: git status --porcelain --exit-code

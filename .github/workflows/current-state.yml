@@ -3,7 +3,8 @@ name: Current-State Projection
 # Verifies that the canonical current-state document is the deterministic
 # projection of its declared controlling inputs, that every declared input
 # resolves, and that no superseded document presents itself as current.
-# Freshness only: this workflow confers no authority, approval, or validation.
+# Freshness only: this workflow confers no authority, approval, or validation,
+# and its presence does not prove branch-protection enforcement (FND-012).
 
 on:
   pull_request:
@@ -15,23 +16,28 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: current-state-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   current-state:
     name: Current-state projection is generated and current
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out the commit under review
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
-      - name: Set up Bun
+      - name: Set up the pinned Bun toolchain
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.3.3
 
-      - name: Install dependencies
+      - name: Install dependencies from the frozen lockfile
         run: bun install --frozen-lockfile
 
       - name: Verify the current-state projection
-        run: bun scripts/gen-current-state.ts --check
+        run: bun run check:current-state

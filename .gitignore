@@ -38,3 +38,6 @@ dist-ssr
 
 # Evidence pipeline artifacts are governed records and are committed.
 !evidence/artifacts/**/*.log
+
+# Local guard reports (derived, not governed records)
+reports/

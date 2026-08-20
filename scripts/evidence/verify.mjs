@@ -21,7 +21,7 @@ import { computeInputSets } from "./inputs.mjs";
 import { validateEvidenceRecord } from "./schema.mjs";
 import { resolveCommit, stableHash, trackedFiles } from "./util.mjs";
 
-const OUTPUT_DIR = "evidence";
+const OUTPUT_DIR = process.env.SSLS_EVIDENCE_DIR || "evidence";
 const RECORDS_DIR = join(OUTPUT_DIR, "records");
 
 const REQUIRED_TYPES = [

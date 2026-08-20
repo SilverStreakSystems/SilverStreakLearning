@@ -2,13 +2,13 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "b5a69479a7e425334c8acc743c0a0b28dccad07e",
+  "tree_hash": "7dd7a78588a785fab1a1585dc0c7daf437ba117b",
   "expected_result": "Every configuration input identified and hashed.",
   "artifact_path": "artifacts/provenance/configuration.json",
-  "artifact_hash": "d3421ffc0f7699ee4ae4dbdc49daed580c5884df9acc40d358a09d26acb9215f",
+  "artifact_hash": "e9b24f9b224f3288e472cb757fadae08e981e1497ffc83d51c082eb69ab7fffd",
   "input_set": {
-    "config": "70d47c4cac666a853521a893281034585ed2d4f2213e17d0a713a4f054da756a",
-    "workflows": "ffd3931572207a8d66e6483a20356933c55e7beb34a87332a9f41fcff08ed4e1"
+    "config": "8c4c650b1152bcc22a02fbd334ed9e317f01e5b8110cd7a8c1155f870b21dfb8",
+    "workflows": "08a77788f8a10a69090779c3e57836354f871830ff7afa344a7e1b39f7c427a8"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -27,15 +27,15 @@
   "method": "automated",
   "evidence_id": "EV-CONFIG",
   "evidence_type": "CONFIGURATION",
-  "commit_sha": "2309bfdb4a8e27b5818adfb8a0580e367487c8d6",
+  "commit_sha": "3694a2df999f1598afe86662f584280cf657b2bc",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T10:37:04.968Z",
+  "timestamp": "2026-08-20T10:55:29.624Z",
   "producer": "SSLS evidence pipeline",
   "title": "Build, test, lint, and CI workflow configuration inventory",
   "description": "Configuration files and workflow definitions present in the tracked tree, with content hashes.",
   "tool": "scripts/evidence/collect.mjs",
   "command": "bun run evidence:run",
-  "actual_result": "2 CI workflow files; build, test, and lint configuration present.",
+  "actual_result": "3 CI workflow files; build, test, and lint configuration present.",
   "status": "pass",
   "supports": [
     "Which configuration and workflow files exist in the tracked tree, and their hashes."

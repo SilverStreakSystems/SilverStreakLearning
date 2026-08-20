@@ -1,9 +1,11 @@
 name: SSLS Evidence Pipeline
 
-# Collects execution evidence and verifies that the committed evidence set is
-# applicable to the current input sets. Presence of this workflow is not merge
-# enforcement: branch protection is configured outside the repository and is
-# recorded as FND-012.
+# Generates a current-run evidence set into an ephemeral path, verifies it,
+# runs the post-generation output-safety guard, and uploads the generated set
+# as a build artefact. The committed evidence tree is never written by CI.
+#
+# Presence of this workflow is not merge enforcement: branch protection is
+# configured outside the repository and is recorded as FND-012.
 
 on:
   push:
@@ -20,43 +22,38 @@ concurrency:
 
 jobs:
   evidence:
-    name: Collect and verify evidence
+    name: Generate, verify and publish evidence
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
+    env:
+      SSLS_EVIDENCE_DIR: ${{ github.workspace }}/.ci-evidence
+      SSLS_EPHEMERAL_EVIDENCE_DIR: ${{ github.workspace }}/.ci-evidence
+      SSLS_EVIDENCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - name: Check out the full history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Bun
+      - name: Set up the pinned Bun toolchain
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.3.3
 
-      - name: Install dependencies from the lockfile
+      - name: Install dependencies from the frozen lockfile
         run: bun install --frozen-lockfile
 
-      - name: Collect evidence
-        id: collect
-        run: bun run evidence:run
-        env:
-          SSLS_EVIDENCE_COMMIT: ${{ github.sha }}
+      - name: Verify the committed evidence set
+        run: SSLS_EVIDENCE_DIR=evidence bun run evidence:verify
 
-      - name: Verify evidence applicability
-        run: bun run evidence:verify
-        env:
-          SSLS_EVIDENCE_COMMIT: ${{ github.sha }}
+      - name: Generate and verify current-run evidence ephemerally
+        run: bun run evidence:ephemeral --keep
 
-      - name: Predecessor declared-binding guard (compatibility)
-        continue-on-error: true
-        run: bun run check:ssot-binding
-
-      - name: Publish evidence artifacts
+      - name: Publish the generated evidence set
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ssls-evidence-${{ github.sha }}
-          path: evidence/
+          path: ${{ github.workspace }}/.ci-evidence
           retention-days: 90
           if-no-files-found: error
