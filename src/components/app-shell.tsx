@@ -2,8 +2,25 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { SSLSMonogram } from "@/components/brand";
 
+import { PROGRAM_STATE } from "@/fixtures/program";
 import { NAV_GROUPS, ROUTE_REGISTRY } from "@/lib/route-registry";
 import { cn } from "@/lib/utils";
+
+/**
+ * Footer posture is derived from the program state, never restated as a second
+ * copy of the boundary. The marker is the leading publication sentences of the
+ * canonical publication boundary; the scope sentence is the recorded
+ * Product Alpha 001 refusal statement.
+ */
+const PUBLICATION_MARKER = PROGRAM_STATE.publicationBoundary
+  .split(". ")
+  .slice(0, 3)
+  .join(". ")
+  .concat(".");
+
+const PRODUCT_ALPHA_SCOPE =
+  PROGRAM_STATE.unauthorizedStages.find((stage) => stage.stageId === "PRODUCT-ALPHA-001-SCOPE")
+    ?.statement ?? "";
 
 /**
  * Application shell.
