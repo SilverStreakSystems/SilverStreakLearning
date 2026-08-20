@@ -100,7 +100,9 @@ describe("LLR-001 R01 — integrity before advice", () => {
       learnerId: "LRN-ZZZ",
       goalId: null,
       supportActionId: null,
-      basis: ["LRN-ZZZ"],
+      // Nothing resolves, so the basis cites nothing: a fabricated identifier
+      // would look like a record that exists.
+      basis: [],
       rationale: /not in the saved data/i,
     });
   });
@@ -265,13 +267,16 @@ describe("LLR-001 R06 — a completed support with nothing observed since", () =
     });
   });
 
-  it("does not count an observation that is not linked to the completed support", () => {
+  it("treats a newer unlinked observation as a reason to plan again, not as a follow-up", () => {
     const document = seed();
     document.goalReviews = [];
     const followUp = document.observations.find((row) => row.observationId === "OBS-B2")!;
     followUp.supportActionId = null;
     valid(document);
-    expect(projectNextStep(document, "LRN-B", LATE).ruleId).toBe("LLR-001-R06");
+    // The completed support is no longer the newest thing that happened, and
+    // the new observation was not judged against it, so the loop restarts at
+    // planning rather than asking for evidence that already exists.
+    expect(projectNextStep(document, "LRN-B", LATE).ruleId).toBe("LLR-001-R04");
   });
 });
 
@@ -373,7 +378,8 @@ describe("LLR-001 R08..R12 — one clause per recorded result", () => {
         learnerId: "LRN-B",
         goalId: "GOL-B1",
         supportActionId: "SUP-B1",
-        basis: ["GOL-B1", "SUP-B1", "REV-B1"],
+        // The result's own cited evidence is part of what the advice rests on.
+        basis: ["GOL-B1", "SUP-B1", "REV-B1", "OBS-B2"],
         rationale: expectation.rationale,
       });
       expect(projection.ruleId).toBe(expectation.ruleId);
@@ -403,7 +409,7 @@ describe("LLR-001 R08..R12 — one clause per recorded result", () => {
     valid(document);
     const projection = projectNextStep(document, "LRN-B", LATE);
     expect(projection.ruleId).toBe("LLR-001-R12");
-    expect(projection.basedOnRecordIds).toEqual(["GOL-B1", "REV-B2", "SUP-B1"]);
+    expect(projection.basedOnRecordIds).toEqual(["GOL-B1", "OBS-B2", "REV-B2", "SUP-B1"]);
   });
 });
 
