@@ -258,7 +258,6 @@ function LearnerDetail() {
     return store.run(command);
   }
 
-
   /**
    * One place where a successful write ends.
    *

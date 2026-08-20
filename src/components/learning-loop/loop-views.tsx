@@ -118,7 +118,6 @@ export type DestructiveState =
       expected: RecoveryExpectation;
     };
 
-
 export function DataControls({ store }: { store: LearningLoopStore }) {
   const fileRef = useRef<HTMLInputElement>(null);
   const restoreTriggerRef = useRef<HTMLButtonElement>(null);
@@ -159,7 +158,6 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
     setNotice(null);
     store.dismissProblem();
   }
-
 
   function download(text: string, name: string): string | null {
     let url: string | null = null;
@@ -286,7 +284,6 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
     });
   }
 
-
   const hasRecords = store.document !== null;
   const unreadable = store.status === "corrupt" || store.status === "unsupported-version";
   const backup = store.backupText();
@@ -323,7 +320,6 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             }
             setNotice("The sample records are loaded.");
           }}
-
         >
           {hasRecords || unreadable ? "Restore the sample records" : "Load the sample records"}
         </ActionButton>

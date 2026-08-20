@@ -521,7 +521,6 @@ export function recordGoalReview(
       return fail("invalid-input", "That result has already been corrected once.");
   }
 
-
   const goalReviewId = context.newId(ID_PREFIX.goalReview);
   return {
     ok: true,

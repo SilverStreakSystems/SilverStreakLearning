@@ -105,7 +105,6 @@ export interface LearningLoopStore {
   dismissProblem: () => void;
 }
 
-
 function describeProblems(schema: SchemaProblem[], invariants: InvariantProblem[]): string[] {
   return [
     ...schema.map((row) => `${row.path}: ${row.message}`),
@@ -295,7 +294,6 @@ export function useLearningLoop(
     (): ExpectationOutcome => repository.expectation(),
     [repository],
   );
-
 
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);
