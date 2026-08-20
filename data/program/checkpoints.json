@@ -1,0 +1,100 @@
+{
+  "register_id": "PROGRAM-CHECKPOINTS",
+  "register_version": "1.0.0",
+  "authority_note": "Controlling structured register of executed checkpoints and of execution attempts that produced no evidence. Every row points at the checkpoint document that records it. A row in this register closes nothing and authorizes nothing.",
+  "checkpoints": [
+    {
+      "checkpoint_id": "CHECKPOINT-001",
+      "title": "WP-007 Cycle 1 — historical source register",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-001.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-002",
+      "title": "WP-007 Cycle 2 — historical requirement schema and HS-011 extraction",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-002.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-003",
+      "title": "WP-007 Cycle 3 — v0.3.0 governed package integration and synchronization",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-003.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-004",
+      "title": "WP-007 Cycle 4 entry, owner disposition record, and BLOCKED execution",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-004.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-005",
+      "title": "Third v0.3.0 supply — forensic document review and bounded integration",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-005.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-006",
+      "title": "WP-007 Cycle 4 execution — bounded extraction and restatement index",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-006.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-007",
+      "title": "WP-007 Cycle 5 execution — FND-022 owner review packet",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-007.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": []
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-008",
+      "title": "WP-007 Cycle 6 — FND-022 owner dispositions recorded",
+      "completed_on": "2026-08-19",
+      "doc_path": "docs/wp-007/CHECKPOINT-008.md",
+      "outcome": null,
+      "closed_nothing": null,
+      "evidence_ids": ["EV-042"]
+    },
+    {
+      "checkpoint_id": "CHECKPOINT-009",
+      "title": "WP-007 Cycle 7 — FND-023 touch-target rule formalized as TTR-001 v1.0.0",
+      "completed_on": "2026-08-20",
+      "doc_path": "docs/wp-007/CHECKPOINT-009.md",
+      "outcome": "Cycle 7 execution is complete: the owner-authorized touch-target acceptance rule is recorded as one canonical structured record, TTR-001 v1.0.0, carrying a 44 by 44 CSS pixel SHOULD default, a distinct 24 by 24 CSS pixel MUST floor, five documented exceptions, a compact-target departure band of 24 to 43 CSS pixels that cannot reach below the floor, and a deterministic verification protocol at 320, 768, and 1366 CSS pixels whose execution state is NOT-RUN.",
+      "closed_nothing": "Cycle 7 closed nothing beyond the FND-023 definition gap. It ran no interface audit, measured and classified no target, changed no interface, adopted, assessed, or implemented no candidate, left HREQ-025 unchanged at NEEDS-EVIDENCE / DEFER, left EV-003 NOT-RUN, closed neither WP-007 nor Gate A, and authorized no successor cycle.",
+      "evidence_ids": ["EV-043"]
+    }
+  ],
+  "attempts": [
+    {
+      "attempt_id": "ATTEMPT-001",
+      "title": "WP-007 Cycle 8 — TTR-001 touch-target audit execution attempt",
+      "attempted_on": "2026-08-20",
+      "state": "ABORTED-DEFERRED",
+      "doc_path": "docs/wp-007/ATTEMPT-001-CYCLE-8.md",
+      "statement": "An attempt to execute the TTR-001 verification protocol added audit-only tooling under scripts/accessibility/ and a playwright-core development dependency. The browser run exceeded the execution ceiling before any page was measured and was stopped. Further execution is deferred by DEC-022.",
+      "produced_no_evidence": "No audit artifact exists. No route, component, or control was measured or classified. There is no data/accessibility/touch-target-audit.json, no TTA-001, no EV-044 audit result, and no CHECKPOINT-010. This attempt is dormant development tooling, not an executed audit, a validation, an evidence record, an accessibility result, or a conformance basis.",
+      "controlling_decision": "DEC-022"
+    }
+  ]
+}

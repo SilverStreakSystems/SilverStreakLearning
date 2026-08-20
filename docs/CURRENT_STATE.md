@@ -1,197 +1,85 @@
-# Current state of the SSLS foundation shell
+# Canonical current state
 
-> **Superseded as the canonical current-state record.** WP-006 produced
-> `docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md`, which is bound to a specific
-> commit and is now the single source of truth for current state. This file is preserved for
-> continuity and describes the shell in narrative form only. Recorded as STL-005.
+> GENERATED from the controlling registers by `scripts/gen-current-state.ts`.
+> Do not edit by hand. This document declares no commit hash: its freshness is
+> established by regenerating it from the declared inputs and comparing the
+> input fingerprint below.
 
-Authority class: current-state record. Machine-verified only. No human,
-independent, legal, security, accessibility, or district review has occurred.
+Controlling decision: DEC-022. State date: 2026-08-20.
+Declared input manifest: `data/current-state/current-state-inputs.json`.
+Input fingerprint: `354389b3bb782b6ac6e3f65febc571871f7478719846d4d17b82094f7fb095b7`.
 
+Authority class: current summary, executor-run, not independent. This document
+records state. It approves nothing, closes nothing, and authorizes nothing.
 
-## Boundary now in force
+## Program state
 
-Founder and developer operator only. No personal data. All records are
-synthetic. No product-facing AI. Future architecture is modelled and gated, and
-carries no implementation authority.
+| Field | Value | Source |
+|---|---|---|
+| Gate | Gate A — OPEN | DEC-018 |
+| Active work package | WP-007 — ACTIVE | WP-007 |
+| Latest checkpoint | CHECKPOINT-009 (2026-08-20) | docs/wp-007/CHECKPOINT-009.md |
+| Latest attempt | ATTEMPT-001 — ABORTED-DEFERRED | docs/wp-007/ATTEMPT-001-CYCLE-8.md |
+| Owner disposition | ACCEPTED | DEC-022 |
+| TTR-001 execution | NOT-RUN | FND-024 |
 
-## What is implemented
+Cycle 7 closed nothing beyond the FND-023 definition gap. It ran no interface audit, measured and classified no target, changed no interface, adopted, assessed, or implemented no candidate, left HREQ-025 unchanged at NEEDS-EVIDENCE / DEFER, left EV-003 NOT-RUN, closed neither WP-007 nor Gate A, and authorized no successor cycle.
 
-- Prompt 001 — Foundation and authority shell: authority classes declared
-  independently of implementation status, seven foundation layers, governance
-  spine, and the operator shell.
-- Prompt 002 — Enterprise capability architecture v0.1: 12-domain taxonomy,
-  129 candidate capabilities, maturity stages S0 to S5, trigger gates, and
-  builder/validator independence rules.
-- Prompt 003 — Shared enterprise objects, context, work and evidence v0.1:
-  32 object types across 7 families, eight independent state axes, version-bound
-  evidence, and the purpose-bound context assembly contract.
-- Prompt 004 — Value streams and operating workflow v0.1: 18 priority value
-  streams, stages, handoffs, gates, refusal records, and prohibited metrics.
-- Prompt 005 — Command centers and workspace experience v0.1: nine workspace
-  definitions, six global utilities, and the nine-step projection engine.
-- Brand visual system and experience template architecture v0.1.
+### ATTEMPT-001 — ABORTED-DEFERRED
 
-## Single source of truth
+An attempt to execute the TTR-001 verification protocol added audit-only tooling under scripts/accessibility/ and a playwright-core development dependency. The browser run exceeded the execution ceiling before any page was measured and was stopped. Further execution is deferred by DEC-022.
 
-Workspaces are defined once, in the canonical workspace register. The future
-architecture page derives its gated view from that register and holds no records
-of its own.
+No audit artifact exists. No route, component, or control was measured or classified. There is no data/accessibility/touch-target-audit.json, no TTA-001, no EV-044 audit result, and no CHECKPOINT-010. This attempt is dormant development tooling, not an executed audit, a validation, an evidence record, an accessibility result, or a conformance basis.
 
-## Program status
+## Registers
 
-- Governing program: **SSLS-BPP-001 v2.0**, ratified by DEC-007.
-- **WP-000 — Exposure Containment and Credential Remediation: executed and OWNER CLOSED**
-  by DEC-008 (2026-08-17). Owner closure on the executor evidence package, not a technical,
-  security, privacy, legal, or compliance certification.
-- Residual external-copy uncertainty is **accepted** by DEC-009 for the current private,
-  founder-only, zero-real-PII phase. It is bounded, not resolved.
-- **WP-006 — Current-State SSOT and Repository Provenance: executed and CLOSED BY OWNER**
-  by DEC-014 (2026-08-19), following DEC-010, which adopts the current Lovable-managed
-  repository as the go-forward software source of truth. Historical repository and bootstrap
-  artifacts remain historical governance and evidence lineage.
-- **WP-037 — Evidence and Verification Pipeline: EXECUTED AND REMEDIATED — OWNER CLOSURE DECISION REQUIRED.**
-  The pipeline is implemented and reproduced (`bun run evidence:run`: 15 records, fail=0,
-  review-required=2, not-completed=1, baseline CURRENT).
-  **DEC-015 is preserved as the accepted HOLD disposition.** **DEC-016 (accepted 2026-08-19)**
-  authorized triage and bounded remediation only, and supersedes DEC-015 solely as current
-  remediation authority. Under it the five high-severity advisories reported by EV-021
-  (brace-expansion 1.1.16 and 5.0.8, js-yaml 4.3.0, nanoid 3.3.16) were triaged (EV-022) and
-  remediated by minimum-necessary pinning to brace-expansion 5.0.9, js-yaml 4.3.1, and nanoid 3.3.18
-  (EV-023). The post-remediation rescan completed with HTTP 200 over 560 resolved versions across
-  526 packages and **0 matched advisories** (EV-024); regression verification recorded typecheck
-  clean, 254/254 tests, a successful build, and lint debt reduced from 683 to 677 problems (EV-025).
-  `EV-VULN` is preserved verbatim as a failed attempt (`bun audit`, HTTP 404) and is not a clean
-  result. The vulnerability exit criterion now reconciles to **PASS on completed evidence**;
-  FND-015 is **REMEDIATED**.
-- **WP-037 is CLOSED BY OWNER** under **DEC-017 (accepted 2026-08-19)**. The closure carries forward
-  unchanged limitations: FND-012 OPEN / NOT VERIFIED, FND-014 OPEN / ADVISORY, `bun audit` still
-  unable to complete in this environment, and vulnerability evidence that is automated,
-  point-in-time, and not independent security validation. **WP-038 — Regulatory, Standards &
-  Obligation Baseline is NEXT ELIGIBLE** and authorized for generation and execution only.
-  DEC-017 does not close Gate A, does not authorize later work packages, and creates no security,
-  privacy, accessibility, compliance, certification, district-readiness, or independent-validation
-  claim. The published surface remains **PUBLIC PROTOTYPE**.
-- DEC-011 (program register text) and DEC-013 (gate lineage) remain **open**, both routed to WP-008.
-  Neither is resolved by WP-006 closure. DEC-012 is now **accepted** (see the WP-038 entry below);
-  it names an internal accessibility target and does not declare which ULW-AS-001 revision is
-  effective, so FND-010 stays open.
+| Register | Rows |
+|---|---|
+| Decisions | 22 |
+| Findings | 24 (15 not confirmed resolved) |
+| Evidence | 44 |
+| Claims | 13 (10 refused) |
 
-- Finding dispositions after WP-037: **FND-011 resolved** for pipeline-produced evidence (legacy
-  hand-bound documents still drift); **FND-013 resolved for machine-derived baseline facts**, with
-  narrative semantic accuracy still human-governed; **FND-012 remains open and NOT VERIFIED** —
-  a CI workflow existing in the repository is not branch-protection enforcement; **FND-014 remains
-  open and advisory** — repository-wide lint does not pass (677 problems, no new debt from this work),
-  while WP-037 files report zero problems; **FND-015 REMEDIATED** — the five dependency advisories
-  are absent from the post-remediation rescan.
-- **WP-038 — Regulatory, Standards and Obligation Baseline: CLOSED BY OWNER** under **DEC-018
-  (accepted 2026-08-19)**. The canonical registers under `data/governance/` hold 43 primary-source
-  external authorities, 34 interpreted obligations, 6 conflicts, 5 stale references, 6 data-trigger
-  classes, and 16 gaps, projected into `docs/wp-038/` and covered by executing register-integrity
-  tests. Registered as EV-026 (authority register), EV-027 (register integrity tests), and EV-028
-  (data-collection inspection: no personal-data collection path, one first-party sidebar cookie).
-  Closure creates no compliance, legal, certification, procurement, district-approval, or
-  independent-review claim; obligation interpretation is AI-assisted and executor-recorded.
-  **DEC-012 is ACCEPTED (2026-08-19)**: WCAG 2.2 Level AA is the current internal SSLS accessibility
-  design and validation target for new and actively governed implementation, superseding older
-  internal references to WCAG 2.1 Level AA. It establishes no WCAG 2.2 conformance, ADA, Section 504
-  or 508 compliance, ACR/VPAT result, procurement acceptance, district approval, or certification,
-  and independent accessibility validation remains required at the applicable later gate. Where a
-  verified external obligation requires a different or more specific standard, that obligation
-  controls. **FND-016 is PARTIALLY RESOLVED** — the absence of a named target is closed by DEC-012,
-  while ULW-AS-001 v1.3's own unbound text, criterion-level mapping to WCAG 2.2, coverage against
-  ADA Title II's WCAG 2.1 AA reference, and independent validation remain unresolved. **FND-017**
-  (BEFORE LIVE PII gate may fire after the first binding Massachusetts obligation) and **FND-018**
-  (CycloneDX named without a specification version) remain **open**. **FND-010** remains open and
-  conflicted: DEC-012 does not declare which ULW-AS-001 revision is effective.
-  **WP-007 — Historical Requirement Conformance Recovery is NEXT ELIGIBLE**, subject to verification
-  that no later accepted decision supersedes the Build Program sequence. WP-039 is not authorized by
-  numerical order. Gate A remains open.
+## Bound verifications
 
-- **FND-019 (REPAIRED, this cycle):** the WP-037 minimum-necessary pin (EV-023) forced
-  brace-expansion 5.0.9 on all consumers and broke ESLint through minimatch 3.1.5
-  (`TypeError: expand is not a function`), so the lint check could not execute. The flat override
-  was removed; semver now resolves 1.1.18 and 5.0.9 side by side, both advisory-free, and lint
-  executes again at **686 problems (672 errors, 14 warnings)** — FND-014 remains open and advisory.
-  Recorded as EV-029.
-- **WP-007 — Historical Requirement Conformance Recovery: IN PROGRESS, cycles 1 and 2 targets MET.**
-  Entered under DEC-018 with Gate A open. Two entry defects were repaired first: the stale
-  `docs/wp-038/HANDOFF_TO_WP-039.md` locator was renamed to `docs/wp-038/HANDOFF_TO_WP-007.md`
-  with active references updated (EV-030, documentation lineage STL-006), and FND-016's structured
-  resolution state was corrected to `partial` to match the owner disposition already recorded in
-  its text. Cycle 1 established a canonical historical-source universe: schema
-  `data/historical/HISTORICAL_SOURCE_SCHEMA.json` v1.0.0, register
-  `data/historical/historical-sources.json` with 22 classified sources, invariant tests in
-  `src/test/historical-sources.test.ts`, and a projection under `docs/wp-007/` (EV-031). Three
-  sources are `NOT-ACCESSIBLE-TO-EXECUTOR` — the WP-006-named prior repository and bootstrap
-  artifacts, the owner-supplied Drive folder, and legacy application code — and carry no version,
-  no content claim, and `UNKNOWN` recovery relevance. No historical source is promoted, no
-  gate or work package is closed, and WP-039 is neither created nor implied. Cycle 2 added the
-  canonical historical-requirement schema `data/historical/HISTORICAL_REQUIREMENT_SCHEMA.json`
-  v1.0.0 and register `data/historical/historical-requirements.json`: 14 candidate requirements,
-  HREQ-001..HREQ-014, extracted from exactly one named HIGH-relevance reachable source, HS-011
-  (`docs/ACCESSIBILITY_ACCEPTANCE.md`), each with an exact line locator, verbatim original wording
-  held separate from a normalized summary, `HISTORICAL-EVIDENCE` authority inherited without
-  promotion, a requirement family, the modality as worded, extraction confidence and ambiguity.
-  The owner-preferred August 5, 2026 clean-room v0.2 source is not reachable through any governed
-  repository mechanism, so it was not opened, inferred, or simulated; the rationale is recorded in
-  `docs/wp-007/CYCLE2_SOURCE_SELECTION.md`. Every candidate remains
-  `CANDIDATE-PRE-DISPOSITION` and `NOT-ASSESSED`; no owner disposition and no conformance state is
-  assigned (EV-032). See `docs/wp-007/ENTRY_SPECIFICATION.md`, `docs/wp-007/CHECKPOINT-001.md` and
-  `docs/wp-007/CHECKPOINT-002.md`.
-- **WP-007 cycle 3 — v0.3.0 governed package integration and synchronization.** The
-  owner-supplied SSLS 2.0 v0.3.0 reference package is registered as **PKG-002** in the canonical
-  register `data/packages/governed-packages.json` under schema `GOVERNED_PACKAGE_SCHEMA.json`
-  v1.0.0, classified **SYNCHRONIZED-REFERENCE / NONCANONICAL**. Both digests declared in
-  `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` were recomputed and matched exactly; the manifest
-  declares no digest for itself. The package contains exactly three files; the DOCX and ZIP named
-  by the earlier, historical v0.2.0 manifest were not supplied and are registered as NOT-SUPPLIED
-  under predecessor package PKG-001 with no size, no digest and no repository locator. No binary
-  is retained in the repository, so each artifact carries a governed external locator only.
-  Reconciliation against the canonical registers is recorded in `docs/packages/DRIFT_REGISTER.md`;
-  no repository value was adopted from the package summary. Registered as EV-033 (integrity and
-  provenance) and EV-034 (reconciliation). Registration promotes nothing, closes no finding and no
-  work package, and WP-039 is not authorized.
-- Public deployment classification: **PUBLIC PROTOTYPE** (EV-020). Publication is not release
-  authority.
-- Gate A is not closed. No database enabled. No release authority. No independent validation.
-  No production, district, or compliance claims.
+- **EV-043**, bound to CHECKPOINT-009, 2026-08-20. Supports: That the touch-target acceptance rule TTR-001 v1.0.0 exists as one canonical structured record carrying a 44 by 44 CSS pixel SHOULD default, a distinct 24 by 24 CSS pixel MUST floor, exactly five documented exceptions of the types SPACING, EQUIVALENT-CONTROL, INLINE, USER-AGENT-CONTROL and ESSENTIAL each enumerated once, a compact-target departure band of 24 to 43 CSS pixels that cannot authorize a below-floor target, a below-floor route through a documented exception only, a deterministic verification protocol at 320, 768 and 1366 CSS pixels with five classifications and nine record fields, a mechanical 24 CSS pixel circle spacing check, the two cited W3C sources marked input-only, explicit non-claims, and change history bound to DEC-021; that the record validates against its schema and against the domain invariants; and that the generated Markdown projection reproduces byte-identically from the JSON.
+  - Does not support: That any interface target-size audit ran; that any route, component, or control was measured, classified, or recorded as passing or failing; that HREQ-025 was adopted, assessed, implemented, or promoted, it remains NEEDS-EVIDENCE / DEFER; that EV-003 ran, it remains NOT-RUN; that WP-007 or Gate A changed state; that WP-039, Cycle 8, release, or deployment is authorized; or that any WCAG, ADA Title II, Section 508, legal, or independent accessibility conformance claim is made. Executor-run, method schema-bound authoring plus automated cross-register reconciliation, independent = false. Checks actually executed on 2026-08-20: full suite 405 of 405 tests across 19 files; focused touch-target suite 24 of 24; Draft 2020-12 schema validation of the new structured artifact; tsgo --noEmit clean; production build succeeded; eslint zero errors on every file touched by this cycle; repository-wide lint still reports 699 problems, the known FND-014 debt, unchanged from entry; and the documentation generator rerun with no diff.
 
+## Deferred debt
 
-## Verification recorded
+- **FND-024** — The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface. The obligation is deferred, not discharged.
+- **EV-003** — EV-003 remains NOT-RUN.
+- **FND-014** — Repository-wide lint debt remains recorded and unresolved.
 
-- Vitest: 324 tests passing across 14 files, covering registered routes, detail
-  routes, unrecorded identifiers, authority discipline, gate discipline,
-  prohibited metrics, search authorization order, declared-binding freshness,
-  evidence schema, applicability, expiry, reuse, the verification gate, and governed-package
-  integrity, provenance, and non-promotion.
-  Production build succeeds.
-- Accessibility: see `docs/ACCESSIBILITY_EVIDENCE.md`. Automated only.
+## Not authorized
 
+- **WP-039** — WP-039 is not authorized. No record in this repository authorizes it.
+- **CYCLE-8** — Execution of the TTR-001 verification protocol is deferred by DEC-022 and is not authorized now. The partial runner under scripts/accessibility/ is dormant development tooling; it measured nothing and produced no audit evidence. No Cycle 9 is authorized either.
+- **TOUCH-TARGET-AUDIT** — No route, component, or control has been measured or classified against TTR-001, so the interface is unmeasured rather than passing. FND-024 stays open as deferred debt.
+- **HREQ-IMPLEMENTATION** — Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, HREQ-025 remains NEEDS-EVIDENCE / DEFER and is not rewritten, and no accessibility conformance is claimed for any of them.
+- **RUNTIME-TRUST-SPINE** — The runtime trust spine remains plan-only. No backend, authentication, database, AI, or real personal data is authorized, and no product implementation has started.
+- **PKG-002-PROMOTION** — Promotion of PKG-002 to canonical is not authorized. It remains a synchronized reference.
+- **DRIFT-RESOLUTION** — Resolution of the recorded package drift rows is not authorized. Each remains unresolved.
 
+## Publication boundary
 
-## Not established
+PUBLIC SYNTHETIC PROTOTYPE. NO REAL PERSONAL DATA. NOT RELEASED. The published application URL is reachable by anyone who has the link; the interface is not access-controlled, and the private setting of the Lovable project does not restrict the published surface. The robots file asks search engines not to index it, which is a crawler request and not access control. Hosting this application does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made. Making the deployment private or unpublishing it is a manual owner action recorded in docs/PUBLICATION_ACCESS.md.
 
-Release, public claim, human validation, and any blended readiness figure. None
-of these exist and none may be inferred from the tests passing.
+## Next defensible owner action
 
-## Command Center and Action Center synchronization (2026-08-19)
+Recover the engineering baseline, then authorize one synthetic product vertical slice.
 
-The Command Center (`/`) and the Action Center (`/actions`) project the post–WP-007
-Cycle 3 state from canonical structured registers only:
+DEC-022 defers the TTR-001 audit until a stable user-facing product workflow exists, so the audit is not the only permissible work and is no longer the leading action. The separately authorized next phase is engineering-baseline recovery — a clean tree, a green suite, a reproducible build, and the derived current-state projection verified in CI — followed by a bounded synthetic product vertical slice. FND-024 stays open as deferred debt and must remain visible until an owner decision either authorizes its execution or records that it stays unrun.
 
-- `src/fixtures/program.ts` (shape in `src/domain/program-state.ts`) carries gate state,
-  active work package, latest checkpoint, pending owner disposition, checkpoint-bound
-  verification statements, explicitly unauthorized stages, and the publication boundary.
-  Each field names the record it reports.
-- `data/packages/governed-packages.json` and `data/packages/package-drift.json` carry the
-  governed package and its four unresolved drift rows. `docs/packages/DRIFT_REGISTER.md`
-  is now generated from the latter rather than hand-maintained.
-- The pending owner obligation is carried once, on FND-020 in the findings register, and
-  is surfaced first in the Action Center by the recorded owner priority directive printed
-  beside it.
+## Refused claims
 
-Recorded as EV-035. The synchronization changed no governed state: Gate A remains open,
-WP-007 remains active, the Cycle 3 disposition remains pending, every drift row remains
-unresolved, PKG-002 remains a noncanonical synchronized reference, and Cycle 4 and WP-039
-remain unauthorized.
+- This software is production ready. — No release authority, no operations, no production data path.
+- This software is district validated. — No district users, no pilot, no district evidence.
+- This software is legally compliant. — No legal review has been performed and none is authorized in this posture.
+- Accessibility conformance has been independently validated. — The accessibility standard is applied as an acceptance contract. No independent validation exists.
+- Security has been certified. — No assessment has been performed and none is authorized in this posture.
+- The enterprise capability registry is complete. — Only a small candidate slice exists, explicitly labeled as candidate.
+- Evidence in this repository is always current. — Evidence is current only while its declared inputs are unchanged and its expiry has not passed. Records go STALE, EXPIRED, or UNKNOWN by design.
+- Merge protection is active and governance compliance is proven by continuous integration. — Workflow files exist in the repository; branch-protection enforcement is a repository-settings fact that has not been evidenced (FND-012). Running a check is not proof of governance compliance.
+- The dependency set has been scanned and no vulnerability exists. — The scanner executed and the advisory feed returned HTTP 404. The record is NOT COMPLETED; absence of a result is not absence of a vulnerability.
+- Repository provenance has been independently validated. — All provenance evidence is executor-produced and self-verified. independent = false on every record.

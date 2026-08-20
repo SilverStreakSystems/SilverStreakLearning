@@ -1,5 +1,12 @@
 # Build Manifest
 
+> STATUS: SUPERSEDED HISTORICAL RECORD. Retained unchanged as a historical record of the
+> commit-bound current-state mechanism. It is not the canonical current state. The canonical
+> current state is the generated projection at `docs/CURRENT_STATE.md`, derived from the inputs
+> declared in `data/current-state/current-state-inputs.json`. Superseded by DEC-022; the
+> commit-binding guard it describes has been removed (FND-011).
+
+
 All values inspected at commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a` on 2026-08-19 02:13–02:14 UTC.
 This capture supersedes the captures at `6aa254e` (2026-08-19 01:40 UTC) and `70c1f89`
 (2026-08-17), both now historical.

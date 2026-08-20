@@ -110,7 +110,8 @@ function CommandCenter() {
 
           <div className="rounded-md border border-border bg-surface p-4">
             <dt className="font-display text-base font-semibold">
-              {program.activeWorkPackage.workPackageId} — {program.activeWorkPackage.title}: ACTIVE
+              {program.activeWorkPackage.workPackageId} — {program.activeWorkPackage.title}:{" "}
+              {program.activeWorkPackage.state.toUpperCase()}
             </dt>
             <dd className="mt-2 text-sm text-muted-foreground">
               {program.activeWorkPackage.statement}
@@ -132,6 +133,44 @@ function CommandCenter() {
               <span className="mt-2 block text-xs">
                 Completed {program.latestCheckpoint.completedOn}. Source:{" "}
                 {program.latestCheckpoint.source.locator}
+              </span>
+            </dd>
+          </div>
+
+          {program.latestAttempt ? (
+            <div className="rounded-md border border-border bg-surface p-4">
+              <dt className="flex flex-wrap items-center gap-2 font-display text-base font-semibold">
+                {program.latestAttempt.attemptId}: attempt, not a checkpoint
+                <StateChip state="blocked" />
+                <span>{program.latestAttempt.state}</span>
+              </dt>
+              <dd className="mt-2 text-sm text-muted-foreground">
+                {program.latestAttempt.title}. {program.latestAttempt.statement}
+                <span className="mt-2 block font-semibold text-foreground">
+                  {program.latestAttempt.producedNoEvidence}
+                </span>
+                <span className="mt-2 block text-xs">
+                  Attempted {program.latestAttempt.attemptedOn}. Source:{" "}
+                  {program.latestAttempt.source.locator}
+                </span>
+              </dd>
+            </div>
+          ) : null}
+
+          <div className="rounded-md border border-border bg-surface p-4">
+            <dt className="flex flex-wrap items-center gap-2 font-display text-base font-semibold">
+              {program.auditExecution.ruleId} verification
+              <StateChip state={program.auditExecution.state === "NOT-RUN" ? "blocked" : "confirmed"} />
+              <span>{program.auditExecution.state}</span>
+            </dt>
+            <dd className="mt-2 text-sm text-muted-foreground">
+              {program.auditExecution.statement}
+              <span className="mt-2 block text-xs">
+                Source:{" "}
+                <Link to={program.auditExecution.source.route ?? "/findings"}>
+                  {program.auditExecution.source.recordId}
+                </Link>{" "}
+                — {program.auditExecution.source.locator}
               </span>
             </dd>
           </div>
@@ -159,7 +198,21 @@ function CommandCenter() {
             </dd>
           </div>
         </dl>
+
+        <div className="mt-4 rounded-md border border-border bg-surface p-4">
+          <h3 className="font-display text-base font-semibold">Deferred debt, still open</h3>
+          <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+            {program.deferredDebt.map((entry) => (
+              <li key={entry.recordId}>
+                <span className="font-semibold text-foreground">{entry.recordId}</span> —{" "}
+                {entry.statement}{" "}
+                <span className="text-xs">Source: {entry.source.locator}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Section>
+
 
       <Section
         id="reference-package"

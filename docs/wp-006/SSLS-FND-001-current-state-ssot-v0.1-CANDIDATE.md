@@ -1,5 +1,12 @@
 # SSLS-FND-001 — Current-State Single Source of Truth
 
+> STATUS: SUPERSEDED HISTORICAL RECORD. Retained unchanged as a historical record of the
+> commit-bound current-state mechanism. It is not the canonical current state. The canonical
+> current state is the generated projection at `docs/CURRENT_STATE.md`, derived from the inputs
+> declared in `data/current-state/current-state-inputs.json`. Superseded by DEC-022; the
+> commit-binding guard it describes has been removed (FND-011).
+
+
 - **Version:** v0.1
 - **Authority class:** CANDIDATE
 - **Record state:** current (re-bound 2026-08-19 02:06 UTC; supersedes the `6aa254e` binding of

@@ -21,7 +21,9 @@ function BoundaryBanner() {
       data-boundary-banner="true"
       className="border-b-2 border-border-strong bg-muted px-4 py-2 text-center text-xs font-semibold text-foreground sm:text-sm"
     >
-      Private operator workspace. No personal data. All records shown are synthetic examples.
+      PUBLIC SYNTHETIC PROTOTYPE. Not released. No personal data. Anyone with the link can reach
+      this published surface; it is not access-controlled. All records shown are synthetic examples.
+
     </p>
   );
 }

@@ -1,0 +1,32 @@
+{
+  "manifest_id": "CURRENT-STATE-INPUTS",
+  "manifest_version": "1.0.0",
+  "authority_note": "Declares the controlling inputs of the canonical current-state projection. Freshness is established by re-deriving the projection from these inputs and comparing fingerprints, not by writing a commit hash into a document. A document that must contain its own commit hash goes stale after every legitimate change; this manifest does not.",
+  "controlling_decision": "DEC-022",
+  "output": "docs/CURRENT_STATE.md",
+  "fingerprint_file": "data/current-state/current-state.fingerprint.json",
+  "inputs": [
+    "src/fixtures/registers.ts",
+    "src/fixtures/program.ts",
+    "src/domain/program-state.ts",
+    "src/domain/program-state-derivation.ts",
+    "data/program/program-policy.json",
+    "data/program/checkpoints.json",
+    "data/accessibility/touch-target-rule.json",
+    "data/packages/governed-packages.json",
+    "data/packages/package-drift.json",
+    "data/historical/historical-requirements.json",
+    "data/historical/fnd-022-owner-dispositions.json",
+    "data/governance/obligations.json",
+    "src/lib/route-registry.ts",
+    "scripts/gen-current-state.ts"
+  ],
+  "superseded_documents": [
+    "docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md",
+    "docs/wp-006/PROVENANCE_REPORT.md",
+    "docs/wp-006/BUILD_MANIFEST.md",
+    "docs/wp-006/TEST_BUILD_STATUS.md",
+    "docs/wp-006/SSOT_BINDING_GUARD.md"
+  ],
+  "superseded_marker": "STATUS: SUPERSEDED HISTORICAL RECORD"
+}

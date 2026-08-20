@@ -1,0 +1,78 @@
+{
+  "manifest_id": "CURRENT-STATE-INPUTS",
+  "manifest_version": "1.0.0",
+  "output": "docs/CURRENT_STATE.md",
+  "fingerprint": "354389b3bb782b6ac6e3f65febc571871f7478719846d4d17b82094f7fb095b7",
+  "inputs": [
+    {
+      "path": "src/fixtures/registers.ts",
+      "sha256": "69e92fc207041fadf8c859dc6e389869e85cf5eda5de226cd6c3de0460b5ce9c",
+      "bytes": 121040
+    },
+    {
+      "path": "src/fixtures/program.ts",
+      "sha256": "59b6ad8c59de5160461447ae0c6b096605225d0e3750d7c2acd50b46e61b3f11",
+      "bytes": 1241
+    },
+    {
+      "path": "src/domain/program-state.ts",
+      "sha256": "62e403d69c7be500c5a2446be73d18b2b31d6e207d8e45cdb9fae83095b5c77f",
+      "bytes": 6245
+    },
+    {
+      "path": "src/domain/program-state-derivation.ts",
+      "sha256": "4ae11b868c50022dc72f2b9bd0bbdec4fda83241ae4a799a2785016a7ab817fa",
+      "bytes": 9780
+    },
+    {
+      "path": "data/program/program-policy.json",
+      "sha256": "12497f711849e4f4e903ed44ec4018b1a701288980733e0efe7b09760a64e07c",
+      "bytes": 7239
+    },
+    {
+      "path": "data/program/checkpoints.json",
+      "sha256": "6e01a43681d8f7e25fb429427cd09620707680ccee21bc8d6ce12ce3b202168d",
+      "bytes": 4892
+    },
+    {
+      "path": "data/accessibility/touch-target-rule.json",
+      "sha256": "2180dd845fa0b3ae4cd3f017dbcbbdc2158e80b596b7d3f0f2484dbc72509a11",
+      "bytes": 9633
+    },
+    {
+      "path": "data/packages/governed-packages.json",
+      "sha256": "3547bb9f39d50951dd01713d837aa13f3f781cbbe84d6519f30db20705465bfb",
+      "bytes": 13708
+    },
+    {
+      "path": "data/packages/package-drift.json",
+      "sha256": "c313bef9d5f5d5d8a910180c6cea324d645043b658630c900998668e5031c250",
+      "bytes": 8007
+    },
+    {
+      "path": "data/historical/historical-requirements.json",
+      "sha256": "51d3bd60f54a28256cb47ec4ee0b5e3dcf9b3af9b681239a8c063de6ef33b38a",
+      "bytes": 49007
+    },
+    {
+      "path": "data/historical/fnd-022-owner-dispositions.json",
+      "sha256": "1365d62eef6e4d8bd79e1457f9ebbf7a0eaa5b7e0121e169aef257b89a1c85f7",
+      "bytes": 18888
+    },
+    {
+      "path": "data/governance/obligations.json",
+      "sha256": "169b0b1f35237d816c3e8f9de312fafa217ae5bab226833e858fd44147c5af3c",
+      "bytes": 88051
+    },
+    {
+      "path": "src/lib/route-registry.ts",
+      "sha256": "a00c0d680069218047d1a33c069a2aac7e6ccbfea2507954b5e7cd0c2caeed23",
+      "bytes": 4113
+    },
+    {
+      "path": "scripts/gen-current-state.ts",
+      "sha256": "c7f3a31568187f30ca5b8766155f2ec6008c728acbcb4552e78be4bbf186b225",
+      "bytes": 6760
+    }
+  ]
+}

@@ -1,5 +1,12 @@
 # Repository Provenance Report — current executable baseline
 
+> STATUS: SUPERSEDED HISTORICAL RECORD. Retained unchanged as a historical record of the
+> commit-bound current-state mechanism. It is not the canonical current state. The canonical
+> current state is the generated projection at `docs/CURRENT_STATE.md`, derived from the inputs
+> declared in `data/current-state/current-state-inputs.json`. Superseded by DEC-022; the
+> commit-binding guard it describes has been removed (FND-011).
+
+
 Authority class: candidate. Evidence method: project self-inspection (executor). Not independent.
 This does not substitute for a CI evidence architecture; that is WP-037 and is not started.
 
