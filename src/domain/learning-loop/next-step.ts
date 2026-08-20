@@ -142,7 +142,11 @@ export function effectiveSupportAt(
   asOf: string,
 ): EffectiveSupport | null {
   if (!atOrBefore(support.plannedAt, asOf)) return null;
-  if (support.status === "completed" && support.completedAt && atOrBefore(support.completedAt, asOf))
+  if (
+    support.status === "completed" &&
+    support.completedAt &&
+    atOrBefore(support.completedAt, asOf)
+  )
     return { record: support, state: "completed", eventAt: support.completedAt };
   if (support.status === "cancelled" && atOrBefore(support.updatedAt, asOf))
     return { record: support, state: "cancelled", eventAt: support.updatedAt };
@@ -173,7 +177,9 @@ export function readLoopSnapshot(
 ): LearnerLoopSnapshot {
   const goals = [...document.goals]
     .filter((goal) => goal.learnerId === learnerId && atOrBefore(goal.createdAt, asOf))
-    .sort((a, b) => instant(a.createdAt) - instant(b.createdAt) || a.goalId.localeCompare(b.goalId));
+    .sort(
+      (a, b) => instant(a.createdAt) - instant(b.createdAt) || a.goalId.localeCompare(b.goalId),
+    );
   const focusGoal = goals.find((goal) => goal.isFocusGoal && goal.status === "active") ?? null;
 
   const observations = focusGoal
