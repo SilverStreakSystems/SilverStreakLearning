@@ -75,7 +75,7 @@ dist/client/assets/registers-BqYTD1VO.js                            111.00 kB �
 dist/client/assets/capability-queries-Dx7RVEAe.js                   137.00 kB │ gzip:  35.93 kB
 dist/client/assets/index-Bick0ufy.js                                333.28 kB │ gzip: 102.96 kB
 
-✓ built in 3.53s
+✓ built in 3.00s
 vite v8.2.0 building ssr environment for production...
 [2Ktransforming...✓ 246 modules transformed.
 rendering chunks...
@@ -160,7 +160,7 @@ node_modules/.nitro/vite/services/ssr/assets/registers-bOcbWIIw.js              
 node_modules/.nitro/vite/services/ssr/assets/value-stream-queries-BzMZb-UT.js                 124.55 kB │ gzip: 29.26 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-queries-fmMwUK3o.js                   156.58 kB │ gzip: 37.68 kB
 
-✓ built in 2.71s
+✓ built in 2.15s
 
 [nitro] ◐ Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-20)
 [nitro] ✔ Generated public dist/client
@@ -260,7 +260,7 @@ dist/server/_ssr/value-stream-queries-BzMZb-UT.mjs                 124.42 kB │
 dist/server/_ssr/capability-queries-fmMwUK3o.mjs                   156.49 kB │ gzip:  37.68 kB
 dist/server/_libs/@tanstack/react-router+[...].mjs                 649.67 kB │ gzip: 137.07 kB
 
-✓ built in 700ms
+✓ built in 440ms
 [nitro] ℹ Using auto generated worker name: tanstack-start-ts
 ℹ Generated dist/server/wrangler.json
 ℹ Generated .wrangler/deploy/config.json

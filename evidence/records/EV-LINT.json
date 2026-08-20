@@ -2,14 +2,14 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "v9.39.5",
-  "tree_hash": "b012b9a7ad654a288a8b9a5903ee646075a6d1cf",
+  "tree_hash": "e48bba96f89a70c02a637fd87eb282fcc3bb873e",
   "expected_result": "Recorded against the transitional lint policy, not against zero problems.",
   "artifact_path": "artifacts/lint/eslint.json",
-  "artifact_hash": "07c0e627c693f37f94607cd45408cfdac4e8ca136b52ac7d58075c02b71ccd03",
+  "artifact_hash": "fc072f4e67201139d37ef2897eadfe0899cf7f05f58f495866340c844353c830",
   "input_set": {
     "source": "20f05084f2e044a9aa5cf6260de97d073d2daec75552a2ffd1e46399effebef9",
     "tests": "823bdc3ad6090926b1fb2b58b175e17d4458f56a2ac607aa4927ae4c78c9e9bd",
-    "config": "2d9e07658efa87ccc2d1d8b28b900d82753c1562d5cffeec9a2ef96731cb100c"
+    "config": "70d47c4cac666a853521a893281034585ed2d4f2213e17d0a713a4f054da756a"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -28,15 +28,15 @@
   "method": "automated",
   "evidence_id": "EV-LINT",
   "evidence_type": "LINT",
-  "commit_sha": "67b4b06549650c7f1579ac323c9887e7092a494d",
+  "commit_sha": "975fff28c52e6d1547c33b47540e8c30aa727c1a",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T10:28:37.995Z",
+  "timestamp": "2026-08-20T10:31:57.709Z",
   "producer": "SSLS evidence pipeline",
   "title": "Repository-wide lint baseline",
   "description": "Full ESLint run recorded as a debt baseline. Existing debt is tracked; it is not represented as a pass.",
   "tool": "eslint",
   "command": "bunx eslint . -f json",
-  "actual_result": "1 problems across 1 files: 1 errors, 0 warnings, 1 auto-fixable.",
+  "actual_result": "0 problems across 0 files: 0 errors, 0 warnings, 0 auto-fixable.",
   "status": "review-required",
   "supports": [
     "The repository-wide lint problem count at the declared input set, recorded as quality debt."
