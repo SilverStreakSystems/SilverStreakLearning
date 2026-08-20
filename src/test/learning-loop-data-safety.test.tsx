@@ -377,7 +377,8 @@ describe("corrupt and newer stored data", () => {
     await user.click(screen.getByRole("button", { name: "Restore the sample records" }));
     await user.click(screen.getByRole("button", { name: "Replace with the sample records" }));
 
-    expect(await screen.findByText("The sample records were restored.")).toBeTruthy();
+    expect(await screen.findByText(/Sample Learner A \(fictional\)/)).toBeTruthy();
+    expect(screen.queryByText(/The saved data is not readable\./)).toBeNull();
     expect(storedRevision()).toBe(1);
     // The exact prior bytes survive as the single recovery snapshot.
     expect(window.localStorage.getItem(LEARNING_LOOP_BACKUP_KEY)).toBe(corrupt);
