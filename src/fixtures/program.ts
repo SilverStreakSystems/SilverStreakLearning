@@ -51,16 +51,24 @@ export const PROGRAM_STATE: ProgramStateRecord = {
 
   ownerDisposition: {
     subject:
-      "WP-007 Cycle 4 execution: sixteen requirement candidates from HS-023, the seventeen-row cross-source restatement index, and the three unmatched HS-011 rows",
+      "WP-007 Cycle 7 execution: the SSLS touch-target acceptance rule TTR-001 v1.0.0, its five documented exceptions, and its defined but unrun verification protocol",
     state: "accepted",
     requiredOf: "Founder / Operator",
     obligationSource: {
-      recordId: "DEC-020",
-      locator: "src/fixtures/registers.ts — DECISIONS, DEC-020",
+      recordId: "DEC-021",
+      locator: "src/fixtures/registers.ts — DECISIONS, DEC-021",
       route: "/decisions",
     },
     supportingSources: [
+      { recordId: "CHECKPOINT-009", locator: "docs/wp-007/CHECKPOINT-009.md", route: null },
+      { recordId: "TTR-001", locator: "data/accessibility/touch-target-rule.json", route: null },
+      {
+        recordId: "TTR-001-PROJECTION",
+        locator: "docs/accessibility/TOUCH_TARGET_ACCEPTANCE.md",
+        route: null,
+      },
       { recordId: "CHECKPOINT-008", locator: "docs/wp-007/CHECKPOINT-008.md", route: null },
+
       {
         recordId: "FND-022-DISPOSITIONS",
         locator: "data/historical/fnd-022-owner-dispositions.json",
