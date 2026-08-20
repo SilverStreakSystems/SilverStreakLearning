@@ -215,12 +215,12 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L7"],
     description:
-      "A full lint run reports 677 problems across the repository (663 errors, 14 warnings), overwhelmingly formatter differences rather than logic defects. The condition predates this work package and is recorded rather than absorbed into a claim that lint passes. Scoped separately under WP-037: the WP-037 files (scripts/evidence, src/domain/evidence-pipeline.ts, src/test/evidence-pipeline.test.ts, src/routes/evidence.tsx) report zero lint problems, so this work package contributes no new lint debt.",
+      "Raised when a full lint run reported 677 problems across the repository (663 errors, 14 warnings), overwhelmingly formatter differences rather than logic defects, and carried thereafter as advisory debt that peaked at 711. Discharged by the engineering-baseline recovery pass on 2026-08-20 (EV-045): the 655 remaining formatter differences were resolved mechanically, the 14 React Refresh warnings were resolved by separating non-component exports into dedicated view-model modules, the 5 explicit any types in scripts/gen-value-stream-docs.ts were replaced with concrete types, and the unused shadcn UI kit under src/components/ui was removed after a reachability check found no importer in application code or tests. A full run of bunx eslint . --max-warnings 0 now reports 0 problems, and the lint script enforces that ceiling so no new warning can accumulate silently.",
     boundary:
-      "No lint problem observed affects rendered behavior, accessibility markup, or the governance records. Formatting is not correctness. Repository-wide lint must not be reported as passing.",
-    resolutionState: "unknown",
+      "A clean lint run is not correctness, not test coverage, not accessibility conformance, and not release readiness. Formatting is not correctness. The discharge states only that the configured rule set reports no problem at this tree.",
+    resolutionState: "confirmed",
     requiredDecision: null,
-    evidenceReferences: ["EV-018", "EV-019"],
+    evidenceReferences: ["EV-018", "EV-019", "EV-045"],
     synthetic: false,
   },
   {
@@ -1062,6 +1062,22 @@ export const EVIDENCE: EvidenceRecord[] = [
       "That the WP-007 Cycle 8 audit attempt is recorded as ATTEMPT-001 in ABORTED-DEFERRED state and produced no audit artifact; that the program-state projection is computed from the decision, finding, evidence, and checkpoint registers rather than restated; that canonical current state is generated deterministically from a declared input manifest and verified by regeneration with no diff; and that the published surface is described as a public synthetic prototype that is not access-controlled.",
     doesNotSupport:
       "That any interface target-size audit ran; that any route, component, or control was measured or classified; that FND-024 is closed, it remains open and deferred; that EV-003 ran, it remains NOT-RUN; that HREQ-025 changed state; that WP-007 or Gate A changed state; that Cycle 9, WP-039, product implementation, a backend, or release is authorized; or that any WCAG, ADA Title II, Section 508, legal, or independent accessibility conformance claim is made. Executor-run, method automated cross-register reconciliation plus deterministic generation, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
+  {
+    id: "EV-045",
+    title: "Engineering-baseline recovery: lint, typecheck, tests, build, and evidence applicability",
+    kind: "automated-test",
+    subject:
+      "The repository quality commands (lint, typecheck, test, build, current-state check) and the evidence applicability model in scripts/evidence/inputs.mjs and scripts/evidence/applicability.mjs.",
+    collectedOn: "2026-08-20",
+    collectedBy: "Automated run",
+    state: "confirmed",
+    supports:
+      "That bunx eslint . --max-warnings 0 reports 0 problems; that tsgo --noEmit reports 0 errors; that 414 of 414 tests pass across 18 files; that the production build succeeds; that the current-state projection regenerates with no diff; that the unused UI kit under src/components/ui and the unused mobile hook were removed with no importer in application code or tests; and that evidence applicability is decided by declared input-set hashes with generated outputs excluded from every input set, so all fifteen committed records evaluate CURRENT without rebinding a commit string.",
+    doesNotSupport:
+      "That the repository is defect-free, that formatting equals correctness, that test count equals coverage, that any accessibility, security, privacy, or conformance property holds, that FND-012 or FND-024 changed state, that EV-003 ran, or that any work package, gate, cycle, or release is authorized. Executor-run, method automated command execution, independent = false.",
     authorityClass: "current-summary",
     synthetic: false,
   },
