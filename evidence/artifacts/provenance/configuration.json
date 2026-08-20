@@ -19,7 +19,7 @@
   },
   "test_config": {
     "file": "vitest.config.ts",
-    "hash": "22e65f109ef35d9bfcb1c2c03e90306dad6fddcfffbe96fa36916bbd4e8b26a6"
+    "hash": "6b8d51fe0fc1fb692aec91a49fcb31c5b2c3f315a5025ef246053f85244e955e"
   },
   "lint_config": {
     "file": "eslint.config.js",

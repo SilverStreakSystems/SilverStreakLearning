@@ -11,11 +11,11 @@ inputs declared in `data/current-state/current-state-inputs.json`.
 
 ## Prerequisites and pinned versions
 
-| Tool | Version | Where it is declared |
-| --- | --- | --- |
-| Bun (package manager and runtime) | `1.3.3` | `packageManager` in `package.json`, `engines.bun`, `.bun-version`, and every workflow's `oven-sh/setup-bun` step |
-| Node (used by the evidence scripts) | `>= 22` | `engines.node` |
-| TypeScript | lockfile-resolved dev dependency | `devDependencies.typescript`; `bun run typecheck` runs `tsc --noEmit` |
+| Tool                                | Version                          | Where it is declared                                                                                             |
+| ----------------------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Bun (package manager and runtime)   | `1.3.3`                          | `packageManager` in `package.json`, `engines.bun`, `.bun-version`, and every workflow's `oven-sh/setup-bun` step |
+| Node (used by the evidence scripts) | `>= 22`                          | `engines.node`                                                                                                   |
+| TypeScript                          | lockfile-resolved dev dependency | `devDependencies.typescript`; `bun run typecheck` runs `tsc --noEmit`                                            |
 
 Install exactly what the lockfile declares:
 
@@ -29,17 +29,17 @@ installed or transitively available compiler.
 
 ## Repository structure
 
-| Path | Contents |
-| --- | --- |
-| `src/domain/` | Domain models and derivation logic (authority, layers, capabilities, objects, value streams, workspaces, program state) |
-| `src/fixtures/` | Synthetic fixture data, including the governance registers |
-| `src/routes/` | TanStack Start file routes |
-| `src/components/` | Application shell, brand system, governance views |
-| `src/test/` | Vitest suites |
-| `data/` | Controlling governance data: registers, historical packages, obligations, program checkpoints, current-state input manifest |
-| `docs/` | Governance canon and generated documentation |
-| `scripts/` | Governed generators (`gen-*.ts`), the evidence pipeline, and the dormant accessibility audit |
-| `evidence/` | Committed evidence records, artefacts, and derived baseline |
+| Path              | Contents                                                                                                                    |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `src/domain/`     | Domain models and derivation logic (authority, layers, capabilities, objects, value streams, workspaces, program state)     |
+| `src/fixtures/`   | Synthetic fixture data, including the governance registers                                                                  |
+| `src/routes/`     | TanStack Start file routes                                                                                                  |
+| `src/components/` | Application shell, brand system, governance views                                                                           |
+| `src/test/`       | Vitest suites                                                                                                               |
+| `data/`           | Controlling governance data: registers, historical packages, obligations, program checkpoints, current-state input manifest |
+| `docs/`           | Governance canon and generated documentation                                                                                |
+| `scripts/`        | Governed generators (`gen-*.ts`), the evidence pipeline, and the dormant accessibility audit                                |
+| `evidence/`       | Committed evidence records, artefacts, and derived baseline                                                                 |
 
 ## Controlling versus derived state
 
@@ -61,23 +61,23 @@ by derivation, never by copy.
 
 ## Quality commands
 
-| Command | What it does | Expected result |
-| --- | --- | --- |
-| `bun run verify` | the full read-only gate: lint, typecheck, tests, build, current-state check, generated-artefact check, committed-evidence verification, and the committed-evidence output-safety guard in non-writing check mode | all pass, and no file is created |
-| `bun run verify:ci` | `verify` plus the ephemeral evidence pass (generation, verification, output-safety guard) | all pass |
-| `bun run lint` | ESLint with Prettier, `--max-warnings 0` | 0 errors, 0 warnings |
-| `bun run lint:fix` | applies the mechanical fixes | rewrites formatting only |
-| `bun run typecheck` | `tsc --noEmit` | 0 errors |
-| `bun run test` | Vitest, whole suite | all tests pass |
-| `bun run build` | production build | succeeds |
-| `bun run check:current-state` | re-derives the projection and compares fingerprints | no diff |
-| `bun run check:generated` | runs every governed generator and fails on any tree diff | no diff |
-| `bun run gen:all` | runs every governed generator and keeps the result | updates generated artefacts |
-| `bun run gen:current-state` | regenerates `docs/CURRENT_STATE.md` only | writes the projection |
+| Command                       | What it does                                                                                                                                                                                                     | Expected result                  |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `bun run verify`              | the full read-only gate: lint, typecheck, tests, build, current-state check, generated-artefact check, committed-evidence verification, and the committed-evidence output-safety guard in non-writing check mode | all pass, and no file is created |
+| `bun run verify:ci`           | `verify` plus the ephemeral evidence pass (generation, verification, output-safety guard)                                                                                                                        | all pass                         |
+| `bun run lint`                | ESLint with Prettier, `--max-warnings 0`                                                                                                                                                                         | 0 errors, 0 warnings             |
+| `bun run lint:fix`            | applies the mechanical fixes                                                                                                                                                                                     | rewrites formatting only         |
+| `bun run typecheck`           | `tsc --noEmit`                                                                                                                                                                                                   | 0 errors                         |
+| `bun run test`                | Vitest, whole suite                                                                                                                                                                                              | all tests pass                   |
+| `bun run build`               | production build                                                                                                                                                                                                 | succeeds                         |
+| `bun run check:current-state` | re-derives the projection and compares fingerprints                                                                                                                                                              | no diff                          |
+| `bun run check:generated`     | runs every governed generator and fails on any tree diff                                                                                                                                                         | no diff                          |
+| `bun run gen:all`             | runs every governed generator and keeps the result                                                                                                                                                               | updates generated artefacts      |
+| `bun run gen:current-state`   | regenerates `docs/CURRENT_STATE.md` only                                                                                                                                                                         | writes the projection            |
 
 `verify` is read-only: every step of it, including the output-safety guard
 (`--check` mode), leaves no new file and no tracked-tree diff behind. It does
-not run evidence *generation*, because generation writes artefacts into the
+not run evidence _generation_, because generation writes artefacts into the
 committed `evidence/` tree. `verify:ci` is the
 complete set: it adds `evidence:ephemeral`, which generates a full current-run
 evidence set into a temporary path, verifies it there, and runs the
@@ -96,13 +96,13 @@ recorded, dispositioned finding — it is never left to accumulate.
 
 ## Evidence generation versus committed-evidence verification
 
-| Command | Writes | Purpose |
-| --- | --- | --- |
-| `bun run evidence:run` | `evidence/` (or `$SSLS_EVIDENCE_DIR`) | executes the declared checks and writes Layer A records plus the Layer B baseline |
-| `bun run evidence:verify` | nothing | evaluates whether the committed evidence set is still applicable to the current input sets |
-| `bun run evidence:ephemeral` | a temporary directory only | CI-safe generation + verification + output-safety guard |
-| `bun run evidence:output-safety` | `reports/evidence-output-safety.json` (git-ignored) | report mode: scans an evidence tree for credential- and personal-data-shaped content and retains the result |
-| `bun run evidence:output-safety:check` | nothing | check mode (`--check`): the identical fail-closed scan of the committed evidence tree, with no report file |
+| Command                                | Writes                                              | Purpose                                                                                                     |
+| -------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `bun run evidence:run`                 | `evidence/` (or `$SSLS_EVIDENCE_DIR`)               | executes the declared checks and writes Layer A records plus the Layer B baseline                           |
+| `bun run evidence:verify`              | nothing                                             | evaluates whether the committed evidence set is still applicable to the current input sets                  |
+| `bun run evidence:ephemeral`           | a temporary directory only                          | CI-safe generation + verification + output-safety guard                                                     |
+| `bun run evidence:output-safety`       | `reports/evidence-output-safety.json` (git-ignored) | report mode: scans an evidence tree for credential- and personal-data-shaped content and retains the result |
+| `bun run evidence:output-safety:check` | nothing                                             | check mode (`--check`): the identical fail-closed scan of the committed evidence tree, with no report file  |
 
 Applicability is decided by declared input-set hashes, not by comparing commit
 strings. Generated outputs (`evidence/`, `dist/`, `docs/CURRENT_STATE.md`, the
@@ -126,11 +126,11 @@ Verification passing is not certification, conformance, or release readiness.
 
 ## Continuous integration
 
-| Workflow | Runs |
-| --- | --- |
-| `.github/workflows/quality-gate.yml` | the complete gate on pull requests and pushes to `main` |
+| Workflow                                  | Runs                                                                                                                                                           |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.github/workflows/quality-gate.yml`      | the complete gate on pull requests and pushes to `main`                                                                                                        |
 | `.github/workflows/evidence-pipeline.yml` | committed-evidence verification, committed-evidence output-safety, ephemeral generation, and artefact upload (the uploaded tree contains its own guard result) |
-| `.github/workflows/current-state.yml` | the current-state projection check |
+| `.github/workflows/current-state.yml`     | the current-state projection check                                                                                                                             |
 
 All three install from the frozen lockfile with the pinned Bun version, use
 least-privilege `contents: read` permissions, concurrency groups, and bounded
@@ -163,28 +163,37 @@ claimed. FND-024 records that verification gap.
 ## Current limitations
 
 - No backend, database, authentication, or AI features.
-- No runtime persistence: state is fixture-derived and resets on reload.
+- Governance surfaces are fixture-derived and reset on reload. The Product Alpha
+  001 product surface persists its synthetic data in browser-local storage only:
+  there is no server backup, sharing, or synchronization, and clearing browser
+  storage loses that data unless it was exported first.
 - Touch-target conformance unverified (TTR-001 NOT-RUN, FND-024).
 - Evidence coverage is pattern-bound and self-produced, not independent.
 
-## Next increment
+## Product Alpha 001 — current increment
 
-**Product Alpha 001** — a founder/operator-only synthetic learner
-evidence-to-action vertical slice. Core workflow: synthetic learner list →
-learner detail → goal → support/action → observation/evidence → result →
-timeline → deterministic next action.
+**Product Alpha 001 is implemented as a bounded technical proof** (authorized by
+`DEC-023`, recorded as `CHECKPOINT-010`, evidenced by `EV-046`). A
+founder/operator-only synthetic learner evidence-to-action vertical slice:
+synthetic learner list → learner detail → goal → support/action →
+observation/evidence → result → timeline → deterministic LLR-001 next-step
+projection.
 
 Persistence is browser-local behind a repository interface, with
-seed/reset/export/import.
+seed/reset/export/import. There is no server backup, no sharing, and no
+synchronization; clearing browser storage loses the data unless it was exported.
 
-Explicitly out of scope: authentication, tenant model, cloud database, backend,
-RLS, AI, real PII, district integrations, conformance claim, release claim.
-Backend and authentication are a later architecture decision, taken only after
-the workflow is proven.
+Explicitly out of scope and unauthorized: authentication, tenant model, cloud
+database, backend, RLS, AI, real PII, district integrations, analytics,
+conformance claim, release claim. Backend and authentication are a later
+architecture decision, taken only after the workflow is proven.
 
-Product Alpha 001 is NOT STARTED, and nothing in this repository anticipates its
-schema.
-
+The implementation is a technical proof only. It is **not released, not
+validated, and not certified**: mechanics were tested, usefulness was not. The
+next defensible owner action is a bounded founder/operator walkthrough of the
+loop with recorded usability findings, after which the owner decides between a
+bounded revision and a separately authorized TTR-001 audit. No expansion beyond
+this exact local synthetic proof is authorized.
 
 ## Built with
 

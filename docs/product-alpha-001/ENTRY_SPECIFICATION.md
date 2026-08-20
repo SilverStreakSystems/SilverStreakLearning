@@ -39,7 +39,9 @@ started, and not authorized:
 
 - backend services of any kind, server-side storage, or hosted database;
 - authentication, accounts, sessions, roles, tenancy, or row-level security;
-- artificial-intelligence features, model calls, or generated recommendations;
+- artificial-intelligence features, model calls, or any model-generated or
+  probabilistic recommendation — the deterministic next-step projection computed
+  by rule LLR-001 v1.0.0 is in scope and is not one of these;
 - any real personal data, real learner data, or district data of any kind;
 - sharing, synchronization, collaboration, or multi-device access;
 - reporting, export to district systems, or integrations;

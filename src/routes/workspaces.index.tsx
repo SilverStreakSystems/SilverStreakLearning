@@ -22,6 +22,23 @@ import {
  */
 const WORKSPACE_COUNT = WORKSPACES.length;
 const OPERATING_COUNT = WORKSPACES.filter(operatesNow).length;
+const IMPLEMENTED_COUNT = WORKSPACES.filter(
+  (workspace) => workspace.implementationState === "implemented",
+).length;
+const PARTIAL_COUNT = WORKSPACES.filter(
+  (workspace) => workspace.implementationState === "partially-implemented",
+).length;
+const GATED_OR_SPECIFIED_COUNT = WORKSPACE_COUNT - IMPLEMENTED_COUNT - PARTIAL_COUNT;
+
+/**
+ * The breakdown sentence is assembled from the register, so it cannot drift and
+ * a workspace cannot be promoted by the existence of a route.
+ */
+const IMPLEMENTATION_BREAKDOWN =
+  `${OPERATING_COUNT} of ${WORKSPACE_COUNT} workspaces are current operating projections, ` +
+  `counted from the register: ${IMPLEMENTED_COUNT} implemented, ${PARTIAL_COUNT} partially ` +
+  `implemented, and ${GATED_OR_SPECIFIED_COUNT} gated or specification-only. Route existence is ` +
+  `not workspace authority: a workspace is not promoted because a page renders.`;
 
 export const Route = createFileRoute("/workspaces/")({
   head: () => ({
@@ -52,11 +69,7 @@ function WorkspacesRegistry() {
         summary={`${WORKSPACE_COUNT} workspaces, each a purpose-bound projection over shared governed objects. Availability and authority are stored on the record: a workspace does not become current because a page renders.`}
       />
 
-      <Section
-        id="registry"
-        title="Workspace registry"
-        description={`${OPERATING_COUNT} of ${WORKSPACE_COUNT} workspaces operate now, counted from the register. The rest are architecture held behind a named gate.`}
-      >
+      <Section id="registry" title="Workspace registry" description={IMPLEMENTATION_BREAKDOWN}>
         <RegistryTable
           caption={`${WORKSPACE_COUNT} enterprise workspaces with availability, implementation state, and fundamental question.`}
           headers={[

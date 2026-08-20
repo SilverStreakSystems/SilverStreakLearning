@@ -1,8 +1,8 @@
 {
   "policy_id": "PROGRAM-POLICY-001",
-  "policy_version": "1.0.0",
+  "policy_version": "1.1.0",
   "authority_note": "Minimal narrative policy record for values that cannot be derived mechanically from the controlling registers. Everything that can be derived is derived. This record creates no state: it does not open or close a gate, does not close a work package, does not record a disposition, and does not authorize anything.",
-  "controlling_decision": "DEC-022",
+  "controlling_decision": "DEC-023",
   "gate": {
     "gate_id": "GATE-A",
     "name": "Gate A",
@@ -10,13 +10,10 @@
     "closed_basis": "Gate A is recorded closed by an owner decision.",
     "source": {
       "record_id": "DEC-018",
-      "locator": "src/fixtures/registers.ts \u2014 DECISIONS, DEC-018",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-018",
       "route": "/decisions"
     },
-    "closure_phrases": [
-      "gate a is closed",
-      "gate a closes"
-    ]
+    "closure_phrases": ["gate a is closed", "gate a closes"]
   },
   "active_work_package": {
     "work_package_id": "WP-007",
@@ -28,20 +25,32 @@
       "locator": "docs/wp-007/ENTRY_SPECIFICATION.md",
       "route": null
     },
-    "closure_phrases": [
-      "wp-007 is closed",
-      "wp-007 closed by owner"
-    ]
+    "closure_phrases": ["wp-007 is closed", "wp-007 closed by owner"]
   },
   "owner_disposition_supporting_sources": [
     {
-      "record_id": "ATTEMPT-001",
-      "locator": "docs/wp-007/ATTEMPT-001-CYCLE-8.md",
+      "record_id": "DEC-023",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-023",
+      "route": "/decisions"
+    },
+    {
+      "record_id": "EV-045",
+      "locator": "src/fixtures/registers.ts — EVIDENCE, EV-045",
+      "route": "/evidence"
+    },
+    {
+      "record_id": "EV-046",
+      "locator": "src/fixtures/registers.ts — EVIDENCE, EV-046",
+      "route": "/evidence"
+    },
+    {
+      "record_id": "PRODUCT-ALPHA-001-ENTRY",
+      "locator": "docs/product-alpha-001/ENTRY_SPECIFICATION.md",
       "route": null
     },
     {
-      "record_id": "CHECKPOINT-009",
-      "locator": "docs/wp-007/CHECKPOINT-009.md",
+      "record_id": "CHECKPOINT-010",
+      "locator": "docs/product-alpha-001/CHECKPOINT-010.md",
       "route": null
     },
     {
@@ -51,18 +60,13 @@
     },
     {
       "record_id": "FND-024",
-      "locator": "src/fixtures/registers.ts \u2014 FINDINGS, FND-024",
+      "locator": "src/fixtures/registers.ts — FINDINGS, FND-024",
       "route": "/findings"
     },
     {
       "record_id": "PUBLICATION-ACCESS",
       "locator": "docs/PUBLICATION_ACCESS.md",
       "route": null
-    },
-    {
-      "record_id": "EV-046",
-      "locator": "src/fixtures/registers.ts \u2014 EVIDENCE, EV-046",
-      "route": "/evidence"
     }
   ],
   "unauthorized_stages": [
@@ -80,7 +84,7 @@
       "statement": "Execution of the TTR-001 verification protocol is deferred by DEC-022 and is not authorized now. The partial runner under scripts/accessibility/ is dormant development tooling; it measured nothing and produced no audit evidence. No Cycle 9 is authorized either.",
       "source": {
         "record_id": "DEC-022",
-        "locator": "src/fixtures/registers.ts \u2014 DECISIONS, DEC-022",
+        "locator": "src/fixtures/registers.ts — DECISIONS, DEC-022",
         "route": "/decisions"
       }
     },
@@ -89,7 +93,7 @@
       "statement": "No route, component, or control has been measured or classified against TTR-001, so the interface is unmeasured rather than passing. FND-024 stays open as deferred debt.",
       "source": {
         "record_id": "FND-024",
-        "locator": "src/fixtures/registers.ts \u2014 FINDINGS, FND-024",
+        "locator": "src/fixtures/registers.ts — FINDINGS, FND-024",
         "route": "/findings"
       }
     },
@@ -116,7 +120,7 @@
       "statement": "Promotion of PKG-002 to canonical is not authorized. It remains a synchronized reference.",
       "source": {
         "record_id": "PKG-002",
-        "locator": "data/packages/governed-packages.json \u2014 PKG-002",
+        "locator": "data/packages/governed-packages.json — PKG-002",
         "route": null
       }
     },
@@ -131,21 +135,21 @@
     },
     {
       "stage_id": "PRODUCT-ALPHA-001-SCOPE",
-      "statement": "Work beyond the authorized Product Alpha 001 slice is not authorized. The slice covers fictional learners, one goal at a time, observations, support actions, results, and the deterministic LLR-001 next step, held in browser-local storage. Accounts, sharing, reporting, export to district systems, artificial-intelligence features, and any real personal data are outside it.",
+      "statement": "Work beyond the authorized Product Alpha 001 slice is not authorized. The slice covers fictional learners, one goal at a time, observations, support actions, results, and the deterministic LLR-001 next step, held in browser-local storage. Accounts, sharing, reporting, export to district systems, artificial-intelligence features, and any real personal data are outside it. A bounded PRODUCT-ALPHA-001-EXPANSION stage remains unauthorized: no expansion beyond this exact local synthetic proof is authorized, no new work package is opened for it, and it is not a WP-007 cycle.",
       "source": {
         "record_id": "DEC-023",
-        "locator": "src/fixtures/registers.ts \u2014 DECISIONS, DEC-023",
+        "locator": "src/fixtures/registers.ts — DECISIONS, DEC-023",
         "route": "/decisions"
       }
     }
   ],
   "publication_boundary": "PUBLIC SYNTHETIC PROTOTYPE. NO REAL PERSONAL DATA. NOT RELEASED. The published application URL is reachable by anyone who has the link; the interface is not access-controlled, and the private setting of the Lovable project does not restrict the published surface. The robots file asks search engines not to index it, which is a crawler request and not access control. Hosting this application does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made. Making the deployment private or unpublishing it is a manual owner action recorded in docs/PUBLICATION_ACCESS.md.",
   "next_defensible_owner_action": {
-    "action": "Use the Product Alpha 001 loop against the synthetic learners, then decide whether the workflow is stable enough to authorize the deferred TTR-001 audit against it.",
-    "why": "DEC-022 defers the touch-target audit until a stable user-facing product workflow exists. DEC-023 authorized that workflow and EV-046 records it as implemented, so the deferral condition is now testable rather than hypothetical. The next owner decision is whether the loop is stable enough to measure, or whether it needs another bounded product pass first. FND-024 stays open as deferred debt until an owner decision either authorizes execution or records that it stays unrun.",
+    "action": "Perform a bounded founder/operator walkthrough of Product Alpha 001 and record usability findings; then decide whether the workflow needs a bounded revision or is stable enough for a separately authorized TTR-001 audit.",
+    "why": "The Product Alpha 001 slice authorized by DEC-023 is implemented and mechanically tested. Technical tests establish mechanics only: they do not establish usefulness, workflow stability, learning impact, educational validity, accessibility conformance, privacy or security certification, or any human validation. Only a founder/operator walkthrough can produce that observation, and only a separate owner decision can authorize the deferred TTR-001 audit — nothing here authorizes it. FND-024 stays open as deferred debt until an owner decision either authorizes execution or records that it stays unrun.",
     "source": {
       "record_id": "DEC-023",
-      "locator": "src/fixtures/registers.ts \u2014 DECISIONS, DEC-023",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-023",
       "route": "/decisions"
     }
   },
@@ -153,13 +157,13 @@
     {
       "record_id": "FND-024",
       "statement": "The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface. The obligation is deferred, not discharged.",
-      "locator": "src/fixtures/registers.ts \u2014 FINDINGS, FND-024",
+      "locator": "src/fixtures/registers.ts — FINDINGS, FND-024",
       "route": "/findings"
     },
     {
       "record_id": "EV-003",
       "statement": "EV-003 remains NOT-RUN.",
-      "locator": "src/fixtures/registers.ts \u2014 EVIDENCE, EV-003",
+      "locator": "src/fixtures/registers.ts — EVIDENCE, EV-003",
       "route": "/evidence"
     }
   ]

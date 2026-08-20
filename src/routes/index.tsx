@@ -544,7 +544,7 @@ function CommandCenter() {
 
       <Section
         id="not-authorized"
-        title="Not authorized, and not started"
+        title="Not authorized beyond this proof"
         description="Stated explicitly so that nothing on this surface can be read as permission."
       >
         <ul className="space-y-2">

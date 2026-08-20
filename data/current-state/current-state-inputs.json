@@ -1,8 +1,8 @@
 {
   "manifest_id": "CURRENT-STATE-INPUTS",
-  "manifest_version": "1.0.0",
+  "manifest_version": "1.1.0",
   "authority_note": "Declares the controlling inputs of the canonical current-state projection. Freshness is established by re-deriving the projection from these inputs and comparing fingerprints, not by writing a commit hash into a document. A document that must contain its own commit hash goes stale after every legitimate change; this manifest does not.",
-  "controlling_decision": "DEC-022",
+  "controlling_decision": "DEC-023",
   "output": "docs/CURRENT_STATE.md",
   "fingerprint_file": "data/current-state/current-state.fingerprint.json",
   "inputs": [
