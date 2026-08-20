@@ -42,7 +42,11 @@ import {
   setGoalStatus,
 } from "@/lib/learning-loop/commands";
 import { formatMoment } from "@/lib/learning-loop/format";
-import { useLearningLoop } from "@/lib/learning-loop/use-learning-loop";
+import {
+  useLearningLoop,
+  type LearningLoopStore,
+  type StoreProblem,
+} from "@/lib/learning-loop/use-learning-loop";
 
 export const Route = createFileRoute("/learners/$learnerId")({
   head: () => ({
@@ -96,8 +100,26 @@ function toIso(localValue: string, fallback: string): string {
   return Number.isNaN(parsed.getTime()) ? fallback : parsed.toISOString();
 }
 
-/** A submit handler reports back the message to show, or null when accepted. */
-type SubmitReport = string | null;
+/**
+ * A submit handler reports back the problem to show, or null when accepted.
+ *
+ * `scope` separates "what you typed is wrong" from "the save itself failed".
+ * A storage failure or a revision conflict is not a field error: it must not
+ * mark a valid control invalid, and there is nothing useful to link to.
+ */
+export type SubmitReport = { message: string; scope: "form" | "field" } | null;
+
+function reportFrom(problem: StoreProblem | null, fallback: string): SubmitReport {
+  const scope = problem && (problem.kind === "conflict" || problem.kind === "storage")
+    ? "form"
+    : "field";
+  return { message: problem?.message ?? fallback, scope };
+}
+
+/** Turns a report into the error list for a form, keyed to a field or not. */
+function errorsFor(report: NonNullable<SubmitReport>, controlId: string): FormError[] {
+  return [{ controlId: report.scope === "form" ? null : controlId, message: report.message }];
+}
 
 function useFormErrors() {
   const ref = useRef<HTMLDivElement>(null);
@@ -109,7 +131,16 @@ function useFormErrors() {
   function errorFor(controlId: string) {
     return errors.find((row) => row.controlId === controlId)?.message ?? null;
   }
-  return { ref, errors, show, clear: () => setErrors([]), errorFor };
+  /** A submit handler that shows the report and keeps the typed values. */
+  function report(next: SubmitReport, controlId: string): boolean {
+    if (!next) {
+      setErrors([]);
+      return true;
+    }
+    show(errorsFor(next, controlId));
+    return false;
+  }
+  return { ref, errors, show, report, clear: () => setErrors([]), errorFor };
 }
 
 function MissingLearner({ learnerId }: { learnerId: string }) {
