@@ -253,10 +253,11 @@ function LearnerDetail() {
     store.dismissProblem();
   }
 
-  function attempt<T>(command: Parameters<typeof store.run<T>>[0]) {
+  function attempt<T>(command: CommandRunner<T>): RunOutcome<T> {
     beginAttempt();
-    return attempt(command);
+    return store.run(command);
   }
+
 
   /**
    * One place where a successful write ends.
