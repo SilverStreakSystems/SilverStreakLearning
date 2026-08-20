@@ -13,7 +13,8 @@
     "check:ssot-binding": "node scripts/check-ssot-binding.mjs",
     "format": "prettier --write .",
     "evidence:run": "node scripts/evidence/run.mjs",
-    "evidence:verify": "node scripts/evidence/verify.mjs"
+    "evidence:verify": "node scripts/evidence/verify.mjs",
+    "audit:touch-targets": "bun scripts/accessibility/audit.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -87,6 +88,7 @@
     "globals": "^15.15.0",
     "jsdom": "^30.0.1",
     "nitro": "3.0.260603-beta",
+    "playwright-core": "^1.62.1",
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
