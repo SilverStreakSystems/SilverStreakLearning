@@ -13,10 +13,22 @@ import {
   LEARNING_LOOP_STORAGE_KEY,
   MAX_IMPORT_BYTES,
   isEnvelope,
+  type LearningLoopRepository,
+  type RecoveryExpectation,
   type StorageEnvelope,
 } from "@/lib/learning-loop/repository";
 
 const AT = "2026-03-01T10:00:00.000Z";
+
+/**
+ * Recovery is guarded at the repository boundary: there is no unguarded call
+ * to make, so every test states the snapshot it believes it is replacing.
+ */
+function expectationOf(repository: LearningLoopRepository): RecoveryExpectation {
+  const captured = repository.expectation();
+  if (captured.status !== "ok") throw new Error(captured.message);
+  return captured.expectation;
+}
 
 /** A minimal Storage that can be made to fail on demand. */
 class FakeStorage implements Storage {
@@ -190,8 +202,9 @@ describe("storage envelope: one key, one value, one write", () => {
     const repository = new BrowserLearningLoopRepository(storage);
 
     // The tidy-up of the superseded legacy key fails; the write itself succeeds.
+    const expectation = expectationOf(repository);
     storage.failRemovals = true;
-    expect(repository.recover(seed(), AT).status).toBe("ok");
+    expect(repository.recover(seed(), AT, expectation).status).toBe("ok");
     expect(storage.getItem(LEARNING_LOOP_BACKUP_KEY)).toBe("{stale legacy backup");
 
     // The envelope is authoritative: the snapshot is the value that was actually
@@ -217,11 +230,12 @@ describe("storage envelope: one key, one value, one write", () => {
     repository.commit(null, seed(), AT);
     const before = storage.snapshot();
 
+    const expectation = expectationOf(repository);
     storage.failWrites = true;
     const edited = seed();
     edited.learners[0]!.displayLabel = "Sample Learner A (fictional) edited";
     expect(repository.commit(1, edited, AT).status).toBe("write-failed");
-    expect(repository.recover(seed(), AT).status).toBe("write-failed");
+    expect(repository.recover(seed(), AT, expectation).status).toBe("write-failed");
     expect(repository.clear().status).toBe("write-failed");
     expect(storage.snapshot()).toEqual(before);
   });
@@ -232,12 +246,14 @@ describe("storage envelope: one key, one value, one write", () => {
     repository.commit(null, seed(), AT);
     expect(repository.available).toBe(true);
 
+    const expectation = expectationOf(repository);
     storage.failReads = true;
+    expect(repository.expectation().status).toBe("unavailable");
     expect(repository.read().status).toBe("unavailable");
     expect(repository.readRaw().status).toBe("unavailable");
     expect(repository.readBackup().status).toBe("unavailable");
     expect(repository.commit(1, seed(), AT).status).toBe("unavailable");
-    expect(repository.recover(seed(), AT).status).toBe("unavailable");
+    expect(repository.recover(seed(), AT, expectation).status).toBe("unavailable");
     expect(repository.clear().status).toBe("unavailable");
   });
 
@@ -276,7 +292,7 @@ describe("destructive recovery transaction", () => {
     expect(repository.commit(null, seed(), AT).status).toBe("conflict");
     expect(storage.getItem(LEARNING_LOOP_STORAGE_KEY)).toBe("{not json");
 
-    const recovered = repository.recover(seed(), AT);
+    const recovered = repository.recover(seed(), AT, expectationOf(repository));
     expect(recovered.status).toBe("ok");
     expect(repository.read().status).toBe("ready");
     // The unreadable bytes survive verbatim as the single recovery copy.
@@ -287,14 +303,14 @@ describe("destructive recovery transaction", () => {
   it("replaces the single backup instead of accumulating backups", () => {
     const storage = new FakeStorage();
     const repository = new BrowserLearningLoopRepository(storage);
-    repository.recover(seed(), AT);
+    repository.recover(seed(), AT, expectationOf(repository));
     const firstStored = envelopeIn(storage).current;
 
-    repository.recover(seed(), "2026-03-02T10:00:00.000Z");
+    repository.recover(seed(), "2026-03-02T10:00:00.000Z", expectationOf(repository));
     expect(envelopeIn(storage).backup).toBe(firstStored);
     const secondStored = envelopeIn(storage).current;
 
-    repository.recover(seed(), "2026-03-03T10:00:00.000Z");
+    repository.recover(seed(), "2026-03-03T10:00:00.000Z", expectationOf(repository));
     // Still one key, still exactly one backup: the immediately prior value.
     expect(storage.snapshot().map(([key]) => key)).toEqual([LEARNING_LOOP_STORAGE_KEY]);
     expect(envelopeIn(storage).backup).toBe(secondStored);
@@ -308,7 +324,7 @@ describe("destructive recovery transaction", () => {
 
     const broken = seed();
     broken.goals.push({ ...broken.goals[0]! });
-    expect(repository.recover(broken, AT).status).toBe("invalid");
+    expect(repository.recover(broken, AT, expectationOf(repository)).status).toBe("invalid");
     expect(storage.snapshot()).toEqual(before);
   });
 
@@ -369,7 +385,7 @@ describe("one-snapshot concurrency across two views of the same storage", () => 
     expect(expectation?.token).toBe("{not json");
     expect(expectation?.revision).toBeNull();
 
-    expect(tabB.recover(seed(), AT).status).toBe("ok");
+    expect(tabB.recover(seed(), AT, expectationOf(tabB)).status).toBe("ok");
     const afterOtherTab = storage.snapshot();
 
     expect(tabA.recover(seed(), AT, expectation!).status).toBe("conflict");

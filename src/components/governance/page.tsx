@@ -18,7 +18,14 @@ export function PageHeader({
     // A plain container, not <header>: the page banner landmark belongs to the
     // application shell, and a second banner would create landmark ambiguity.
     <div className="border-b border-border pb-5">
-      <h1 className="font-display text-2xl leading-tight font-bold sm:text-3xl">{title}</h1>
+      {/* Focusable by script only: navigation moves focus here so the next
+          thing read is the name of the page that was just opened. */}
+      <h1
+        tabIndex={-1}
+        className="font-display text-2xl leading-tight font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:text-3xl"
+      >
+        {title}
+      </h1>
       <p className="measure mt-2 text-base text-muted-foreground">{summary}</p>
       {children ? <div className="mt-4">{children}</div> : null}
     </div>

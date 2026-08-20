@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { screen, within } from "@testing-library/react";
+import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderRoute } from "./render-route";
 import { ROUTE_REGISTRY } from "@/lib/route-registry";
@@ -126,7 +126,10 @@ describe("navigation and keyboard operation", () => {
 
     expect(router.state.location.pathname).toBe("/learners");
     expect(screen.queryByRole("dialog")).toBeNull();
-    expect(screen.getByRole("main")).toHaveFocus();
+    // Focus lands on the heading of the page that was just opened.
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { level: 1, name: "Learners" })).toHaveFocus(),
+    );
     expect(window.document.body.style.overflow).toBe("");
   });
 

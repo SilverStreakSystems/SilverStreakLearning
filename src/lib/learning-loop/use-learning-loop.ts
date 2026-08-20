@@ -101,6 +101,13 @@ export interface LearningLoopStore {
   /** The single recovery copy kept from the last destructive replace. */
   backupText: () => RawOutcome;
 
+  /**
+   * Re-reads the stored value into the interface. Used when a destructive
+   * action finds that what is on screen is older than what is stored: the
+   * action is refused and the person is shown the current records instead.
+   */
+  refresh: () => void;
+
   parseImport: typeof parseDocumentText;
   dismissProblem: () => void;
 }
@@ -295,6 +302,13 @@ export function useLearningLoop(
     [repository],
   );
 
+  const refresh = useCallback(() => {
+    const fresh = repository.read();
+    setStatus(statusFromRead(fresh));
+    setDocument(fresh.status === "ready" ? fresh.document : null);
+    setReadProblem(fresh.status === "ready" || fresh.status === "empty" ? null : fresh.message);
+  }, [repository]);
+
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);
   const backupText = useCallback(() => repository.readBackup(), [repository]);
@@ -318,6 +332,7 @@ export function useLearningLoop(
       exportText,
       rawText,
       backupText,
+      refresh,
       parseImport: parseDocumentText,
       dismissProblem,
     }),
@@ -337,6 +352,7 @@ export function useLearningLoop(
       exportText,
       rawText,
       backupText,
+      refresh,
       dismissProblem,
     ],
   );
