@@ -74,3 +74,21 @@ neither WP-007 nor Gate A; and authorized no successor cycle.
 
 RULE FORMALIZED. INTERFACE AUDIT NOT RUN. HREQ-025 STILL DEFERRED. NO CYCLE 8
 AUTHORIZED.
+
+## Validation actually executed, 2026-08-20
+
+| Check | Result |
+| --- | --- |
+| Entry-state reconciliation | Passed. Every controlling fact above verified before any write. |
+| Draft 2020-12 schema validation of `touch-target-rule.json` | Passed. |
+| Focused touch-target suite | 24 of 24 passed. |
+| Full test suite | 405 of 405 passed across 19 files, delta +24 from the 381 of 381 baseline, run with the already-established raised per-test timeout for slow route renders; the accommodation is preserved, not broadened. |
+| Typecheck, `tsgo --noEmit` | 0 errors. |
+| Production build | Succeeded. |
+| Repository lint | 699 problems, the known FND-014 debt, unchanged from entry. Not remediated and not misreported. |
+| Lint on files touched by this cycle | 0 errors. |
+| Generator rerun | `scripts/gen-touch-target-docs.ts` reran with no diff. |
+| Cross-register contradiction scan | No contradiction. DEC-021, EV-043, FND-023, FND-024, CHECKPOINT-009, and the program-state projection agree; no duplicate identifier; one canonical rule record. |
+
+Accessibility checks actually performed: none against the interface. The only
+accessibility work in this cycle was defining a rule and its protocol.
