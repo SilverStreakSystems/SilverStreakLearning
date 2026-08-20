@@ -70,6 +70,15 @@ function chainIsAcyclic(startId: string, next: (id: string) => string | null | u
   return true;
 }
 
+/** Instant comparison. Timestamps are never compared as text. */
+function at(value: string): number {
+  return Date.parse(value);
+}
+
+function isBefore(earlier: string, later: string): boolean {
+  return at(earlier) < at(later);
+}
+
 export function validateDocumentInvariants(document: LearningLoopDocument): InvariantProblem[] {
   const problems: InvariantProblem[] = [];
   const push = (code: string, message: string) => problems.push({ code, message });
@@ -114,8 +123,20 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           "focus-goal-not-active",
           `Goal ${goal.goalId} is marked the focus goal but its status is ${goal.status}.`,
         );
+      if (learners.get(goal.learnerId)?.state === "archived")
+        push(
+          "archived-learner-focus",
+          `Goal ${goal.goalId} is the focus goal of archived learner ${goal.learnerId}.`,
+        );
       focusByLearner.set(goal.learnerId, (focusByLearner.get(goal.learnerId) ?? 0) + 1);
     }
+    if (isBefore(goal.updatedAt, goal.createdAt))
+      push("reversed-timestamps", `Goal ${goal.goalId} was updated before it was created.`);
+    if (goal.status !== "active" && goal.isFocusGoal)
+      push(
+        "focus-goal-not-active",
+        `Goal ${goal.goalId} is marked the focus goal but is not active.`,
+      );
   }
   for (const [learnerId, count] of focusByLearner) {
     if (count > 1)
@@ -160,6 +181,14 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Observation ${observation.observationId} is linked to support outside its learner and goal.`,
         );
       }
+      if (
+        support?.completedAt &&
+        isBefore(observation.observedAt, support.completedAt)
+      )
+        push(
+          "follow-up-before-support",
+          `Observation ${observation.observationId} is dated before the support it follows up.`,
+        );
     }
     if (observation.supersedesObservationId) {
       const target = observations.get(observation.supersedesObservationId);
@@ -177,6 +206,11 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Observation ${observation.observationId} supersedes a record from another learner or goal.`,
         );
       }
+      if (target && isBefore(observation.createdAt, target.createdAt))
+        push(
+          "reversed-supersession",
+          `Observation ${observation.observationId} is dated before the record it replaces.`,
+        );
       if (
         !chainIsAcyclic(
           observation.observationId,
@@ -229,6 +263,24 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
         "missing-completion",
         `Support ${support.supportActionId} is done but carries no completion time.`,
       );
+    if (isBefore(support.updatedAt, support.createdAt))
+      push(
+        "reversed-timestamps",
+        `Support ${support.supportActionId} was updated before it was created.`,
+      );
+    if (support.completedAt && isBefore(support.completedAt, support.plannedAt))
+      push(
+        "completed-before-planned",
+        `Support ${support.supportActionId} was completed before it was planned.`,
+      );
+    for (const observationId of support.basedOnObservationIds) {
+      const observation = observations.get(observationId);
+      if (observation && isBefore(support.plannedAt, observation.observedAt))
+        push(
+          "support-before-evidence",
+          `Support ${support.supportActionId} was planned before observation ${observationId} was made.`,
+        );
+    }
     if (support.status !== "completed" && support.completedAt)
       push(
         "false-completion",
@@ -260,6 +312,11 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           "ownership-mismatch",
           `Review ${review.goalReviewId} cites support outside its learner and goal.`,
         );
+      if (support.completedAt && isBefore(review.reviewedAt, support.completedAt))
+        push(
+          "review-before-completion",
+          `Review ${review.goalReviewId} is dated before the support was carried out.`,
+        );
     }
     for (const observationId of review.observationIds) {
       const observation = observations.get(observationId);
@@ -276,6 +333,11 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Review ${review.goalReviewId} cites an observation outside its learner and goal.`,
         );
       }
+      if (isBefore(review.reviewedAt, observation.observedAt))
+        push(
+          "review-before-evidence",
+          `Review ${review.goalReviewId} is dated before observation ${observationId} was made.`,
+        );
       if (observation.supportActionId !== review.supportActionId)
         push(
           "irrelevant-review-evidence",
@@ -292,6 +354,11 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Review ${review.goalReviewId} supersedes a record from another learner or goal.`,
         );
       }
+      if (target && isBefore(review.createdAt, target.createdAt))
+        push(
+          "reversed-supersession",
+          `Review ${review.goalReviewId} is dated before the record it replaces.`,
+        );
       if (
         !chainIsAcyclic(
           review.goalReviewId,
@@ -312,6 +379,11 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
   for (const learner of document.learners) {
     if (learner.learnerId.startsWith(`${ID_PREFIX.learner}-`) === false)
       push("bad-prefix", `Learner ${learner.learnerId} does not use the learner prefix.`);
+    if (isBefore(learner.updatedAt, learner.createdAt))
+      push(
+        "reversed-timestamps",
+        `Learner ${learner.learnerId} was updated before it was created.`,
+      );
   }
 
   return problems;
