@@ -63,8 +63,8 @@ function SearchPage() {
           placeholder="Decision, finding, evidence, workspace"
         />
         <p aria-live="polite" className="mt-2 text-sm text-muted-foreground">
-          <span className="font-mono text-xs">{hint.marker}</span> {outcome.authorizedMatchCount} authorized
-          records match. {hint.meaning}
+          <span className="font-mono text-xs">{hint.marker}</span> {outcome.authorizedMatchCount}{" "}
+          authorized records match. {hint.meaning}
         </p>
         {outcome.withheldNotice ? (
           <p className="measure mt-1 text-sm text-muted-foreground">{outcome.withheldNotice}</p>

@@ -4,7 +4,7 @@
  * Nothing here blends axes, scores readiness, or reports progress. Counts are
  * counts. A count of modeled streams is not a measure of how ready anything is.
  */
-import type { ValueStreamSearch } from "@/components/governance/value-stream-controls";
+import type { ValueStreamSearch } from "@/components/governance/value-stream-view-model";
 import {
   ENTERPRISE_FUNCTION_IDS,
   ENTERPRISE_FUNCTION_META,
@@ -16,7 +16,10 @@ import {
   type ValueStreamMetric,
 } from "@/domain";
 
-export function filterValueStreams(streams: ValueStream[], search: ValueStreamSearch): ValueStream[] {
+export function filterValueStreams(
+  streams: ValueStream[],
+  search: ValueStreamSearch,
+): ValueStream[] {
   const q = search.q.trim().toLowerCase();
 
   return streams.filter((stream) => {
@@ -112,8 +115,12 @@ export function recordsForStream(
 ) {
   return {
     gates: records.gates.filter((gate) => gate.valueStreamId === streamId),
-    handoffs: records.handoffs.filter((handoff) => handoff.sourceStageId.startsWith(`${streamId}-S`)),
-    dependencies: records.dependencies.filter((dependency) => dependency.valueStreamId === streamId),
+    handoffs: records.handoffs.filter((handoff) =>
+      handoff.sourceStageId.startsWith(`${streamId}-S`),
+    ),
+    dependencies: records.dependencies.filter(
+      (dependency) => dependency.valueStreamId === streamId,
+    ),
     metrics: records.metrics.filter((metric) => metric.valueStreamId === streamId),
   };
 }

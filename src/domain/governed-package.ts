@@ -140,7 +140,10 @@ export function validateGovernedPackage(record: GovernedPackageRecord): string[]
         problems.push(`${at}: digests differ but the record claims a verified match`);
     }
 
-    if (artifact.integrity_state === "NOT-APPLICABLE-SELF-HASH-EXCLUDED" && artifact.declared_sha256 !== null)
+    if (
+      artifact.integrity_state === "NOT-APPLICABLE-SELF-HASH-EXCLUDED" &&
+      artifact.declared_sha256 !== null
+    )
       problems.push(`${at}: self-hash exclusion cannot carry a declared digest`);
 
     if (artifact.retention_state === "NOT-SUPPLIED") {

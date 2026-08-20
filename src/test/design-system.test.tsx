@@ -104,7 +104,6 @@ describe("coordinate grid", () => {
     }
   });
 
-
   it("keeps every blueprint region inside the grid boundary", () => {
     for (const blueprint of PAGE_BLUEPRINTS) {
       expect(blueprint.regions.length).toBeGreaterThan(0);
@@ -181,7 +180,6 @@ describe("state and honesty rules", () => {
       expect(state.requiredContent.join(" ").toLowerCase()).toMatch(wayForward);
     }
   });
-
 
   it("records the refused claims for this increment", () => {
     const claims = VISUAL_SYSTEM_REFUSALS.map((refusal) => refusal.claim.toLowerCase()).join(" | ");

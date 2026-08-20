@@ -64,7 +64,6 @@ describe("detail route coverage", () => {
   );
 });
 
-
 describe("navigation and keyboard operation", () => {
   it("places the skip link first in tab order and points it at main content", async () => {
     const user = userEvent.setup();

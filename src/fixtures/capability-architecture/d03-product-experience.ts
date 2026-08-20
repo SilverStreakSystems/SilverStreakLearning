@@ -125,7 +125,9 @@ const seeds: CapabilitySeed[] = [
     gates: ["before-district-pilot"],
     risk: "Legal exposure and exclusion of the users SSLS exists to serve.",
     standards: ["ULW-AS-001 v1.3"],
-    incompatible: ["Same person owning accessibility design and independent accessibility validation."],
+    incompatible: [
+      "Same person owning accessibility design and independent accessibility validation.",
+    ],
   },
   {
     id: "CAP-D03-006",

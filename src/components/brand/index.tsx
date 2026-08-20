@@ -26,19 +26,15 @@ interface DecorableProps {
 
 function svgA11yProps(title: string | undefined, titleId: string) {
   return title
-    ? ({ role: "img" as const, "aria-labelledby": titleId })
-    : ({ "aria-hidden": true as const, focusable: "false" as const });
+    ? { role: "img" as const, "aria-labelledby": titleId }
+    : { "aria-hidden": true as const, focusable: "false" as const };
 }
 
 /**
  * Four-point endpoint star. Inline signal 12-16px, icon 20-32px,
  * hero endpoint 40-72px.
  */
-export function SSLSStar({
-  className,
-  title,
-  size = 16,
-}: DecorableProps & { size?: number }) {
+export function SSLSStar({ className, title, size = 16 }: DecorableProps & { size?: number }) {
   const titleId = "ssls-star-title";
   return (
     <svg
@@ -103,11 +99,7 @@ export function SSLSTrajectory({
 /**
  * Monogram. Minimum compact digital size 32px; navigation use 32-44px high.
  */
-export function SSLSMonogram({
-  className,
-  title,
-  size = 40,
-}: DecorableProps & { size?: number }) {
+export function SSLSMonogram({ className, title, size = 40 }: DecorableProps & { size?: number }) {
   const titleId = "ssls-monogram-title";
   return (
     <svg
@@ -143,10 +135,7 @@ export function SSLSMonogram({
         strokeLinecap="round"
         opacity={0.6}
       />
-      <path
-        d="M50 8 L53 16 L61 19 L53 22 L50 30 L47 22 L39 19 L47 16 Z"
-        fill="currentColor"
-      />
+      <path d="M50 8 L53 16 L61 19 L53 22 L50 30 L47 22 L39 19 L47 16 Z" fill="currentColor" />
     </svg>
   );
 }

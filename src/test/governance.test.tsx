@@ -53,7 +53,9 @@ describe("candidate material never renders as approved", () => {
     badges.forEach((badge) => {
       expect(badge.getAttribute("data-implementation-authority")).toBe("no");
     });
-    expect(container.querySelectorAll('[data-authority-class="approved-authority"]').length).toBe(0);
+    expect(container.querySelectorAll('[data-authority-class="approved-authority"]').length).toBe(
+      0,
+    );
   });
 
   it("marks synthetic records visibly wherever they appear", async () => {
@@ -138,6 +140,8 @@ describe("essential text is not truncated", () => {
     const { container } = await renderRoute("/authority");
     expect(container.querySelectorAll(".truncate").length).toBe(0);
     expect(container.querySelectorAll(".text-ellipsis").length).toBe(0);
-    expect(container.querySelectorAll(".line-clamp-1, .line-clamp-2, .line-clamp-3").length).toBe(0);
+    expect(container.querySelectorAll(".line-clamp-1, .line-clamp-2, .line-clamp-3").length).toBe(
+      0,
+    );
   });
 });

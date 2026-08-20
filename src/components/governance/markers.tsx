@@ -53,13 +53,7 @@ export function GatedPanel({
 }
 
 /** Small labelled field used across registry detail views. */
-export function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
+export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-1 py-2">
       <dt className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
@@ -70,7 +64,13 @@ export function Field({
   );
 }
 
-export function ValueList({ items, empty = "None recorded." }: { items: string[]; empty?: string }) {
+export function ValueList({
+  items,
+  empty = "None recorded.",
+}: {
+  items: string[];
+  empty?: string;
+}) {
   if (items.length === 0) {
     return <span className="text-muted-foreground">{empty}</span>;
   }

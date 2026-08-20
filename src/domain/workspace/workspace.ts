@@ -37,36 +37,37 @@ export interface WorkspaceAvailabilityMeta {
   operatesNow: boolean;
 }
 
-export const WORKSPACE_AVAILABILITY_META: Record<WorkspaceAvailability, WorkspaceAvailabilityMeta> = {
-  current: {
-    id: "current",
-    label: "Current",
-    marker: "[CUR]",
-    meaning: "Operating now for the founder and developer capacity, using real project records.",
-    operatesNow: true,
-  },
-  candidate: {
-    id: "candidate",
-    label: "Candidate",
-    marker: "[CAND]",
-    meaning: "Architecture is defined and previewable. It is not operating authority.",
-    operatesNow: false,
-  },
-  "gated-future": {
-    id: "gated-future",
-    label: "Gated future",
-    marker: "[GATE]",
-    meaning: "Held behind a named gate. It may not be built until that gate is passed.",
-    operatesNow: false,
-  },
-  preview: {
-    id: "preview",
-    label: "Preview",
-    marker: "[PREV]",
-    meaning: "Rendered with synthetic records so the projection architecture can be tested.",
-    operatesNow: false,
-  },
-};
+export const WORKSPACE_AVAILABILITY_META: Record<WorkspaceAvailability, WorkspaceAvailabilityMeta> =
+  {
+    current: {
+      id: "current",
+      label: "Current",
+      marker: "[CUR]",
+      meaning: "Operating now for the founder and developer capacity, using real project records.",
+      operatesNow: true,
+    },
+    candidate: {
+      id: "candidate",
+      label: "Candidate",
+      marker: "[CAND]",
+      meaning: "Architecture is defined and previewable. It is not operating authority.",
+      operatesNow: false,
+    },
+    "gated-future": {
+      id: "gated-future",
+      label: "Gated future",
+      marker: "[GATE]",
+      meaning: "Held behind a named gate. It may not be built until that gate is passed.",
+      operatesNow: false,
+    },
+    preview: {
+      id: "preview",
+      label: "Preview",
+      marker: "[PREV]",
+      meaning: "Rendered with synthetic records so the projection architecture can be tested.",
+      operatesNow: false,
+    },
+  };
 
 export const WORKSPACE_IMPLEMENTATION_STATES = [
   "implemented",
@@ -271,10 +272,14 @@ export const PROHIBITED_SIGNAL_REASON: Record<ProhibitedWorkspaceSignal, string>
   "mouse or activity telemetry used for performance":
     "Turns coordination tooling into monitoring infrastructure.",
   "screen-time scoring": "Confuses time in an interface with contribution.",
-  "opaque productivity ranking": "Cannot be examined, contested, or corrected by the person ranked.",
-  "automated performance evaluation": "A consequential judgment about a human made without a human.",
-  "inferred effort or commitment score": "Infers an inner state from observable clicks. Unsupportable.",
-  "learner surveillance": "Learning visibility means evidence of learning, not observation of learners.",
+  "opaque productivity ranking":
+    "Cannot be examined, contested, or corrected by the person ranked.",
+  "automated performance evaluation":
+    "A consequential judgment about a human made without a human.",
+  "inferred effort or commitment score":
+    "Infers an inner state from observable clicks. Unsupportable.",
+  "learner surveillance":
+    "Learning visibility means evidence of learning, not observation of learners.",
   "employee surveillance": "Operational visibility coordinates work; it does not watch people.",
   "engagement frequency ranking": "Prioritises what is touched often over what is important.",
   "blended readiness percentage": BLENDED_READINESS_REFUSAL,

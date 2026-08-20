@@ -66,7 +66,8 @@ export const DECISION_RIGHT_META: Record<DecisionRight, DecisionRightMeta> = {
   "veto-stop": {
     id: "veto-stop",
     label: "Veto or stop",
-    meaning: "May halt the flow on a named safety, legal, privacy, accessibility, or evidence ground.",
+    meaning:
+      "May halt the flow on a named safety, legal, privacy, accessibility, or evidence ground.",
     doesNotGrant: "Does not confer authority to redesign the work being stopped.",
   },
 };

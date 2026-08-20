@@ -10,7 +10,13 @@
  */
 import type { AuthorityClass } from "../authority";
 import type { Provenance } from "./governance-metadata";
-import type { ApprovalState, EvidenceState, PublicationState, ValidationState, WorkflowState } from "./states";
+import type {
+  ApprovalState,
+  EvidenceState,
+  PublicationState,
+  ValidationState,
+  WorkflowState,
+} from "./states";
 
 export interface ArtifactReference {
   artifactReferenceId: string;
@@ -66,5 +72,8 @@ export const DELIVERABLE_RULES: { id: string; rule: string }[] = [
   { id: "DEL-02", rule: "The canonical artifact is stored once and referenced everywhere else." },
   { id: "DEL-03", rule: "Producing a deliverable never changes any object's authority state." },
   { id: "DEL-04", rule: "An approval authorizes one version; the next version is unapproved." },
-  { id: "DEL-05", rule: "Acceptance criteria are recorded before the work, not written to fit the result." },
+  {
+    id: "DEL-05",
+    rule: "Acceptance criteria are recorded before the work, not written to fit the result.",
+  },
 ];

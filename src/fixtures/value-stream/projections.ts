@@ -67,7 +67,8 @@ export const VALUE_STREAM_PROJECTIONS: ProjectionContract[] = [
   },
   {
     surface: "individual-action-center",
-    purpose: "Show a person acting in a declared capacity the next legitimate action available to them.",
+    purpose:
+      "Show a person acting in a declared capacity the next legitimate action available to them.",
     audience: "One person, in one acting capacity, at one time.",
     readOnlyProjection: true,
     active: false,

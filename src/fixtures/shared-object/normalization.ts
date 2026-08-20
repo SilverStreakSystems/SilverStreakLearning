@@ -26,8 +26,10 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     resolvedTypeId: null,
     disposition: "demoted-to-relationship",
     observation: "Handoff needs terms of acceptance, which is more than a bare edge carries.",
-    judgment: "Kept as the handed-off-to relationship with a HandoffTerms record attached to the edge.",
-    costOfDecision: "Queued handoffs cannot be listed as work in their own right until a value stream needs it.",
+    judgment:
+      "Kept as the handed-off-to relationship with a HandoffTerms record attached to the edge.",
+    costOfDecision:
+      "Queued handoffs cannot be listed as work in their own right until a value stream needs it.",
     reversible: true,
   },
   {
@@ -38,7 +40,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     disposition: "demoted-to-relationship",
     observation: "Escalation is a routing property of work, not a thing that exists independently.",
     judgment: "Modeled as escalates-to plus an escalation role on the work item.",
-    costOfDecision: "Escalation history is read from work history rather than from its own register.",
+    costOfDecision:
+      "Escalation history is read from work history rather than from its own register.",
     reversible: true,
   },
   {
@@ -49,7 +52,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     disposition: "demoted-to-relationship",
     observation: "A commitment is a work item with an external counterparty and a promised date.",
     judgment: "Modeled as commits-to on a work item rather than a parallel object family.",
-    costOfDecision: "Contractual commitments will likely need their own object once contracts are real.",
+    costOfDecision:
+      "Contractual commitments will likely need their own object once contracts are real.",
     reversible: true,
   },
   {
@@ -58,8 +62,10 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     candidateName: "Knowledge Object as abstract superclass",
     resolvedTypeId: "knowledge-object",
     disposition: "rejected-abstraction",
-    observation: "Guidance, policy, standard, and curriculum differ in exactly the ways the abstraction hid.",
-    judgment: "One record with an explicit knowledgeType; policy and standard remain separate first-class types.",
+    observation:
+      "Guidance, policy, standard, and curriculum differ in exactly the ways the abstraction hid.",
+    judgment:
+      "One record with an explicit knowledgeType; policy and standard remain separate first-class types.",
     costOfDecision: "Two places to look for something that is loosely 'knowledge'.",
     reversible: true,
   },
@@ -82,7 +88,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     disposition: "merged-into-other-type",
     observation: "The snapshot has no meaning apart from the communication it belongs to.",
     judgment: "Folded into the gated communication reference.",
-    costOfDecision: "Eligibility logic cannot be reviewed on its own until communication is authorized.",
+    costOfDecision:
+      "Eligibility logic cannot be reviewed on its own until communication is authorized.",
     reversible: true,
   },
   {
@@ -93,7 +100,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     disposition: "deferred",
     observation: "Nothing can be dispatched; no provider handoff exists.",
     judgment: "Deferred until communication execution is separately authorized.",
-    costOfDecision: "The eventual send path is unmodeled, which is the correct state while it is prohibited.",
+    costOfDecision:
+      "The eventual send path is unmodeled, which is the correct state while it is prohibited.",
     reversible: true,
   },
   {
@@ -115,7 +123,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     disposition: "demoted-to-relationship",
     observation: "Listed as an object in the brief, but it is the definition of an edge.",
     judgment: "Modeled as related-to-organization with effective dates on the edge.",
-    costOfDecision: "Relationship history needs edge versioning, which is asserted but not implemented.",
+    costOfDecision:
+      "Relationship history needs edge versioning, which is asserted but not implemented.",
     reversible: true,
   },
   {
@@ -146,8 +155,10 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     candidateName: "Student, Family, and Educator records",
     resolvedTypeId: "person-reference",
     disposition: "kept-bounded",
-    observation: "These carry domain rules that do not generalize and personal data that is prohibited here.",
-    judgment: "Only a minimal person reference is shared; the domain records stay in their bounded contexts.",
+    observation:
+      "These carry domain rules that do not generalize and personal data that is prohibited here.",
+    judgment:
+      "Only a minimal person reference is shared; the domain records stay in their bounded contexts.",
     costOfDecision: "Cross-context joins will need explicit mapping later.",
     reversible: false,
   },
@@ -157,7 +168,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     candidateName: "A second authority vocabulary for objects",
     resolvedTypeId: null,
     disposition: "rejected-abstraction",
-    observation: "The brief's example authority states overlapped the existing eight authority classes.",
+    observation:
+      "The brief's example authority states overlapped the existing eight authority classes.",
     judgment: "Reused the existing vocabulary rather than defining a parallel one.",
     costOfDecision: "The brief's example names do not appear verbatim in the code.",
     reversible: false,
@@ -168,7 +180,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     candidateName: "Generic status field",
     resolvedTypeId: null,
     disposition: "rejected-abstraction",
-    observation: "One status field was being asked to mean workflow, authority, validation, and freshness at once.",
+    observation:
+      "One status field was being asked to mean workflow, authority, validation, and freshness at once.",
     judgment: "Split into eight independent axes; no combined status field exists.",
     costOfDecision: "More fields to populate and more columns to render.",
     reversible: false,
@@ -180,7 +193,8 @@ export const OBJECT_NORMALIZATION_FINDINGS: ObjectNormalizationFinding[] = [
     resolvedTypeId: null,
     disposition: "deferred",
     observation: "Capacity modeling slides quickly into monitoring individuals.",
-    judgment: "Deferred, and the prohibited monitoring fields are named explicitly and locked by test.",
+    judgment:
+      "Deferred, and the prohibited monitoring fields are named explicitly and locked by test.",
     costOfDecision: "No capacity view is possible; this is intentional.",
     reversible: true,
   },
@@ -193,7 +207,8 @@ export const RELATIONSHIP_NORMALIZATION_FINDINGS: RelationshipNormalizationFindi
     candidateVerb: "requirement implemented_by work / decision creates work",
     resolvedKind: "creates-work",
     observation: "Both described work coming into existence because of a governance object.",
-    judgment: "Kept both: implemented-by asserts satisfaction, creates-work asserts origin. Different questions.",
+    judgment:
+      "Kept both: implemented-by asserts satisfaction, creates-work asserts origin. Different questions.",
     costOfDecision: "Readers must learn the distinction.",
     reversible: true,
   },
@@ -203,8 +218,10 @@ export const RELATIONSHIP_NORMALIZATION_FINDINGS: RelationshipNormalizationFindi
     candidateVerb: "relates_to",
     resolvedKind: "relates-to-event",
     observation: "A generic relates_to would absorb every edge and explain none.",
-    judgment: "Narrowed to events only, where the association genuinely carries no further meaning.",
-    costOfDecision: "Some legitimate loose associations have nowhere to go and must be named later.",
+    judgment:
+      "Narrowed to events only, where the association genuinely carries no further meaning.",
+    costOfDecision:
+      "Some legitimate loose associations have nowhere to go and must be named later.",
     reversible: true,
   },
   {
@@ -242,7 +259,8 @@ export const RELATIONSHIP_NORMALIZATION_FINDINGS: RelationshipNormalizationFindi
     issue: "cardinality-undefined",
     candidateVerb: "evidence supports claim",
     resolvedKind: "supports-claim",
-    observation: "One evidence record may support several claims, and one claim needs several records.",
+    observation:
+      "One evidence record may support several claims, and one claim needs several records.",
     judgment: "Declared many-to-many, with claim validation counting supporting records.",
     costOfDecision: "None identified.",
     reversible: false,
@@ -263,7 +281,8 @@ export const RELATIONSHIP_NORMALIZATION_FINDINGS: RelationshipNormalizationFindi
     candidateVerb: "context_package projects_from source_object",
     resolvedKind: "projects-from",
     observation: "The direction was ambiguous and invited reading a package as owning its sources.",
-    judgment: "Direction fixed from package to source, with an explicit note that authority never transfers.",
+    judgment:
+      "Direction fixed from package to source, with an explicit note that authority never transfers.",
     costOfDecision: "None identified.",
     reversible: false,
   },

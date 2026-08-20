@@ -36,11 +36,19 @@ export const GLOBAL_UTILITIES: GlobalUtilityContract[] = [
   {
     utilityId: "universal-search",
     name: "Universal search",
-    purpose: "Find any authorized governed record across the shell without leaking the existence of others.",
+    purpose:
+      "Find any authorized governed record across the shell without leaking the existence of others.",
     question: "Where is the record that answers my question?",
     route: "/search",
     availability: "current",
-    readsCanonicalObjects: ["decision", "finding", "evidence", "claim", "enterprise-capability", "work-item"],
+    readsCanonicalObjects: [
+      "decision",
+      "finding",
+      "evidence",
+      "claim",
+      "enterprise-capability",
+      "work-item",
+    ],
     createsCanonicalObjects: [],
     boundary:
       "Authorization filters the candidate set before matching or counting. Counts, facets, and suggestions come from authorized records only.",
@@ -53,7 +61,8 @@ export const GLOBAL_UTILITIES: GlobalUtilityContract[] = [
   {
     utilityId: "notifications",
     name: "Notifications",
-    purpose: "Surface the small set of states where a human owes a response or must know that work has stopped.",
+    purpose:
+      "Surface the small set of states where a human owes a response or must know that work has stopped.",
     question: "What changed that I am obliged to respond to?",
     route: "/notifications",
     availability: "current",
@@ -66,7 +75,8 @@ export const GLOBAL_UTILITIES: GlobalUtilityContract[] = [
   {
     utilityId: "my-workspaces",
     name: "My workspaces",
-    purpose: "Show which workspaces the current capacity may enter, and which are held behind a gate.",
+    purpose:
+      "Show which workspaces the current capacity may enter, and which are held behind a gate.",
     question: "Where am I authorized to work?",
     route: "/workspaces",
     availability: "current",
@@ -79,20 +89,23 @@ export const GLOBAL_UTILITIES: GlobalUtilityContract[] = [
   {
     utilityId: "knowledge-help",
     name: "Knowledge and help",
-    purpose: "Explain the system while keeping governing policy visibly separate from explanatory help.",
+    purpose:
+      "Explain the system while keeping governing policy visibly separate from explanatory help.",
     question: "What does this mean, and what governs it?",
     route: "/help",
     availability: "current",
     readsCanonicalObjects: ["policy-rule", "standard", "knowledge-object"],
     createsCanonicalObjects: [],
-    boundary: "Help text never governs. Only policies, standards, procedures, and boundary statements do.",
+    boundary:
+      "Help text never governs. Only policies, standards, procedures, and boundary statements do.",
     accessibilityRequirements: UTILITY_ACCESSIBILITY,
     notes: "Every entry declares whether it governs work.",
   },
   {
     utilityId: "profile-capacity",
     name: "Profile and acting capacity",
-    purpose: "Make it unambiguous who is acting, in what capacity, and what that capacity may not do.",
+    purpose:
+      "Make it unambiguous who is acting, in what capacity, and what that capacity may not do.",
     question: "In what capacity am I acting right now?",
     route: "/profile",
     availability: "current",
@@ -150,12 +163,21 @@ export const PROJECTION_PATTERN_CONTRACTS: ProjectionPatternContract[] = [
   },
   {
     patternId: "manager-view",
-    purpose: "Show capacity, obligations, and blockers for a team without observing the people in it.",
+    purpose:
+      "Show capacity, obligations, and blockers for a team without observing the people in it.",
     availability: "candidate",
     sections: [
       { sectionId: "obligations", label: "Team obligations", reads: ["work-item", "commitment"] },
-      { sectionId: "blockers", label: "Blockers and dependencies", reads: ["dependency", "finding"] },
-      { sectionId: "capacity", label: "Declared capacity", reads: ["role-reference", "acting-capacity"] },
+      {
+        sectionId: "blockers",
+        label: "Blockers and dependencies",
+        reads: ["dependency", "finding"],
+      },
+      {
+        sectionId: "capacity",
+        label: "Declared capacity",
+        reads: ["role-reference", "acting-capacity"],
+      },
     ],
     requiredContext: ["Team scope", "Policy basis for management visibility"],
     prohibitedContent: [
@@ -163,7 +185,8 @@ export const PROJECTION_PATTERN_CONTRACTS: ProjectionPatternContract[] = [
       "Activity or presence telemetry",
       "Automated performance evaluation",
     ],
-    duplicationRule: "Reads the same work items the individual sees. No manager-only shadow record exists.",
+    duplicationRule:
+      "Reads the same work items the individual sees. No manager-only shadow record exists.",
     accessibilityRequirements: ["Dense tables keep headers and scroll rather than truncate."],
     configurationNote: "Configured by team scope and policy basis only.",
   },
@@ -173,29 +196,43 @@ export const PROJECTION_PATTERN_CONTRACTS: ProjectionPatternContract[] = [
     availability: "candidate",
     sections: [
       { sectionId: "owed", label: "What I owe", reads: ["work-item", "decision", "finding"] },
-      { sectionId: "waiting", label: "What is waiting on others", reads: ["dependency", "handoff"] },
+      {
+        sectionId: "waiting",
+        label: "What is waiting on others",
+        reads: ["dependency", "handoff"],
+      },
     ],
     requiredContext: ["Acting capacity", "Authority basis for each action"],
     prohibitedContent: ["Engagement scoring", "Opaque model ranking"],
-    duplicationRule: "Identical to the Action Center contract. There is one obligation projection, not two.",
+    duplicationRule:
+      "Identical to the Action Center contract. There is one obligation projection, not two.",
     accessibilityRequirements: ["Ordering rationale is stated in text on the surface."],
     configurationNote: "Configured by capacity. Nothing else.",
   },
   {
     patternId: "cross-functional-program",
-    purpose: "Give several functions one shared view of a programme without any of them owning the records.",
+    purpose:
+      "Give several functions one shared view of a programme without any of them owning the records.",
     availability: "candidate",
     sections: [
       { sectionId: "shared-decisions", label: "Shared decisions", reads: ["decision"] },
       { sectionId: "shared-gates", label: "Shared gates", reads: ["approval", "evidence"] },
       { sectionId: "shared-risks", label: "Shared risks and findings", reads: ["risk", "finding"] },
     ],
-    requiredContext: ["Programme question", "Participating functions", "Shared value stream stages"],
-    prohibitedContent: ["A programme-local copy of any canonical object", "A single programme health score"],
+    requiredContext: [
+      "Programme question",
+      "Participating functions",
+      "Shared value stream stages",
+    ],
+    prohibitedContent: [
+      "A programme-local copy of any canonical object",
+      "A single programme health score",
+    ],
     duplicationRule:
       "The programme view is a projection. Editing happens in the canonical register, never in the programme surface.",
     accessibilityRequirements: ["One H1, headed sections, keyboard operable throughout."],
-    configurationNote: "Configured by naming participating functions and the shared objects they already hold.",
+    configurationNote:
+      "Configured by naming participating functions and the shared objects they already hold.",
   },
 ];
 
@@ -204,7 +241,11 @@ export const CROSS_FUNCTIONAL_PROGRAMS: CrossFunctionalProgram[] = [
     programId: "program-governed-foundation",
     name: "Governed foundation increment",
     question: "Is the foundation shell coherent, evidenced, and honestly labelled?",
-    participatingFunctions: ["Strategy and Governance", "Engineering and Delivery", "Trust, Quality and Assurance"],
+    participatingFunctions: [
+      "Strategy and Governance",
+      "Engineering and Delivery",
+      "Trust, Quality and Assurance",
+    ],
     sharedValueStreamStages: ["requirement-decision", "decision-build", "build-validation"],
     sharedDecisions: ["Authority model", "Governed boundary"],
     sharedDeliverables: ["Governed shell routes", "Architecture documentation"],
@@ -214,7 +255,8 @@ export const CROSS_FUNCTIONAL_PROGRAMS: CrossFunctionalProgram[] = [
     sharedRisks: ["Single-operator concentration"],
     sharedFindings: ["No independent validation has occurred"],
     availability: "candidate",
-    duplicationRule: "Every item above is a reference to a canonical record held by its owning register.",
+    duplicationRule:
+      "Every item above is a reference to a canonical record held by its owning register.",
   },
 ];
 

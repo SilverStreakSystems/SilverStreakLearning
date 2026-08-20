@@ -64,13 +64,16 @@ export function validateRestatementRelation(
   const issues: string[] = [];
   const id = relation.relation_id || "(missing id)";
 
-  if (!/^RST-\d{3}$/.test(relation.relation_id)) issues.push(`${id}: relation_id must match RST-000.`);
+  if (!/^RST-\d{3}$/.test(relation.relation_id))
+    issues.push(`${id}: relation_id must match RST-000.`);
   if (!/^HREQ-\d{3}$/.test(relation.subject_requirement))
     issues.push(`${id}: subject_requirement must match HREQ-000.`);
   if (!/^HS-\d{3}$/.test(relation.subject_source))
     issues.push(`${id}: subject_source must match HS-000.`);
   if (!knownRequirementIds.includes(relation.subject_requirement))
-    issues.push(`${id}: subject_requirement ${relation.subject_requirement} is not a known candidate.`);
+    issues.push(
+      `${id}: subject_requirement ${relation.subject_requirement} is not a known candidate.`,
+    );
   if (!has(RESTATEMENT_RELATIONSHIPS, relation.relationship))
     issues.push(`${id}: unknown relationship.`);
   if (!relation.basis.trim()) issues.push(`${id}: basis is required.`);
@@ -81,7 +84,9 @@ export function validateRestatementRelation(
       issues.push(`${id}: a NEW row names no counterpart requirement or source.`);
   } else {
     if (!relation.related_requirement || !relation.related_source)
-      issues.push(`${id}: a ${relation.relationship} row must name a counterpart requirement and source.`);
+      issues.push(
+        `${id}: a ${relation.relationship} row must name a counterpart requirement and source.`,
+      );
     if (relation.related_requirement && !knownRequirementIds.includes(relation.related_requirement))
       issues.push(
         `${id}: related_requirement ${relation.related_requirement} is not a known candidate.`,

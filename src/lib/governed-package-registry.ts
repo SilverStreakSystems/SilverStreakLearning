@@ -30,9 +30,10 @@ export function loadGovernedPackages(): GovernedPackageRecord[] {
 }
 
 export function loadGovernedPackageSchema(): Record<string, unknown> {
-  return JSON.parse(
-    readFileSync(join(DATA_DIR, "GOVERNED_PACKAGE_SCHEMA.json"), "utf8"),
-  ) as Record<string, unknown>;
+  return JSON.parse(readFileSync(join(DATA_DIR, "GOVERNED_PACKAGE_SCHEMA.json"), "utf8")) as Record<
+    string,
+    unknown
+  >;
 }
 
 export function findGovernedPackage(packageId: string): GovernedPackageRecord | undefined {
@@ -40,7 +41,5 @@ export function findGovernedPackage(packageId: string): GovernedPackageRecord | 
 }
 
 export function loadPackageDriftFile(): PackageDriftFile {
-  return JSON.parse(
-    readFileSync(join(DATA_DIR, "package-drift.json"), "utf8"),
-  ) as PackageDriftFile;
+  return JSON.parse(readFileSync(join(DATA_DIR, "package-drift.json"), "utf8")) as PackageDriftFile;
 }

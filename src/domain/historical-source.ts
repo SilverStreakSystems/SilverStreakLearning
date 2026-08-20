@@ -139,12 +139,16 @@ export function validateHistoricalSource(record: HistoricalSourceRecord): string
     issues.push(`${id}: unknown recovery_relevance.`);
   if (!record.recovery_relevance_reason.trim())
     issues.push(`${id}: recovery_relevance_reason is required.`);
-  if (!has(PROMOTION_STATES, record.promotion_state)) issues.push(`${id}: unknown promotion_state.`);
+  if (!has(PROMOTION_STATES, record.promotion_state))
+    issues.push(`${id}: unknown promotion_state.`);
   if (!has(PII_STATUSES, record.pii_status)) issues.push(`${id}: unknown pii_status.`);
   if (!ISO_DATE.test(record.inventoried_on)) issues.push(`${id}: inventoried_on must be ISO date.`);
   if (!record.boundary.trim()) issues.push(`${id}: boundary is required.`);
 
-  if (record.authority_classification !== "CURRENT-AUTHORITY" && record.promotion_state !== "NOT-PROMOTED")
+  if (
+    record.authority_classification !== "CURRENT-AUTHORITY" &&
+    record.promotion_state !== "NOT-PROMOTED"
+  )
     issues.push(`${id}: only a CURRENT-AUTHORITY source may carry a promoted state.`);
 
   if (record.version_or_hash === "NOT-AVAILABLE" && record.access_limitation === "FULL")
@@ -177,5 +181,8 @@ export function validateHistoricalSource(record: HistoricalSourceRecord): string
 
 /** A source that must be read before requirement extraction can be considered complete. */
 export function isRecoveryCritical(record: HistoricalSourceRecord): boolean {
-  return record.recovery_relevance === "HIGH" && record.access_limitation !== "NOT-ACCESSIBLE-TO-EXECUTOR";
+  return (
+    record.recovery_relevance === "HIGH" &&
+    record.access_limitation !== "NOT-ACCESSIBLE-TO-EXECUTOR"
+  );
 }

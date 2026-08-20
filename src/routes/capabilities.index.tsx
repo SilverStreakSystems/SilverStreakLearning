@@ -16,9 +16,11 @@ import {
   GateChip,
   IndependenceChip,
   StageChip,
+} from "@/components/governance/capability-controls";
+import {
   parseCapabilitySearch,
   type CapabilitySearch,
-} from "@/components/governance/capability-controls";
+} from "@/components/governance/capability-view-model";
 import {
   CAPABILITY_DEPENDENCIES,
   DELIVERABLE_TYPES,
@@ -66,7 +68,10 @@ export const Route = createFileRoute("/capabilities/")({
         content:
           "Candidate registry of SSLS enterprise capabilities across twelve domains, with independence rules, maturity stages, trigger gates, and dependencies.",
       },
-      { property: "og:title", content: "Enterprise Capability Architecture v0.1 (Candidate) | SSLS" },
+      {
+        property: "og:title",
+        content: "Enterprise Capability Architecture v0.1 (Candidate) | SSLS",
+      },
       {
         property: "og:description",
         content:
@@ -115,7 +120,9 @@ function CapabilityCommandView() {
       {search.view === "domains" ? <DomainMapView search={search} /> : null}
       {search.view === "dependencies" ? <DependencyView search={search} /> : null}
       {search.view === "maturity" ? <MaturityView capabilities={filtered} search={search} /> : null}
-      {search.view === "independence" ? <IndependenceView capabilities={filtered} search={search} /> : null}
+      {search.view === "independence" ? (
+        <IndependenceView capabilities={filtered} search={search} />
+      ) : null}
       {search.view === "gates" ? <GateView search={search} /> : null}
       {search.view === "coverage" ? <CoverageView capabilities={filtered} search={search} /> : null}
       {search.view === "deliverables" ? <DeliverableView search={search} /> : null}
@@ -367,7 +374,12 @@ function IndependenceView({
             ) : (
               <RegistryTable
                 caption={`Capabilities where ${INDEPENDENCE_LABEL[level].toLowerCase()}`}
-                headers={["Capability", "Separation of duties", "Trigger", "Incompatible combinations"]}
+                headers={[
+                  "Capability",
+                  "Separation of duties",
+                  "Trigger",
+                  "Incompatible combinations",
+                ]}
               >
                 {groups[level].map((capability) => (
                   <tr key={capability.capabilityId}>
@@ -492,7 +504,13 @@ function DeliverableView({ search: _search }: { search: CapabilitySearch }) {
     >
       <RegistryTable
         caption="Deliverable types with default authority and whether they may justify implementation"
-        headers={["Deliverable type", "Answers", "Default authority", "May justify implementation", "Exists today"]}
+        headers={[
+          "Deliverable type",
+          "Answers",
+          "Default authority",
+          "May justify implementation",
+          "Exists today",
+        ]}
       >
         {DELIVERABLE_TYPES.map((deliverable) => (
           <tr key={deliverable.id}>

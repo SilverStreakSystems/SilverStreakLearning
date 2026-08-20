@@ -66,7 +66,9 @@ function NotificationsPage() {
                 </RowHeader>
                 <Cell>
                   {notification.title}
-                  <span className="mt-1 block text-xs text-muted-foreground">{notification.detail}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    {notification.detail}
+                  </span>
                 </Cell>
                 <Cell>
                   {NOTIFICATION_TRIGGER_LABEL[notification.trigger]}
@@ -74,7 +76,9 @@ function NotificationsPage() {
                     {notification.necessityBasis}
                   </span>
                 </Cell>
-                <Cell>{notification.actionRequired ?? "None. Recorded so it is not a surprise later."}</Cell>
+                <Cell>
+                  {notification.actionRequired ?? "None. Recorded so it is not a surprise later."}
+                </Cell>
                 <Cell>
                   <Link to={notification.canonicalSource.route}>
                     {notification.canonicalSource.objectId}

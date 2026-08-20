@@ -65,7 +65,9 @@ describe("every record answers the required governance questions", () => {
 
   it("declares required deliverables and evidence for every capability", () => {
     for (const capability of ENTERPRISE_CAPABILITIES) {
-      expect(capability.requiredDeliverableTypes.length, capability.capabilityId).toBeGreaterThan(0);
+      expect(capability.requiredDeliverableTypes.length, capability.capabilityId).toBeGreaterThan(
+        0,
+      );
       expect(capability.requiredEvidence.length, capability.capabilityId).toBeGreaterThan(0);
     }
   });
@@ -129,7 +131,10 @@ describe("stage and gate discipline", () => {
 describe("independence rules", () => {
   it("states a separation of duties for every capability and a trigger for conditional ones", () => {
     for (const capability of ENTERPRISE_CAPABILITIES) {
-      expect(capability.independence.separationOfDuties.length, capability.capabilityId).toBeGreaterThan(0);
+      expect(
+        capability.independence.separationOfDuties.length,
+        capability.capabilityId,
+      ).toBeGreaterThan(0);
       if (capability.independence.level === "conditional") {
         expect(capability.independence.trigger, capability.capabilityId).toBeTruthy();
       }
@@ -139,7 +144,9 @@ describe("independence rules", () => {
   it("never lets a capability requiring independence be covered by the founder alone", () => {
     for (const capability of ENTERPRISE_CAPABILITIES) {
       if (capability.independence.level === "required") {
-        expect(capability.consolidationEligibility, capability.capabilityId).not.toEqual(["founder"]);
+        expect(capability.consolidationEligibility, capability.capabilityId).not.toEqual([
+          "founder",
+        ]);
       }
     }
   });
@@ -170,7 +177,9 @@ describe("filtering", () => {
     const before = ENTERPRISE_CAPABILITIES.length;
     const byDomain = filterCapabilities(ENTERPRISE_CAPABILITIES, { domain: "D06" });
     expect(byDomain.every((c) => c.capabilityDomain === "D06")).toBe(true);
-    const byIndependence = filterCapabilities(ENTERPRISE_CAPABILITIES, { independence: "required" });
+    const byIndependence = filterCapabilities(ENTERPRISE_CAPABILITIES, {
+      independence: "required",
+    });
     expect(byIndependence.every((c) => c.independence.level === "required")).toBe(true);
     const byText = filterCapabilities(ENTERPRISE_CAPABILITIES, { query: "accessibility" });
     expect(byText.length).toBeGreaterThan(0);

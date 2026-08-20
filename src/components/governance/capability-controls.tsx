@@ -20,42 +20,12 @@ import {
   type ScaleStage,
   type TriggerGate,
 } from "@/domain";
-
-export const CAPABILITY_VIEWS = [
-  { id: "registry", label: "Registry" },
-  { id: "domains", label: "Domain map" },
-  { id: "dependencies", label: "Dependencies" },
-  { id: "maturity", label: "Maturity and stages" },
-  { id: "independence", label: "Independence" },
-  { id: "gates", label: "Trigger gates" },
-  { id: "coverage", label: "Coverage" },
-  { id: "deliverables", label: "Deliverable types" },
-  { id: "normalization", label: "Normalization" },
-] as const;
-
-export type CapabilityView = (typeof CAPABILITY_VIEWS)[number]["id"];
-
-export interface CapabilitySearch {
-  view: CapabilityView;
-  domain: CapabilityDomainId | "all";
-  type: CapabilityType | "all";
-  stage: ScaleStage | "all";
-  gate: TriggerGate | "all";
-  independence: IndependenceLevel | "all";
-  maturity: MaturityLevel | "all";
-  q: string;
-}
-
-export const DEFAULT_CAPABILITY_SEARCH: CapabilitySearch = {
-  view: "registry",
-  domain: "all",
-  type: "all",
-  stage: "all",
-  gate: "all",
-  independence: "all",
-  maturity: "all",
-  q: "",
-};
+import {
+  CAPABILITY_VIEWS,
+  DEFAULT_CAPABILITY_SEARCH,
+  type CapabilitySearch,
+  type CapabilityView,
+} from "./capability-view-model";
 
 /**
  * View switcher. Rendered as links so each view is addressable, shareable, and
@@ -198,7 +168,9 @@ export function CapabilityFilterBar({
           value={search.independence}
           options={INDEPENDENCE_LEVELS}
           optionLabel={(option) => INDEPENDENCE_LABEL[option]}
-          onChange={(value) => onChange({ independence: value as CapabilitySearch["independence"] })}
+          onChange={(value) =>
+            onChange({ independence: value as CapabilitySearch["independence"] })
+          }
         />
         <FilterSelect
           id="capability-maturity"
@@ -256,29 +228,4 @@ export function IndependenceChip({ level }: { level: IndependenceLevel }) {
       <span>{INDEPENDENCE_LABEL[level]}</span>
     </span>
   );
-}
-
-/* ------------------------------------------------------- search validation */
-
-function option<T extends string>(value: unknown, allowed: readonly T[]): T | "all" {
-  return typeof value === "string" && (allowed as readonly string[]).includes(value)
-    ? (value as T)
-    : "all";
-}
-
-/** Shared search parser so filters survive navigation into a detail page. */
-export function parseCapabilitySearch(search: Record<string, unknown>): CapabilitySearch {
-  const view = CAPABILITY_VIEWS.map((v) => v.id).includes(search["view"] as CapabilityView)
-    ? (search["view"] as CapabilityView)
-    : "registry";
-  return {
-    view,
-    domain: option<CapabilityDomainId>(search["domain"], CAPABILITY_DOMAINS),
-    type: option<CapabilityType>(search["type"], CAPABILITY_TYPES),
-    stage: option<ScaleStage>(search["stage"], SCALE_STAGES),
-    gate: option<TriggerGate>(search["gate"], TRIGGER_GATES),
-    independence: option<IndependenceLevel>(search["independence"], INDEPENDENCE_LEVELS),
-    maturity: option<MaturityLevel>(search["maturity"], MATURITY_LEVELS),
-    q: typeof search["q"] === "string" ? (search["q"] as string) : "",
-  };
 }

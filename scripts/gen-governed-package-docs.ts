@@ -8,7 +8,10 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import type { GovernedPackageRecord, PackageDriftFile } from "../src/domain/governed-package";
-import { loadGovernedPackageFile, loadPackageDriftFile } from "../src/lib/governed-package-registry";
+import {
+  loadGovernedPackageFile,
+  loadPackageDriftFile,
+} from "../src/lib/governed-package-registry";
 
 const OUT_DIR = join(process.cwd(), "docs", "packages");
 
@@ -65,9 +68,15 @@ function packageRegister(records: GovernedPackageRecord[], boundary: string): st
     ].join("\n"),
   );
 
-  return [HEADER("Governed reference package register"), "", "## Boundary", "", boundary, "", ...sections].join(
-    "\n",
-  );
+  return [
+    HEADER("Governed reference package register"),
+    "",
+    "## Boundary",
+    "",
+    boundary,
+    "",
+    ...sections,
+  ].join("\n");
 }
 
 function integrityManifest(records: GovernedPackageRecord[]): string {

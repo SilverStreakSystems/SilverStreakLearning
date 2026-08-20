@@ -24,7 +24,8 @@ export const NORMALIZATION_FINDINGS: NormalizationFinding[] = [
     resolvedInto: ["CAP-D06-005", "CAP-D03-005", "CAP-D07-008"],
     statement:
       "Each named title was recorded as a role that may hold a capability, not as a capability itself.",
-    boundary: "Does not assert that these roles will exist or that one person may not hold several.",
+    boundary:
+      "Does not assert that these roles will exist or that one person may not hold several.",
     resolutionState: "confirmed",
     synthetic: true,
   },
@@ -86,8 +87,7 @@ export const NORMALIZATION_FINDINGS: NormalizationFinding[] = [
     kind: "independence-sensitive",
     subjects: ["Accessibility design", "Accessibility validation"],
     resolvedInto: ["CAP-D03-005", "CAP-D07-004"],
-    statement:
-      "Deliberately kept as two capabilities so the designer can never be the validator.",
+    statement: "Deliberately kept as two capabilities so the designer can never be the validator.",
     boundary: "Does not claim SSLS currently has either capability staffed.",
     resolutionState: "confirmed",
     synthetic: true,
@@ -152,8 +152,7 @@ export const NORMALIZATION_FINDINGS: NormalizationFinding[] = [
     resolvedInto: [],
     statement:
       "The founder operator is the current coverage mode for many capabilities and is not itself a capability.",
-    boundary:
-      "Records the single point of failure explicitly; does not resolve it.",
+    boundary: "Records the single point of failure explicitly; does not resolve it.",
     resolutionState: "conflicted",
     synthetic: true,
   },

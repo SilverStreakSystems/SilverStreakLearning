@@ -187,16 +187,16 @@ export function collectLint(context) {
       evidence_id: "EV-LINT",
       title: "Repository-wide lint baseline",
       description:
-        "Full ESLint run recorded as a debt baseline. Existing debt is tracked; it is not represented as a pass.",
+        "Full ESLint run. Zero problems is recorded as a pass; any remaining problem is recorded for review and never absorbed into a pass.",
       tool: "eslint",
       tool_version: toolVersion("bunx", ["eslint", "--version"]),
       command: "bunx eslint . -f json",
-      expected_result: "Recorded against the transitional lint policy, not against zero problems.",
+      expected_result: "Zero problems. Warnings are not tolerated and are not carried as debt.",
       actual_result:
         total === null
           ? "Lint output could not be parsed."
           : `${total} problems across ${fileCount} files: ${errorCount} errors, ${warningCount} warnings, ${fixableCount} auto-fixable.`,
-      status: total === null ? "not-completed" : "review-required",
+      status: total === null ? "not-completed" : total === 0 ? "pass" : "review-required",
       supports: [
         "The repository-wide lint problem count at the declared input set, recorded as quality debt.",
       ],

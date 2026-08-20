@@ -20,10 +20,13 @@ function main() {
   const index = loadRestatementIndexFile();
   const requirements = loadHistoricalRequirementFile().records;
   const summaryOf = (id: string | null) =>
-    id ? (requirements.find((r) => r.requirement_id === id)?.normalized_summary ?? "(unknown)") : "—";
+    id
+      ? (requirements.find((r) => r.requirement_id === id)?.normalized_summary ?? "(unknown)")
+      : "—";
 
   const counts = new Map<string, number>();
-  for (const r of index.relations) counts.set(r.relationship, (counts.get(r.relationship) ?? 0) + 1);
+  for (const r of index.relations)
+    counts.set(r.relationship, (counts.get(r.relationship) ?? 0) + 1);
 
   const body = [
     "# WP-007 cross-source restatement index",

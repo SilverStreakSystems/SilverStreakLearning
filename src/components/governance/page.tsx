@@ -22,7 +22,6 @@ export function PageHeader({
       <p className="measure mt-2 text-base text-muted-foreground">{summary}</p>
       {children ? <div className="mt-4">{children}</div> : null}
     </div>
-
   );
 }
 
@@ -40,7 +39,11 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} aria-labelledby={id ? `${id}-heading` : undefined} className={cn("mt-8", className)}>
+    <section
+      id={id}
+      aria-labelledby={id ? `${id}-heading` : undefined}
+      className={cn("mt-8", className)}
+    >
       <h2 id={id ? `${id}-heading` : undefined} className="font-display text-xl font-semibold">
         {title}
       </h2>
@@ -93,7 +96,9 @@ export function RegistryTable({
 }
 
 export function Cell({ children, className }: { children: ReactNode; className?: string }) {
-  return <td className={cn("border-b border-border px-3 py-3 align-top", className)}>{children}</td>;
+  return (
+    <td className={cn("border-b border-border px-3 py-3 align-top", className)}>{children}</td>
+  );
 }
 
 export function RowHeader({ children }: { children: ReactNode }) {
@@ -107,13 +112,7 @@ export function RowHeader({ children }: { children: ReactNode }) {
   );
 }
 
-export function RecordCard({
-  className,
-  children,
-}: {
-  className?: string;
-  children: ReactNode;
-}) {
+export function RecordCard({ className, children }: { className?: string; children: ReactNode }) {
   return (
     <article className={cn("rounded-md border border-border bg-surface p-4 sm:p-5", className)}>
       {children}

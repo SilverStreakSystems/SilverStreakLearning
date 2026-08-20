@@ -21,15 +21,18 @@ const seeds: CapabilitySeed[] = [
     name: "Mission and North Star Stewardship",
     short: "North Star Stewardship",
     desc: "Hold a single stated purpose for the enterprise and keep every downstream artifact answerable to it.",
-    purpose: "Prevent the enterprise from drifting into work that no longer serves learning visibility.",
+    purpose:
+      "Prevent the enterprise from drifting into work that no longer serves learning visibility.",
     types: ["mission-doctrine", "governance"],
     northStar:
       "Directly: it defines what Make Learning Visible means and refuses interpretations that do not serve learners.",
     benefits: ["learner", "educator", "ssls-enterprise"],
     harm: "Every function optimizes locally and the enterprise loses a shared definition of success.",
-    burden: "Founder operator, and later an executive team, must re-test decisions against the North Star.",
+    burden:
+      "Founder operator, and later an executive team, must re-test decisions against the North Star.",
     judgment: "Founder operator holds final interpretation until a governance body exists.",
-    problem: "Organizations accumulate work that is defensible in isolation and incoherent in aggregate.",
+    problem:
+      "Organizations accumulate work that is defensible in isolation and incoherent in aggregate.",
     fn: "Strategy and Governance",
     ind: "not-required",
     deliverables: ["DT-01", "DT-04"],
@@ -81,7 +84,10 @@ const seeds: CapabilitySeed[] = [
     ind: "conditional",
     indTrigger: "When a person other than the author asserts an artifact is approved.",
     deliverables: ["DT-02", "DT-09"],
-    evidence: ["Authority ledger with a stored class on every record", "A test that authority is never derived"],
+    evidence: [
+      "Authority ledger with a stored class on every record",
+      "A test that authority is never derived",
+    ],
     stages: ["S0", "S0", "S3", "S3", "S3"],
     maturity: "initial",
     risk: "Provisional work silently becomes enterprise standard.",
@@ -95,7 +101,8 @@ const seeds: CapabilitySeed[] = [
     desc: "Record decisions with scope, rationale, alternatives, and supersession.",
     purpose: "Make it possible to know what was decided and on what basis.",
     types: ["governance"],
-    northStar: "Indirectly: decisions are the only mechanism that converts a candidate into authority.",
+    northStar:
+      "Indirectly: decisions are the only mechanism that converts a candidate into authority.",
     benefits: ["ssls-employee", "ssls-enterprise"],
     harm: "The organization re-litigates settled questions and forgets its own reasoning.",
     burden: "Decision authors must write rationale, not just outcome.",
@@ -162,7 +169,8 @@ const seeds: CapabilitySeed[] = [
     desc: "Define what counts as evidence, who may record it, and when it goes stale.",
     purpose: "Stop confident description from being mistaken for verification.",
     types: ["governance", "quality-validation", "research-evidence"],
-    northStar: "Directly: evidence is the difference between visible learning and asserted learning.",
+    northStar:
+      "Directly: evidence is the difference between visible learning and asserted learning.",
     benefits: ["district-leader", "educator", "ssls-enterprise"],
     harm: "The enterprise believes it has verified things it only described.",
     burden: "Evidence recorders must state method, date, and scope.",
@@ -196,7 +204,10 @@ const seeds: CapabilitySeed[] = [
     ind: "required",
     sod: "Revenue may not approve its own claims.",
     deliverables: ["DT-16", "DT-09", "DT-04"],
-    evidence: ["Claims register with evidence references", "Recorded refusals of unsupported claims"],
+    evidence: [
+      "Claims register with evidence references",
+      "Recorded refusals of unsupported claims",
+    ],
     stages: ["S0", "S0", "S2", "S2", "S3"],
     maturity: "initial",
     gates: ["before-public-outcome-claims", "before-district-pilot"],
@@ -263,7 +274,10 @@ const seeds: CapabilitySeed[] = [
     ind: "conditional",
     indTrigger: "Any proposal to cross a declared boundary.",
     deliverables: ["DT-03", "DT-04", "DT-09"],
-    evidence: ["Posture statement rendered in the interface", "Automated test that the boundary banner is present"],
+    evidence: [
+      "Posture statement rendered in the interface",
+      "Automated test that the boundary banner is present",
+    ],
     stages: ["S0", "S0", "S3", "S3", "S3"],
     maturity: "defined",
     gates: ["before-live-pii", "before-product-ai"],

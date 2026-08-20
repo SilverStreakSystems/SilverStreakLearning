@@ -271,8 +271,7 @@ async function main() {
                 standalone_author_controlled: true,
                 compact_context_rationale: null,
                 exception_type: assertedExceptions[0] ?? null,
-                exception_determination:
-                  assertedExceptions.length === 1 ? "MECHANICAL" : null,
+                exception_determination: assertedExceptions.length === 1 ? "MECHANICAL" : null,
                 exception_evidence: exceptionEvidence,
                 equivalent_control_locator: null,
                 spacing_calculation: spacing,
@@ -486,8 +485,7 @@ function collectTargets(selector) {
 
     const parent = element.parentElement;
     const parentText = parent ? (parent.textContent ?? "").replace(/\s+/g, " ").trim() : "";
-    const inlineContext =
-      style.display.startsWith("inline") && parentText.length > name.length + 8;
+    const inlineContext = style.display.startsWith("inline") && parentText.length > name.length + 8;
 
     results.push({
       rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },

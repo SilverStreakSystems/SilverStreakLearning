@@ -25,7 +25,8 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     name: "Command Center",
     purpose:
       "Give the authorized operator one honest view of what is true now and what deserves attention next.",
-    fundamentalQuestion: "What is happening across SSLS now, and what requires responsible attention?",
+    fundamentalQuestion:
+      "What is happening across SSLS now, and what requires responsible attention?",
     authorityState: "provisional-implementation",
     implementationState: "implemented",
     maturity: "S2",
@@ -135,7 +136,14 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Notify on decision needed, gate blocked, evidence stale, and critical risk.",
       "Do not notify on ordinary record edits.",
     ],
-    searchDomains: ["decisions", "findings", "evidence", "work-items", "value-streams", "capabilities"],
+    searchDomains: [
+      "decisions",
+      "findings",
+      "evidence",
+      "work-items",
+      "value-streams",
+      "capabilities",
+    ],
     dependencies: ["Governance registers", "Value stream architecture", "Capability registry"],
     availability: "current",
     currentBoundary: `Founder and developer operator only. ${NO_PII}`,
@@ -159,7 +167,11 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     targetUsers: ["Founder and developer operator"],
     actingCapacities: ["founder-developer"],
     requiredCapabilities: ["CAP-D01-001", "CAP-D01-002", "CAP-D01-003"],
-    primaryValueStreams: ["strategy-portfolio", "requirement-decision", "governance-artifact-lifecycle"],
+    primaryValueStreams: [
+      "strategy-portfolio",
+      "requirement-decision",
+      "governance-artifact-lifecycle",
+    ],
     sharedObjectsUsed: [
       "decision",
       "policy-rule",
@@ -181,11 +193,31 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Supersession is shown wherever a record has been replaced.",
     ],
     navigationItems: [
-      { itemId: "sg-authority", label: "Authority ledger", route: "/authority", availability: "current" },
-      { itemId: "sg-foundation", label: "Foundation map", route: "/foundation-map", availability: "current" },
-      { itemId: "sg-capabilities", label: "Capability registry", route: "/capabilities", availability: "current" },
+      {
+        itemId: "sg-authority",
+        label: "Authority ledger",
+        route: "/authority",
+        availability: "current",
+      },
+      {
+        itemId: "sg-foundation",
+        label: "Foundation map",
+        route: "/foundation-map",
+        availability: "current",
+      },
+      {
+        itemId: "sg-capabilities",
+        label: "Capability registry",
+        route: "/capabilities",
+        availability: "current",
+      },
       { itemId: "sg-decisions", label: "Decisions", route: "/decisions", availability: "current" },
-      { itemId: "sg-boundaries", label: "Boundaries and refused claims", route: "/boundaries", availability: "current" },
+      {
+        itemId: "sg-boundaries",
+        label: "Boundaries and refused claims",
+        route: "/boundaries",
+        availability: "current",
+      },
     ],
     primarySurfaces: [
       {
@@ -218,9 +250,11 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       {
         metricId: "SG-M1",
         name: "Artifacts carrying implementation authority",
-        questionAnswered: "How much of the recorded foundation may actually justify building something?",
+        questionAnswered:
+          "How much of the recorded foundation may actually justify building something?",
         source: "Foundation artifact registry",
-        calculation: "Count of current artifacts whose declared class carries implementation authority.",
+        calculation:
+          "Count of current artifacts whose declared class carries implementation authority.",
         freshness: "As current as the artifact registry.",
         interpretation: "The authorized basis available to downstream work.",
         prohibitedInterpretation:
@@ -257,7 +291,14 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     actingCapacities: ["founder-developer", "chief-academic-officer-preview"],
     requiredCapabilities: ["CAP-D02-001", "CAP-D12-001", "CAP-D01-002"],
     primaryValueStreams: ["research-requirement", "outcome-research", "feedback-decision"],
-    sharedObjectsUsed: ["source", "research-record", "finding", "evidence", "knowledge-object", "requirement"],
+    sharedObjectsUsed: [
+      "source",
+      "research-record",
+      "finding",
+      "evidence",
+      "knowledge-object",
+      "requirement",
+    ],
     allowedProjections: [
       "Research portfolio and open questions",
       "Source to finding to interpretation chain",
@@ -274,9 +315,24 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Every finding names the source it rests on.",
     ],
     navigationItems: [
-      { itemId: "ri-findings", label: "Findings register", route: "/findings", availability: "current" },
-      { itemId: "ri-traceability", label: "Traceability", route: "/traceability", availability: "current" },
-      { itemId: "ri-objects", label: "Research objects", route: "/objects", availability: "current" },
+      {
+        itemId: "ri-findings",
+        label: "Findings register",
+        route: "/findings",
+        availability: "current",
+      },
+      {
+        itemId: "ri-traceability",
+        label: "Traceability",
+        route: "/traceability",
+        availability: "current",
+      },
+      {
+        itemId: "ri-objects",
+        label: "Research objects",
+        route: "/objects",
+        availability: "current",
+      },
     ],
     primarySurfaces: [
       {
@@ -318,13 +374,25 @@ export const WORKSPACES: WorkspaceDefinition[] = [
         actionTriggered: "Attach a source or downgrade the finding to an open question.",
       },
     ],
-    evidenceRequirements: ["A requirement traceable to research must cite the finding, not the source alone."],
-    notificationRules: ["Notify on review due and evidence stale. Do not notify on every new source."],
-    searchDomains: ["research", "findings", "evidence", "standards", "requirements", "documentation"],
+    evidenceRequirements: [
+      "A requirement traceable to research must cite the finding, not the source alone.",
+    ],
+    notificationRules: [
+      "Notify on review due and evidence stale. Do not notify on every new source.",
+    ],
+    searchDomains: [
+      "research",
+      "findings",
+      "evidence",
+      "standards",
+      "requirements",
+      "documentation",
+    ],
     dependencies: ["Shared object architecture", "Evidence contract"],
     availability: "current",
     currentBoundary: `Desk research on public sources only. No human-subject research. ${NO_PII}`,
-    futureBoundary: "Studies involving educators, learners, or districts require separate authorization and ethics review.",
+    futureBoundary:
+      "Studies involving educators, learners, or districts require separate authorization and ethics review.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "Any new research method or participant category is proposed.",
     supersession: null,
@@ -333,18 +401,27 @@ export const WORKSPACES: WorkspaceDefinition[] = [
   {
     workspaceId: "product-learning-systems",
     name: "Product and Learning Systems",
-    purpose:
-      "Define what SSLS products and learning systems should do, before anyone builds them.",
+    purpose: "Define what SSLS products and learning systems should do, before anyone builds them.",
     fundamentalQuestion:
       "What should SSLS products, learning systems, and educational capabilities do?",
     authorityState: "gated-future",
     implementationState: "specified-only",
     maturity: "S0",
     targetUsers: ["Founder operator", "Future product and academic leadership"],
-    actingCapacities: ["founder-developer", "chief-product-officer-preview", "chief-academic-officer-preview"],
+    actingCapacities: [
+      "founder-developer",
+      "chief-product-officer-preview",
+      "chief-academic-officer-preview",
+    ],
     requiredCapabilities: ["CAP-D03-001", "CAP-D02-001", "CAP-D02-002"],
     primaryValueStreams: ["requirement-decision", "research-requirement", "adoption-outcome"],
-    sharedObjectsUsed: ["requirement", "product-reference", "module-reference", "enterprise-capability", "decision"],
+    sharedObjectsUsed: [
+      "requirement",
+      "product-reference",
+      "module-reference",
+      "enterprise-capability",
+      "decision",
+    ],
     allowedProjections: [
       "Product portfolio reference",
       "Capability to product mapping",
@@ -361,8 +438,18 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Special education and multilingual safeguards appear as requirements, not options.",
     ],
     navigationItems: [
-      { itemId: "pl-capabilities", label: "Capability to product mapping", route: "/capabilities", availability: "candidate" },
-      { itemId: "pl-preview", label: "Workspace preview", route: null, availability: "gated-future" },
+      {
+        itemId: "pl-capabilities",
+        label: "Capability to product mapping",
+        route: "/capabilities",
+        availability: "candidate",
+      },
+      {
+        itemId: "pl-preview",
+        label: "Workspace preview",
+        route: null,
+        availability: "gated-future",
+      },
     ],
     primarySurfaces: [
       {
@@ -388,7 +475,9 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       },
     ],
     actionTypes: ["decision-needed", "review", "unresolved-finding"],
-    decisionRights: ["Product scope decisions remain with the founder operator until roles are staffed."],
+    decisionRights: [
+      "Product scope decisions remain with the founder operator until roles are staffed.",
+    ],
     metrics: [
       {
         metricId: "PL-M1",
@@ -405,17 +494,21 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     evidenceRequirements: [
       "Educational validity claims require research evidence, not product intent.",
     ],
-    notificationRules: ["Notify on decision needed and accessibility risk. Nothing else is authorized yet."],
+    notificationRules: [
+      "Notify on decision needed and accessibility risk. Nothing else is authorized yet.",
+    ],
     searchDomains: ["requirements", "products", "capabilities", "standards", "research"],
     dependencies: ["Research and Intelligence", "Strategy and Governance"],
     availability: "gated-future",
-    currentBoundary: "Architecture only. No product runtime, no learner-facing function, no district function.",
+    currentBoundary:
+      "Architecture only. No product runtime, no learner-facing function, no district function.",
     futureBoundary:
       "Opens when a product family and shared service boundary architecture is approved and educational validity capabilities reach a working stage.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "Approval of the product family and shared service boundary architecture.",
     supersession: null,
-    notes: "District and student product functions belong to a product runtime, never to this enterprise workspace.",
+    notes:
+      "District and student product functions belong to a product runtime, never to this enterprise workspace.",
   },
   {
     workspaceId: "engineering-delivery",
@@ -428,10 +521,27 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     implementationState: "partially-implemented",
     maturity: "S1",
     targetUsers: ["Founder and developer operator"],
-    actingCapacities: ["founder-developer", "chief-technology-officer-preview", "engineering-manager-preview"],
+    actingCapacities: [
+      "founder-developer",
+      "chief-technology-officer-preview",
+      "engineering-manager-preview",
+    ],
     requiredCapabilities: ["CAP-D04-001", "CAP-D07-001", "CAP-D04-002"],
-    primaryValueStreams: ["decision-build", "build-validation", "validation-release", "incident-recovery-learning"],
-    sharedObjectsUsed: ["work-item", "decision", "deliverable-instance", "evidence", "validation", "event", "risk"],
+    primaryValueStreams: [
+      "decision-build",
+      "build-validation",
+      "validation-release",
+      "incident-recovery-learning",
+    ],
+    sharedObjectsUsed: [
+      "work-item",
+      "decision",
+      "deliverable-instance",
+      "evidence",
+      "validation",
+      "event",
+      "risk",
+    ],
     allowedProjections: [
       "Implementation work by served object",
       "Architecture decisions",
@@ -448,9 +558,24 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Every work item names its purpose and the object it serves.",
     ],
     navigationItems: [
-      { itemId: "ed-streams", label: "Delivery value streams", route: "/value-streams", availability: "current" },
-      { itemId: "ed-evidence", label: "Evidence register", route: "/evidence", availability: "current" },
-      { itemId: "ed-objects", label: "Work and deliverables", route: "/objects", availability: "current" },
+      {
+        itemId: "ed-streams",
+        label: "Delivery value streams",
+        route: "/value-streams",
+        availability: "current",
+      },
+      {
+        itemId: "ed-evidence",
+        label: "Evidence register",
+        route: "/evidence",
+        availability: "current",
+      },
+      {
+        itemId: "ed-objects",
+        label: "Work and deliverables",
+        route: "/objects",
+        availability: "current",
+      },
     ],
     primarySurfaces: [
       {
@@ -482,7 +607,13 @@ export const WORKSPACES: WorkspaceDefinition[] = [
         readsObjectTypes: ["event", "risk"],
       },
     ],
-    actionTypes: ["assigned-work", "review", "evidence-request", "dependency-resolution", "revalidation"],
+    actionTypes: [
+      "assigned-work",
+      "review",
+      "evidence-request",
+      "dependency-resolution",
+      "revalidation",
+    ],
     decisionRights: [
       "Architecture decisions are recorded by the developer capacity and approved under governance.",
       "Release authority is not held by this workspace.",
@@ -507,11 +638,23 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Release evidence must predate the release decision it supports.",
     ],
     notificationRules: ["Notify on validation failed, gate blocked, and handoff rejected."],
-    searchDomains: ["work-items", "decisions", "deliverables", "evidence", "risks", "value-streams"],
-    dependencies: ["Value stream architecture", "Evidence contract", "Trust, Quality and Assurance"],
+    searchDomains: [
+      "work-items",
+      "decisions",
+      "deliverables",
+      "evidence",
+      "risks",
+      "value-streams",
+    ],
+    dependencies: [
+      "Value stream architecture",
+      "Evidence contract",
+      "Trust, Quality and Assurance",
+    ],
     availability: "current",
     currentBoundary: `One operator building a private governed shell. ${NO_PII} No production deployment authority.`,
-    futureBoundary: "Environments, incidents, and on-call operations open only when a real runtime exists.",
+    futureBoundary:
+      "Environments, incidents, and on-call operations open only when a real runtime exists.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "Any move toward a deployed runtime or a second contributor.",
     supersession: null,
@@ -520,8 +663,7 @@ export const WORKSPACES: WorkspaceDefinition[] = [
   {
     workspaceId: "market-growth",
     name: "Market and Growth",
-    purpose:
-      "Hold responsible external communication and every claim SSLS may legitimately make.",
+    purpose: "Hold responsible external communication and every claim SSLS may legitimately make.",
     fundamentalQuestion:
       "Who needs SSLS, how do we responsibly communicate value, and what may we legitimately claim?",
     authorityState: "gated-future",
@@ -547,8 +689,18 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Synthetic pipeline records are labelled on every surface that displays them.",
     ],
     navigationItems: [
-      { itemId: "mg-claims", label: "Claims and refused claims", route: "/boundaries", availability: "current" },
-      { itemId: "mg-preview", label: "Workspace preview", route: null, availability: "gated-future" },
+      {
+        itemId: "mg-claims",
+        label: "Claims and refused claims",
+        route: "/boundaries",
+        availability: "current",
+      },
+      {
+        itemId: "mg-preview",
+        label: "Workspace preview",
+        route: null,
+        availability: "gated-future",
+      },
     ],
     primarySurfaces: [
       {
@@ -567,7 +719,9 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       },
     ],
     actionTypes: ["approval", "review", "commitment"],
-    decisionRights: ["No external claim may be published without a recorded evidence link and approval."],
+    decisionRights: [
+      "No external claim may be published without a recorded evidence link and approval.",
+    ],
     metrics: [
       {
         metricId: "MG-M1",
@@ -581,13 +735,19 @@ export const WORKSPACES: WorkspaceDefinition[] = [
         actionTriggered: "Review whether new evidence changes any refusal. Usually it does not.",
       },
     ],
-    evidenceRequirements: ["A claim requires evidence bound to a specific version of the thing claimed."],
-    notificationRules: ["Notify on claim expiry and commitment approaching. No campaign notifications."],
+    evidenceRequirements: [
+      "A claim requires evidence bound to a specific version of the thing claimed.",
+    ],
+    notificationRules: [
+      "Notify on claim expiry and commitment approaching. No campaign notifications.",
+    ],
     searchDomains: ["organizations", "evidence", "decisions", "documentation"],
     dependencies: ["Evidence to Claim value stream", "Trust, Quality and Assurance"],
     availability: "gated-future",
-    currentBoundary: "No live pipeline, no customer relationship system, no outbound communication.",
-    futureBoundary: "Opens when SSLS has a released capability, approved claims, and a commercial authority.",
+    currentBoundary:
+      "No live pipeline, no customer relationship system, no outbound communication.",
+    futureBoundary:
+      "Opens when SSLS has a released capability, approved claims, and a commercial authority.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "First approved external claim or first commercial conversation.",
     supersession: null,
@@ -607,7 +767,14 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     actingCapacities: ["customer-success-leader-preview"],
     requiredCapabilities: ["CAP-D09-001", "CAP-D09-002", "CAP-D02-001"],
     primaryValueStreams: ["contract-implementation", "implementation-adoption", "adoption-outcome"],
-    sharedObjectsUsed: ["organization", "organizational-unit", "work-item", "event", "evidence", "risk"],
+    sharedObjectsUsed: [
+      "organization",
+      "organizational-unit",
+      "work-item",
+      "event",
+      "evidence",
+      "risk",
+    ],
     allowedProjections: [
       "Synthetic customer organization reference records",
       "Implementation plan templates",
@@ -623,7 +790,12 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Small districts and low-incidence programs appear in the reference set, not as an exception.",
     ],
     navigationItems: [
-      { itemId: "ci-preview", label: "Workspace preview", route: null, availability: "gated-future" },
+      {
+        itemId: "ci-preview",
+        label: "Workspace preview",
+        route: null,
+        availability: "gated-future",
+      },
     ],
     primarySurfaces: [
       {
@@ -656,13 +828,17 @@ export const WORKSPACES: WorkspaceDefinition[] = [
         actionTriggered: "Assign an owning function or remove the step.",
       },
     ],
-    evidenceRequirements: ["Outcome claims about a customer require evidence from that customer's context."],
+    evidenceRequirements: [
+      "Outcome claims about a customer require evidence from that customer's context.",
+    ],
     notificationRules: ["Notify on commitment approaching and critical risk only."],
     searchDomains: ["organizations", "work-items", "events", "risks", "documentation"],
     dependencies: ["Market and Growth", "Product and Learning Systems"],
     availability: "gated-future",
-    currentBoundary: "No customers exist. Every record here is invented to test the projection architecture.",
-    futureBoundary: "Opens at first pilot agreement, with a data protection review completed first.",
+    currentBoundary:
+      "No customers exist. Every record here is invented to test the projection architecture.",
+    futureBoundary:
+      "Opens at first pilot agreement, with a data protection review completed first.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "First pilot conversation with a real organization.",
     supersession: null,
@@ -682,7 +858,15 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     actingCapacities: ["founder-developer", "trust-leader-preview"],
     requiredCapabilities: ["CAP-D06-001", "CAP-D07-001", "CAP-D06-002"],
     primaryValueStreams: ["build-validation", "validation-release", "ai-capability-lifecycle"],
-    sharedObjectsUsed: ["finding", "risk", "evidence", "validation", "approval", "standard", "claim"],
+    sharedObjectsUsed: [
+      "finding",
+      "risk",
+      "evidence",
+      "validation",
+      "approval",
+      "standard",
+      "claim",
+    ],
     allowedProjections: [
       "Open assurance findings that no other workspace may clear",
       "Accessibility, security, and privacy state on separate axes",
@@ -695,9 +879,24 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Independence requirements are shown wherever a builder would otherwise validate their own work.",
     ],
     navigationItems: [
-      { itemId: "tq-findings", label: "Findings register", route: "/findings", availability: "current" },
-      { itemId: "tq-evidence", label: "Evidence register", route: "/evidence", availability: "current" },
-      { itemId: "tq-boundaries", label: "Refused claims", route: "/boundaries", availability: "current" },
+      {
+        itemId: "tq-findings",
+        label: "Findings register",
+        route: "/findings",
+        availability: "current",
+      },
+      {
+        itemId: "tq-evidence",
+        label: "Evidence register",
+        route: "/evidence",
+        availability: "current",
+      },
+      {
+        itemId: "tq-boundaries",
+        label: "Refused claims",
+        route: "/boundaries",
+        availability: "current",
+      },
     ],
     primarySurfaces: [
       {
@@ -722,7 +921,13 @@ export const WORKSPACES: WorkspaceDefinition[] = [
         readsObjectTypes: ["policy-rule", "risk", "standard"],
       },
     ],
-    actionTypes: ["unresolved-finding", "risk-action", "evidence-request", "review", "revalidation"],
+    actionTypes: [
+      "unresolved-finding",
+      "risk-action",
+      "evidence-request",
+      "review",
+      "revalidation",
+    ],
     decisionRights: [
       "This workspace may stop advancement. No other workspace may overrule that stop by asserting urgency.",
     ],
@@ -744,16 +949,20 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Independent validation is required before any external conformance statement.",
       "Automated checks may support structural claims only.",
     ],
-    notificationRules: ["Notify on validation failed, critical risk, evidence stale, and gate blocked."],
+    notificationRules: [
+      "Notify on validation failed, critical risk, evidence stale, and gate blocked.",
+    ],
     searchDomains: ["findings", "risks", "evidence", "standards", "policies", "decisions"],
     dependencies: ["Engineering and Delivery", "Strategy and Governance"],
     availability: "current",
     currentBoundary: `Self-assessment only. No independent accessibility, security, or privacy validation has occurred. ${NO_PII}`,
-    futureBoundary: "Independent review, certification, and vendor assurance require external parties and budget.",
+    futureBoundary:
+      "Independent review, certification, and vendor assurance require external parties and budget.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "Any proposed external claim, or any move toward real users.",
     supersession: null,
-    notes: "Assurance findings survive a shipping deadline. That is the entire purpose of the workspace.",
+    notes:
+      "Assurance findings survive a shipping deadline. That is the entire purpose of the workspace.",
   },
   {
     workspaceId: "enterprise-operations",
@@ -786,7 +995,12 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       "Staffing triggers are stated as conditions, not as hiring plans.",
     ],
     navigationItems: [
-      { itemId: "eo-preview", label: "Workspace preview", route: null, availability: "gated-future" },
+      {
+        itemId: "eo-preview",
+        label: "Workspace preview",
+        route: null,
+        availability: "gated-future",
+      },
     ],
     primarySurfaces: [
       {
@@ -805,17 +1019,21 @@ export const WORKSPACES: WorkspaceDefinition[] = [
       },
     ],
     actionTypes: ["decision-needed", "commitment", "risk-action"],
-    decisionRights: ["All operations decisions sit with the founder operator while SSLS is one person."],
+    decisionRights: [
+      "All operations decisions sit with the founder operator while SSLS is one person.",
+    ],
     metrics: [
       {
         metricId: "EO-M1",
         name: "Capabilities dependent on an unstaffed role",
-        questionAnswered: "Which capabilities cannot progress because nobody holds the required capacity?",
+        questionAnswered:
+          "Which capabilities cannot progress because nobody holds the required capacity?",
         source: "Capability registry and role architecture",
         calculation: "Count of capabilities whose required capacity has no active holder.",
         freshness: "As current as both registers.",
         interpretation: "A structural constraint on what SSLS can honestly attempt.",
-        prohibitedInterpretation: "Not a hiring commitment and not a workload measure for any person.",
+        prohibitedInterpretation:
+          "Not a hiring commitment and not a workload measure for any person.",
         actionTriggered: "Defer the capability, or record the staffing trigger as met.",
       },
     ],
@@ -824,11 +1042,13 @@ export const WORKSPACES: WorkspaceDefinition[] = [
     searchDomains: ["decisions", "risks", "organizations", "documentation"],
     dependencies: ["Strategy and Governance"],
     availability: "gated-future",
-    currentBoundary: "SSLS is one person. There is no workforce, payroll, vendor, or finance system.",
+    currentBoundary:
+      "SSLS is one person. There is no workforce, payroll, vendor, or finance system.",
     futureBoundary: "Opens at the first contracted person or the first material vendor commitment.",
     accessibilityRequirements: SHARED_ACCESSIBILITY,
     reviewTrigger: "First contractor, employee, or recurring vendor obligation.",
     supersession: null,
-    notes: "Operational visibility here concerns capacity and obligations, never observation of people.",
+    notes:
+      "Operational visibility here concerns capacity and obligations, never observation of people.",
   },
 ];

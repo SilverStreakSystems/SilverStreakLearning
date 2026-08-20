@@ -47,19 +47,17 @@ export const HELP_CONTENT_KINDS = [
 
 export type HelpContentKind = (typeof HELP_CONTENT_KINDS)[number];
 
-export const HELP_CONTENT_KIND_META: Record<
-  HelpContentKind,
-  { label: string; governs: boolean }
-> = {
-  "governing-policy": { label: "Governing policy", governs: true },
-  "governing-standard": { label: "Governing standard", governs: true },
-  procedure: { label: "Procedure", governs: true },
-  definition: { label: "Definition", governs: false },
-  "object-help": { label: "Object help", governs: false },
-  "workflow-help": { label: "Workflow help", governs: false },
-  "boundary-statement": { label: "Current boundary", governs: true },
-  "explanatory-help": { label: "Explanatory help", governs: false },
-};
+export const HELP_CONTENT_KIND_META: Record<HelpContentKind, { label: string; governs: boolean }> =
+  {
+    "governing-policy": { label: "Governing policy", governs: true },
+    "governing-standard": { label: "Governing standard", governs: true },
+    procedure: { label: "Procedure", governs: true },
+    definition: { label: "Definition", governs: false },
+    "object-help": { label: "Object help", governs: false },
+    "workflow-help": { label: "Workflow help", governs: false },
+    "boundary-statement": { label: "Current boundary", governs: true },
+    "explanatory-help": { label: "Explanatory help", governs: false },
+  };
 
 export interface HelpEntry {
   entryId: string;

@@ -67,8 +67,8 @@ function ActionCenter() {
       >
         {actions.length === 0 ? (
           <p className="measure text-sm text-muted-foreground">
-            <span className="font-mono text-xs">[EMPTY]</span> No obligation is currently recorded on any
-            register. That is an empty source, not a completed enterprise.
+            <span className="font-mono text-xs">[EMPTY]</span> No obligation is currently recorded
+            on any register. That is an empty source, not a completed enterprise.
           </p>
         ) : (
           <RegistryTable

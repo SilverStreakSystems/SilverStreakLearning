@@ -51,10 +51,14 @@ export async function serveProductionBuild({ distDir, port, host = "127.0.0.1" }
   const server = createServer((req, res) => {
     const url = `http://${host}:${port}${req.url}`;
     worker
-      .fetch(new Request(url, { method: req.method, headers: req.headers }), { ASSETS: assets }, {
-        waitUntil() {},
-        passThroughOnException() {},
-      })
+      .fetch(
+        new Request(url, { method: req.method, headers: req.headers }),
+        { ASSETS: assets },
+        {
+          waitUntil() {},
+          passThroughOnException() {},
+        },
+      )
       .then(async (response) => {
         res.writeHead(response.status, Object.fromEntries(response.headers));
         res.end(Buffer.from(await response.arrayBuffer()));

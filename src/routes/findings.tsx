@@ -42,7 +42,13 @@ function FindingsRegister() {
       <Section id="register" title="Register">
         <RegistryTable
           caption="Findings with severity, affected layers, resolution state, and required decision"
-          headers={["Finding", "Severity", "Affected layers", "Resolution state", "Required decision"]}
+          headers={[
+            "Finding",
+            "Severity",
+            "Affected layers",
+            "Resolution state",
+            "Required decision",
+          ]}
         >
           {FINDINGS.map((finding) => (
             <tr key={finding.id}>

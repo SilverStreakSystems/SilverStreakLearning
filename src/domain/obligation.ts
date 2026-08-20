@@ -335,7 +335,11 @@ export function validateObligation(
 
   // A voluntary or market source may never be phrased as a legal requirement.
   if (!LEGALLY_BINDING_AUTHORITY_TYPES.includes(record.source_type)) {
-    if (/\blegally required\b|\brequired by law\b|\bmandated by law\b/i.test(record.obligation_summary))
+    if (
+      /\blegally required\b|\brequired by law\b|\bmandated by law\b/i.test(
+        record.obligation_summary,
+      )
+    )
       fail("obligation_summary", "non-binding source described as legal requirement");
   }
   // Proposed or pending authority may never carry a present-tense obligation.

@@ -39,10 +39,18 @@ export function filterCapabilities(
   const q = filters.query?.trim().toLowerCase() ?? "";
 
   return capabilities.filter((capability) => {
-    if (filters.domain && filters.domain !== "all" && capability.capabilityDomain !== filters.domain) {
+    if (
+      filters.domain &&
+      filters.domain !== "all" &&
+      capability.capabilityDomain !== filters.domain
+    ) {
       return false;
     }
-    if (filters.type && filters.type !== "all" && !capability.capabilityTypes.includes(filters.type)) {
+    if (
+      filters.type &&
+      filters.type !== "all" &&
+      !capability.capabilityTypes.includes(filters.type)
+    ) {
       return false;
     }
     if (

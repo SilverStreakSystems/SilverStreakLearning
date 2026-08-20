@@ -26,7 +26,13 @@ export const STREAM_DEPENDENCY_KIND_LABEL: Record<StreamDependencyKind, string> 
   decision: "Decision dependency",
 };
 
-export const DEPENDENCY_STATES = ["not-started", "in-progress", "satisfied", "at-risk", "failed"] as const;
+export const DEPENDENCY_STATES = [
+  "not-started",
+  "in-progress",
+  "satisfied",
+  "at-risk",
+  "failed",
+] as const;
 export type DependencyState = (typeof DEPENDENCY_STATES)[number];
 
 export const DEPENDENCY_CRITICALITY = ["critical", "high", "moderate", "low"] as const;

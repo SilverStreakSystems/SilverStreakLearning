@@ -207,7 +207,8 @@ const seeds: CapabilitySeed[] = [
     desc: "Make internal tools, processes, and workplaces accessible to disabled staff.",
     purpose: "Apply the same accessibility standard internally as externally.",
     types: ["workforce-people", "experience-accessibility"],
-    northStar: "Directly: an enterprise that excludes disabled staff cannot credibly design for disabled learners.",
+    northStar:
+      "Directly: an enterprise that excludes disabled staff cannot credibly design for disabled learners.",
     benefits: ["ssls-employee"],
     harm: "Disabled employees are excluded from their own workplace.",
     burden: "Tooling choices must be assessed for accessibility.",

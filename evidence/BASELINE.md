@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-20T10:16:34.164Z |
-| Commit | `9f102d60ee469aeca7ccfa8d1300939e98d71fe4` |
-| Tree hash | `bbc34159544249a5f41b44d45a9e1060f52b4c89` |
+| Generated at | 2026-08-20T10:37:05.581Z |
+| Commit | `2309bfdb4a8e27b5818adfb8a0580e367487c8d6` |
+| Tree hash | `b5a69479a7e425334c8acc743c0a0b28dccad07e` |
 | Working tree dirty | true |
-| Input-set digest | `277e1cb85a803911b5a1684cca8399c61a8ac7d9eac1ae4db8747232266dc0b9` |
+| Input-set digest | `8684bade66f1770cea396015eead34412ba05d16301ff6aa25508bdc6716624b` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,9 +18,9 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 664 |
-| Tracked files | 577 |
-| Source files | 240 |
+| Commits | 676 |
+| Tracked files | 534 |
+| Source files | 197 |
 | Test files | 18 |
 | Route modules | 31 |
 | Documentation files | 210 |
@@ -29,10 +29,10 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Subject | Recorded result |
 |---|---|
-| Build | Exit code 0. Duration 7289 ms. |
-| Tests | Exit code 0. Test counts not parsed.  Duration 21539 ms. |
+| Build | Exit code 0. Duration 7015 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 21356 ms. |
 | Type check | Exit code 0. |
-| Lint | 674 problems across 115 files: 660 errors, 14 warnings, 655 auto-fixable. |
+| Lint | 0 problems across 0 files: 0 errors, 0 warnings, 0 auto-fixable. |
 | Routes | 29 |
 | SBOM components | 75 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
@@ -48,7 +48,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | EV-BUILD | BUILD | pass | CURRENT |
 | EV-TEST | TEST | pass | CURRENT |
 | EV-TYPECHECK | TYPECHECK | pass | CURRENT |
-| EV-LINT | LINT | review-required | CURRENT |
+| EV-LINT | LINT | pass | CURRENT |
 | EV-ROUTES | ROUTE_INVENTORY | pass | CURRENT |
 | EV-PROVENANCE | SOURCE_PROVENANCE | pass | CURRENT |
 | EV-CONFIG | CONFIGURATION | pass | CURRENT |

@@ -138,7 +138,7 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
     validity: "Invalidated by any change to the tracked tree.",
     supports: "Repository ancestry and tree size as recorded by Git.",
     doesNotSupport: "Authorship attribution or the existence of external copies.",
-    reusable: false,
+    reusable: true,
   },
   {
     evidenceId: "EV-DEPS",
@@ -194,7 +194,7 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
     validity: "Invalidated by any change within the scanned scope.",
     supports: "The number of candidate matches these patterns produced.",
     doesNotSupport: "That no secret exists. History and untracked files are out of scope.",
-    reusable: false,
+    reusable: true,
   },
   {
     evidenceId: "EV-PII",
@@ -205,7 +205,7 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
     validity: "Invalidated by any change within the scanned scope.",
     supports: "The candidate matches these patterns produced over the tracked tree.",
     doesNotSupport: "That any match is, or is not, real personal data.",
-    reusable: false,
+    reusable: true,
   },
   {
     evidenceId: "EV-ROUTES",
@@ -234,18 +234,22 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
     evidenceType: "SSOT_BINDING",
     title: "Current-state projection freshness check",
     tool: "scripts/gen-current-state.ts",
-    declaredInputs: ["docs", "pipeline"],
+    declaredInputs: ["projection", "pipeline"],
     validity: "Invalidated by a change to any declared controlling input or to the generator.",
     supports:
       "Whether the canonical current-state document is the deterministic projection of its declared controlling inputs at this tree.",
     doesNotSupport: "The correctness or authority of any statement inside the projection.",
-    reusable: false,
+    reusable: true,
   },
 ];
 
 /** The conditions that must all hold before a result is carried forward. */
 export const REUSE_CONDITIONS = [
-  { id: "type-permits-reuse", statement: "The evidence type is declared reusable across commits." },
+  {
+    id: "type-permits-reuse",
+    statement:
+      "The declared input scope fully determines the result, so the record may be carried to another commit.",
+  },
   { id: "inputs-unchanged", statement: "Every declared input hash is unchanged." },
   {
     id: "environment-applicable",

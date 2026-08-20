@@ -28,7 +28,9 @@ export const ACTING_CAPACITIES: ActingCapacity[] = [
       "Declare a claim refused.",
     ],
     visibleWorkScope: ["All synthetic project records inside this shell."],
-    accessibleObjectScope: ["Every governed object in this repository. No personal data exists to reach."],
+    accessibleObjectScope: [
+      "Every governed object in this repository. No personal data exists to reach.",
+    ],
     requiresOtherAuthority: [
       "Independent accessibility, security, or privacy validation.",
       "Any external conformance or efficacy claim.",

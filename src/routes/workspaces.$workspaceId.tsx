@@ -75,13 +75,15 @@ function WorkspaceDetail() {
           <div>
             <dt className="font-semibold">Implementation</dt>
             <dd className="text-muted-foreground">
-              {WORKSPACE_IMPLEMENTATION_LABEL[workspace.implementationState]}, maturity {workspace.maturity}
+              {WORKSPACE_IMPLEMENTATION_LABEL[workspace.implementationState]}, maturity{" "}
+              {workspace.maturity}
             </dd>
           </div>
           <div>
             <dt className="font-semibold">Surface state</dt>
             <dd className="text-muted-foreground">
-              <span className="font-mono text-xs">{state.marker}</span> {state.label}. {state.meaning}
+              <span className="font-mono text-xs">{state.marker}</span> {state.label}.{" "}
+              {state.meaning}
             </dd>
           </div>
         </dl>
@@ -166,13 +168,19 @@ function WorkspaceDetail() {
         <div className="grid gap-6 lg:grid-cols-2">
           <ListBlock title="Decision rights" items={workspace.decisionRights} />
           <ListBlock title="Evidence requirements" items={workspace.evidenceRequirements} />
-          <ListBlock title="Minimum context required" items={workspace.minimumContextRequirements} />
+          <ListBlock
+            title="Minimum context required"
+            items={workspace.minimumContextRequirements}
+          />
           <ListBlock title="Never displayed here" items={workspace.prohibitedObjects} />
           <ListBlock title="Notification rules" items={workspace.notificationRules} />
           <ListBlock title="Depends on" items={workspace.dependencies} />
           <ListBlock title="Serves value streams" items={workspace.primaryValueStreams} />
           <ListBlock title="Exposes capabilities" items={workspace.requiredCapabilities} />
-          <ListBlock title="Accessibility requirements" items={workspace.accessibilityRequirements} />
+          <ListBlock
+            title="Accessibility requirements"
+            items={workspace.accessibilityRequirements}
+          />
         </div>
       </Section>
 

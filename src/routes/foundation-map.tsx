@@ -1,5 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader, RecordCard, Section, RegistryTable, Cell, RowHeader } from "@/components/governance/page";
+import {
+  PageHeader,
+  RecordCard,
+  Section,
+  RegistryTable,
+  Cell,
+  RowHeader,
+} from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { StateChip } from "@/components/governance/state-chip";
 import { SyntheticMarker } from "@/components/governance/markers";
@@ -75,7 +82,13 @@ function FoundationMap() {
       >
         <RegistryTable
           caption="Foundation layers with declared state, authority, and promotion requirement"
-          headers={["Layer", "Name", "Declared state", "Declared authority", "Promotion requirement"]}
+          headers={[
+            "Layer",
+            "Name",
+            "Declared state",
+            "Declared authority",
+            "Promotion requirement",
+          ]}
         >
           {FOUNDATION_LAYERS.map((layer) => (
             <tr key={layer.id}>

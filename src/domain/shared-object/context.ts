@@ -37,7 +37,8 @@ export const CONTEXT_ASSEMBLY_STEP_META: Record<
     id: "purpose",
     label: "Purpose",
     question: "Why is this being assembled at all?",
-    failureIfSkipped: "Without a purpose, every later step defaults to whatever is technically reachable.",
+    failureIfSkipped:
+      "Without a purpose, every later step defaults to whatever is technically reachable.",
   },
   "authorized-participant": {
     id: "authorized-participant",
@@ -55,7 +56,8 @@ export const CONTEXT_ASSEMBLY_STEP_META: Record<
     id: "relationship",
     label: "Relationship",
     question: "What connects this person to the subject?",
-    failureIfSkipped: "Role alone becomes access, which is the failure this model exists to prevent.",
+    failureIfSkipped:
+      "Role alone becomes access, which is the failure this model exists to prevent.",
   },
   "applicable-policy": {
     id: "applicable-policy",
@@ -85,7 +87,8 @@ export const CONTEXT_ASSEMBLY_STEP_META: Record<
     id: "context-package",
     label: "Context package",
     question: "What is handed over, and under what restrictions?",
-    failureIfSkipped: "The result becomes an untracked document with no expiry and no audience limit.",
+    failureIfSkipped:
+      "The result becomes an untracked document with no expiry and no audience limit.",
   },
 };
 
@@ -104,12 +107,42 @@ export const CONTEXT_PACKAGE_STATUS_META: Record<
   ContextPackageStatus,
   { id: ContextPackageStatus; label: string; marker: string; meaning: string }
 > = {
-  current: { id: "current", label: "Current", marker: "[CTX OK]", meaning: "Assembled, complete for its purpose, and within its freshness window." },
-  stale: { id: "stale", label: "Stale", marker: "[CTX STALE]", meaning: "A source has changed since assembly. Re-assemble before relying on it." },
-  incomplete: { id: "incomplete", label: "Incomplete", marker: "[CTX GAP]", meaning: "Required information was unavailable. The gaps are named." },
-  conflicted: { id: "conflicted", label: "Conflicted", marker: "[CTX CONFLICT]", meaning: "Sources disagree. The disagreement is shown, not resolved silently." },
-  refused: { id: "refused", label: "Refused", marker: "[CTX REFUSED]", meaning: "Assembly was declined because the purpose did not justify the request." },
-  expired: { id: "expired", label: "Expired", marker: "[CTX EXPIRED]", meaning: "Past its expiry. Must not be used for any decision." },
+  current: {
+    id: "current",
+    label: "Current",
+    marker: "[CTX OK]",
+    meaning: "Assembled, complete for its purpose, and within its freshness window.",
+  },
+  stale: {
+    id: "stale",
+    label: "Stale",
+    marker: "[CTX STALE]",
+    meaning: "A source has changed since assembly. Re-assemble before relying on it.",
+  },
+  incomplete: {
+    id: "incomplete",
+    label: "Incomplete",
+    marker: "[CTX GAP]",
+    meaning: "Required information was unavailable. The gaps are named.",
+  },
+  conflicted: {
+    id: "conflicted",
+    label: "Conflicted",
+    marker: "[CTX CONFLICT]",
+    meaning: "Sources disagree. The disagreement is shown, not resolved silently.",
+  },
+  refused: {
+    id: "refused",
+    label: "Refused",
+    marker: "[CTX REFUSED]",
+    meaning: "Assembly was declined because the purpose did not justify the request.",
+  },
+  expired: {
+    id: "expired",
+    label: "Expired",
+    marker: "[CTX EXPIRED]",
+    meaning: "Past its expiry. Must not be used for any decision.",
+  },
 };
 
 /** What was drawn from one canonical source, and under what authority. */
@@ -174,7 +207,10 @@ export interface ContextProjectionDefinition {
 export const CONTEXT_PACKAGE_RULES: { id: string; rule: string }[] = [
   { id: "CTX-01", rule: "A context package is never a source of truth and never owns a record." },
   { id: "CTX-02", rule: "A package is bound to one purpose and one audience." },
-  { id: "CTX-03", rule: "Information is excluded unless the purpose requires it, not included because it is reachable." },
+  {
+    id: "CTX-03",
+    rule: "Information is excluded unless the purpose requires it, not included because it is reachable.",
+  },
   { id: "CTX-04", rule: "Provenance travels with every included field." },
   { id: "CTX-05", rule: "Missing and conflicting information is named, never left blank." },
   { id: "CTX-06", rule: "A package may expire, and an expired package may not inform a decision." },

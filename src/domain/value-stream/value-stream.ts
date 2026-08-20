@@ -121,14 +121,19 @@ export function validateValueStreams(streams: ValueStream[]): ValueStreamViolati
     if (stream.purpose.trim() === "") push("missing-purpose", "Stream has no stated purpose.");
     if (stream.outcomeMeasures.length === 0)
       push("missing-outcome", "Stream produces no stated outcome measure.");
-    if (stream.entryCriteria.length === 0) push("missing-entry-criteria", "Stream has no entry criteria.");
-    if (stream.exitCriteria.length === 0) push("missing-exit-criteria", "Stream has no exit criteria.");
+    if (stream.entryCriteria.length === 0)
+      push("missing-entry-criteria", "Stream has no entry criteria.");
+    if (stream.exitCriteria.length === 0)
+      push("missing-exit-criteria", "Stream has no exit criteria.");
     if (stream.stages.length === 0) push("no-stages", "Stream has no stages.");
     if (stream.learningLoopDestination.trim() === "")
       push("missing-learning-loop", "Stream does not say where its learning goes.");
     if (stream.stopAuthorities.length === 0)
       push("no-stop-authority", "No function may stop this stream.");
-    if (stream.operatingStatus === "gated-future" && stream.implementationStatus !== "not-implemented")
+    if (
+      stream.operatingStatus === "gated-future" &&
+      stream.implementationStatus !== "not-implemented"
+    )
       push(
         "gated-stream-claims-implementation",
         "A gated future stream may not report any implementation status other than not implemented.",

@@ -10,7 +10,8 @@ import { ENTERPRISE_FUNCTION_META } from "../src/domain";
 
 const out = "/dev-server/docs/value-streams";
 mkdirSync(out, { recursive: true });
-const fn = (id: string) => (ENTERPRISE_FUNCTION_META as any)[id]?.name ?? id;
+const fn = (id: string) =>
+  (ENTERPRISE_FUNCTION_META as Record<string, { name: string } | undefined>)[id]?.name ?? id;
 const list = (items: readonly string[]) =>
   items.length ? items.map((i) => `- ${i}`).join("\n") : "- None recorded.";
 
@@ -20,9 +21,9 @@ for (const s of VALUE_STREAMS) {
   const gates = VALUE_STREAM_GATES.filter((g) => g.valueStreamId === s.valueStreamId);
   const handoffs = VALUE_STREAM_HANDOFFS.filter((h) => h.sourceStageId.startsWith(s.valueStreamId));
   const deps = VALUE_STREAM_DEPENDENCIES.filter(
-    (d: any) => d.dependentStreamId === s.valueStreamId || d.providerStreamId === s.valueStreamId,
+    (d) => d.dependentStreamId === s.valueStreamId || d.providerStreamId === s.valueStreamId,
   );
-  const metrics = VALUE_STREAM_METRICS.filter((m: any) => m.valueStreamId === s.valueStreamId);
+  const metrics = VALUE_STREAM_METRICS.filter((m) => m.valueStreamId === s.valueStreamId);
   const file = `${s.valueStreamId}.md`;
   index.push(`- [${s.name}](./${file}) — ${s.operatingStatus} / authority: ${s.currentAuthority}`);
   const body = `# ${s.name}
@@ -127,9 +128,7 @@ ${
 
 ${
   deps.length
-    ? deps
-        .map((d: any) => `- \`${d.dependencyId}\`: ${d.description ?? d.kind} (${d.kind})`)
-        .join("\n")
+    ? deps.map((d) => `- \`${d.dependencyId}\`: ${d.description ?? d.kind} (${d.kind})`).join("\n")
     : "- No cross-stream dependency recorded."
 }
 
@@ -149,7 +148,7 @@ Outcome measures:
 ${list(s.outcomeMeasures)}
 
 Recorded metrics:
-${metrics.length ? metrics.map((m: any) => `- ${m.name}: ${m.question}`).join("\n") : "- None recorded."}
+${metrics.length ? metrics.map((m) => `- ${m.name}: ${m.question}`).join("\n") : "- None recorded."}
 
 No metric on this stream measures individual output rate, ranks people, or scores a person.
 

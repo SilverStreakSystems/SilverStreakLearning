@@ -83,7 +83,10 @@ describe("WP-007 requirement candidate register", () => {
   });
 
   it("keeps original wording verbatim and separate from the normalized summary", () => {
-    const sourceText = readFileSync("docs/ACCESSIBILITY_ACCEPTANCE.md", "utf8").replace(/\s+/g, " ");
+    const sourceText = readFileSync("docs/ACCESSIBILITY_ACCEPTANCE.md", "utf8").replace(
+      /\s+/g,
+      " ",
+    );
     for (const record of requirements) {
       if (record.source_id === "HS-011") {
         expect(sourceText).toContain(record.original_wording.replace(/\s+/g, " "));

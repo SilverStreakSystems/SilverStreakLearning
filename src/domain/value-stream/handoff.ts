@@ -7,7 +7,13 @@
 import type { SharedObjectTypeId } from "../shared-object/object-types";
 import type { EnterpriseFunctionId } from "./functions";
 
-export const HANDOFF_OUTCOMES = ["pending", "accepted", "refused", "returned", "escalated"] as const;
+export const HANDOFF_OUTCOMES = [
+  "pending",
+  "accepted",
+  "refused",
+  "returned",
+  "escalated",
+] as const;
 export type HandoffOutcome = (typeof HANDOFF_OUTCOMES)[number];
 
 export interface HandoffContract {

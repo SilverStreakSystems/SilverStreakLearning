@@ -104,7 +104,11 @@ export function validateClaims(claims: GovernedClaim[]): ClaimViolation[] {
       });
     }
 
-    if (claim.evidenceState === "none" && claim.approvalState !== "refused" && claim.approvalState !== "not-required") {
+    if (
+      claim.evidenceState === "none" &&
+      claim.approvalState !== "refused" &&
+      claim.approvalState !== "not-required"
+    ) {
       violations.push({
         claimId: claim.claimId,
         kind: "missing-evidence-state",

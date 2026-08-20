@@ -109,9 +109,7 @@ export function gateAllowsAdvance(disposition: GateDisposition): boolean {
 }
 
 export type GateViolationKind =
-  | "missing-stop-conditions"
-  | "missing-required-evidence"
-  | "disposition-set-too-narrow";
+  "missing-stop-conditions" | "missing-required-evidence" | "disposition-set-too-narrow";
 
 export interface GateViolation {
   gateId: string;

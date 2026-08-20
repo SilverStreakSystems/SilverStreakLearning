@@ -67,7 +67,8 @@ function FutureArchitecture() {
                     <ul className="mt-1 list-disc space-y-1 pl-5">
                       {workspace.requiredCapabilities.map((id: string) => (
                         <li key={id}>
-                          {id} — {capabilityById(ENTERPRISE_CAPABILITIES, id)?.name ?? "Not recorded"}
+                          {id} —{" "}
+                          {capabilityById(ENTERPRISE_CAPABILITIES, id)?.name ?? "Not recorded"}
                         </li>
                       ))}
                     </ul>

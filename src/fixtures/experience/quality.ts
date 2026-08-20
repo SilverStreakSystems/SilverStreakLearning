@@ -72,14 +72,30 @@ export const ACCESSIBILITY_REQUIREMENTS: AccessibilityRequirement[] = [
   { requirementId: "AC-03", requirement: "Non-text and focus contrast", minimum: "3 to 1" },
   { requirementId: "AC-04", requirement: "Body text", minimum: "16px for primary reading" },
   { requirementId: "AC-05", requirement: "Touch target", minimum: "44 by 44px effective target" },
-  { requirementId: "AC-06", requirement: "Zoom", minimum: "200 percent without loss of essential content" },
+  {
+    requirementId: "AC-06",
+    requirement: "Zoom",
+    minimum: "200 percent without loss of essential content",
+  },
   { requirementId: "AC-07", requirement: "Reflow", minimum: "Usable at 320 CSS pixels" },
-  { requirementId: "AC-08", requirement: "Keyboard", minimum: "Every interactive element operable; logical focus order" },
+  {
+    requirementId: "AC-08",
+    requirement: "Keyboard",
+    minimum: "Every interactive element operable; logical focus order",
+  },
   { requirementId: "AC-09", requirement: "Focus", minimum: "Visible on all supported surfaces" },
   { requirementId: "AC-10", requirement: "Motion", minimum: "prefers-reduced-motion respected" },
   { requirementId: "AC-11", requirement: "Status", minimum: "Never color only" },
-  { requirementId: "AC-12", requirement: "Tables", minimum: "Headers, captions, and scrolling preserve meaning" },
-  { requirementId: "AC-13", requirement: "Language", minimum: "lang metadata; localization-safe strings; RTL-compatible layout" },
+  {
+    requirementId: "AC-12",
+    requirement: "Tables",
+    minimum: "Headers, captions, and scrolling preserve meaning",
+  },
+  {
+    requirementId: "AC-13",
+    requirement: "Language",
+    minimum: "lang metadata; localization-safe strings; RTL-compatible layout",
+  },
 ];
 
 /**
@@ -89,15 +105,78 @@ export const ACCESSIBILITY_REQUIREMENTS: AccessibilityRequirement[] = [
  * and this build has not executed a viewport validation run.
  */
 export const VALIDATION_VIEWPORTS: ValidationViewport[] = [
-  { viewportId: "VV-320", width: 320, height: 568, label: "320 by 568", result: "not-run", recordedOn: null },
-  { viewportId: "VV-375", width: 375, height: 667, label: "375 by 667", result: "not-run", recordedOn: null },
-  { viewportId: "VV-390", width: 390, height: 844, label: "390 by 844", result: "not-run", recordedOn: null },
-  { viewportId: "VV-768", width: 768, height: 1024, label: "768 by 1024", result: "not-run", recordedOn: null },
-  { viewportId: "VV-1024", width: 1024, height: 768, label: "1024 by 768", result: "not-run", recordedOn: null },
-  { viewportId: "VV-1280", width: 1280, height: 720, label: "1280 by 720", result: "not-run", recordedOn: null },
-  { viewportId: "VV-1366", width: 1366, height: 768, label: "1366 by 768", result: "not-run", recordedOn: null },
-  { viewportId: "VV-1440", width: 1440, height: 900, label: "1440 by 900", result: "not-run", recordedOn: null },
-  { viewportId: "VV-1920", width: 1920, height: 1080, label: "1920 by 1080", result: "not-run", recordedOn: null },
+  {
+    viewportId: "VV-320",
+    width: 320,
+    height: 568,
+    label: "320 by 568",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-375",
+    width: 375,
+    height: 667,
+    label: "375 by 667",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-390",
+    width: 390,
+    height: 844,
+    label: "390 by 844",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-768",
+    width: 768,
+    height: 1024,
+    label: "768 by 1024",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-1024",
+    width: 1024,
+    height: 768,
+    label: "1024 by 768",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-1280",
+    width: 1280,
+    height: 720,
+    label: "1280 by 720",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-1366",
+    width: 1366,
+    height: 768,
+    label: "1366 by 768",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-1440",
+    width: 1440,
+    height: 900,
+    label: "1440 by 900",
+    result: "not-run",
+    recordedOn: null,
+  },
+  {
+    viewportId: "VV-1920",
+    width: 1920,
+    height: 1080,
+    label: "1920 by 1080",
+    result: "not-run",
+    recordedOn: null,
+  },
 ];
 
 /** Section 19.1: definition of visual-system done, stated honestly. */
@@ -112,13 +191,15 @@ export const CONFORMANCE_CHECKS: ConformanceCheck[] = [
     checkId: "CF-02",
     check: "No unexplained one-off spacing values.",
     status: "unverified",
-    basis: "Spacing follows Tailwind's 4px scale, which resolves to the micro unit, but no audit has been run.",
+    basis:
+      "Spacing follows Tailwind's 4px scale, which resolves to the micro unit, but no audit has been run.",
   },
   {
     checkId: "CF-03",
     check: "Every route has one H1 and a stable page-header pattern.",
     status: "met",
-    basis: "All routes render through PageHeader; the heading test asserts exactly one H1 per route.",
+    basis:
+      "All routes render through PageHeader; the heading test asserts exactly one H1 per route.",
   },
   {
     checkId: "CF-04",
@@ -128,19 +209,23 @@ export const CONFORMANCE_CHECKS: ConformanceCheck[] = [
   },
   {
     checkId: "CF-05",
-    check: "Every future-state template is labelled by maturity and does not masquerade as implemented capability.",
+    check:
+      "Every future-state template is labelled by maturity and does not masquerade as implemented capability.",
     status: "met",
-    basis: "Maturity is a declared field, and the template invariant test refuses an implemented claim without an implementing route.",
+    basis:
+      "Maturity is a declared field, and the template invariant test refuses an implemented claim without an implementing route.",
   },
   {
     checkId: "CF-06",
     check: "SVG and PNG assets carry an explicit source and provenance note.",
     status: "met",
-    basis: "Every brand component records provenance; the favicon is recorded as a template default, not an SSLS asset.",
+    basis:
+      "Every brand component records provenance; the favicon is recorded as a template default, not an SSLS asset.",
   },
   {
     checkId: "CF-07",
-    check: "Operational pages remain product first; constellation imagery accents rather than overwhelms.",
+    check:
+      "Operational pages remain product first; constellation imagery accents rather than overwhelms.",
     status: "met",
     basis: "Brand marks appear in the shell header and the brand asset view only.",
   },
@@ -181,7 +266,8 @@ export const VISUAL_SYSTEM_REFUSALS = [
   {
     refusalId: "VSR-04",
     claim: "The responsive layout is validated because the CSS uses clamp().",
-    reason: "A fluid rule is an intention. Validation requires a recorded measurement at each viewport.",
+    reason:
+      "A fluid rule is an intention. Validation requires a recorded measurement at each viewport.",
   },
   {
     refusalId: "VSR-05",

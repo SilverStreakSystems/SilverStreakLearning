@@ -76,16 +76,37 @@ export const AUTHORIZATION_INPUT_META: Record<
   },
 };
 
-export type AuthorizationOutcome = "permitted" | "refused" | "permitted-with-limits" | "undetermined";
+export type AuthorizationOutcome =
+  "permitted" | "refused" | "permitted-with-limits" | "undetermined";
 
 export const AUTHORIZATION_OUTCOME_META: Record<
   AuthorizationOutcome,
   { id: AuthorizationOutcome; label: string; marker: string; meaning: string }
 > = {
-  permitted: { id: "permitted", label: "Permitted", marker: "[PERMIT]", meaning: "A named rule allows it, for this purpose, now." },
-  refused: { id: "refused", label: "Refused", marker: "[REFUSED]", meaning: "A named rule forbids it. The reason is recorded." },
-  "permitted-with-limits": { id: "permitted-with-limits", label: "Permitted with limits", marker: "[LIMITED]", meaning: "Allowed for a reduced projection or a shorter period." },
-  undetermined: { id: "undetermined", label: "Undetermined", marker: "[UNDET]", meaning: "No rule addresses it. Default is deny, and the gap is a finding." },
+  permitted: {
+    id: "permitted",
+    label: "Permitted",
+    marker: "[PERMIT]",
+    meaning: "A named rule allows it, for this purpose, now.",
+  },
+  refused: {
+    id: "refused",
+    label: "Refused",
+    marker: "[REFUSED]",
+    meaning: "A named rule forbids it. The reason is recorded.",
+  },
+  "permitted-with-limits": {
+    id: "permitted-with-limits",
+    label: "Permitted with limits",
+    marker: "[LIMITED]",
+    meaning: "Allowed for a reduced projection or a shorter period.",
+  },
+  undetermined: {
+    id: "undetermined",
+    label: "Undetermined",
+    marker: "[UNDET]",
+    meaning: "No rule addresses it. Default is deny, and the gap is a finding.",
+  },
 };
 
 /**
@@ -120,11 +141,17 @@ export interface AuthorizationRule {
 
 export const AUTHORIZATION_PRINCIPLES: { id: string; rule: string }[] = [
   { id: "AUTH-01", rule: "Default deny. An unaddressed request is refused and recorded as a gap." },
-  { id: "AUTH-02", rule: "Role alone never authorizes. Purpose and relationship are required inputs." },
+  {
+    id: "AUTH-02",
+    rule: "Role alone never authorizes. Purpose and relationship are required inputs.",
+  },
   { id: "AUTH-03", rule: "Every permitted action can explain itself in plain language." },
   { id: "AUTH-04", rule: "Authority is time-bounded. Indefinite grants are a finding." },
   { id: "AUTH-05", rule: "Authorization decisions are audited, including refusals." },
-  { id: "AUTH-06", rule: "The model stays reversible: no engine is built before the need is real." },
+  {
+    id: "AUTH-06",
+    rule: "The model stays reversible: no engine is built before the need is real.",
+  },
 ];
 
 /** Operational visibility must not become surveillance. Locked by test. */

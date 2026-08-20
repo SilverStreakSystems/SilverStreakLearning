@@ -55,7 +55,7 @@ byte-identical.
 | Applicability calculation | IMPLEMENTED | `scripts/evidence/applicability.mjs` | 8 applicability cases |
 | Evidence expiry | IMPLEMENTED | `scripts/evidence/expiry.mjs` | 3 expiry cases |
 | Evidence supersession | IMPLEMENTED | `applicability.mjs` supersession branch | supersession case |
-| Evidence index | IMPLEMENTED | `evidence/index.json` | verify gate |
+| Evidence index | IMPLEMENTED | `evidence/evidence-index.json` | verify gate |
 | Evidence bundle | IMPLEMENTED | `evidence/` | reproduction run |
 | Artifact hashing | IMPLEMENTED | `scripts/evidence/util.mjs` | schema requires `artifact_hash` |
 | Reproduction process | IMPLEMENTED | `docs/wp-037/PIPELINE_OPERATION.md` | executed once, passed |

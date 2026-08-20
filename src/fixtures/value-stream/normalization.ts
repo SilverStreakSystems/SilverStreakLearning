@@ -53,8 +53,7 @@ export const VALUE_STREAM_NORMALIZATION_FINDINGS: ValueStreamNormalizationFindin
     candidateName: "Enablement and training",
     resolvedValueStreamId: "implementation-adoption",
     disposition: "merged-into-stream",
-    observation:
-      "Enablement was proposed as its own stream ending at 'training delivered'.",
+    observation: "Enablement was proposed as its own stream ending at 'training delivered'.",
     judgment:
       "Training delivered is an output, not an outcome. The outcome is durable practice change, which Implementation → Adoption already carries.",
     consequence:
@@ -79,8 +78,7 @@ export const VALUE_STREAM_NORMALIZATION_FINDINGS: ValueStreamNormalizationFindin
     candidateName: "Validation → Release",
     resolvedValueStreamId: "validation-release",
     disposition: "kept-as-stream",
-    observation:
-      "The original candidate advanced to release when validation was marked complete.",
+    observation: "The original candidate advanced to release when validation was marked complete.",
     judgment:
       "Completion of validation work is not release authority. Release requires a declared authority decision that a validated capability may be exposed, and a separate decision before anything may be claimed publicly.",
     consequence:
@@ -105,8 +103,7 @@ export const VALUE_STREAM_NORMALIZATION_FINDINGS: ValueStreamNormalizationFindin
     candidateName: "Contract → Implementation",
     resolvedValueStreamId: "contract-implementation",
     disposition: "kept-as-stream",
-    observation:
-      "The candidate copied commitment records into an implementation plan object.",
+    observation: "The candidate copied commitment records into an implementation plan object.",
     judgment:
       "A commitment is canonical wherever it is created. Implementation references it; it does not hold a second copy that can drift.",
     consequence:
@@ -118,7 +115,8 @@ export const VALUE_STREAM_NORMALIZATION_FINDINGS: ValueStreamNormalizationFindin
     candidateName: "Adoption → Outcome",
     resolvedValueStreamId: "adoption-outcome",
     disposition: "kept-as-stream",
-    observation: "The candidate ended at a measured outcome with no destination for what was learned.",
+    observation:
+      "The candidate ended at a measured outcome with no destination for what was learned.",
     judgment:
       "A stream that produces learning and discards it is not governed. Every stream must name where its learning goes.",
     consequence:
@@ -143,8 +141,7 @@ export const VALUE_STREAM_NORMALIZATION_FINDINGS: ValueStreamNormalizationFindin
     candidateName: "Hire → Develop → Retain",
     resolvedValueStreamId: "hire-develop-retain",
     disposition: "kept-as-stream",
-    observation:
-      "Staffing looked like a departmental process rather than a value stream.",
+    observation: "Staffing looked like a departmental process rather than a value stream.",
     judgment:
       "It is kept because it produces a durable enterprise outcome, sustained capacity to operate capabilities, and it feeds directly into which capabilities may advance a maturity stage. It carries no personal data in this boundary.",
     consequence:
@@ -156,8 +153,7 @@ export const VALUE_STREAM_NORMALIZATION_FINDINGS: ValueStreamNormalizationFindin
     candidateName: "Governance artifact review",
     resolvedValueStreamId: "governance-artifact-lifecycle",
     disposition: "kept-as-stream",
-    observation:
-      "Artifact review was proposed as a subflow of Requirement → Decision.",
+    observation: "Artifact review was proposed as a subflow of Requirement → Decision.",
     judgment:
       "Promotion and supersession of a governing artifact changes what governs the enterprise. That is an outcome in its own right and needs its own refusal grounds.",
     consequence:

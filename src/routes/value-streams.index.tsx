@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Cell, PageHeader, RecordCard, RegistryTable, RowHeader, Section } from "@/components/governance/page";
+import {
+  Cell,
+  PageHeader,
+  RecordCard,
+  RegistryTable,
+  RowHeader,
+  Section,
+} from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { Field, GatedPanel, SyntheticMarker, ValueList } from "@/components/governance/markers";
 import {
@@ -8,9 +15,11 @@ import {
   OperatingStatusChip,
   ValueStreamFilterBar,
   ValueStreamViewTabs,
+} from "@/components/governance/value-stream-controls";
+import {
   parseValueStreamSearch,
   type ValueStreamSearch,
-} from "@/components/governance/value-stream-controls";
+} from "@/components/governance/value-stream-view-model";
 import {
   VALUE_STREAMS,
   VALUE_STREAM_BURDENS,
@@ -98,15 +107,19 @@ function ValueStreamView() {
           <SyntheticMarker />
         </div>
         <p className="mt-3 rounded-md border-l-4 border-border-strong bg-muted p-3 text-sm font-semibold">
-          Version 0.1, candidate. No stream is operating. No function is staffed. No gate, transition,
-          or refusal rule is enforced by running code. Every record here is invented, and none of it
-          reports progress or readiness.
+          Version 0.1, candidate. No stream is operating. No function is staffed. No gate,
+          transition, or refusal rule is enforced by running code. Every record here is invented,
+          and none of it reports progress or readiness.
         </p>
       </PageHeader>
 
       <ValueStreamViewTabs current={search.view} search={search} />
       {search.view === "registry" ? (
-        <ValueStreamFilterBar search={search} resultCount={filtered.length} onChange={updateSearch} />
+        <ValueStreamFilterBar
+          search={search}
+          resultCount={filtered.length}
+          onChange={updateSearch}
+        />
       ) : null}
 
       {search.view === "registry" ? <RegistryView streams={filtered} search={search} /> : null}
@@ -184,8 +197,8 @@ function RegistryView({ streams, search }: { streams: ValueStream[]; search: Val
         <RecordCard>
           <h3 className="font-display text-lg font-semibold">Learning loop destinations</h3>
           <p className="mt-1 text-sm text-muted-foreground">
-            Every stream must say where its learning goes. A stream that receives no learning from any
-            other stream is not a defect; a stream that sends learning nowhere is.
+            Every stream must say where its learning goes. A stream that receives no learning from
+            any other stream is not a defect; a stream that sends learning nowhere is.
           </p>
           <dl className="mt-3">
             {Object.entries(loops).map(([destination, sources]) => (
@@ -197,7 +210,9 @@ function RegistryView({ streams, search }: { streams: ValueStream[]; search: Val
           </dl>
         </RecordCard>
         <RecordCard>
-          <h3 className="font-display text-lg font-semibold">What this registry refuses to report</h3>
+          <h3 className="font-display text-lg font-semibold">
+            What this registry refuses to report
+          </h3>
           <ValueList
             items={[
               "A single readiness or completion percentage across streams.",
@@ -225,7 +240,10 @@ function FunctionsView() {
         title="Decision rights"
         description="Each decision point assigns exactly one function the right to decide. Every other right is explicit and separate."
       >
-        <RegistryTable caption="Decision rights" headers={["Right", "What it means", "What it is not"]}>
+        <RegistryTable
+          caption="Decision rights"
+          headers={["Right", "What it means", "What it is not"]}
+        >
           {DECISION_RIGHTS.map((right) => (
             <tr key={right}>
               <RowHeader>{DECISION_RIGHT_META[right].label}</RowHeader>
@@ -243,14 +261,22 @@ function FunctionsView() {
       >
         <RegistryTable
           caption="Function involvement"
-          headers={["Function", "Accountability", "Primary for", "Decides in", "Validates in", "May stop"]}
+          headers={[
+            "Function",
+            "Accountability",
+            "Primary for",
+            "Decides in",
+            "Validates in",
+            "May stop",
+          ]}
         >
           {involvement.map((entry) => (
             <tr key={entry.functionId}>
               <RowHeader>
                 {entry.functionId} {entry.name}
                 <span className="mt-1 block text-xs font-normal text-muted-foreground">
-                  Candidate role: {ENTERPRISE_FUNCTION_META[entry.functionId].accountableRoleCandidate}. Not
+                  Candidate role:{" "}
+                  {ENTERPRISE_FUNCTION_META[entry.functionId].accountableRoleCandidate}. Not
                   staffed.
                 </span>
               </RowHeader>
@@ -274,7 +300,10 @@ function FunctionsView() {
             No stream currently assigns validation to the function that runs it.
           </p>
         ) : (
-          <RegistryTable caption="Independence exceptions" headers={["Stream", "Function", "Consequence"]}>
+          <RegistryTable
+            caption="Independence exceptions"
+            headers={["Stream", "Function", "Consequence"]}
+          >
             {exceptions.map((exception) => (
               <tr key={`${exception.stream.valueStreamId}-${exception.functionId}`}>
                 <RowHeader>{exception.stream.name}</RowHeader>
@@ -299,7 +328,10 @@ function StagesView() {
         title="What one state may never imply about another"
         description="Stage advancement reads criteria and evidence. It never reads another axis as permission."
       >
-        <RegistryTable caption="Cross-axis prohibitions" headers={["Prohibition", "Why it matters"]}>
+        <RegistryTable
+          caption="Cross-axis prohibitions"
+          headers={["Prohibition", "Why it matters"]}
+        >
           {CROSS_AXIS_PROHIBITIONS.map((rule) => (
             <tr key={rule.id}>
               <RowHeader>{rule.statement}</RowHeader>
@@ -545,7 +577,9 @@ function DependenciesView() {
         {hidden.length === 0 ? (
           <p className="text-sm">No hidden dependencies detected in the seeded records.</p>
         ) : (
-          <ValueList items={hidden.map((finding) => `${finding.dependencyId}: ${finding.detail}`)} />
+          <ValueList
+            items={hidden.map((finding) => `${finding.dependencyId}: ${finding.detail}`)}
+          />
         )}
       </Section>
     </>
@@ -567,7 +601,14 @@ function CommitmentsView() {
       </RecordCard>
       <RegistryTable
         caption="Commitments"
-        headers={["Promised outcome", "Committing party", "Receiving party", "Source authority", "Status", "Evidence"]}
+        headers={[
+          "Promised outcome",
+          "Committing party",
+          "Receiving party",
+          "Source authority",
+          "Status",
+          "Evidence",
+        ]}
       >
         {VALUE_STREAM_COMMITMENTS.map((commitment) => (
           <tr key={commitment.commitmentId}>
@@ -601,7 +642,14 @@ function MetricsView() {
       >
         <RegistryTable
           caption="Value stream metrics"
-          headers={["Measure", "Class", "Question answered", "Interpretation", "Never read as", "Perverse incentive"]}
+          headers={[
+            "Measure",
+            "Class",
+            "Question answered",
+            "Interpretation",
+            "Never read as",
+            "Perverse incentive",
+          ]}
         >
           {VALUE_STREAM_METRICS.map((metric) => (
             <tr key={metric.metricId}>
