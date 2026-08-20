@@ -7,7 +7,7 @@
  * the same controls a person would press.
  */
 import { beforeEach, describe, expect, it } from "vitest";
-import { screen, within } from "@testing-library/react";
+import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { renderRoute } from "./render-route";
@@ -176,9 +176,7 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     expectNextStep({ ruleId: "LLR-001-R04", code: "PLAN_SUPPORT" });
     // A successful save moves focus onto the newly announced next step, so a
     // keyboard or screen-reader user is not left where the old form was.
-    await waitFor(() =>
-      expect(window.document.getElementById("next-step-heading")).toHaveFocus(),
-    );
+    await waitFor(() => expect(window.document.getElementById("next-step-heading")).toHaveFocus());
     const baselineObservationId = basisIds().find((id) => id.startsWith("OBS-"))!;
     expect(baselineObservationId).toMatch(/^OBS-/);
 
