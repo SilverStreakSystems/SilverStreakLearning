@@ -32,16 +32,43 @@ import {
 
 /** Namespaced so nothing else in the origin can collide with it. */
 export const LEARNING_LOOP_STORAGE_KEY = "ssls.product-alpha-001.learning-loop.v1";
-/** Exactly one bounded recovery snapshot. Backups never accumulate. */
+/**
+ * The pre-envelope backup key. Nothing writes it any more; it is still read so
+ * a recovery copy written by an earlier build is migrated rather than lost.
+ */
 export const LEARNING_LOOP_BACKUP_KEY = "ssls.product-alpha-001.learning-loop.backup.v1";
 /** Refuse oversized imports before the file is ever read into memory. */
 export const MAX_IMPORT_BYTES = 1024 * 1024;
+
+/** Envelope format marker. Legacy raw documents are read and migrated. */
+export const ENVELOPE_VERSION = 1;
+
+/**
+ * One key, one value, one write.
+ *
+ * Current bytes and the single recovery copy live in the same stored value, so
+ * a destructive replace is a single `setItem`. There is no window in which the
+ * backup has moved and the document has not, and a refused write leaves both
+ * exactly as they were.
+ */
+export interface StorageEnvelope {
+  envelopeVersion: typeof ENVELOPE_VERSION;
+  /** Raw document text, or null when nothing is held. */
+  current: string | null;
+  /** The single prior raw value kept for recovery. Never accumulates. */
+  backup: string | null;
+}
 
 export type ReadOutcome =
   | { status: "empty" }
   | { status: "ready"; document: LearningLoopDocument }
   | { status: "corrupt"; message: string; raw: string | null }
   | { status: "unsupported-version"; message: string; raw: string | null }
+  | { status: "unavailable"; message: string };
+
+/** Raw access is an outcome too: a read that threw is never reported as "nothing". */
+export type RawOutcome =
+  | { status: "ok"; raw: string | null }
   | { status: "unavailable"; message: string };
 
 export type CommitOutcome =
@@ -56,7 +83,10 @@ export type CommitOutcome =
   | { status: "write-failed"; message: string }
   | { status: "unavailable"; message: string };
 
-export type ClearOutcome = { status: "ok" } | { status: "write-failed"; message: string };
+export type ClearOutcome =
+  | { status: "ok" }
+  | { status: "write-failed"; message: string }
+  | { status: "unavailable"; message: string };
 
 export interface LearningLoopRepository {
   readonly kind: "browser-local" | "in-memory";
@@ -75,21 +105,36 @@ export interface LearningLoopRepository {
    * has confirmed a replacement, and the only path that can overwrite corrupt
    * or newer-schema stored data. It preserves the exact prior bytes as the
    * single bounded backup, validates the incoming document in full, and
-   * replaces the stored value atomically. On failure the stored value is
+   * replaces the stored value in one write. On failure the stored value is
    * unchanged. Normal `commit` never does this: it conflicts instead.
    */
   recover(next: LearningLoopDocument, at: string): CommitOutcome;
   clear(): ClearOutcome;
   /** The raw stored text, for recovery export when the document will not parse. */
-  readRaw(): string | null;
+  readRaw(): RawOutcome;
   /** The single recovery snapshot taken before the last destructive replace. */
-  readBackup(): string | null;
+  readBackup(): RawOutcome;
+}
+
+
+/** Recognises the envelope format. Anything else is a legacy raw document. */
+export function isEnvelope(value: unknown): value is StorageEnvelope {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Record<string, unknown>;
+  if (candidate["envelopeVersion"] !== ENVELOPE_VERSION) return false;
+  const current = candidate["current"];
+  const backup = candidate["backup"];
+  return (
+    (typeof current === "string" || current === null) &&
+    (typeof backup === "string" || backup === null)
+  );
 }
 
 /** Deep copy at the boundary so no caller holds a reference to stored state. */
 function detach(document: LearningLoopDocument): LearningLoopDocument {
   return JSON.parse(JSON.stringify(document)) as LearningLoopDocument;
 }
+
 
 interface Validated {
   ok: boolean;
@@ -147,12 +192,12 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
     return { status: "ready", document: detach(this.document) };
   }
 
-  readRaw(): string | null {
-    return this.document ? serializeDocument(this.document) : null;
+  readRaw(): RawOutcome {
+    return { status: "ok", raw: this.document ? serializeDocument(this.document) : null };
   }
 
-  readBackup(): string | null {
-    return this.backup;
+  readBackup(): RawOutcome {
+    return { status: "ok", raw: this.backup };
   }
 
   commit(expectedRevision: number | null, next: LearningLoopDocument, at: string): CommitOutcome {
@@ -172,7 +217,7 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
   }
 
   recover(next: LearningLoopDocument, at: string): CommitOutcome {
-    const priorRaw = this.readRaw();
+    const priorRaw = this.document ? serializeDocument(this.document) : null;
     const candidate = stamp(next, this.document?.revision ?? null, at);
     const result = validateRuntime(candidate);
     if (!result.ok || !result.document) return invalidOutcome(result);
@@ -187,6 +232,7 @@ export class InMemoryLearningLoopRepository implements LearningLoopRepository {
     return { status: "ok" };
   }
 }
+
 
 function probeStorage(storage: Storage): boolean {
   const probe = `${LEARNING_LOOP_STORAGE_KEY}.probe`;
@@ -218,29 +264,108 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
     this.available = this.storage !== null;
   }
 
-  readRaw(): string | null {
+  /**
+   * Reads the single stored value and normalises it to an envelope.
+   *
+   * A value written by an earlier build is a bare document, and an earlier
+   * build may also have left a separate backup key. Both are read here and
+   * folded into the in-memory envelope view. Nothing is deleted: the legacy
+   * bytes stay where they are until a successful write migrates them.
+   */
+  private readEnvelope():
+    | { status: "ok"; envelope: StorageEnvelope }
+    | { status: "unavailable"; message: string } {
+    if (!this.storage)
+      return { status: "unavailable", message: "This browser is not allowing local storage." };
+    let stored: string | null;
+    let legacyBackup: string | null;
     try {
-      return this.storage?.getItem(LEARNING_LOOP_STORAGE_KEY) ?? null;
+      stored = this.storage.getItem(LEARNING_LOOP_STORAGE_KEY);
+      legacyBackup = this.storage.getItem(LEARNING_LOOP_BACKUP_KEY);
     } catch {
-      return null;
+      return {
+        status: "unavailable",
+        message: "This browser refused to read the saved data, so its state is unknown.",
+      };
     }
+    if (stored === null)
+      return {
+        status: "ok",
+        envelope: { envelopeVersion: ENVELOPE_VERSION, current: null, backup: legacyBackup },
+      };
+
+    let parsed: unknown = undefined;
+    try {
+      parsed = JSON.parse(stored);
+    } catch {
+      // Unreadable bytes are the current value. They are never discarded.
+      return {
+        status: "ok",
+        envelope: { envelopeVersion: ENVELOPE_VERSION, current: stored, backup: legacyBackup },
+      };
+    }
+    if (isEnvelope(parsed)) {
+      return {
+        status: "ok",
+        envelope: {
+          envelopeVersion: ENVELOPE_VERSION,
+          current: parsed.current,
+          backup: parsed.backup ?? legacyBackup,
+        },
+      };
+    }
+    return {
+      status: "ok",
+      envelope: { envelopeVersion: ENVELOPE_VERSION, current: stored, backup: legacyBackup },
+    };
   }
 
-  readBackup(): string | null {
+  /**
+   * The only write path. One `setItem` moves current and backup together, so a
+   * refused write leaves both byte-for-byte unchanged.
+   */
+  private writeEnvelope(envelope: StorageEnvelope): { ok: true } | { ok: false } {
+    if (!this.storage) return { ok: false };
     try {
-      return this.storage?.getItem(LEARNING_LOOP_BACKUP_KEY) ?? null;
+      this.storage.setItem(
+        LEARNING_LOOP_STORAGE_KEY,
+        JSON.stringify({
+          envelopeVersion: ENVELOPE_VERSION,
+          current: envelope.current,
+          backup: envelope.backup,
+        }),
+      );
     } catch {
-      return null;
+      return { ok: false };
     }
+    // Best effort tidy-up of the superseded legacy backup key. Its content is
+    // already inside the envelope that was just written, so a failure here
+    // cannot lose anything and must not be reported as a failed write.
+    try {
+      this.storage.removeItem(LEARNING_LOOP_BACKUP_KEY);
+    } catch {
+      /* ignore: the envelope already carries the backup */
+    }
+    return { ok: true };
+  }
+
+  readRaw(): RawOutcome {
+    const envelope = this.readEnvelope();
+    if (envelope.status !== "ok") return envelope;
+    return { status: "ok", raw: envelope.envelope.current };
+  }
+
+  readBackup(): RawOutcome {
+    const envelope = this.readEnvelope();
+    if (envelope.status !== "ok") return envelope;
+    return { status: "ok", raw: envelope.envelope.backup };
   }
 
   read(): ReadOutcome {
-    if (!this.storage)
-      return {
-        status: "unavailable",
-        message: "This browser is not allowing local storage.",
-      };
-    const raw = this.readRaw();
+    const envelope = this.readEnvelope();
+    if (envelope.status !== "ok")
+      return { status: "unavailable", message: envelope.message };
+    const raw = envelope.envelope.current;
     if (raw === null) return { status: "empty" };
 
     let parsed: unknown;
@@ -271,8 +396,14 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
         message: "This browser is not allowing local storage, so nothing was saved.",
       };
 
+    const envelope = this.readEnvelope();
+    if (envelope.status !== "ok")
+      return { status: "unavailable", message: `${envelope.message} Nothing was written.` };
+
     // Re-read the persisted revision immediately before writing.
     const current = this.read();
+    if (current.status === "unavailable")
+      return { status: "unavailable", message: `${current.message} Nothing was written.` };
     if (current.status === "corrupt" || current.status === "unsupported-version")
       return {
         status: "conflict",
@@ -292,15 +423,18 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
     const result = validateRuntime(candidate);
     if (!result.ok || !result.document) return invalidOutcome(result);
 
-    try {
-      this.storage.setItem(LEARNING_LOOP_STORAGE_KEY, serializeDocument(result.document));
-    } catch {
+    // A normal save never disturbs the recovery copy.
+    const written = this.writeEnvelope({
+      envelopeVersion: ENVELOPE_VERSION,
+      current: serializeDocument(result.document),
+      backup: envelope.envelope.backup,
+    });
+    if (!written.ok)
       return {
         status: "write-failed",
         message:
           "This browser refused to save the change, so nothing was written. Storage may be full or blocked.",
       };
-    }
     return { status: "ok", document: result.document };
   }
 
@@ -310,40 +444,54 @@ export class BrowserLearningLoopRepository implements LearningLoopRepository {
         status: "unavailable",
         message: "This browser is not allowing local storage, so nothing was saved.",
       };
+    const envelope = this.readEnvelope();
+    if (envelope.status !== "ok")
+      return { status: "unavailable", message: `${envelope.message} Nothing was written.` };
+
     const current = this.read();
+    if (current.status === "unavailable")
+      return { status: "unavailable", message: `${current.message} Nothing was written.` };
     const currentRevision = current.status === "ready" ? current.document.revision : null;
     const candidate = stamp(next, currentRevision, at);
     const result = validateRuntime(candidate);
     if (!result.ok || !result.document) return invalidOutcome(result);
 
-    const priorRaw = this.readRaw();
-    const serialized = serializeDocument(result.document);
-    try {
-      // The prior bytes are preserved first, and there is only ever one of them.
-      if (priorRaw !== null) this.storage.setItem(LEARNING_LOOP_BACKUP_KEY, priorRaw);
-      this.storage.setItem(LEARNING_LOOP_STORAGE_KEY, serialized);
-    } catch {
+    const priorRaw = envelope.envelope.current;
+    const written = this.writeEnvelope({
+      envelopeVersion: ENVELOPE_VERSION,
+      current: serializeDocument(result.document),
+      // Exactly the prior bytes, and only ever one of them.
+      backup: priorRaw ?? envelope.envelope.backup,
+    });
+    if (!written.ok)
       return {
         status: "write-failed",
         message:
           "This browser refused to save the replacement, so the saved records were left exactly as they were. Storage may be full or blocked.",
       };
-    }
     return { status: "ok", document: result.document };
   }
 
   clear(): ClearOutcome {
-    if (!this.storage) return { status: "ok" };
-    try {
-      const raw = this.readRaw();
-      if (raw !== null) this.storage.setItem(LEARNING_LOOP_BACKUP_KEY, raw);
-      this.storage.removeItem(LEARNING_LOOP_STORAGE_KEY);
-      return { status: "ok" };
-    } catch {
+    if (!this.storage)
+      return {
+        status: "unavailable",
+        message: "This browser is not allowing local storage, so nothing was removed.",
+      };
+    const envelope = this.readEnvelope();
+    if (envelope.status !== "ok")
+      return { status: "unavailable", message: `${envelope.message} Nothing was removed.` };
+    const written = this.writeEnvelope({
+      envelopeVersion: ENVELOPE_VERSION,
+      current: null,
+      backup: envelope.envelope.current ?? envelope.envelope.backup,
+    });
+    if (!written.ok)
       return { status: "write-failed", message: "This browser refused to remove the saved data." };
-    }
+    return { status: "ok" };
   }
 }
+
 
 /** Creates a repository already carrying the deterministic synthetic seed. */
 export function seededInMemoryRepository(): InMemoryLearningLoopRepository {

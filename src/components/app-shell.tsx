@@ -32,18 +32,54 @@ function BoundaryBanner() {
   );
 }
 
-function NavList({ onNavigate }: { onNavigate?: () => void }) {
+/**
+ * The navigation list.
+ *
+ * On a small screen the long governance group is collapsed by default, so the
+ * primary product destination is reachable without scrolling past a list of
+ * governance records. It is a real disclosure, not a hidden section: the group
+ * heading is a button that says whether it is open.
+ */
+function NavList({
+  onNavigate,
+  collapsibleGroups = false,
+}: {
+  onNavigate?: () => void;
+  collapsibleGroups?: boolean;
+}) {
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(
+    collapsibleGroups ? { governance: true } : {},
+  );
+
   return (
     <div className="flex flex-col gap-4">
       {NAV_GROUPS.map((group) => {
         const routes = ROUTE_REGISTRY.filter((route) => route.group === group.id);
         if (routes.length === 0) return null;
+        const isCollapsible = collapsibleGroups && group.id !== "product";
+        const isOpen = !(isCollapsible && collapsed[group.id]);
+        const listId = `nav-group-${group.id}`;
         return (
           <div key={group.id} data-nav-group={group.id}>
-            <p className="px-3 pb-1 text-xs font-bold tracking-wide text-sidebar-foreground/85 uppercase">
-              {group.label}
-            </p>
-            <ul className="flex flex-col gap-1">
+            {isCollapsible ? (
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={listId}
+                onClick={() =>
+                  setCollapsed((current) => ({ ...current, [group.id]: isOpen }))
+                }
+                className="flex min-h-11 w-full items-center justify-between gap-2 rounded-sm px-3 text-start text-xs font-bold tracking-wide text-sidebar-foreground/85 uppercase focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                <span>{group.label}</span>
+                <span aria-hidden="true">{isOpen ? "−" : "+"}</span>
+              </button>
+            ) : (
+              <p className="px-3 pb-1 text-xs font-bold tracking-wide text-sidebar-foreground/85 uppercase">
+                {group.label}
+              </p>
+            )}
+            <ul id={listId} hidden={!isOpen} className="flex flex-col gap-1">
               {routes.map((route) => (
                 <li key={route.path}>
                   <Link
@@ -88,6 +124,10 @@ function MobileNavDrawer({
   returnFocusTo: HTMLElement | null;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
+  // Cancelling returns focus to the trigger, because nothing moved. Following
+  // a link does not: focus belongs on the page that was just opened, not on a
+  // menu button above content the person has never seen.
+  const navigatedRef = useRef(false);
 
   useEffect(() => {
     const first = panelRef.current?.querySelector<HTMLElement>(FOCUSABLE);
@@ -97,6 +137,11 @@ function MobileNavDrawer({
     body.style.overflow = "hidden";
     return () => {
       body.style.overflow = previousOverflow;
+      if (navigatedRef.current) {
+        const main = window.document.getElementById("main-content");
+        main?.focus();
+        return;
+      }
       returnFocusTo?.focus();
     };
   }, [returnFocusTo]);
@@ -147,7 +192,13 @@ function MobileNavDrawer({
           </button>
         </div>
         <nav aria-label="Primary">
-          <NavList onNavigate={onClose} />
+          <NavList
+            collapsibleGroups
+            onNavigate={() => {
+              navigatedRef.current = true;
+              onClose();
+            }}
+          />
         </nav>
       </div>
     </div>
@@ -212,7 +263,11 @@ export function AppShell({ children }: { children: ReactNode }) {
           <NavList />
         </nav>
 
-        <main id="main-content" className="w-full flex-1 px-4 py-6 lg:px-8 lg:py-8">
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className="w-full flex-1 px-4 py-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:px-8 lg:py-8"
+        >
           <div className="mx-auto max-w-6xl">{children}</div>
         </main>
       </div>

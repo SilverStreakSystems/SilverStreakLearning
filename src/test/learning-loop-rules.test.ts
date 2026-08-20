@@ -100,7 +100,9 @@ describe("LLR-001 R01 — integrity before advice", () => {
       learnerId: "LRN-ZZZ",
       goalId: null,
       supportActionId: null,
-      basis: ["LRN-ZZZ"],
+      // Nothing resolves, so the basis cites nothing: a fabricated identifier
+      // would look like a record that exists.
+      basis: [],
       rationale: /not in the saved data/i,
     });
   });
@@ -265,13 +267,16 @@ describe("LLR-001 R06 — a completed support with nothing observed since", () =
     });
   });
 
-  it("does not count an observation that is not linked to the completed support", () => {
+  it("treats a newer unlinked observation as a reason to plan again, not as a follow-up", () => {
     const document = seed();
     document.goalReviews = [];
     const followUp = document.observations.find((row) => row.observationId === "OBS-B2")!;
     followUp.supportActionId = null;
     valid(document);
-    expect(projectNextStep(document, "LRN-B", LATE).ruleId).toBe("LLR-001-R06");
+    // The completed support is no longer the newest thing that happened, and
+    // the new observation was not judged against it, so the loop restarts at
+    // planning rather than asking for evidence that already exists.
+    expect(projectNextStep(document, "LRN-B", LATE).ruleId).toBe("LLR-001-R04");
   });
 });
 
@@ -373,7 +378,8 @@ describe("LLR-001 R08..R12 — one clause per recorded result", () => {
         learnerId: "LRN-B",
         goalId: "GOL-B1",
         supportActionId: "SUP-B1",
-        basis: ["GOL-B1", "SUP-B1", "REV-B1"],
+        // The result's own cited evidence is part of what the advice rests on.
+        basis: ["GOL-B1", "SUP-B1", "REV-B1", "OBS-B2"],
         rationale: expectation.rationale,
       });
       expect(projection.ruleId).toBe(expectation.ruleId);
@@ -403,7 +409,7 @@ describe("LLR-001 R08..R12 — one clause per recorded result", () => {
     valid(document);
     const projection = projectNextStep(document, "LRN-B", LATE);
     expect(projection.ruleId).toBe("LLR-001-R12");
-    expect(projection.basedOnRecordIds).toEqual(["GOL-B1", "REV-B2", "SUP-B1"]);
+    expect(projection.basedOnRecordIds).toEqual(["GOL-B1", "OBS-B2", "REV-B2", "SUP-B1"]);
   });
 });
 
@@ -607,5 +613,150 @@ describe("timeline", () => {
     )!;
     expect(created.detail).not.toContain("Criterion met");
     expect(created.detail).toContain(goal.successCriterion);
+  });
+});
+
+/**
+ * Regressions for the corrected current-state semantics.
+ *
+ * Each case here is a defect that the earlier clause tests did not catch: the
+ * projection either produced advice it could not honestly support, or stepped
+ * over the newest fact to reach an older one.
+ */
+/**
+ * An instant strictly after every recorded moment in the document, so fixtures
+ * that append "what happened next" cannot accidentally be dated into the past.
+ */
+function afterEverything(document: LearningLoopDocument): string {
+  const stamps = [
+    document.lastUpdatedAt,
+    ...document.goals.flatMap((row) => [row.createdAt, row.updatedAt]),
+    ...document.observations.flatMap((row) => [row.observedAt, row.createdAt]),
+    ...document.supportActions.flatMap((row) => [
+      row.plannedAt,
+      row.createdAt,
+      row.updatedAt,
+      row.completedAt ?? row.createdAt,
+    ]),
+    ...document.goalReviews.flatMap((row) => [row.reviewedAt, row.createdAt]),
+  ].map((value) => Date.parse(value));
+  return new Date(Math.max(...stamps) + 3_600_000).toISOString();
+}
+
+describe("LLR-001 — current-state projection boundary", () => {
+  it("refuses an unusable evaluation instant instead of advising anyway", () => {
+    expectClause(projectNextStep(seed(), "LRN-B", "not-a-time"), {
+      code: "REVIEW_DATA_INTEGRITY",
+      learnerId: "LRN-B",
+      goalId: null,
+      supportActionId: null,
+      basis: ["LRN-B"],
+      rationale: /not a usable instant/i,
+    });
+  });
+
+  it("refuses a historical evaluation instant, and says goal state cannot be reconstructed", () => {
+    const document = seed();
+    const before = new Date(Date.parse(document.lastUpdatedAt) - 60_000).toISOString();
+    expectClause(projectNextStep(document, "LRN-B", before), {
+      code: "REVIEW_DATA_INTEGRITY",
+      learnerId: "LRN-B",
+      goalId: null,
+      supportActionId: null,
+      basis: ["LRN-B"],
+      rationale: /current state only|cannot reconstruct/i,
+    });
+  });
+
+  it("accepts exactly the document's own last-updated instant", () => {
+    const document = seed();
+    expect(projectNextStep(document, "LRN-B", document.lastUpdatedAt).ruleId).not.toBe(
+      "LLR-001-R01",
+    );
+  });
+});
+
+describe("LLR-001 — supersession is evaluation-time aware", () => {
+  it("does not let a correction erase its predecessor from an earlier view", () => {
+    const document = seed();
+    const original = document.observations.find((row) => row.learnerId === "LRN-A")!;
+    const later = afterEverything(document);
+    document.observations.push({
+      ...original,
+      observationId: "OBS-CORRECTION",
+      observedAt: later,
+      observationText: "Corrected wording of the same lesson.",
+      createdAt: later,
+      supersedesObservationId: original.observationId,
+      supportActionId: null,
+    });
+    document.lastUpdatedAt = later;
+    valid(document);
+
+    // Evaluated before the correction was written, the original still stands.
+    const early = readLoopSnapshot(document, "LRN-A", original.createdAt);
+    expect(early.observations.map((row) => row.observationId)).toContain(original.observationId);
+    expect(early.observations.map((row) => row.observationId)).not.toContain("OBS-CORRECTION");
+
+    // Evaluated after it, the correction replaces it.
+    const now = readLoopSnapshot(document, "LRN-A", later);
+    expect(now.observations.map((row) => row.observationId)).toContain("OBS-CORRECTION");
+    expect(now.observations.map((row) => row.observationId)).not.toContain(original.observationId);
+  });
+});
+
+describe("LLR-001 R04 — the current support must follow from what was last seen", () => {
+  it("asks for a new plan when the newest support was cancelled, instead of showing an older completed one", () => {
+    const document = learnerBWithResult("progress-observed");
+    const completed = document.supportActions.find(
+      (row) => row.learnerId === "LRN-B" && row.status === "completed",
+    )!;
+    const later = afterEverything(document);
+    const baseline = document.observations.find(
+      (row) => row.goalId === completed.goalId && row.supportActionId === null,
+    )!;
+    document.supportActions.push({
+      ...completed,
+      supportActionId: "SUP-B9",
+      basedOnObservationIds: [baseline.observationId],
+      status: "cancelled",
+      plannedAt: later,
+      completedAt: null,
+      completionNote: "Called off before it was run.",
+      createdAt: later,
+      updatedAt: later,
+    });
+    document.lastUpdatedAt = later;
+    valid(document);
+
+    const projection = projectNextStep(document, "LRN-B", later);
+    expect(projection.ruleId).toBe("LLR-001-R04");
+    expect(projection.code).toBe("PLAN_SUPPORT");
+    expect(projection.rationale).toMatch(/cancelled/i);
+  });
+
+  it("asks for a new plan when the current support was not based on the newest observation", () => {
+    const document = seed();
+    document.goalReviews = document.goalReviews.filter((row) => row.learnerId !== "LRN-B");
+    const support = document.supportActions.find((row) => row.learnerId === "LRN-B")!;
+    const later = afterEverything(document);
+    document.observations.push({
+      learnerId: "LRN-B",
+      goalId: support.goalId,
+      observationId: "OBS-B9",
+      supportActionId: null,
+      observedAt: later,
+      sourceKind: "direct-observation",
+      observationText: "Something new was seen that no support was planned from.",
+      supersedesObservationId: null,
+      createdAt: later,
+      synthetic: true,
+    });
+    document.lastUpdatedAt = later;
+    valid(document);
+
+    const projection = projectNextStep(document, "LRN-B", later);
+    expect(projection.ruleId).toBe("LLR-001-R04");
+    expect(projection.basedOnRecordIds).toEqual([support.goalId, "OBS-B9"].sort());
   });
 });

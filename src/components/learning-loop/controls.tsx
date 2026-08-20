@@ -78,9 +78,11 @@ export function Choice(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
 
 export function CheckLine({
   label,
+  id: providedId,
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
-  const id = useId();
+  const generated = useId();
+  const id = providedId ?? generated;
   return (
     <label
       htmlFor={id}
@@ -110,7 +112,13 @@ export function ActionButton({
     secondary: "border border-border-strong bg-surface text-foreground hover:bg-muted",
     quiet: "border border-transparent text-foreground underline hover:bg-muted",
   } as const;
-  return <button type="button" {...props} className={cn(BUTTON_BASE, tones[tone], className)} />;
+  return (
+    <button
+      type="button"
+      {...props}
+      className={cn(BUTTON_BASE, tones[tone], className)}
+    />
+  );
 }
 
 /** A non-modal disclosure used for the record forms. Keeps focus order linear. */
@@ -169,8 +177,14 @@ export function LiveNotice({ message, tone }: { message: string | null; tone: "o
 }
 
 export interface FormError {
-  /** The id of the control the message belongs to, for a direct link. */
-  controlId: string;
+  /**
+   * The id of the control the message belongs to, for a direct link.
+   *
+   * `null` marks a form-level problem — a storage failure or a revision
+   * conflict. Nothing the person typed is wrong, so no control is marked
+   * invalid and no link is offered.
+   */
+  controlId: string | null;
   message: string;
 }
 
@@ -207,19 +221,23 @@ export function ErrorSummary({
       </h3>
       <ul className="measure mt-2 list-disc ps-5 text-sm">
         {errors.map((error) => (
-          <li key={`${error.controlId}-${error.message}`} className="mt-1 first:mt-0">
+          <li key={`${error.controlId ?? "form"}-${error.message}`} className="mt-1 first:mt-0">
+            {error.controlId === null ? (
+              <span className="font-semibold">{error.message}</span>
+            ) : (
             <a
-              href={`#${error.controlId}`}
+              href={`#${error.controlId ?? ""}`}
               className="inline-flex min-h-11 items-center font-semibold underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               onClick={(event) => {
                 event.preventDefault();
-                const target = window.document.getElementById(error.controlId);
+                const target = window.document.getElementById(error.controlId ?? "");
                 target?.focus();
                 target?.scrollIntoView({ block: "center" });
               }}
             >
               {error.message}
             </a>
+            )}
           </li>
         ))}
       </ul>

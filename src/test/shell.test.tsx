@@ -89,7 +89,7 @@ describe("navigation and keyboard operation", () => {
     expect(router.state.location.pathname).toBe("/findings");
   });
 
-  it("opens the small-screen navigation as a dialog carrying every route", async () => {
+  it("opens the small-screen navigation as a dialog, product first and governance collapsed", async () => {
     const user = userEvent.setup();
     await renderRoute("/");
 
@@ -98,12 +98,36 @@ describe("navigation and keyboard operation", () => {
 
     await user.click(toggle);
     const drawer = screen.getByRole("dialog", { name: "Primary navigation" });
-    expect(within(drawer).getAllByRole("link").length).toBe(ROUTE_REGISTRY.length);
     expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+    // The product destination is reachable straight away; the long governance
+    // list is collapsed behind a disclosure the person can open.
+    const productRoutes = ROUTE_REGISTRY.filter((route) => route.group === "product");
+    expect(within(drawer).getAllByRole("link").length).toBe(productRoutes.length);
+
+    const governance = within(drawer).getByRole("button", { name: /Governance workspace/ });
+    expect(governance).toHaveAttribute("aria-expanded", "false");
+    await user.click(governance);
+    expect(governance).toHaveAttribute("aria-expanded", "true");
+    expect(within(drawer).getAllByRole("link").length).toBe(ROUTE_REGISTRY.length);
 
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).toBeNull();
     expect(toggle).toHaveFocus();
+  });
+
+  it("puts focus on the new page, not the menu button, after navigating from the drawer", async () => {
+    const user = userEvent.setup();
+    const { router } = await renderRoute("/");
+
+    await user.click(screen.getByRole("button", { name: "Menu" }));
+    const drawer = screen.getByRole("dialog", { name: "Primary navigation" });
+    await user.click(within(drawer).getByRole("link", { name: "Learners" }));
+
+    expect(router.state.location.pathname).toBe("/learners");
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("main")).toHaveFocus();
+    expect(window.document.body.style.overflow).toBe("");
   });
 
   it("uses plain-language navigation labels without unexplained abbreviations", async () => {

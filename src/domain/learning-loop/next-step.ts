@@ -163,6 +163,12 @@ export interface LearnerLoopSnapshot {
   latestObservation: LearningObservationRecord | null;
   /** The latest planned or completed support by event time. Cancellations excluded. */
   latestActionableSupport: EffectiveSupport | null;
+  /**
+   * The latest support by event time including a cancellation. A cancellation
+   * is itself the newest fact about what is being tried, so it must not be
+   * skipped over to reveal an older completed action.
+   */
+  latestSupport: EffectiveSupport | null;
   latestReview: GoalReviewRecord | null;
 }
 
@@ -183,8 +189,13 @@ export function readLoopSnapshot(
   const focusGoal = goals.find((goal) => goal.isFocusGoal && goal.status === "active") ?? null;
 
   const observations = focusGoal
-    ? effectiveObservations(document)
-        .filter((row) => row.goalId === focusGoal.goalId && atOrBefore(row.observedAt, asOf))
+    ? effectiveObservations(document, asOf)
+        .filter(
+          (row) =>
+            row.goalId === focusGoal.goalId &&
+            atOrBefore(row.observedAt, asOf) &&
+            atOrBefore(row.createdAt, asOf),
+        )
         .sort(
           (a, b) =>
             instant(a.observedAt) - instant(b.observedAt) ||
@@ -205,8 +216,13 @@ export function readLoopSnapshot(
     : [];
 
   const reviews = focusGoal
-    ? effectiveGoalReviews(document)
-        .filter((row) => row.goalId === focusGoal.goalId && atOrBefore(row.reviewedAt, asOf))
+    ? effectiveGoalReviews(document, asOf)
+        .filter(
+          (row) =>
+            row.goalId === focusGoal.goalId &&
+            atOrBefore(row.reviewedAt, asOf) &&
+            atOrBefore(row.createdAt, asOf),
+        )
         .sort(
           (a, b) =>
             instant(a.reviewedAt) - instant(b.reviewedAt) ||
@@ -231,6 +247,11 @@ export function readLoopSnapshot(
       (row) => instant(row.eventAt),
       (row) => row.record.supportActionId,
     ),
+    latestSupport: latestBy(
+      supports,
+      (row) => instant(row.eventAt),
+      (row) => row.record.supportActionId,
+    ),
     latestReview: latestBy(
       reviews,
       (row) => instant(row.reviewedAt),
@@ -238,6 +259,7 @@ export function readLoopSnapshot(
     ),
   };
 }
+
 
 function project(
   code: NextStepCode,
@@ -265,26 +287,48 @@ function project(
 /**
  * The rule set. Total: every reachable state resolves to exactly one clause,
  * and the final clause is a real fallback rather than an assumption.
+ *
+ * LLR-001 is a CURRENT-STATE projection, not a historical reconstruction.
+ * Goal status and which goal is the focus goal are mutable fields in this
+ * five-record alpha model, so an earlier evaluation instant cannot be answered
+ * honestly: the goal state at that instant is simply not recorded anywhere.
+ * `asOf` therefore has to be a valid instant at or after the document's own
+ * `lastUpdatedAt`, and anything else resolves at R01 with that stated plainly
+ * rather than producing advice that looks historical and is not.
  */
 export function projectNextStep(
   document: LearningLoopDocument,
   learnerId: string,
   asOf: string,
 ): NextStepProjection {
-  // R01 — integrity before advice.
+  // R01 — integrity, resolvable learner, and a usable evaluation instant, all
+  // before any advice. Only identifiers that actually resolve are cited: an
+  // unrecorded learner identifier is not a record and is not treated as one.
   const integrity = validateDocumentInvariants(document);
   const learner = document.learners.find((row) => row.learnerId === learnerId);
-  if (integrity.length > 0 || !learner)
+  const asOfInstant = instant(asOf);
+  const evaluationIsUsable =
+    !Number.isNaN(asOfInstant) && asOfInstant >= instant(document.lastUpdatedAt);
+  if (integrity.length > 0 || !learner || !evaluationIsUsable) {
+    let rationale: string;
+    if (!learner)
+      rationale = "This learner is not in the saved data, so no step can be projected.";
+    else if (integrity.length > 0)
+      rationale = `The saved data has ${integrity.length} inconsistency to resolve: ${integrity[0]?.message}`;
+    else if (Number.isNaN(asOfInstant))
+      rationale = "The evaluation time is not a usable instant, so no step can be projected.";
+    else
+      rationale =
+        "This rule set projects the current state only. It cannot reconstruct what the goal looked like at an earlier moment, so no step is being projected for a past evaluation time.";
     return project(
       "REVIEW_DATA_INTEGRITY",
       learnerId,
       null,
       null,
-      !learner
-        ? "This learner is not in the saved data, so no step can be projected."
-        : `The saved data has ${integrity.length} inconsistency to resolve: ${integrity[0]?.message}`,
-      [learnerId],
+      rationale,
+      learner ? [learnerId] : [],
     );
+  }
 
   const snapshot = readLoopSnapshot(document, learnerId, asOf);
   const goal = snapshot.focusGoal;
@@ -305,7 +349,8 @@ export function projectNextStep(
   const goalId = goal.goalId;
 
   // R03 — nothing observed against the goal.
-  if (!snapshot.latestObservation)
+  const driving = snapshot.latestObservation;
+  if (!driving)
     return project(
       "RECORD_BASELINE_OBSERVATION",
       learnerId,
@@ -315,20 +360,38 @@ export function projectNextStep(
       [goalId],
     );
 
-  const actionable = snapshot.latestActionableSupport;
+  // The newest support event, cancellations included. A cancellation is the
+  // newest thing known about what is being tried and must not be stepped over.
+  const latest = snapshot.latestSupport;
 
-  // R04 — nothing has been planned from what was observed.
-  if (!actionable)
+  // R04 — what is currently being tried does not follow from what was last seen.
+  const basedOnDriving =
+    latest !== null && latest.record.basedOnObservationIds.includes(driving.observationId);
+  // A new unlinked observation is a fresh starting point unless it is the
+  // follow-up evidence for the completed support that is awaiting judgement.
+  const drivingIsFollowUp =
+    latest !== null && driving.supportActionId === latest.record.supportActionId;
+  if (latest === null || latest.state === "cancelled" || !(basedOnDriving || drivingIsFollowUp)) {
+    let rationale: string;
+    if (latest === null)
+      rationale = "There is an observation on this goal but no support has been planned from it.";
+    else if (latest.state === "cancelled")
+      rationale = "The last support on this goal was cancelled, so nothing is currently being tried.";
+    else
+      rationale =
+        "The most recent observation on this goal is not the evidence the current support was planned from, so the next support should be planned from what was last seen.";
     return project(
       "PLAN_SUPPORT",
       learnerId,
       goalId,
       null,
-      snapshot.supports.length > 0
-        ? "The last support on this goal was cancelled, so nothing is currently being tried."
-        : "There is an observation on this goal but no support has been planned from it.",
-      [goalId, snapshot.latestObservation.observationId],
+      rationale,
+      [goalId, driving.observationId],
     );
+  }
+
+  const actionable = latest;
+
 
   // R05 — support planned but not yet carried out or cancelled.
   if (actionable.state === "planned")
@@ -383,7 +446,14 @@ export function projectNextStep(
   );
 
   if (review) {
-    const basis = [goalId, completed.supportActionId, review.goalReviewId];
+    // Every identifier the answer actually rests on, including the evidence the
+    // review itself cited. Sorted and de-duplicated by `project`.
+    const basis = [
+      goalId,
+      completed.supportActionId,
+      review.goalReviewId,
+      ...review.observationIds,
+    ];
     // R08..R12 — one distinct branch per recorded result. Insufficient evidence
     // and mixed are deliberately kept apart: they call for different evidence.
     switch (review.result) {
