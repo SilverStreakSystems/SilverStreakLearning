@@ -19,7 +19,7 @@ In effect: WP-006 is owner-closed by DEC-014. WP-037 is NEXT ELIGIBLE and is **n
 | Semantic-freshness limitation | FND-013, `SSOT_BINDING_GUARD.md` | Open. WP-037 is the intended resolver |
 | Declaration-drift limitation | FND-011 | Open. Expected to be dissolved by the split below rather than patched |
 | CI enforcement limitation | FND-012 | Open, and not resolvable from repository content |
-| Build and test commands | `bun run build`, `bun run test`, `bun run lint`, `bun run check:ssot-binding` | No build, test, or lint job currently runs in CI |
+| Build and test commands | `bun run build`, `bun run test`, `bun run lint`, `bun scripts/gen-current-state.ts --check` (the commit-binding guard named here was removed under DEC-022) | No build, test, or lint job currently runs in CI |
 | Fixture posture | All fixtures synthetic, `synthetic` flags set; zero real PII | Non-negotiable boundary |
 | Claims Register | `docs/trust/SSLS-GOV-002-claims-register-v0.1-CANDIDATE.md` | Permitted wording is exact; automated results never promote a claim |
 | Current findings | FND-006…FND-014, `FINDINGS_REGISTER.md` | None closed by WP-006 |

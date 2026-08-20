@@ -8,7 +8,7 @@
 | `bun run evidence:run --fast` | Skip build, tests, typecheck, and lint; useful while iterating on the pipeline |
 | `bun run evidence:run --commit=<sha>` | Record against an explicit commit rather than resolved HEAD |
 | `bun run evidence:verify` | Verify the committed evidence set against present input sets |
-| `bun run check:ssot-binding` | Predecessor declared-binding guard, retained for compatibility |
+| `bun scripts/gen-current-state.ts --check` | Current-state projection freshness check (replaced the removed commit-binding guard under DEC-022) |
 
 ## Output layout
 
