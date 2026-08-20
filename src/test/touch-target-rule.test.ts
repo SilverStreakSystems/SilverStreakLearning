@@ -22,7 +22,7 @@ import { loadTouchTargetRule, loadTouchTargetRuleSchema } from "@/lib/touch-targ
 import { DECISIONS, EVIDENCE, FINDINGS } from "@/fixtures";
 import { PROGRAM_STATE } from "@/fixtures/program";
 import { loadHistoricalRequirementFile } from "@/lib/historical-requirement-registry";
-import { loadFnd022Dispositions } from "@/lib/fnd-022-review-registry";
+import { loadOwnerDispositionFile } from "@/lib/fnd-022-review-registry";
 
 const RULE = loadTouchTargetRule();
 
@@ -249,9 +249,9 @@ describe("HREQ-025 is untouched by Cycle 7", () => {
     const requirement = loadHistoricalRequirementFile().records.find(
       (record) => record.requirement_id === "HREQ-025",
     );
-    expect(requirement?.extracted_text).toContain("touch targets appropriate to context");
+    expect(requirement?.original_wording).toContain("touch targets appropriate to context");
 
-    const disposition = loadFnd022Dispositions().candidate_dispositions.find(
+    const disposition = loadOwnerDispositionFile().candidate_dispositions.find(
       (entry) => entry.candidate_id === "HREQ-025",
     );
     expect(disposition?.owner_disposition).toBe("NEEDS-EVIDENCE / DEFER");
