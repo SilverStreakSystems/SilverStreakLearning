@@ -30,32 +30,58 @@ function duplicates(ids: string[]): string[] {
 }
 
 /**
+ * Supersession is evaluation-time aware. A correction can only replace its
+ * predecessor once the correction itself exists: without this, a later
+ * correction would retroactively erase a record from an earlier view.
+ */
+function createdBy(createdAt: string, asOf?: string): boolean {
+  if (asOf === undefined) return true;
+  const evaluated = Date.parse(asOf);
+  if (Number.isNaN(evaluated)) return true;
+  return Date.parse(createdAt) <= evaluated;
+}
+
+/**
  * Records that have been superseded by a later correction. Superseded records
  * stay in history and are excluded from current recommendation inputs.
  */
-export function supersededObservationIds(document: LearningLoopDocument): Set<string> {
+export function supersededObservationIds(
+  document: LearningLoopDocument,
+  asOf?: string,
+): Set<string> {
   return new Set(
     document.observations
+      .filter((record) => createdBy(record.createdAt, asOf))
       .map((record) => record.supersedesObservationId)
       .filter((value): value is string => value !== null),
   );
 }
 
-export function supersededGoalReviewIds(document: LearningLoopDocument): Set<string> {
+export function supersededGoalReviewIds(
+  document: LearningLoopDocument,
+  asOf?: string,
+): Set<string> {
   return new Set(
     document.goalReviews
+      .filter((record) => createdBy(record.createdAt, asOf))
       .map((record) => record.supersedesGoalReviewId)
       .filter((value): value is string => value !== null),
   );
 }
 
-export function effectiveObservations(document: LearningLoopDocument): LearningObservationRecord[] {
-  const superseded = supersededObservationIds(document);
+export function effectiveObservations(
+  document: LearningLoopDocument,
+  asOf?: string,
+): LearningObservationRecord[] {
+  const superseded = supersededObservationIds(document, asOf);
   return document.observations.filter((record) => !superseded.has(record.observationId));
 }
 
-export function effectiveGoalReviews(document: LearningLoopDocument): GoalReviewRecord[] {
-  const superseded = supersededGoalReviewIds(document);
+export function effectiveGoalReviews(
+  document: LearningLoopDocument,
+  asOf?: string,
+): GoalReviewRecord[] {
+  const superseded = supersededGoalReviewIds(document, asOf);
   return document.goalReviews.filter((record) => !superseded.has(record.goalReviewId));
 }
 
@@ -187,6 +213,11 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Observation ${observation.observationId} is dated before the support it follows up.`,
         );
     }
+    if (isBefore(observation.createdAt, observation.observedAt))
+      push(
+        "event-after-record",
+        `Observation ${observation.observationId} was recorded before the moment it describes.`,
+      );
     if (observation.supersedesObservationId) {
       const target = observations.get(observation.supersedesObservationId);
       if (!target) {
@@ -255,6 +286,16 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Support ${support.supportActionId} cites an observation outside its learner and goal.`,
         );
     }
+    for (const observationId of duplicates(support.basedOnObservationIds))
+      push(
+        "duplicate-citation",
+        `Support ${support.supportActionId} cites observation ${observationId} more than once.`,
+      );
+    if (support.completedAt && isBefore(support.updatedAt, support.completedAt))
+      push(
+        "event-after-record",
+        `Support ${support.supportActionId} was recorded as completed before its own completion time was reached.`,
+      );
     if (support.status === "completed" && !support.completedAt)
       push(
         "missing-completion",
@@ -341,6 +382,16 @@ export function validateDocumentInvariants(document: LearningLoopDocument): Inva
           `Review ${review.goalReviewId} cites an observation that is not a follow-up to the reviewed support.`,
         );
     }
+    for (const observationId of duplicates(review.observationIds))
+      push(
+        "duplicate-citation",
+        `Review ${review.goalReviewId} cites observation ${observationId} more than once.`,
+      );
+    if (isBefore(review.createdAt, review.reviewedAt))
+      push(
+        "event-after-record",
+        `Review ${review.goalReviewId} was recorded before the moment it describes.`,
+      );
     if (review.supersedesGoalReviewId) {
       const target = reviews.get(review.supersedesGoalReviewId);
       if (!target) {

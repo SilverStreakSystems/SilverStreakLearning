@@ -234,6 +234,9 @@ export function recordObservation(
     return fail("invalid-input", "An observation needs a description of what was seen.");
   if (Number.isNaN(Date.parse(input.observedAt)))
     return fail("invalid-input", "That observation time is not a real instant.");
+  // An event cannot be recorded before it happened.
+  if (Date.parse(input.observedAt) > Date.parse(context.now))
+    return fail("invalid-input", "An observation cannot be dated in the future.");
 
   if (input.supportActionId) {
     const support = supportOf(document, input.supportActionId);
@@ -379,6 +382,8 @@ export function completeSupport(
     return fail("invalid-input", "That completion time is not a real instant.");
   if (Date.parse(completedAt) < Date.parse(support.plannedAt))
     return fail("invalid-input", "A support cannot be completed before it was planned.");
+  if (Date.parse(completedAt) > Date.parse(context.now))
+    return fail("invalid-input", "A support cannot be marked done at a future time.");
 
   return {
     ok: true,
@@ -482,6 +487,8 @@ export function recordGoalReview(
   }
   if (Date.parse(input.reviewedAt) < Date.parse(support.completedAt))
     return fail("invalid-input", "A result cannot be dated before the support was carried out.");
+  if (Date.parse(input.reviewedAt) > Date.parse(context.now))
+    return fail("invalid-input", "A result cannot be dated in the future.");
 
   if (input.supersedesGoalReviewId) {
     const target = document.goalReviews.find(

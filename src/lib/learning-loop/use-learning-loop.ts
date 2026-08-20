@@ -27,6 +27,7 @@ import {
   InMemoryLearningLoopRepository,
   type CommitOutcome,
   type LearningLoopRepository,
+  type RawOutcome,
   type ReadOutcome,
 } from "./repository";
 import { liveContext, type CommandContext } from "./context";
@@ -74,9 +75,13 @@ export interface LearningLoopStore {
   restoreDemoData: () => RunOutcome<unknown>;
   /** Atomically replaces everything with an imported document. */
   replaceAll: (next: LearningLoopDocument) => RunOutcome<unknown>;
+  /** A valid canonical document, or null. Never corrupt or newer-schema bytes. */
   exportText: () => string | null;
   /** The stored text exactly as saved, for rescuing unreadable data. */
-  rawText: () => string | null;
+  rawText: () => RawOutcome;
+  /** The single recovery copy kept from the last destructive replace. */
+  backupText: () => RawOutcome;
+
   parseImport: typeof parseDocumentText;
   dismissProblem: () => void;
 }
@@ -200,6 +205,17 @@ export function useLearningLoop(
         setProblem(refused);
         return { ok: false, value: null, problem: refused };
       }
+      // A byte-identical result is not a change. It must not write and must
+      // not advance the revision, or the record would claim an edit happened.
+      if (serializeDocument(result.document) === serializeDocument(document)) {
+        const noop: StoreProblem = {
+          message: "Nothing changed, so nothing was saved.",
+          details: [],
+          kind: "precondition",
+        };
+        setProblem(noop);
+        return { ok: false, value: null, problem: noop };
+      }
       const outcome = commit(document.revision, result.document, context.now);
       if (outcome.status !== "ok")
         return { ok: false, value: null, problem: problemFromCommit(outcome) };
@@ -242,6 +258,7 @@ export function useLearningLoop(
 
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);
+  const backupText = useCallback(() => repository.readBackup(), [repository]);
   const dismissProblem = useCallback(() => setProblem(null), []);
 
   return useMemo(
@@ -259,6 +276,7 @@ export function useLearningLoop(
       replaceAll,
       exportText,
       rawText,
+      backupText,
       parseImport: parseDocumentText,
       dismissProblem,
     }),
@@ -275,6 +293,7 @@ export function useLearningLoop(
       replaceAll,
       exportText,
       rawText,
+      backupText,
       dismissProblem,
     ],
   );
