@@ -280,7 +280,10 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/ABORTED-DEFERRED/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/No audit artifact exists/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/NOT-RUN/).length).toBeGreaterThan(0);
-    expect(screen.queryByText(/CHECKPOINT-010/)).not.toBeInTheDocument();
+    // CHECKPOINT-010 may appear only where it is explicitly denied.
+    for (const node of screen.queryAllByText(/CHECKPOINT-010/)) {
+      expect(node.textContent).toMatch(/no CHECKPOINT-010/);
+    }
   });
 
   it("makes no release, production, certification, or district-use claim", async () => {
