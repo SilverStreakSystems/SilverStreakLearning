@@ -6,7 +6,7 @@ failing condition ends reuse. Implemented as `evaluateReuse` in
 
 | # | Condition | Failure meaning |
 |---|---|---|
-| 1 | The evidence type is declared reusable across commits | Type must be re-executed every time |
+| 1 | The declared input scope fully determines the result | Type must be re-executed at the commit under review |
 | 2 | Every declared input hash is unchanged | The subject moved; the result describes a different tree |
 | 3 | The recording environment covers the environment under review | The result is INAPPLICABLE here |
 | 4 | The declared validity window has not ended | The result is EXPIRED |
