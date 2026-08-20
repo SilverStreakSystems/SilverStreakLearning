@@ -2,11 +2,11 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.1.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "55fc2a25da8f5fdbd8e7c335baf94ee6faa2ba2318bae54fdc3c261d39b1e5e4",
+  "fingerprint": "38e4192b6837ac4ba073ed6f6a73ef8806bceffc96a39581423f869b136cfa53",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
-      "sha256": "d54838586f58ac18345b5a358b24529cbc2d71ab6f72c326d03b36a3ee8c482f",
+      "sha256": "66525d0853c4817581f92c38a747dff7c9e62f4ded4f69cdcc9a23d03136b575",
       "bytes": 128887
     },
     {

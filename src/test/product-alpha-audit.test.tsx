@@ -349,7 +349,11 @@ describe("audit C: an import preview describes the document its expectation prot
     chooseFile(jsonFile(serializeDocument(imported)));
 
     await waitFor(() =>
-      expect(screen.getByRole("alert").textContent ?? "").toMatch(/changed somewhere else/i),
+      expect(
+        screen
+          .getAllByRole("alert")
+          .some((node) => /changed somewhere else/i.test(node.textContent ?? "")),
+      ).toBe(true),
     );
     // No stale diff was shown and no replacement was possible.
     expect(screen.queryByRole("button", { name: "Replace the saved records" })).toBeNull();
@@ -376,7 +380,11 @@ describe("audit C: an import preview describes the document its expectation prot
     await user.click(screen.getByRole("button", { name: "Restore the sample records" }));
 
     await waitFor(() =>
-      expect(screen.getByRole("alert").textContent ?? "").toMatch(/changed somewhere else/i),
+      expect(
+        screen
+          .getAllByRole("alert")
+          .some((node) => /changed somewhere else/i.test(node.textContent ?? "")),
+      ).toBe(true),
     );
     expect(screen.queryByRole("heading", { name: /Restoring replaces everything/ })).toBeNull();
     expect(storedBytes()).toBe(bytesAfterOtherTab);

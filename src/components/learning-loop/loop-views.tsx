@@ -280,9 +280,11 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
     // snapshot, no preview is shown: the screen is refreshed and the import
     // can be tried again against what is actually stored.
     const base = expected.read.status === "ready" ? expected.read.document : null;
-    if ((base?.revision ?? null) !== (store.document?.revision ?? null)) {
+    if (!store.showsCaptured(expected)) {
       store.refresh();
-      fail(
+      // Reported through the store: refreshing the screen can replace this
+      // panel, and a refusal must not disappear with it.
+      store.reportConflict(
         "The saved records changed somewhere else since this page loaded, so nothing was previewed and nothing was changed. The latest saved records are now shown — choose the file again if you still want to replace them.",
       );
       return;
@@ -322,13 +324,12 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
                 fail(expected.message);
                 return;
               }
-              const base = expected.read.status === "ready" ? expected.read.document : null;
-              if (
-                store.status === "ready" &&
-                (base?.revision ?? null) !== (store.document?.revision ?? null)
-              ) {
+              // Fail closed for every displayed status, not only "ready". A
+              // screen showing corrupt or newer-schema bytes that another tab
+              // has already recovered must not replace that unseen document.
+              if (!store.showsCaptured(expected)) {
                 store.refresh();
-                fail(
+                store.reportConflict(
                   "The saved records changed somewhere else since this page loaded, so nothing was changed. The latest saved records are now shown — try again if you still want to replace them.",
                 );
                 return;
