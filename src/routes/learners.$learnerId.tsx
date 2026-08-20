@@ -110,9 +110,8 @@ function toIso(localValue: string, fallback: string): string {
 export type SubmitReport = { message: string; scope: "form" | "field" } | null;
 
 function reportFrom(problem: StoreProblem | null, fallback: string): SubmitReport {
-  const scope = problem && (problem.kind === "conflict" || problem.kind === "storage")
-    ? "form"
-    : "field";
+  const scope =
+    problem && (problem.kind === "conflict" || problem.kind === "storage") ? "form" : "field";
   return { message: problem?.message ?? fallback, scope };
 }
 
@@ -169,15 +168,8 @@ function MissingLearner({ learnerId }: { learnerId: string }) {
  * version, or unreachable would invite someone to re-enter records that are
  * still on disk. This says what happened and points at recovery instead.
  */
-function UnreadableLearner({
-  store,
-  learnerId,
-}: {
-  store: LearningLoopStore;
-  learnerId: string;
-}) {
-  if (store.status === "empty")
-    return <MissingLearner learnerId={learnerId} />;
+function UnreadableLearner({ store, learnerId }: { store: LearningLoopStore; learnerId: string }) {
+  if (store.status === "empty") return <MissingLearner learnerId={learnerId} />;
 
   return (
     <div>
@@ -401,7 +393,8 @@ function LearnerDetail() {
             const outcome = store.run((current, context) =>
               createGoal(current, { learnerId, ...input }, context),
             );
-            if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The goal was not saved.");
+            if (!outcome.ok || !outcome.value)
+              return reportFrom(outcome.problem, "The goal was not saved.");
             afterSave("The goal was saved.", outcome.value.document);
             return null;
           }}
@@ -432,7 +425,8 @@ function LearnerDetail() {
                 context,
               ),
             );
-            if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The observation was not saved.");
+            if (!outcome.ok || !outcome.value)
+              return reportFrom(outcome.problem, "The observation was not saved.");
             afterSave("The observation was saved.", outcome.value.document);
             return null;
           }}
@@ -452,7 +446,8 @@ function LearnerDetail() {
             const outcome = store.run((current, context) =>
               planSupport(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
-            if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The plan was not saved.");
+            if (!outcome.ok || !outcome.value)
+              return reportFrom(outcome.problem, "The plan was not saved.");
             afterSave("The plan was saved.", outcome.value.document);
             return null;
           }}
@@ -473,7 +468,8 @@ function LearnerDetail() {
                   context,
                 ),
               );
-              if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "Nothing was saved.");
+              if (!outcome.ok || !outcome.value)
+                return reportFrom(outcome.problem, "Nothing was saved.");
               afterSave("The support was marked done.", outcome.value.document);
               return null;
             }}
@@ -481,7 +477,8 @@ function LearnerDetail() {
               const outcome = store.run((current, context) =>
                 cancelSupport(current, plannedSupport.supportActionId, reason, context),
               );
-              if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "Nothing was saved.");
+              if (!outcome.ok || !outcome.value)
+                return reportFrom(outcome.problem, "Nothing was saved.");
               afterSave("The support was cancelled.", outcome.value.document);
               return null;
             }}
@@ -514,7 +511,8 @@ function LearnerDetail() {
                   context,
                 ),
               );
-              if (!outcome.ok || !outcome.value) return reportFrom(outcome.problem, "The result was not saved.");
+              if (!outcome.ok || !outcome.value)
+                return reportFrom(outcome.problem, "The result was not saved.");
               afterSave(
                 input.supersedesGoalReviewId
                   ? "The correction was saved. The earlier result is kept and marked replaced."

@@ -30,7 +30,9 @@ export type CommandFailureCode =
   | "ownership-mismatch"
   | "goal-state"
   | "support-state"
-  | "invalid-input";
+  | "invalid-input"
+  /** The request is already true of the saved records, so there is nothing to write. */
+  | "no-change";
 
 export type CommandResult<T = unknown> =
   | ({ ok: true; document: LearningLoopDocument } & T)
@@ -131,6 +133,13 @@ export function setFocusGoal(
     return fail("ownership-mismatch", "That goal belongs to a different learner.");
   if (goal.status !== "active")
     return fail("goal-state", "Only an active goal can be the one being worked on.");
+  // Already the sole focus goal for this learner: the document would come back
+  // byte-identical, and writing it would advance the revision for nothing.
+  const alreadyFocused = document.goals
+    .filter((row) => row.learnerId === learnerId)
+    .every((row) => row.isFocusGoal === (row.goalId === goalId));
+  if (alreadyFocused)
+    return fail("no-change", "That goal is already the one being worked on, so nothing changed.");
 
   return {
     ok: true,

@@ -36,7 +36,11 @@ export function NextStepCard({
       <p className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
         Suggested next step
       </p>
-      <h2 id="next-step-heading" tabIndex={-1} className="font-display mt-1 text-xl font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+      <h2
+        id="next-step-heading"
+        tabIndex={-1}
+        className="font-display mt-1 text-xl font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      >
         {projection.label}
       </h2>
       <p className="measure mt-2 text-base text-foreground">{projection.rationale}</p>
@@ -464,7 +468,6 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
     </div>
   );
 }
-
 
 /**
  * Storage and write problems, stated in full.
