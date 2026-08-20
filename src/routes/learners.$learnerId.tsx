@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { PageHeader, Section } from "@/components/governance/page";
 import {
@@ -7,10 +7,12 @@ import {
   CheckLine,
   Choice,
   Disclosure,
+  ErrorSummary,
   Field,
   LiveNotice,
   TextBlock,
   TextLine,
+  type FormError,
 } from "@/components/learning-loop/controls";
 import { NextStepCard, StorageNotices, TimelineList } from "@/components/learning-loop/loop-views";
 import {
@@ -22,8 +24,8 @@ import {
   REVIEW_RESULT_LABEL,
   SUPPORT_STATUS_LABEL,
   effectiveObservations,
+  projectNextStep,
   readLoopSnapshot,
-  recommendNextStep,
   type LearningLoopDocument,
   type NextStepCode,
   type ObservationSourceKind,
@@ -66,6 +68,12 @@ export const Route = createFileRoute("/learners/$learnerId")({
 
 type FormKey = "goal" | "observation" | "support" | "complete" | "review" | null;
 
+/**
+ * Which form the page opens on its own, given the projected next step.
+ *
+ * This only chooses what is already open. It never submits anything, and the
+ * person can open any other form at any time.
+ */
 const FORM_FOR_STEP: Record<NextStepCode, FormKey> = {
   REVIEW_DATA_INTEGRITY: null,
   SELECT_OR_CREATE_FOCUS_GOAL: "goal",
@@ -74,10 +82,11 @@ const FORM_FOR_STEP: Record<NextStepCode, FormKey> = {
   COMPLETE_OR_CANCEL_SUPPORT: "complete",
   RECORD_FOLLOW_UP_OBSERVATION: "observation",
   REVIEW_OBSERVATIONS: "review",
-  CLOSE_GOAL_AS_ACHIEVED: null,
-  PLAN_NEXT_SUPPORT_CYCLE: "support",
-  CHANGE_APPROACH: "support",
-  GATHER_MORE_EVIDENCE: "observation",
+  COLLECT_MORE_EVIDENCE: "observation",
+  COLLECT_COMPARABLE_EVIDENCE: "observation",
+  ADJUST_SUPPORT: "support",
+  CONTINUE_SUPPORT_AND_OBSERVE: "observation",
+  HUMAN_REVIEW_GOAL_COMPLETION: null,
   REVIEW_LOOP_MANUALLY: null,
 };
 
@@ -85,6 +94,22 @@ function toIso(localValue: string, fallback: string): string {
   if (!localValue) return fallback;
   const parsed = new Date(localValue);
   return Number.isNaN(parsed.getTime()) ? fallback : parsed.toISOString();
+}
+
+/** A submit handler reports back the message to show, or null when accepted. */
+type SubmitReport = string | null;
+
+function useFormErrors() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [errors, setErrors] = useState<FormError[]>([]);
+  function show(next: FormError[]) {
+    setErrors(next);
+    if (next.length > 0) window.setTimeout(() => ref.current?.focus(), 0);
+  }
+  function errorFor(controlId: string) {
+    return errors.find((row) => row.controlId === controlId)?.message ?? null;
+  }
+  return { ref, errors, show, clear: () => setErrors([]), errorFor };
 }
 
 function MissingLearner({ learnerId }: { learnerId: string }) {
@@ -110,25 +135,41 @@ function LearnerDetail() {
   const { learnerId } = Route.useParams();
   const store = useLearningLoop();
   const [openForm, setOpenForm] = useState<FormKey | "none">("none");
+  const [notice, setNotice] = useState<string | null>(null);
 
   const document = store.document;
 
-  if (store.state === "loading")
+  if (store.status === "loading")
     return (
       <div>
         <PageHeader title="Learner" summary="Reading anything saved in this browser…" />
       </div>
     );
 
-  if (!document) return <MissingLearner learnerId={learnerId} />;
+  if (!document)
+    return (
+      <div>
+        <StorageNotices store={store} />
+        <MissingLearner learnerId={learnerId} />
+      </div>
+    );
   const learner = document.learners.find((row) => row.learnerId === learnerId);
   if (!learner) return <MissingLearner learnerId={learnerId} />;
 
+  // One instant for the whole render, so the projection and every form agree.
   const asOf = new Date().toISOString();
-  const recommendation = recommendNextStep(document, learnerId, asOf);
+  const projection = projectNextStep(document, learnerId, asOf);
   const snapshot = readLoopSnapshot(document, learnerId, asOf);
-  const activeForm = openForm === "none" ? FORM_FOR_STEP[recommendation.stepCode] : openForm;
+  const activeForm = openForm === "none" ? FORM_FOR_STEP[projection.code] : openForm;
   const toggle = (key: Exclude<FormKey, null>) => setOpenForm(activeForm === key ? null : key);
+
+  const plannedSupport =
+    snapshot.latestActionableSupport?.state === "planned"
+      ? snapshot.latestActionableSupport.record
+      : null;
+  const completedSupports = snapshot.supports.filter((row) => row.state === "completed");
+  const latestCompletedSupport = completedSupports.at(-1)?.record ?? null;
+  const focusGoal = snapshot.focusGoal;
 
   return (
     <div>
@@ -145,20 +186,27 @@ function LearnerDetail() {
       </PageHeader>
 
       <StorageNotices store={store} />
-      <LiveNotice message={store.writeProblem} tone="problem" />
+      <LiveNotice message={notice} tone="ok" />
 
       <div className="mt-6">
-        <NextStepCard recommendation={recommendation}>
-          {recommendation.stepCode === "CLOSE_GOAL_AS_ACHIEVED" && snapshot.focusGoal ? (
-            <ActionButton
-              onClick={() =>
-                store.apply((current, now) =>
-                  setGoalStatus(current, snapshot.focusGoal!.goalId, "achieved", now),
-                )
-              }
-            >
-              Mark this goal as met
-            </ActionButton>
+        <NextStepCard projection={projection}>
+          {projection.code === "HUMAN_REVIEW_GOAL_COMPLETION" && focusGoal ? (
+            <div>
+              <p className="measure mb-3 text-sm">
+                The rule cannot close a goal. If you judge the success criterion met, record that
+                decision yourself.
+              </p>
+              <ActionButton
+                onClick={() => {
+                  const outcome = store.run((current, context) =>
+                    setGoalStatus(current, focusGoal.goalId, "achieved", context),
+                  );
+                  setNotice(outcome.ok ? "The goal was recorded as met." : null);
+                }}
+              >
+                I judge this goal met — record it
+              </ActionButton>
+            </div>
           ) : null}
         </NextStepCard>
       </div>
@@ -168,28 +216,29 @@ function LearnerDetail() {
         title="The goal being worked on"
         description="One goal at a time. Everything recorded below is attached to it."
       >
-        {snapshot.focusGoal ? (
+        {focusGoal ? (
           <article className="rounded-md border border-border bg-surface p-4 sm:p-5">
-            <h3 className="font-display text-lg font-semibold">{snapshot.focusGoal.title}</h3>
+            <h3 className="font-display text-lg font-semibold">{focusGoal.title}</h3>
             <p className="measure mt-2 text-sm">
               <span className="font-semibold">Success looks like: </span>
-              {snapshot.focusGoal.successCriterion}
+              {focusGoal.successCriterion}
             </p>
             <p className="mt-2 text-xs text-muted-foreground">
-              {GOAL_STATUS_LABEL[snapshot.focusGoal.status]} — {snapshot.focusGoal.goalId}
-              {snapshot.focusGoal.targetReviewDate
-                ? ` — review by ${formatMoment(snapshot.focusGoal.targetReviewDate)} UTC`
+              {GOAL_STATUS_LABEL[focusGoal.status]} — {focusGoal.goalId}
+              {focusGoal.targetReviewDate
+                ? ` — review by ${formatMoment(focusGoal.targetReviewDate)} UTC`
                 : ""}
             </p>
-            {snapshot.focusGoal.status === "active" ? (
+            {focusGoal.status === "active" ? (
               <div className="mt-4 flex flex-wrap gap-3">
                 <ActionButton
                   tone="secondary"
-                  onClick={() =>
-                    store.apply((current, now) =>
-                      setGoalStatus(current, snapshot.focusGoal!.goalId, "paused", now),
-                    )
-                  }
+                  onClick={() => {
+                    const outcome = store.run((current, context) =>
+                      setGoalStatus(current, focusGoal.goalId, "paused", context),
+                    );
+                    setNotice(outcome.ok ? "The goal was paused." : null);
+                  }}
                 >
                   Pause this goal
                 </ActionButton>
@@ -219,12 +268,22 @@ function LearnerDetail() {
                     </span>
                     <ActionButton
                       tone="secondary"
-                      onClick={() =>
-                        store.apply((current, now) => {
-                          const activated = setGoalStatus(current, goal.goalId, "active", now);
-                          return setFocusGoal(activated, learnerId, goal.goalId, now);
-                        })
-                      }
+                      onClick={() => {
+                        // Reactivating and focusing is one change, so it is one write.
+                        const outcome = store.run((current, context) => {
+                          if (goal.status === "active")
+                            return setFocusGoal(current, learnerId, goal.goalId, context);
+                          const activated = setGoalStatus(current, goal.goalId, "active", context);
+                          if (!activated.ok) return activated;
+                          return setFocusGoal(
+                            activated.document,
+                            learnerId,
+                            goal.goalId,
+                            context,
+                          );
+                        });
+                        setNotice(outcome.ok ? "That goal is now the one being worked on." : null);
+                      }}
                     >
                       Work on this one
                     </ActionButton>
@@ -238,10 +297,13 @@ function LearnerDetail() {
           open={activeForm === "goal"}
           onToggle={() => toggle("goal")}
           onSubmit={(input) => {
-            store.apply(
-              (current, now) => createGoal(current, { learnerId, ...input }, now).document,
+            const outcome = store.run((current, context) =>
+              createGoal(current, { learnerId, ...input }, context),
             );
+            if (!outcome.ok) return outcome.problem?.message ?? "The goal was not saved.";
             setOpenForm(null);
+            setNotice("The goal was saved.");
+            return null;
           }}
         />
       </Section>
@@ -256,23 +318,19 @@ function LearnerDetail() {
           onToggle={() => toggle("observation")}
           document={document}
           learnerId={learnerId}
-          goalId={snapshot.focusGoal?.goalId ?? null}
-          defaultSupportActionId={
-            recommendation.stepCode === "RECORD_FOLLOW_UP_OBSERVATION"
-              ? recommendation.activeSupportActionId
-              : null
+          goalId={focusGoal?.goalId ?? null}
+          suggestedSupportActionId={
+            projection.code === "RECORD_FOLLOW_UP_OBSERVATION" ? projection.supportActionId : null
           }
           onSubmit={(input) => {
-            if (!snapshot.focusGoal) return;
-            store.apply(
-              (current, now) =>
-                recordObservation(
-                  current,
-                  { learnerId, goalId: snapshot.focusGoal!.goalId, ...input },
-                  now,
-                ).document,
+            if (!focusGoal) return "Choose a goal before recording an observation.";
+            const outcome = store.run((current, context) =>
+              recordObservation(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
+            if (!outcome.ok) return outcome.problem?.message ?? "The observation was not saved.";
             setOpenForm(null);
+            setNotice("The observation was saved.");
+            return null;
           }}
         />
 
@@ -280,77 +338,81 @@ function LearnerDetail() {
           open={activeForm === "support"}
           onToggle={() => toggle("support")}
           observations={
-            snapshot.focusGoal
-              ? effectiveObservations(document).filter(
-                  (row) => row.goalId === snapshot.focusGoal!.goalId,
-                )
+            focusGoal
+              ? effectiveObservations(document).filter((row) => row.goalId === focusGoal.goalId)
               : []
           }
           onSubmit={(input) => {
-            if (!snapshot.focusGoal) return;
-            store.apply(
-              (current, now) =>
-                planSupport(
-                  current,
-                  { learnerId, goalId: snapshot.focusGoal!.goalId, ...input },
-                  now,
-                ).document,
+            if (!focusGoal) return "Choose a goal before planning a support.";
+            const outcome = store.run((current, context) =>
+              planSupport(current, { learnerId, goalId: focusGoal.goalId, ...input }, context),
             );
+            if (!outcome.ok) return outcome.problem?.message ?? "The plan was not saved.";
             setOpenForm(null);
+            setNotice("The plan was saved.");
+            return null;
           }}
         />
 
-        {snapshot.activeSupport ? (
+        {plannedSupport ? (
           <CompleteSupportForm
             open={activeForm === "complete"}
             onToggle={() => toggle("complete")}
-            title={snapshot.activeSupport.title}
+            title={plannedSupport.title}
             onComplete={(completedAt, note) => {
-              store.apply((current, now) =>
+              const outcome = store.run((current, context) =>
                 completeSupport(
                   current,
-                  snapshot.activeSupport!.supportActionId,
+                  plannedSupport.supportActionId,
                   completedAt,
                   note,
-                  now,
+                  context,
                 ),
               );
+              if (!outcome.ok) return outcome.problem?.message ?? "Nothing was saved.";
               setOpenForm(null);
+              setNotice("The support was marked done.");
+              return null;
             }}
             onCancel={(reason) => {
-              store.apply((current, now) =>
-                cancelSupport(current, snapshot.activeSupport!.supportActionId, reason, now),
+              const outcome = store.run((current, context) =>
+                cancelSupport(current, plannedSupport.supportActionId, reason, context),
               );
+              if (!outcome.ok) return outcome.problem?.message ?? "Nothing was saved.";
               setOpenForm(null);
+              setNotice("The support was cancelled.");
+              return null;
             }}
           />
         ) : null}
 
-        {snapshot.latestCompletedSupport ? (
+        {latestCompletedSupport ? (
           <ReviewForm
             open={activeForm === "review"}
             onToggle={() => toggle("review")}
-            supportTitle={snapshot.latestCompletedSupport.title}
+            supportTitle={latestCompletedSupport.title}
             observations={snapshot.observations.filter(
-              (row) => row.supportActionId === snapshot.latestCompletedSupport!.supportActionId,
+              (row) => row.supportActionId === latestCompletedSupport.supportActionId,
             )}
             onSubmit={(input) => {
-              if (!snapshot.focusGoal) return;
-              store.apply(
-                (current, now) =>
-                  recordGoalReview(
-                    current,
-                    {
-                      learnerId,
-                      goalId: snapshot.focusGoal!.goalId,
-                      supportActionId: snapshot.latestCompletedSupport!.supportActionId,
-                      supersedesGoalReviewId: null,
-                      ...input,
-                    },
-                    now,
-                  ).document,
+              if (!focusGoal) return "Choose a goal before recording a result.";
+              const outcome = store.run((current, context) =>
+                recordGoalReview(
+                  current,
+                  {
+                    learnerId,
+                    goalId: focusGoal.goalId,
+                    supportActionId: latestCompletedSupport.supportActionId,
+                    supersedesGoalReviewId: null,
+                    ...input,
+                  },
+                  context,
+                ),
               );
+              if (!outcome.ok) return outcome.problem?.message ?? "The result was not saved.";
               setOpenForm(null);
+              setNotice("The result was saved.");
+              return null;
             }}
           />
         ) : null}
@@ -361,11 +423,11 @@ function LearnerDetail() {
         title="What was tried, and what it showed"
         description="Each support names the observations it was based on. Each result names the observations it was judged from. Nothing here is inferred."
       >
-        {snapshot.supportActions.length === 0 ? (
+        {snapshot.supports.length === 0 ? (
           <p className="text-sm text-muted-foreground">No support has been planned yet.</p>
         ) : (
           <ul className="flex flex-col gap-3">
-            {snapshot.supportActions.map((support) => {
+            {snapshot.supports.map(({ record: support }) => {
               const reviews = snapshot.reviews.filter(
                 (row) => row.supportActionId === support.supportActionId,
               );
@@ -431,17 +493,18 @@ function GoalForm({
     successCriterion: string;
     targetReviewDate: string | null;
     makeFocus: boolean;
-  }) => void;
+  }) => SubmitReport;
 }) {
   const [title, setTitle] = useState("");
   const [criterion, setCriterion] = useState("");
   const [target, setTarget] = useState("");
   const [makeFocus, setMakeFocus] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const form = useFormErrors();
 
   return (
     <Disclosure summary="Add a goal" open={open} onToggle={onToggle}>
-      <Field label="What is the goal?" required error={error}>
+      <ErrorSummary errors={form.errors} headingId="goal-form-errors" summaryRef={form.ref} />
+      <Field label="What is the goal?" required controlId="goal-title" error={form.errorFor("goal-title")}>
         {({ id, describedBy, invalid }) => (
           <TextLine
             id={id}
@@ -456,17 +519,20 @@ function GoalForm({
         label="How will you know it has been met?"
         hint="Write it so someone else could check it: how often, how much, and in what situation."
         required
+        controlId="goal-criterion"
+        error={form.errorFor("goal-criterion")}
       >
-        {({ id, describedBy }) => (
+        {({ id, describedBy, invalid }) => (
           <TextBlock
             id={id}
             aria-describedby={describedBy}
+            aria-invalid={invalid}
             value={criterion}
             onChange={(event) => setCriterion(event.target.value)}
           />
         )}
       </Field>
-      <Field label="Check back by (optional)">
+      <Field label="Check back by (optional)" controlId="goal-target">
         {({ id }) => (
           <TextLine
             id={id}
@@ -484,17 +550,29 @@ function GoalForm({
       <div className="mt-5">
         <ActionButton
           onClick={() => {
-            if (title.trim().length === 0 || criterion.trim().length === 0) {
-              setError("Both the goal and how you will know it has been met are needed.");
+            const found: FormError[] = [];
+            if (title.trim().length === 0)
+              found.push({ controlId: "goal-title", message: "Write what the goal is." });
+            if (criterion.trim().length === 0)
+              found.push({
+                controlId: "goal-criterion",
+                message: "Write how you will know the goal has been met.",
+              });
+            if (found.length > 0) {
+              form.show(found);
               return;
             }
-            setError(null);
-            onSubmit({
+            const report = onSubmit({
               title: title.trim(),
               successCriterion: criterion.trim(),
               targetReviewDate: target ? new Date(`${target}T00:00:00Z`).toISOString() : null,
               makeFocus,
             });
+            if (report) {
+              form.show([{ controlId: "goal-title", message: report }]);
+              return;
+            }
+            form.clear();
             setTitle("");
             setCriterion("");
             setTarget("");
@@ -513,7 +591,7 @@ function ObservationForm({
   document,
   learnerId,
   goalId,
-  defaultSupportActionId,
+  suggestedSupportActionId,
   onSubmit,
 }: {
   open: boolean;
@@ -521,20 +599,23 @@ function ObservationForm({
   document: LearningLoopDocument;
   learnerId: string;
   goalId: string | null;
-  defaultSupportActionId: string | null;
+  suggestedSupportActionId: string | null;
   onSubmit: (input: {
     supportActionId: string | null;
     observedAt: string;
     sourceKind: ObservationSourceKind;
     observationText: string;
     supersedesObservationId: string | null;
-  }) => void;
+  }) => SubmitReport;
 }) {
   const [when, setWhen] = useState("");
   const [source, setSource] = useState<ObservationSourceKind>("direct-observation");
   const [text, setText] = useState("");
   const [supersedes, setSupersedes] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  // Controlled, and seeded from the projection rather than left to a default
+  // that the form would then ignore on submit.
+  const [followUp, setFollowUp] = useState<string | null>(null);
+  const form = useFormErrors();
 
   const existing = goalId
     ? effectiveObservations(document).filter(
@@ -544,6 +625,7 @@ function ObservationForm({
   const supports = goalId
     ? document.supportActions.filter((row) => row.goalId === goalId && row.status === "completed")
     : [];
+  const selectedFollowUp = followUp ?? suggestedSupportActionId ?? "";
 
   if (!goalId)
     return (
@@ -556,7 +638,17 @@ function ObservationForm({
 
   return (
     <Disclosure summary="Record an observation" open={open} onToggle={onToggle}>
-      <Field label="What did you see?" required error={error}>
+      <ErrorSummary
+        errors={form.errors}
+        headingId="observation-form-errors"
+        summaryRef={form.ref}
+      />
+      <Field
+        label="What did you see?"
+        required
+        controlId="observation-text"
+        error={form.errorFor("observation-text")}
+      >
         {({ id, describedBy, invalid }) => (
           <TextBlock
             id={id}
@@ -567,7 +659,7 @@ function ObservationForm({
           />
         )}
       </Field>
-      <Field label="Where did this come from?">
+      <Field label="Where did this come from?" controlId="observation-source">
         {({ id }) => (
           <Choice
             id={id}
@@ -582,21 +674,37 @@ function ObservationForm({
           </Choice>
         )}
       </Field>
-      <Field label="When did you see it?" hint="Leave blank to use right now.">
-        {({ id, describedBy }) => (
+      <Field
+        label="When did you see it?"
+        hint="Leave blank to use right now."
+        controlId="observation-when"
+        error={form.errorFor("observation-when")}
+      >
+        {({ id, describedBy, invalid }) => (
           <TextLine
             id={id}
             type="datetime-local"
             aria-describedby={describedBy}
+            aria-invalid={invalid}
             value={when}
             onChange={(event) => setWhen(event.target.value)}
           />
         )}
       </Field>
       {supports.length > 0 ? (
-        <Field label="Is this a follow-up to something you tried?">
-          {({ id }) => (
-            <Choice id={id} defaultValue={defaultSupportActionId ?? ""}>
+        <Field
+          label="Is this a follow-up to something you tried?"
+          controlId="observation-followup"
+          error={form.errorFor("observation-followup")}
+        >
+          {({ id, describedBy, invalid }) => (
+            <Choice
+              id={id}
+              aria-describedby={describedBy}
+              aria-invalid={invalid}
+              value={selectedFollowUp}
+              onChange={(event) => setFollowUp(event.target.value)}
+            >
               <option value="">No, it stands on its own</option>
               {supports.map((support) => (
                 <option key={support.supportActionId} value={support.supportActionId}>
@@ -611,6 +719,7 @@ function ObservationForm({
         <Field
           label="Does this correct an earlier observation?"
           hint="The earlier record stays in the history and is marked as replaced."
+          controlId="observation-supersedes"
         >
           {({ id, describedBy }) => (
             <Choice
@@ -632,21 +741,37 @@ function ObservationForm({
       <div className="mt-5">
         <ActionButton
           onClick={() => {
-            if (text.trim().length === 0) {
-              setError("Write down what you saw before saving.");
+            const found: FormError[] = [];
+            if (text.trim().length === 0)
+              found.push({
+                controlId: "observation-text",
+                message: "Write down what you saw before saving.",
+              });
+            if (when && Number.isNaN(new Date(when).getTime()))
+              found.push({
+                controlId: "observation-when",
+                message: "That date and time cannot be read. Leave it blank to use right now.",
+              });
+            if (found.length > 0) {
+              form.show(found);
               return;
             }
-            setError(null);
-            onSubmit({
-              supportActionId: defaultSupportActionId,
+            const report = onSubmit({
+              supportActionId: selectedFollowUp || null,
               observedAt: toIso(when, new Date().toISOString()),
               sourceKind: source,
               observationText: text.trim(),
               supersedesObservationId: supersedes || null,
             });
+            if (report) {
+              form.show([{ controlId: "observation-text", message: report }]);
+              return;
+            }
+            form.clear();
             setText("");
             setWhen("");
             setSupersedes("");
+            setFollowUp(null);
           }}
         >
           Save this observation
@@ -671,16 +796,17 @@ function SupportForm({
     rationale: string;
     intendedEvidence: string;
     plannedAt: string;
-  }) => void;
+  }) => SubmitReport;
 }) {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[] | null>(null);
   const [title, setTitle] = useState("");
   const [rationale, setRationale] = useState("");
   const [intended, setIntended] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const form = useFormErrors();
 
-  const chosen =
-    selected.length > 0 ? selected : observations.slice(-1).map((row) => row.observationId);
+  // Default to the most recent observation, but once the person touches the
+  // list their selection is the only thing that counts, including an empty one.
+  const chosen = selected ?? observations.slice(-1).map((row) => row.observationId);
 
   return (
     <Disclosure summary="Plan a support" open={open} onToggle={onToggle}>
@@ -690,28 +816,40 @@ function SupportForm({
         </p>
       ) : (
         <>
-          <fieldset className="mt-4">
+          <ErrorSummary
+            errors={form.errors}
+            headingId="support-form-errors"
+            summaryRef={form.ref}
+          />
+          <fieldset className="mt-4" id="support-basis">
             <legend className="text-sm font-semibold">
               Which observations is this based on?
               <span className="ml-1 font-normal text-muted-foreground">(required)</span>
             </legend>
+            {form.errorFor("support-basis") ? (
+              <p className="mt-1 text-sm font-semibold">Problem: {form.errorFor("support-basis")}</p>
+            ) : null}
             {observations.map((row) => (
               <CheckLine
                 key={row.observationId}
                 label={`${formatMoment(row.observedAt)} — ${row.observationText.slice(0, 80)}`}
                 checked={chosen.includes(row.observationId)}
                 onChange={(event) =>
-                  setSelected((current) => {
-                    const base = current.length > 0 ? current : chosen;
-                    return event.target.checked
-                      ? [...new Set([...base, row.observationId])]
-                      : base.filter((id) => id !== row.observationId);
-                  })
+                  setSelected(
+                    event.target.checked
+                      ? [...new Set([...chosen, row.observationId])]
+                      : chosen.filter((id) => id !== row.observationId),
+                  )
                 }
               />
             ))}
           </fieldset>
-          <Field label="What will you do?" required error={error}>
+          <Field
+            label="What will you do?"
+            required
+            controlId="support-title"
+            error={form.errorFor("support-title")}
+          >
             {({ id, describedBy, invalid }) => (
               <TextLine
                 id={id}
@@ -722,19 +860,33 @@ function SupportForm({
               />
             )}
           </Field>
-          <Field label="Why this, given what you saw?" required>
-            {({ id }) => (
+          <Field
+            label="Why this, given what you saw?"
+            required
+            controlId="support-rationale"
+            error={form.errorFor("support-rationale")}
+          >
+            {({ id, describedBy, invalid }) => (
               <TextBlock
                 id={id}
+                aria-describedby={describedBy}
+                aria-invalid={invalid}
                 value={rationale}
                 onChange={(event) => setRationale(event.target.value)}
               />
             )}
           </Field>
-          <Field label="What would tell you it is working?" required>
-            {({ id }) => (
+          <Field
+            label="What would tell you it is working?"
+            required
+            controlId="support-intended"
+            error={form.errorFor("support-intended")}
+          >
+            {({ id, describedBy, invalid }) => (
               <TextBlock
                 id={id}
+                aria-describedby={describedBy}
+                aria-invalid={invalid}
                 value={intended}
                 onChange={(event) => setIntended(event.target.value)}
               />
@@ -743,27 +895,44 @@ function SupportForm({
           <div className="mt-5">
             <ActionButton
               onClick={() => {
-                if (
-                  chosen.length === 0 ||
-                  title.trim().length === 0 ||
-                  rationale.trim().length === 0 ||
-                  intended.trim().length === 0
-                ) {
-                  setError("Pick at least one observation and fill in all three boxes.");
+                const found: FormError[] = [];
+                if (chosen.length === 0)
+                  found.push({
+                    controlId: "support-basis",
+                    message: "Pick at least one observation this support is based on.",
+                  });
+                if (title.trim().length === 0)
+                  found.push({ controlId: "support-title", message: "Write what you will do." });
+                if (rationale.trim().length === 0)
+                  found.push({
+                    controlId: "support-rationale",
+                    message: "Write why you are doing this, given what you saw.",
+                  });
+                if (intended.trim().length === 0)
+                  found.push({
+                    controlId: "support-intended",
+                    message: "Write what would tell you it is working.",
+                  });
+                if (found.length > 0) {
+                  form.show(found);
                   return;
                 }
-                setError(null);
-                onSubmit({
+                const report = onSubmit({
                   basedOnObservationIds: chosen,
                   title: title.trim(),
                   rationale: rationale.trim(),
                   intendedEvidence: intended.trim(),
                   plannedAt: new Date().toISOString(),
                 });
+                if (report) {
+                  form.show([{ controlId: "support-title", message: report }]);
+                  return;
+                }
+                form.clear();
                 setTitle("");
                 setRationale("");
                 setIntended("");
-                setSelected([]);
+                setSelected(null);
               }}
             >
               Save this plan
@@ -785,21 +954,28 @@ function CompleteSupportForm({
   open: boolean;
   onToggle: () => void;
   title: string;
-  onComplete: (completedAt: string, note: string | null) => void;
-  onCancel: (reason: string) => void;
+  onComplete: (completedAt: string, note: string | null) => SubmitReport;
+  onCancel: (reason: string) => SubmitReport;
 }) {
   const [when, setWhen] = useState("");
   const [note, setNote] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const form = useFormErrors();
 
   return (
     <Disclosure summary={`Close off: ${title}`} open={open} onToggle={onToggle}>
-      <Field label="When was it done?" hint="Leave blank to use right now.">
-        {({ id, describedBy }) => (
+      <ErrorSummary errors={form.errors} headingId="complete-form-errors" summaryRef={form.ref} />
+      <Field
+        label="When was it done?"
+        hint="Leave blank to use right now."
+        controlId="complete-when"
+        error={form.errorFor("complete-when")}
+      >
+        {({ id, describedBy, invalid }) => (
           <TextLine
             id={id}
             type="datetime-local"
             aria-describedby={describedBy}
+            aria-invalid={invalid}
             value={when}
             onChange={(event) => setWhen(event.target.value)}
           />
@@ -808,7 +984,8 @@ function CompleteSupportForm({
       <Field
         label="Anything worth noting about how it went?"
         hint="Needed if you are cancelling instead."
-        error={error}
+        controlId="complete-note"
+        error={form.errorFor("complete-note")}
       >
         {({ id, describedBy, invalid }) => (
           <TextBlock
@@ -823,8 +1000,24 @@ function CompleteSupportForm({
       <div className="mt-5 flex flex-wrap gap-3">
         <ActionButton
           onClick={() => {
-            setError(null);
-            onComplete(toIso(when, new Date().toISOString()), note.trim() || null);
+            if (when && Number.isNaN(new Date(when).getTime())) {
+              form.show([
+                {
+                  controlId: "complete-when",
+                  message: "That date and time cannot be read. Leave it blank to use right now.",
+                },
+              ]);
+              return;
+            }
+            const report = onComplete(
+              toIso(when, new Date().toISOString()),
+              note.trim() || null,
+            );
+            if (report) {
+              form.show([{ controlId: "complete-when", message: report }]);
+              return;
+            }
+            form.clear();
             setNote("");
             setWhen("");
           }}
@@ -835,11 +1028,20 @@ function CompleteSupportForm({
           tone="secondary"
           onClick={() => {
             if (note.trim().length === 0) {
-              setError("Say why it was cancelled before cancelling it.");
+              form.show([
+                {
+                  controlId: "complete-note",
+                  message: "Say why it was cancelled before cancelling it.",
+                },
+              ]);
               return;
             }
-            setError(null);
-            onCancel(note.trim());
+            const report = onCancel(note.trim());
+            if (report) {
+              form.show([{ controlId: "complete-note", message: report }]);
+              return;
+            }
+            form.clear();
             setNote("");
           }}
         >
@@ -866,14 +1068,14 @@ function ReviewForm({
     reviewedAt: string;
     result: ReviewResult;
     rationale: string;
-  }) => void;
+  }) => SubmitReport;
 }) {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[] | null>(null);
   const [result, setResult] = useState<ReviewResult>("progress-observed");
   const [rationale, setRationale] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const form = useFormErrors();
 
-  const chosen = selected.length > 0 ? selected : observations.map((row) => row.observationId);
+  const chosen = selected ?? observations.map((row) => row.observationId);
 
   return (
     <Disclosure
@@ -887,27 +1089,30 @@ function ReviewForm({
         </p>
       ) : (
         <>
-          <fieldset className="mt-4">
+          <ErrorSummary errors={form.errors} headingId="review-form-errors" summaryRef={form.ref} />
+          <fieldset className="mt-4" id="review-basis">
             <legend className="text-sm font-semibold">
               Which observations are you judging from?
             </legend>
+            {form.errorFor("review-basis") ? (
+              <p className="mt-1 text-sm font-semibold">Problem: {form.errorFor("review-basis")}</p>
+            ) : null}
             {observations.map((row) => (
               <CheckLine
                 key={row.observationId}
                 label={`${formatMoment(row.observedAt)} — ${row.observationText.slice(0, 80)}`}
                 checked={chosen.includes(row.observationId)}
                 onChange={(event) =>
-                  setSelected((current) => {
-                    const base = current.length > 0 ? current : chosen;
-                    return event.target.checked
-                      ? [...new Set([...base, row.observationId])]
-                      : base.filter((id) => id !== row.observationId);
-                  })
+                  setSelected(
+                    event.target.checked
+                      ? [...new Set([...chosen, row.observationId])]
+                      : chosen.filter((id) => id !== row.observationId),
+                  )
                 }
               />
             ))}
           </fieldset>
-          <Field label="What does it show?">
+          <Field label="What does it show?" controlId="review-result">
             {({ id }) => (
               <Choice
                 id={id}
@@ -922,7 +1127,12 @@ function ReviewForm({
               </Choice>
             )}
           </Field>
-          <Field label="Why do you say that?" required error={error}>
+          <Field
+            label="Why do you say that?"
+            required
+            controlId="review-rationale"
+            error={form.errorFor("review-rationale")}
+          >
             {({ id, describedBy, invalid }) => (
               <TextBlock
                 id={id}
@@ -936,19 +1146,34 @@ function ReviewForm({
           <div className="mt-5">
             <ActionButton
               onClick={() => {
-                if (chosen.length === 0 || rationale.trim().length === 0) {
-                  setError("Pick at least one observation and say why.");
+                const found: FormError[] = [];
+                if (chosen.length === 0)
+                  found.push({
+                    controlId: "review-basis",
+                    message: "Pick at least one observation to judge from.",
+                  });
+                if (rationale.trim().length === 0)
+                  found.push({
+                    controlId: "review-rationale",
+                    message: "Write why the evidence shows that.",
+                  });
+                if (found.length > 0) {
+                  form.show(found);
                   return;
                 }
-                setError(null);
-                onSubmit({
+                const report = onSubmit({
                   observationIds: chosen,
                   reviewedAt: new Date().toISOString(),
                   result,
                   rationale: rationale.trim(),
                 });
+                if (report) {
+                  form.show([{ controlId: "review-rationale", message: report }]);
+                  return;
+                }
+                form.clear();
                 setRationale("");
-                setSelected([]);
+                setSelected(null);
               }}
             >
               Save this result
