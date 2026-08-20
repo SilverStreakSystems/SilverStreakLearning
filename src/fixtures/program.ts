@@ -9,7 +9,7 @@ import type { ProgramStateRecord } from "@/domain/program-state";
  * owner disposition, and does not authorize a successor work package.
  */
 export const PROGRAM_STATE: ProgramStateRecord = {
-  stateDate: "2026-08-19",
+  stateDate: "2026-08-20",
   gate: {
     gateId: "GATE-A",
     name: "Gate A",
@@ -35,19 +35,20 @@ export const PROGRAM_STATE: ProgramStateRecord = {
     },
   },
   latestCheckpoint: {
-    checkpointId: "CHECKPOINT-008",
-    title: "WP-007 Cycle 6 — FND-022 owner dispositions recorded",
-    completedOn: "2026-08-19",
+    checkpointId: "CHECKPOINT-009",
+    title: "WP-007 Cycle 7 — FND-023 touch-target rule formalized as TTR-001 v1.0.0",
+    completedOn: "2026-08-20",
     outcome:
-      "Cycle 6 execution is complete: the owner disposition matrix of DEC-020 is transcribed for all sixteen Cycle 4 candidates, all seventeen restatement rows, and all three unmatched current rows, with five RETAIN-HISTORICAL, three MERGE-OR-RESTATEMENT, seven ADOPT-AS-CANDIDATE, one NEEDS-EVIDENCE / DEFER, and no NARROW, SUPERSEDE, or REJECT.",
+      "Cycle 7 execution is complete: the owner-authorized touch-target acceptance rule is recorded as one canonical structured record, TTR-001 v1.0.0, carrying a 44 by 44 CSS pixel SHOULD default, a distinct 24 by 24 CSS pixel MUST floor, five documented exceptions, a compact-target departure band of 24 to 43 CSS pixels that cannot reach below the floor, and a deterministic verification protocol at 320, 768, and 1366 CSS pixels whose execution state is NOT-RUN.",
     closedNothing:
-      "Cycle 6 closed nothing beyond the FND-022 obligation. It implements and assesses no candidate, promotes nothing, completes no package, changes no Cycle 4 classification or extracted wording, resolves no drift row, closes neither WP-007 nor Gate A, and authorizes no successor cycle.",
+      "Cycle 7 closed nothing beyond the FND-023 definition gap. It ran no interface audit, measured and classified no target, changed no interface, adopted, assessed, or implemented no candidate, left HREQ-025 unchanged at NEEDS-EVIDENCE / DEFER, left EV-003 NOT-RUN, closed neither WP-007 nor Gate A, and authorized no successor cycle.",
     source: {
-      recordId: "CHECKPOINT-008",
-      locator: "docs/wp-007/CHECKPOINT-008.md",
+      recordId: "CHECKPOINT-009",
+      locator: "docs/wp-007/CHECKPOINT-009.md",
       route: null,
     },
   },
+
   ownerDisposition: {
     subject:
       "WP-007 Cycle 4 execution: sixteen requirement candidates from HS-023, the seventeen-row cross-source restatement index, and the three unmatched HS-011 rows",
