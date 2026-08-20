@@ -1067,7 +1067,8 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
   {
     id: "EV-045",
-    title: "Engineering-baseline recovery: lint, typecheck, tests, build, and evidence applicability",
+    title:
+      "Engineering-baseline recovery: lint, typecheck, tests, build, and evidence applicability",
     kind: "automated-test",
     subject:
       "The repository quality commands (lint, typecheck, test, build, current-state check) and the evidence applicability model in scripts/evidence/inputs.mjs and scripts/evidence/applicability.mjs.",

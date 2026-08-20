@@ -7,7 +7,7 @@
 
 Controlling decision: DEC-022. State date: 2026-08-20.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `443a3d579b086fccbea93d66669f45532344f01a9a6b5d19a774c259c07334a4`.
+Input fingerprint: `3df797c735097e8f24b73eb00bd1a9665ef11dac1179a4617f1d6fc9945c7113`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.
@@ -38,8 +38,8 @@ No audit artifact exists. No route, component, or control was measured or classi
 | Register | Rows |
 |---|---|
 | Decisions | 22 |
-| Findings | 24 (15 not confirmed resolved) |
-| Evidence | 44 |
+| Findings | 24 (14 not confirmed resolved) |
+| Evidence | 45 |
 | Claims | 13 (10 refused) |
 
 ## Bound verifications
