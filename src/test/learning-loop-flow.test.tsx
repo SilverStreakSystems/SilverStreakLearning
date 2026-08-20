@@ -174,6 +174,11 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
     await user.click(screen.getByRole("button", { name: "Save this observation" }));
 
     expectNextStep({ ruleId: "LLR-001-R04", code: "PLAN_SUPPORT" });
+    // A successful save moves focus onto the newly announced next step, so a
+    // keyboard or screen-reader user is not left where the old form was.
+    await waitFor(() =>
+      expect(window.document.getElementById("next-step-heading")).toHaveFocus(),
+    );
     const baselineObservationId = basisIds().find((id) => id.startsWith("OBS-"))!;
     expect(baselineObservationId).toMatch(/^OBS-/);
 
