@@ -65,7 +65,7 @@ zero-warning ceiling, typecheck, the full Vitest suite, the production build,
 the generated-artefact check, the current-state projection check, committed
 evidence generation and verification, the evidence output-safety guard, and the
 aggregate `verify` and `verify:ci` gates. At this tree the full suite observed
-is 625 tests across 29 test files, all passing, with lint at zero warnings and a
+is 629 tests across 30 test files, all passing, with lint at zero warnings and a
 clean typecheck. That count includes the independent-acceptance and
 independent-audit regressions (`src/test/product-alpha-blockers.test.tsx`,
 `src/test/product-alpha-audit.test.tsx`) covering same-support correction
