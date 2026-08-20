@@ -2,12 +2,12 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.0.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "3df797c735097e8f24b73eb00bd1a9665ef11dac1179a4617f1d6fc9945c7113",
+  "fingerprint": "8173b83842b347b8716682ee362ec4e244cb7c8cb86c5f647478ef927a7096ea",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
-      "sha256": "560cd2dd83166760d5393d087da4f4f2f9abbab171766992357316ff00841c2e",
-      "bytes": 123002
+      "sha256": "e0de3706fadb0911b9d7a48b5478f82da850bcdaf7c0918fe53585c4536987a0",
+      "bytes": 127501
     },
     {
       "path": "src/fixtures/program.ts",
@@ -26,13 +26,13 @@
     },
     {
       "path": "data/program/program-policy.json",
-      "sha256": "12497f711849e4f4e903ed44ec4018b1a701288980733e0efe7b09760a64e07c",
-      "bytes": 7239
+      "sha256": "9aa1aabfb0aa5dac0b80605695ec7034cff97021cc8243b5815a1cb70488b67c",
+      "bytes": 8057
     },
     {
       "path": "data/program/checkpoints.json",
-      "sha256": "6e01a43681d8f7e25fb429427cd09620707680ccee21bc8d6ce12ce3b202168d",
-      "bytes": 4892
+      "sha256": "be98d91c42a222156fc2d298ef8d585072bc6cc6ad20f82254b711a130fde1ef",
+      "bytes": 6294
     },
     {
       "path": "data/accessibility/touch-target-rule.json",
@@ -66,8 +66,8 @@
     },
     {
       "path": "src/lib/route-registry.ts",
-      "sha256": "ac31e88c873ef69b9c84a3f4d4870dd973d55dd2e30e7f21ae15dec879a9c1e7",
-      "bytes": 4141
+      "sha256": "5a92741b8cf5028461a9fc4efa7cb2e0571f2754330780f629f4823592f33f74",
+      "bytes": 5406
     },
     {
       "path": "scripts/gen-current-state.ts",

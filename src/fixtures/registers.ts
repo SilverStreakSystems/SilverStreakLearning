@@ -1082,6 +1082,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-046",
+    title: "Product Alpha 001 implemented as a local-only synthetic learning-loop slice",
+    kind: "automated-test",
+    subject:
+      "The product domain under src/domain/learning-loop/, the repository and command layer under src/lib/learning-loop/, the /learners and /learners/$learnerId routes, and the LLR-001 v1.0.0 next-step rule.",
+    collectedOn: "2026-08-20",
+    collectedBy: "Automated run",
+    state: "confirmed",
+    supports:
+      "That five canonical product record types are defined with strict schemas and enforced cross-record invariants; that observations and goal reviews are append-only with explicit supersession rather than in-place edits; that a repository boundary with browser-local and in-memory adapters validates every write and rejects an inconsistent document without corrupting stored data; that export is byte-stable and import is a previewed replace requiring confirmation; that LLR-001 v1.0.0 is a pure total function whose precedence order is fixed and whose recommendations always cite the records they were computed from; and that the full verification command passes at this tree.",
+    doesNotSupport:
+      "That any accessibility property was measured — TTR-001 is applied as an implementation contract and remains NOT-RUN, and FND-024 remains open; that the interface was audited, validated, or found conformant; that any educational, clinical, eligibility, or district-practice claim is supported; that any backend, authentication, tenancy, artificial-intelligence, or real-personal-data capability exists or is authorized; or that any work package, gate, or release changed state. Executor-run, method automated command execution, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 export const DECISIONS: DecisionRecord[] = [
@@ -1580,6 +1596,32 @@ export const DECISIONS: DecisionRecord[] = [
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001", "WP-007", "TTR-001", "ATTEMPT-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-023",
+    title:
+      "Authorize Product Alpha 001 — a bounded, local-only synthetic learning-loop vertical slice",
+    state: "accepted",
+    decidedOn: "2026-08-20",
+    decidedBy: "Founder / Operator",
+    context:
+      "The engineering baseline has been recovered: lint, typecheck, tests, build, the derived current-state projection, generated-document freshness, and the evidence output-safety check all run clean from one aggregate command. FND-014 lint debt is discharged. DEC-022 defers the TTR-001 audit until a stable user-facing product workflow exists, so the next defensible step is to build that workflow rather than to keep re-verifying an interface with no product in it.",
+    decision:
+      "RECORDED BY OWNER. Product Alpha 001 is authorized as one bounded synthetic vertical slice: a founder-operator can hold fictional learners, set one goal at a time, record what was observed, plan a support that cites those observations, record what the follow-up evidence showed, and see a deterministic next step computed by rule LLR-001 v1.0.0. Persistence is browser-local only. This authorization expressly EXCLUDES backend services, authentication, accounts, tenancy, server-side storage, artificial-intelligence features, and any real personal data. It closes no finding, closes no work package, closes no gate, records no accessibility result, and authorizes no release.",
+    consequences: [
+      "The product namespace is separate from the governance namespace. A learning observation is not governance evidence, a goal review is not a validation, and a support action is not an Action Center obligation.",
+      "LLR-001 v1.0.0 is a fixed deterministic rule over recorded product data. It is not an artificial-intelligence system, not a clinical or eligibility judgement, and not an approval mechanism.",
+      "TTR-001 is applied as an implementation contract in the product interface. Applying it is not measuring it: FND-024 remains open and no target is recorded as passing or failing.",
+      "FND-014 is discharged and is no longer carried as deferred debt. EV-003 and FND-024 remain deferred debt.",
+      "Product data lives in one browser only. It is not backed up, not shared, not synchronized, and is lost when browser data is cleared unless it is exported.",
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039, Cycle 9, backend, authentication, artificial intelligence, and real personal data remain unauthorized.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "PRODUCT-ALPHA-001", "LLR-001", "TTR-001"],
     synthetic: false,
   },
 ];

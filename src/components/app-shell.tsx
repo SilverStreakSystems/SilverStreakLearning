@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { SSLSMonogram } from "@/components/brand";
 
-import { ROUTE_REGISTRY } from "@/lib/route-registry";
+import { NAV_GROUPS, ROUTE_REGISTRY } from "@/lib/route-registry";
 import { cn } from "@/lib/utils";
 
 /**
@@ -29,25 +29,38 @@ function BoundaryBanner() {
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <ul className="flex flex-col gap-1">
-      {ROUTE_REGISTRY.map((route) => (
-        <li key={route.path}>
-          <Link
-            to={route.path}
-            onClick={onNavigate}
-            activeOptions={{ exact: route.path === "/" }}
-            activeProps={{
-              className:
-                "bg-sidebar-accent text-sidebar-accent-foreground border-l-4 border-sidebar-primary font-semibold",
-            }}
-            inactiveProps={{ className: "border-l-4 border-transparent" }}
-            className="flex min-h-11 items-center rounded-sm px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent"
-          >
-            {route.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div className="flex flex-col gap-4">
+      {NAV_GROUPS.map((group) => {
+        const routes = ROUTE_REGISTRY.filter((route) => route.group === group.id);
+        if (routes.length === 0) return null;
+        return (
+          <div key={group.id}>
+            <p className="px-3 pb-1 text-xs font-bold tracking-wide text-sidebar-foreground/85 uppercase">
+              {group.label}
+            </p>
+            <ul className="flex flex-col gap-1">
+              {routes.map((route) => (
+                <li key={route.path}>
+                  <Link
+                    to={route.path}
+                    onClick={onNavigate}
+                    activeOptions={{ exact: route.path === "/" }}
+                    activeProps={{
+                      className:
+                        "bg-sidebar-accent text-sidebar-accent-foreground border-l-4 border-sidebar-primary font-semibold",
+                    }}
+                    inactiveProps={{ className: "border-l-4 border-transparent" }}
+                    className="flex min-h-11 items-center rounded-sm px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent"
+                  >
+                    {route.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
