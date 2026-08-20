@@ -1,66 +1,67 @@
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m/dev-server[39m
 
- [32m✓[39m src/test/fnd-022-owner-dispositions.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 45[2mms[22m[39m
- [32m✓[39m src/test/touch-target-rule.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 163[2mms[22m[39m
- [32m✓[39m src/test/evidence-output-safety.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 116[2mms[22m[39m
- [32m✓[39m src/test/evidence-output-safety-modes.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1773[2mms[22m[39m
-     [33m[2m✓[22m[39m fails closed on a match in both execution paths [33m 488[2mms[22m[39m
-     [33m[2m✓[22m[39m fails closed on an empty or unreadable tree in both execution paths [33m 476[2mms[22m[39m
- [32m✓[39m src/test/fnd-022-owner-review.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 68[2mms[22m[39m
- [32m✓[39m src/test/historical-sources.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 34[2mms[22m[39m
- [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 44[2mms[22m[39m
- [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 80[2mms[22m[39m
- [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 65[2mms[22m[39m
- [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 1979[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 1348[2mms[22m[39m
-     [33m[2m✓[22m[39m renders a type detail page [33m 555[2mms[22m[39m
- [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 2691[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 1302[2mms[22m[39m
-     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 689[2mms[22m[39m
-     [33m[2m✓[22m[39m marks the gated AI stream as target state on its detail page [33m 657[2mms[22m[39m
- [32m✓[39m src/test/program-state.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 5685[2mms[22m[39m
-     [33m[2m✓[22m[39m regenerates with no diff and matches the recorded input fingerprint [33m 369[2mms[22m[39m
-     [33m[2m✓[22m[39m prints the unrun touch-target verification obligation on the Action Center [33m 1823[2mms[22m[39m
-     [33m[2m✓[22m[39m projects gate, work package, checkpoint, and pending disposition [33m 1012[2mms[22m[39m
-     [33m[2m✓[22m[39m projects the package authority role, digest verification, and drift count [33m 582[2mms[22m[39m
-     [33m[2m✓[22m[39m states what is not authorized and what hosting does not mean [33m 407[2mms[22m[39m
-     [33m[2m✓[22m[39m leads the next defensible action with baseline recovery, not the deferred audit [33m 553[2mms[22m[39m
-     [33m[2m✓[22m[39m shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint [33m 423[2mms[22m[39m
-     [33m[2m✓[22m[39m makes no release, production, certification, or district-use claim [33m 398[2mms[22m[39m
- [32m✓[39m src/test/historical-requirements.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 62[2mms[22m[39m
- [32m✓[39m src/test/obligations.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 65[2mms[22m[39m
- [32m✓[39m src/test/restatement-index.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 23[2mms[22m[39m
- [32m✓[39m src/test/governed-packages.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 32[2mms[22m[39m
- [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 6395[2mms[22m[39m
-     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 2788[2mms[22m[39m
-     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 1528[2mms[22m[39m
-     [33m[2m✓[22m[39m gates every target-state workspace with a visible notice [33m 405[2mms[22m[39m
-     [33m[2m✓[22m[39m reports independent axes and no combined score [33m 533[2mms[22m[39m
-     [33m[2m✓[22m[39m never relies on color alone to carry state [33m 528[2mms[22m[39m
- [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 11[2mms[22m[39m
- [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 8030[2mms[22m[39m
-     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 2740[2mms[22m[39m
-     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 1771[2mms[22m[39m
-     [33m[2m✓[22m[39m filters the registry from a search parameter [33m 447[2mms[22m[39m
-     [33m[2m✓[22m[39m switches views through addressable links [33m 366[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 2264[2mms[22m[39m
- [32m✓[39m src/test/shell.test.tsx [2m([22m[2m81 tests[22m[2m)[22m[33m 16116[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/' with its heading [33m 1691[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/foundation-map' with its heading [33m 596[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/authority' with its heading [33m 818[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 1883[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/objects' with its heading [33m 562[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/value-streams' with its heading [33m 310[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/evidence' with its heading [33m 376[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 440[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/evidence' [33m 371[2mms[22m[39m
-     [33m[2m✓[22m[39m places the skip link first in tab order and points it at main content [33m 398[2mms[22m[39m
-     [33m[2m✓[22m[39m moves between sections using the keyboard alone [33m 344[2mms[22m[39m
-     [33m[2m✓[22m[39m uses plain-language navigation labels without unexplained abbreviations [33m 468[2mms[22m[39m
-     [33m[2m✓[22m[39m states the no-personal-data boundary on '/capabilities' [33m 517[2mms[22m[39m
-     [33m[2m✓[22m[39m states the no-personal-data boundary on '/evidence' [33m 351[2mms[22m[39m
+ [32m✓[39m src/test/fnd-022-owner-review.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 50[2mms[22m[39m
+ [32m✓[39m src/test/obligations.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 118[2mms[22m[39m
+ [32m✓[39m src/test/evidence-output-safety.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 188[2mms[22m[39m
+ [32m✓[39m src/test/evidence-output-safety-modes.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 3411[2mms[22m[39m
+     [33m[2m✓[22m[39m check mode scans, passes, and creates no report file [33m 560[2mms[22m[39m
+     [33m[2m✓[22m[39m report mode still writes a result document [33m 474[2mms[22m[39m
+     [33m[2m✓[22m[39m fails closed on a match in both execution paths [33m 1122[2mms[22m[39m
+     [33m[2m✓[22m[39m fails closed on an empty or unreadable tree in both execution paths [33m 559[2mms[22m[39m
+     [33m[2m✓[22m[39m retains the ephemeral guard result inside the kept tree and excludes it from its own scan [33m 678[2mms[22m[39m
+ [32m✓[39m src/test/fnd-022-owner-dispositions.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 121[2mms[22m[39m
+ [32m✓[39m src/test/touch-target-rule.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 251[2mms[22m[39m
+ [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+ [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 190[2mms[22m[39m
+ [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 255[2mms[22m[39m
+ [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 1864[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 1532[2mms[22m[39m
+ [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 3840[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 1586[2mms[22m[39m
+     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 1077[2mms[22m[39m
+     [33m[2m✓[22m[39m marks the gated AI stream as target state on its detail page [33m 1122[2mms[22m[39m
+ [32m✓[39m src/test/historical-requirements.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 82[2mms[22m[39m
+ [32m✓[39m src/test/governed-packages.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 126[2mms[22m[39m
+ [32m✓[39m src/test/program-state.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 5942[2mms[22m[39m
+     [33m[2m✓[22m[39m regenerates with no diff and matches the recorded input fingerprint [33m 337[2mms[22m[39m
+     [33m[2m✓[22m[39m prints the unrun touch-target verification obligation on the Action Center [33m 1848[2mms[22m[39m
+     [33m[2m✓[22m[39m projects gate, work package, checkpoint, and pending disposition [33m 1031[2mms[22m[39m
+     [33m[2m✓[22m[39m projects the package authority role, digest verification, and drift count [33m 569[2mms[22m[39m
+     [33m[2m✓[22m[39m states what is not authorized and what hosting does not mean [33m 503[2mms[22m[39m
+     [33m[2m✓[22m[39m leads the next defensible action with baseline recovery, not the deferred audit [33m 503[2mms[22m[39m
+     [33m[2m✓[22m[39m shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint [33m 756[2mms[22m[39m
+ [32m✓[39m src/test/historical-sources.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m src/test/restatement-index.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 6959[2mms[22m[39m
+     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 3418[2mms[22m[39m
+     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 1263[2mms[22m[39m
+     [33m[2m✓[22m[39m reports independent axes and no combined score [33m 831[2mms[22m[39m
+     [33m[2m✓[22m[39m never relies on color alone to carry state [33m 560[2mms[22m[39m
+     [33m[2m✓[22m[39m avoids truncation utilities on registry content [33m 346[2mms[22m[39m
+ [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 9988[2mms[22m[39m
+     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 3624[2mms[22m[39m
+     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 2652[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 2853[2mms[22m[39m
+ [32m✓[39m src/test/shell.test.tsx [2m([22m[2m81 tests[22m[2m)[22m[33m 18313[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/' with its heading [33m 2378[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/foundation-map' with its heading [33m 624[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/authority' with its heading [33m 679[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 1371[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/objects' with its heading [33m 933[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/value-streams' with its heading [33m 370[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/findings' with its heading [33m 372[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/evidence' with its heading [33m 418[2mms[22m[39m
+     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 688[2mms[22m[39m
+     [33m[2m✓[22m[39m exposes landmarks on '/evidence' [33m 412[2mms[22m[39m
+     [33m[2m✓[22m[39m places the skip link first in tab order and points it at main content [33m 431[2mms[22m[39m
+     [33m[2m✓[22m[39m moves between sections using the keyboard alone [33m 346[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the mobile navigation reachable through a labelled toggle [33m 331[2mms[22m[39m
+     [33m[2m✓[22m[39m uses plain-language navigation labels without unexplained abbreviations [33m 558[2mms[22m[39m
+     [33m[2m✓[22m[39m states the no-personal-data boundary on '/capabilities' [33m 480[2mms[22m[39m
+     [33m[2m✓[22m[39m states the no-personal-data boundary on '/evidence' [33m 328[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m20 passed[39m[22m[90m (20)[39m
 [2m      Tests [22m [1m[32m429 passed[39m[22m[90m (429)[39m
-[2m   Start at [22m 11:04:16
-[2m   Duration [22m 27.85s[2m (transform 13.73s, setup 37.36s, import 30.11s, tests 43.48s, environment 115.91s)[22m
+[2m   Start at [22m 11:12:41
+[2m   Duration [22m 40.36s[2m (transform 35.84s, setup 58.66s, import 68.39s, tests 51.82s, environment 192.38s)[22m
