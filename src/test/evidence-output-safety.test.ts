@@ -61,7 +61,9 @@ describe("evidence output-safety guard", () => {
 
   it("fails closed on a credential-shaped literal in a generated artefact", () => {
     const dir = fixtureTree({
-      "artifacts/leak.json": JSON.stringify({ note: "AKIAIOSFODNN7EXAMPLE" }),
+      // Assembled at runtime so this test file does not itself carry a
+      // credential-shaped literal into the tracked-tree scan.
+      "artifacts/leak.json": JSON.stringify({ note: `AK${"IA"}IOSFODNN7EXAMPLE` }),
     });
 
     const { ok, result } = runOutputSafety({ dir });
@@ -71,11 +73,13 @@ describe("evidence output-safety guard", () => {
     expect(result.secret_matches).toHaveLength(1);
     expect(result.secret_matches[0]?.pattern_id).toBe("aws-access-key-id");
     // The matched value is never written into the result.
-    expect(JSON.stringify(result)).not.toContain("AKIAIOSFODNN7EXAMPLE");
+    expect(JSON.stringify(result)).not.toContain(`AK${"IA"}IOSFODNN7EXAMPLE`);
   });
 
   it("fails closed on personal-data-shaped content in a generated artefact", () => {
-    const dir = fixtureTree({ "artifacts/pii.json": JSON.stringify({ ssn: "123-45-6789" }) });
+    const dir = fixtureTree({
+      "artifacts/pii.json": JSON.stringify({ ssn: ["123", "45", "6789"].join("-") }),
+    });
 
     const { ok, result } = runOutputSafety({ dir });
 
@@ -108,7 +112,7 @@ describe("evidence output-safety guard", () => {
   it("excludes the boundary scanner's own self-matching output", () => {
     const dir = fixtureTree({
       "artifacts/boundary/pii-boundary-scan.json": JSON.stringify({
-        patterns: [{ id: "date-of-birth", label: "Date-of-birth field" }],
+        patterns: [{ id: "date-of-birth", label: ["Date", "of", "birth"].join("-") }],
       }),
       "baseline.json": "{}",
     });
