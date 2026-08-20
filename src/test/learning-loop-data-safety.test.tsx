@@ -44,11 +44,10 @@ function chooseFile(file: File) {
 }
 
 /** A File whose reported size and text() are under the test's control. */
-function fakeFile(options: {
-  size: number;
-  text?: () => Promise<string>;
-  name?: string;
-}): { file: File; text: ReturnType<typeof vi.fn> } {
+function fakeFile(options: { size: number; text?: () => Promise<string>; name?: string }): {
+  file: File;
+  text: ReturnType<typeof vi.fn>;
+} {
   const text = vi.fn(options.text ?? (() => Promise.resolve("{}")));
   const file = new File(["placeholder"], options.name ?? "import.json", {
     type: "application/json",
@@ -104,10 +103,13 @@ describe("export, import, and previewed replace, through the interface", () => {
       blobs.push(blob);
       return "blob:test";
     });
-    vi.stubGlobal("URL", Object.assign(Object.create(URL), URL, {
-      createObjectURL,
-      revokeObjectURL: vi.fn(),
-    }));
+    vi.stubGlobal(
+      "URL",
+      Object.assign(Object.create(URL), URL, {
+        createObjectURL,
+        revokeObjectURL: vi.fn(),
+      }),
+    );
   });
 
   afterEach(() => {
@@ -153,9 +155,7 @@ describe("export, import, and previewed replace, through the interface", () => {
     expect(screen.getByText("Results:").parentElement!.textContent).toContain("1 removed");
 
     await user.click(cancel);
-    expect(
-      await screen.findByText("The import was cancelled. Nothing was changed."),
-    ).toBeTruthy();
+    expect(await screen.findByText("The import was cancelled. Nothing was changed.")).toBeTruthy();
     expect(storedText()).toBe(bytesBefore);
     expect(storedRevision()).toBe(revisionBefore);
   });
@@ -198,11 +198,12 @@ describe("export, import, and previewed replace, through the interface", () => {
     );
     const confirm = await screen.findByRole("button", { name: "Replace the saved records" });
 
-    const setItem = vi
-      .spyOn(Storage.prototype, "setItem")
-      .mockImplementation(function (this: Storage, key: string) {
-        if (key === LEARNING_LOOP_STORAGE_KEY) throw new Error("quota");
-      });
+    const setItem = vi.spyOn(Storage.prototype, "setItem").mockImplementation(function (
+      this: Storage,
+      key: string,
+    ) {
+      if (key === LEARNING_LOOP_STORAGE_KEY) throw new Error("quota");
+    });
     await user.click(confirm);
 
     expect((await screen.findAllByText(/refused to save the replacement/i)).length).toBeGreaterThan(
@@ -283,9 +284,7 @@ describe("import boundaries and refusals", () => {
 
   it("reports a file that cannot be read, and changes nothing", async () => {
     const { bytes } = await ready();
-    chooseFile(
-      fakeFile({ size: 100, text: () => Promise.reject(new Error("unreadable")) }).file,
-    );
+    chooseFile(fakeFile({ size: 100, text: () => Promise.reject(new Error("unreadable")) }).file);
 
     expect(
       await screen.findByText("That file could not be read, so nothing was changed."),
@@ -489,8 +488,6 @@ describe("write failures during ordinary work", () => {
 
     await waitFor(() => expect(storedRevision()).toBe(revisionBefore + 1));
     const timeline = screen.getByRole("region", { name: "Everything, in order" });
-    expect(
-      within(timeline).getAllByText(/Recorded after the refused attempt/).length,
-    ).toBe(1);
+    expect(within(timeline).getAllByText(/Recorded after the refused attempt/).length).toBe(1);
   });
 });
