@@ -135,7 +135,7 @@ describe("program state is derived, not restated", () => {
   it("no longer leads with the deferred audit as the next action", () => {
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-023");
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toMatch(
-      /Product Alpha 001 loop.*TTR-001 audit/i,
+      /founder\/operator walkthrough of Product Alpha 001.*TTR-001 audit/i,
     );
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.why).toMatch(/FND-024 stays open/);
   });
@@ -257,7 +257,7 @@ describe("Command Center synchronization", () => {
 
   it("states what is not authorized and what hosting does not mean", async () => {
     await renderRoute("/");
-    const region = await screen.findByRole("region", { name: /Not authorized, and not started/i });
+    const region = await screen.findByRole("region", { name: /Not authorized beyond this proof/i });
     expect(within(region).getByText(/WP-039 is not authorized/)).toBeInTheDocument();
     const boundary = await screen.findByRole("region", {
       name: /What hosting this application means/i,
@@ -270,7 +270,9 @@ describe("Command Center synchronization", () => {
   it("leads the next defensible action with the authorized product loop, not the deferred audit", async () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Next defensible action/i });
-    expect(within(region).getByText(/1\. Use the Product Alpha 001 loop/)).toBeInTheDocument();
+    expect(
+      within(region).getByText(/1\. Perform a bounded founder\/operator walkthrough/),
+    ).toBeInTheDocument();
   });
 
   it("shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint", async () => {
