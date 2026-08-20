@@ -52,6 +52,23 @@ export type CommandRunner<T> = (
   context: CommandContext,
 ) => CommandResult<T>;
 
+/**
+ * Which stored snapshot the screen is actually representing.
+ *
+ * A destructive action is decided against what the person can see. Comparing a
+ * freshly captured expectation against the displayed revision alone is not
+ * enough: a screen showing corrupt or newer-schema bytes has no revision, so a
+ * revision-only check would silently pass while another tab had already
+ * recovered that data to a valid document the operator never saw. The exact
+ * stored bytes and the displayed status are both recorded here.
+ */
+export interface DisplayedSnapshot {
+  status: StoreStatus;
+  revision: number | null;
+  /** Exact stored bytes behind what is on screen, or null for nothing stored. */
+  token: string | null;
+}
+
 export interface RunOutcome<T> {
   ok: boolean;
   /** Present only when the command succeeded and the write was accepted. */
@@ -84,6 +101,15 @@ export interface LearningLoopStore {
    * proceed with no concurrency protection at all.
    */
   captureExpectation: () => ExpectationOutcome;
+  /** Which stored snapshot the screen is representing right now. */
+  displayed: DisplayedSnapshot | null;
+  /**
+   * True only when a freshly captured expectation is byte-for-byte the snapshot
+   * the screen is representing. Every destructive action asks this before it
+   * opens a confirmation, for every displayed status, so an unseen change made
+   * in another tab can never be replaced from a stale screen.
+   */
+  showsCaptured: (captured: ExpectationOutcome) => boolean;
   /** Atomically replaces everything with the deterministic synthetic dataset. */
   restoreDemoData: (expected: RecoveryExpectation) => RunOutcome<unknown>;
   /** Atomically replaces everything with an imported document. */
@@ -110,6 +136,11 @@ export interface LearningLoopStore {
 
   parseImport: typeof parseDocumentText;
   dismissProblem: () => void;
+  /**
+   * Records a refusal decided in the interface rather than by a command, so it
+   * survives any re-render of the panel that raised it.
+   */
+  reportConflict: (message: string) => void;
 }
 
 function describeProblems(schema: SchemaProblem[], invariants: InvariantProblem[]): string[] {
@@ -163,6 +194,37 @@ export function useLearningLoop(
   const [status, setStatus] = useState<StoreStatus>("loading");
   const [readProblem, setReadProblem] = useState<string | null>(null);
   const [problem, setProblem] = useState<StoreProblem | null>(null);
+  const [displayed, setDisplayed] = useState<DisplayedSnapshot | null>(null);
+
+  /**
+   * Reads the stored value once and makes the interface show exactly that
+   * snapshot, recording which snapshot is on screen. Every path that changes
+   * what is displayed goes through here, so the displayed identity can never
+   * drift from the displayed content.
+   */
+  const load = useCallback((): ReadOutcome => {
+    const captured = repository.expectation();
+    if (captured.status !== "ok") {
+      setStatus("unavailable");
+      setDocument(null);
+      setReadProblem(captured.message);
+      setDisplayed(null);
+      return { status: "unavailable", message: captured.message };
+    }
+    const outcome = captured.read;
+    const next = statusFromRead(outcome);
+    setStatus(next);
+    setDocument(outcome.status === "ready" ? outcome.document : null);
+    setReadProblem(
+      outcome.status === "ready" || outcome.status === "empty" ? null : outcome.message,
+    );
+    setDisplayed({
+      status: next,
+      revision: outcome.status === "ready" ? outcome.document.revision : null,
+      token: captured.expectation.token,
+    });
+    return outcome;
+  }, [repository]);
 
   useEffect(() => {
     if (!repository.available && repository.kind === "in-memory")
@@ -174,38 +236,25 @@ export function useLearningLoop(
         "This session is being held in memory only. Nothing here will survive a reload.",
       );
 
-    const outcome = repository.read();
-    setStatus(statusFromRead(outcome));
-    if (outcome.status === "ready") {
-      setDocument(outcome.document);
-      setReadProblem(null);
-      return;
-    }
-    setDocument(null);
-    setReadProblem(outcome.status === "empty" ? null : outcome.message);
-  }, [repository]);
+    load();
+  }, [load, repository]);
 
   /** One place where a proposed document becomes a persisted document. */
   const commit = useCallback(
     (expectedRevision: number | null, next: LearningLoopDocument, at: string): CommitOutcome => {
       const outcome = repository.commit(expectedRevision, next, at);
       if (outcome.status === "ok") {
-        setDocument(outcome.document);
-        setStatus("ready");
+        // Re-read so the displayed identity is the stored identity, not a guess.
+        load();
         setProblem(null);
         return outcome;
       }
       // A conflict means the interface is stale: show what is actually stored.
-      if (outcome.status === "conflict") {
-        const fresh = repository.read();
-        setStatus(statusFromRead(fresh));
-        setDocument(fresh.status === "ready" ? fresh.document : null);
-        if (fresh.status !== "ready" && fresh.status !== "empty") setReadProblem(fresh.message);
-      }
+      if (outcome.status === "conflict") load();
       setProblem(problemFromCommit(outcome));
       return outcome;
     },
-    [repository],
+    [load, repository],
   );
 
   const run = useCallback(
@@ -271,13 +320,11 @@ export function useLearningLoop(
         setProblem(problemFromCommit(outcome));
         return { ok: false, value: null, problem: problemFromCommit(outcome) };
       }
-      setDocument(outcome.document);
-      setStatus("ready");
-      setReadProblem(null);
+      load();
       setProblem(null);
       return { ok: true, value: { document: outcome.document }, problem: null };
     },
-    [contextFactory, repository],
+    [contextFactory, load, repository],
   );
 
   const restoreDemoData = useCallback(
@@ -303,16 +350,38 @@ export function useLearningLoop(
   );
 
   const refresh = useCallback(() => {
-    const fresh = repository.read();
-    setStatus(statusFromRead(fresh));
-    setDocument(fresh.status === "ready" ? fresh.document : null);
-    setReadProblem(fresh.status === "ready" || fresh.status === "empty" ? null : fresh.message);
-  }, [repository]);
+    load();
+  }, [load]);
+
+  /**
+   * Fails closed by construction: anything other than an exact match between
+   * the captured snapshot and the snapshot on screen is a mismatch, including
+   * an unavailable capture and a screen that has not loaded a snapshot yet.
+   */
+  const showsCaptured = useCallback(
+    (captured: ExpectationOutcome): boolean => {
+      if (captured.status !== "ok" || displayed === null) return false;
+      const capturedStatus = statusFromRead(captured.read);
+      const capturedRevision =
+        captured.read.status === "ready" ? captured.read.document.revision : null;
+      return (
+        capturedStatus === displayed.status &&
+        capturedRevision === displayed.revision &&
+        captured.expectation.token === displayed.token
+      );
+    },
+    [displayed],
+  );
 
   const exportText = useCallback(() => (document ? serializeDocument(document) : null), [document]);
   const rawText = useCallback(() => repository.readRaw(), [repository]);
   const backupText = useCallback(() => repository.readBackup(), [repository]);
   const dismissProblem = useCallback(() => setProblem(null), []);
+
+  const reportConflict = useCallback(
+    (message: string) => setProblem({ message, details: [], kind: "conflict" }),
+    [],
+  );
 
   return useMemo(
     () => ({
@@ -326,6 +395,8 @@ export function useLearningLoop(
       fallbackNotice,
       run,
       captureExpectation,
+      displayed,
+      showsCaptured,
       restoreDemoData,
       replaceAll,
       seedInitialData,
@@ -335,6 +406,7 @@ export function useLearningLoop(
       refresh,
       parseImport: parseDocumentText,
       dismissProblem,
+      reportConflict,
     }),
     [
       status,
@@ -346,6 +418,8 @@ export function useLearningLoop(
       fallbackNotice,
       run,
       captureExpectation,
+      displayed,
+      showsCaptured,
       restoreDemoData,
       replaceAll,
       seedInitialData,
@@ -354,6 +428,7 @@ export function useLearningLoop(
       backupText,
       refresh,
       dismissProblem,
+      reportConflict,
     ],
   );
 }

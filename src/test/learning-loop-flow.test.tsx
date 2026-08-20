@@ -199,6 +199,9 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
       "The learner boards and exits at the right stop with the staff member out of prompting range.",
     );
     await user.click(screen.getByRole("button", { name: "Save this plan" }));
+    // The plan step is a transition like any other: focus must land on the
+    // newly announced next step before the loop continues to completion.
+    await waitFor(() => expect(window.document.getElementById("next-step-heading")).toHaveFocus());
 
     expectNextStep({ ruleId: "LLR-001-R05", code: "COMPLETE_OR_CANCEL_SUPPORT" });
     const supportActionId = basisIds().find((id) => id.startsWith("SUP-"))!;
