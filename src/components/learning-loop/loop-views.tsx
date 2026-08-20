@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   buildTimeline,
@@ -8,6 +8,7 @@ import {
   type NextStepProjection,
 } from "@/domain/learning-loop";
 import { buildImportPreview, type ImportPreview } from "@/lib/learning-loop/import-preview";
+import { MAX_IMPORT_BYTES } from "@/lib/learning-loop/repository";
 import type { LearningLoopStore } from "@/lib/learning-loop/use-learning-loop";
 import { formatMoment } from "@/lib/learning-loop/format";
 import { ActionButton, LiveNotice } from "./controls";
@@ -106,6 +107,8 @@ export function TimelineList({
  */
 export function DataControls({ store }: { store: LearningLoopStore }) {
   const fileRef = useRef<HTMLInputElement>(null);
+  const restoreCancelRef = useRef<HTMLButtonElement>(null);
+  const importCancelRef = useRef<HTMLButtonElement>(null);
   const [pending, setPending] = useState<{
     document: LearningLoopDocument;
     preview: ImportPreview;
@@ -114,33 +117,79 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
   const [problem, setProblem] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
-  function download(text: string, name: string) {
-    const blob = new Blob([text], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const anchor = window.document.createElement("a");
-    anchor.href = url;
-    anchor.download = name;
-    anchor.click();
-    URL.revokeObjectURL(url);
+  // The safe choice is the one that gets focus when a destructive panel opens.
+  useEffect(() => {
+    if (confirmingRestore) restoreCancelRef.current?.focus();
+  }, [confirmingRestore]);
+  useEffect(() => {
+    if (pending) importCancelRef.current?.focus();
+  }, [pending]);
+
+  function download(text: string, name: string): string | null {
+    let url: string | null = null;
+    try {
+      const blob = new Blob([text], { type: "application/json" });
+      url = URL.createObjectURL(blob);
+      const anchor = window.document.createElement("a");
+      anchor.href = url;
+      anchor.download = name;
+      anchor.click();
+      return null;
+    } catch {
+      return "This browser would not produce a file to download, so nothing was exported.";
+    } finally {
+      if (url) {
+        try {
+          URL.revokeObjectURL(url);
+        } catch {
+          /* the object URL is released with the page in any case */
+        }
+      }
+    }
   }
 
   function onExport() {
-    const text = store.exportText() ?? store.rawText();
+    setProblem(null);
+    setNotice(null);
+    let text: string | null = null;
+    try {
+      text = store.exportText() ?? store.rawText();
+    } catch {
+      setProblem("The saved records could not be read, so nothing was exported.");
+      return;
+    }
     if (!text) {
       setProblem("There is nothing saved to export.");
       return;
     }
-    download(text, "ssls-learning-loop-synthetic.json");
+    const failure = download(text, "ssls-learning-loop-synthetic.json");
+    if (failure) {
+      setProblem(failure);
+      return;
+    }
     setNotice("Exported the current records as a JSON file.");
   }
 
   async function onFile(file: File) {
     setProblem(null);
     setNotice(null);
-    const result = store.parseImport(await file.text());
+    // The size is refused before a single byte is read into memory.
+    if (file.size > MAX_IMPORT_BYTES) {
+      setProblem(
+        `That file is ${Math.ceil(file.size / 1024)} KB. The limit is ${Math.floor(MAX_IMPORT_BYTES / 1024)} KB, so it was not read and nothing was changed.`,
+      );
+      return;
+    }
+    let text: string;
+    try {
+      text = await file.text();
+    } catch {
+      setProblem("That file could not be read, so nothing was changed.");
+      return;
+    }
+    const result = store.parseImport(text);
     if (!result.ok) {
       setProblem([result.message, ...describeLoadFailure(result)].join(" "));
-      setPending(null);
       return;
     }
     setPending({
@@ -150,6 +199,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
   }
 
   const hasRecords = store.document !== null;
+  const unreadable = store.status === "corrupt" || store.status === "unsupported-version";
 
   return (
     <div className="rounded-md border border-border bg-surface p-4 sm:p-5">
@@ -164,7 +214,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
           onClick={() => {
             setNotice(null);
             setProblem(null);
-            if (hasRecords) {
+            if (hasRecords || unreadable) {
               setConfirmingRestore(true);
               return;
             }
@@ -173,7 +223,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             setProblem(result.ok ? null : (result.problem?.message ?? "Nothing was changed."));
           }}
         >
-          {hasRecords ? "Restore the sample records" : "Load the sample records"}
+          {hasRecords || unreadable ? "Restore the sample records" : "Load the sample records"}
         </ActionButton>
         <ActionButton tone="secondary" onClick={onExport}>
           Export a file
@@ -208,22 +258,37 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
             Restoring replaces everything currently saved
           </h3>
           <p className="measure mt-2 text-sm">
-            Every record in this browser is replaced by the original sample set in one step. Export
-            a file first if you want to keep what is here.
+            {unreadable
+              ? "The saved data cannot be read. Replacing it puts the original sample set in its place and keeps one copy of the unreadable data. Export the unreadable data first if you want to keep it."
+              : "Every record in this browser is replaced by the original sample set in one step. Export a file first if you want to keep what is here."}
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
+            {/* The safe action comes first in reading and tab order. */}
+            <ActionButton
+              tone="secondary"
+              ref={restoreCancelRef}
+              onClick={() => {
+                setConfirmingRestore(false);
+                setProblem(null);
+              }}
+            >
+              Keep what is saved
+            </ActionButton>
             <ActionButton
               onClick={() => {
                 const result = store.restoreDemoData();
+                if (!result.ok) {
+                  // The confirmation stays open: nothing happened yet.
+                  setProblem(result.problem?.message ?? "Nothing was replaced.");
+                  setNotice(null);
+                  return;
+                }
                 setConfirmingRestore(false);
-                setNotice(result.ok ? "The sample records were restored." : null);
-                setProblem(result.ok ? null : (result.problem?.message ?? "Nothing was replaced."));
+                setProblem(null);
+                setNotice("The sample records were restored.");
               }}
             >
               Replace with the sample records
-            </ActionButton>
-            <ActionButton tone="secondary" onClick={() => setConfirmingRestore(false)}>
-              Keep what is saved
             </ActionButton>
           </div>
         </div>
@@ -251,21 +316,33 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
           )}
           <div className="mt-4 flex flex-wrap gap-3">
             <ActionButton
+              tone="secondary"
+              ref={importCancelRef}
+              onClick={() => {
+                setPending(null);
+                setProblem(null);
+                setNotice("The import was cancelled. Nothing was changed.");
+              }}
+            >
+              Cancel the import
+            </ActionButton>
+            <ActionButton
               onClick={() => {
                 const result = store.replaceAll(pending.document);
+                if (!result.ok) {
+                  // The preview stays on screen so the import can be retried.
+                  setProblem(
+                    result.problem?.message ?? "Import was refused and nothing was replaced.",
+                  );
+                  setNotice(null);
+                  return;
+                }
                 setPending(null);
-                setNotice(result.ok ? "Import complete. The saved records were replaced." : null);
-                setProblem(
-                  result.ok
-                    ? null
-                    : (result.problem?.message ?? "Import was refused and nothing was replaced."),
-                );
+                setProblem(null);
+                setNotice("Import complete. The saved records were replaced.");
               }}
             >
               Replace the saved records
-            </ActionButton>
-            <ActionButton tone="secondary" onClick={() => setPending(null)}>
-              Cancel the import
             </ActionButton>
           </div>
         </div>

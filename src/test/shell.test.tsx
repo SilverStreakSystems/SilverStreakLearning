@@ -89,7 +89,7 @@ describe("navigation and keyboard operation", () => {
     expect(router.state.location.pathname).toBe("/findings");
   });
 
-  it("keeps the mobile navigation reachable through a labelled toggle", async () => {
+  it("opens the small-screen navigation as a dialog carrying every route", async () => {
     const user = userEvent.setup();
     await renderRoute("/");
 
@@ -97,12 +97,13 @@ describe("navigation and keyboard operation", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "false");
 
     await user.click(toggle);
-    const mobileNav = screen.getByRole("navigation", { name: "Primary navigation" });
-    expect(within(mobileNav).getAllByRole("link").length).toBe(ROUTE_REGISTRY.length);
-    expect(screen.getByRole("button", { name: "Close menu" })).toHaveAttribute(
-      "aria-expanded",
-      "true",
-    );
+    const drawer = screen.getByRole("dialog", { name: "Primary navigation" });
+    expect(within(drawer).getAllByRole("link").length).toBe(ROUTE_REGISTRY.length);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(toggle).toHaveFocus();
   });
 
   it("uses plain-language navigation labels without unexplained abbreviations", async () => {

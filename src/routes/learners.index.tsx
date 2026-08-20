@@ -1,25 +1,8 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
 
 import { PageHeader, Section } from "@/components/governance/page";
-import {
-  ActionButton,
-  Choice,
-  Disclosure,
-  ErrorSummary,
-  Field,
-  LiveNotice,
-  TextLine,
-  type FormError,
-} from "@/components/learning-loop/controls";
 import { DataControls, StorageNotices } from "@/components/learning-loop/loop-views";
-import {
-  GRADE_BANDS,
-  GRADE_BAND_LABEL,
-  projectNextStep,
-  type GradeBand,
-} from "@/domain/learning-loop";
-import { createLearner } from "@/lib/learning-loop/commands";
+import { GRADE_BAND_LABEL, projectNextStep } from "@/domain/learning-loop";
 import { useLearningLoop } from "@/lib/learning-loop/use-learning-loop";
 
 export const Route = createFileRoute("/learners/")({
@@ -44,52 +27,21 @@ export const Route = createFileRoute("/learners/")({
   component: LearnersIndex,
 });
 
-const LABEL_FIELD_ID = "new-learner-label";
-
+/**
+ * The learner list.
+ *
+ * There is deliberately no free-text way to add a learner here. The only way
+ * records enter this preview is the fixed set of four visibly fictional sample
+ * learners, or a file that was exported from this same preview. A blank name
+ * field is an invitation to type a real child's name into a browser-local
+ * prototype, and this build refuses to offer one.
+ */
 function LearnersIndex() {
   const store = useLearningLoop();
-  const [addOpen, setAddOpen] = useState(false);
-  const [label, setLabel] = useState("");
-  const [gradeBand, setGradeBand] = useState<GradeBand>("unspecified");
-  const [errors, setErrors] = useState<FormError[]>([]);
-  const [notice, setNotice] = useState<string | null>(null);
-  const summaryRef = useRef<HTMLDivElement>(null);
 
   const document = store.document;
   // One instant for the whole render, so every row is projected consistently.
   const asOf = new Date().toISOString();
-  const labelError = errors.find((row) => row.controlId === LABEL_FIELD_ID)?.message ?? null;
-
-  function submitLearner() {
-    const found: FormError[] = [];
-    if (label.trim().length === 0)
-      found.push({
-        controlId: LABEL_FIELD_ID,
-        message: "Enter a label so this fictional learner can be told apart.",
-      });
-    if (found.length > 0) {
-      setErrors(found);
-      setNotice(null);
-      // Focus moves to the summary, not silently nowhere.
-      window.setTimeout(() => summaryRef.current?.focus(), 0);
-      return;
-    }
-
-    const outcome = store.run((current, context) =>
-      createLearner(current, { displayLabel: label.trim(), gradeBand }, context),
-    );
-    if (!outcome.ok) {
-      setErrors([
-        { controlId: LABEL_FIELD_ID, message: outcome.problem?.message ?? "Nothing was saved." },
-      ]);
-      window.setTimeout(() => summaryRef.current?.focus(), 0);
-      return;
-    }
-    setErrors([]);
-    setLabel("");
-    setAddOpen(false);
-    setNotice("The learner was added.");
-  }
 
   return (
     <div>
@@ -99,8 +51,8 @@ function LearnersIndex() {
       />
 
       <p className="measure mt-4 rounded-md border border-border-strong bg-muted p-4 text-sm font-semibold">
-        Fictional learners only. Do not type anything about a real person into this preview. There
-        is no account, no server, and no shared storage behind it.
+        Fictional sample learners only. Do not type anything about a real person into this preview.
+        There is no account, no server, and no shared storage behind it.
       </p>
 
       <StorageNotices store={store} />
@@ -119,7 +71,7 @@ function LearnersIndex() {
           }
           description={
             store.status === "empty"
-              ? "Load the sample learners to see the loop working, or add a fictional learner of your own."
+              ? "Load the four fictional sample learners to see the loop working. That is the only way to start: this preview has no way to enter a real learner."
               : "The saved data has been left exactly as it is. Export it before replacing it with the sample records."
           }
         >
@@ -167,54 +119,6 @@ function LearnersIndex() {
                 );
               })}
             </ul>
-
-            <Disclosure
-              summary="Add a fictional learner"
-              open={addOpen}
-              onToggle={() => setAddOpen((open) => !open)}
-            >
-              <ErrorSummary
-                errors={errors}
-                headingId="add-learner-errors"
-                summaryRef={summaryRef}
-              />
-              <Field
-                label="Label for this fictional learner"
-                hint="Use something obviously made up, such as Sample Learner E."
-                required
-                controlId={LABEL_FIELD_ID}
-                error={labelError}
-              >
-                {({ id, describedBy, invalid }) => (
-                  <TextLine
-                    id={id}
-                    aria-describedby={describedBy}
-                    aria-invalid={invalid}
-                    value={label}
-                    onChange={(event) => setLabel(event.target.value)}
-                  />
-                )}
-              </Field>
-              <Field label="Rough age group">
-                {({ id }) => (
-                  <Choice
-                    id={id}
-                    value={gradeBand}
-                    onChange={(event) => setGradeBand(event.target.value as GradeBand)}
-                  >
-                    {GRADE_BANDS.map((band) => (
-                      <option key={band} value={band}>
-                        {GRADE_BAND_LABEL[band]}
-                      </option>
-                    ))}
-                  </Choice>
-                )}
-              </Field>
-              <div className="mt-5">
-                <ActionButton onClick={submitLearner}>Add this learner</ActionButton>
-              </div>
-            </Disclosure>
-            <LiveNotice message={notice} tone="ok" />
           </Section>
 
           <Section

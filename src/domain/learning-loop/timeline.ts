@@ -5,7 +5,6 @@
  * reading aid, not the shared enterprise Event object.
  */
 import {
-  GOAL_STATUS_LABEL,
   OBSERVATION_SOURCE_LABEL,
   REVIEW_RESULT_LABEL,
   type LearningLoopDocument,
@@ -68,7 +67,10 @@ export function buildTimeline(
       goalId: goal.goalId,
       recordId: goal.goalId,
       headline: `Goal set: ${goal.title}`,
-      detail: `Success looks like: ${goal.successCriterion} (${GOAL_STATUS_LABEL[goal.status]})`,
+      // The goal's current status is deliberately not shown here: it belongs to
+      // now, not to the moment the goal was set, and printing it in a past
+      // event would project today's state backwards into the history.
+      detail: `Success looks like: ${goal.successCriterion}`,
       superseded: false,
     });
   }
@@ -143,8 +145,11 @@ export function buildTimeline(
     });
   }
 
+  // Instants are compared as instants. Two records can carry the same moment
+  // written differently, and text ordering would put them in the wrong order.
   return entries.sort((a, b) => {
-    if (a.occurredAt !== b.occurredAt) return a.occurredAt.localeCompare(b.occurredAt);
+    const delta = Date.parse(a.occurredAt) - Date.parse(b.occurredAt);
+    if (delta !== 0) return delta;
     if (a.kind !== b.kind) return TIMELINE_TYPE_ORDER[a.kind] - TIMELINE_TYPE_ORDER[b.kind];
     return a.entryId.localeCompare(b.entryId);
   });
