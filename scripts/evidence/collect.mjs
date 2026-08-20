@@ -330,29 +330,32 @@ export function collectConfiguration(context) {
   };
 }
 
-/** Compatibility wrapper over the WP-006 declared-binding guard. */
+/** Current-state projection freshness check (replaces the WP-006 declared-binding guard). */
 export function collectSsotBinding(context) {
-  const result = run("node", ["scripts/check-ssot-binding.mjs"]);
+  const result = run("bun", ["scripts/gen-current-state.ts", "--check"]);
   const log = `${result.stdout}\n${result.stderr}`.trim();
 
   return {
     record: base(context, "SSOT_BINDING", {
       evidence_id: "EV-SSOT-GUARD",
-      title: "Predecessor declared-binding guard execution",
+      title: "Current-state projection freshness check",
       description:
-        "The WP-006 guard retained as a compatibility layer. It compares declared commit strings and is superseded for freshness purposes by input-aware applicability.",
-      tool: "scripts/check-ssot-binding.mjs",
+        "Regenerates the canonical current-state projection from its declared controlling inputs and compares it, its input fingerprint, and the superseded-document markers. Replaces the WP-006 declared-binding guard, which bound documents to a commit hash and went stale after every legitimate change (FND-011).",
+      tool: "scripts/gen-current-state.ts",
       tool_version: "1.0.0",
-      command: "node scripts/check-ssot-binding.mjs",
-      expected_result: "Reported as a review condition, not as a freshness proof.",
+      command: "bun scripts/gen-current-state.ts --check",
+      expected_result:
+        "Exit 0 when the projection regenerates with no diff, every declared input resolves, and every superseded document declares itself superseded.",
       actual_result: `Exit code ${result.code}.`,
       status: result.ok ? "pass" : "review-required",
-      supports: ["Whether the WP-006 bound documents declare the commit under review."],
+      supports: [
+        "Whether the canonical current-state document is the deterministic projection of its declared controlling inputs at this tree.",
+      ],
       does_not_support: [
-        "Semantic freshness of any figure inside those documents, and merge enforcement of the check.",
+        "The correctness or authority of any statement inside the projection, and merge enforcement of the check.",
       ],
       related_findings: ["FND-011", "FND-012", "FND-013"],
-      reproduction: "node scripts/check-ssot-binding.mjs",
+      reproduction: "bun run check:current-state",
     }),
     artifact: { path: "provenance/ssot-binding.log", content: log },
   };

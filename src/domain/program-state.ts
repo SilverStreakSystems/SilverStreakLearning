@@ -79,14 +79,47 @@ export interface UnauthorizedStageRecord {
   source: SourceLocator;
 }
 
+/**
+ * An execution attempt that produced no evidence. Never a checkpoint, never a
+ * result, never a conformance basis.
+ */
+export interface AttemptRecord {
+  attemptId: string;
+  title: string;
+  attemptedOn: string;
+  state: "ABORTED-DEFERRED" | "PARTIAL";
+  statement: string;
+  /** Stated plainly so an attempt is never read as execution evidence. */
+  producedNoEvidence: string;
+  source: SourceLocator;
+}
+
+/** Execution state of a defined verification protocol. */
+export interface AuditExecutionRecord {
+  ruleId: string;
+  state: "NOT-RUN" | "RUN";
+  statement: string;
+  source: SourceLocator;
+}
+
+export interface DeferredDebtRecord {
+  recordId: string;
+  statement: string;
+  source: SourceLocator;
+}
+
 export interface ProgramStateRecord {
   stateDate: string;
   gate: GateStateRecord;
   activeWorkPackage: WorkPackageStateRecord;
   latestCheckpoint: CheckpointRecord;
+  /** The most recent attempt that produced no evidence, when one exists. */
+  latestAttempt: AttemptRecord | null;
+  auditExecution: AuditExecutionRecord;
   ownerDisposition: OwnerDispositionRecord;
   verifications: BoundVerificationRecord[];
   unauthorizedStages: UnauthorizedStageRecord[];
+  deferredDebt: DeferredDebtRecord[];
   /** What hosting the application does and does not mean. */
   publicationBoundary: string;
   /** The single next action the current posture permits the owner to take. */
@@ -140,7 +173,9 @@ export function validateProgramState(record: ProgramStateRecord): string[] {
 
   for (const verification of record.verifications) {
     if (!verification.boundTo.trim())
-      problems.push(`${verification.verificationId}: verification is not bound to a checkpoint or commit`);
+      problems.push(
+        `${verification.verificationId}: verification is not bound to a checkpoint or commit`,
+      );
     if (!verification.scope.trim())
       problems.push(`${verification.verificationId}: verification scope must be stated`);
   }

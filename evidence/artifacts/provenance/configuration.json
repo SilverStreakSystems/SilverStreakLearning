@@ -1,12 +1,12 @@
 {
   "workflows": [
     {
-      "file": ".github/workflows/evidence-pipeline.yml",
-      "hash": "a88afb5d2d67171ce1631e959bef7e1e4c2e33b3b9fd3c9fa96830367ba6be72"
+      "file": ".github/workflows/current-state.yml",
+      "hash": "6a432f351e209e296a3fcfd6bb0603372c81002a61870db8131bb225489bcabc"
     },
     {
-      "file": ".github/workflows/ssot-binding.yml",
-      "hash": "c834092136f8f7fd583b20d9239390b648d8f0baaa12921bbec9062ed17ddcad"
+      "file": ".github/workflows/evidence-pipeline.yml",
+      "hash": "a88afb5d2d67171ce1631e959bef7e1e4c2e33b3b9fd3c9fa96830367ba6be72"
     }
   ],
   "build_config": {

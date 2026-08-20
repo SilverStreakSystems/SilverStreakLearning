@@ -1,5 +1,5 @@
 {
-  "total": 74,
+  "total": 75,
   "requires_legal_review": 0,
   "boundary": "This inventory records declared licence strings. It makes no legal conclusion about compatibility, obligation, or distribution rights.",
   "entries": [
@@ -337,6 +337,12 @@
       "name": "nitro",
       "version": "3.0.260603-beta",
       "declared_license": "MIT",
+      "posture": "COMMONLY PERMISSIVE"
+    },
+    {
+      "name": "playwright-core",
+      "version": "1.62.1",
+      "declared_license": "Apache-2.0",
       "posture": "COMMONLY PERMISSIVE"
     },
     {

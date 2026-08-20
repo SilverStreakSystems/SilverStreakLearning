@@ -1,0 +1,144 @@
+{
+  "policy_id": "PROGRAM-POLICY-001",
+  "policy_version": "1.0.0",
+  "authority_note": "Minimal narrative policy record for values that cannot be derived mechanically from the controlling registers. Everything that can be derived is derived. This record creates no state: it does not open or close a gate, does not close a work package, does not record a disposition, and does not authorize anything.",
+  "controlling_decision": "DEC-022",
+  "gate": {
+    "gate_id": "GATE-A",
+    "name": "Gate A",
+    "open_basis": "Gate A remains open. No cycle, checkpoint, attempt, test result, or package registration closes a gate; only a recorded owner decision does.",
+    "closed_basis": "Gate A is recorded closed by an owner decision.",
+    "source": {
+      "record_id": "DEC-018",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-018",
+      "route": "/decisions"
+    },
+    "closure_phrases": ["gate a is closed", "gate a closes"]
+  },
+  "active_work_package": {
+    "work_package_id": "WP-007",
+    "title": "Historical Requirement Conformance Recovery",
+    "active_statement": "WP-007 is active. Cycle work has been executed inside it; the work package itself is neither complete nor closed.",
+    "closed_statement": "WP-007 is recorded closed by an owner decision.",
+    "source": {
+      "record_id": "WP-007",
+      "locator": "docs/wp-007/ENTRY_SPECIFICATION.md",
+      "route": null
+    },
+    "closure_phrases": ["wp-007 is closed", "wp-007 closed by owner"]
+  },
+  "owner_disposition_supporting_sources": [
+    { "record_id": "ATTEMPT-001", "locator": "docs/wp-007/ATTEMPT-001-CYCLE-8.md", "route": null },
+    { "record_id": "CHECKPOINT-009", "locator": "docs/wp-007/CHECKPOINT-009.md", "route": null },
+    {
+      "record_id": "TTR-001",
+      "locator": "data/accessibility/touch-target-rule.json",
+      "route": null
+    },
+    {
+      "record_id": "FND-024",
+      "locator": "src/fixtures/registers.ts — FINDINGS, FND-024",
+      "route": "/findings"
+    },
+    {
+      "record_id": "PUBLICATION-ACCESS",
+      "locator": "docs/PUBLICATION_ACCESS.md",
+      "route": null
+    }
+  ],
+  "unauthorized_stages": [
+    {
+      "stage_id": "WP-039",
+      "statement": "WP-039 is not authorized. No record in this repository authorizes it.",
+      "source": {
+        "record_id": "DEC-018",
+        "locator": "docs/wp-007/REFUSED_CLAIMS.md",
+        "route": "/decisions"
+      }
+    },
+    {
+      "stage_id": "CYCLE-8",
+      "statement": "Execution of the TTR-001 verification protocol is deferred by DEC-022 and is not authorized now. The partial runner under scripts/accessibility/ is dormant development tooling; it measured nothing and produced no audit evidence. No Cycle 9 is authorized either.",
+      "source": {
+        "record_id": "DEC-022",
+        "locator": "src/fixtures/registers.ts — DECISIONS, DEC-022",
+        "route": "/decisions"
+      }
+    },
+    {
+      "stage_id": "TOUCH-TARGET-AUDIT",
+      "statement": "No route, component, or control has been measured or classified against TTR-001, so the interface is unmeasured rather than passing. FND-024 stays open as deferred debt.",
+      "source": {
+        "record_id": "FND-024",
+        "locator": "src/fixtures/registers.ts — FINDINGS, FND-024",
+        "route": "/findings"
+      }
+    },
+    {
+      "stage_id": "HREQ-IMPLEMENTATION",
+      "statement": "Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, HREQ-025 remains NEEDS-EVIDENCE / DEFER and is not rewritten, and no accessibility conformance is claimed for any of them.",
+      "source": {
+        "record_id": "DEC-020",
+        "locator": "data/historical/fnd-022-owner-dispositions.json",
+        "route": "/decisions"
+      }
+    },
+    {
+      "stage_id": "RUNTIME-TRUST-SPINE",
+      "statement": "The runtime trust spine remains plan-only. No backend, authentication, database, AI, or real personal data is authorized, and no product implementation has started.",
+      "source": {
+        "record_id": "PLAN-RUNTIME-TRUST-SPINE",
+        "locator": ".lovable/plan/runtime-trust-spine-plan-only-architecture-and-execution-des-2026-08-20.md",
+        "route": null
+      }
+    },
+    {
+      "stage_id": "PKG-002-PROMOTION",
+      "statement": "Promotion of PKG-002 to canonical is not authorized. It remains a synchronized reference.",
+      "source": {
+        "record_id": "PKG-002",
+        "locator": "data/packages/governed-packages.json — PKG-002",
+        "route": null
+      }
+    },
+    {
+      "stage_id": "DRIFT-RESOLUTION",
+      "statement": "Resolution of the recorded package drift rows is not authorized. Each remains unresolved.",
+      "source": {
+        "record_id": "PDR-001..PDR-006",
+        "locator": "data/packages/package-drift.json",
+        "route": null
+      }
+    }
+  ],
+  "publication_boundary": "PUBLIC SYNTHETIC PROTOTYPE. NO REAL PERSONAL DATA. NOT RELEASED. The published application URL is reachable by anyone who has the link; the interface is not access-controlled, and the private setting of the Lovable project does not restrict the published surface. The robots file asks search engines not to index it, which is a crawler request and not access control. Hosting this application does not constitute release authority, and no production use, district deployment, independent validation, certification, or compliance-conformance claim is authorized or made. Making the deployment private or unpublishing it is a manual owner action recorded in docs/PUBLICATION_ACCESS.md.",
+  "next_defensible_owner_action": {
+    "action": "Recover the engineering baseline, then authorize one synthetic product vertical slice.",
+    "why": "DEC-022 defers the TTR-001 audit until a stable user-facing product workflow exists, so the audit is not the only permissible work and is no longer the leading action. The separately authorized next phase is engineering-baseline recovery — a clean tree, a green suite, a reproducible build, and the derived current-state projection verified in CI — followed by a bounded synthetic product vertical slice. FND-024 stays open as deferred debt and must remain visible until an owner decision either authorizes its execution or records that it stays unrun.",
+    "source": {
+      "record_id": "DEC-022",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-022",
+      "route": "/decisions"
+    }
+  },
+  "deferred_debt": [
+    {
+      "record_id": "FND-024",
+      "statement": "The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface. The obligation is deferred, not discharged.",
+      "locator": "src/fixtures/registers.ts — FINDINGS, FND-024",
+      "route": "/findings"
+    },
+    {
+      "record_id": "EV-003",
+      "statement": "EV-003 remains NOT-RUN.",
+      "locator": "src/fixtures/registers.ts — EVIDENCE, EV-003",
+      "route": "/evidence"
+    },
+    {
+      "record_id": "FND-014",
+      "statement": "Repository-wide lint debt remains recorded and unresolved.",
+      "locator": "src/fixtures/registers.ts — FINDINGS, FND-014",
+      "route": "/findings"
+    }
+  ]
+}

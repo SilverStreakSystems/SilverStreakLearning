@@ -232,12 +232,13 @@ export const PIPELINE_CHECKS: PipelineCheck[] = [
   {
     evidenceId: "EV-SSOT-GUARD",
     evidenceType: "SSOT_BINDING",
-    title: "Predecessor declared-binding guard",
-    tool: "scripts/check-ssot-binding.mjs",
+    title: "Current-state projection freshness check",
+    tool: "scripts/gen-current-state.ts",
     declaredInputs: ["docs", "pipeline"],
-    validity: "Invalidated by a change to bound documents or to the guard.",
-    supports: "Whether WP-006 bound documents declare the commit under review.",
-    doesNotSupport: "Semantic freshness of the figures inside those documents.",
+    validity: "Invalidated by a change to any declared controlling input or to the generator.",
+    supports:
+      "Whether the canonical current-state document is the deterministic projection of its declared controlling inputs at this tree.",
+    doesNotSupport: "The correctness or authority of any statement inside the projection.",
     reusable: false,
   },
 ];

@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "expires_at": "2026-08-27T03:28:35.629Z",
+  "expires_at": "2026-08-27T10:16:33.975Z",
   "tool_version": "1.0.0",
-  "tree_hash": "9ed263ce496b8d6709e3d72a6a2880b246436684",
+  "tree_hash": "bbc34159544249a5f41b44d45a9e1060f52b4c89",
   "expected_result": "The advisory service responds and advisories are matched against resolved versions.",
   "artifact_path": "artifacts/vulnerability/advisory-recovery.json",
-  "artifact_hash": "f53861aaae9a5a346ee0b76e8108bb9a8564d3df11b2d3fff88a5c589dbf496b",
+  "artifact_hash": "c17f9c13df40d47cc160b1c647325b73ab07dcf220519ec8811b7bd7cf13fd60",
   "input_set": {
-    "manifest": "28d628550e6729460807a4aea294add51c116e942f216b760f2371b7269e3c74",
-    "lockfile": "65d788da2317211a8b0f96b96049df5abe4ccbeb522e126cc96e7252e52c93d7"
+    "manifest": "d7dac7c1f3c02c6b0d50e43f0ea14519c79ff3733facc4978a075729ee46a7df",
+    "lockfile": "77b40b3862114a24d4b230a4faa81b9ed08f29f8b240d79c502c08d5a172afc6"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -24,16 +24,16 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "VULNERABILITY_SCAN",
-  "commit_sha": "95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4",
+  "commit_sha": "9f102d60ee469aeca7ccfa8d1300939e98d71fe4",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T03:28:35.629Z",
+  "timestamp": "2026-08-20T10:16:33.975Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-VULN-RECOVERY",
   "title": "Dependency vulnerability scan — recovery pass via npm bulk advisory endpoint",
   "description": "Advisory query over the versions resolved in bun.lock, executed under the WP-037 bounded evidence-recovery authorization. Additive to EV-VULN, which is preserved unchanged.",
   "tool": "scripts/evidence/supply-chain.mjs (npm bulk advisory client)",
   "command": "bun run evidence:run",
-  "actual_result": "Scan completed against 563 resolved versions of 527 packages. 0 matched advisories: {\"critical\":0,\"high\":0,\"moderate\":0,\"low\":0,\"info\":0}.",
+  "actual_result": "Scan completed against 564 resolved versions of 528 packages. 0 matched advisories: {\"critical\":0,\"high\":0,\"moderate\":0,\"low\":0,\"info\":0}.",
   "status": "pass",
   "supports": [
     "The advisories reported by this source, for the versions resolved in bun.lock, at the recorded time."

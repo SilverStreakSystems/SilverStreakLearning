@@ -21,7 +21,8 @@ function BoundaryBanner() {
       data-boundary-banner="true"
       className="border-b-2 border-border-strong bg-muted px-4 py-2 text-center text-xs font-semibold text-foreground sm:text-sm"
     >
-      Private operator workspace. No personal data. All records shown are synthetic examples.
+      PUBLIC SYNTHETIC PROTOTYPE. Not released. No personal data. Anyone with the link can reach
+      this published surface; it is not access-controlled. All records shown are synthetic examples.
     </p>
   );
 }
@@ -62,43 +63,41 @@ export function AppShell({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
 
-
       <header className="border-b border-border bg-sidebar">
         <BoundaryBanner />
         <div className="px-4 py-3 lg:px-6">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-3">
-            <SSLSMonogram size={36} className="shrink-0 text-ssls-silver-blue" />
-            <div className="min-w-0">
-              <p className="font-display text-base font-bold text-sidebar-foreground">
-                Silver Streak Learning Systems
-              </p>
-              <p className="text-xs text-sidebar-foreground/85">
-                Integrated Foundation and Authority Shell
-              </p>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <SSLSMonogram size={36} className="shrink-0 text-ssls-silver-blue" />
+              <div className="min-w-0">
+                <p className="font-display text-base font-bold text-sidebar-foreground">
+                  Silver Streak Learning Systems
+                </p>
+                <p className="text-xs text-sidebar-foreground/85">
+                  Integrated Foundation and Authority Shell
+                </p>
+              </div>
             </div>
-          </div>
 
-          <button
-            type="button"
-            aria-expanded={mobileNavOpen}
-            aria-controls="primary-navigation-mobile"
-            onClick={() => setMobileNavOpen((open) => !open)}
-            className="min-h-11 min-w-11 rounded-sm border border-sidebar-border px-3 text-sm font-semibold text-sidebar-foreground lg:hidden"
+            <button
+              type="button"
+              aria-expanded={mobileNavOpen}
+              aria-controls="primary-navigation-mobile"
+              onClick={() => setMobileNavOpen((open) => !open)}
+              className="min-h-11 min-w-11 rounded-sm border border-sidebar-border px-3 text-sm font-semibold text-sidebar-foreground lg:hidden"
+            >
+              {mobileNavOpen ? "Close menu" : "Menu"}
+            </button>
+          </div>
+          <nav
+            id="primary-navigation-mobile"
+            aria-label="Primary navigation"
+            className={cn("mt-3 lg:hidden", mobileNavOpen ? "block" : "hidden")}
           >
-            {mobileNavOpen ? "Close menu" : "Menu"}
-          </button>
-        </div>
-        <nav
-          id="primary-navigation-mobile"
-          aria-label="Primary navigation"
-          className={cn("mt-3 lg:hidden", mobileNavOpen ? "block" : "hidden")}
-        >
-          <NavList onNavigate={() => setMobileNavOpen(false)} />
-        </nav>
+            <NavList onNavigate={() => setMobileNavOpen(false)} />
+          </nav>
         </div>
       </header>
-
 
       <div className="lg:flex">
         <nav

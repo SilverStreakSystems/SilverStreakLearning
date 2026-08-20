@@ -380,13 +380,13 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1", "L7"],
     description:
-      "DEC-021 records TTR-001 v1.0.0 with a 44 by 44 CSS pixel default, a 24 by 24 CSS pixel floor, five documented exceptions, and a deterministic audit protocol at 320, 768, and 1366 CSS pixels. The protocol's execution state is NOT-RUN. No route, component, or control in this build has been measured, classified, or recorded against the rule, so no target is PASS and no target is FAIL: every target is simply unmeasured.",
+      "DEC-021 records TTR-001 v1.0.0 with a 44 by 44 CSS pixel default, a 24 by 24 CSS pixel floor, five documented exceptions, and a deterministic audit protocol at 320, 768, and 1366 CSS pixels. The protocol's execution state is NOT-RUN. No route, component, or control in this build has been measured, classified, or recorded against the rule, so no target is PASS and no target is FAIL: every target is simply unmeasured. On 2026-08-20 a bounded execution attempt added audit-only tooling and then exceeded the execution ceiling before measuring any page; DEC-022 defers further execution until a stable user-facing product workflow exists. The attempt is recorded as ATTEMPT-001 in ABORTED-DEFERRED state and produced no audit artifact. This finding therefore remains OPEN and deferred, not closed.",
     boundary:
       "This record states an unrun verification only. It does not authorize an audit, a cycle, an interface change, or any remediation; it does not assert that the interface fails the rule; and it asserts no accessibility conformance. Only a recorded owner decision may authorize execution.",
     resolutionState: "blocked",
     requiredDecision:
       "Authorize a bounded execution of the TTR-001 verification protocol, or record that it stays unrun.",
-    evidenceReferences: ["EV-043"],
+    evidenceReferences: ["EV-043", "EV-044"],
     synthetic: false,
   },
 ];
@@ -1048,6 +1048,23 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-044",
+    title:
+      "Cycle 8 attempt disposition, derived current-state architecture, and reconciliation validation",
+    kind: "automated-test",
+    subject:
+      "data/program/checkpoints.json, data/program/program-policy.json, src/domain/program-state-derivation.ts, the generated docs/CURRENT_STATE.md projection and its input fingerprint, and the governance registers that bind them.",
+    collectedOn: "2026-08-20",
+    collectedBy: "Automated run",
+    state: "confirmed",
+    supports:
+      "That the WP-007 Cycle 8 audit attempt is recorded as ATTEMPT-001 in ABORTED-DEFERRED state and produced no audit artifact; that the program-state projection is computed from the decision, finding, evidence, and checkpoint registers rather than restated; that canonical current state is generated deterministically from a declared input manifest and verified by regeneration with no diff; and that the published surface is described as a public synthetic prototype that is not access-controlled.",
+    doesNotSupport:
+      "That any interface target-size audit ran; that any route, component, or control was measured or classified; that FND-024 is closed, it remains open and deferred; that EV-003 ran, it remains NOT-RUN; that HREQ-025 changed state; that WP-007 or Gate A changed state; that Cycle 9, WP-039, product implementation, a backend, or release is authorized; or that any WCAG, ADA Title II, Section 508, legal, or independent accessibility conformance claim is made. Executor-run, method automated cross-register reconciliation plus deterministic generation, independent = false.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 export const DECISIONS: DecisionRecord[] = [
@@ -1519,6 +1536,33 @@ export const DECISIONS: DecisionRecord[] = [
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001", "WP-007", "TTR-001"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-022",
+    title:
+      "Defer further execution of the TTR-001 touch-target audit and preserve the partial runner as dormant tooling",
+    state: "accepted",
+    decidedOn: "2026-08-20",
+    decidedBy: "Founder / Operator",
+    context:
+      "DEC-021 defined TTR-001 v1.0.0 and left its verification protocol NOT-RUN, carried as FND-024. A bounded Cycle 8 execution attempt added audit-only tooling under scripts/accessibility/ and a playwright-core development dependency, but the browser run exceeded the execution ceiling before any page was measured and was stopped. No audit artifact, target measurement, classification, finding, or checkpoint was produced.",
+    decision:
+      "RECORDED BY OWNER. Further execution of the TTR-001 verification protocol is deferred until a stable user-facing product workflow exists. The partial runner and its git history are preserved as dormant, incomplete development tooling. It is not an executed audit, a validation, an evidence record, an accessibility result, or a conformance basis. The attempt is recorded as ATTEMPT-001 in ABORTED-DEFERRED state and is not a checkpoint. This decision defers execution only: it closes no finding, closes no work package, closes no gate, produces no audit result, authorizes no interface remediation, and authorizes no release. It does not erase the prior Cycle 8 authorization or the engineering attempt made under it.",
+    consequences: [
+      "FND-024 remains open as an acknowledged, deferred limitation. It is not closed, and no target is recorded as passing or failing.",
+      "TTR-001 remains NOT-RUN. EV-003 remains NOT-RUN. HREQ-025 remains NEEDS-EVIDENCE / DEFER.",
+      "Accessibility, WCAG, ADA Title II, Section 508, legal, district-readiness, conformance, and release claims remain refused.",
+      "The canonical current state becomes a deterministic projection of the controlling registers and repository facts; the commit-bound WP-006 current-state documents are retained as historical records and are marked superseded.",
+      "The program-state projection is derived from the controlling registers; it no longer restates them.",
+      "The published surface is labelled truthfully as a public synthetic prototype that is not access-controlled and not released. Making it private or unpublishing it stays a manual owner action.",
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039, Cycle 9, product implementation, backend, authentication, AI, and real personal data remain unauthorized.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "WP-007", "TTR-001", "ATTEMPT-001"],
     synthetic: false,
   },
 ];

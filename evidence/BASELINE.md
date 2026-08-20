@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-20T03:28:35.838Z |
-| Commit | `95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4` |
-| Tree hash | `9ed263ce496b8d6709e3d72a6a2880b246436684` |
+| Generated at | 2026-08-20T10:16:34.164Z |
+| Commit | `9f102d60ee469aeca7ccfa8d1300939e98d71fe4` |
+| Tree hash | `bbc34159544249a5f41b44d45a9e1060f52b4c89` |
 | Working tree dirty | true |
-| Input-set digest | `170780f018b70c9d6ba9b08590fcc493c454f9d56c210c50fef3d0123d91ad9b` |
+| Input-set digest | `277e1cb85a803911b5a1684cca8399c61a8ac7d9eac1ae4db8747232266dc0b9` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,23 +18,23 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 647 |
-| Tracked files | 564 |
-| Source files | 238 |
-| Test files | 19 |
+| Commits | 664 |
+| Tracked files | 577 |
+| Source files | 240 |
+| Test files | 18 |
 | Route modules | 31 |
-| Documentation files | 208 |
+| Documentation files | 210 |
 
 ## Derived state
 
 | Subject | Recorded result |
 |---|---|
-| Build | Exit code 0. Duration 7075 ms. |
-| Tests | Exit code 0. Test counts not parsed.  Duration 20431 ms. |
+| Build | Exit code 0. Duration 7289 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 21539 ms. |
 | Type check | Exit code 0. |
-| Lint | 699 problems across 114 files: 685 errors, 14 warnings, 680 auto-fixable. |
+| Lint | 674 problems across 115 files: 660 errors, 14 warnings, 655 auto-fixable. |
 | Routes | 29 |
-| SBOM components | 74 |
+| SBOM components | 75 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
 | Licences requiring review | 0 |
 | Secret scan candidates | 0 |
@@ -52,7 +52,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | EV-ROUTES | ROUTE_INVENTORY | pass | CURRENT |
 | EV-PROVENANCE | SOURCE_PROVENANCE | pass | CURRENT |
 | EV-CONFIG | CONFIGURATION | pass | CURRENT |
-| EV-SSOT-GUARD | SSOT_BINDING | review-required | CURRENT |
+| EV-SSOT-GUARD | SSOT_BINDING | pass | CURRENT |
 | EV-DEPS | DEPENDENCY_INVENTORY | pass | CURRENT |
 | EV-SBOM | SBOM | pass | CURRENT |
 | EV-VULN | VULNERABILITY_SCAN | not-completed | CURRENT |

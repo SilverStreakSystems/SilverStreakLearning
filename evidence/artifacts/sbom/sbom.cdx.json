@@ -3,7 +3,7 @@
   "specVersion": "1.5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-20T03:28:35.209Z",
+    "timestamp": "2026-08-20T10:16:33.552Z",
     "tools": [
       {
         "vendor": "SSLS",
@@ -19,15 +19,15 @@
     "properties": [
       {
         "name": "ssls:commit",
-        "value": "95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4"
+        "value": "9f102d60ee469aeca7ccfa8d1300939e98d71fe4"
       },
       {
         "name": "ssls:manifest-hash",
-        "value": "007edffa566580e5aa82b4a1c74bd49df7c3d9d17be14a61adc1db2f510b35f0"
+        "value": "f19d1eb7325e8f17da4580933d460e53a5de9b108c6edae143b4a10c2a6dd84b"
       },
       {
         "name": "ssls:lockfile:bun.lock",
-        "value": "308fd58ba682bc30ff8e5dccd7fc3e1424718d3c49582a9f92e93ac90017163a"
+        "value": "9d7ae88ddb655927c68ed3dec10d61bf1cd9fc7e939b216982a795adb3f3e2b2"
       }
     ]
   },
@@ -1205,6 +1205,27 @@
         {
           "name": "ssls:declared-range",
           "value": "3.0.260603-beta"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/playwright-core@1.62.1",
+      "name": "playwright-core",
+      "version": "1.62.1",
+      "scope": "optional",
+      "purl": "pkg:npm/playwright-core@1.62.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ssls:declared-range",
+          "value": "^1.62.1"
         }
       ]
     },

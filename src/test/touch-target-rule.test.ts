@@ -209,8 +209,13 @@ describe("Cycle 7 governance reconciliation", () => {
     const finding = FINDINGS.find((record) => record.id === "FND-024");
     expect(finding?.resolutionState).toBe("blocked");
     expect(finding?.boundary).toMatch(/does not authorize an audit/i);
-    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("FND-024");
-    expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toBe(finding?.title);
+    // DEC-022 deferred execution, so the audit is no longer the leading action,
+    // but the obligation stays visible as deferred debt and as an unauthorized stage.
+    expect(PROGRAM_STATE.auditExecution.state).toBe("NOT-RUN");
+    expect(PROGRAM_STATE.deferredDebt.map((entry) => entry.recordId)).toContain("FND-024");
+    expect(PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId)).toContain(
+      "TOUCH-TARGET-AUDIT",
+    );
   });
 
   it("records EV-043 without claiming an interface audit ran", () => {
