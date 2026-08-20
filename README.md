@@ -63,7 +63,7 @@ by derivation, never by copy.
 
 | Command | What it does | Expected result |
 | --- | --- | --- |
-| `bun run verify` | the full read-only gate: lint, typecheck, tests, build, current-state check, generated-artefact check, committed-evidence verification | all pass |
+| `bun run verify` | the full read-only gate: lint, typecheck, tests, build, current-state check, generated-artefact check, committed-evidence verification, output-safety guard over the committed evidence tree | all pass |
 | `bun run verify:ci` | `verify` plus the ephemeral evidence pass (generation, verification, output-safety guard) | all pass |
 | `bun run lint` | ESLint with Prettier, `--max-warnings 0` | 0 errors, 0 warnings |
 | `bun run lint:fix` | applies the mechanical fixes | rewrites formatting only |

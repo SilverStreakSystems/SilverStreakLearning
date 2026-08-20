@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "verify": "bun run lint && bun run typecheck && bun run test && bun run build && bun run check:current-state && bun run check:generated && bun run evidence:verify",
+    "verify": "bun run lint && bun run typecheck && bun run test && bun run build && bun run check:current-state && bun run check:generated && bun run evidence:verify && bun run evidence:output-safety",
     "gen:current-state": "bun scripts/gen-current-state.ts",
     "check:current-state": "bun scripts/gen-current-state.ts --check",
     "format": "prettier --write .",

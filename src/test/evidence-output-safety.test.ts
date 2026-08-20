@@ -105,6 +105,21 @@ describe("evidence output-safety guard", () => {
     expect(files.some((file: string) => file.endsWith("baseline.json"))).toBe(true);
   });
 
+  it("excludes the boundary scanner's own self-matching output", () => {
+    const dir = fixtureTree({
+      "artifacts/boundary/pii-boundary-scan.json": JSON.stringify({
+        patterns: [{ id: "date-of-birth", label: "Date-of-birth field" }],
+      }),
+      "baseline.json": "{}",
+    });
+
+    const { ok, result } = runOutputSafety({ dir });
+
+    expect(ok).toBe(true);
+    expect(result.self_referential_paths_excluded).toContain("artifacts/boundary/");
+    expect(result.files_scanned).toBe(1);
+  });
+
   it("checks generated outputs without putting them back into any input set", () => {
     const tracked = [
       "src/domain/authority.ts",
