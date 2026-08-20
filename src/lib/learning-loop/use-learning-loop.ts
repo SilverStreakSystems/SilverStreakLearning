@@ -76,9 +76,9 @@ export interface LearningLoopStore {
   fallbackNotice: string | null;
   run: <T>(command: CommandRunner<T>) => RunOutcome<T>;
   /** Atomically replaces everything with the deterministic synthetic dataset. */
-  restoreDemoData: () => RunOutcome<Record<string, never>>;
+  restoreDemoData: () => RunOutcome<unknown>;
   /** Atomically replaces everything with an imported document. */
-  replaceAll: (next: LearningLoopDocument) => RunOutcome<Record<string, never>>;
+  replaceAll: (next: LearningLoopDocument) => RunOutcome<unknown>;
   exportText: () => string | null;
   /** The stored text exactly as saved, for rescuing unreadable data. */
   rawText: () => string | null;
@@ -220,7 +220,7 @@ export function useLearningLoop(
 
   /** Destructive replacement is expected to overwrite, so it expects whatever is there. */
   const replaceAll = useCallback(
-    (next: LearningLoopDocument): RunOutcome<Record<string, never>> => {
+    (next: LearningLoopDocument): RunOutcome<unknown> => {
       const context = contextFactory();
       const current = repository.read();
       const expected = current.status === "ready" ? current.document.revision : null;
