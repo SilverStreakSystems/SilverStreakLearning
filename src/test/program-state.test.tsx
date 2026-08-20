@@ -125,7 +125,8 @@ describe("Command Center synchronization", () => {
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/ACCEPTED/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/Cycle 7 closed nothing beyond the FND-023 definition gap/).length,
+      within(region).getAllByText(/Cycle 7 closed nothing beyond the FND-023 definition gap/)
+        .length,
     ).toBeGreaterThan(0);
   });
 

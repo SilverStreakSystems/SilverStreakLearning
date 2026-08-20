@@ -7,11 +7,7 @@
  */
 
 export type TouchTargetExceptionType =
-  | "SPACING"
-  | "EQUIVALENT-CONTROL"
-  | "INLINE"
-  | "USER-AGENT-CONTROL"
-  | "ESSENTIAL";
+  "SPACING" | "EQUIVALENT-CONTROL" | "INLINE" | "USER-AGENT-CONTROL" | "ESSENTIAL";
 
 export const TOUCH_TARGET_EXCEPTION_TYPES: readonly TouchTargetExceptionType[] = [
   "SPACING",
@@ -22,11 +18,7 @@ export const TOUCH_TARGET_EXCEPTION_TYPES: readonly TouchTargetExceptionType[] =
 ] as const;
 
 export type TouchTargetClassification =
-  | "PASS-44-DEFAULT"
-  | "PASS-24-FLOOR"
-  | "PASS-EXCEPTION"
-  | "FAIL"
-  | "NOT-APPLICABLE";
+  "PASS-44-DEFAULT" | "PASS-24-FLOOR" | "PASS-EXCEPTION" | "FAIL" | "NOT-APPLICABLE";
 
 export const TOUCH_TARGET_CLASSIFICATIONS: readonly TouchTargetClassification[] = [
   "PASS-44-DEFAULT",
@@ -87,7 +79,11 @@ export interface TouchTargetRuleRecord {
     execution_state: "NOT-RUN";
     viewports_css_px: number[];
     classifications: TouchTargetClassification[];
-    record_fields: { field: string; requirement: "REQUIRED" | "CONDITIONAL"; description: string }[];
+    record_fields: {
+      field: string;
+      requirement: "REQUIRED" | "CONDITIONAL";
+      description: string;
+    }[];
     spacing_check: {
       circle_diameter_css_px: number;
       centering: string;
@@ -167,7 +163,8 @@ export function validateTouchTargetRule(record: TouchTargetRuleRecord): string[]
   if (verification.execution_state !== "NOT-RUN")
     problems.push("defining the protocol may not record it as executed");
   const viewports = [...verification.viewports_css_px].sort((a, b) => a - b);
-  if (viewports.join(",") !== "320,768,1366") problems.push("declared viewports are not 320, 768, 1366");
+  if (viewports.join(",") !== "320,768,1366")
+    problems.push("declared viewports are not 320, 768, 1366");
   for (const classification of TOUCH_TARGET_CLASSIFICATIONS) {
     if (verification.classifications.filter((entry) => entry === classification).length !== 1)
       problems.push(`classification ${classification} is not enumerated exactly once`);

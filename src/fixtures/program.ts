@@ -207,5 +207,4 @@ export const PROGRAM_STATE: ProgramStateRecord = {
       route: "/findings",
     },
   },
-
 };

@@ -95,7 +95,9 @@ describe("touch-target rule record", () => {
       documentedException: null,
     } as const;
     expect(classifyDeclaredTarget({ ...base, compactContextRationale: false })).toBe("FAIL");
-    expect(classifyDeclaredTarget({ ...base, compactContextRationale: true })).toBe("PASS-24-FLOOR");
+    expect(classifyDeclaredTarget({ ...base, compactContextRationale: true })).toBe(
+      "PASS-24-FLOOR",
+    );
     expect(
       classifyDeclaredTarget({
         widthCssPx: 48,
@@ -177,9 +179,9 @@ describe("verification protocol is defined and not run", () => {
       expect(text).not.toContain(phrase);
     }
     expect(EVIDENCE.find((record) => record.id === "EV-003")?.state).toBe("not-run");
-    expect(
-      PROGRAM_STATE.unauthorizedStages.map((stage) => stage.stageId),
-    ).toContain("TOUCH-TARGET-AUDIT");
+    expect(PROGRAM_STATE.unauthorizedStages.map((stage) => stage.stageId)).toContain(
+      "TOUCH-TARGET-AUDIT",
+    );
   });
 });
 

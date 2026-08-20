@@ -389,7 +389,6 @@ export const FINDINGS: FindingRecord[] = [
     evidenceReferences: ["EV-043"],
     synthetic: false,
   },
-
 ];
 
 export const EVIDENCE: EvidenceRecord[] = [
@@ -1051,7 +1050,6 @@ export const EVIDENCE: EvidenceRecord[] = [
   },
 ];
 
-
 export const DECISIONS: DecisionRecord[] = [
   {
     id: "DEC-001",
@@ -1524,7 +1522,6 @@ export const DECISIONS: DecisionRecord[] = [
     synthetic: false,
   },
 ];
-
 
 export const CLAIMS: ClaimRecord[] = [
   {

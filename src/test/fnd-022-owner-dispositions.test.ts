@@ -196,5 +196,4 @@ describe("DEC-020 projections agree", () => {
     expect(unauthorized).toContain("CYCLE-8");
     expect(unauthorized).toContain("HREQ-IMPLEMENTATION");
   });
-
 });
