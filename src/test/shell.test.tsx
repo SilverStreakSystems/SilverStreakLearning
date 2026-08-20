@@ -139,9 +139,18 @@ describe("navigation and keyboard operation", () => {
     const ids = Array.from(container.querySelectorAll<HTMLElement>("[id]")).map((node) => node.id);
     expect(new Set(ids).size).toBe(ids.length);
 
-    // Everything outside the dialog is inert while the dialog is open.
-    expect(container.querySelector("header")).toHaveAttribute("inert");
+    // Everything outside the dialog is inert while the dialog is open: one
+    // background wrapper, so the skip link and footer are covered too.
+    expect(container.querySelector("header")?.closest("div[inert]")).toBeTruthy();
     expect(screen.getByRole("main").closest("div[inert]")).toBeTruthy();
+    expect(container.querySelector("footer")?.closest("div[inert]")).toBeTruthy();
+    expect(
+      screen.getByRole("link", { name: "Skip to main content" }).closest("div[inert]"),
+    ).toBeTruthy();
+    // The drawer itself is outside that wrapper.
+    expect(
+      screen.getByRole("dialog", { name: "Primary navigation" }).closest("div[inert]"),
+    ).toBeNull();
 
     // Collapsed governance links are not in the focus order at all.
     const drawer = screen.getByRole("dialog", { name: "Primary navigation" });
