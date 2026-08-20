@@ -149,10 +149,12 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
 
       // --- the active goal and the baseline recommendation ----------------
       expect(
-        await screen.findByText(/Use the bus route independently for the work placement/, undefined, {
-          timeout: 5000,
-        }),
-      ).toBeTruthy();
+        (
+          await screen.findAllByRole("heading", {
+            name: "Use the bus route independently for the work placement",
+          })
+        ).length,
+      ).toBeGreaterThan(0);
       expect(screen.getAllByText(/On three separate placement days/).length).toBeGreaterThan(0);
       expectNextStep({
         ruleId: "LLR-001-R03",
@@ -298,12 +300,12 @@ describe("Product Alpha 001 golden loop, driven entirely through the interface",
       await renderRoute("/learners/LRN-C");
 
       expect(
-        await screen.findByText(
-          /On the next placement day the learner boarded, rode, and exited at the correct stop with no prompting\./,
-          undefined,
-          { timeout: 5000 },
-        ),
-      ).toBeTruthy();
+        (
+          await screen.findAllByText(
+            /On the next placement day the learner boarded, rode, and exited at the correct stop with no prompting\./,
+          )
+        ).length,
+      ).toBeGreaterThan(0);
       expectNextStep({
         ruleId: "LLR-001-R12",
         code: "HUMAN_REVIEW_GOAL_COMPLETION",
