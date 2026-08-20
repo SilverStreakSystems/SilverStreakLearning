@@ -2,14 +2,14 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "v9.39.5",
-  "tree_hash": "9ed263ce496b8d6709e3d72a6a2880b246436684",
+  "tree_hash": "bbc34159544249a5f41b44d45a9e1060f52b4c89",
   "expected_result": "Recorded against the transitional lint policy, not against zero problems.",
   "artifact_path": "artifacts/lint/eslint.json",
-  "artifact_hash": "4d73114766afb743b19d3e37dc0b62c329b8df3ed1046d94d4328e05306370a7",
+  "artifact_hash": "61a7c7264a1480b1d3da79b32a16d61e1ffa8ac9988975ebfc6a51322c9d5562",
   "input_set": {
-    "source": "1bcf0fdeea71889c3d301c7c2ddd5d3bc9816d496cd2daeb4c1c1d31bcc0f95f",
-    "tests": "e9a238994a30d1c0259588dc8f7ab4908ae1b450e7f1545e54fede7fc98d0538",
-    "config": "60f8294cc66c5ea9bcde1108176dd736518530b5a1a073f2b642a8b003c8976b"
+    "source": "168111faa01ac970dbed9a8243f9f0052c9fbe93c0a0336223cbb8125bb3fabc",
+    "tests": "b2e5517c07b46e3b4b61587c3408be36843e6340184d1996f91bfc7589011a00",
+    "config": "2d9e07658efa87ccc2d1d8b28b900d82753c1562d5cffeec9a2ef96731cb100c"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -28,15 +28,15 @@
   "method": "automated",
   "evidence_id": "EV-LINT",
   "evidence_type": "LINT",
-  "commit_sha": "95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4",
+  "commit_sha": "9f102d60ee469aeca7ccfa8d1300939e98d71fe4",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T03:28:34.975Z",
+  "timestamp": "2026-08-20T10:16:33.402Z",
   "producer": "SSLS evidence pipeline",
   "title": "Repository-wide lint baseline",
   "description": "Full ESLint run recorded as a debt baseline. Existing debt is tracked; it is not represented as a pass.",
   "tool": "eslint",
   "command": "bunx eslint . -f json",
-  "actual_result": "699 problems across 114 files: 685 errors, 14 warnings, 680 auto-fixable.",
+  "actual_result": "674 problems across 115 files: 660 errors, 14 warnings, 655 auto-fixable.",
   "status": "review-required",
   "supports": [
     "The repository-wide lint problem count at the declared input set, recorded as quality debt."

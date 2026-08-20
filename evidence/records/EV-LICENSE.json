@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "expires_at": "2026-11-18T03:28:35.639Z",
+  "expires_at": "2026-11-18T10:16:33.982Z",
   "tool_version": "1.0.0",
-  "tree_hash": "9ed263ce496b8d6709e3d72a6a2880b246436684",
+  "tree_hash": "bbc34159544249a5f41b44d45a9e1060f52b4c89",
   "expected_result": "A declared licence, or an explicit unknown, for every dependency.",
   "artifact_path": "artifacts/licenses/licenses.json",
-  "artifact_hash": "558d7bdb639e86430398e7a350e7d4d494531b91496409ffdc0e44222b9eef75",
+  "artifact_hash": "f2ceb9fb34e797fc676a86c22e559e8f8ba5eaaf4bf4829b584997efb6844a78",
   "input_set": {
-    "manifest": "28d628550e6729460807a4aea294add51c116e942f216b760f2371b7269e3c74",
-    "lockfile": "65d788da2317211a8b0f96b96049df5abe4ccbeb522e126cc96e7252e52c93d7"
+    "manifest": "d7dac7c1f3c02c6b0d50e43f0ea14519c79ff3733facc4978a075729ee46a7df",
+    "lockfile": "77b40b3862114a24d4b230a4faa81b9ed08f29f8b240d79c502c08d5a172afc6"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -24,16 +24,16 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "LICENSE_SCAN",
-  "commit_sha": "95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4",
+  "commit_sha": "9f102d60ee469aeca7ccfa8d1300939e98d71fe4",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T03:28:35.639Z",
+  "timestamp": "2026-08-20T10:16:33.982Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-LICENSE",
   "title": "Dependency licence inventory",
   "description": "Declared licence strings read from resolved package metadata.",
   "tool": "scripts/evidence/supply-chain.mjs",
   "command": "bun run evidence:run",
-  "actual_result": "74 dependencies inventoried; 0 marked REQUIRES LEGAL REVIEW.",
+  "actual_result": "75 dependencies inventoried; 0 marked REQUIRES LEGAL REVIEW.",
   "status": "pass",
   "supports": [
     "The licence strings declared by the resolved dependency set."

@@ -2,13 +2,13 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "9ed263ce496b8d6709e3d72a6a2880b246436684",
-  "expected_result": "Reported as a review condition, not as a freshness proof.",
+  "tree_hash": "bbc34159544249a5f41b44d45a9e1060f52b4c89",
+  "expected_result": "Exit 0 when the projection regenerates with no diff, every declared input resolves, and every superseded document declares itself superseded.",
   "artifact_path": "artifacts/provenance/ssot-binding.log",
-  "artifact_hash": "53d549cacdb84a441bdac65828f7bf52b4c140da339149fcfe0721cf8d118710",
+  "artifact_hash": "3a6b5f49f299244d100c3a940f6f69c9466595a5422948263ff90d418a5cbd71",
   "input_set": {
-    "docs": "5d1bbe6f2b87a6a635785022e2378559d7892222310d2e9e0684bde4b56ac2a2",
-    "pipeline": "eb7c44dd5e07dbb0282d590fcdb2dadd7b906f34e814d128c468bd9f343fafe9"
+    "docs": "50e705163c38182d7076d281d047b0c640780a1e15a2f2583848222c1387ee2d",
+    "pipeline": "c2cd49e9b6c0f8c264a635a7d4aea0eddadcf7cb30a5aa2e02f97128f8f75545"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -22,27 +22,27 @@
   "related_claims": [],
   "supersedes": [],
   "superseded_by": null,
-  "reproduction": "node scripts/check-ssot-binding.mjs",
+  "reproduction": "bun run check:current-state",
   "synthetic_data_only": true,
   "independent": false,
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_id": "EV-SSOT-GUARD",
   "evidence_type": "SSOT_BINDING",
-  "commit_sha": "95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4",
+  "commit_sha": "9f102d60ee469aeca7ccfa8d1300939e98d71fe4",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T03:28:35.188Z",
+  "timestamp": "2026-08-20T10:16:33.538Z",
   "producer": "SSLS evidence pipeline",
-  "title": "Predecessor declared-binding guard execution",
-  "description": "The WP-006 guard retained as a compatibility layer. It compares declared commit strings and is superseded for freshness purposes by input-aware applicability.",
-  "tool": "scripts/check-ssot-binding.mjs",
-  "command": "node scripts/check-ssot-binding.mjs",
-  "actual_result": "Exit code 1.",
-  "status": "review-required",
+  "title": "Current-state projection freshness check",
+  "description": "Regenerates the canonical current-state projection from its declared controlling inputs and compares it, its input fingerprint, and the superseded-document markers. Replaces the WP-006 declared-binding guard, which bound documents to a commit hash and went stale after every legitimate change (FND-011).",
+  "tool": "scripts/gen-current-state.ts",
+  "command": "bun scripts/gen-current-state.ts --check",
+  "actual_result": "Exit code 0.",
+  "status": "pass",
   "supports": [
-    "Whether the WP-006 bound documents declare the commit under review."
+    "Whether the canonical current-state document is the deterministic projection of its declared controlling inputs at this tree."
   ],
   "does_not_support": [
-    "Semantic freshness of any figure inside those documents, and merge enforcement of the check."
+    "The correctness or authority of any statement inside the projection, and merge enforcement of the check."
   ]
 }
