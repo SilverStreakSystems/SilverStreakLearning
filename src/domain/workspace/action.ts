@@ -59,7 +59,8 @@ export const PRIORITY_FACTOR_LABEL: Record<PriorityFactor, string> = {
   "safety-security-privacy-accessibility-stop": "Safety, security, privacy, or accessibility stop",
   "governance-gate-blocker": "Governance or gate blocker",
   "release-critical-dependency": "Release-critical dependency",
-  "harm-to-learner-customer-or-enterprise": "Risk of harm to a learner, customer, or the enterprise",
+  "harm-to-learner-customer-or-enterprise":
+    "Risk of harm to a learner, customer, or the enterprise",
   "binding-commitment": "Binding commitment",
   "due-date": "Due date",
   "cross-stream-dependency": "Cross-stream dependency",
@@ -140,7 +141,8 @@ export interface ActionItem {
 export function compareActions(a: ActionItem, b: ActionItem): number {
   // A recorded owner directive is the only input that outranks the factor
   // order, and it is always shown next to the action it promotes.
-  const byDirective = Number(Boolean(b.ownerPriorityDirective)) - Number(Boolean(a.ownerPriorityDirective));
+  const byDirective =
+    Number(Boolean(b.ownerPriorityDirective)) - Number(Boolean(a.ownerPriorityDirective));
   if (byDirective !== 0) return byDirective;
   const byFactor = priorityRank(a.topFactor) - priorityRank(b.topFactor);
   if (byFactor !== 0) return byFactor;

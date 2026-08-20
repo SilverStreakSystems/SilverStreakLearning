@@ -35,13 +35,15 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
   {
     path: "/capabilities",
     label: "Capabilities",
-    purpose: "Candidate enterprise capabilities across twelve domains, and what each would require.",
+    purpose:
+      "Candidate enterprise capabilities across twelve domains, and what each would require.",
     heading: "Enterprise Capability Architecture (Candidate)",
   },
   {
     path: "/objects",
     label: "Shared Objects",
-    purpose: "The governed objects, relationships, states, and context contracts everything else will reuse.",
+    purpose:
+      "The governed objects, relationships, states, and context contracts everything else will reuse.",
     heading: "Shared Enterprise Object Architecture (Candidate)",
   },
   {
@@ -51,7 +53,6 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     heading: "Enterprise Value Stream Architecture (Candidate)",
   },
   {
-
     path: "/traceability",
     label: "Traceability",
     purpose: "How requirements connect to evidence and claims.",
@@ -84,13 +85,15 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
   {
     path: "/design-system",
     label: "Design System",
-    purpose: "Tokens, brand assets, the coordinate grid, and the interface templates every surface is built from.",
+    purpose:
+      "Tokens, brand assets, the coordinate grid, and the interface templates every surface is built from.",
     heading: "Brand Visual System and Experience Template Architecture v0.1",
   },
   {
     path: "/workspaces",
     label: "Workspaces",
-    purpose: "The nine enterprise workspaces, their acting capacities, and the gates holding the rest closed.",
+    purpose:
+      "The nine enterprise workspaces, their acting capacities, and the gates holding the rest closed.",
     heading: "Enterprise Workspaces",
   },
   {
@@ -120,7 +123,8 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
   {
     path: "/help",
     label: "Knowledge and Help",
-    purpose: "Definitions and procedures, with governing policy kept separate from explanatory help.",
+    purpose:
+      "Definitions and procedures, with governing policy kept separate from explanatory help.",
     heading: "Knowledge and Help",
   },
   {
@@ -130,4 +134,3 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     heading: "Settings and Boundaries",
   },
 ];
-

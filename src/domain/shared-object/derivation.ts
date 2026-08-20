@@ -68,10 +68,22 @@ export interface DerivedValue {
 }
 
 export const DERIVATION_RULES_OF_USE: { id: string; rule: string }[] = [
-  { id: "DRV-01", rule: "A derived value always names its rule, its rule version, and its source facts." },
+  {
+    id: "DRV-01",
+    rule: "A derived value always names its rule, its rule version, and its source facts.",
+  },
   { id: "DRV-02", rule: "A derived value never writes back over a source fact." },
-  { id: "DRV-03", rule: "A derived value carries an explanation a human can read without the rule." },
-  { id: "DRV-04", rule: "Where human review is required, an unreviewed derived value may not be acted on." },
+  {
+    id: "DRV-03",
+    rule: "A derived value carries an explanation a human can read without the rule.",
+  },
+  {
+    id: "DRV-04",
+    rule: "Where human review is required, an unreviewed derived value may not be acted on.",
+  },
   { id: "DRV-05", rule: "Approval is never derived. There is no rule that produces an approval." },
-  { id: "DRV-06", rule: "Recomputing under a new rule version produces a new derived value, not an edit." },
+  {
+    id: "DRV-06",
+    rule: "Recomputing under a new rule version produces a new derived value, not an edit.",
+  },
 ];

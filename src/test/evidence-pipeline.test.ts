@@ -13,10 +13,13 @@ import type { EvidenceType } from "../../scripts/evidence/types.mjs";
 import { evaluateApplicability, evaluateReuse } from "../../scripts/evidence/applicability.mjs";
 import { computeExpiry, EXPIRY_POLICY, isExpired } from "../../scripts/evidence/expiry.mjs";
 import {
+  computeInputSets,
   declaredSets,
   INPUT_SET_DEFINITIONS,
   inputSetFor,
+  isDerivedOutput,
   isReusable,
+  projectionInputPaths,
 } from "../../scripts/evidence/inputs.mjs";
 import {
   createEvidenceRecord,
@@ -117,10 +120,35 @@ describe("input sets", () => {
     expect(Object.keys(selected).sort()).toEqual(["lockfile", "manifest"]);
   });
 
-  it("marks tree-wide scans as non-reusable across commits", () => {
-    expect(isReusable("SECRET_SCAN")).toBe(false);
-    expect(isReusable("PII_BOUNDARY_SCAN")).toBe(false);
-    expect(isReusable("SOURCE_PROVENANCE")).toBe(false);
+  it("treats tree-wide scans as input-determined, not commit-bound", () => {
+    expect(isReusable("SECRET_SCAN")).toBe(true);
+    expect(isReusable("PII_BOUNDARY_SCAN")).toBe(true);
+    expect(isReusable("SOURCE_PROVENANCE")).toBe(true);
+  });
+
+  it("excludes derived outputs from every declared input set", () => {
+    for (const path of [
+      "evidence/records/EV-BUILD.json",
+      "evidence/baseline.json",
+      "docs/CURRENT_STATE.md",
+      "data/current-state/current-state.fingerprint.json",
+      "dist/client/index.html",
+    ]) {
+      expect(isDerivedOutput(path)).toBe(true);
+    }
+    const files = ["src/a.ts", "docs/CURRENT_STATE.md", "evidence/baseline.json"];
+    const withOutputs = computeInputSets(files);
+    const withoutOutputs = computeInputSets(["src/a.ts"]);
+    expect(withOutputs.tracked).toBe(withoutOutputs.tracked);
+    expect(withOutputs.docs).toBe(withoutOutputs.docs);
+  });
+
+  it("binds projection freshness to the declared controlling inputs, not the generated document", () => {
+    expect(declaredSets("SSOT_BINDING")).toEqual(["projection", "pipeline"]);
+    const paths = projectionInputPaths();
+    expect(paths).toContain("data/current-state/current-state-inputs.json");
+    expect(paths).toContain("scripts/gen-current-state.ts");
+    expect(paths).not.toContain("docs/CURRENT_STATE.md");
   });
 
   it("keeps every declaration reviewable as data", () => {
@@ -195,12 +223,21 @@ describe("applicability", () => {
     expect(result.state).toBe("UNKNOWN");
   });
 
-  it("requires a non-reusable type to be re-executed at the commit under review", () => {
+  it("keeps a tree-wide scan CURRENT at another commit when the scanned scope is unchanged", () => {
     const result = evaluateApplicability(
       record({ evidence_type: "SECRET_SCAN", input_set: { tracked: "t1" } }),
       { inputSets: { tracked: "t1" }, commit: OTHER_COMMIT },
     );
+    expect(result.state).toBe("CURRENT");
+  });
+
+  it("still goes STALE when the scanned scope itself changed", () => {
+    const result = evaluateApplicability(
+      record({ evidence_type: "SECRET_SCAN", input_set: { tracked: "t1" } }),
+      { inputSets: { tracked: "t2" }, commit: COMMIT },
+    );
     expect(result.state).toBe("STALE");
+    expect(result.changedInputs).toEqual(["tracked"]);
   });
 });
 

@@ -7,7 +7,7 @@
 
 Controlling decision: DEC-022. State date: 2026-08-20.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `667cc8baa8df9492b649eda0e0771b2b52bc2a156dda2a730630811e2d8f032f`.
+Input fingerprint: `443a3d579b086fccbea93d66669f45532344f01a9a6b5d19a774c259c07334a4`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.

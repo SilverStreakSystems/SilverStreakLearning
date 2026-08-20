@@ -26,7 +26,15 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F09"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F09", "F01"],
-    objects: ["event", "finding", "risk", "work-item", "evidence", "decision", "communication-reference"],
+    objects: [
+      "event",
+      "finding",
+      "risk",
+      "work-item",
+      "evidence",
+      "decision",
+      "communication-reference",
+    ],
     deliverableTypes: ["Incident record", "Post-incident review", "Corrective action plan"],
     evidenceRequirements: [
       "The timeline records what was known when, not what was known later.",
@@ -36,7 +44,8 @@ const seeds: ValueStreamSeed[] = [
       "Notification is suppressed for reputational reasons.",
       "A cause analysis is asked to name a person as the root cause.",
     ],
-    rollbackRecovery: "Reverse the change that caused the incident and re-validate before resuming.",
+    rollbackRecovery:
+      "Reverse the change that caused the incident and re-validate before resuming.",
     outcomeMeasures: ["Every incident has a recorded cause and a corrective action with an owner."],
     learningLoop: "outcome-research",
     risks: ["Near-misses go unrecorded.", "Corrective actions are closed without verification."],
@@ -140,7 +149,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "feedback-decision",
     name: "Feedback → Decision",
-    description: "Turns customer and internal feedback into governed decisions instead of quiet backlog drift.",
+    description:
+      "Turns customer and internal feedback into governed decisions instead of quiet backlog drift.",
     purpose: "Ensure feedback is answered, even when the answer is no.",
     northStar: "Shows people what happened to what they said.",
     humanBeneficiaries: ["Users who took the time to report a problem"],
@@ -155,7 +165,14 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F04"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F01"],
-    objects: ["finding", "work-item", "requirement", "decision", "communication-reference", "knowledge-object"],
+    objects: [
+      "finding",
+      "work-item",
+      "requirement",
+      "decision",
+      "communication-reference",
+      "knowledge-object",
+    ],
     deliverableTypes: ["Feedback record", "Disposition record"],
     evidenceRequirements: ["Each disposition states its reason and who decided it."],
     refusalConditions: [
@@ -165,7 +182,10 @@ const seeds: ValueStreamSeed[] = [
     rollbackRecovery: "Reopen a disposition when new evidence contradicts the reason given.",
     outcomeMeasures: ["No feedback item closes without a recorded reason."],
     learningLoop: "outcome-research",
-    risks: ["Loudest voice prioritized over widest need.", "Silent closure of inconvenient feedback."],
+    risks: [
+      "Loudest voice prioritized over widest need.",
+      "Silent closure of inconvenient feedback.",
+    ],
     assumptions: ["Feedback volume is currently zero; this is reference architecture."],
     unknowns: ["What response time is fair once districts are live."],
     reviewTrigger: "Repeated feedback on the same subject.",
@@ -256,7 +276,14 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F01"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F01", "F13"],
-    objects: ["enterprise-function-reference", "role-reference", "work-item", "decision", "risk", "knowledge-object"],
+    objects: [
+      "enterprise-function-reference",
+      "role-reference",
+      "work-item",
+      "decision",
+      "risk",
+      "knowledge-object",
+    ],
     deliverableTypes: ["Role definition", "Capacity assessment", "Development plan"],
     evidenceRequirements: [
       "A role definition names the capabilities it holds and the decisions it may take.",
@@ -267,10 +294,14 @@ const seeds: ValueStreamSeed[] = [
       "The gap can be closed by removing work rather than adding a person.",
       "Funding is not established.",
     ],
-    rollbackRecovery: "Withdraw a role definition and record why the gap will be handled differently.",
+    rollbackRecovery:
+      "Withdraw a role definition and record why the gap will be handled differently.",
     outcomeMeasures: ["Capability gaps carry an explicit staffing disposition."],
     learningLoop: "outcome-research",
-    risks: ["Hiring to relieve symptoms of a process problem.", "Independence violated by role design."],
+    risks: [
+      "Hiring to relieve symptoms of a process problem.",
+      "Independence violated by role design.",
+    ],
     assumptions: ["Zero staff at this stage; every role is a candidate."],
     unknowns: ["Which roles must be first when funding exists."],
     reviewTrigger: "New capability gap, workload evidence, or funding change.",
@@ -361,7 +392,15 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F13"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F09", "F13"],
-    objects: ["organization", "risk", "decision", "requirement", "evidence", "finding", "work-item"],
+    objects: [
+      "organization",
+      "risk",
+      "decision",
+      "requirement",
+      "evidence",
+      "finding",
+      "work-item",
+    ],
     deliverableTypes: ["Vendor assessment", "Exit plan", "Obligation register"],
     evidenceRequirements: [
       "An exit plan exists before the dependency is created.",
@@ -452,7 +491,8 @@ const seeds: ValueStreamSeed[] = [
     name: "AI Capability Lifecycle (gated future)",
     description:
       "Target-state architecture for governing any future AI capability. Modeled only; nothing here is implemented or enabled.",
-    purpose: "Define in advance the gates any AI capability must pass before it could ever be considered.",
+    purpose:
+      "Define in advance the gates any AI capability must pass before it could ever be considered.",
     northStar: "States the conditions for trust before any AI capability exists, not after.",
     humanBeneficiaries: ["Students and educators who would be subject to AI-influenced decisions"],
     enterpriseBeneficiaries: ["Governance, Security and Privacy, Quality"],
@@ -471,7 +511,16 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F01"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F09", "F01", "F08"],
-    objects: ["requirement", "decision", "risk", "evidence", "validation", "finding", "policy-rule", "claim"],
+    objects: [
+      "requirement",
+      "decision",
+      "risk",
+      "evidence",
+      "validation",
+      "finding",
+      "policy-rule",
+      "claim",
+    ],
     deliverableTypes: ["AI risk assessment", "Human oversight plan", "Validation result"],
     evidenceRequirements: [
       "Evidence must show behaviour on the intended population, not a proxy.",
@@ -512,7 +561,9 @@ const seeds: ValueStreamSeed[] = [
         outputs: ["requirement"],
         entry: ["The gate is open."],
         exit: ["The human-decision boundary is written and approved."],
-        refusals: ["Refused: capability would shape a decision about a person without human authority."],
+        refusals: [
+          "Refused: capability would shape a decision about a person without human authority.",
+        ],
       },
       {
         name: "Risk and harm assessment",

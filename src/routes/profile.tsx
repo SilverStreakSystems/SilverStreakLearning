@@ -67,7 +67,9 @@ function ProfilePage() {
           </div>
           <div>
             <dt className="font-semibold">May not do alone</dt>
-            <dd className="text-muted-foreground">{ACTIVE_CAPACITY.requiresOtherAuthority.join(" ")}</dd>
+            <dd className="text-muted-foreground">
+              {ACTIVE_CAPACITY.requiresOtherAuthority.join(" ")}
+            </dd>
           </div>
           <div>
             <dt className="font-semibold">Expiry trigger</dt>

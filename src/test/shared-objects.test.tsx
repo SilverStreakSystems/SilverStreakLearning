@@ -72,7 +72,10 @@ describe("relationship model", () => {
   });
 
   it("records a judgment on every normalization finding", () => {
-    for (const finding of [...OBJECT_NORMALIZATION_FINDINGS, ...RELATIONSHIP_NORMALIZATION_FINDINGS]) {
+    for (const finding of [
+      ...OBJECT_NORMALIZATION_FINDINGS,
+      ...RELATIONSHIP_NORMALIZATION_FINDINGS,
+    ]) {
       expect(finding.judgment.length).toBeGreaterThan(0);
     }
   });

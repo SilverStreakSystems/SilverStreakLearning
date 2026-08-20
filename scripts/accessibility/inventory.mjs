@@ -24,7 +24,10 @@ const ROUTES_DIR = join(process.cwd(), "src", "routes");
 export function fixtureFor(paramName) {
   switch (paramName) {
     case "capabilityId":
-      return { value: ENTERPRISE_CAPABILITIES[0].capabilityId, source: "ENTERPRISE_CAPABILITIES[0]" };
+      return {
+        value: ENTERPRISE_CAPABILITIES[0].capabilityId,
+        source: "ENTERPRISE_CAPABILITIES[0]",
+      };
     case "typeId":
       return { value: SHARED_OBJECT_CATALOG[0].typeId, source: "SHARED_OBJECT_CATALOG[0]" };
     case "streamId":

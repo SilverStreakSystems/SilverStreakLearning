@@ -37,7 +37,12 @@ function sourceUniverse(records: HistoricalSourceRecord[], boundary: string): st
     "## Inventory",
     "",
     table(
-      records.map((r) => [r.source_id, esc(r.title), r.source_family, `\`${esc(r.exact_locator)}\``]),
+      records.map((r) => [
+        r.source_id,
+        esc(r.title),
+        r.source_family,
+        `\`${esc(r.exact_locator)}\``,
+      ]),
       ["ID", "Source", "Family", "Exact locator"],
     ),
     "",

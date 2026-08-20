@@ -108,7 +108,8 @@ function defaultEvidence(
       evidenceType: "Recorded stage exit review with named reviewer and rationale",
       versionBinding: "Bound to the specific stream version and work item instance being exited.",
       reviewer,
-      reuseLimit: "Applies to this instance only. It may not be reused for a later run of the stage.",
+      reuseLimit:
+        "Applies to this instance only. It may not be reused for a later run of the stage.",
       revalidation: "Revalidate whenever the stage inputs, rule, or requirement changes.",
       effectIfMissing:
         "The stage may not be recorded as exited, and any downstream gate reads the evidence as absent.",
@@ -149,8 +150,11 @@ function buildStages(
         : null,
       exitCriteria: seed.exit,
       refusalStates: seed.refusals,
-      escalation: seed.escalation ?? "Escalate to the stream's stop authority with the blocking reason named.",
-      maximumWaitingState: seed.maxWait ?? "Ten working days waiting without movement requires escalation.",
+      escalation:
+        seed.escalation ??
+        "Escalate to the stream's stop authority with the blocking reason named.",
+      maximumWaitingState:
+        seed.maxWait ?? "Ten working days waiting without movement requires escalation.",
       outputObjects: seed.outputs,
       auditRequirement: seed.audit ?? DEFAULT_AUDIT,
     } satisfies ValueStreamStage;
@@ -209,7 +213,8 @@ export function buildValueStream(seed: ValueStreamSeed): ValueStream {
     relatedFindings: [],
     relatedEvidence: [],
     reviewTrigger: seed.reviewTrigger,
-    supersession: seed.supersession ?? "Superseded only by a governed decision that names this stream.",
+    supersession:
+      seed.supersession ?? "Superseded only by a governed decision that names this stream.",
     notes: seed.notes ?? "",
     synthetic: true,
   } satisfies ValueStream;

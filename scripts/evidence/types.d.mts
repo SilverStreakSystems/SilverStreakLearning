@@ -43,6 +43,7 @@ export type InputSetName =
   | "workflows"
   | "docs"
   | "tracked"
+  | "projection"
   | "pipeline";
 
 export type InputSetMap = Partial<Record<InputSetName, string>> & Record<string, string>;

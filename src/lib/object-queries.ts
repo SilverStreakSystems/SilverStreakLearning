@@ -4,7 +4,7 @@
  * Nothing here blends, scores, or ranks. Counting how many types sit in a
  * family is a fact; turning that into a completeness figure would not be.
  */
-import type { ObjectSearch } from "@/components/governance/object-controls";
+import type { ObjectSearch } from "@/components/governance/object-view-model";
 import {
   OBJECT_FAMILIES,
   OBJECT_FAMILY_META,
@@ -25,7 +25,8 @@ export function filterObjectTypes(
   return records.filter((record) => {
     if (search.family !== "all" && record.family !== search.family) return false;
     if (search.canonicality !== "all" && record.canonicality !== search.canonicality) return false;
-    if (search.instantiability !== "all" && record.instantiability !== search.instantiability) return false;
+    if (search.instantiability !== "all" && record.instantiability !== search.instantiability)
+      return false;
     if (search.axis !== "all" && !record.stateAxes.includes(search.axis)) return false;
     if (
       search.classification !== "all" &&

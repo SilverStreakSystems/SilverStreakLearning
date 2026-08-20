@@ -2,13 +2,13 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "bbc34159544249a5f41b44d45a9e1060f52b4c89",
+  "tree_hash": "b012b9a7ad654a288a8b9a5903ee646075a6d1cf",
   "expected_result": "Exit 0 when the projection regenerates with no diff, every declared input resolves, and every superseded document declares itself superseded.",
   "artifact_path": "artifacts/provenance/ssot-binding.log",
   "artifact_hash": "3a6b5f49f299244d100c3a940f6f69c9466595a5422948263ff90d418a5cbd71",
   "input_set": {
-    "docs": "50e705163c38182d7076d281d047b0c640780a1e15a2f2583848222c1387ee2d",
-    "pipeline": "c2cd49e9b6c0f8c264a635a7d4aea0eddadcf7cb30a5aa2e02f97128f8f75545"
+    "projection": "016a9355428aee5daed9239c27adbeca6e6e3b22abe89f6ce5146b409b9bef96",
+    "pipeline": "f31551c591a7d9e2ad0c29af2fd54208587d2e9c53aae23c2d1453bd7188b76a"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -29,9 +29,9 @@
   "method": "automated",
   "evidence_id": "EV-SSOT-GUARD",
   "evidence_type": "SSOT_BINDING",
-  "commit_sha": "9f102d60ee469aeca7ccfa8d1300939e98d71fe4",
+  "commit_sha": "67b4b06549650c7f1579ac323c9887e7092a494d",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T10:16:33.538Z",
+  "timestamp": "2026-08-20T10:28:38.202Z",
   "producer": "SSLS evidence pipeline",
   "title": "Current-state projection freshness check",
   "description": "Regenerates the canonical current-state projection from its declared controlling inputs and compares it, its input fingerprint, and the superseded-document markers. Replaces the WP-006 declared-binding guard, which bound documents to a commit hash and went stale after every legitimate change (FND-011).",

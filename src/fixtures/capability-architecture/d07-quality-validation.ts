@@ -81,7 +81,8 @@ const seeds: CapabilitySeed[] = [
     maturity: "initial",
     risk: "Undetected regression at scale.",
     evidenceRefs: ["EV-002"],
-    notes: "Automated results are structural evidence only. They never establish usability or accessibility.",
+    notes:
+      "Automated results are structural evidence only. They never establish usability or accessibility.",
   },
   {
     id: "CAP-D07-004",

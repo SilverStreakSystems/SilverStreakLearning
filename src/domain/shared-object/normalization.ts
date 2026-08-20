@@ -64,7 +64,10 @@ export const RELATIONSHIP_NORMALIZATION_ISSUES = [
 
 export type RelationshipNormalizationIssue = (typeof RELATIONSHIP_NORMALIZATION_ISSUES)[number];
 
-export const RELATIONSHIP_NORMALIZATION_ISSUE_LABEL: Record<RelationshipNormalizationIssue, string> = {
+export const RELATIONSHIP_NORMALIZATION_ISSUE_LABEL: Record<
+  RelationshipNormalizationIssue,
+  string
+> = {
   "should-be-object": "Should be a first-class object",
   "duplicate-semantics": "Duplicate semantics",
   "ambiguous-verb": "Ambiguous verb",

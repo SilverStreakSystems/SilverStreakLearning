@@ -1,11 +1,7 @@
 import { expect } from "vitest";
 import { QueryClient } from "@tanstack/react-query";
 
-import {
-  RouterProvider,
-  createMemoryHistory,
-  createRouter,
-} from "@tanstack/react-router";
+import { RouterProvider, createMemoryHistory, createRouter } from "@tanstack/react-router";
 import { render, screen, waitFor } from "@testing-library/react";
 import { routeTree } from "@/routeTree.gen";
 
@@ -28,7 +24,6 @@ export async function renderRoute(path: string) {
   await waitFor(() => {
     expect(screen.getAllByRole("heading", { level: 1 }).length).toBeGreaterThan(0);
   });
-
 
   return { ...result, router };
 }

@@ -57,7 +57,8 @@ export type ProhibitedMetric = (typeof PROHIBITED_METRICS)[number];
 export const PROHIBITED_METRIC_REASON: Record<ProhibitedMetric, string> = {
   "keystroke counts": "Measures presence, not contribution, and constitutes surveillance.",
   "mouse or screen activity monitoring": "Surveillance of people rather than measurement of work.",
-  "arbitrary activity counts as productivity": "Rewards visible motion over completed governed work.",
+  "arbitrary activity counts as productivity":
+    "Rewards visible motion over completed governed work.",
   "individual productivity scores": "Collapses judgment-heavy work into a false comparable number.",
   "individual ranking of staff": "Creates competition where coordination is required.",
   "time-at-keyboard measures": "Penalizes thinking, reading, and collaboration.",
@@ -65,6 +66,8 @@ export const PROHIBITED_METRIC_REASON: Record<ProhibitedMetric, string> = {
   "single composite maturity score": "Merges independent axes that must stay separately visible.",
 };
 
-export function metricsMissingProhibitedInterpretation(metrics: ValueStreamMetric[]): ValueStreamMetric[] {
+export function metricsMissingProhibitedInterpretation(
+  metrics: ValueStreamMetric[],
+): ValueStreamMetric[] {
   return metrics.filter((m) => m.prohibitedInterpretation.trim() === "");
 }

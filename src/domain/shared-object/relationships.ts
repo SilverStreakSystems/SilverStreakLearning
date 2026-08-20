@@ -56,7 +56,6 @@ export interface RelationshipKindMeta {
   doesNotImply: string;
 }
 
-
 /** Projection may read from canonical sources, never from another projection. */
 const SHARED_OBJECT_TARGETS_FOR_PROJECTION: SharedObjectTypeId[] = [
   "person-reference",
@@ -193,28 +192,32 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
     inverseVerb: "is superseded by",
     meaning: "A later record replaces an earlier one of the same type.",
     cardinality: "one-to-many",
-    permittedSourceTypes: [...([
-      "requirement",
-      "decision",
-      "policy-rule",
-      "standard",
-      "claim",
-      "deliverable-instance",
-      "research-record",
-      "context-package",
-      "knowledge-object",
-    ] as SharedObjectTypeId[])],
-    permittedTargetTypes: [...([
-      "requirement",
-      "decision",
-      "policy-rule",
-      "standard",
-      "claim",
-      "deliverable-instance",
-      "research-record",
-      "context-package",
-      "knowledge-object",
-    ] as SharedObjectTypeId[])],
+    permittedSourceTypes: [
+      ...([
+        "requirement",
+        "decision",
+        "policy-rule",
+        "standard",
+        "claim",
+        "deliverable-instance",
+        "research-record",
+        "context-package",
+        "knowledge-object",
+      ] as SharedObjectTypeId[]),
+    ],
+    permittedTargetTypes: [
+      ...([
+        "requirement",
+        "decision",
+        "policy-rule",
+        "standard",
+        "claim",
+        "deliverable-instance",
+        "research-record",
+        "context-package",
+        "knowledge-object",
+      ] as SharedObjectTypeId[]),
+    ],
     historyPreserving: true,
     doesNotImply: "Supersession does not delete the earlier record or its history.",
   },
@@ -236,7 +239,13 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
     meaning: "The source cannot complete until the target reaches a stated state.",
     cardinality: "many-to-many",
     permittedSourceTypes: G("work-item", "deliverable-instance", "enterprise-capability", "event"),
-    permittedTargetTypes: G("work-item", "deliverable-instance", "enterprise-capability", "evidence", "decision"),
+    permittedTargetTypes: G(
+      "work-item",
+      "deliverable-instance",
+      "enterprise-capability",
+      "evidence",
+      "decision",
+    ),
     historyPreserving: true,
     doesNotImply: "A dependency is not a commitment by the other side.",
   },
@@ -257,7 +266,13 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
     inverseVerb: "constrains",
     meaning: "A standard or policy limits how the source may operate.",
     cardinality: "many-to-many",
-    permittedSourceTypes: G("enterprise-capability", "work-item", "deliverable-instance", "product-reference", "context-projection-definition"),
+    permittedSourceTypes: G(
+      "enterprise-capability",
+      "work-item",
+      "deliverable-instance",
+      "product-reference",
+      "context-projection-definition",
+    ),
     permittedTargetTypes: G("standard", "policy-rule"),
     historyPreserving: true,
     doesNotImply: "A constraint existing is not a constraint being met.",
@@ -280,7 +295,13 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
     meaning: "A review examines a deliverable, decision, or claim.",
     cardinality: "one-to-many",
     permittedSourceTypes: G("review"),
-    permittedTargetTypes: G("deliverable-instance", "decision", "claim", "research-record", "requirement"),
+    permittedTargetTypes: G(
+      "deliverable-instance",
+      "decision",
+      "claim",
+      "research-record",
+      "requirement",
+    ),
     historyPreserving: true,
     doesNotImply: "A review is not an approval, even when the reviewer could approve.",
   },
@@ -395,9 +416,6 @@ export const RELATIONSHIP_KIND_META: Record<RelationshipKind, RelationshipKindMe
     doesNotImply: "Research never becomes a requirement without a decision record.",
   },
 };
-
-
-
 
 export interface RelationshipRecord {
   relationshipId: string;

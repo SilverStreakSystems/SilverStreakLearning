@@ -229,7 +229,8 @@ const seeds: CapabilitySeed[] = [
     desc: "Publish accurate, current statements about data handling and system status.",
     purpose: "Let districts evaluate SSLS on facts rather than assurances.",
     types: ["privacy-trust", "governance"],
-    northStar: "Directly: transparency about ourselves is the same discipline as visibility for learners.",
+    northStar:
+      "Directly: transparency about ourselves is the same discipline as visibility for learners.",
     benefits: ["district-leader", "family", "public"],
     harm: "Districts rely on statements that are out of date.",
     burden: "Every posture change requires a public correction.",

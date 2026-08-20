@@ -83,7 +83,11 @@ export function validateStages(stages: ValueStreamStage[]): StageViolation[] {
   const violations: StageViolation[] = [];
   for (const stage of stages) {
     if (stage.purpose.trim() === "") {
-      violations.push({ stageId: stage.stageId, kind: "missing-purpose", detail: "Stage has no purpose." });
+      violations.push({
+        stageId: stage.stageId,
+        kind: "missing-purpose",
+        detail: "Stage has no purpose.",
+      });
     }
     if (stage.entryCriteria.length === 0) {
       violations.push({
@@ -106,7 +110,8 @@ export function validateStages(stages: ValueStreamStage[]): StageViolation[] {
         detail: "Stage does not declare both what it consumes and what it produces.",
       });
     }
-    const onlyCriterion = stage.entryCriteria.length === 1 ? stage.entryCriteria[0]!.toLowerCase() : "";
+    const onlyCriterion =
+      stage.entryCriteria.length === 1 ? stage.entryCriteria[0]!.toLowerCase() : "";
     if (SEQUENCE_AS_AUTHORITY.some((phrase) => onlyCriterion.includes(phrase))) {
       violations.push({
         stageId: stage.stageId,

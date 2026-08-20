@@ -12,38 +12,12 @@ import {
   type ScaleStage,
   type StreamOperatingStatus,
 } from "@/domain";
-
-export const VALUE_STREAM_VIEWS = [
-  { id: "registry", label: "Stream registry" },
-  { id: "functions", label: "Functions and decision rights" },
-  { id: "stages", label: "Stage and transition model" },
-  { id: "gates", label: "Gates and refusal" },
-  { id: "handoffs", label: "Handoffs" },
-  { id: "dependencies", label: "Dependencies" },
-  { id: "commitments", label: "Commitments" },
-  { id: "metrics", label: "Metrics and prohibited measures" },
-  { id: "burden", label: "Burden" },
-  { id: "projections", label: "Command surface projections" },
-  { id: "normalization", label: "Normalization findings" },
-] as const;
-
-export type ValueStreamView = (typeof VALUE_STREAM_VIEWS)[number]["id"];
-
-export interface ValueStreamSearch {
-  view: ValueStreamView;
-  status: StreamOperatingStatus | "all";
-  fn: EnterpriseFunctionId | "all";
-  maturity: ScaleStage | "all";
-  q: string;
-}
-
-export const DEFAULT_VALUE_STREAM_SEARCH: ValueStreamSearch = {
-  view: "registry",
-  status: "all",
-  fn: "all",
-  maturity: "all",
-  q: "",
-};
+import {
+  DEFAULT_VALUE_STREAM_SEARCH,
+  VALUE_STREAM_VIEWS,
+  type ValueStreamSearch,
+  type ValueStreamView,
+} from "./value-stream-view-model";
 
 /** Views are links so each one is addressable and survives a detour into detail. */
 export function ValueStreamViewTabs({
@@ -195,7 +169,9 @@ export function OperatingStatusChip({ status }: { status: StreamOperatingStatus 
   return (
     <span
       className={`${CHIP} ${
-        status === "gated-future" ? "border-dashed border-border-strong bg-muted" : "border-border-strong bg-surface"
+        status === "gated-future"
+          ? "border-dashed border-border-strong bg-muted"
+          : "border-border-strong bg-surface"
       }`}
     >
       <span aria-hidden="true" className="font-mono text-[0.65rem]">
@@ -233,25 +209,4 @@ export function FunctionChip({ functionId }: { functionId: EnterpriseFunctionId 
       <span className="sr-only">. Candidate function, not staffed.</span>
     </span>
   );
-}
-
-/* ------------------------------------------------------- search validation */
-
-function option<T extends string>(value: unknown, allowed: readonly T[]): T | "all" {
-  return typeof value === "string" && (allowed as readonly string[]).includes(value)
-    ? (value as T)
-    : "all";
-}
-
-export function parseValueStreamSearch(search: Record<string, unknown>): ValueStreamSearch {
-  const view = VALUE_STREAM_VIEWS.map((v) => v.id).includes(search["view"] as ValueStreamView)
-    ? (search["view"] as ValueStreamView)
-    : "registry";
-  return {
-    view,
-    status: option(search["status"], STREAM_OPERATING_STATUS),
-    fn: option(search["fn"], ENTERPRISE_FUNCTION_IDS),
-    maturity: option(search["maturity"], SCALE_STAGES),
-    q: typeof search["q"] === "string" ? search["q"] : "",
-  };
 }

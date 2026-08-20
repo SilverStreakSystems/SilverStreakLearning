@@ -7,53 +7,12 @@ import {
   type TemplateMaturity,
   type ValidationResult,
 } from "@/domain";
-
-export const DESIGN_SYSTEM_VIEWS = [
-  { id: "overview", label: "Overview" },
-  { id: "tokens", label: "Tokens" },
-  { id: "typography", label: "Typography" },
-  { id: "grid", label: "Grid and coordinates" },
-  { id: "assets", label: "Brand assets" },
-  { id: "templates", label: "Interface templates" },
-  { id: "workspaces", label: "Workspace templates" },
-  { id: "families", label: "Experience families" },
-  { id: "blueprints", label: "Blueprints" },
-  { id: "states", label: "States" },
-  { id: "motion", label: "Motion and responsive" },
-  { id: "accessibility", label: "Accessibility" },
-  { id: "conformance", label: "Conformance" },
-] as const;
-
-export type DesignSystemView = (typeof DESIGN_SYSTEM_VIEWS)[number]["id"];
-
-export interface DesignSystemSearch {
-  view: DesignSystemView;
-  maturity: TemplateMaturity | "all";
-  q: string;
-}
-
-export const DEFAULT_DESIGN_SYSTEM_SEARCH: DesignSystemSearch = {
-  view: "overview",
-  maturity: "all",
-  q: "",
-};
-
-const VIEW_IDS = DESIGN_SYSTEM_VIEWS.map((view) => view.id) as readonly string[];
-
-export function parseDesignSystemSearch(input: Record<string, unknown>): DesignSystemSearch {
-  const rawView = input["view"];
-  const rawMaturity = input["maturity"];
-  const rawQuery = input["q"];
-  const view =
-    typeof rawView === "string" && VIEW_IDS.includes(rawView) ? (rawView as DesignSystemView) : "overview";
-  const maturity =
-    typeof rawMaturity === "string" && rawMaturity in TEMPLATE_MATURITY_META
-      ? (rawMaturity as TemplateMaturity)
-      : "all";
-  const q = typeof rawQuery === "string" ? rawQuery : "";
-  return { view, maturity, q };
-}
-
+import {
+  DEFAULT_DESIGN_SYSTEM_SEARCH,
+  DESIGN_SYSTEM_VIEWS,
+  type DesignSystemSearch,
+  type DesignSystemView,
+} from "./design-system-view-model";
 
 /** Views are links, so each one is addressable and survives a detour into detail. */
 export function DesignSystemViewTabs({

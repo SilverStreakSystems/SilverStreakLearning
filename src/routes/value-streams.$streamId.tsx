@@ -1,13 +1,20 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { Cell, PageHeader, RecordCard, RegistryTable, RowHeader, Section } from "@/components/governance/page";
+import {
+  Cell,
+  PageHeader,
+  RecordCard,
+  RegistryTable,
+  RowHeader,
+  Section,
+} from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { Field, GatedPanel, SyntheticMarker, ValueList } from "@/components/governance/markers";
 import {
-  DEFAULT_VALUE_STREAM_SEARCH,
   FunctionChip,
   GateDispositionChip,
   OperatingStatusChip,
 } from "@/components/governance/value-stream-controls";
+import { DEFAULT_VALUE_STREAM_SEARCH } from "@/components/governance/value-stream-view-model";
 import {
   VALUE_STREAMS,
   VALUE_STREAM_DEPENDENCIES,
@@ -34,7 +41,10 @@ export const Route = createFileRoute("/value-streams/$streamId")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Value stream unavailable | SSLS" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Value stream unavailable | SSLS" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const { stream } = loaderData;
@@ -103,8 +113,8 @@ function ValueStreamDetail() {
         </div>
         <p className="mt-3 rounded-md border-l-4 border-border-strong bg-muted p-3 text-sm font-semibold">
           {STREAM_OPERATING_STATUS_META[stream.operatingStatus].meaning} Implementation status:{" "}
-          {stream.implementationStatus}. Authority is declared here and is never inferred from whether
-          stages exist or from any test result.
+          {stream.implementationStatus}. Authority is declared here and is never inferred from
+          whether stages exist or from any test result.
         </p>
       </PageHeader>
 
@@ -143,8 +153,8 @@ function ValueStreamDetail() {
                 <ValueList items={stream.exitCriteria} />
               </Field>
               <Field label="Maturity">
-                Declared now: {stream.currentMaturity} {SCALE_STAGE_LABEL[stream.currentMaturity]}. Target:{" "}
-                {stream.targetMaturity} {SCALE_STAGE_LABEL[stream.targetMaturity]}.
+                Declared now: {stream.currentMaturity} {SCALE_STAGE_LABEL[stream.currentMaturity]}.
+                Target: {stream.targetMaturity} {SCALE_STAGE_LABEL[stream.targetMaturity]}.
               </Field>
               <Field label="Learning loop destination">{stream.learningLoopDestination}</Field>
             </dl>
@@ -230,10 +240,12 @@ function ValueStreamDetail() {
                           <li key={requirement.proposition}>
                             <span className="font-semibold">{requirement.proposition}</span>
                             <span className="mt-1 block text-muted-foreground">
-                              {requirement.evidenceType}, bound to {requirement.versionBinding}. Reviewed by{" "}
-                              {ENTERPRISE_FUNCTION_META[requirement.reviewer].name}.
+                              {requirement.evidenceType}, bound to {requirement.versionBinding}.
+                              Reviewed by {ENTERPRISE_FUNCTION_META[requirement.reviewer].name}.
                             </span>
-                            <span className="mt-1 block">If missing: {requirement.effectIfMissing}</span>
+                            <span className="mt-1 block">
+                              If missing: {requirement.effectIfMissing}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -256,7 +268,10 @@ function ValueStreamDetail() {
                   <div className="mt-4">
                     <h4 className="font-display text-base font-semibold">Decision points</h4>
                     {stage.decisionPoints.map((point) => (
-                      <div key={point.decisionPointId} className="mt-2 border-l-4 border-border-strong pl-3">
+                      <div
+                        key={point.decisionPointId}
+                        className="mt-2 border-l-4 border-border-strong pl-3"
+                      >
                         <p className="font-semibold">{point.question}</p>
                         <p className="text-sm text-muted-foreground">
                           Reversibility: {point.reversibility}. Revisit when: {point.revisitTrigger}
@@ -267,7 +282,8 @@ function ValueStreamDetail() {
                               <span className="font-semibold">
                                 {DECISION_RIGHT_META[assignment.right].label}:
                               </span>{" "}
-                              {ENTERPRISE_FUNCTION_META[assignment.functionId].name}. {assignment.basis}
+                              {ENTERPRISE_FUNCTION_META[assignment.functionId].name}.{" "}
+                              {assignment.basis}
                             </li>
                           ))}
                         </ul>
@@ -340,7 +356,9 @@ function ValueStreamDetail() {
             <ul className="mt-2 space-y-2 text-sm">
               {records.dependencies.map((dependency) => (
                 <li key={dependency.dependencyId}>
-                  <span className="font-semibold">{STREAM_DEPENDENCY_KIND_LABEL[dependency.kind]}:</span>{" "}
+                  <span className="font-semibold">
+                    {STREAM_DEPENDENCY_KIND_LABEL[dependency.kind]}:
+                  </span>{" "}
                   {dependency.description}
                   <span className="mt-1 block text-muted-foreground">
                     Owner:{" "}

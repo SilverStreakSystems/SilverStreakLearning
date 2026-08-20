@@ -8,11 +8,7 @@ import {
   validateAuthority,
   validateObligation,
 } from "@/domain/obligation";
-import {
-  loadAuthorities,
-  loadObligationContext,
-  loadObligations,
-} from "@/lib/obligation-registry";
+import { loadAuthorities, loadObligationContext, loadObligations } from "@/lib/obligation-registry";
 import { DECISIONS, EVIDENCE, FINDINGS } from "@/fixtures/registers";
 
 const authorities = loadAuthorities();
@@ -222,4 +218,3 @@ describe("WP-038 governance register linkage", () => {
     }
   });
 });
-

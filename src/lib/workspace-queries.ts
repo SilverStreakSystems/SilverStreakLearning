@@ -67,7 +67,9 @@ export function buildActions(): ActionItem[] {
       canonicalSource: { objectId: finding.id, objectType: "finding", route: "/findings" },
       authorityBasis: "Founder operator holds resolution authority within the governed boundary.",
       availableActions: [
-        finding.requiredDecision ? `Record the decision: ${finding.requiredDecision}` : "Record a resolution",
+        finding.requiredDecision
+          ? `Record the decision: ${finding.requiredDecision}`
+          : "Record a resolution",
         "Record why the finding stays open",
       ],
       requiredContext: ["The evidence the finding rests on", "Any decision that would resolve it"],
@@ -336,7 +338,8 @@ export function runSearch(query: SearchQuery, index = buildSearchIndex()): Searc
       withheldCount > 0
         ? "Some records are not available to this capacity. They are not described here."
         : null,
-    surfaceStateHint: authorized.length === 0 ? "empty" : results.length === 0 ? "no-results" : "normal",
+    surfaceStateHint:
+      authorized.length === 0 ? "empty" : results.length === 0 ? "no-results" : "normal",
   };
 }
 
@@ -416,7 +419,6 @@ export function assembleProjection(
     reusableForOtherPurpose: false,
   };
 }
-
 
 export function utilityFor(route: string) {
   return GLOBAL_UTILITIES.find((utility) => utility.route === route);

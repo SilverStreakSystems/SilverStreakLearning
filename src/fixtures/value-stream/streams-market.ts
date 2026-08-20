@@ -39,11 +39,20 @@ const seeds: ValueStreamSeed[] = [
       "The buyer requires a claim SSLS cannot support with evidence.",
       "Delivery would require personal data outside the governed boundary.",
     ],
-    rollbackRecovery: "Withdraw the proposal or renegotiate scope; record the reason as a decision.",
-    outcomeMeasures: ["Declined opportunities are recorded with reasons.", "Obligations are explicit before signature."],
+    rollbackRecovery:
+      "Withdraw the proposal or renegotiate scope; record the reason as a decision.",
+    outcomeMeasures: [
+      "Declined opportunities are recorded with reasons.",
+      "Obligations are explicit before signature.",
+    ],
     learningLoop: "outcome-research",
-    risks: ["Sales language exceeding approved claims.", "Obligations accepted without a delivery owner."],
-    assumptions: ["No live opportunities exist at this stage; this stream is reference architecture."],
+    risks: [
+      "Sales language exceeding approved claims.",
+      "Obligations accepted without a delivery owner.",
+    ],
+    assumptions: [
+      "No live opportunities exist at this stage; this stream is reference architecture.",
+    ],
     unknowns: ["What contracting patterns small districts will actually require."],
     reviewTrigger: "Any scope change or claim change during negotiation.",
     stages: [
@@ -145,7 +154,15 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F11"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F09", "F08"],
-    objects: ["requirement", "work-item", "deliverable-instance", "context-package", "risk", "finding", "event"],
+    objects: [
+      "requirement",
+      "work-item",
+      "deliverable-instance",
+      "context-package",
+      "risk",
+      "finding",
+      "event",
+    ],
     deliverableTypes: ["Implementation plan", "Configuration record", "Readiness review record"],
     evidenceRequirements: [
       "Readiness is recorded per axis, never as one blended percentage.",
@@ -156,7 +173,8 @@ const seeds: ValueStreamSeed[] = [
       "Data handling would exceed the agreed boundary.",
       "Readiness cannot be evidenced.",
     ],
-    rollbackRecovery: "Pause deployment, restore the prior state, and record a finding with the cause.",
+    rollbackRecovery:
+      "Pause deployment, restore the prior state, and record a finding with the cause.",
     outcomeMeasures: ["Readiness evidence exists per axis before go-live."],
     learningLoop: "incident-recovery-learning",
     risks: ["Scope creep absorbed silently by delivery.", "Training treated as optional."],
@@ -273,7 +291,10 @@ const seeds: ValueStreamSeed[] = [
       "Barriers are structural and cannot be resolved by support.",
     ],
     rollbackRecovery: "Reduce scope of use, restore prior practice, and record the reason.",
-    outcomeMeasures: ["Barriers are named with owners.", "Support burden is recorded rather than absorbed silently."],
+    outcomeMeasures: [
+      "Barriers are named with owners.",
+      "Support burden is recorded rather than absorbed silently.",
+    ],
     learningLoop: "feedback-decision",
     risks: ["Measuring individuals rather than the system.", "Reading login counts as adoption."],
     assumptions: ["Adoption is a shared responsibility, not solely the customer's."],
@@ -350,7 +371,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "adoption-outcome",
     name: "Adoption → Outcome",
-    description: "Examines whether real use produced the intended benefit, without overclaiming causality.",
+    description:
+      "Examines whether real use produced the intended benefit, without overclaiming causality.",
     purpose: "Keep the distance between use, association, and causal claim explicit.",
     northStar: "Makes uncertainty about impact visible instead of hiding it behind a number.",
     humanBeneficiaries: ["Students whose outcomes are the point of the work"],
@@ -376,7 +398,8 @@ const seeds: ValueStreamSeed[] = [
       "Analysis would require identifiable student data outside the boundary.",
       "The intended outcome was never defined in advance.",
     ],
-    rollbackRecovery: "Withdraw the outcome finding and any claim resting on it; record the retraction.",
+    rollbackRecovery:
+      "Withdraw the outcome finding and any claim resting on it; record the retraction.",
     outcomeMeasures: ["Outcome findings state their confidence and their limits."],
     learningLoop: "outcome-research",
     risks: ["Outcome findings converted directly into marketing claims."],
@@ -454,7 +477,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "outcome-research",
     name: "Outcome → Research",
-    description: "Closes the enterprise loop by turning outcomes and surprises back into research questions.",
+    description:
+      "Closes the enterprise loop by turning outcomes and surprises back into research questions.",
     purpose: "Make organizational learning a governed stream rather than an intention.",
     northStar: "Turns what actually happened into what SSLS next needs to know.",
     humanBeneficiaries: ["Future users who benefit from lessons already paid for"],

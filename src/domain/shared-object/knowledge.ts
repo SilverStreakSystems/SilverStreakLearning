@@ -42,7 +42,8 @@ export const KNOWLEDGE_TYPE_META: Record<KnowledgeType, KnowledgeTypeMeta> = {
     obligatory: false,
     defaultAuthority: "research-candidate",
     changeRule: "Extended by further investigation. Never edited to fit a decision.",
-    lifecycleNote: "Ages by evidence, not by calendar. Stale research is still a record of what was found.",
+    lifecycleNote:
+      "Ages by evidence, not by calendar. Stale research is still a record of what was found.",
   },
   guidance: {
     id: "guidance",
@@ -105,7 +106,13 @@ export const KNOWLEDGE_TYPE_META: Record<KnowledgeType, KnowledgeTypeMeta> = {
 export interface SourceRecord {
   sourceId: string;
   title: string;
-  sourceKind: "external-publication" | "regulation" | "internal-document" | "system-output" | "interview" | "dataset";
+  sourceKind:
+    | "external-publication"
+    | "regulation"
+    | "internal-document"
+    | "system-output"
+    | "interview"
+    | "dataset";
   locator: string;
   publishedOn: string | null;
   retrievedOn: string | null;
@@ -120,7 +127,10 @@ export interface ResearchRecord {
   method: string;
   sourceIds: string[];
   /** Statements the research established, each labelled by confidence. */
-  observations: { statement: string; confidence: "confirmed" | "supported-interpretation" | "unverified" }[];
+  observations: {
+    statement: string;
+    confidence: "confirmed" | "supported-interpretation" | "unverified";
+  }[];
   /** Inferences the project drew. Explicitly separate from observations. */
   interpretations: string[];
   /** What the research does not establish. */
@@ -154,7 +164,10 @@ export interface KnowledgeObjectRecord {
 export const KNOWLEDGE_SEPARATION_RULES: { id: string; rule: string }[] = [
   { id: "KNW-01", rule: "A source is not a finding. Citing something does not establish it." },
   { id: "KNW-02", rule: "A finding is not a requirement. Only a decision creates an obligation." },
-  { id: "KNW-03", rule: "An interpretation is labelled as one, and never presented as an observation." },
+  {
+    id: "KNW-03",
+    rule: "An interpretation is labelled as one, and never presented as an observation.",
+  },
   { id: "KNW-04", rule: "Research never silently becomes policy, standard, or procedure." },
   { id: "KNW-05", rule: "Unknown is recorded as unknown rather than omitted." },
 ];

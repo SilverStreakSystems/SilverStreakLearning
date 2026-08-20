@@ -41,14 +41,26 @@ function group<T>(items: T[], key: (item: T) => string, id: (item: T) => string)
 }
 
 export const VALUE_STREAMS: ValueStream[] = linkStreamRecords(seeded, {
-  gateIds: group(VALUE_STREAM_GATES, (g) => g.valueStreamId, (g) => g.gateId),
-  dependencyIds: group(VALUE_STREAM_DEPENDENCIES, (d) => d.valueStreamId, (d) => d.dependencyId),
+  gateIds: group(
+    VALUE_STREAM_GATES,
+    (g) => g.valueStreamId,
+    (g) => g.gateId,
+  ),
+  dependencyIds: group(
+    VALUE_STREAM_DEPENDENCIES,
+    (d) => d.valueStreamId,
+    (d) => d.dependencyId,
+  ),
   handoffIds: group(
     VALUE_STREAM_HANDOFFS,
     (h) => h.sourceStageId.replace(/-S\d\d$/, ""),
     (h) => h.handoffId,
   ),
-  metricIds: group(VALUE_STREAM_METRICS, (m) => m.valueStreamId, (m) => m.metricId),
+  metricIds: group(
+    VALUE_STREAM_METRICS,
+    (m) => m.valueStreamId,
+    (m) => m.metricId,
+  ),
 });
 
 export {

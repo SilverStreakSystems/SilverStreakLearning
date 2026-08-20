@@ -158,7 +158,9 @@ export const FOUNDATION_ARTIFACTS: FoundationArtifact[] = [
     affectedLayers: ["L6", "L7"],
     affectedCapabilities: ["CAP-001", "CAP-002"],
     knownConflicts: [],
-    unresolvedQuestions: ["Does any part of this shell need persistence beyond synthetic fixtures?"],
+    unresolvedQuestions: [
+      "Does any part of this shell need persistence beyond synthetic fixtures?",
+    ],
     requiredReviews: ["Operator review of registry field coverage"],
     evidenceReferences: ["EV-002", "EV-004"],
     promotionRequirements: [

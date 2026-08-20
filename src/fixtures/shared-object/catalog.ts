@@ -31,7 +31,8 @@ const seeds: CatalogSeed[] = [
       "May not be the target of supports-claim: a person is not evidence.",
       "May not carry performance, effort, or activity scoring of any kind.",
     ],
-    shared: "Every governance, work, and evidence object needs to name who acted. One reference type prevents six.",
+    shared:
+      "Every governance, work, and evidence object needs to name who acted. One reference type prevents six.",
     future: ["District workspaces", "Educator collaboration", "Support case handling"],
     open: ["Whether a person reference and an external contact reference must eventually diverge."],
     validation: "A test proves no fixture contains a real name, address, or contact detail.",
@@ -52,7 +53,8 @@ const seeds: CatalogSeed[] = [
     purpose: ["Scoping authorization", "Recording commitments"],
     rels: ["related-to-organization", "depends-on", "supersedes"],
     prohibited: ["May not own evidence directly; evidence belongs to the check that produced it."],
-    shared: "Districts, vendors, and SSLS are the same shape. Separate tables would duplicate every rule.",
+    shared:
+      "Districts, vendors, and SSLS are the same shape. Separate tables would duplicate every rule.",
     future: ["District onboarding", "Procurement", "Contract management"],
   },
   {
@@ -71,7 +73,8 @@ const seeds: CatalogSeed[] = [
     purpose: ["Scoping authorization", "Routing work and handoffs"],
     rels: ["related-to-organization", "depends-on", "supersedes"],
     prohibited: ["May not be used as a proxy for a group of people when the actual people matter."],
-    shared: "Small districts have one unit; large ones have hundreds. One recursive type serves both.",
+    shared:
+      "Small districts have one unit; large ones have hundreds. One recursive type serves both.",
     future: ["Program-level dashboards", "Low-incidence program support"],
     open: ["Whether unit hierarchy depth should be constrained or left free."],
   },
@@ -132,7 +135,8 @@ const seeds: CatalogSeed[] = [
       "A capability's maturity never implies its validation state.",
       "Capabilities are never blended into a single readiness figure.",
     ],
-    shared: "Defined in the Enterprise Capability Architecture and referenced here rather than re-declared.",
+    shared:
+      "Defined in the Enterprise Capability Architecture and referenced here rather than re-declared.",
     future: ["Value streams", "Function command centers"],
   },
 
@@ -147,11 +151,23 @@ const seeds: CatalogSeed[] = [
     inst: "instantiable",
     owner: "CAP-D01-005",
     usedBy: ["CAP-D01-005", "CAP-D04-001", "CAP-D07-001"],
-    cond: ["approvalState", "implementationState", "validationState", "effectiveFrom", "reviewTrigger"],
+    cond: [
+      "approvalState",
+      "implementationState",
+      "validationState",
+      "effectiveFrom",
+      "reviewTrigger",
+    ],
     axes: ["workflow", "authority", "implementation", "validation", "approval"],
     classes: INTERNAL,
     purpose: ["Directing work", "Evaluating deliverables"],
-    rels: ["decided-by", "implemented-by", "fulfills-requirement", "informs-requirement", "supersedes"],
+    rels: [
+      "decided-by",
+      "implemented-by",
+      "fulfills-requirement",
+      "informs-requirement",
+      "supersedes",
+    ],
     prohibited: [
       "A requirement may not be created by a research finding alone; a decision is required.",
       "Implementation state may never be read as approval.",
@@ -253,7 +269,9 @@ const seeds: CatalogSeed[] = [
     classes: INTERNAL,
     purpose: ["Evaluating deliverables", "Demonstrating independence"],
     rels: ["evaluates", "produces-finding"],
-    prohibited: ["A review by the author of the reviewed object does not satisfy an independence rule."],
+    prohibited: [
+      "A review by the author of the reviewed object does not satisfy an independence rule.",
+    ],
     shared: "Review has identical mechanics whether the subject is code, a document, or a claim.",
     future: ["Independent validation", "External audit support"],
   },
@@ -336,7 +354,16 @@ const seeds: CatalogSeed[] = [
     axes: ["workflow", "implementation"],
     classes: INTERNAL,
     purpose: ["Directing effort", "Tracking obligations"],
-    rels: ["creates-work", "produces-deliverable", "verified-by", "depends-on", "blocks", "handed-off-to", "escalates-to", "relates-to-event"],
+    rels: [
+      "creates-work",
+      "produces-deliverable",
+      "verified-by",
+      "depends-on",
+      "blocks",
+      "handed-off-to",
+      "escalates-to",
+      "relates-to-event",
+    ],
     prohibited: [
       "Work without a purpose or a served object is surfaced as a finding.",
       "Completing work never changes an authority or approval state.",
@@ -378,7 +405,13 @@ const seeds: CatalogSeed[] = [
     axes: ["workflow", "authority", "validation", "evidence", "approval", "publication"],
     classes: INTERNAL_CONF,
     purpose: ["Satisfying a requirement", "Providing evidence"],
-    rels: ["produces-deliverable", "fulfills-requirement", "evaluates", "authorizes-version", "supersedes"],
+    rels: [
+      "produces-deliverable",
+      "fulfills-requirement",
+      "evaluates",
+      "authorizes-version",
+      "supersedes",
+    ],
     prohibited: [
       "The file is never copied per role, project, or department.",
       "Existing is not the same as approved.",
@@ -430,7 +463,8 @@ const seeds: CatalogSeed[] = [
       "Evidence for one version never transfers to another version.",
       "Passing evidence never establishes approval.",
     ],
-    shared: "Evidence semantics are identical whether the subject is code, a document, or a process.",
+    shared:
+      "Evidence semantics are identical whether the subject is code, a document, or a process.",
     future: ["Independent validation", "Procurement evidence packs"],
   },
   {
@@ -554,7 +588,8 @@ const seeds: CatalogSeed[] = [
       "Never reusable for a different purpose.",
       "Never sent to a model: this architecture is not AI authorization.",
     ],
-    shared: "Every future workspace needs the same assembly discipline; one contract prevents many.",
+    shared:
+      "Every future workspace needs the same assembly discipline; one contract prevents many.",
     future: ["Educator daily view", "Support case view", "District reporting"],
     open: ["Whether packages should be persisted at all, or only their audit record."],
   },
@@ -697,7 +732,9 @@ const seeds: CatalogSeed[] = [
     ],
     shared: "Every future product would otherwise build its own messaging path and its own risks.",
     future: ["Family communication", "District notifications"],
-    open: ["Whether dispatch intent should become a first-class object once execution is authorized."],
+    open: [
+      "Whether dispatch intent should become a first-class object once execution is authorized.",
+    ],
   },
 ];
 

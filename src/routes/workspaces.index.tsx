@@ -52,7 +52,13 @@ function WorkspacesRegistry() {
       >
         <RegistryTable
           caption="Nine enterprise workspaces with availability, implementation state, and fundamental question."
-          headers={["Workspace", "Fundamental question", "Availability", "Implementation", "Maturity"]}
+          headers={[
+            "Workspace",
+            "Fundamental question",
+            "Availability",
+            "Implementation",
+            "Maturity",
+          ]}
         >
           {WORKSPACES.map((workspace) => (
             <tr key={workspace.workspaceId}>

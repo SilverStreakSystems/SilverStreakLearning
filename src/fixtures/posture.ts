@@ -13,7 +13,10 @@ export const AUTHORIZED_POSTURE: { statement: string; detail: string }[] = [
     statement: "No personal data",
     detail: "No student, family, educator, or staff personal information of any kind.",
   },
-  { statement: "Synthetic content only", detail: "Every record is invented to exercise the interface." },
+  {
+    statement: "Synthetic content only",
+    detail: "Every record is invented to exercise the interface.",
+  },
 ];
 
 export const EXCLUDED_FROM_POSTURE: string[] = [
@@ -69,8 +72,7 @@ export const READINESS_AXES: ReadinessAxisRecord[] = [
     id: "AX-VAL",
     name: "Validation and Evidence",
     state: "partial",
-    basis:
-      "Automated structural checks have run. Human and assistive-technology review have not.",
+    basis: "Automated structural checks have run. Human and assistive-technology review have not.",
     evidenceReferences: ["EV-002", "EV-003"],
   },
   {

@@ -59,7 +59,9 @@ function DecisionsRegister() {
               </RowHeader>
               <Cell className="font-semibold">{DECISION_STATE_LABEL[decision.state]}</Cell>
               <Cell>
-                {decision.decidedOn ? `${decision.decidedOn} by ${decision.decidedBy}` : "Not decided."}
+                {decision.decidedOn
+                  ? `${decision.decidedOn} by ${decision.decidedBy}`
+                  : "Not decided."}
               </Cell>
               <Cell>
                 <AuthorityBadge authorityClass={decision.authorityClass} />
@@ -108,7 +110,9 @@ function DecisionsRegister() {
                     <Field label="Supersedes">
                       <ValueList items={decision.supersedes} empty="Nothing." />
                     </Field>
-                    <Field label="Superseded by">{decision.supersededBy ?? "Not superseded."}</Field>
+                    <Field label="Superseded by">
+                      {decision.supersededBy ?? "Not superseded."}
+                    </Field>
                   </dl>
                 </RecordCard>
               ))}

@@ -99,7 +99,7 @@ export function evaluateApplicability(record, context) {
     if (!isReusable(record.evidence_type) && record.commit_sha !== context.commit) {
       return {
         state: "STALE",
-        reason: `Evidence type ${record.evidence_type} is not reusable across commits and must be regenerated.`,
+        reason: `Evidence type ${record.evidence_type} declares an input scope that does not fully determine its result, so it must be re-executed at the commit under review.`,
         changedInputs: [],
       };
     }

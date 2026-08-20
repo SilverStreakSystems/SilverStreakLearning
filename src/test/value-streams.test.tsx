@@ -74,7 +74,8 @@ describe("stage and transition discipline", () => {
 
   it("never lets completion of the previous stage be the only entry criterion", () => {
     for (const stage of allStages) {
-      const onlyCriterion = stage.entryCriteria.length === 1 ? stage.entryCriteria[0]!.toLowerCase() : "";
+      const onlyCriterion =
+        stage.entryCriteria.length === 1 ? stage.entryCriteria[0]!.toLowerCase() : "";
       expect(onlyCriterion.includes("previous stage complete"), stage.stageId).toBe(false);
     }
   });
@@ -111,7 +112,9 @@ describe("gates, handoffs, and refusal", () => {
   });
 
   it("shows at least one worked refusal or hold in the seeded gates", () => {
-    const stopped = VALUE_STREAM_GATES.filter((gate) => !gateAllowsAdvance(gate.exampleDisposition));
+    const stopped = VALUE_STREAM_GATES.filter(
+      (gate) => !gateAllowsAdvance(gate.exampleDisposition),
+    );
     expect(stopped.length).toBeGreaterThan(0);
   });
 

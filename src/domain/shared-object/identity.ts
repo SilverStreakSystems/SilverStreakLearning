@@ -102,7 +102,12 @@ export const CANONICALITY_META: Record<
  * Instantiability under the currently authorized posture.
  * A type may be modeled and still be forbidden to instantiate.
  */
-export const INSTANTIABILITY = ["instantiable", "synthetic-only", "reference-only", "gated"] as const;
+export const INSTANTIABILITY = [
+  "instantiable",
+  "synthetic-only",
+  "reference-only",
+  "gated",
+] as const;
 
 export type Instantiability = (typeof INSTANTIABILITY)[number];
 

@@ -5,10 +5,12 @@ import { Field, SyntheticMarker, ValueList } from "@/components/governance/marke
 import {
   AxisChip,
   CanonicalityChip,
-  DEFAULT_OBJECT_SEARCH,
   InstantiabilityChip,
-  parseObjectSearch,
 } from "@/components/governance/object-controls";
+import {
+  DEFAULT_OBJECT_SEARCH,
+  parseObjectSearch,
+} from "@/components/governance/object-view-model";
 import { SHARED_OBJECT_CATALOG } from "@/fixtures";
 import {
   DATA_CLASSIFICATION_LABEL,
@@ -65,7 +67,13 @@ function ObjectTypeNotFound() {
   );
 }
 
-function RelationshipList({ kinds, direction }: { kinds: RelationshipKind[]; direction: "source" | "target" }) {
+function RelationshipList({
+  kinds,
+  direction,
+}: {
+  kinds: RelationshipKind[];
+  direction: "source" | "target";
+}) {
   if (kinds.length === 0) {
     return <span className="text-muted-foreground">None permitted.</span>;
   }
@@ -75,7 +83,9 @@ function RelationshipList({ kinds, direction }: { kinds: RelationshipKind[]; dir
         const meta = RELATIONSHIP_KIND_META[kind];
         return (
           <li key={kind}>
-            <span className="font-semibold">{direction === "source" ? meta.verb : meta.inverseVerb}</span>{" "}
+            <span className="font-semibold">
+              {direction === "source" ? meta.verb : meta.inverseVerb}
+            </span>{" "}
             — {meta.meaning}
           </li>
         );
@@ -115,10 +125,14 @@ function ObjectTypeDetail() {
           <dl className="grid gap-x-6 sm:grid-cols-2">
             <Field label="Reason for existence">{record.reasonForExistence}</Field>
             <Field label="Family">
-              {OBJECT_FAMILY_META[record.family].label} — {OBJECT_FAMILY_META[record.family].purpose}
+              {OBJECT_FAMILY_META[record.family].label} —{" "}
+              {OBJECT_FAMILY_META[record.family].purpose}
             </Field>
             <Field label="Canonical or derived">
-              {record.canonicality} — {record.canonicality === "canonical" ? "it owns its facts" : "it reflects facts owned elsewhere"}
+              {record.canonicality} —{" "}
+              {record.canonicality === "canonical"
+                ? "it owns its facts"
+                : "it reflects facts owned elsewhere"}
             </Field>
             <Field label="Owned by capability">{record.ownerCapabilityId}</Field>
             <Field label="Used by capabilities">
@@ -133,7 +147,9 @@ function ObjectTypeDetail() {
         <RecordCard>
           <dl className="grid gap-x-6 sm:grid-cols-2">
             <Field label="Universal governance fields">
-              {record.universalFieldsApply ? "All universal fields apply." : "Universal fields do not apply."}
+              {record.universalFieldsApply
+                ? "All universal fields apply."
+                : "Universal fields do not apply."}
             </Field>
             <Field label="Conditional fields">
               <ValueList items={record.conditionalFields} />
@@ -146,7 +162,9 @@ function ObjectTypeDetail() {
               </div>
             </Field>
             <Field label="What those axes never imply">
-              <ValueList items={record.stateAxes.map((axis) => STATE_AXIS_META[axis].doesNotImply)} />
+              <ValueList
+                items={record.stateAxes.map((axis) => STATE_AXIS_META[axis].doesNotImply)}
+              />
             </Field>
           </dl>
         </RecordCard>
@@ -162,7 +180,10 @@ function ObjectTypeDetail() {
               <RelationshipList kinds={asTarget} direction="target" />
             </Field>
             <Field label="Prohibited">
-              <ValueList items={record.prohibitedRelationships} empty="Nothing specific beyond the general rules." />
+              <ValueList
+                items={record.prohibitedRelationships}
+                empty="Nothing specific beyond the general rules."
+              />
             </Field>
           </dl>
         </RecordCard>

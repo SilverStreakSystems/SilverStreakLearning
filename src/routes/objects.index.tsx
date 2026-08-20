@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Cell, PageHeader, RecordCard, RegistryTable, RowHeader, Section } from "@/components/governance/page";
+import {
+  Cell,
+  PageHeader,
+  RecordCard,
+  RegistryTable,
+  RowHeader,
+  Section,
+} from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { Field, GatedPanel, SyntheticMarker, ValueList } from "@/components/governance/markers";
 import {
@@ -8,9 +15,8 @@ import {
   InstantiabilityChip,
   ObjectFilterBar,
   ObjectViewTabs,
-  parseObjectSearch,
-  type ObjectSearch,
 } from "@/components/governance/object-controls";
+import { parseObjectSearch, type ObjectSearch } from "@/components/governance/object-view-model";
 import {
   EXAMPLE_AUTHORIZATION_RULES,
   EXAMPLE_CLAIMS,
@@ -72,10 +78,14 @@ export const Route = createFileRoute("/objects/")({
         content:
           "Candidate shared object, context, work, and evidence architecture for SSLS: object catalog, typed relationships, independent state axes, and context assembly.",
       },
-      { property: "og:title", content: "Shared Enterprise Object Architecture v0.1 (Candidate) | SSLS" },
+      {
+        property: "og:title",
+        content: "Shared Enterprise Object Architecture v0.1 (Candidate) | SSLS",
+      },
       {
         property: "og:description",
-        content: "Governed candidate object model. No record here carries implementation authority.",
+        content:
+          "Governed candidate object model. No record here carries implementation authority.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -104,9 +114,9 @@ function ObjectArchitectureView() {
           <SyntheticMarker />
         </div>
         <p className="mt-3 rounded-md border-l-4 border-border-strong bg-muted p-3 text-sm font-semibold">
-          Version 0.1, candidate. No storage, no schema migration, and no authorization engine exists.
-          Every example record is invented. Context assembly is modeled as a logical contract and is not
-          permission to send anything to a model.
+          Version 0.1, candidate. No storage, no schema migration, and no authorization engine
+          exists. Every example record is invented. Context assembly is modeled as a logical
+          contract and is not permission to send anything to a model.
         </p>
       </PageHeader>
 
@@ -132,7 +142,13 @@ function ObjectArchitectureView() {
 
 /* ------------------------------------------------------------------ catalog */
 
-function CatalogView({ records, search }: { records: SharedObjectTypeRecord[]; search: ObjectSearch }) {
+function CatalogView({
+  records,
+  search,
+}: {
+  records: SharedObjectTypeRecord[];
+  search: ObjectSearch;
+}) {
   return (
     <Section
       id="object-catalog"
@@ -272,7 +288,10 @@ function StateView() {
         title="Independent state axes"
         description="There is no single status field. Each axis answers a different question and moves on its own."
       >
-        <RegistryTable caption="State axes" headers={["Axis", "Question", "Values", "Never implies"]}>
+        <RegistryTable
+          caption="State axes"
+          headers={["Axis", "Question", "Values", "Never implies"]}
+        >
           {STATE_AXES.map((axis) => {
             const meta = STATE_AXIS_META[axis];
             return (
@@ -358,7 +377,8 @@ function WorkView() {
               <Cell className="measure">
                 {item.servedObjectId ?? (
                   <span>
-                    <span className="font-mono text-xs">[EXCEPTION]</span> {item.servedObjectException}
+                    <span className="font-mono text-xs">[EXCEPTION]</span>{" "}
+                    {item.servedObjectException}
                   </span>
                 )}
               </Cell>
@@ -411,16 +431,34 @@ function WorkView() {
         <div className="grid gap-4 md:grid-cols-3">
           <RecordCard>
             <h3 className="font-display text-base font-semibold">Incoming</h3>
-            <ValueList items={["Requests", "Dependencies", "Reviews", "Approvals", "Escalations", "Commitments"]} />
+            <ValueList
+              items={[
+                "Requests",
+                "Dependencies",
+                "Reviews",
+                "Approvals",
+                "Escalations",
+                "Commitments",
+              ]}
+            />
           </RecordCard>
           <RecordCard>
             <h3 className="font-display text-base font-semibold">Internal</h3>
-            <ValueList items={["Work", "Deliverables", "Decisions", "Risks", "Evidence", "Findings"]} />
+            <ValueList
+              items={["Work", "Deliverables", "Decisions", "Risks", "Evidence", "Findings"]}
+            />
           </RecordCard>
           <RecordCard>
             <h3 className="font-display text-base font-semibold">Outgoing</h3>
             <ValueList
-              items={["Deliverables", "Commitments", "Decisions", "Handoffs", "Unresolved dependencies", "Evidence"]}
+              items={[
+                "Deliverables",
+                "Commitments",
+                "Decisions",
+                "Handoffs",
+                "Unresolved dependencies",
+                "Evidence",
+              ]}
             />
           </RecordCard>
         </div>
@@ -458,12 +496,16 @@ function DeliverableView() {
               <Field label="Deliverable type">{deliverable.deliverableTypeId}</Field>
               <Field label="Purpose">{deliverable.purpose}</Field>
               <Field label="Accountable role">{deliverable.accountableRoleId}</Field>
-              <Field label="Required reviewer">{deliverable.requiredReviewerRoleId ?? "None named."}</Field>
+              <Field label="Required reviewer">
+                {deliverable.requiredReviewerRoleId ?? "None named."}
+              </Field>
               <Field label="Workflow state">{deliverable.workflowState}</Field>
               <Field label="Validation state">{deliverable.validationState}</Field>
               <Field label="Evidence state">{deliverable.evidenceState}</Field>
               <Field label="Approval state">{deliverable.approvalState}</Field>
-              <Field label="Canonical artifact">{deliverable.artifactReferenceId ?? "Not produced."}</Field>
+              <Field label="Canonical artifact">
+                {deliverable.artifactReferenceId ?? "Not produced."}
+              </Field>
               <Field label="Version">{deliverable.currentVersion}</Field>
             </dl>
             <p className="measure mt-3 border-l-4 border-border-strong pl-3 text-sm font-semibold">
@@ -525,7 +567,13 @@ function EvidenceView() {
       <Section id="evidence-examples" title="Worked evidence records">
         <RegistryTable
           caption="Example evidence"
-          headers={["Evidence", "Proposition", "Version and environment", "Confidence", "Limitations"]}
+          headers={[
+            "Evidence",
+            "Proposition",
+            "Version and environment",
+            "Confidence",
+            "Limitations",
+          ]}
         >
           {EXAMPLE_EVIDENCE.map((record) => (
             <tr key={record.evidenceId}>
@@ -561,14 +609,26 @@ function EvidenceView() {
       >
         <RegistryTable
           caption="Example claims"
-          headers={["Exact wording", "Evidence", "Contradicted by", "Approval state", "Prohibited wording"]}
+          headers={[
+            "Exact wording",
+            "Evidence",
+            "Contradicted by",
+            "Approval state",
+            "Prohibited wording",
+          ]}
         >
           {EXAMPLE_CLAIMS.map((claim) => (
             <tr key={claim.claimId}>
               <RowHeader>{claim.exactWording}</RowHeader>
-              <Cell>{claim.supportingEvidenceIds.length === 0 ? "None" : claim.supportingEvidenceIds.join(", ")}</Cell>
               <Cell>
-                {claim.contradictingFindingIds.length === 0 ? "Nothing recorded" : claim.contradictingFindingIds.join(", ")}
+                {claim.supportingEvidenceIds.length === 0
+                  ? "None"
+                  : claim.supportingEvidenceIds.join(", ")}
+              </Cell>
+              <Cell>
+                {claim.contradictingFindingIds.length === 0
+                  ? "Nothing recorded"
+                  : claim.contradictingFindingIds.join(", ")}
               </Cell>
               <Cell>{claim.approvalState}</Cell>
               <Cell className="measure">
@@ -589,7 +649,10 @@ function EvidenceView() {
         title="Research and knowledge"
         description="Source, research, finding, interpretation, requirement, and decision are kept apart on purpose."
       >
-        <RegistryTable caption="Knowledge types" headers={["Type", "Obligatory", "How it changes", "Lifecycle note"]}>
+        <RegistryTable
+          caption="Knowledge types"
+          headers={["Type", "Obligatory", "How it changes", "Lifecycle note"]}
+        >
           {KNOWLEDGE_TYPES.map((type) => {
             const meta = KNOWLEDGE_TYPE_META[type];
             return (
@@ -670,7 +733,8 @@ function ContextView() {
           <RecordCard key={pkg.contextPackageId}>
             <h3 className="font-display text-lg font-semibold">{pkg.purpose}</h3>
             <p className="measure mt-2 border-l-4 border-border-strong pl-3 text-sm font-semibold">
-              Status: {CONTEXT_PACKAGE_STATUS_META[pkg.status].label}. This package is not a source of truth.
+              Status: {CONTEXT_PACKAGE_STATUS_META[pkg.status].label}. This package is not a source
+              of truth.
             </p>
             <dl className="mt-2 grid gap-x-6 sm:grid-cols-2">
               <Field label="Requesting actor">{pkg.requestingActorId}</Field>
@@ -711,7 +775,13 @@ function ContextView() {
       <Section id="projection-definitions" title="Projection definitions">
         <RegistryTable
           caption="Context projection definitions"
-          headers={["Definition", "Source type", "Allowed fields", "Forbidden fields", "Classification ceiling"]}
+          headers={[
+            "Definition",
+            "Source type",
+            "Allowed fields",
+            "Forbidden fields",
+            "Classification ceiling",
+          ]}
         >
           {EXAMPLE_PROJECTION_DEFINITIONS.map((definition) => (
             <tr key={definition.projectionDefinitionId}>
@@ -767,7 +837,9 @@ function AuthorizationView() {
             <p className="measure mt-1 text-sm">{rule.statement}</p>
             <dl className="mt-2 grid gap-x-6 sm:grid-cols-2">
               <Field label="Required inputs">
-                <ValueList items={rule.requiredInputs.map((input) => AUTHORIZATION_INPUT_META[input].label)} />
+                <ValueList
+                  items={rule.requiredInputs.map((input) => AUTHORIZATION_INPUT_META[input].label)}
+                />
               </Field>
               <Field label="Default outcome">{rule.defaultOutcome}</Field>
               <Field label="Does not grant">

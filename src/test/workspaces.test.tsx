@@ -283,7 +283,9 @@ describe("notifications", () => {
   it("raises a stop notification only for blocking states", () => {
     for (const notification of notifications) {
       if (notification.severity === "stop") {
-        expect(["gate-blocked", "validation-failed", "critical-risk"]).toContain(notification.trigger);
+        expect(["gate-blocked", "validation-failed", "critical-risk"]).toContain(
+          notification.trigger,
+        );
       }
     }
   });

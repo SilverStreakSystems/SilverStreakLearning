@@ -34,7 +34,17 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F01"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F01", "F09"],
-    objects: ["research-record", "source", "risk", "enterprise-capability", "decision", "requirement", "work-item", "deliverable-instance", "evidence"],
+    objects: [
+      "research-record",
+      "source",
+      "risk",
+      "enterprise-capability",
+      "decision",
+      "requirement",
+      "work-item",
+      "deliverable-instance",
+      "evidence",
+    ],
     deliverableTypes: ["Doctrine statement", "Portfolio decision record", "Option analysis"],
     evidenceRequirements: [
       "Each option carries its supporting evidence and its stated assumptions.",
@@ -57,7 +67,9 @@ const seeds: ValueStreamSeed[] = [
       "Assumptions are treated as evidence.",
     ],
     assumptions: ["A single operator can hold strategy and governance at the current scale."],
-    unknowns: ["What cadence portfolio rebalancing should follow once more than one function exists."],
+    unknowns: [
+      "What cadence portfolio rebalancing should follow once more than one function exists.",
+    ],
     reviewTrigger: "Any material change in boundary, evidence, or capacity.",
     stages: [
       {
@@ -147,12 +159,17 @@ const seeds: ValueStreamSeed[] = [
     name: "Research → Requirement",
     description:
       "Turns a defined evidence need into bounded research and, only when warranted, a governed requirement.",
-    purpose: "Keep the distance between what was found and what is required visible and deliberate.",
-    northStar: "Separates source, finding, interpretation, and requirement so nothing is smuggled forward.",
+    purpose:
+      "Keep the distance between what was found and what is required visible and deliberate.",
+    northStar:
+      "Separates source, finding, interpretation, and requirement so nothing is smuggled forward.",
     humanBeneficiaries: ["Students and educators affected by what SSLS decides is required"],
     enterpriseBeneficiaries: ["Product, Learning Design, and Governance"],
     trigger: "A recorded evidence need or research question enters the research queue.",
-    entry: ["A research question is stated in answerable form.", "The question has a requester and a purpose."],
+    entry: [
+      "A research question is stated in answerable form.",
+      "The question has a requester and a purpose.",
+    ],
     exit: [
       "Findings and interpretations are recorded separately.",
       "A requirement proposal is created or explicitly declined.",
@@ -164,7 +181,15 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F01"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F01", "F09"],
-    objects: ["source", "research-record", "finding", "knowledge-object", "requirement", "evidence", "decision"],
+    objects: [
+      "source",
+      "research-record",
+      "finding",
+      "knowledge-object",
+      "requirement",
+      "evidence",
+      "decision",
+    ],
     deliverableTypes: ["Research brief", "Findings record", "Requirement proposal"],
     evidenceRequirements: [
       "Every finding names its sources and their limitations.",
@@ -282,12 +307,16 @@ const seeds: ValueStreamSeed[] = [
     name: "Requirement → Decision",
     description: "Resolves material choices under explicit authority, with consequences recorded.",
     purpose: "Make choices deliberate, attributable, and revisitable.",
-    northStar: "Makes authority visible: who decided, on what basis, and when it will be reconsidered.",
+    northStar:
+      "Makes authority visible: who decided, on what basis, and when it will be reconsidered.",
     humanBeneficiaries: ["Anyone affected by a choice they did not make"],
     enterpriseBeneficiaries: ["Engineering, Product, Quality, Legal"],
-    trigger: "A requirement contains a material choice that cannot be resolved by an existing rule.",
+    trigger:
+      "A requirement contains a material choice that cannot be resolved by an existing rule.",
     entry: ["A decision question is stated.", "The requirement it serves is identified."],
-    exit: ["A decision is recorded as accepted, refused, or deferred, with rationale and revisit trigger."],
+    exit: [
+      "A decision is recorded as accepted, refused, or deferred, with rationale and revisit trigger.",
+    ],
     capabilities: ["CAP-D01-003", "CAP-D01-005"],
     primaryFunction: "F01",
     supportingFunctions: ["F04", "F06", "F09", "F13"],
@@ -308,7 +337,9 @@ const seeds: ValueStreamSeed[] = [
     ],
     rollbackRecovery:
       "A decision may be superseded by a later decision that names it; the original stays on the record.",
-    outcomeMeasures: ["Decisions carry rationale, consequence, reversibility, and revisit trigger."],
+    outcomeMeasures: [
+      "Decisions carry rationale, consequence, reversibility, and revisit trigger.",
+    ],
     learningLoop: "governance-artifact-lifecycle",
     risks: ["Ambiguous shared accountability.", "Silent decisions taken in implementation."],
     assumptions: ["One operator currently holds most decision rights and records them honestly."],
@@ -388,7 +419,9 @@ const seeds: ValueStreamSeed[] = [
         inputs: ["approval"],
         outputs: ["decision"],
         entry: ["Authority review is complete."],
-        exit: ["The decision, rationale, consequence, reversibility, and revisit trigger are recorded."],
+        exit: [
+          "The decision, rationale, consequence, reversibility, and revisit trigger are recorded.",
+        ],
         refusals: ["Refused with reason recorded, which is a valid outcome."],
         workTypes: ["governance-action"],
       },
@@ -407,7 +440,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "decision-build",
     name: "Decision → Build",
-    description: "Translates an accepted decision and requirement into bounded implementation work.",
+    description:
+      "Translates an accepted decision and requirement into bounded implementation work.",
     purpose: "Make implementation traceable to the decision that authorized it.",
     northStar: "Shows why each piece of work exists and which requirement it serves.",
     humanBeneficiaries: ["Users who receive work that was actually authorized"],
@@ -433,8 +467,12 @@ const seeds: ValueStreamSeed[] = [
       "The decision authorizing the work has been superseded.",
       "A dependency is unowned.",
     ],
-    rollbackRecovery: "Reverse the change and record a finding; the requirement returns to its prior state.",
-    outcomeMeasures: ["Work items trace to authorized decisions.", "Orphan work is surfaced, not hidden."],
+    rollbackRecovery:
+      "Reverse the change and record a finding; the requirement returns to its prior state.",
+    outcomeMeasures: [
+      "Work items trace to authorized decisions.",
+      "Orphan work is surfaced, not hidden.",
+    ],
     learningLoop: "outcome-research",
     risks: ["Implementation completion is read as validation.", "Scope grows without a decision."],
     assumptions: ["Internal review by the builder is insufficient and is treated as such."],
@@ -525,7 +563,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "build-validation",
     name: "Build → Validation",
-    description: "Determines independently whether an implementation satisfies its governed requirement.",
+    description:
+      "Determines independently whether an implementation satisfies its governed requirement.",
     purpose: "Separate what was built from what was proven.",
     northStar: "Makes the difference between planned and executed checks visible.",
     humanBeneficiaries: ["Users who rely on the thing actually working"],
@@ -540,7 +579,14 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F08"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F08", "F09"],
-    objects: ["deliverable-instance", "requirement", "validation", "evidence", "finding", "work-item"],
+    objects: [
+      "deliverable-instance",
+      "requirement",
+      "validation",
+      "evidence",
+      "finding",
+      "work-item",
+    ],
     deliverableTypes: ["Validation plan", "Validation result", "Findings record"],
     evidenceRequirements: [
       "Evidence is bound to the exact version and environment tested.",
@@ -650,7 +696,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "validation-release",
     name: "Validation → Release",
-    description: "Determines whether a validated increment may advance to release, with stop-ship gates intact.",
+    description:
+      "Determines whether a validated increment may advance to release, with stop-ship gates intact.",
     purpose: "Keep release a deliberate authorization rather than a consequence of finishing work.",
     northStar: "Keeps independent axes visible instead of averaging them into a single number.",
     humanBeneficiaries: ["People who would be harmed by an unsafe or inaccessible release"],
@@ -665,7 +712,15 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F01"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F09", "F05", "F08"],
-    objects: ["validation", "evidence", "finding", "approval", "risk", "event", "deliverable-instance"],
+    objects: [
+      "validation",
+      "evidence",
+      "finding",
+      "approval",
+      "risk",
+      "event",
+      "deliverable-instance",
+    ],
     deliverableTypes: ["Release record", "Gate review record", "Hypercare plan"],
     evidenceRequirements: [
       "Accessibility, security, and privacy evidence are each present on their own axis.",
@@ -676,10 +731,14 @@ const seeds: ValueStreamSeed[] = [
       "A security or privacy stop condition is triggered.",
       "Validation evidence is stale relative to the candidate.",
     ],
-    rollbackRecovery: "Roll back the release, record an incident, and enter Incident → Recovery → Learning.",
+    rollbackRecovery:
+      "Roll back the release, record an incident, and enter Incident → Recovery → Learning.",
     outcomeMeasures: ["Every release carries a recorded gate disposition."],
     learningLoop: "incident-recovery-learning",
-    risks: ["Pressure to release overrides a stop condition.", "Silence is treated as gate passage."],
+    risks: [
+      "Pressure to release overrides a stop condition.",
+      "Silence is treated as gate passage.",
+    ],
     assumptions: ["Hypercare is feasible at current scale."],
     unknowns: ["What monitoring is sufficient before external users exist."],
     reviewTrigger: "Any change to the release candidate after gate review.",
@@ -768,7 +827,8 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "evidence-claim",
     name: "Evidence → Claim",
-    description: "Governs any internal, external, or public assertion so no claim exceeds its evidence.",
+    description:
+      "Governs any internal, external, or public assertion so no claim exceeds its evidence.",
     purpose: "Make the exact wording of every claim answerable to specific evidence.",
     northStar: "Keeps the gap between what is known and what is said visible.",
     humanBeneficiaries: ["Districts and families who rely on accurate statements"],
@@ -893,8 +953,10 @@ const seeds: ValueStreamSeed[] = [
   {
     id: "governance-artifact-lifecycle",
     name: "Governance Artifact → Promotion / Supersession",
-    description: "Manages the lifecycle of governed project artifacts, connecting directly to the Governance Spine.",
-    purpose: "Ensure the governing record itself is versioned, reviewed, and never silently replaced.",
+    description:
+      "Manages the lifecycle of governed project artifacts, connecting directly to the Governance Spine.",
+    purpose:
+      "Ensure the governing record itself is versioned, reviewed, and never silently replaced.",
     northStar: "Makes it clear which document governs today and which one used to.",
     humanBeneficiaries: ["Anyone who must follow the current rule rather than an old one"],
     enterpriseBeneficiaries: ["Every function that relies on standing rules"],
@@ -908,7 +970,16 @@ const seeds: ValueStreamSeed[] = [
     decisionAuthorities: ["F01"],
     validationAuthorities: ["F08"],
     stopAuthorities: ["F01"],
-    objects: ["standard", "policy-rule", "knowledge-object", "decision", "approval", "review", "finding", "artifact-reference"],
+    objects: [
+      "standard",
+      "policy-rule",
+      "knowledge-object",
+      "decision",
+      "approval",
+      "review",
+      "finding",
+      "artifact-reference",
+    ],
     deliverableTypes: ["Standard", "Doctrine statement", "Supersession record"],
     evidenceRequirements: [
       "A conflict check against existing artifacts is recorded before promotion.",
@@ -919,7 +990,9 @@ const seeds: ValueStreamSeed[] = [
       "No authority is willing to own the artifact.",
     ],
     rollbackRecovery: "Restore the prior artifact version and record the reversal as a decision.",
-    outcomeMeasures: ["Every governing artifact states its authority class and its supersession status."],
+    outcomeMeasures: [
+      "Every governing artifact states its authority class and its supersession status.",
+    ],
     learningLoop: "outcome-research",
     risks: ["Two artifacts govern the same subject.", "A draft is used as if it were approved."],
     assumptions: ["Markdown documents plus the authority ledger are sufficient at this stage."],

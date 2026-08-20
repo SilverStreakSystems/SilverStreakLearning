@@ -69,7 +69,8 @@ export const AUTHORITY_CLASS_META: Record<AuthorityClass, AuthorityClassMeta> = 
     id: "historical-evidence",
     label: "Historical Evidence",
     rank: 6,
-    meaning: "A record of what was true at a point in time. Visible, but does not define current truth.",
+    meaning:
+      "A record of what was true at a point in time. Visible, but does not define current truth.",
     carriesImplementationAuthority: false,
   },
   "demo-synthetic-placeholder": {

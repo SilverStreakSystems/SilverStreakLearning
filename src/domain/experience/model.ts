@@ -153,20 +153,7 @@ export interface PageBlueprint {
 }
 
 /** Desktop planning grid columns, A through L. */
-export const GRID_COLUMNS = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-] as const;
+export const GRID_COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"] as const;
 
 export const GRID_ROW_COUNT = 12;
 
@@ -223,7 +210,13 @@ export const STATUS_LANGUAGE = [
   "Not authorized",
 ] as const;
 
-export const REFUSED_STATUS_LANGUAGE = ["Good", "Healthy", "On track", "All clear", "Green"] as const;
+export const REFUSED_STATUS_LANGUAGE = [
+  "Good",
+  "Healthy",
+  "On track",
+  "All clear",
+  "Green",
+] as const;
 
 /* ------------------------------------------------------- tokens and assets */
 
@@ -398,6 +391,10 @@ export function componentsBelowTarget(records: ComponentGeometryRecord[]): strin
     .map((record) => record.component);
 }
 
-export function unrecordedValidationViewports(viewports: ValidationViewport[]): ValidationViewport[] {
-  return viewports.filter((viewport) => viewport.result === "not-run" || viewport.recordedOn === null);
+export function unrecordedValidationViewports(
+  viewports: ValidationViewport[],
+): ValidationViewport[] {
+  return viewports.filter(
+    (viewport) => viewport.result === "not-run" || viewport.recordedOn === null,
+  );
 }

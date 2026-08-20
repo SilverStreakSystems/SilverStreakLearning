@@ -13,9 +13,11 @@ import {
   DesignSystemViewTabs,
   MaturityChip,
   ValidationChip,
+} from "@/components/governance/design-system-controls";
+import {
   parseDesignSystemSearch,
   type DesignSystemSearch,
-} from "@/components/governance/design-system-controls";
+} from "@/components/governance/design-system-view-model";
 import {
   SSLSConstellation,
   SSLSLockup,
@@ -219,7 +221,11 @@ function TokensView() {
       </p>
 
       {groups.map((group) => (
-        <Section key={group} id={`tokens-${group.toLowerCase().replace(/\s+/g, "-")}`} title={group}>
+        <Section
+          key={group}
+          id={`tokens-${group.toLowerCase().replace(/\s+/g, "-")}`}
+          title={group}
+        >
           <RegistryTable
             caption={`${group} tokens, their values, and their intended use.`}
             headers={["Token", "Value", "Use"]}
@@ -368,7 +374,15 @@ function GridView() {
       <Section id="viewport-bands" title="Grid dimensions by viewport">
         <RegistryTable
           caption="Viewport bands with column count, gutters, content ceiling, and shell behavior."
-          headers={["Band", "Columns", "Outer gutter", "Column gap", "Max content", "Shell", "Content"]}
+          headers={[
+            "Band",
+            "Columns",
+            "Outer gutter",
+            "Column gap",
+            "Max content",
+            "Shell",
+            "Content",
+          ]}
         >
           {VIEWPORT_BANDS.map((band) => (
             <tr key={band.bandId}>
@@ -497,7 +511,15 @@ function AssetsView() {
       <Section id="asset-matrix" title="Asset export matrix">
         <RegistryTable
           caption="Required exports per asset, with the component and provenance that back them."
-          headers={["Asset", "Component", "SVG", "PNG sizes", "Backgrounds", "Decorative only", "Notes"]}
+          headers={[
+            "Asset",
+            "Component",
+            "SVG",
+            "PNG sizes",
+            "Backgrounds",
+            "Decorative only",
+            "Notes",
+          ]}
         >
           {BRAND_ASSETS.map((asset) => (
             <tr key={asset.assetId}>
@@ -531,8 +553,7 @@ function TemplatesView({ search }: { search: DesignSystemSearch }) {
   const templates = INTERFACE_TEMPLATES.filter((template) => {
     const matchesMaturity = search.maturity === "all" || template.maturity === search.maturity;
     const matchesQuery =
-      query.length === 0 ||
-      `${template.name} ${template.primaryJob}`.toLowerCase().includes(query);
+      query.length === 0 || `${template.name} ${template.primaryJob}`.toLowerCase().includes(query);
     return matchesMaturity && matchesQuery;
   });
 
@@ -606,7 +627,13 @@ function TemplatesView({ search }: { search: DesignSystemSearch }) {
         <div className="mt-4">
           <RegistryTable
             caption="Interface templates with primary job, required anatomy, declared maturity, and implementing routes."
-            headers={["Template", "Primary job", "Required anatomy", "Maturity", "Implementing routes"]}
+            headers={[
+              "Template",
+              "Primary job",
+              "Required anatomy",
+              "Maturity",
+              "Implementing routes",
+            ]}
           >
             {templates.map((template) => (
               <tr key={template.templateId}>
@@ -706,7 +733,14 @@ function FamiliesView() {
       <div className="mt-4">
         <RegistryTable
           caption="Experience families with density, home experience, emphasis, and declared maturity."
-          headers={["Capacity", "Density", "Home experience", "Template emphasis", "Access emphasis", "Maturity"]}
+          headers={[
+            "Capacity",
+            "Density",
+            "Home experience",
+            "Template emphasis",
+            "Access emphasis",
+            "Maturity",
+          ]}
         >
           {EXPERIENCE_FAMILIES.map((family) => (
             <tr key={family.familyId}>
@@ -791,8 +825,8 @@ function StatesView() {
         Content and status state templates
       </h2>
       <p className="measure mt-1 text-sm text-muted-foreground">
-        Every state says what happened, why, and what to do next. Refusal is presented as
-        successful governance where that is the truth.
+        Every state says what happened, why, and what to do next. Refusal is presented as successful
+        governance where that is the truth.
       </p>
 
       <div className="mt-4">
@@ -822,7 +856,9 @@ function StatesView() {
               No saved views exist yet. Saved views are not implemented in this posture, so this
               list is empty by design rather than by failure.
             </p>
-            <p className="mt-2 text-sm font-semibold">Next action: use the maturity filter above.</p>
+            <p className="mt-2 text-sm font-semibold">
+              Next action: use the maturity filter above.
+            </p>
           </RecordCard>
 
           <RecordCard>

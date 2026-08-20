@@ -65,8 +65,6 @@ export function toFutureWorkspaceView(workspace: WorkspaceDefinition): FutureWor
  * A workspace leaves this list only by becoming current in the canonical
  * source, never by being edited here.
  */
-export function deriveFutureWorkspaces(
-  workspaces: WorkspaceDefinition[],
-): FutureWorkspaceView[] {
+export function deriveFutureWorkspaces(workspaces: WorkspaceDefinition[]): FutureWorkspaceView[] {
   return workspaces.filter((workspace) => !operatesNow(workspace)).map(toFutureWorkspaceView);
 }

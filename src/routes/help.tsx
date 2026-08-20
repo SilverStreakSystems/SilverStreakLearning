@@ -48,7 +48,9 @@ function HelpPage() {
             <tr key={entry.entryId}>
               <RowHeader>
                 {entry.title}
-                <span className="mt-1 block text-xs font-normal text-muted-foreground">{entry.body}</span>
+                <span className="mt-1 block text-xs font-normal text-muted-foreground">
+                  {entry.body}
+                </span>
               </RowHeader>
               <Cell>{HELP_CONTENT_KIND_META[entry.kind].label}</Cell>
               <Cell>{entry.authorityClass}</Cell>
@@ -72,7 +74,9 @@ function HelpPage() {
             <tr key={entry.entryId}>
               <RowHeader>
                 {entry.title}
-                <span className="mt-1 block text-xs font-normal text-muted-foreground">{entry.body}</span>
+                <span className="mt-1 block text-xs font-normal text-muted-foreground">
+                  {entry.body}
+                </span>
               </RowHeader>
               <Cell>{HELP_CONTENT_KIND_META[entry.kind].label}</Cell>
               <Cell>{entry.source}</Cell>

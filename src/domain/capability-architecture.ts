@@ -204,7 +204,10 @@ export function stageIndex(stage: ScaleStage): number {
 }
 
 /** True when a stage is at or before the current declared stage. */
-export function stageReached(stage: ScaleStage, current: ScaleStage = CURRENT_SCALE_STAGE): boolean {
+export function stageReached(
+  stage: ScaleStage,
+  current: ScaleStage = CURRENT_SCALE_STAGE,
+): boolean {
   return stageIndex(stage) <= stageIndex(current);
 }
 

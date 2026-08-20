@@ -16,42 +16,12 @@ import {
   type ObjectFamily,
   type StateAxis,
 } from "@/domain";
-
-export const OBJECT_VIEWS = [
-  { id: "catalog", label: "Object catalog" },
-  { id: "types", label: "Object types" },
-  { id: "relationships", label: "Relationship model" },
-  { id: "states", label: "State models" },
-  { id: "work", label: "Work model" },
-  { id: "deliverables", label: "Deliverable model" },
-  { id: "evidence", label: "Evidence model" },
-  { id: "context", label: "Context model" },
-  { id: "authorization", label: "Authorization model" },
-  { id: "lifecycle", label: "Lifecycle model" },
-  { id: "normalization", label: "Normalization findings" },
-] as const;
-
-export type ObjectView = (typeof OBJECT_VIEWS)[number]["id"];
-
-export interface ObjectSearch {
-  view: ObjectView;
-  family: ObjectFamily | "all";
-  canonicality: Canonicality | "all";
-  instantiability: Instantiability | "all";
-  axis: StateAxis | "all";
-  classification: DataClassification | "all";
-  q: string;
-}
-
-export const DEFAULT_OBJECT_SEARCH: ObjectSearch = {
-  view: "catalog",
-  family: "all",
-  canonicality: "all",
-  instantiability: "all",
-  axis: "all",
-  classification: "all",
-  q: "",
-};
+import {
+  DEFAULT_OBJECT_SEARCH,
+  OBJECT_VIEWS,
+  type ObjectSearch,
+  type ObjectView,
+} from "./object-view-model";
 
 /** Views are links so every view is addressable and survives a detour into detail. */
 export function ObjectViewTabs({ current, search }: { current: ObjectView; search: ObjectSearch }) {
@@ -169,7 +139,9 @@ export function ObjectFilterBar({
           value={search.instantiability}
           options={INSTANTIABILITY}
           optionLabel={(option) => INSTANTIABILITY_META[option].label}
-          onChange={(value) => onChange({ instantiability: value as ObjectSearch["instantiability"] })}
+          onChange={(value) =>
+            onChange({ instantiability: value as ObjectSearch["instantiability"] })
+          }
         />
         <FilterSelect
           id="object-axis"
@@ -185,7 +157,9 @@ export function ObjectFilterBar({
           value={search.classification}
           options={DATA_CLASSIFICATIONS}
           optionLabel={(option) => DATA_CLASSIFICATION_LABEL[option]}
-          onChange={(value) => onChange({ classification: value as ObjectSearch["classification"] })}
+          onChange={(value) =>
+            onChange({ classification: value as ObjectSearch["classification"] })
+          }
         />
         <div className="flex items-end">
           <Link
@@ -243,27 +217,4 @@ export function AxisChip({ axis }: { axis: StateAxis }) {
       <span>{STATE_AXIS_META[axis].label}</span>
     </span>
   );
-}
-
-/* ------------------------------------------------------- search validation */
-
-function option<T extends string>(value: unknown, allowed: readonly T[]): T | "all" {
-  return typeof value === "string" && (allowed as readonly string[]).includes(value)
-    ? (value as T)
-    : "all";
-}
-
-export function parseObjectSearch(search: Record<string, unknown>): ObjectSearch {
-  const view = OBJECT_VIEWS.map((v) => v.id).includes(search["view"] as ObjectView)
-    ? (search["view"] as ObjectView)
-    : "catalog";
-  return {
-    view,
-    family: option<ObjectFamily>(search["family"], OBJECT_FAMILIES),
-    canonicality: option<Canonicality>(search["canonicality"], CANONICALITY),
-    instantiability: option<Instantiability>(search["instantiability"], INSTANTIABILITY),
-    axis: option<StateAxis>(search["axis"], STATE_AXES),
-    classification: option<DataClassification>(search["classification"], DATA_CLASSIFICATIONS),
-    q: typeof search["q"] === "string" ? (search["q"] as string) : "",
-  };
 }

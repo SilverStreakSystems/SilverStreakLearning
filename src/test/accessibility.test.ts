@@ -28,7 +28,6 @@ describe("accessibility commitments in the stylesheet", () => {
     expect(styles).toContain("@utility measure");
     expect(styles).toContain("--prose-measure: 72ch");
     expect(styles).toContain("max-width: var(--prose-measure)");
-
   });
 
   it("does not disable text size adjustment on zoom", () => {

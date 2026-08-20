@@ -397,7 +397,9 @@ ${table(
 ## Obligations whose evidence cannot be produced internally
 
 ${obligations
-  .filter((r) => /independent|CPA|certification|conformance testing|legal/i.test(r.minimum_evidence_method))
+  .filter((r) =>
+    /independent|CPA|certification|conformance testing|legal/i.test(r.minimum_evidence_method),
+  )
   .map((r) => `- **${r.obligation_id}** ${r.title} — ${r.minimum_evidence_method}`)
   .join("\n")}
 `,
@@ -454,7 +456,9 @@ ${table(
 ## Detail
 
 ${conflicts
-  .map((r) => `### ${r.conflict_id} — ${r.title}\n\n${r.description}\n\nRoute: ${r.resolution_route}`)
+  .map(
+    (r) => `### ${r.conflict_id} — ${r.title}\n\n${r.description}\n\nRoute: ${r.resolution_route}`,
+  )
   .join("\n\n")}
 `,
 );
@@ -494,7 +498,14 @@ Each data class that SSLS does not currently hold, and what would attach if it d
 false for every class in this table; that is the finding, not an omission.
 
 ${table(
-  ["Data class", "Current use", "Future candidate", "Sensitivity", "Domains activated", "Prerequisite review"],
+  [
+    "Data class",
+    "Current use",
+    "Future candidate",
+    "Sensitivity",
+    "Domains activated",
+    "Prerequisite review",
+  ],
   data_triggers.map((r) => [
     r.data_class,
     r.current_use ? "yes" : "no",
@@ -534,12 +545,7 @@ ${PROHIBITED_OBLIGATION_CLAIMS.map((c) => `- ${c}`).join("\n")}
 
 ${table(
   ["ID", "Obligation", "Permitted statement", "Refused wording"],
-  obligations.map((r) => [
-    r.obligation_id,
-    r.title,
-    r.claim_implication,
-    r.prohibited_claim,
-  ]),
+  obligations.map((r) => [r.obligation_id, r.title, r.claim_implication, r.prohibited_claim]),
 )}
 
 ## Why applicability is not compliance

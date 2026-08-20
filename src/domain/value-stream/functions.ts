@@ -176,7 +176,8 @@ export const ENTERPRISE_FUNCTION_META: Record<EnterpriseFunctionId, EnterpriseFu
   F15: {
     id: "F15",
     name: "People and Organizational Learning",
-    accountability: "Staff and sustain the capabilities the enterprise needs, and close learning loops.",
+    accountability:
+      "Staff and sustain the capabilities the enterprise needs, and close learning loops.",
     capabilityDomains: ["D11", "D12"],
     accountableRoleCandidate: "Head of People",
     expertIcCandidate: "Workforce planning lead",

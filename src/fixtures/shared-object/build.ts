@@ -52,7 +52,8 @@ const VERSIONING: Record<Canonicality, string> = {
 };
 
 const AUDIT: Record<Canonicality, string> = {
-  canonical: "All create, update, supersede, and archive actions are audited with actor and reason.",
+  canonical:
+    "All create, update, supersede, and archive actions are audited with actor and reason.",
   derived: "Each computation records source facts, rule version, and timestamp.",
   projection: "Assembly is audited: purpose, requester, capacity, sources, and refusals.",
   reference: "Declaration and retirement are audited. No routine writes occur.",

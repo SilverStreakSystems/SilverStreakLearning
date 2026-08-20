@@ -34,9 +34,11 @@ export const EXAMPLE_WORK_ITEMS: WorkItem[] = [
   {
     workItemId: "WRK-001",
     workType: "governance-action",
-    purpose: "Give the shared object catalog a reviewable definition before any storage is designed.",
+    purpose:
+      "Give the shared object catalog a reviewable definition before any storage is designed.",
     title: "Define the shared object catalog",
-    description: "Produce candidate definitions for every shared object type, with normalization judgments recorded.",
+    description:
+      "Produce candidate definitions for every shared object type, with normalization judgments recorded.",
     owner: "role-founder-developer",
     contributors: [],
     servedObjectId: "OBJ-TYPE-CATALOG",
@@ -57,14 +59,18 @@ export const EXAMPLE_WORK_ITEMS: WorkItem[] = [
     requiredEvidenceIds: ["EVD-SO-001"],
     completionResult: "Catalog defined with thirty-two types; nine candidates demoted or deferred.",
     escalationRoleId: null,
-    provenance: provenance("src/fixtures/shared-object/catalog.ts", "Definition work only. No storage exists."),
+    provenance: provenance(
+      "src/fixtures/shared-object/catalog.ts",
+      "Definition work only. No storage exists.",
+    ),
     auditRequired: true,
     synthetic: true,
   },
   {
     workItemId: "WRK-002",
     workType: "validation-work",
-    purpose: "Check that authority state cannot be read off implementation state anywhere in the shell.",
+    purpose:
+      "Check that authority state cannot be read off implementation state anywhere in the shell.",
     title: "Validate state axis independence",
     description: "Automated checks over the domain vocabularies and fixtures.",
     owner: "role-founder-developer",
@@ -81,9 +87,13 @@ export const EXAMPLE_WORK_ITEMS: WorkItem[] = [
     acceptanceCriteria: ["No axis value implies a value on another axis."],
     requiredDeliverableTypeIds: ["DT-09"],
     requiredEvidenceIds: ["EVD-SO-002"],
-    completionResult: "Checks pass. Independence is asserted by the same operator who built the model.",
+    completionResult:
+      "Checks pass. Independence is asserted by the same operator who built the model.",
     escalationRoleId: null,
-    provenance: provenance("src/test/shared-object.test.ts", "Self-executed. Not independent validation."),
+    provenance: provenance(
+      "src/test/shared-object.test.ts",
+      "Self-executed. Not independent validation.",
+    ),
     auditRequired: true,
     synthetic: true,
   },
@@ -110,7 +120,10 @@ export const EXAMPLE_WORK_ITEMS: WorkItem[] = [
     requiredEvidenceIds: [],
     completionResult: null,
     escalationRoleId: "role-founder-developer",
-    provenance: provenance("docs/shared-object/OBJECT_OPEN_QUESTIONS.md", "An open question, not a plan."),
+    provenance: provenance(
+      "docs/shared-object/OBJECT_OPEN_QUESTIONS.md",
+      "An open question, not a plan.",
+    ),
     auditRequired: true,
     synthetic: true,
   },
@@ -152,7 +165,11 @@ export const EXAMPLE_DELIVERABLES: DeliverableInstance[] = [
     linkedCapabilityIds: ["CAP-D01-003"],
     linkedRequirementIds: ["REQ-001"],
     linkedDecisionIds: ["DEC-001"],
-    requiredContents: ["Type definitions", "Normalization dispositions", "Relationship permissions"],
+    requiredContents: [
+      "Type definitions",
+      "Normalization dispositions",
+      "Relationship permissions",
+    ],
     acceptanceCriteria: ["Every type answers the eighteen detail questions."],
     artifactReferenceId: "ART-001",
     requiredEvidenceIds: ["EVD-SO-001"],
@@ -166,7 +183,10 @@ export const EXAMPLE_DELIVERABLES: DeliverableInstance[] = [
     supersedes: [],
     supersededBy: null,
     claimRelevance: [],
-    provenance: provenance("src/fixtures/shared-object/catalog.ts", "Produced and reviewed by the same operator."),
+    provenance: provenance(
+      "src/fixtures/shared-object/catalog.ts",
+      "Produced and reviewed by the same operator.",
+    ),
     synthetic: true,
   },
 ];
@@ -218,7 +238,8 @@ export const EXAMPLE_RESEARCH: ResearchRecord[] = [
   {
     researchId: "RSR-001",
     question: "Should dependency, handoff, escalation, and commitment be first-class objects?",
-    method: "Comparison of the questions each must answer against the questions a typed edge can answer.",
+    method:
+      "Comparison of the questions each must answer against the questions a typed edge can answer.",
     sourceIds: ["SRC-001"],
     observations: [
       {
@@ -230,7 +251,8 @@ export const EXAMPLE_RESEARCH: ResearchRecord[] = [
         confidence: "confirmed",
       },
       {
-        statement: "Making them objects would double the number of records without adding a question they answer.",
+        statement:
+          "Making them objects would double the number of records without adding a question they answer.",
         confidence: "supported-interpretation",
       },
     ],
@@ -242,7 +264,10 @@ export const EXAMPLE_RESEARCH: ResearchRecord[] = [
     authorityState: "research-candidate",
     freshnessState: "current",
     publicationState: "internal",
-    provenance: provenance("docs/shared-object/RELATIONSHIP_NORMALIZATION_FINDINGS.md", "Reasoning, not measurement."),
+    provenance: provenance(
+      "docs/shared-object/RELATIONSHIP_NORMALIZATION_FINDINGS.md",
+      "Reasoning, not measurement.",
+    ),
     synthetic: true,
   },
 ];
@@ -261,7 +286,10 @@ export const EXAMPLE_KNOWLEDGE: KnowledgeObjectRecord[] = [
     supersedes: [],
     supersededBy: null,
     reviewTrigger: "Any new product domain enters the architecture.",
-    provenance: provenance("docs/shared-object/SHARED_ENTERPRISE_OBJECT_ARCHITECTURE.md", "Guidance, not policy."),
+    provenance: provenance(
+      "docs/shared-object/SHARED_ENTERPRISE_OBJECT_ARCHITECTURE.md",
+      "Guidance, not policy.",
+    ),
     synthetic: true,
   },
 ];
@@ -275,7 +303,8 @@ export const EXAMPLE_EVIDENCE: SharedEvidenceRecord[] = [
     collectedAt: "2026-01-05",
     subjectVersion: "catalog 0.1.0",
     environment: null,
-    scenario: "Read each catalog record and check the reason for existence is non-empty and specific.",
+    scenario:
+      "Read each catalog record and check the reason for existence is non-empty and specific.",
     method: "Manual read plus an automated non-empty check.",
     expectedResult: "No record has a missing or generic reason.",
     actualResult: "No record missing. Specificity is a judgment the same operator made.",
@@ -299,7 +328,8 @@ export const EXAMPLE_EVIDENCE: SharedEvidenceRecord[] = [
   {
     evidenceId: "EVD-SO-002",
     evidenceType: "automated-test",
-    propositionSupported: "State axes are independent: no axis value implies a value on another axis.",
+    propositionSupported:
+      "State axes are independent: no axis value implies a value on another axis.",
     sourceId: "SRC-001",
     collectedAt: "2026-01-05",
     subjectVersion: "shell 0.3.0",
@@ -376,7 +406,10 @@ export const EXAMPLE_CLAIMS: GovernedClaim[] = [
     expiresAt: null,
     prohibitedWording: ["privacy-preserving", "privacy-compliant", "FERPA compliant"],
     supersededWording: [],
-    provenance: provenance("docs/shared-object/CLAIM_MODEL.md", "Recorded so the wording stays refused."),
+    provenance: provenance(
+      "docs/shared-object/CLAIM_MODEL.md",
+      "Recorded so the wording stays refused.",
+    ),
     synthetic: true,
   },
 ];
@@ -387,7 +420,14 @@ export const EXAMPLE_PROJECTION_DEFINITIONS: ContextProjectionDefinition[] = [
     name: "Governance review projection",
     purpose: "Let a reviewer evaluate a deliverable without seeing unrelated registers.",
     sourceObjectTypeId: "deliverable-instance",
-    allowedFields: ["title", "purpose", "acceptanceCriteria", "currentVersion", "evidenceState", "validationState"],
+    allowedFields: [
+      "title",
+      "purpose",
+      "acceptanceCriteria",
+      "currentVersion",
+      "evidenceState",
+      "validationState",
+    ],
     forbiddenFields: ["artifactReferenceId", "responsibleContributors"],
     requiredRelationshipBasis: "Reviewer is assigned to the deliverable under a review record.",
     requiredPolicyBasis: ["POL-INDEPENDENCE-001"],
@@ -411,7 +451,13 @@ export const EXAMPLE_CONTEXT_PACKAGES: ContextPackage[] = [
       {
         sourceObjectId: "DLV-001",
         sourceObjectTypeId: "deliverable-instance",
-        includedFields: ["title", "purpose", "acceptanceCriteria", "evidenceState", "validationState"],
+        includedFields: [
+          "title",
+          "purpose",
+          "acceptanceCriteria",
+          "evidenceState",
+          "validationState",
+        ],
         excludedSensitiveFields: [
           { field: "responsibleContributors", reason: "Not needed to judge readiness." },
         ],
@@ -420,7 +466,9 @@ export const EXAMPLE_CONTEXT_PACKAGES: ContextPackage[] = [
         sourceUpdatedAt: "2026-01-05",
       },
     ],
-    missingInformation: ["No independent review has been performed, so reviewer findings are absent."],
+    missingInformation: [
+      "No independent review has been performed, so reviewer findings are absent.",
+    ],
     conflicts: [
       "The deliverable reports evidence as partial while its supporting evidence record reports confidence as interpretation only.",
     ],
@@ -451,7 +499,8 @@ export const EXAMPLE_AUTHORIZATION_RULES: AuthorizationRule[] = [
       "No authority to publish a claim without evidence.",
       "No authority to mark a self-performed check as independent validation.",
     ],
-    authorityNote: "Accepted decision under the current posture. Expires when a second operator exists.",
+    authorityNote:
+      "Accepted decision under the current posture. Expires when a second operator exists.",
     synthetic: true,
   },
   {

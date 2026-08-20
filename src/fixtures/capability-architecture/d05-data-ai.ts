@@ -168,7 +168,8 @@ const seeds: CapabilitySeed[] = [
     stages: ["S0", "S2", "S2", "S2", "S3"],
     gates: ["before-product-ai"],
     risk: "Automated harm to learners with no accountable human.",
-    notes: "No AI feature exists in the current posture. This record is preparation, not deployment.",
+    notes:
+      "No AI feature exists in the current posture. This record is preparation, not deployment.",
   },
   {
     id: "CAP-D05-008",

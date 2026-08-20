@@ -45,9 +45,7 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
     maturity: "implemented",
     implementingRoutes: ["/"],
     blueprintId: "BP-COMMAND-CENTER",
-    openUnknowns: [
-      "Region geometry has not been measured against the blueprint coordinates.",
-    ],
+    openUnknowns: ["Region geometry has not been measured against the blueprint coordinates."],
   },
   {
     templateId: "TPL-03",
@@ -72,12 +70,7 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
     templateId: "TPL-04",
     name: "Focus Workspace",
     primaryJob: "Support deep work on one object.",
-    requiredAnatomy: [
-      "Active object",
-      "Minimized navigation",
-      "Context rail",
-      "Workflow stepper",
-    ],
+    requiredAnatomy: ["Active object", "Minimized navigation", "Context rail", "Workflow stepper"],
     maturity: "research-candidate",
     implementingRoutes: [],
     blueprintId: null,
@@ -97,7 +90,14 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
       "Bulk action if authorized",
     ],
     maturity: "implemented",
-    implementingRoutes: ["/capabilities", "/objects", "/value-streams", "/findings", "/evidence", "/decisions"],
+    implementingRoutes: [
+      "/capabilities",
+      "/objects",
+      "/value-streams",
+      "/findings",
+      "/evidence",
+      "/decisions",
+    ],
     blueprintId: "BP-REGISTRY",
     openUnknowns: [
       "Saved views and bulk action are not built; the registries are read only by posture.",
@@ -119,7 +119,11 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
       "Access",
     ],
     maturity: "implemented",
-    implementingRoutes: ["/capabilities/$capabilityId", "/objects/$typeId", "/value-streams/$streamId"],
+    implementingRoutes: [
+      "/capabilities/$capabilityId",
+      "/objects/$typeId",
+      "/value-streams/$streamId",
+    ],
     blueprintId: "BP-RECORD-DETAIL",
     openUnknowns: ["History and access sections are not yet rendered on every detail route."],
   },
@@ -140,7 +144,9 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
     maturity: "specified",
     implementingRoutes: [],
     blueprintId: null,
-    openUnknowns: ["Requires assignable work items with owners, which this posture does not operate."],
+    openUnknowns: [
+      "Requires assignable work items with owners, which this posture does not operate.",
+    ],
   },
   {
     templateId: "TPL-08",
@@ -231,7 +237,9 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
     maturity: "prototype",
     implementingRoutes: ["/findings"],
     blueprintId: null,
-    openUnknowns: ["Findings are recorded, but no criteria-bound review instrument is implemented."],
+    openUnknowns: [
+      "Findings are recorded, but no criteria-bound review instrument is implemented.",
+    ],
   },
   {
     templateId: "TPL-13",
@@ -248,7 +256,9 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
     maturity: "prototype",
     implementingRoutes: ["/decisions", "/authority"],
     blueprintId: null,
-    openUnknowns: ["Approvals are displayed as fixtures; no approval can be executed in this build."],
+    openUnknowns: [
+      "Approvals are displayed as fixtures; no approval can be executed in this build.",
+    ],
   },
   {
     templateId: "TPL-14",
@@ -292,13 +302,7 @@ export const INTERFACE_TEMPLATES: InterfaceTemplate[] = [
     templateId: "TPL-17",
     name: "Notification Center",
     primaryJob: "Present an action-aware change stream.",
-    requiredAnatomy: [
-      "What happened",
-      "Why it matters",
-      "Affected object",
-      "Action",
-      "Deadline",
-    ],
+    requiredAnatomy: ["What happened", "Why it matters", "Affected object", "Action", "Deadline"],
     maturity: "gated-future",
     implementingRoutes: [],
     blueprintId: null,

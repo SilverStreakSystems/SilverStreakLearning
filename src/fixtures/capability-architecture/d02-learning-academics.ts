@@ -145,7 +145,10 @@ const seeds: CapabilitySeed[] = [
     ind: "required",
     sod: "Specialist review is separate from product prioritization.",
     deliverables: ["DT-05", "DT-07", "DT-13"],
-    evidence: ["Specialist review of each specialized design", "Named population scope per program"],
+    evidence: [
+      "Specialist review of each specialized design",
+      "Named population scope per program",
+    ],
     stages: ["S1", "S1", "S2", "S2", "S3"],
     gates: ["before-district-pilot"],
     risk: "SSLS reproduces the exclusion it exists to correct.",
@@ -236,7 +239,10 @@ const seeds: CapabilitySeed[] = [
     ind: "conditional",
     indTrigger: "When alignment is stated in procurement material.",
     deliverables: ["DT-09", "DT-16"],
-    evidence: ["Alignment register with revision dates", "Evidence reference for each stated alignment"],
+    evidence: [
+      "Alignment register with revision dates",
+      "Evidence reference for each stated alignment",
+    ],
     stages: ["S1", "S2", "S3", "S3", "S3"],
     gates: ["before-public-outcome-claims"],
     risk: "Misleading procurement claims.",

@@ -3,12 +3,8 @@ import { PageHeader, RecordCard, Section } from "@/components/governance/page";
 import { AuthorityBadge } from "@/components/governance/authority-badge";
 import { StateChip } from "@/components/governance/state-chip";
 import { Field, SyntheticMarker, ValueList } from "@/components/governance/markers";
-import {
-  GateChip,
-  IndependenceChip,
-  StageChip,
-  parseCapabilitySearch,
-} from "@/components/governance/capability-controls";
+import { GateChip, IndependenceChip, StageChip } from "@/components/governance/capability-controls";
+import { parseCapabilitySearch } from "@/components/governance/capability-view-model";
 import { CAPABILITY_DEPENDENCIES, ENTERPRISE_CAPABILITIES } from "@/fixtures";
 import {
   BENEFICIARY_LABEL,
@@ -61,7 +57,11 @@ function CapabilityDetail() {
           summary={`No candidate capability is recorded under the identifier ${capabilityId}. Absence here means no record exists, not that the ability is unnecessary.`}
         />
         <p className="mt-6">
-          <Link to="/capabilities" search={search} className="font-semibold underline underline-offset-2">
+          <Link
+            to="/capabilities"
+            search={search}
+            className="font-semibold underline underline-offset-2"
+          >
             Return to the capability registry
           </Link>
         </p>
@@ -86,7 +86,11 @@ function CapabilityDetail() {
           {capability.synthetic ? <SyntheticMarker /> : null}
         </div>
         <p className="mt-3">
-          <Link to="/capabilities" search={search} className="text-sm font-semibold underline underline-offset-2">
+          <Link
+            to="/capabilities"
+            search={search}
+            className="text-sm font-semibold underline underline-offset-2"
+          >
             Back to the capability registry, with your filters kept
           </Link>
         </p>
@@ -255,9 +259,13 @@ function CapabilityDetail() {
       >
         <div className="grid gap-4 md:grid-cols-2">
           <RecordCard>
-            <h3 className="font-display text-lg font-semibold">This capability depends on or affects</h3>
+            <h3 className="font-display text-lg font-semibold">
+              This capability depends on or affects
+            </h3>
             {outgoing.length === 0 ? (
-              <p className="mt-2 text-sm text-muted-foreground">No outgoing relationship recorded.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                No outgoing relationship recorded.
+              </p>
             ) : (
               <ul className="mt-2 space-y-2 text-sm">
                 {outgoing.map((dependency) => (
@@ -278,9 +286,13 @@ function CapabilityDetail() {
             )}
           </RecordCard>
           <RecordCard>
-            <h3 className="font-display text-lg font-semibold">Other capabilities that rely on this one</h3>
+            <h3 className="font-display text-lg font-semibold">
+              Other capabilities that rely on this one
+            </h3>
             {incoming.length === 0 ? (
-              <p className="mt-2 text-sm text-muted-foreground">No incoming relationship recorded.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                No incoming relationship recorded.
+              </p>
             ) : (
               <ul className="mt-2 space-y-2 text-sm">
                 {incoming.map((dependency) => (
