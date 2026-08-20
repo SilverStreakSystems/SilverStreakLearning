@@ -173,25 +173,28 @@ describe("DEC-020 projections agree", () => {
     expect(fnd022?.evidenceReferences).toContain("EV-042");
 
     const fnd023 = FINDINGS.find((entry) => entry.id === "FND-023");
-    expect(fnd023?.resolutionState).toBe("blocked");
+    // Cycle 7 discharged FND-023 under DEC-021 without rewriting its prior text.
+    expect(fnd023?.resolutionState).toBe("confirmed");
     expect(fnd023?.description).toContain(record.deferred_evidence_gap.candidate_id);
     expect(record.deferred_evidence_gap.finding_id).toBe("FND-023");
     const text = `${fnd023?.description ?? ""} ${fnd023?.boundary ?? ""}`.toLowerCase();
     expect(text).toContain("asserts no accessibility conformance");
-    for (const claim of ["is wcag", "conformant", "implemented"]) {
+    for (const claim of ["is wcag", "conformant"]) {
       expect(text.includes(claim), claim).toBe(false);
     }
   });
 
   it("keeps the program state aligned with the recorded disposition", () => {
     expect(PROGRAM_STATE.ownerDisposition.state).toBe("accepted");
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-020");
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-008");
+    // Cycle 6 remains recorded; the current obligation source advanced to DEC-021.
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-021");
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-009");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");
     expect(PROGRAM_STATE.gate.state).toBe("open");
     const unauthorized = PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId);
     expect(unauthorized).toContain("WP-039");
-    expect(unauthorized).toContain("CYCLE-7");
+    expect(unauthorized).toContain("CYCLE-8");
     expect(unauthorized).toContain("HREQ-IMPLEMENTATION");
   });
+
 });
