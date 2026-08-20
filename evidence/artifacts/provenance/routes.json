@@ -64,6 +64,18 @@
     "path": "/help"
   },
   {
+    "file": "src/routes/learners.tsx",
+    "path": "/learners"
+  },
+  {
+    "file": "src/routes/learners.index.tsx",
+    "path": "/learners/"
+  },
+  {
+    "file": "src/routes/learners.$learnerId.tsx",
+    "path": "/learners/$learnerId"
+  },
+  {
     "file": "src/routes/notifications.tsx",
     "path": "/notifications"
   },
