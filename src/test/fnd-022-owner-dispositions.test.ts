@@ -186,9 +186,9 @@ describe("DEC-020 projections agree", () => {
 
   it("keeps the program state aligned with the recorded disposition", () => {
     expect(PROGRAM_STATE.ownerDisposition.state).toBe("accepted");
-    // Cycle 6 remains recorded; the current obligation source advanced to DEC-022.
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-022");
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-009");
+    // Cycle 6 remains recorded; the current obligation source advanced to DEC-023.
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-023");
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-010");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");
     expect(PROGRAM_STATE.gate.state).toBe("open");
     const unauthorized = PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId);

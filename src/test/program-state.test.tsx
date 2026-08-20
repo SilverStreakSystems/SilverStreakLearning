@@ -42,14 +42,14 @@ describe("program state register", () => {
     expect(PROGRAM_STATE.gate.state).toBe("open");
     expect(PROGRAM_STATE.activeWorkPackage.workPackageId).toBe("WP-007");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-009");
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-010");
     expect(PROGRAM_STATE.ownerDisposition.state).toBe("accepted");
   });
 
   it("binds every verification statement to a checkpoint and states its scope", () => {
     expect(PROGRAM_STATE.verifications.length).toBeGreaterThan(0);
     for (const entry of PROGRAM_STATE.verifications) {
-      expect(entry.boundTo).toContain("CHECKPOINT-00");
+      expect(entry.boundTo).toContain("CHECKPOINT-0");
       expect(entry.scope.length).toBeGreaterThan(20);
     }
   });
@@ -133,9 +133,9 @@ describe("program state is derived, not restated", () => {
   });
 
   it("no longer leads with the deferred audit as the next action", () => {
-    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-022");
+    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-023");
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toMatch(
-      /engineering baseline.*synthetic product vertical slice/i,
+      /Product Alpha 001 loop.*TTR-001 audit/i,
     );
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.why).toMatch(/FND-024 stays open/);
   });
@@ -237,11 +237,11 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/OPEN/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/WP-007/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/CHECKPOINT-009: execution complete/).length,
+      within(region).getAllByText(/CHECKPOINT-010: execution complete/).length,
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/ACCEPTED/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/Cycle 7 closed nothing beyond the FND-023 definition gap/)
+      within(region).getAllByText(/This checkpoint closed nothing beyond the iND-023 definition gap/)
         .length,
     ).toBeGreaterThan(0);
   });
@@ -267,10 +267,10 @@ describe("Command Center synchronization", () => {
     ).toBeGreaterThan(0);
   });
 
-  it("leads the next defensible action with baseline recovery, not the deferred audit", async () => {
+  it("leads the next defensible action with the authorized product loop, not the deferred audit", async () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Next defensible action/i });
-    expect(within(region).getByText(/1\. Recover the engineering baseline/)).toBeInTheDocument();
+    expect(within(region).getByText(/1\. Use the Product Alpha 001 loop/)).toBeInTheDocument();
   });
 
   it("shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint", async () => {
@@ -280,10 +280,11 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/ABORTED-DEFERRED/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/No audit artifact exists/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/NOT-RUN/).length).toBeGreaterThan(0);
-    // CHECKPOINT-010 may appear only where it is explicitly denied.
-    for (const node of screen.queryAllByText(/CHECKPOINT-010/)) {
-      expect(node.textContent).toMatch(/no CHECKPOINT-010/);
-    }
+    // ATTEMPT-001 must never be reported as a checkpoint. CHECKPOINT-010 is a
+    // real, separate checkpoint recording the Product Alpha 001 implementation,
+    // so its presence is expected — what must not appear is any claim that the
+    // aborted audit attempt produced it.
+    expect(within(region).queryByText(/ATTEMPT-001.*CHECKPOINT-010/)).toBeNull();
   });
 
   it("makes no release, production, certification, or district-use claim", async () => {
@@ -322,7 +323,7 @@ describe("single source of truth", () => {
     }
     const finding = FINDINGS.find((record) => record.id === "FND-024");
     expect(finding?.resolutionState).toBe("blocked");
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-022");
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-023");
     expect(PROGRAM_STATE.deferredDebt.some((entry) => entry.recordId === finding?.id)).toBe(true);
   });
 });

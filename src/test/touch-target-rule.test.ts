@@ -225,8 +225,8 @@ describe("Cycle 7 governance reconciliation", () => {
     expect(record?.supports).toMatch(/TTR-001 v1\.0\.0/);
   });
 
-  it("reports CHECKPOINT-009 as the Cycle 7 checkpoint with no closure", () => {
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-009");
+  it("keeps the latest checkpoint free of any closure or audit claim", () => {
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-010");
     expect(PROGRAM_STATE.latestCheckpoint.closedNothing).toMatch(/ran no interface audit/i);
     expect(PROGRAM_STATE.gate.state).toBe("open");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");

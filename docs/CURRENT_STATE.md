@@ -5,9 +5,9 @@
 > established by regenerating it from the declared inputs and comparing the
 > input fingerprint below.
 
-Controlling decision: DEC-022. State date: 2026-08-20.
+Controlling decision: DEC-023. State date: 2026-08-20.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `3df797c735097e8f24b73eb00bd1a9665ef11dac1179a4617f1d6fc9945c7113`.
+Input fingerprint: `8173b83842b347b8716682ee362ec4e244cb7c8cb86c5f647478ef927a7096ea`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.
@@ -18,14 +18,14 @@ records state. It approves nothing, closes nothing, and authorizes nothing.
 |---|---|---|
 | Gate | Gate A — OPEN | DEC-018 |
 | Active work package | WP-007 — ACTIVE | WP-007 |
-| Latest checkpoint | CHECKPOINT-009 (2026-08-20) | docs/wp-007/CHECKPOINT-009.md |
+| Latest checkpoint | CHECKPOINT-010 (2026-08-20) | docs/product-alpha-001/CHECKPOINT-010.md |
 | Latest attempt | ATTEMPT-001 — ABORTED-DEFERRED | docs/wp-007/ATTEMPT-001-CYCLE-8.md |
-| Owner disposition | ACCEPTED | DEC-022 |
+| Owner disposition | ACCEPTED | DEC-023 |
 | TTR-001 execution | NOT-RUN | FND-024 |
 
 Gate A is not closed. Gate A remains open. No cycle, checkpoint, attempt, test result, or package registration closes a gate; only a recorded owner decision does.
 
-Cycle 7 closed nothing beyond the FND-023 definition gap. It ran no interface audit, measured and classified no target, changed no interface, adopted, assessed, or implemented no candidate, left HREQ-025 unchanged at NEEDS-EVIDENCE / DEFER, left EV-003 NOT-RUN, closed neither WP-007 nor Gate A, and authorized no successor cycle.
+This checkpoint closed nothing beyond the implementation itself. It ran no interface audit, measured and classified no target against TTR-001, left FND-024 open and EV-003 NOT-RUN, left HREQ-025 at NEEDS-EVIDENCE / DEFER, closed neither WP-007 nor Gate A, authorized no successor cycle, and introduced no backend, authentication, tenancy, artificial-intelligence, or real personal data.
 
 ### ATTEMPT-001 — ABORTED-DEFERRED
 
@@ -37,21 +37,20 @@ No audit artifact exists. No route, component, or control was measured or classi
 
 | Register | Rows |
 |---|---|
-| Decisions | 22 |
+| Decisions | 23 |
 | Findings | 24 (14 not confirmed resolved) |
-| Evidence | 45 |
+| Evidence | 46 |
 | Claims | 13 (10 refused) |
 
 ## Bound verifications
 
-- **EV-043**, bound to CHECKPOINT-009, 2026-08-20. Supports: That the touch-target acceptance rule TTR-001 v1.0.0 exists as one canonical structured record carrying a 44 by 44 CSS pixel SHOULD default, a distinct 24 by 24 CSS pixel MUST floor, exactly five documented exceptions of the types SPACING, EQUIVALENT-CONTROL, INLINE, USER-AGENT-CONTROL and ESSENTIAL each enumerated once, a compact-target departure band of 24 to 43 CSS pixels that cannot authorize a below-floor target, a below-floor route through a documented exception only, a deterministic verification protocol at 320, 768 and 1366 CSS pixels with five classifications and nine record fields, a mechanical 24 CSS pixel circle spacing check, the two cited W3C sources marked input-only, explicit non-claims, and change history bound to DEC-021; that the record validates against its schema and against the domain invariants; and that the generated Markdown projection reproduces byte-identically from the JSON.
-  - Does not support: That any interface target-size audit ran; that any route, component, or control was measured, classified, or recorded as passing or failing; that HREQ-025 was adopted, assessed, implemented, or promoted, it remains NEEDS-EVIDENCE / DEFER; that EV-003 ran, it remains NOT-RUN; that WP-007 or Gate A changed state; that WP-039, Cycle 8, release, or deployment is authorized; or that any WCAG, ADA Title II, Section 508, legal, or independent accessibility conformance claim is made. Executor-run, method schema-bound authoring plus automated cross-register reconciliation, independent = false. Checks actually executed on 2026-08-20: full suite 405 of 405 tests across 19 files; focused touch-target suite 24 of 24; Draft 2020-12 schema validation of the new structured artifact; tsgo --noEmit clean; production build succeeded; eslint zero errors on every file touched by this cycle; repository-wide lint still reports 699 problems, the known FND-014 debt, unchanged from entry; and the documentation generator rerun with no diff.
+- **EV-046**, bound to CHECKPOINT-010, 2026-08-20. Supports: That five canonical product record types are defined with strict schemas and enforced cross-record invariants; that observations and goal reviews are append-only with explicit supersession rather than in-place edits; that a repository boundary with browser-local and in-memory adapters validates every write and rejects an inconsistent document without corrupting stored data; that export is byte-stable and import is a previewed replace requiring confirmation; that LLR-001 v1.0.0 is a pure total function whose precedence order is fixed and whose recommendations always cite the records they were computed from; and that the full verification command passes at this tree.
+  - Does not support: That any accessibility property was measured — TTR-001 is applied as an implementation contract and remains NOT-RUN, and FND-024 remains open; that the interface was audited, validated, or found conformant; that any educational, clinical, eligibility, or district-practice claim is supported; that any backend, authentication, tenancy, artificial-intelligence, or real-personal-data capability exists or is authorized; or that any work package, gate, or release changed state. Executor-run, method automated command execution, independent = false.
 
 ## Deferred debt
 
 - **FND-024** — The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface. The obligation is deferred, not discharged.
 - **EV-003** — EV-003 remains NOT-RUN.
-- **FND-014** — Repository-wide lint debt remains recorded and unresolved.
 
 ## Not authorized
 
@@ -59,9 +58,10 @@ No audit artifact exists. No route, component, or control was measured or classi
 - **CYCLE-8** — Execution of the TTR-001 verification protocol is deferred by DEC-022 and is not authorized now. The partial runner under scripts/accessibility/ is dormant development tooling; it measured nothing and produced no audit evidence. No Cycle 9 is authorized either.
 - **TOUCH-TARGET-AUDIT** — No route, component, or control has been measured or classified against TTR-001, so the interface is unmeasured rather than passing. FND-024 stays open as deferred debt.
 - **HREQ-IMPLEMENTATION** — Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, HREQ-025 remains NEEDS-EVIDENCE / DEFER and is not rewritten, and no accessibility conformance is claimed for any of them.
-- **RUNTIME-TRUST-SPINE** — The runtime trust spine remains plan-only. No backend, authentication, database, AI, or real personal data is authorized, and no product implementation has started.
+- **RUNTIME-TRUST-SPINE** — The runtime trust spine remains plan-only. No backend, authentication, database, server-side storage, tenancy, artificial intelligence, or real personal data is authorized. Product Alpha 001, authorized by DEC-023, is a local-only synthetic slice held in one browser and does not implement, start, or imply any part of the runtime trust spine.
 - **PKG-002-PROMOTION** — Promotion of PKG-002 to canonical is not authorized. It remains a synchronized reference.
 - **DRIFT-RESOLUTION** — Resolution of the recorded package drift rows is not authorized. Each remains unresolved.
+- **PRODUCT-ALPHA-001-SCOPE** — Work beyond the authorized Product Alpha 001 slice is not authorized. The slice covers fictional learners, one goal at a time, observations, support actions, results, and the deterministic LLR-001 next step, held in browser-local storage. Accounts, sharing, reporting, export to district systems, artificial-intelligence features, and any real personal data are outside it.
 
 ## Publication boundary
 
@@ -69,9 +69,9 @@ PUBLIC SYNTHETIC PROTOTYPE. NO REAL PERSONAL DATA. NOT RELEASED. The published a
 
 ## Next defensible owner action
 
-Recover the engineering baseline, then authorize one synthetic product vertical slice.
+Use the Product Alpha 001 loop against the synthetic learners, then decide whether the workflow is stable enough to authorize the deferred TTR-001 audit against it.
 
-DEC-022 defers the TTR-001 audit until a stable user-facing product workflow exists, so the audit is not the only permissible work and is no longer the leading action. The separately authorized next phase is engineering-baseline recovery — a clean tree, a green suite, a reproducible build, and the derived current-state projection verified in CI — followed by a bounded synthetic product vertical slice. FND-024 stays open as deferred debt and must remain visible until an owner decision either authorizes its execution or records that it stays unrun.
+DEC-022 defers the touch-target audit until a stable user-facing product workflow exists. DEC-023 authorized that workflow and EV-046 records it as implemented, so the deferral condition is now testable rather than hypothetical. The next owner decision is whether the loop is stable enough to measure, or whether it needs another bounded product pass first. FND-024 stays open as deferred debt until an owner decision either authorizes execution or records that it stays unrun.
 
 ## Refused claims
 

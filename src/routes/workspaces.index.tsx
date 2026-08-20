@@ -13,7 +13,15 @@ import {
   PROHIBITED_WORKSPACE_SIGNALS,
   WORKSPACE_AVAILABILITY_META,
   WORKSPACE_IMPLEMENTATION_LABEL,
+  operatesNow,
 } from "@/domain";
+
+/**
+ * Counts are derived from the workspace register, never written into prose.
+ * A hand-written count drifts the moment the register changes.
+ */
+const WORKSPACE_COUNT = WORKSPACES.length;
+const OPERATING_COUNT = WORKSPACES.filter(operatesNow).length;
 
 export const Route = createFileRoute("/workspaces/")({
   head: () => ({
@@ -22,7 +30,7 @@ export const Route = createFileRoute("/workspaces/")({
       {
         name: "description",
         content:
-          "Nine governed enterprise workspaces, their acting capacities, memberships, and the gates that hold the rest closed.",
+          `${WORKSPACE_COUNT} governed enterprise workspaces, their acting capacities, memberships, and the gates that hold the rest closed.`,
       },
       { property: "og:title", content: "Enterprise Workspaces | SSLS" },
       {
@@ -42,16 +50,16 @@ function WorkspacesRegistry() {
     <div>
       <PageHeader
         title="Enterprise Workspaces"
-        summary="Nine workspaces, each a purpose-bound projection over shared governed objects. Availability and authority are stored on the record: a workspace does not become current because a page renders."
+        summary={`${WORKSPACE_COUNT} workspaces, each a purpose-bound projection over shared governed objects. Availability and authority are stored on the record: a workspace does not become current because a page renders.`}
       />
 
       <Section
         id="registry"
         title="Workspace registry"
-        description="Two workspaces operate now. The rest are architecture held behind a named gate."
+        description={`${OPERATING_COUNT} of ${WORKSPACE_COUNT} workspaces operate now, counted from the register. The rest are architecture held behind a named gate.`}
       >
         <RegistryTable
-          caption="Nine enterprise workspaces with availability, implementation state, and fundamental question."
+          caption={`${WORKSPACE_COUNT} enterprise workspaces with availability, implementation state, and fundamental question.`}
           headers={[
             "Workspace",
             "Fundamental question",
