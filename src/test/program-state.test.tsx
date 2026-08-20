@@ -282,11 +282,13 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/ABORTED-DEFERRED/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/No audit artifact exists/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/NOT-RUN/).length).toBeGreaterThan(0);
-    // ATTEMPT-001 must never be reported as a checkpoint. CHECKPOINT-010 is a
-    // real, separate checkpoint recording the Product Alpha 001 implementation,
-    // so its presence is expected — what must not appear is any claim that the
-    // aborted audit attempt produced it.
-    expect(within(region).queryByText(/ATTEMPT-001.*CHECKPOINT-010/)).toBeNull();
+    // ATTEMPT-001 must never be reported as a checkpoint, and it must not
+    // semantically deny the later, unrelated Product Alpha checkpoint.
+    const produced = PROGRAM_STATE.latestAttempt?.producedNoEvidence ?? "";
+    expect(produced).not.toMatch(/there is no CHECKPOINT-010/i);
+    expect(produced).toMatch(/At the time of ATTEMPT-001/);
+    expect(produced).toMatch(/CHECKPOINT-010 is the unrelated Product Alpha 001/);
+    expect(produced).toMatch(/not touch-target audit evidence/);
   });
 
   it("makes no release, production, certification, or district-use claim", async () => {
