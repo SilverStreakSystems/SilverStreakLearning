@@ -55,6 +55,8 @@ function render(fingerprint: string): string {
     `| Owner disposition | ${state.ownerDisposition.state.toUpperCase()} | ${state.ownerDisposition.obligationSource.recordId} |`,
     `| ${state.auditExecution.ruleId} execution | ${state.auditExecution.state} | ${state.auditExecution.source.recordId} |`,
     "",
+    `${state.gate.name} is ${state.gate.state === "open" ? "not closed" : "closed"}. ${state.gate.basis}`,
+    "",
     state.latestCheckpoint.closedNothing,
     "",
     ...(state.latestAttempt

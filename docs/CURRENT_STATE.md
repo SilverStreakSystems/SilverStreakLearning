@@ -7,7 +7,7 @@
 
 Controlling decision: DEC-022. State date: 2026-08-20.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `354389b3bb782b6ac6e3f65febc571871f7478719846d4d17b82094f7fb095b7`.
+Input fingerprint: `d4af331f43798fbb3faa34d448d2b6aa2acf81377acc2dd18a1bac450883c10b`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.
@@ -22,6 +22,8 @@ records state. It approves nothing, closes nothing, and authorizes nothing.
 | Latest attempt | ATTEMPT-001 — ABORTED-DEFERRED | docs/wp-007/ATTEMPT-001-CYCLE-8.md |
 | Owner disposition | ACCEPTED | DEC-022 |
 | TTR-001 execution | NOT-RUN | FND-024 |
+
+Gate A is not closed. Gate A remains open. No cycle, checkpoint, attempt, test result, or package registration closes a gate; only a recorded owner decision does.
 
 Cycle 7 closed nothing beyond the FND-023 definition gap. It ran no interface audit, measured and classified no target, changed no interface, adopted, assessed, or implemented no candidate, left HREQ-025 unchanged at NEEDS-EVIDENCE / DEFER, left EV-003 NOT-RUN, closed neither WP-007 nor Gate A, and authorized no successor cycle.
 
