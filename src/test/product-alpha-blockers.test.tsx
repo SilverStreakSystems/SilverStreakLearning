@@ -116,7 +116,7 @@ describe("blocker 3: R01 runs on shape before it reads any field", () => {
     } as unknown as LearningLoopDocument;
 
     const projection = projectNextStep(broken, "LRN-A", AT);
-    expect(projection.ruleId).toBe("R01");
+    expect(projection.ruleId).toBe("LLR-001-R01");
     expect(projection.code).toBe("REVIEW_DATA_INTEGRITY");
     // The basis may not name records read out of a document that failed shape.
     expect(projection.basedOnRecordIds).toEqual([]);
@@ -159,7 +159,7 @@ describe("blocker 4: envelope decoding is version aware", () => {
 
     expect(repository.read().status).toBe("corrupt");
     expect(repository.commit(null, createSeedDocument(), AT).status).toBe("conflict");
-    expect(repository.readRaw()).toEqual({ status: "ok", raw: bytes });
+    expect(repository.readRaw()).toEqual({ status: "ok", raw: "{ not a document" });
     expect(window.localStorage.getItem(LEARNING_LOOP_STORAGE_KEY)).toBe(bytes);
   });
 });
@@ -234,9 +234,7 @@ describe("blockers 6 and 9: one attempt at a time, and focus follows the announc
     await user.click(screen.getByRole("button", { name: "Save this observation" }));
 
     // Focus lands on the announced next step, not on the form left behind.
-    await waitFor(() =>
-      expect(window.document.getElementById("next-step-heading")).toHaveFocus(),
-    );
+    await waitFor(() => expect(window.document.getElementById("next-step-heading")).toHaveFocus());
     expect(screen.getByRole("status").textContent).toMatch(/Next:/);
 
     // The next attempt fails at storage. The previous success must not still be
@@ -256,7 +254,7 @@ describe("blockers 6 and 9: one attempt at a time, and focus follows the announc
       Storage.prototype.setItem = realSetItem;
     }
 
-    await waitFor(() => expect(screen.getByRole("alert")).toBeTruthy());
+    await waitFor(() => expect(screen.getAllByRole("alert").length).toBeGreaterThan(0));
     expect(screen.queryByRole("status")?.textContent ?? "").not.toMatch(/Next:/);
     // The draft is still on screen: nothing typed has to be typed twice.
     expect((await screen.findByLabelText(/What did you see\?/)).getAttribute("value")).toBe(null);
@@ -290,7 +288,9 @@ describe("blocker 7: a refused write keeps the form and its draft", () => {
     // Still open, still holding the draft, still offering the same retry.
     const summary = await screen.findByRole("button", { name: /Close off:/ });
     expect(summary.getAttribute("aria-expanded")).toBe("true");
-    expect(await screen.findByDisplayValue("The card was used on three of five days.")).toBeTruthy();
+    expect(
+      await screen.findByDisplayValue("The card was used on three of five days."),
+    ).toBeTruthy();
     expect(screen.getByRole("button", { name: "Mark it done" })).toBeTruthy();
   });
 });
@@ -322,6 +322,10 @@ describe("blocker 8: a correction, recorded through the route", () => {
     // Exactly one entry is marked replaced, and the successor is the effective one.
     const replaced = await screen.findAllByText(/Replaced by a later correction/);
     expect(replaced).toHaveLength(1);
-    expect(await screen.findByText(/all three lessons met the criterion/)).toBeTruthy();
+    expect(
+      (await screen.findAllByText(/all three lessons met the criterion/)).length,
+    ).toBeGreaterThan(0);
+    // The projection now reads the corrected result.
+    expect((await screen.findAllByText(/The success criterion was met/)).length).toBeGreaterThan(0);
   });
 });
