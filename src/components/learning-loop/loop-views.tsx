@@ -8,16 +8,8 @@ import {
 } from "@/domain/learning-loop";
 import { buildImportPreview, type ImportPreview } from "@/lib/learning-loop/import-preview";
 import type { LearningLoopStore } from "@/lib/learning-loop/use-learning-loop";
+import { formatMoment } from "@/lib/learning-loop/format";
 import { ActionButton, LiveNotice } from "./controls";
-
-export function formatMoment(value: string): string {
-  const date = new Date(value);
-  return new Intl.DateTimeFormat("en-GB", {
-    dateStyle: "medium",
-    timeStyle: "short",
-    timeZone: "UTC",
-  }).format(date);
-}
 
 /**
  * The recommendation surface.
