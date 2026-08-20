@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-20T10:47:58.265Z |
-| Commit | `83c7680da2c45071ef64469918ea7c709e1fcddc` |
-| Tree hash | `13265333f5dcd364218c24baae00747fc41a9f4c` |
+| Generated at | 2026-08-20T10:49:42.784Z |
+| Commit | `245a3f86d626772bdf571413c9f5677cd2c76f66` |
+| Tree hash | `e0526aff5b8dd1052319e030701523a714187df8` |
 | Working tree dirty | true |
-| Input-set digest | `9c06f759f033fe4a0e3dadfb940dc5f90b9de848fa5ce829e0cae1bfbedafbcf` |
+| Input-set digest | `2204919ed48b445ff70298509f5d23466ba760269745b962e30b19f4062d6342` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,7 +18,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 694 |
+| Commits | 679 |
 | Tracked files | 541 |
 | Source files | 198 |
 | Test files | 19 |
@@ -29,10 +29,10 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Subject | Recorded result |
 |---|---|
-| Build | Exit code 0. Duration 8132 ms. |
-| Tests | Exit code 0. Test counts not parsed.  Duration 29071 ms. |
+| Build | Exit code 0. Duration 7145 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 23996 ms. |
 | Type check | Exit code 0. |
-| Lint | 3 problems across 1 files: 3 errors, 0 warnings, 3 auto-fixable. |
+| Lint | 0 problems across 0 files: 0 errors, 0 warnings, 0 auto-fixable. |
 | Routes | 29 |
 | SBOM components | 75 |
 | Vulnerability scan | SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE. |
@@ -48,7 +48,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | EV-BUILD | BUILD | pass | CURRENT |
 | EV-TEST | TEST | pass | CURRENT |
 | EV-TYPECHECK | TYPECHECK | pass | CURRENT |
-| EV-LINT | LINT | review-required | CURRENT |
+| EV-LINT | LINT | pass | CURRENT |
 | EV-ROUTES | ROUTE_INVENTORY | pass | CURRENT |
 | EV-PROVENANCE | SOURCE_PROVENANCE | pass | CURRENT |
 | EV-CONFIG | CONFIGURATION | pass | CURRENT |

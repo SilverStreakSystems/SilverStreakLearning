@@ -30,9 +30,7 @@ export function generatorScripts(entries = readdirSync(GENERATOR_DIR)) {
  * generators rather than to whatever was already dirty in the working tree.
  */
 function worktreeState() {
-  const files = execFileSync("git", ["ls-files"], { encoding: "utf8" })
-    .split("\n")
-    .filter(Boolean);
+  const files = execFileSync("git", ["ls-files"], { encoding: "utf8" }).split("\n").filter(Boolean);
   const state = new Map();
   for (const file of files) {
     try {
@@ -75,9 +73,7 @@ function main() {
   }
 
   const after = worktreeState();
-  const changed = [...after.keys()]
-    .filter((path) => before.get(path) !== after.get(path))
-    .sort();
+  const changed = [...after.keys()].filter((path) => before.get(path) !== after.get(path)).sort();
 
   if (changed.length > 0) {
     console.error("\nGENERATED-ARTEFACT CHECK FAILED — regeneration changed these artefacts:");
@@ -85,7 +81,6 @@ function main() {
     console.error("\nRun `bun run gen:all` and commit the result.");
     process.exit(1);
   }
-
 
   console.log("\nGENERATED-ARTEFACT CHECK PASSED — every generated artefact is up to date.");
 }
