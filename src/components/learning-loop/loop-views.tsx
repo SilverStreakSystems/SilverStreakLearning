@@ -474,6 +474,7 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
  * the person to overwrite their own records.
  */
 export function StorageNotices({ store }: { store: LearningLoopStore }) {
+  const [rescue, setRescue] = useState<string | null>(null);
   const notices: { key: string; message: string; details?: string[] }[] = [];
 
   if (store.fallbackNotice) notices.push({ key: "fallback", message: store.fallbackNotice });
@@ -511,19 +512,46 @@ export function StorageNotices({ store }: { store: LearningLoopStore }) {
             tone="secondary"
             onClick={() => {
               const raw = store.rawText();
-              if (raw.status !== "ok" || !raw.raw) return;
-              const blob = new Blob([raw.raw], { type: "application/json" });
-              const url = URL.createObjectURL(blob);
-              const anchor = window.document.createElement("a");
-              anchor.href = url;
-              anchor.download = "ssls-learning-loop-unreadable.json";
-              anchor.click();
-              URL.revokeObjectURL(url);
+              if (raw.status !== "ok") {
+                setRescue(raw.message);
+                return;
+              }
+              if (!raw.raw) {
+                setRescue("There is nothing saved to export.");
+                return;
+              }
+              let url: string | null = null;
+              try {
+                const blob = new Blob([raw.raw], { type: "application/json" });
+                url = URL.createObjectURL(blob);
+                const anchor = window.document.createElement("a");
+                anchor.href = url;
+                anchor.download = "ssls-learning-loop-unreadable.json";
+                anchor.rel = "noopener";
+                anchor.click();
+                setRescue("Exported the unreadable data exactly as it is stored.");
+              } catch {
+                // Never report an export that did not happen.
+                setRescue("This browser refused to produce the file, so nothing was exported.");
+              } finally {
+                if (url) {
+                  try {
+                    URL.revokeObjectURL(url);
+                  } catch {
+                    /* the object URL is released with the page in any case */
+                  }
+                }
+              }
             }}
           >
             Export the unreadable data
           </ActionButton>
         </div>
+      ) : null}
+      {rescue ? (
+        <p role="status" className="measure mt-3 font-semibold">
+          {rescue}
+        </p>
       ) : null}
     </div>
   );
