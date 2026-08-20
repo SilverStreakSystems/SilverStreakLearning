@@ -280,6 +280,11 @@ export function AppShell({ children }: { children: ReactNode }) {
           Implemented foundation shell, governed proof scope. Not production ready, not district
           validated, not independently accessibility validated, not security certified.
         </p>
+        <p className="mt-2">
+          {PUBLICATION_MARKER} Product Alpha 001 is a bounded local synthetic proof: its records are
+          fictional, are held in this browser only, and are not backed up, shared, or synchronized.
+          Clearing browser storage loses them unless they were exported. {PRODUCT_ALPHA_SCOPE}
+        </p>
       </footer>
     </div>
   );
