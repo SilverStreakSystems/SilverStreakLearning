@@ -1,5 +1,5 @@
 SSOT binding guard
-Commit under review: c22abb620b622cc24c95cab3263ba518e2f43fe3
+Commit under review: 95baa9ce1425a9ab8d365b2e3ca04954ae1f14f4
 
 [MISMATCH] docs/wp-006/SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md — declared c1f06016c5eb4e4b19e9b5821f525be4131d639a
 [MISMATCH] docs/wp-006/PROVENANCE_REPORT.md — declared c1f06016c5eb4e4b19e9b5821f525be4131d639a

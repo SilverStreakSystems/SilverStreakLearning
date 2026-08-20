@@ -32,7 +32,7 @@ describe("program state register", () => {
     expect(PROGRAM_STATE.gate.state).toBe("open");
     expect(PROGRAM_STATE.activeWorkPackage.workPackageId).toBe("WP-007");
     expect(PROGRAM_STATE.activeWorkPackage.state).toBe("active");
-    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-008");
+    expect(PROGRAM_STATE.latestCheckpoint.checkpointId).toBe("CHECKPOINT-009");
     expect(PROGRAM_STATE.ownerDisposition.state).toBe("accepted");
   });
 
@@ -47,7 +47,8 @@ describe("program state register", () => {
   it("states WP-039, a further cycle, and candidate disposition as not authorized", () => {
     const ids = PROGRAM_STATE.unauthorizedStages.map((entry) => entry.stageId);
     expect(ids).toContain("WP-039");
-    expect(ids).toContain("CYCLE-7");
+    expect(ids).toContain("CYCLE-8");
+    expect(ids).toContain("TOUCH-TARGET-AUDIT");
     expect(ids).toContain("HREQ-IMPLEMENTATION");
   });
 });
@@ -80,30 +81,32 @@ describe("governed package projection", () => {
 });
 
 describe("Action Center synchronization", () => {
-  it("drops the discharged FND-022 obligation and carries FND-023 instead", () => {
+  it("drops the discharged FND-022 and FND-023 obligations and carries FND-024 instead", () => {
     const actions = buildActions();
-    expect(actions.filter((action) => action.canonicalSource.objectId === "FND-022")).toHaveLength(
-      0,
-    );
-    const matches = actions.filter((action) => action.canonicalSource.objectId === "FND-023");
+    for (const discharged of ["FND-022", "FND-023"]) {
+      expect(
+        actions.filter((action) => action.canonicalSource.objectId === discharged),
+      ).toHaveLength(0);
+    }
+    const matches = actions.filter((action) => action.canonicalSource.objectId === "FND-024");
     expect(matches).toHaveLength(1);
   });
 
-  it("claims no owner directive for FND-023, which no decision confers", () => {
+  it("claims no owner directive for FND-024, which no decision confers", () => {
     const actions = buildActions();
-    const fnd023 = actions.find((action) => action.canonicalSource.objectId === "FND-023");
-    expect(fnd023?.ownerPriorityDirective ?? null).toBeNull();
+    const fnd024 = actions.find((action) => action.canonicalSource.objectId === "FND-024");
+    expect(fnd024?.ownerPriorityDirective ?? null).toBeNull();
     // Ordering is therefore the factor order alone, with nothing lifted above it.
     expect(actions.map((action) => action.canonicalSource.objectId)).toEqual(
       [...actions].sort(compareActions).map((action) => action.canonicalSource.objectId),
     );
   });
 
-  it("prints the deferred touch-target obligation on the Action Center", async () => {
+  it("prints the unrun touch-target verification obligation on the Action Center", async () => {
     await renderRoute("/actions");
     expect(
       screen.getAllByText(
-        /Define a testable touch-target rule before HREQ-025 can be reconsidered for adoption/,
+        /touch-target acceptance rule TTR-001 is defined but has never been executed against the interface/,
       ).length,
     ).toBeGreaterThan(0);
     expect(screen.queryByText(/\[OWNER-DIRECTED FIRST\]/)).not.toBeInTheDocument();
@@ -118,11 +121,12 @@ describe("Command Center synchronization", () => {
     expect(within(region).getAllByText(/OPEN/).length).toBeGreaterThan(0);
     expect(within(region).getAllByText(/WP-007/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/CHECKPOINT-008: execution complete/).length,
+      within(region).getAllByText(/CHECKPOINT-009: execution complete/).length,
     ).toBeGreaterThan(0);
     expect(within(region).getAllByText(/ACCEPTED/).length).toBeGreaterThan(0);
     expect(
-      within(region).getAllByText(/Cycle 6 closed nothing beyond the FND-022 obligation/).length,
+      within(region).getAllByText(/Cycle 7 closed nothing beyond the FND-023 definition gap/)
+        .length,
     ).toBeGreaterThan(0);
   });
 
@@ -147,10 +151,12 @@ describe("Command Center synchronization", () => {
     ).toBeGreaterThan(0);
   });
 
-  it("leads the next defensible action with the deferred touch-target gap", async () => {
+  it("leads the next defensible action with the unrun touch-target verification", async () => {
     await renderRoute("/");
     const region = await screen.findByRole("region", { name: /Next defensible action/i });
-    expect(within(region).getByText(/1\. Define a testable touch-target rule/)).toBeInTheDocument();
+    expect(
+      within(region).getByText(/1\. The touch-target acceptance rule TTR-001 is defined/),
+    ).toBeInTheDocument();
   });
 
   it("makes no release, production, certification, or district-use claim", async () => {
@@ -184,11 +190,12 @@ describe("Command Center synchronization", () => {
 
 describe("single source of truth", () => {
   it("keeps the open obligation on the findings register, not on the surfaces", () => {
-    const discharged = FINDINGS.find((record) => record.id === "FND-022");
-    expect(discharged?.resolutionState).toBe("confirmed");
-    const finding = FINDINGS.find((record) => record.id === "FND-023");
+    for (const id of ["FND-022", "FND-023"]) {
+      expect(FINDINGS.find((record) => record.id === id)?.resolutionState).toBe("confirmed");
+    }
+    const finding = FINDINGS.find((record) => record.id === "FND-024");
     expect(finding?.resolutionState).toBe("blocked");
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-020");
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-021");
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toBe(finding?.title);
   });
 });

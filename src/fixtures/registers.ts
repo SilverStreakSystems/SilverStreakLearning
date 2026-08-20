@@ -363,13 +363,30 @@ export const FINDINGS: FindingRecord[] = [
     raisedBy: "Founder / Operator",
     affectedLayers: ["L1"],
     description:
-      "DEC-020 disposed of HREQ-025 as NEEDS-EVIDENCE / DEFER: the historical wording 'touch targets appropriate to context' names no minimum dimension, no exceptions, and no verification method, so it cannot be tested as worded. The deferral is recorded in data/historical/fnd-022-owner-dispositions.json, which names what is required before reconsideration: a named touch-target dimension, the exceptions that apply to it, and a stated verification method. This record carries that open gap so it is not lost when FND-022 is discharged.",
+      "DEC-020 disposed of HREQ-025 as NEEDS-EVIDENCE / DEFER: the historical wording 'touch targets appropriate to context' names no minimum dimension, no exceptions, and no verification method, so it cannot be tested as worded. The deferral is recorded in data/historical/fnd-022-owner-dispositions.json, which names what is required before reconsideration: a named touch-target dimension, the exceptions that apply to it, and a stated verification method. This record carries that open gap so it is not lost when FND-022 is discharged. DISCHARGED on 2026-08-20 by DEC-021: the named dimension, the exception set, and the verification method are recorded as TTR-001 v1.0.0 in data/accessibility/touch-target-rule.json, evidenced by EV-043. The prior text above is preserved unchanged.",
     boundary:
-      "This record states an open evidence gap only. It does not adopt, reject, or reinstate HREQ-025, does not block the deferral, does not require any interface change, does not close or reopen WP-007 or Gate A, and asserts no accessibility conformance.",
+      "This record states an open evidence gap only. It does not adopt, reject, or reinstate HREQ-025, does not block the deferral, does not require any interface change, does not close or reopen WP-007 or Gate A, and asserts no accessibility conformance. Discharge records that the rule definition now exists. It does not run a target-size audit, does not classify any interface target, does not adopt or assess HREQ-025, which remains NEEDS-EVIDENCE / DEFER, and asserts no accessibility conformance of any kind.",
+    resolutionState: "confirmed",
+    requiredDecision: "DEC-021",
+    evidenceReferences: ["EV-042", "EV-043"],
+    synthetic: false,
+  },
+  {
+    id: "FND-024",
+    title:
+      "The touch-target acceptance rule TTR-001 is defined but has never been executed against the interface.",
+    severity: "governance",
+    raisedOn: "2026-08-20",
+    raisedBy: "Founder / Operator",
+    affectedLayers: ["L1", "L7"],
+    description:
+      "DEC-021 records TTR-001 v1.0.0 with a 44 by 44 CSS pixel default, a 24 by 24 CSS pixel floor, five documented exceptions, and a deterministic audit protocol at 320, 768, and 1366 CSS pixels. The protocol's execution state is NOT-RUN. No route, component, or control in this build has been measured, classified, or recorded against the rule, so no target is PASS and no target is FAIL: every target is simply unmeasured.",
+    boundary:
+      "This record states an unrun verification only. It does not authorize an audit, a cycle, an interface change, or any remediation; it does not assert that the interface fails the rule; and it asserts no accessibility conformance. Only a recorded owner decision may authorize execution.",
     resolutionState: "blocked",
     requiredDecision:
-      "Record a testable touch-target dimension, its exceptions, and a verification method, or record that HREQ-025 stays deferred.",
-    evidenceReferences: ["EV-042"],
+      "Authorize a bounded execution of the TTR-001 verification protocol, or record that it stays unrun.",
+    evidenceReferences: ["EV-043"],
     synthetic: false,
   },
 ];
@@ -1015,6 +1032,22 @@ export const EVIDENCE: EvidenceRecord[] = [
     authorityClass: "current-summary",
     synthetic: false,
   },
+  {
+    id: "EV-043",
+    title: "WP-007 Cycle 7 touch-target rule formalization and mechanical validation",
+    kind: "automated-test",
+    subject:
+      "data/accessibility/touch-target-rule.json, its Draft 2020-12 schema data/accessibility/TOUCH_TARGET_RULE_SCHEMA.json, the generated projection docs/accessibility/TOUCH_TARGET_ACCEPTANCE.md, the derived section of docs/ACCESSIBILITY_ACCEPTANCE.md, and the governance registers that bind them.",
+    collectedOn: "2026-08-20",
+    collectedBy: "Automated run",
+    state: "confirmed",
+    supports:
+      "That the touch-target acceptance rule TTR-001 v1.0.0 exists as one canonical structured record carrying a 44 by 44 CSS pixel SHOULD default, a distinct 24 by 24 CSS pixel MUST floor, exactly five documented exceptions of the types SPACING, EQUIVALENT-CONTROL, INLINE, USER-AGENT-CONTROL and ESSENTIAL each enumerated once, a compact-target departure band of 24 to 43 CSS pixels that cannot authorize a below-floor target, a below-floor route through a documented exception only, a deterministic verification protocol at 320, 768 and 1366 CSS pixels with five classifications and nine record fields, a mechanical 24 CSS pixel circle spacing check, the two cited W3C sources marked input-only, explicit non-claims, and change history bound to DEC-021; that the record validates against its schema and against the domain invariants; and that the generated Markdown projection reproduces byte-identically from the JSON.",
+    doesNotSupport:
+      "That any interface target-size audit ran; that any route, component, or control was measured, classified, or recorded as passing or failing; that HREQ-025 was adopted, assessed, implemented, or promoted, it remains NEEDS-EVIDENCE / DEFER; that EV-003 ran, it remains NOT-RUN; that WP-007 or Gate A changed state; that WP-039, Cycle 8, release, or deployment is authorized; or that any WCAG, ADA Title II, Section 508, legal, or independent accessibility conformance claim is made. Executor-run, method schema-bound authoring plus automated cross-register reconciliation, independent = false. Checks actually executed on 2026-08-20: full suite 405 of 405 tests across 19 files; focused touch-target suite 24 of 24; Draft 2020-12 schema validation of the new structured artifact; tsgo --noEmit clean; production build succeeded; eslint zero errors on every file touched by this cycle; repository-wide lint still reports 699 problems, the known FND-014 debt, unchanged from entry; and the documentation generator rerun with no diff.",
+    authorityClass: "current-summary",
+    synthetic: false,
+  },
 ];
 
 export const DECISIONS: DecisionRecord[] = [
@@ -1462,6 +1495,30 @@ export const DECISIONS: DecisionRecord[] = [
     supersedes: [],
     supersededBy: null,
     relatedArtifacts: ["SSLS-BPP-001", "WP-007"],
+    synthetic: false,
+  },
+  {
+    id: "DEC-021",
+    title: "Record the SSLS touch-target acceptance rule that resolves the FND-023 definition gap",
+    state: "accepted",
+    decidedOn: "2026-08-20",
+    decidedBy: "Founder / Operator",
+    context:
+      "DEC-020 deferred HREQ-025 because the historical wording 'touch targets appropriate to context' names no dimension, no exceptions, and no verification method. FND-023 carried that gap forward as the single open obligation. The owner authorized exactly one bounded WP-007 Cycle 7 to define an internally testable rule, using the W3C WCAG 2.2 specification and the Understanding document for Success Criterion 2.5.8 as inputs only.",
+    decision:
+      "RECORDED BY OWNER. The SSLS touch-target acceptance rule is recorded as TTR-001 v1.0.0 in data/accessibility/touch-target-rule.json. Author-controlled standalone pointer targets SHOULD provide at least 44 by 44 CSS pixels; existing stricter adopted requirements continue to control. Every visible, enabled pointer target MUST provide at least 24 by 24 CSS pixels or satisfy exactly one documented exception of type SPACING, EQUIVALENT-CONTROL, INLINE, USER-AGENT-CONTROL, or ESSENTIAL. A standalone author-controlled target between 24 by 24 and 43 by 43 CSS pixels is a departure from the default, acceptable only with a recorded compact-context rationale, and still bound by the 24 by 24 floor. A target below 24 by 24 CSS pixels cannot pass on a compact-context rationale and passes only through one documented exception. A deterministic verification protocol is defined at 320, 768, and 1366 CSS pixels and is NOT-RUN. This decision defines a rule only. It implements nothing, audits nothing, adopts nothing, closes neither WP-007 nor Gate A, authorizes neither WP-039 nor any Cycle 8, and makes no accessibility, WCAG, ADA, Section 508, legal, district-readiness, or release claim.",
+    consequences: [
+      "FND-023 is discharged; the definition gap it carried is recorded as resolved, evidenced by EV-043. Its prior text is preserved unchanged.",
+      "HREQ-025 is unchanged and remains NEEDS-EVIDENCE / DEFER, NOT-ASSESSED, NOT-PROMOTED, and NOT-IMPLEMENTED; its historical wording is not rewritten and not adopted.",
+      "The verification protocol is defined and NOT-RUN. No interface target has been measured or classified, so the interface is unmeasured rather than passing; that unrun state is carried as FND-024.",
+      "EV-003 remains NOT-RUN, HS-023 remains NOT-PROMOTED, and PKG-001 remains PARTIAL.",
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039 remains NOT AUTHORIZED; no successor cycle is authorized.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["SSLS-BPP-001", "WP-007", "TTR-001"],
     synthetic: false,
   },
 ];

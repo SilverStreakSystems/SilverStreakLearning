@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0.0",
+  "rule_id": "TTR-001",
+  "rule_version": "1.0.0",
+  "title": "SSLS touch-target acceptance rule",
+  "authority": {
+    "authority_class": "INTERNAL-SSLS-ACCEPTANCE-RULE",
+    "authority_statement": "This is an internal SSLS acceptance rule recorded by the owner under DEC-021. It is testable inside this program and carries no external authority.",
+    "scope": "Definition of the touch-target acceptance rule, its exceptions, and the protocol by which a future audit would verify it.",
+    "exclusions": [
+      "No user-interface, CSS, component, route, or responsive-behaviour change is authorized by this rule.",
+      "No target-size audit of the current interface is run, scheduled, or authorized by this rule.",
+      "HREQ-025 is not adopted, rewritten, assessed, implemented, or promoted by this rule.",
+      "No conformance conclusion, release authority, or successor cycle follows from this rule."
+    ]
+  },
+  "lifecycle_state": "DEFINED-NOT-VERIFIED",
+  "controlling_decision": "DEC-021",
+  "default_target": {
+    "obligation": "SHOULD",
+    "width_css_px": 44,
+    "height_css_px": 44,
+    "applies_to": "Author-controlled standalone pointer targets.",
+    "statement": "Author-controlled standalone pointer targets SHOULD provide an interactive area at least 44 by 44 CSS pixels. Existing stricter adopted requirements continue to control."
+  },
+  "measurable_floor": {
+    "obligation": "MUST",
+    "width_css_px": 24,
+    "height_css_px": 24,
+    "applies_to": "Every visible, enabled pointer target.",
+    "statement": "Every visible, enabled pointer target MUST either provide an interactive target area at least 24 by 24 CSS pixels, or satisfy exactly one documented exception from the enumerated set."
+  },
+  "exceptions": [
+    {
+      "exception_type": "SPACING",
+      "label": "Spacing",
+      "condition": "The undersized target is spaced so that a 24 CSS pixel diameter circle centred on its bounding box intersects neither another target nor another target's circle.",
+      "determination": "MECHANICAL",
+      "required_record": [
+        "Bounding rectangles of the target and every neighbouring target considered",
+        "The computed circle geometry and the intersection result"
+      ]
+    },
+    {
+      "exception_type": "EQUIVALENT-CONTROL",
+      "label": "Equivalent control",
+      "condition": "A different control on the same page performs the same action and itself meets at least the 24 by 24 CSS pixel floor.",
+      "determination": "MECHANICAL",
+      "required_record": [
+        "Stable locator of the equivalent control",
+        "Measured size of the equivalent control"
+      ]
+    },
+    {
+      "exception_type": "INLINE",
+      "label": "Inline target",
+      "condition": "The target is positioned within a sentence or block of text, or its size is otherwise constrained by the line height of non-target text.",
+      "determination": "MANUAL-REVIEW",
+      "required_record": [
+        "The text context the target sits inside",
+        "Reviewer and rationale for the inline determination"
+      ]
+    },
+    {
+      "exception_type": "USER-AGENT-CONTROL",
+      "label": "User-agent control",
+      "condition": "The size of the target is determined by the user agent and is not modified by the author.",
+      "determination": "MANUAL-REVIEW",
+      "required_record": [
+        "The element and the user-agent behaviour relied on",
+        "Confirmation that no author style alters the target size"
+      ]
+    },
+    {
+      "exception_type": "ESSENTIAL",
+      "label": "Essential presentation",
+      "condition": "A particular presentation of the target is essential, or is legally required, for the information being conveyed.",
+      "determination": "MANUAL-REVIEW",
+      "required_record": [
+        "Why the presentation is essential rather than preferred",
+        "Reviewer and evidence reference for the judgment"
+      ]
+    }
+  ],
+  "compact_target_departure": {
+    "lower_bound_css_px": 24,
+    "upper_bound_css_px": 43,
+    "acceptance_criteria": [
+      "The target is standalone and author-controlled.",
+      "The record contains a compact-context rationale explaining why the 44 by 44 default would materially impair information density or inline semantics.",
+      "The target still measures at least 24 by 24 CSS pixels."
+    ],
+    "may_authorize_below_floor": false,
+    "statement": "A standalone author-controlled target between 24 by 24 and 43 by 43 CSS pixels is a recorded departure from the SSLS 44 by 44 default. It may be accepted only with a compact-context rationale, and it must still satisfy the 24 by 24 floor."
+  },
+  "below_floor_target": {
+    "threshold_css_px": 24,
+    "only_route": "DOCUMENTED-EXCEPTION",
+    "compact_rationale_accepted": false,
+    "statement": "A target below 24 by 24 CSS pixels cannot pass through a compact-context rationale. It passes only through exactly one of the five documented exceptions."
+  },
+  "precedence": [
+    "An existing adopted requirement that is stricter than this rule continues to control; this rule never relaxes it.",
+    "The 44 by 44 default is an SSLS preference expressed as SHOULD; the 24 by 24 floor is an obligation expressed as MUST. The two are distinct values and are never conflated.",
+    "HREQ-025 remains NEEDS-EVIDENCE / DEFER. This rule fills the missing-rule gap; it does not adopt the historical wording."
+  ],
+  "verification": {
+    "method": "Deterministic future audit: at each declared viewport width, enumerate every visible enabled pointer target, measure its bounding rectangle, classify it, and record the fields below. Mechanical classifications are computed; judgment-based exceptions require a named reviewer.",
+    "execution_state": "NOT-RUN",
+    "viewports_css_px": [320, 768, 1366],
+    "classifications": [
+      "PASS-44-DEFAULT",
+      "PASS-24-FLOOR",
+      "PASS-EXCEPTION",
+      "FAIL",
+      "NOT-APPLICABLE"
+    ],
+    "record_fields": [
+      { "field": "route", "requirement": "REQUIRED", "description": "Application route audited." },
+      {
+        "field": "locator",
+        "requirement": "REQUIRED",
+        "description": "Stable locator for the target, preferring role and accessible name."
+      },
+      {
+        "field": "viewport_css_px",
+        "requirement": "REQUIRED",
+        "description": "One of the declared viewport widths."
+      },
+      {
+        "field": "bounding_rect_css_px",
+        "requirement": "REQUIRED",
+        "description": "Measured x, y, width, and height of the interactive area."
+      },
+      {
+        "field": "classification",
+        "requirement": "REQUIRED",
+        "description": "One of the five declared classifications."
+      },
+      {
+        "field": "exception_type",
+        "requirement": "CONDITIONAL",
+        "description": "Required when the classification is PASS-EXCEPTION; exactly one of the five exception types."
+      },
+      {
+        "field": "rationale",
+        "requirement": "REQUIRED",
+        "description": "Why the classification holds, including a compact-context rationale for any 24 to 43 CSS pixel departure."
+      },
+      {
+        "field": "equivalent_control_locator",
+        "requirement": "CONDITIONAL",
+        "description": "Required when the exception type is EQUIVALENT-CONTROL."
+      },
+      {
+        "field": "reviewer_and_evidence_reference",
+        "requirement": "CONDITIONAL",
+        "description": "Required for every judgment-based exception: named reviewer plus the evidence record that carries the judgment."
+      }
+    ],
+    "spacing_check": {
+      "circle_diameter_css_px": 24,
+      "centering": "A circle of 24 CSS pixel diameter centred on the centre point of the undersized target's bounding box.",
+      "pass_condition": "The circle intersects no other target's bounding box and no other target's circle.",
+      "statement": "The spacing exception is decided mechanically by this circle test and by nothing else."
+    },
+    "manual_review_required_for": ["INLINE", "USER-AGENT-CONTROL", "ESSENTIAL"],
+    "boundary": "This protocol is defined and NOT-RUN. Defining it measures no target, sets no classification, produces no audit record, and establishes no passing state for any route or component."
+  },
+  "sources": [
+    {
+      "source_id": "TTS-001",
+      "title": "Web Content Accessibility Guidelines (WCAG) 2.2, W3C normative specification",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "role": "INPUT-ONLY"
+    },
+    {
+      "source_id": "TTS-002",
+      "title": "Understanding Success Criterion 2.5.8: Target Size (Minimum)",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum",
+      "role": "INPUT-ONLY"
+    }
+  ],
+  "non_claims": [
+    "No WCAG 2.2 conformance is claimed at any level.",
+    "No ADA, Section 508, or other legal compliance is claimed.",
+    "No independent, expert, or district validation has occurred.",
+    "No interface target-size audit has been run; no route or component is recorded as passing.",
+    "HREQ-025 is not adopted, assessed, implemented, or promoted, and EV-003 remains NOT-RUN.",
+    "This rule confers no release, deployment, or production-readiness authority."
+  ],
+  "history": [
+    {
+      "rule_version": "1.0.0",
+      "recorded_on": "2026-08-20",
+      "decision": "DEC-021",
+      "change": "Rule created to resolve the missing-rule gap carried by FND-023: a named dimension, the exceptions that apply, and a stated verification method.",
+      "boundary": "Creation of the rule discharges the definition gap only. It runs no audit and changes no interface."
+    }
+  ]
+}
