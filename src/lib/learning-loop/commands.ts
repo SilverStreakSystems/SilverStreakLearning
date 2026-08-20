@@ -31,7 +31,7 @@ export type CommandFailureCode =
   | "support-state"
   | "invalid-input";
 
-export type CommandResult<T = Record<string, never>> =
+export type CommandResult<T = unknown> =
   | ({ ok: true; document: LearningLoopDocument } & T)
   | { ok: false; code: CommandFailureCode; message: string };
 
