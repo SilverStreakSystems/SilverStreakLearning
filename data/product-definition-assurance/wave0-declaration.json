@@ -208,8 +208,7 @@
         "docs/trust/SSLS-TRUST-001-exposure-remediation-record-v0.1-CANDIDATE.md",
         "docs/wp-038/domain-security.md",
         "docs/wp-038/domain-student-privacy.md",
-        "evidence/artifacts/boundary/secret-scan.json",
-        "evidence/artifacts/boundary/pii-boundary-scan.json"
+        "scripts/evidence/boundary.mjs"
       ],
       "current_evidence": ["EV-SECRET", "EV-PII", "EV-VULN"],
       "present": "An exposure remediation record, security and privacy obligation domains, and automated secret, personal-data, and dependency scans.",
@@ -239,7 +238,7 @@
       "existing_canonical_sources": [
         "src/test",
         "package.json",
-        "evidence/records/EV-TEST.json",
+        "scripts/evidence/collect.mjs",
         "docs/ACCESSIBILITY_ACCEPTANCE.md"
       ],
       "current_evidence": ["EV-TEST", "EV-046"],
@@ -307,7 +306,7 @@
       "observation": "The vulnerability scan is recorded NOT COMPLETED because the external advisory source is unavailable. A recovery source is recorded separately and does not replace it.",
       "resolution_rule": "Preserve NOT COMPLETED. Do not convert an unavailable source into a pass.",
       "owner_decision_required": false,
-      "sources": ["evidence/records/EV-VULN.json", "evidence/records/EV-VULN-RECOVERY.json"]
+      "sources": ["scripts/evidence/supply-chain.mjs", "evidence/BASELINE.md"]
     }
   ],
   "disposition_packet": {

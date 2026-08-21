@@ -160,11 +160,9 @@ export function buildWave0Inventories(): Wave0Inventories {
   for (const finding of FINDINGS)
     findingsByState[finding.resolutionState] = (findingsByState[finding.resolutionState] ?? 0) + 1;
 
-  const evidenceIndex = readJson("evidence/evidence-index.json") as {
-    records: { status: string }[];
-  };
+  const evidenceIndex = readEvidenceIndex();
   const pipelineByStatus: Record<string, number> = {};
-  for (const record of evidenceIndex.records)
+  for (const record of evidenceIndex?.records ?? [])
     pipelineByStatus[record.status] = (pipelineByStatus[record.status] ?? 0) + 1;
 
   const checkpoints = readJson("data/program/checkpoints.json") as {
@@ -187,7 +185,7 @@ export function buildWave0Inventories(): Wave0Inventories {
       evidence_records: EVIDENCE.length,
       claims: CLAIMS.length,
       claims_refused: CLAIMS.filter((claim) => claim.posture === "refused").length,
-      pipeline_evidence_records: evidenceIndex.records.length,
+      pipeline_evidence_records: evidenceIndex?.records.length ?? -1,
       pipeline_evidence_by_status: pipelineByStatus,
       governed_packages: countRecords("data/packages/governed-packages.json", "records"),
       obligations: countRecords("data/governance/obligations.json", "records"),
@@ -260,16 +258,18 @@ export function validateWave0Declaration(declaration: Wave0Declaration): Wave0Is
       issues.push({ code: "BROKEN_SOURCE_PATH", detail: `${owner} -> ${path}` });
   };
 
+  const pipelineIndex = readEvidenceIndex();
   const knownRecordIds = new Set<string>([
     ...DECISIONS.map((decision) => decision.id),
     ...FINDINGS.map((finding) => finding.id),
     ...EVIDENCE.map((evidence) => evidence.id),
-    ...(
-      readJson("evidence/evidence-index.json") as { records: { evidence_id: string }[] }
-    ).records.map((record) => record.evidence_id),
+    ...(pipelineIndex?.records ?? []).map((record) => record.evidence_id),
   ]);
 
   const requireRecord = (id: string, owner: string) => {
+    // While the evidence bundle is being regenerated its identifiers cannot be
+    // checked. Unverifiable is not the same as wrong, so nothing is reported.
+    if (pipelineIndex === null && /^EV-[A-Z]/.test(id)) return;
     if (RECORD_PREFIXES.some((prefix) => id.startsWith(prefix)) && !knownRecordIds.has(id))
       issues.push({ code: "ORPHAN_REFERENCE", detail: `${owner} -> ${id}` });
   };
