@@ -160,11 +160,6 @@ export function buildWave0Inventories(): Wave0Inventories {
   for (const finding of FINDINGS)
     findingsByState[finding.resolutionState] = (findingsByState[finding.resolutionState] ?? 0) + 1;
 
-  const evidenceIndex = readEvidenceIndex();
-  const pipelineByStatus: Record<string, number> = {};
-  for (const record of evidenceIndex?.records ?? [])
-    pipelineByStatus[record.status] = (pipelineByStatus[record.status] ?? 0) + 1;
-
   const checkpoints = readJson("data/program/checkpoints.json") as {
     checkpoints: unknown[];
     attempts: unknown[];
@@ -185,8 +180,6 @@ export function buildWave0Inventories(): Wave0Inventories {
       evidence_records: EVIDENCE.length,
       claims: CLAIMS.length,
       claims_refused: CLAIMS.filter((claim) => claim.posture === "refused").length,
-      pipeline_evidence_records: evidenceIndex?.records.length ?? -1,
-      pipeline_evidence_by_status: pipelineByStatus,
       governed_packages: countRecords("data/packages/governed-packages.json", "records"),
       obligations: countRecords("data/governance/obligations.json", "records"),
       historical_sources: countRecords("data/historical/historical-sources.json", "records"),
