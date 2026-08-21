@@ -84,15 +84,29 @@ describe("SSLS 3.0 canon record", () => {
     expect([...canonicalStatusCounts(loadCanon())]).toEqual([["CANDIDATE", 12]]);
   });
 
-  it("records the three reconstructions and the missing review class rather than hiding them", () => {
+  it("records the three reconstructions rather than hiding them", () => {
     expect(reconstructedDocuments(loadCanon()).map((d) => d.document_id)).toEqual([
       "SSLS3-DOC-08",
       "SSLS3-DOC-09",
       "SSLS3-DOC-10",
     ]);
-    expect(documentsMissingReviewClass(loadCanon()).map((d) => d.document_id)).toEqual([
-      "SSLS3-DOC-00",
-    ]);
+    // The revised File 00 draft states its own review class, so nothing is missing one.
+    expect(documentsMissingReviewClass(loadCanon())).toEqual([]);
+  });
+
+  it("carries the owner-supplied revised drafts of files 00, 01, and 02", () => {
+    const record = loadCanon();
+    const versions = Object.fromEntries(record.documents.map((d) => [d.document_id, d.version]));
+    expect(versions["SSLS3-DOC-00"]).toBe("0.6.0-draft");
+    expect(versions["SSLS3-DOC-01"]).toBe("0.4.0-draft");
+    expect(versions["SSLS3-DOC-02"]).toBe("0.3.0-draft");
+    // A newer transcription is still a transcription: authority is unchanged.
+    for (const id of ["SSLS3-DOC-00", "SSLS3-DOC-01", "SSLS3-DOC-02"]) {
+      const doc = record.documents.find((d) => d.document_id === id);
+      expect(doc?.canonical_status).toBe("CANDIDATE");
+      expect(doc?.authorizing_decision).toBeNull();
+      expect(doc?.provenance).toBe("transcribed");
+    }
   });
 
   it("groups documents by their declared class", () => {
