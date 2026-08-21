@@ -106,9 +106,9 @@ Exactly one controller per concept. A second controller is a defect. `[C]`
 | Scope, exclusions, future-state separation | `05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md` |
 | Product problem, value, users, outcomes | `06-SSLS_3.0_PRODUCT_BRIEF.md` |
 | Terminology | `07-SSLS_3.0_GLOSSARY.md` |
-| Decision status | `08-SSLS_3.0_DECISION_REGISTER.xlsx` |
-| Requirements and acceptance criteria | `09-SSLS_3.0_REQUIREMENTS_REGISTER.xlsx` |
-| Evidence and claim authorization | `10-SSLS_3.0_EVIDENCE_AND_CLAIMS_REGISTER.xlsx` |
+| Decision status | `08-SSLS_3.0_DECISIONS.md` |
+| Requirements and acceptance criteria | `09-SSLS_3.0_REQUIREMENTS.md` |
+| Evidence and claim authorization | `10-SSLS_3.0_EVIDENCE_AND_CLAIMS.md` |
 | File locations and structure | `11-SSLS_3.0_REPOSITORY_MAP.md` |
 | Reader routing | `00-SSLS_3.0_START_HERE.md` — routes only, controls nothing |
 
@@ -139,7 +139,7 @@ Generated files carry a header stating that they are generated, what generated t
 | Item | Convention | Example |
 |---|---|---|
 | Governance document | `NN-SSLS_3.0_NAME.md` | `01-SSLS_3.0_PROJECT_CHARTER.md` |
-| Register | `NN-SSLS_3.0_NAME.xlsx` | `08-SSLS_3.0_DECISION_REGISTER.xlsx` |
+| Register | `NN-SSLS_3.0_NAME.xlsx` | `08-SSLS_3.0_DECISIONS.md` |
 | Other document | `AREA-NAME_vMAJOR.MINOR.PATCH.md` | `arch-system_context_v0.1.0.md` |
 | Evidence | `EV-NNNN_subject_YYYY-MM-DD.ext` | `EV-0001_environment_check_2026-08-21.md` |
 | Archived | Original filename, unchanged, under `archive/` | — |

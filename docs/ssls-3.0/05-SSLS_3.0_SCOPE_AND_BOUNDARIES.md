@@ -23,7 +23,7 @@ Scope, actors, data, technology, deployment boundaries, and the change process. 
 
 **Controls:** current scope, exclusions, future-state separation, scope-change process.
 
-**Controlled by:** [01-SSLS_3.0_PROJECT_CHARTER.md](01-SSLS_3.0_PROJECT_CHARTER.md) and owner decisions in [08-SSLS_3.0_DECISION_REGISTER.xlsx](08-SSLS_3.0_DECISION_REGISTER.xlsx).
+**Controlled by:** [01-SSLS_3.0_PROJECT_CHARTER.md](01-SSLS_3.0_PROJECT_CHARTER.md) and owner decisions in [08-SSLS_3.0_DECISIONS.md](08-SSLS_3.0_DECISIONS.md).
 
 ---
 

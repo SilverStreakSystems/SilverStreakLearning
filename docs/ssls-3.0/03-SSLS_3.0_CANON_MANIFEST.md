@@ -23,7 +23,7 @@ Artifact identity, status, authority, provenance, and lineage. Does not rank sou
 
 **Controls:** artifact status and canonicality.
 
-**Controlled by:** [02-SSLS_3.0_SOURCE_HIERARCHY.md](02-SSLS_3.0_SOURCE_HIERARCHY.md) and owner decisions in [08-SSLS_3.0_DECISION_REGISTER.xlsx](08-SSLS_3.0_DECISION_REGISTER.xlsx).
+**Controlled by:** [02-SSLS_3.0_SOURCE_HIERARCHY.md](02-SSLS_3.0_SOURCE_HIERARCHY.md) and owner decisions in [08-SSLS_3.0_DECISIONS.md](08-SSLS_3.0_DECISIONS.md).
 
 ---
 
@@ -59,9 +59,9 @@ All twelve artifacts are `CANDIDATE`. None is approved. `[C]`
 | SSLS3-DOC-05 | `05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md` | Scope and Boundaries | Governance | 0.1.0-draft | CANDIDATE | None | Shelby | — | On approval | Scope, exclusions, future-state separation | — | — | 01, 08 | AI-assisted, 2026-08-21 |
 | SSLS3-DOC-06 | `06-SSLS_3.0_PRODUCT_BRIEF.md` | Product Brief | Product | 0.1.0-draft | CANDIDATE | None | Shelby | — | On approval | Problem, value, users, outcomes | — | — | 01, 05, 07 | AI-assisted, 2026-08-21 |
 | SSLS3-DOC-07 | `07-SSLS_3.0_GLOSSARY.md` | Glossary | Governance | 0.1.0-draft | CANDIDATE | None | Shelby | — | On approval | Terminology | — | — | 01 | AI-assisted, 2026-08-21 |
-| SSLS3-DOC-08 | `08-SSLS_3.0_DECISION_REGISTER.xlsx` | Decision Register | Register | 0.1.0-draft | CANDIDATE | None | Shelby | — | Continuous | Decision status | — | — | 02, 09, 10 | AI-assisted, 2026-08-21 |
-| SSLS3-DOC-09 | `09-SSLS_3.0_REQUIREMENTS_REGISTER.xlsx` | Requirements Register | Register | 0.1.0-draft | CANDIDATE | None | Shelby | — | Continuous | Requirements and acceptance criteria | — | — | 08, 10 | AI-assisted, 2026-08-21 |
-| SSLS3-DOC-10 | `10-SSLS_3.0_EVIDENCE_AND_CLAIMS_REGISTER.xlsx` | Evidence and Claims Register | Register | 0.1.0-draft | CANDIDATE | None | Shelby | — | Continuous | Validation evidence and claim authorization | — | — | 08, 09 | AI-assisted, 2026-08-21 |
+| SSLS3-DOC-08 | `08-SSLS_3.0_DECISIONS.md` | Decision Register | Register | 0.1.0-draft | CANDIDATE | None | Shelby | — | Continuous | Decision status | — | — | 02, 09, 10 | AI-assisted, 2026-08-21 |
+| SSLS3-DOC-09 | `09-SSLS_3.0_REQUIREMENTS.md` | Requirements Register | Register | 0.1.0-draft | CANDIDATE | None | Shelby | — | Continuous | Requirements and acceptance criteria | — | — | 08, 10 | AI-assisted, 2026-08-21 |
+| SSLS3-DOC-10 | `10-SSLS_3.0_EVIDENCE_AND_CLAIMS.md` | Evidence and Claims Register | Register | 0.1.0-draft | CANDIDATE | None | Shelby | — | Continuous | Validation evidence and claim authorization | — | — | 08, 09 | AI-assisted, 2026-08-21 |
 | SSLS3-DOC-11 | `11-SSLS_3.0_REPOSITORY_MAP.md` | Repository Map | Structure | 0.1.0-draft | CANDIDATE | None | Shelby | — | On approval | File locations and structural relationships | — | — | 02, 03 | AI-assisted, 2026-08-21 |
 
 ## 3. Historical inventory
