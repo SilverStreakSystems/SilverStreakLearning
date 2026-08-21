@@ -88,6 +88,25 @@ function CommandCenter() {
         summary="What is currently authoritative, what is only built, what has actually been checked, and what decision comes next. Readiness is reported on separate axes and is never combined into a single score."
       />
 
+      {/* The only working product surface in this build is one route deep in a
+          list of governance sections, so the first walkthrough could not find
+          it from here. This names it in plain language and states its bound. */}
+      <div className="mt-6 rounded-md border border-border bg-surface p-4 sm:p-5">
+        <h2 className="font-display text-lg font-semibold">The working product surface</h2>
+        <p className="measure mt-1 text-sm text-muted-foreground">
+          Product Alpha 001 is the one part of this build a person can actually use: record what you
+          saw about a fictional learner, plan a support, and read the next step the rule set derives
+          from those records. It is a bounded local prototype — fictional data only, saved in this
+          browser, not released and not validated.
+        </p>
+        <Link
+          to="/learners"
+          className="mt-4 inline-flex min-h-11 items-center rounded-sm bg-primary px-4 text-sm font-semibold text-primary-foreground"
+        >
+          Open the learner workflow
+        </Link>
+      </div>
+
       <Section
         id="program-state"
         title="Current governed state"
