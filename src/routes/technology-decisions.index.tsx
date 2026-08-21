@@ -2,11 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { Cell, PageHeader, RegistryTable, RowHeader, Section } from "@/components/governance/page";
 import { PlanningScopeNotice, SubNav, SubNavLink } from "@/components/technology-decisions/parts";
-import {
-  RELATION_LABEL,
-  ReviewQueueTable,
-  applyReviewFilters,
-} from "@/components/technology-decisions/drift-review";
+import { ReviewQueueTable } from "@/components/technology-decisions/drift-review";
+import { RELATION_LABEL, applyReviewFilters } from "@/lib/drift-review-view";
 import {
   driftAnalysisDocument,
   mandatoryCohort,
@@ -190,7 +187,9 @@ function TechnologyDecisionsOverview() {
           <tr>
             <RowHeader>Individual review required</RowHeader>
             <Cell>{MANDATORY.length}</Cell>
-            <Cell>Risk, consequence, AI boundary, or student and family exposure. Never batched.</Cell>
+            <Cell>
+              Risk, consequence, AI boundary, or student and family exposure. Never batched.
+            </Cell>
           </tr>
           <tr>
             <RowHeader>Representative sample</RowHeader>

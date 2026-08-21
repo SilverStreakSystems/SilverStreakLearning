@@ -222,7 +222,9 @@ export function parseSourceRecommendation(verbatim: string): SourceExpression {
     diagnostics.push("ordering-preserved — the source expresses a sequence, not a set");
   } else if (alternatives) {
     expressionType = "UNORDERED-ALTERNATIVES";
-    diagnostics.push("alternatives — the source offers a choice between options, not a combination");
+    diagnostics.push(
+      "alternatives — the source offers a choice between options, not a combination",
+    );
   } else if (primaryOptionIds.length === 1 && primaryOptionIds[0] === "OPT-6") {
     // Option 6 is the hybrid option in its own right. It is NOT expanded into
     // {Option 2, Option 5}: the source named one option, and rewriting it into

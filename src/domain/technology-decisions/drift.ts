@@ -214,9 +214,7 @@ export function readEvidenceState(
   evaluation: EvaluationResult,
 ): EvidenceState {
   if (expression.parseStatus === "contradictory") return "CONTRADICTORY";
-  const suppliedUsesAi = expression.primaryOptionIds.some(
-    (id) => id === "OPT-5" || id === "OPT-6",
-  );
+  const suppliedUsesAi = expression.primaryOptionIds.some((id) => id === "OPT-5" || id === "OPT-6");
   if (suppliedUsesAi && evaluation.aiBoundary === "prohibited") return "CONTRADICTORY";
   if (expression.parseStatus === "unparseable") return "MISSING";
   if (evaluation.outcome === "unresolved") return "MISSING";
@@ -485,11 +483,7 @@ export function selectRepresentativeSample(
         .map(stratumKey)
         .filter((key) => !covered.has(key));
       const unique = [...new Set(added)].sort();
-      const tie = contentFingerprint([
-        SAMPLE_ALGORITHM_VERSION,
-        fingerprint,
-        record.workflow_id,
-      ]);
+      const tie = contentFingerprint([SAMPLE_ALGORITHM_VERSION, fingerprint, record.workflow_id]);
       if (
         !best ||
         unique.length > best.added.length ||

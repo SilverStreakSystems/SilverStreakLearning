@@ -10,18 +10,7 @@
 import { Link } from "@tanstack/react-router";
 import type { DriftAnalysisRecord } from "@/domain/technology-decisions";
 import { Cell, RegistryTable, RowHeader } from "@/components/governance/page";
-
-export const OWNER_REVIEW_PENDING = "OWNER REVIEW PENDING — no disposition has been recorded.";
-
-export const RELATION_LABEL: Record<DriftAnalysisRecord["comparison_relation"], string> = {
-  EXACT: "Both readings name the same options",
-  "DERIVED-PROPER-SUBSET": "Derived set is contained in the supplied set",
-  "DERIVED-PROPER-SUPERSET": "Derived set adds options beyond the supplied set",
-  "PARTIAL-OVERLAP": "Each reading names something the other omits",
-  DISJOINT: "The two readings share no option",
-  "SOURCE-UNPARSEABLE": "The supplied recommendation cannot be read as one committed set",
-  "DERIVED-ABSTAIN": "The evaluator abstained, which is not a disagreement",
-};
+import { OWNER_REVIEW_PENDING, RELATION_LABEL } from "@/lib/drift-review-view";
 
 export function ReviewStatusNote({ record }: { record: DriftAnalysisRecord }) {
   return (
@@ -154,30 +143,6 @@ export function ComparisonPanel({ record }: { record: DriftAnalysisRecord }) {
       </section>
     </div>
   );
-}
-
-export interface ReviewFilters {
-  relation: string;
-  risk: string;
-  group: string;
-  cohort: string;
-}
-
-export function applyReviewFilters(
-  records: DriftAnalysisRecord[],
-  filters: ReviewFilters,
-): DriftAnalysisRecord[] {
-  return records.filter((record) => {
-    if (filters.relation !== "all" && record.comparison_relation !== filters.relation) return false;
-    if (filters.risk !== "all" && record.risk_level !== filters.risk) return false;
-    if (filters.group !== "all" && record.role_group_id !== filters.group) return false;
-    if (filters.cohort === "mandatory" && !record.mandatory_review) return false;
-    if (filters.cohort === "batch" && !record.batch_eligible) return false;
-    if (filters.cohort === "needs-evidence" && record.proposed_resolution !== "NEEDS-EVIDENCE") {
-      return false;
-    }
-    return true;
-  });
 }
 
 export function ReviewQueueTable({ records }: { records: DriftAnalysisRecord[] }) {

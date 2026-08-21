@@ -31,7 +31,13 @@ function writeJson(path: string, value: unknown): void {
 }
 
 function writeDoc(path: string, lines: string[]): void {
-  writeFileSync(path, `${lines.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd()}\n`);
+  writeFileSync(
+    path,
+    `${lines
+      .join("\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trimEnd()}\n`,
+  );
 }
 
 function table(headers: string[], rows: string[][]): string[] {
@@ -127,7 +133,10 @@ function main(): void {
     ...table(
       ["Field", "Value"],
       [
-        ["Decision process", `${analysis.decision_process_id} v${analysis.decision_process_version}`],
+        [
+          "Decision process",
+          `${analysis.decision_process_id} v${analysis.decision_process_version}`,
+        ],
         ["Parser version", analysis.parser_version],
         ["Evaluator version", analysis.evaluator_version],
         ["Classifier version", analysis.classifier_version],
@@ -244,7 +253,11 @@ function main(): void {
     ...table(
       ["Queue", "Size", "Handling"],
       [
-        ["Mandatory individual review", String(mandatory.length), "One record at a time. No batching."],
+        [
+          "Mandatory individual review",
+          String(mandatory.length),
+          "One record at a time. No batching.",
+        ],
         [
           "Representative sample",
           String(sample.selected.length),
