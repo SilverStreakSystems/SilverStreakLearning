@@ -16,8 +16,9 @@ Recomputed from the workbook itself, not copied from the summary:
 - **[C]** 20 sheets (Summary, Decision Process, 18 group sheets A–R); 18 columns per group sheet, matching the 18 declared fields.
 - **[C]** 279 workflow rows; AI necessity Optional 94 / Unnecessary 115 / Helpful 38 / Prohibited 32 / **Required 0**; Risk High 102 / Moderate 138 / Low 39. Every published total reconciles.
 - **[C]** Distinct role labels summed per group = **212**, matching the declared inventory group by group. Globally distinct labels = **211**, because one label legitimately appears in two groups. The register will carry both figures with that explanation; neither is silently "corrected".
-- **[C]** SHA-256 of the workbook recorded; the summary Markdown is registered alongside it.
+- **[C]** SHA-256 of the workbook recorded (`2b7187ca…e4e3825a`, 168,010 bytes); the summary Markdown is registered alongside it (`fbd22dd3…721468d6`). The re-uploaded `-2` copies are byte-identical to the first pair, so there is one source version, not two.
 - **[U]** The uploaded binary lives on a read-only mount, not in the repository. Per-sheet and per-row digests will be recorded so the normalized register stays independently checkable without re-reading the binary. Re-extraction later requires the owner to re-supply the file — recorded as a stated limitation, not hidden.
+- Every total above matches the supplied summary, so normalization may proceed; if any recomputation at implementation entry disagrees, the increment stops before normalization and reports the disagreement.
 
 ## What gets built
 
