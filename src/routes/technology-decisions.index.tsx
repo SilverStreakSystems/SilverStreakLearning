@@ -1,6 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
 import { Cell, PageHeader, RegistryTable, RowHeader, Section } from "@/components/governance/page";
 import { PlanningScopeNotice, SubNav, SubNavLink } from "@/components/technology-decisions/parts";
+import {
+  RELATION_LABEL,
+  ReviewQueueTable,
+  applyReviewFilters,
+} from "@/components/technology-decisions/drift-review";
+import {
+  driftAnalysisDocument,
+  mandatoryCohort,
+  nonIdenticalRecords,
+  representativeSample,
+} from "@/lib/technology-decision-drift";
 import {
   DECISION_PROCESS,
   SOURCE_REGISTER,
@@ -12,20 +24,24 @@ import {
 const TOTALS = registerTotals();
 const GROUPS = roleGroups();
 
+const ANALYSIS = driftAnalysisDocument();
+const NON_IDENTICAL = nonIdenticalRecords();
+const MANDATORY = mandatoryCohort();
+const SAMPLE = representativeSample();
+
+const RELATION_ROWS = Object.entries(ANALYSIS.totals.relations).sort((a, b) => b[1] - a[1]);
+const CAUSE_ROWS = Object.entries(ANALYSIS.totals.candidate_causes).sort((a, b) => b[1] - a[1]);
+
+const searchSchema = z.object({
+  relation: z.string().default("all"),
+  risk: z.string().default("all"),
+  group: z.string().default("all"),
+  cohort: z.string().default("all"),
+});
+
 const DERIVED_ROWS = Object.entries(TOTALS.derivedOptions).sort((a, b) => b[1] - a[1]);
-const DRIFT_ROWS = Object.entries(TOTALS.drift).sort((a, b) => b[1] - a[1]);
-
-const DRIFT_LABEL: Record<string, string> = {
-  agrees: "Derived result matches the supplied recommendation",
-  "derived-narrower": "Derived result is narrower than the supplied recommendation",
-  "derived-broader": "Derived result is broader than the supplied recommendation",
-  differs: "Derived result and supplied recommendation name different options",
-  "derived-unresolved": "Evaluator abstained, so no comparison is possible",
-  "source-unreadable":
-    "Supplied recommendation names no option number that can be read mechanically",
-};
-
 export const Route = createFileRoute("/technology-decisions/")({
+  validateSearch: searchSchema,
   head: () => ({
     meta: [
       { title: "Role-First Technology Decisions | SSLS" },
@@ -136,20 +152,65 @@ function TechnologyDecisionsOverview() {
 
       <Section
         id="drift"
-        title="Where the evaluator disagrees with the supplied analysis"
-        description="Disagreement is shown, never silently resolved. The supplied recommendation is preserved verbatim on every workflow page."
+        title="Where the two readings differ"
+        description="A relation is a statement about two option sets, not a verdict on either. The supplied recommendation is preserved verbatim on every workflow page."
       >
         <RegistryTable
-          caption="Drift between derived option sets and supplied recommendations."
-          headers={["Comparison", "Workflows"]}
+          caption="Resolved comparison relation between the derived option set and the supplied recommendation."
+          headers={["Relation", "What it means", "Workflows"]}
         >
-          {DRIFT_ROWS.map(([status, count]) => (
-            <tr key={status}>
-              <RowHeader>{DRIFT_LABEL[status] ?? status}</RowHeader>
+          {RELATION_ROWS.map(([relation, count]) => (
+            <tr key={relation}>
+              <RowHeader>{relation}</RowHeader>
+              <Cell>{RELATION_LABEL[relation as keyof typeof RELATION_LABEL] ?? relation}</Cell>
               <Cell>{count}</Cell>
             </tr>
           ))}
         </RegistryTable>
+        <RegistryTable
+          caption="Candidate causes a reviewer should consider. Non-exclusive: one record may carry several."
+          headers={["Candidate cause", "Workflows"]}
+        >
+          {CAUSE_ROWS.map(([cause, count]) => (
+            <tr key={cause}>
+              <RowHeader>{cause}</RowHeader>
+              <Cell>{count}</Cell>
+            </tr>
+          ))}
+        </RegistryTable>
+        <RegistryTable
+          caption="Review populations prepared for the owner."
+          headers={["Population", "Records", "Handling"]}
+        >
+          <tr>
+            <RowHeader>Non-identical</RowHeader>
+            <Cell>{NON_IDENTICAL.length}</Cell>
+            <Cell>Analyzed in full. None resolved.</Cell>
+          </tr>
+          <tr>
+            <RowHeader>Individual review required</RowHeader>
+            <Cell>{MANDATORY.length}</Cell>
+            <Cell>Risk, consequence, AI boundary, or student and family exposure. Never batched.</Cell>
+          </tr>
+          <tr>
+            <RowHeader>Representative sample</RowHeader>
+            <Cell>{SAMPLE.selected.length}</Cell>
+            <Cell>Deterministic maximum-coverage selection for calibration reading.</Cell>
+          </tr>
+          <tr>
+            <RowHeader>Batched proposals</RowHeader>
+            <Cell>{ANALYSIS.batches.length}</Cell>
+            <Cell>Grouped only where the proposal basis is identical in every dimension.</Cell>
+          </tr>
+        </RegistryTable>
+      </Section>
+
+      <Section
+        id="review"
+        title="Owner review queue"
+        description="Every record below is analysis awaiting owner review. Nothing here records a disposition, and no control on this page can."
+      >
+        <ReviewQueue />
       </Section>
 
       <Section
@@ -186,6 +247,109 @@ function TechnologyDecisionsOverview() {
           </li>
         </ul>
       </Section>
+    </div>
+  );
+}
+
+const RELATION_OPTIONS = Object.keys(RELATION_LABEL);
+const RISK_OPTIONS = ["high", "moderate", "low", "unstated"];
+
+/**
+ * Filters are URL search parameters submitted with a plain form, so a review
+ * position survives a reload, can be shared, and works without client state.
+ */
+function ReviewQueue() {
+  const search = Route.useSearch();
+  const navigate = Route.useNavigate();
+  const filtered = applyReviewFilters(NON_IDENTICAL, search);
+
+  return (
+    <div className="space-y-4">
+      <form
+        className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const data = new FormData(event.currentTarget);
+          void navigate({
+            search: {
+              relation: String(data.get("relation") ?? "all"),
+              risk: String(data.get("risk") ?? "all"),
+              group: String(data.get("group") ?? "all"),
+              cohort: String(data.get("cohort") ?? "all"),
+            },
+          });
+        }}
+      >
+        <label className="text-sm font-semibold">
+          Relation
+          <select
+            name="relation"
+            defaultValue={search.relation}
+            className="mt-1 block w-full rounded-md border border-border bg-surface px-2 py-2 text-sm"
+          >
+            <option value="all">All relations</option>
+            {RELATION_OPTIONS.map((relation) => (
+              <option key={relation} value={relation}>
+                {relation}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm font-semibold">
+          Risk level
+          <select
+            name="risk"
+            defaultValue={search.risk}
+            className="mt-1 block w-full rounded-md border border-border bg-surface px-2 py-2 text-sm"
+          >
+            <option value="all">All risk levels</option>
+            {RISK_OPTIONS.map((risk) => (
+              <option key={risk} value={risk}>
+                {risk}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm font-semibold">
+          Role group
+          <select
+            name="group"
+            defaultValue={search.group}
+            className="mt-1 block w-full rounded-md border border-border bg-surface px-2 py-2 text-sm"
+          >
+            <option value="all">All role groups</option>
+            {GROUPS.map((group) => (
+              <option key={group.role_group_id} value={group.role_group_id}>
+                {group.role_group_name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm font-semibold">
+          Cohort
+          <select
+            name="cohort"
+            defaultValue={search.cohort}
+            className="mt-1 block w-full rounded-md border border-border bg-surface px-2 py-2 text-sm"
+          >
+            <option value="all">All non-identical records</option>
+            <option value="mandatory">Individual review required</option>
+            <option value="batch">Batch eligible</option>
+            <option value="needs-evidence">Needs evidence</option>
+          </select>
+        </label>
+        <button
+          type="submit"
+          className="min-h-11 rounded-md border border-border-strong bg-surface px-4 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:col-span-2 lg:col-span-1"
+        >
+          Apply filters
+        </button>
+      </form>
+      <p aria-live="polite" className="measure text-sm text-muted-foreground">
+        Showing {filtered.length} of {NON_IDENTICAL.length} non-identical records. None has an owner
+        disposition.
+      </p>
+      <ReviewQueueTable records={filtered} />
     </div>
   );
 }
