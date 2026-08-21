@@ -204,6 +204,21 @@ export function evaluate(answers: DecisionAnswers): EvaluationResult {
     }
     invariants.push("TDP-INV-01", "TDP-INV-05");
     const hybrid = answers.deterministic_core_available === "yes";
+    // A consequential determination about a person with no deterministic core
+    // has no safe automated route: Option 5 would put the model in the
+    // decision seat. Abstain and say so rather than recommend it.
+    if (consequential && !hybrid) {
+      invariants.push("TDP-INV-02");
+      return abstain(
+        ["deterministic_core_available"],
+        [
+          ...rationale,
+          "This decides something consequential about a person and has no deterministic core, so no AI option is available. The determination stays with a named human.",
+        ],
+        "prohibited",
+        invariants,
+      );
+    }
     const optionIds: OptionId[] = hybrid ? ["OPT-6"] : ["OPT-5"];
     if (hybrid) {
       optionIds.unshift(structuredNeeded ? "OPT-4" : "OPT-2");

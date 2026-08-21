@@ -128,12 +128,25 @@ function modalityOf(clause: string): OptionModality {
   return "primary";
 }
 
-/** Split on clause boundaries the source actually uses, keeping the text intact. */
-function clausesOf(text: string): string[] {
-  return text
-    .split(/;/)
-    .map((clause) => clause.trim())
-    .filter((clause) => clause.length > 0);
+/**
+ * Split on clause boundaries the source actually uses, keeping the text intact.
+ *
+ * `A then B` is a sequence, not a set: everything after `then` is a later
+ * stage. It is split out and marked staged so the present commitment is read
+ * as A alone. Reading the whole sentence as one clause loses A entirely when
+ * the tail carries a timing qualifier ("once volume grows"), which would
+ * report a firm recommendation as no recommendation at all.
+ */
+function clausesOf(text: string): { text: string; staged: boolean }[] {
+  const out: { text: string; staged: boolean }[] = [];
+  for (const raw of text.split(/;/)) {
+    const parts = raw.split(/\bthen\b/i);
+    parts.forEach((part, index) => {
+      const trimmed = part.trim();
+      if (trimmed.length > 0) out.push({ text: trimmed, staged: index > 0 });
+    });
+  }
+  return out;
 }
 
 /**
@@ -144,9 +157,11 @@ export function parseSourceRecommendation(verbatim: string): SourceExpression {
   const clauses = clausesOf(verbatim);
   const references: OptionReference[] = [];
 
-  clauses.forEach((clause) => {
+  clauses.forEach(({ text: clause, staged }) => {
     const negatedHere = clause.match(/\b(?:not|no|never)\s+option\s*([1-7])/i);
-    const clauseModality = modalityOf(clause);
+    const declared = modalityOf(clause);
+    const clauseModality: OptionModality =
+      staged && declared === "primary" ? "future" : declared;
     for (const optionId of optionsInClause(clause)) {
       const modality: OptionModality =
         negatedHere && `OPT-${negatedHere[1]}` === optionId ? "excluded" : clauseModality;
@@ -179,7 +194,7 @@ export function parseSourceRecommendation(verbatim: string): SourceExpression {
     diagnostics.push("negation-present — the source rules something out in words");
   }
 
-  const head = clauses[0] ?? "";
+  const head = clauses[0]?.text ?? "";
   const headOptions = optionsInClause(head);
   const alternatives = /option\s*[1-7][^;]{0,24}\bor\b[^;]{0,24}option\s*[1-7]/i.test(verbatim);
   const ordered =
