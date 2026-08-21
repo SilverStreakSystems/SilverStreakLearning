@@ -2,7 +2,7 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.1.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "beba57aa137bfb6a0f68e4b809f65e19da182c77d1d7cb31a6d8958ea3c0f1ef",
+  "fingerprint": "85f733483dd486123805e088d199a828ab33f85942730faf88e6fac9790968aa",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
@@ -66,8 +66,8 @@
     },
     {
       "path": "data/ssls-3.0/canon.json",
-      "sha256": "b30bbd16710be1b39a3e3f914b0106122d6a28e5191dd0cabf4d05258f2480e0",
-      "bytes": 28340
+      "sha256": "f450f44b138bc69172f3e13bfaf84fd5adb677429728464c46330c277a1fbc3a",
+      "bytes": 34309
     },
     {
       "path": "src/lib/route-registry.ts",

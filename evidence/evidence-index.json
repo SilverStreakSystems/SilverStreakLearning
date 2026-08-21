@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
   "generated_marker": "GENERATED - DO NOT HAND EDIT",
-  "generated_at": "2026-08-21T17:36:38.874Z",
-  "commit_sha": "52ab833c2bd0c06eaa45f4096f160d8fe71b464a",
+  "generated_at": "2026-08-21T19:06:05.111Z",
+  "commit_sha": "cf2e36fda8ca79b6d8c8c6e405d834e0011abf32",
   "environment": "lovable-sandbox",
   "mode": "full",
   "input_sets": {
-    "source": "fc3b1efe4643c4861b668ca29942c16d5d0ae4eaf897e3824336a314c032a827",
-    "tests": "c1d4409ca36068d702dcc51f33799ac69ec42affa1b4156c7f9b30912e1457eb",
+    "source": "69c98bc7e5fc2f8161a3f83394e6907aa653b8766f73a8ec237b3f8f63b7655e",
+    "tests": "b82104fe6c7d675f309cda78114db6861809bc298fad8cd9cccdbe90a8545617",
     "config": "0e57939b4edd7f80bf3bfccad4dcc88397a6747871e308b9a350f1df9648f71c",
     "lockfile": "77b40b3862114a24d4b230a4faa81b9ed08f29f8b240d79c502c08d5a172afc6",
     "manifest": "b4d3d7a244932760c4fd1c0ceec20332461b49ef647f856eb5bf1ab673b26519",
     "routes": "672346e808363d1126383a227f7ff02ff30f467678b396dd44c228f30e213ec4",
     "pipeline": "263a80176f89c9e54d7b3c96ca8d89c9c31d136dbc680c08d7f7bd994ccc76fc",
     "workflows": "bca8eb7a202c23eaf212729e63f1541f7420baa46ca023212a8d92d1f24ab1bb",
-    "docs": "d0b11a3f29d3c5e375591e0edae691102f814d832696607cc875edac553be6c9",
-    "projection": "7f1a0bbece448b8073c82bb6b85fd7c9c902f3d924d4d84df7d17b4ff42027ca",
-    "tracked": "33e419a128af7fbf51965a43d8a54616fddd205969eaa5bf795bb9fad10b9087"
+    "docs": "6c5247b2badab4701c0592dd48ca4c0f3766f874578cc540317888cce823ea33",
+    "projection": "93b2291ebc2f252690ab07ce671d3beb78b2cc71098f49a8f781a57f7bf94555",
+    "tracked": "25b77be65b9fc026391268b34665b9cfdde2ab0158ee62ec4dffb25c8b91c0fa"
   },
   "records": [
     {
@@ -26,10 +26,10 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:35:22.828Z",
+      "timestamp": "2026-08-21T19:04:54.813Z",
       "expires_at": null,
       "artifact_path": "artifacts/build/build.log",
-      "artifact_hash": "41b20c6530460792594612c5a4b780019e0547d54ec7591a3cd8e620f86d6dfc"
+      "artifact_hash": "f82fa68852012578410dae3b93ef305a08338142c3859dad9adb1baa075ad2b2"
     },
     {
       "evidence_id": "EV-TEST",
@@ -38,10 +38,10 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:20.691Z",
+      "timestamp": "2026-08-21T19:05:46.108Z",
       "expires_at": null,
       "artifact_path": "artifacts/tests/test.log",
-      "artifact_hash": "23be65d2863d26ab9860db010e0aed32620798577bfdaada7ecbd5ce58ba93d8"
+      "artifact_hash": "de8efa99616004ea79163c104333d9e5905156b88d05b9ef90ce5fd4ae61ef09"
     },
     {
       "evidence_id": "EV-TYPECHECK",
@@ -50,7 +50,7 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:22.941Z",
+      "timestamp": "2026-08-21T19:05:48.927Z",
       "expires_at": null,
       "artifact_path": "artifacts/build/typecheck.log",
       "artifact_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -62,7 +62,7 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.767Z",
+      "timestamp": "2026-08-21T19:06:04.128Z",
       "expires_at": null,
       "artifact_path": "artifacts/lint/eslint.json",
       "artifact_hash": "1bee940b67e24bb5dea930fd37c356ac08ef57127f6f9eb5c5776f8258cdc9b3"
@@ -74,7 +74,7 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.782Z",
+      "timestamp": "2026-08-21T19:06:04.139Z",
       "expires_at": null,
       "artifact_path": "artifacts/provenance/routes.json",
       "artifact_hash": "70a7ef9e28d7e8fdb8e4bd815a3df48301fcfafe83d439ee48aaca5a9c618328"
@@ -86,10 +86,10 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.878Z",
+      "timestamp": "2026-08-21T19:06:04.224Z",
       "expires_at": null,
       "artifact_path": "artifacts/provenance/provenance.json",
-      "artifact_hash": "3519691d2065082a546e11835d0ed64db588816bdf1ed94b5b44e61dde9dbf0e"
+      "artifact_hash": "b5ebaa12cbb0ad2c0d391a5ae1d2bc9d9afe67183dd1228a1b4b19ce99ce5d50"
     },
     {
       "evidence_id": "EV-CONFIG",
@@ -98,7 +98,7 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.879Z",
+      "timestamp": "2026-08-21T19:06:04.225Z",
       "expires_at": null,
       "artifact_path": "artifacts/provenance/configuration.json",
       "artifact_hash": "9f4c09c379b6e66dbb1c34ec25fb00ea2824a4338eb7a94ba5f3071609096929"
@@ -110,7 +110,7 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.960Z",
+      "timestamp": "2026-08-21T19:06:04.300Z",
       "expires_at": null,
       "artifact_path": "artifacts/provenance/ssot-binding.log",
       "artifact_hash": "3a6b5f49f299244d100c3a940f6f69c9466595a5422948263ff90d418a5cbd71"
@@ -122,7 +122,7 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.969Z",
+      "timestamp": "2026-08-21T19:06:04.304Z",
       "expires_at": null,
       "artifact_path": "artifacts/sbom/dependency-inventory.json",
       "artifact_hash": "c89930e45c6cb9a82311fca3c129978e1223b7e6e9761c7f8226f628c8d491a3"
@@ -134,10 +134,10 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:37.980Z",
+      "timestamp": "2026-08-21T19:06:04.314Z",
       "expires_at": null,
       "artifact_path": "artifacts/sbom/sbom.cdx.json",
-      "artifact_hash": "30038af10c8dc94ca0daeb61be104328de786ca767d64de58596cafa8a79f46a"
+      "artifact_hash": "bceb8e0c895839a6b6a7c043937fd4e850e2332dfd201872445167e72a0adb52"
     },
     {
       "evidence_id": "EV-VULN",
@@ -146,8 +146,8 @@
       "status": "not-completed",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:38.046Z",
-      "expires_at": "2026-08-28T17:36:38.046Z",
+      "timestamp": "2026-08-21T19:06:04.381Z",
+      "expires_at": "2026-08-28T19:06:04.381Z",
       "artifact_path": "artifacts/vulnerability/audit.json",
       "artifact_hash": "5ab0a62e3f1c6153e52bd394ef2e2d971b48148d414dbbdd69dc5d1dce185093"
     },
@@ -158,8 +158,8 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:38.404Z",
-      "expires_at": "2026-08-28T17:36:38.404Z",
+      "timestamp": "2026-08-21T19:06:04.734Z",
+      "expires_at": "2026-08-28T19:06:04.734Z",
       "artifact_path": "artifacts/vulnerability/advisory-recovery.json",
       "artifact_hash": "6399c704c21f49841724e74aefd161aab8637ad2e55ccd70320d2abd22917c3f"
     },
@@ -170,8 +170,8 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:38.416Z",
-      "expires_at": "2026-11-19T17:36:38.416Z",
+      "timestamp": "2026-08-21T19:06:04.746Z",
+      "expires_at": "2026-11-19T19:06:04.746Z",
       "artifact_path": "artifacts/licenses/licenses.json",
       "artifact_hash": "f2ceb9fb34e797fc676a86c22e559e8f8ba5eaaf4bf4829b584997efb6844a78"
     },
@@ -182,10 +182,10 @@
       "status": "pass",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:38.605Z",
+      "timestamp": "2026-08-21T19:06:04.880Z",
       "expires_at": null,
       "artifact_path": "artifacts/boundary/secret-scan.json",
-      "artifact_hash": "9ebed344ffd0ccaa35dd89543193fdd10146333ea4f5e2f37b9d2fc68b012495"
+      "artifact_hash": "b327c60f3b69e0bbc630bfa5ba15f329f552a09567f5de4fbceb84bb09f2649e"
     },
     {
       "evidence_id": "EV-PII",
@@ -194,10 +194,10 @@
       "status": "review-required",
       "method": "automated",
       "independent": false,
-      "timestamp": "2026-08-21T17:36:38.787Z",
+      "timestamp": "2026-08-21T19:06:05.039Z",
       "expires_at": null,
       "artifact_path": "artifacts/boundary/pii-boundary-scan.json",
-      "artifact_hash": "bb741ac53f4693d901f963de642d62939bc820bf25a119ee0a760bb25f93c6b7"
+      "artifact_hash": "2ffbfa980ddb8ec79c361a3a1d911ebfe01ad4f52dd934cade5903fcf819daab"
     }
   ]
 }

@@ -84,15 +84,29 @@ describe("SSLS 3.0 canon record", () => {
     expect([...canonicalStatusCounts(loadCanon())]).toEqual([["CANDIDATE", 12]]);
   });
 
-  it("records the three reconstructions and the missing review class rather than hiding them", () => {
+  it("records the three reconstructions rather than hiding them", () => {
     expect(reconstructedDocuments(loadCanon()).map((d) => d.document_id)).toEqual([
       "SSLS3-DOC-08",
       "SSLS3-DOC-09",
       "SSLS3-DOC-10",
     ]);
-    expect(documentsMissingReviewClass(loadCanon()).map((d) => d.document_id)).toEqual([
-      "SSLS3-DOC-00",
-    ]);
+    // The revised File 00 draft states its own review class, so nothing is missing one.
+    expect(documentsMissingReviewClass(loadCanon())).toEqual([]);
+  });
+
+  it("carries the owner-supplied revised drafts of files 00, 01, and 02", () => {
+    const record = loadCanon();
+    const versions = Object.fromEntries(record.documents.map((d) => [d.document_id, d.version]));
+    expect(versions["SSLS3-DOC-00"]).toBe("0.6.0-draft");
+    expect(versions["SSLS3-DOC-01"]).toBe("0.4.0-draft");
+    expect(versions["SSLS3-DOC-02"]).toBe("0.3.0-draft");
+    // A newer transcription is still a transcription: authority is unchanged.
+    for (const id of ["SSLS3-DOC-00", "SSLS3-DOC-01", "SSLS3-DOC-02"]) {
+      const doc = record.documents.find((d) => d.document_id === id);
+      expect(doc?.canonical_status).toBe("CANDIDATE");
+      expect(doc?.authorizing_decision).toBeNull();
+      expect(doc?.provenance).toBe("transcribed");
+    }
   });
 
   it("groups documents by their declared class", () => {
@@ -105,11 +119,20 @@ describe("SSLS 3.0 canon record", () => {
 describe("open decisions", () => {
   it("indexes every open decision exactly once", () => {
     const decisions = openDecisions();
-    expect(decisions).toHaveLength(58);
-    expect(new Set(decisions.map((d) => d.decision_id)).size).toBe(58);
+    expect(decisions).toHaveLength(74);
+    expect(new Set(decisions.map((d) => d.decision_id)).size).toBe(74);
     for (const decision of decisions) {
       expect(decision.state).toBe("open");
     }
+  });
+
+  it("accepts the multi-digit and suffixed identifiers the source documents use", () => {
+    const ids = openDecisions().map((d) => d.decision_id);
+    // File 01 numbers past nine and inserts a sibling item; both must survive validation.
+    expect(ids).toContain("OD-01-10");
+    expect(ids).toContain("OD-01-14");
+    expect(ids).toContain("OD-01-1A");
+    expect(canonDefects(loadCanon())).toEqual([]);
   });
 
   it("indexes exactly the decisions the documents raise", () => {
@@ -129,14 +152,12 @@ describe("open decisions", () => {
     expect(findDocument("SSLS3-DOC-99")).toBeUndefined();
   });
 
-  it("keeps the four priority-1 decisions first", () => {
+  it("keeps the priority-1 decisions first", () => {
     const grouped = decisionsByPriority(loadCanon());
-    expect(grouped.get("1")?.map((d) => d.decision_id)).toEqual([
-      "OD-04-1",
-      "OD-03-2",
-      "OD-02-1",
-      "OD-01-1",
-    ]);
+    const priorityOne = grouped.get("1")?.map((d) => d.decision_id) ?? [];
+    expect(priorityOne.slice(0, 3)).toEqual(["OD-00-1", "OD-00-2", "OD-00-5"]);
+    expect(priorityOne).toContain("OD-04-1");
+    expect(priorityOne).toContain("OD-01-1A");
     expect([...grouped.keys()]).toEqual(["1", "2", "3", "unranked"]);
   });
 
@@ -238,7 +259,7 @@ describe("canon route", () => {
     expect(await screen.findByText("Documents carrying authority")).toBeInTheDocument();
     expect(screen.getAllByText("Open owner decisions").length).toBeGreaterThan(0);
     expect(screen.getAllByText(/OD-04-1/).length).toBeGreaterThan(0);
-    expect(screen.getByText(/none stated — recorded defect/)).toBeInTheDocument();
+    expect(screen.getAllByText(/OD-01-1A/).length).toBeGreaterThan(0);
   });
 
   it("offers no control that could record or close a decision", async () => {
