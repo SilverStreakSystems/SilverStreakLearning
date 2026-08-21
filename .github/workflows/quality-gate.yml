@@ -42,6 +42,12 @@ jobs:
       - name: Install dependencies from the frozen lockfile
         run: bun install --frozen-lockfile
 
+      # The evidence pipeline's typecheck collector runs `bunx tsgo`, whose
+      # binary ships in @typescript/native-preview (preinstalled in the
+      # authoring sandbox but absent on hosted runners).
+      - name: Provide the tsgo typechecker used by the evidence pipeline
+        run: bun add -g @typescript/native-preview@7.0.0-dev.20260707.2
+
       - name: Lint with zero warnings
         run: bun run lint
 

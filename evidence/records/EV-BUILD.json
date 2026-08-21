@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
   "expires_at": null,
-  "tool_version": "1.3.3",
-  "tree_hash": "816053df9a7d08afa828c63e759629bcb7f85106",
+  "tool_version": "1.3.11",
+  "tree_hash": "1a2a5c33e03ba0f2335e978bb525362355b8404f",
   "expected_result": "Exit code 0.",
   "artifact_path": "artifacts/build/build.log",
-  "artifact_hash": "cd8f1043e7611286a0cd3bc13b5f4bc7fe25d4444bcc5cac72783b13d3748b84",
+  "artifact_hash": "d0a1c39da9d5743a53e0a0f0b80576715c181ab47bb149019eb30f49bf29dbe2",
   "input_set": {
     "source": "cde5c107511efee8de9e7841b64a85c426a42c2e4cff2ee1bec414e3e833627b",
     "config": "0e57939b4edd7f80bf3bfccad4dcc88397a6747871e308b9a350f1df9648f71c",
@@ -26,15 +26,15 @@
   "method": "automated",
   "evidence_id": "EV-BUILD",
   "evidence_type": "BUILD",
-  "commit_sha": "4582d02c0d7c2d3c2a1b0033107b7945b3fdb4af",
+  "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-21T10:22:40.614Z",
+  "timestamp": "2026-08-21T13:36:02.170Z",
   "producer": "SSLS evidence pipeline",
   "title": "Production build execution",
   "description": "Production build executed against the declared source, config, and lockfile inputs.",
   "tool": "vite (via bun run build)",
   "command": "bun run build",
-  "actual_result": "Exit code 0. Duration 9428 ms.",
+  "actual_result": "Exit code 0. Duration 5979 ms.",
   "status": "pass",
   "supports": [
     "The repository produced a production build at the declared input set with the recorded exit code."

@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "expires_at": "2026-08-28T10:23:30.828Z",
-  "tool_version": "1.3.3",
-  "tree_hash": "816053df9a7d08afa828c63e759629bcb7f85106",
+  "expires_at": "2026-08-28T13:36:51.957Z",
+  "tool_version": "1.3.11",
+  "tree_hash": "1a2a5c33e03ba0f2335e978bb525362355b8404f",
   "expected_result": "Scanner completes and reports advisory counts by severity.",
   "artifact_path": "artifacts/vulnerability/audit.json",
-  "artifact_hash": "5ab0a62e3f1c6153e52bd394ef2e2d971b48148d414dbbdd69dc5d1dce185093",
+  "artifact_hash": "ef1f7c84dc4e4eb5565a29dd677193b8110922eb382f5c87e16b1e8cc09f53c2",
   "input_set": {
     "manifest": "b4d3d7a244932760c4fd1c0ceec20332461b49ef647f856eb5bf1ab673b26519",
     "lockfile": "77b40b3862114a24d4b230a4faa81b9ed08f29f8b240d79c502c08d5a172afc6"
@@ -24,19 +24,19 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "VULNERABILITY_SCAN",
-  "commit_sha": "4582d02c0d7c2d3c2a1b0033107b7945b3fdb4af",
+  "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-21T10:23:30.828Z",
+  "timestamp": "2026-08-21T13:36:51.957Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-VULN",
   "title": "Dependency vulnerability scan",
   "description": "Advisory scan over the resolved dependency set, recorded without risk interpretation.",
   "tool": "bun audit",
   "command": "bun audit --json",
-  "actual_result": "SCAN STATUS - NOT COMPLETED / EXTERNAL SOURCE UNAVAILABLE.",
-  "status": "not-completed",
+  "actual_result": "Scan completed. 0 advisories: {\"critical\":0,\"high\":0,\"moderate\":0,\"low\":0,\"info\":0}.",
+  "status": "pass",
   "supports": [
-    "That the scan was attempted and did not complete."
+    "The advisory counts reported by this scanner, for this dependency set, at this time."
   ],
   "does_not_support": [
     "That the application is secure, that no vulnerability exists, or that any advisory has been triaged."
