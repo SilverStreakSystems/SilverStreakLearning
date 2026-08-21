@@ -169,6 +169,14 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     group: "governance",
   },
   {
+    path: "/technology-decisions",
+    label: "Technology Decisions",
+    purpose:
+      "Role-first planning: for each analyzed workflow, the minimum effective solution, including no new technology at all.",
+    heading: "Role-First Technology Decisions",
+    group: "governance",
+  },
+  {
     path: "/boundaries",
     label: "Settings and Boundaries",
     purpose: "The authorized posture of this workspace and the claims it refuses.",
