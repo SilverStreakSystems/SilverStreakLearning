@@ -18,7 +18,12 @@ import {
   type PermissionComplexity,
   type Ternary,
 } from "./decision-process";
-import { type DerivedAnswer, type DerivedAnswers, type SourceField, type WorkflowSource } from "./workflow";
+import {
+  type DerivedAnswer,
+  type DerivedAnswers,
+  type SourceField,
+  type WorkflowSource,
+} from "./workflow";
 
 const EMPTY = /^(|—|-|n\/a|na|none|not applicable)$/i;
 
@@ -54,8 +59,21 @@ const CONSEQUENCE_TERMS: ReadonlyArray<[ConsequenceClass, readonly string[]]> = 
   ["discipline", ["discipline", "suspension", "expulsion", "behavior referral", "manifestation"]],
   ["safety", ["safety", "threat assessment", "crisis", "abuse", "mandated report", "emergency"]],
   ["medical", ["medical", "medication", "health record", "nurse", "immuniz", "clinical"]],
-  ["employment", ["hiring", "employment", "personnel action", "staff evaluation", "termination", "contract renewal"]],
-  ["legal", ["due process", "legal", "complaint investigation", "hearing", "litigation", "grievance"]],
+  [
+    "employment",
+    [
+      "hiring",
+      "employment",
+      "personnel action",
+      "staff evaluation",
+      "termination",
+      "contract renewal",
+    ],
+  ],
+  [
+    "legal",
+    ["due process", "legal", "complaint investigation", "hearing", "litigation", "grievance"],
+  ],
   ["grading", ["grade", "grading", "transcript", "credit", "promotion", "retention decision"]],
 ];
 
@@ -76,19 +94,75 @@ const HIGH_SENSITIVITY_TERMS = [
   "protected",
 ];
 
-const PERSONAL_TERMS = ["student", "family", "parent", "guardian", "staff", "teacher", "roster", "caseload"];
+const PERSONAL_TERMS = [
+  "student",
+  "family",
+  "parent",
+  "guardian",
+  "staff",
+  "teacher",
+  "roster",
+  "caseload",
+];
 
 const STUDENT_FACING_TERMS = ["student", "family", "parent", "guardian", "caregiver", "home"];
 
-const RESTRICTED_TERMS = ["confidential", "restricted", "only ", "limited to", "named", "legal", "medical", "private"];
+const RESTRICTED_TERMS = [
+  "confidential",
+  "restricted",
+  "only ",
+  "limited to",
+  "named",
+  "legal",
+  "medical",
+  "private",
+];
 
-const LONGITUDINAL_TERMS = ["longitudinal", "over time", "history", "historical", "trend", "year over year", "progress monitoring", "multi-year"];
+const LONGITUDINAL_TERMS = [
+  "longitudinal",
+  "over time",
+  "history",
+  "historical",
+  "trend",
+  "year over year",
+  "progress monitoring",
+  "multi-year",
+];
 
-const RELATIONAL_TERMS = ["across", "link", "linked", "relational", "per-student", "per student", "multiple", "connect", "roster", "cross-"];
+const RELATIONAL_TERMS = [
+  "across",
+  "link",
+  "linked",
+  "relational",
+  "per-student",
+  "per student",
+  "multiple",
+  "connect",
+  "roster",
+  "cross-",
+];
 
-const AUTHORITATIVE_TERMS = ["record", "system of record", "authoritative", "track", "registry", "log", "documentation"];
+const AUTHORITATIVE_TERMS = [
+  "record",
+  "system of record",
+  "authoritative",
+  "track",
+  "registry",
+  "log",
+  "documentation",
+];
 
-const AUDIT_TERMS = ["audit", "retention", "signature", "signed", "log", "timestamp", "trail", "compliance", "evidence"];
+const AUDIT_TERMS = [
+  "audit",
+  "retention",
+  "signature",
+  "signed",
+  "log",
+  "timestamp",
+  "trail",
+  "compliance",
+  "evidence",
+];
 
 function clauseCount(value: string): number {
   return value
@@ -120,7 +194,8 @@ export function classifyWorkflow(source: WorkflowSource): DerivedAnswers {
       : "uncertain";
 
   const authoritative: Ternary =
-    need === "yes" && has(source.ssls_application_need + source.system_of_record, AUTHORITATIVE_TERMS)
+    need === "yes" &&
+    has(source.ssls_application_need + source.system_of_record, AUTHORITATIVE_TERMS)
       ? "yes"
       : need === "no"
         ? "no"
@@ -134,7 +209,10 @@ export function classifyWorkflow(source: WorkflowSource): DerivedAnswers {
   const longitudinal: Ternary =
     need === "no"
       ? "no"
-      : has(`${source.ssls_application_need} ${source.outputs} ${source.audit_evidence}`, LONGITUDINAL_TERMS)
+      : has(
+            `${source.ssls_application_need} ${source.outputs} ${source.audit_evidence}`,
+            LONGITUDINAL_TERMS,
+          )
         ? "yes"
         : "no";
 

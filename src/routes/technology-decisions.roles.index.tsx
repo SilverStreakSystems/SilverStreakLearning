@@ -34,7 +34,8 @@ export const Route = createFileRoute("/technology-decisions/roles/")({
       { property: "og:title", content: "Roles and Workflows | SSLS" },
       {
         property: "og:description",
-        content: "Coverage by role group, with no group silently dropped and no count hand-written.",
+        content:
+          "Coverage by role group, with no group silently dropped and no count hand-written.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

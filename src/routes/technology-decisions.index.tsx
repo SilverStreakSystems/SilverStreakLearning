@@ -21,7 +21,8 @@ const DRIFT_LABEL: Record<string, string> = {
   "derived-broader": "Derived result is broader than the supplied recommendation",
   differs: "Derived result and supplied recommendation name different options",
   "derived-unresolved": "Evaluator abstained, so no comparison is possible",
-  "source-unreadable": "Supplied recommendation names no option number that can be read mechanically",
+  "source-unreadable":
+    "Supplied recommendation names no option number that can be read mechanically",
 };
 
 export const Route = createFileRoute("/technology-decisions/")({
@@ -74,7 +75,9 @@ function TechnologyDecisionsOverview() {
           <tr>
             <RowHeader>Analyzed workflows</RowHeader>
             <Cell>{TOTALS.workflows}</Cell>
-            <Cell>One record per analyzed workflow row, with all eighteen supplied fields intact.</Cell>
+            <Cell>
+              One record per analyzed workflow row, with all eighteen supplied fields intact.
+            </Cell>
           </tr>
           <tr>
             <RowHeader>Role groups</RowHeader>
@@ -84,7 +87,9 @@ function TechnologyDecisionsOverview() {
           <tr>
             <RowHeader>Roles counted within groups</RowHeader>
             <Cell>{TOTALS.rolesCountedInGroups}</Cell>
-            <Cell>Distinct role labels inside each group, summed. Matches the declared inventory.</Cell>
+            <Cell>
+              Distinct role labels inside each group, summed. Matches the declared inventory.
+            </Cell>
           </tr>
           <tr>
             <RowHeader>Roles distinct across the whole register</RowHeader>

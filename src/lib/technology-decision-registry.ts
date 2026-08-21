@@ -172,7 +172,9 @@ export function roleGroups(): RoleGroupSummary[] {
   const groups = WORKFLOW_REGISTER.worksheets;
   return groups.map((sheet) => ({
     ...sheet,
-    workflows: analyzedWorkflows().filter((item) => item.record.role_group_id === sheet.role_group_id),
+    workflows: analyzedWorkflows().filter(
+      (item) => item.record.role_group_id === sheet.role_group_id,
+    ),
   }));
 }
 
@@ -182,7 +184,10 @@ export function roleGroupById(groupId: string): RoleGroupSummary | undefined {
 
 /** Distinct role labels within each group, summed. Matches the declared inventory. */
 export function rolesCountedInGroups(): number {
-  return WORKFLOW_REGISTER.worksheets.reduce((total, sheet) => total + sheet.roles_counted_in_group, 0);
+  return WORKFLOW_REGISTER.worksheets.reduce(
+    (total, sheet) => total + sheet.roles_counted_in_group,
+    0,
+  );
 }
 
 /** Distinct role labels across the whole register. One lower, because one label spans two groups. */
@@ -294,7 +299,6 @@ export function questionPrompt(questionId: string): string {
 export function analyzedWorkflowById(workflowId: string): AnalyzedWorkflow | undefined {
   return workflowById(workflowId);
 }
-
 
 /** Short label for an option set, e.g. "Option 2 + Option 3". */
 export function describeOptions(optionIds: OptionId[]): string {

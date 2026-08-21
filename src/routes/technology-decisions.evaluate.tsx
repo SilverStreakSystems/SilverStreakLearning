@@ -39,10 +39,7 @@ export const Route = createFileRoute("/technology-decisions/evaluate")({
 function EvaluatePage() {
   const [answers, setAnswers] = useState<Record<string, string>>(INITIAL);
 
-  const evaluation = useMemo(
-    () => evaluate(answers as unknown as DecisionAnswers),
-    [answers],
-  );
+  const evaluation = useMemo(() => evaluate(answers as unknown as DecisionAnswers), [answers]);
 
   return (
     <div>
@@ -68,7 +65,10 @@ function EvaluatePage() {
             const fieldId = `question-${question.question_id}`;
             const helpId = `${fieldId}-help`;
             return (
-              <div key={question.question_id} className="rounded-md border border-border bg-surface p-3">
+              <div
+                key={question.question_id}
+                className="rounded-md border border-border bg-surface p-3"
+              >
                 <label htmlFor={fieldId} className="block text-sm font-semibold">
                   {question.prompt}
                 </label>

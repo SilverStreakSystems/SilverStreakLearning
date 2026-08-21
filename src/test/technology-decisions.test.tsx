@@ -10,11 +10,7 @@ import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import registerJson from "../../data/technology-decisions/workflow-decisions.json";
 import summarySource from "../../data/technology-decisions/sources.json";
-import {
-  evaluate,
-  type DecisionAnswers,
-  SOURCE_FIELDS,
-} from "@/domain/technology-decisions";
+import { evaluate, type DecisionAnswers, SOURCE_FIELDS } from "@/domain/technology-decisions";
 import {
   DECISION_PROCESS,
   WORKFLOW_REGISTER,
@@ -165,4 +161,3 @@ describe("no real people", () => {
     expect(serialized).not.toMatch(/\b\d{3}-\d{2}-\d{4}\b/);
   });
 });
-

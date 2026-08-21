@@ -242,5 +242,10 @@ export function evaluate(answers: DecisionAnswers): EvaluationResult {
 
   // Nothing fit: the output is not predictable and interpretation is not
   // required. That combination means the analysis is incomplete.
-  return abstain(["output_predictable", "interpretation_required"], rationale, aiBoundary, invariants);
+  return abstain(
+    ["output_predictable", "interpretation_required"],
+    rationale,
+    aiBoundary,
+    invariants,
+  );
 }
