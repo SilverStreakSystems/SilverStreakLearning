@@ -1,4 +1,5 @@
 import { mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   VALUE_STREAMS,
   VALUE_STREAM_GATES,
@@ -8,7 +9,7 @@ import {
 } from "../src/fixtures";
 import { ENTERPRISE_FUNCTION_META } from "../src/domain";
 
-const out = "docs/value-streams";
+const out = join(process.cwd(), "docs", "value-streams");
 mkdirSync(out, { recursive: true });
 const fn = (id: string) =>
   (ENTERPRISE_FUNCTION_META as Record<string, { name: string } | undefined>)[id]?.name ?? id;
