@@ -109,13 +109,15 @@ export function classifyWorkflow(source: WorkflowSource): DerivedAnswers {
 
   const workspaceFits: Ternary = workspace && !rules && need === "no" ? "yes" : "no";
 
-  const predictable: Ternary = rules
-    ? "yes"
-    : necessity === "helpful" || necessity === "required"
-      ? "no"
-      : workspace || automation
-        ? "yes"
-        : "uncertain";
+  // AI necessity wins over the presence of a rules-based option: when the
+  // source says the work needs interpretation, the output is not predictable
+  // even though part of the task can be templated.
+  const interpretive = necessity === "helpful" || necessity === "required";
+  const predictable: Ternary = interpretive
+    ? "no"
+    : rules || workspace || automation
+      ? "yes"
+      : "uncertain";
 
   const authoritative: Ternary =
     need === "yes" && has(source.ssls_application_need + source.system_of_record, AUTHORITATIVE_TERMS)

@@ -75,7 +75,7 @@ export const worksheetSummarySchema = z.object({
   workflow_rows: z.number().int().min(1),
   roles_counted_in_group: z.number().int().min(1),
   roles_declared_in_inventory: z.number().int().nullable(),
-  sha256: z.string().regex(/^[0-9a-f]{64}$/),
+  worksheet_sha256: z.string().regex(/^[0-9a-f]{64}$/),
 });
 export type WorksheetSummary = z.infer<typeof worksheetSummarySchema>;
 

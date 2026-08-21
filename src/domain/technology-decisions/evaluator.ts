@@ -128,11 +128,18 @@ export function evaluate(answers: DecisionAnswers): EvaluationResult {
     structuredReasons.push("related records must stay connected");
   if (answers.longitudinal_data_required === "yes")
     structuredReasons.push("history over time is required");
-  if (answers.cross_role_workflow === "yes")
-    structuredReasons.push("the work crosses roles with handoffs");
-  if (answers.audit_history_required === "yes") structuredReasons.push("an audit history is required");
-  if (answers.permission_complexity === "restricted")
-    structuredReasons.push("access must be restricted to named people");
+  // Crossing roles, keeping an audit trail, or restricting access does not by
+  // itself require an application: governed folders and templates can do all
+  // three. Only the combination of all three does.
+  if (
+    answers.cross_role_workflow === "yes" &&
+    answers.audit_history_required === "yes" &&
+    answers.permission_complexity === "restricted"
+  ) {
+    structuredReasons.push(
+      "the work crosses roles, needs an audit history, and must be restricted to named people at the same time",
+    );
+  }
   const structuredNeeded = structuredReasons.length > 0;
 
   const structuredUncertain: QuestionId[] = (

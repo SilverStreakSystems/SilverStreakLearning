@@ -26,6 +26,7 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ObjectsRouteImport } from './routes/objects'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as TechnologyDecisionsRouteImport } from './routes/technology-decisions'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as ValueStreamsRouteImport } from './routes/value-streams'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
@@ -36,11 +37,19 @@ import { Route as LearnersIndexRouteImport } from './routes/learners.index'
 import { Route as LearnersLearnerIdRouteImport } from './routes/learners.$learnerId'
 import { Route as ObjectsIndexRouteImport } from './routes/objects.index'
 import { Route as ObjectsTypeIdRouteImport } from './routes/objects.$typeId'
+import { Route as TechnologyDecisionsIndexRouteImport } from './routes/technology-decisions.index'
+import { Route as TechnologyDecisionsEvaluateRouteImport } from './routes/technology-decisions.evaluate'
+import { Route as TechnologyDecisionsProcessRouteImport } from './routes/technology-decisions.process'
+import { Route as TechnologyDecisionsProductAlphaRouteImport } from './routes/technology-decisions.product-alpha'
+import { Route as TechnologyDecisionsSourcesRouteImport } from './routes/technology-decisions.sources'
 import { Route as ValueStreamsIndexRouteImport } from './routes/value-streams.index'
 import { Route as ValueStreamsStreamIdRouteImport } from './routes/value-streams.$streamId'
 import { Route as WorkspacesIndexRouteImport } from './routes/workspaces.index'
 import { Route as WorkspacesWorkspaceIdRouteImport } from './routes/workspaces.$workspaceId'
 import { Route as DesignSystemTemplatesTemplateIdRouteImport } from './routes/design-system.templates.$templateId'
+import { Route as TechnologyDecisionsRolesIndexRouteImport } from './routes/technology-decisions.roles.index'
+import { Route as TechnologyDecisionsRolesGroupIdRouteImport } from './routes/technology-decisions.roles.$groupId'
+import { Route as TechnologyDecisionsWorkflowsWorkflowIdRouteImport } from './routes/technology-decisions.workflows.$workflowId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -127,6 +136,11 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TechnologyDecisionsRoute = TechnologyDecisionsRouteImport.update({
+  id: '/technology-decisions',
+  path: '/technology-decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TraceabilityRoute = TraceabilityRouteImport.update({
   id: '/traceability',
   path: '/traceability',
@@ -178,6 +192,36 @@ const ObjectsTypeIdRoute = ObjectsTypeIdRouteImport.update({
   path: '/$typeId',
   getParentRoute: () => ObjectsRoute,
 } as any)
+const TechnologyDecisionsIndexRoute =
+  TechnologyDecisionsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
+const TechnologyDecisionsEvaluateRoute =
+  TechnologyDecisionsEvaluateRouteImport.update({
+    id: '/evaluate',
+    path: '/evaluate',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
+const TechnologyDecisionsProcessRoute =
+  TechnologyDecisionsProcessRouteImport.update({
+    id: '/process',
+    path: '/process',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
+const TechnologyDecisionsProductAlphaRoute =
+  TechnologyDecisionsProductAlphaRouteImport.update({
+    id: '/product-alpha',
+    path: '/product-alpha',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
+const TechnologyDecisionsSourcesRoute =
+  TechnologyDecisionsSourcesRouteImport.update({
+    id: '/sources',
+    path: '/sources',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
 const ValueStreamsIndexRoute = ValueStreamsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -204,6 +248,24 @@ const DesignSystemTemplatesTemplateIdRoute =
     path: '/templates/$templateId',
     getParentRoute: () => DesignSystemRoute,
   } as any)
+const TechnologyDecisionsRolesIndexRoute =
+  TechnologyDecisionsRolesIndexRouteImport.update({
+    id: '/roles/',
+    path: '/roles/',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
+const TechnologyDecisionsRolesGroupIdRoute =
+  TechnologyDecisionsRolesGroupIdRouteImport.update({
+    id: '/roles/$groupId',
+    path: '/roles/$groupId',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
+const TechnologyDecisionsWorkflowsWorkflowIdRoute =
+  TechnologyDecisionsWorkflowsWorkflowIdRouteImport.update({
+    id: '/workflows/$workflowId',
+    path: '/workflows/$workflowId',
+    getParentRoute: () => TechnologyDecisionsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -223,21 +285,30 @@ export interface FileRoutesByFullPath {
   '/objects': typeof ObjectsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/technology-decisions': typeof TechnologyDecisionsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
   '/workspaces': typeof WorkspacesRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/learners/$learnerId': typeof LearnersLearnerIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
+  '/technology-decisions/evaluate': typeof TechnologyDecisionsEvaluateRoute
+  '/technology-decisions/process': typeof TechnologyDecisionsProcessRoute
+  '/technology-decisions/product-alpha': typeof TechnologyDecisionsProductAlphaRoute
+  '/technology-decisions/sources': typeof TechnologyDecisionsSourcesRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
   '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/design-system/': typeof DesignSystemIndexRoute
   '/learners/': typeof LearnersIndexRoute
   '/objects/': typeof ObjectsIndexRoute
+  '/technology-decisions/': typeof TechnologyDecisionsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
   '/workspaces/': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
+  '/technology-decisions/roles/$groupId': typeof TechnologyDecisionsRolesGroupIdRoute
+  '/technology-decisions/workflows/$workflowId': typeof TechnologyDecisionsWorkflowsWorkflowIdRoute
+  '/technology-decisions/roles/': typeof TechnologyDecisionsRolesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -257,15 +328,23 @@ export interface FileRoutesByTo {
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/learners/$learnerId': typeof LearnersLearnerIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
+  '/technology-decisions/evaluate': typeof TechnologyDecisionsEvaluateRoute
+  '/technology-decisions/process': typeof TechnologyDecisionsProcessRoute
+  '/technology-decisions/product-alpha': typeof TechnologyDecisionsProductAlphaRoute
+  '/technology-decisions/sources': typeof TechnologyDecisionsSourcesRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
   '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/design-system': typeof DesignSystemIndexRoute
   '/learners': typeof LearnersIndexRoute
   '/objects': typeof ObjectsIndexRoute
+  '/technology-decisions': typeof TechnologyDecisionsIndexRoute
   '/value-streams': typeof ValueStreamsIndexRoute
   '/workspaces': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
+  '/technology-decisions/roles/$groupId': typeof TechnologyDecisionsRolesGroupIdRoute
+  '/technology-decisions/workflows/$workflowId': typeof TechnologyDecisionsWorkflowsWorkflowIdRoute
+  '/technology-decisions/roles': typeof TechnologyDecisionsRolesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -286,21 +365,30 @@ export interface FileRoutesById {
   '/objects': typeof ObjectsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/technology-decisions': typeof TechnologyDecisionsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
   '/workspaces': typeof WorkspacesRouteWithChildren
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/learners/$learnerId': typeof LearnersLearnerIdRoute
   '/objects/$typeId': typeof ObjectsTypeIdRoute
+  '/technology-decisions/evaluate': typeof TechnologyDecisionsEvaluateRoute
+  '/technology-decisions/process': typeof TechnologyDecisionsProcessRoute
+  '/technology-decisions/product-alpha': typeof TechnologyDecisionsProductAlphaRoute
+  '/technology-decisions/sources': typeof TechnologyDecisionsSourcesRoute
   '/value-streams/$streamId': typeof ValueStreamsStreamIdRoute
   '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/design-system/': typeof DesignSystemIndexRoute
   '/learners/': typeof LearnersIndexRoute
   '/objects/': typeof ObjectsIndexRoute
+  '/technology-decisions/': typeof TechnologyDecisionsIndexRoute
   '/value-streams/': typeof ValueStreamsIndexRoute
   '/workspaces/': typeof WorkspacesIndexRoute
   '/design-system/templates/$templateId': typeof DesignSystemTemplatesTemplateIdRoute
+  '/technology-decisions/roles/$groupId': typeof TechnologyDecisionsRolesGroupIdRoute
+  '/technology-decisions/workflows/$workflowId': typeof TechnologyDecisionsWorkflowsWorkflowIdRoute
+  '/technology-decisions/roles/': typeof TechnologyDecisionsRolesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -322,21 +410,30 @@ export interface FileRouteTypes {
     | '/objects'
     | '/profile'
     | '/search'
+    | '/technology-decisions'
     | '/traceability'
     | '/value-streams'
     | '/workspaces'
     | '/capabilities/$capabilityId'
     | '/learners/$learnerId'
     | '/objects/$typeId'
+    | '/technology-decisions/evaluate'
+    | '/technology-decisions/process'
+    | '/technology-decisions/product-alpha'
+    | '/technology-decisions/sources'
     | '/value-streams/$streamId'
     | '/workspaces/$workspaceId'
     | '/capabilities/'
     | '/design-system/'
     | '/learners/'
     | '/objects/'
+    | '/technology-decisions/'
     | '/value-streams/'
     | '/workspaces/'
     | '/design-system/templates/$templateId'
+    | '/technology-decisions/roles/$groupId'
+    | '/technology-decisions/workflows/$workflowId'
+    | '/technology-decisions/roles/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -356,15 +453,23 @@ export interface FileRouteTypes {
     | '/capabilities/$capabilityId'
     | '/learners/$learnerId'
     | '/objects/$typeId'
+    | '/technology-decisions/evaluate'
+    | '/technology-decisions/process'
+    | '/technology-decisions/product-alpha'
+    | '/technology-decisions/sources'
     | '/value-streams/$streamId'
     | '/workspaces/$workspaceId'
     | '/capabilities'
     | '/design-system'
     | '/learners'
     | '/objects'
+    | '/technology-decisions'
     | '/value-streams'
     | '/workspaces'
     | '/design-system/templates/$templateId'
+    | '/technology-decisions/roles/$groupId'
+    | '/technology-decisions/workflows/$workflowId'
+    | '/technology-decisions/roles'
   id:
     | '__root__'
     | '/'
@@ -384,21 +489,30 @@ export interface FileRouteTypes {
     | '/objects'
     | '/profile'
     | '/search'
+    | '/technology-decisions'
     | '/traceability'
     | '/value-streams'
     | '/workspaces'
     | '/capabilities/$capabilityId'
     | '/learners/$learnerId'
     | '/objects/$typeId'
+    | '/technology-decisions/evaluate'
+    | '/technology-decisions/process'
+    | '/technology-decisions/product-alpha'
+    | '/technology-decisions/sources'
     | '/value-streams/$streamId'
     | '/workspaces/$workspaceId'
     | '/capabilities/'
     | '/design-system/'
     | '/learners/'
     | '/objects/'
+    | '/technology-decisions/'
     | '/value-streams/'
     | '/workspaces/'
     | '/design-system/templates/$templateId'
+    | '/technology-decisions/roles/$groupId'
+    | '/technology-decisions/workflows/$workflowId'
+    | '/technology-decisions/roles/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -419,6 +533,7 @@ export interface RootRouteChildren {
   ObjectsRoute: typeof ObjectsRouteWithChildren
   ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
+  TechnologyDecisionsRoute: typeof TechnologyDecisionsRouteWithChildren
   TraceabilityRoute: typeof TraceabilityRoute
   ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
   WorkspacesRoute: typeof WorkspacesRouteWithChildren
@@ -545,6 +660,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/technology-decisions': {
+      id: '/technology-decisions'
+      path: '/technology-decisions'
+      fullPath: '/technology-decisions'
+      preLoaderRoute: typeof TechnologyDecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/traceability': {
       id: '/traceability'
       path: '/traceability'
@@ -615,6 +737,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObjectsTypeIdRouteImport
       parentRoute: typeof ObjectsRoute
     }
+    '/technology-decisions/': {
+      id: '/technology-decisions/'
+      path: '/'
+      fullPath: '/technology-decisions/'
+      preLoaderRoute: typeof TechnologyDecisionsIndexRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
+    '/technology-decisions/evaluate': {
+      id: '/technology-decisions/evaluate'
+      path: '/evaluate'
+      fullPath: '/technology-decisions/evaluate'
+      preLoaderRoute: typeof TechnologyDecisionsEvaluateRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
+    '/technology-decisions/process': {
+      id: '/technology-decisions/process'
+      path: '/process'
+      fullPath: '/technology-decisions/process'
+      preLoaderRoute: typeof TechnologyDecisionsProcessRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
+    '/technology-decisions/product-alpha': {
+      id: '/technology-decisions/product-alpha'
+      path: '/product-alpha'
+      fullPath: '/technology-decisions/product-alpha'
+      preLoaderRoute: typeof TechnologyDecisionsProductAlphaRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
+    '/technology-decisions/sources': {
+      id: '/technology-decisions/sources'
+      path: '/sources'
+      fullPath: '/technology-decisions/sources'
+      preLoaderRoute: typeof TechnologyDecisionsSourcesRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
     '/value-streams/': {
       id: '/value-streams/'
       path: '/'
@@ -649,6 +806,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/design-system/templates/$templateId'
       preLoaderRoute: typeof DesignSystemTemplatesTemplateIdRouteImport
       parentRoute: typeof DesignSystemRoute
+    }
+    '/technology-decisions/roles/': {
+      id: '/technology-decisions/roles/'
+      path: '/roles'
+      fullPath: '/technology-decisions/roles/'
+      preLoaderRoute: typeof TechnologyDecisionsRolesIndexRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
+    '/technology-decisions/roles/$groupId': {
+      id: '/technology-decisions/roles/$groupId'
+      path: '/roles/$groupId'
+      fullPath: '/technology-decisions/roles/$groupId'
+      preLoaderRoute: typeof TechnologyDecisionsRolesGroupIdRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
+    }
+    '/technology-decisions/workflows/$workflowId': {
+      id: '/technology-decisions/workflows/$workflowId'
+      path: '/workflows/$workflowId'
+      fullPath: '/technology-decisions/workflows/$workflowId'
+      preLoaderRoute: typeof TechnologyDecisionsWorkflowsWorkflowIdRouteImport
+      parentRoute: typeof TechnologyDecisionsRoute
     }
   }
 }
@@ -708,6 +886,32 @@ const ObjectsRouteChildren: ObjectsRouteChildren = {
 const ObjectsRouteWithChildren =
   ObjectsRoute._addFileChildren(ObjectsRouteChildren)
 
+interface TechnologyDecisionsRouteChildren {
+  TechnologyDecisionsEvaluateRoute: typeof TechnologyDecisionsEvaluateRoute
+  TechnologyDecisionsProcessRoute: typeof TechnologyDecisionsProcessRoute
+  TechnologyDecisionsProductAlphaRoute: typeof TechnologyDecisionsProductAlphaRoute
+  TechnologyDecisionsSourcesRoute: typeof TechnologyDecisionsSourcesRoute
+  TechnologyDecisionsIndexRoute: typeof TechnologyDecisionsIndexRoute
+  TechnologyDecisionsRolesGroupIdRoute: typeof TechnologyDecisionsRolesGroupIdRoute
+  TechnologyDecisionsWorkflowsWorkflowIdRoute: typeof TechnologyDecisionsWorkflowsWorkflowIdRoute
+  TechnologyDecisionsRolesIndexRoute: typeof TechnologyDecisionsRolesIndexRoute
+}
+
+const TechnologyDecisionsRouteChildren: TechnologyDecisionsRouteChildren = {
+  TechnologyDecisionsEvaluateRoute: TechnologyDecisionsEvaluateRoute,
+  TechnologyDecisionsProcessRoute: TechnologyDecisionsProcessRoute,
+  TechnologyDecisionsProductAlphaRoute: TechnologyDecisionsProductAlphaRoute,
+  TechnologyDecisionsSourcesRoute: TechnologyDecisionsSourcesRoute,
+  TechnologyDecisionsIndexRoute: TechnologyDecisionsIndexRoute,
+  TechnologyDecisionsRolesGroupIdRoute: TechnologyDecisionsRolesGroupIdRoute,
+  TechnologyDecisionsWorkflowsWorkflowIdRoute:
+    TechnologyDecisionsWorkflowsWorkflowIdRoute,
+  TechnologyDecisionsRolesIndexRoute: TechnologyDecisionsRolesIndexRoute,
+}
+
+const TechnologyDecisionsRouteWithChildren =
+  TechnologyDecisionsRoute._addFileChildren(TechnologyDecisionsRouteChildren)
+
 interface ValueStreamsRouteChildren {
   ValueStreamsStreamIdRoute: typeof ValueStreamsStreamIdRoute
   ValueStreamsIndexRoute: typeof ValueStreamsIndexRoute
@@ -754,6 +958,7 @@ const rootRouteChildren: RootRouteChildren = {
   ObjectsRoute: ObjectsRouteWithChildren,
   ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
+  TechnologyDecisionsRoute: TechnologyDecisionsRouteWithChildren,
   TraceabilityRoute: TraceabilityRoute,
   ValueStreamsRoute: ValueStreamsRouteWithChildren,
   WorkspacesRoute: WorkspacesRouteWithChildren,

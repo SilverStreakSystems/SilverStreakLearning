@@ -102,7 +102,7 @@
     {
       "step": 4,
       "step_id": "STEP-APPLICATION",
-      "question_id": "structured_application_required",
+      "question_id": "authoritative_record_required",
       "decides": "Authoritative records, relational or longitudinal data, permissions, audit history, secure approvals, or cross-role coordination genuinely require a structured application — Option 4.",
       "explanation": "Option 4 is reached by need, never by default. Being an SSLS project is not a reason to choose SSLS."
     },
