@@ -197,7 +197,8 @@ export function ReviewQueueTable({ records }: { records: DriftAnalysisRecord[] }
         <tr key={record.workflow_id}>
           <RowHeader>
             <Link
-              to={`/technology-decisions/workflows/${record.workflow_id}`}
+              to="/technology-decisions/workflows/$workflowId"
+              params={{ workflowId: record.workflow_id }}
               className="rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {record.workflow_id}
