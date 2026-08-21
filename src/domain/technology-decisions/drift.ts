@@ -401,3 +401,155 @@ export function proposalBasisFingerprint(input: {
     derived: [...input.derivedOptionIds].sort(),
   });
 }
+
+// ---------------------------------------------------------------------------
+// Sampling and batching
+// ---------------------------------------------------------------------------
+
+export interface SampleStratum {
+  dimension: string;
+  value: string;
+}
+
+/** Every stratum a record belongs to. Coverage is measured against these. */
+export function strataOf(record: DriftAnalysisRecord): SampleStratum[] {
+  const strata: SampleStratum[] = [
+    { dimension: "role_group", value: record.role_group_id },
+    { dimension: "risk_level", value: record.risk_level },
+    { dimension: "comparison_relation", value: record.comparison_relation },
+    { dimension: "evidence_state", value: record.evidence_state },
+    { dimension: "parse_status", value: record.parse_status },
+    { dimension: "expression_type", value: record.expression_type },
+    { dimension: "ai_boundary", value: record.ai_boundary },
+    { dimension: "source_ai_necessity", value: record.source_ai_necessity_verbatim.toLowerCase() },
+    { dimension: "cross_role", value: String(record.cross_role) },
+    { dimension: "record_authority", value: String(record.record_authority_needed) },
+    { dimension: "longitudinal", value: String(record.longitudinal_needed) },
+    { dimension: "student_or_family_facing", value: String(record.student_or_family_facing) },
+    { dimension: "proposed_resolution", value: record.proposed_resolution },
+  ];
+  for (const area of record.program_areas) strata.push({ dimension: "program_area", value: area });
+  for (const option of [...record.supplied_option_ids, ...record.derived_option_ids]) {
+    strata.push({ dimension: "option_present", value: option });
+  }
+  for (const cause of record.candidate_causes) {
+    strata.push({ dimension: "candidate_cause", value: cause });
+  }
+  return strata;
+}
+
+const stratumKey = (stratum: SampleStratum) => `${stratum.dimension}=${stratum.value}`;
+
+export interface SampleSelection {
+  algorithm_version: string;
+  population_fingerprint: string;
+  population_size: number;
+  cap: number;
+  selected: Array<{ workflow_id: string; inclusion_reason: string; strata_added: string[] }>;
+  strata_covered: string[];
+  strata_uncovered: string[];
+}
+
+/**
+ * Deterministic maximum-marginal-coverage selection.
+ *
+ * At each step the record that adds the most previously uncovered strata wins;
+ * ties break on the SHA-256 of (algorithm version, population fingerprint,
+ * workflow id), so the outcome cannot depend on the order rows happen to sit in
+ * the register.
+ */
+export function selectRepresentativeSample(
+  population: DriftAnalysisRecord[],
+  cap: number,
+): SampleSelection {
+  const fingerprint = contentFingerprint({
+    algorithm_version: SAMPLE_ALGORITHM_VERSION,
+    ids: population.map((record) => record.workflow_id).sort(),
+    bases: population.map((record) => record.proposal_basis_fingerprint).sort(),
+  });
+  const allStrata = new Set<string>();
+  for (const record of population) {
+    for (const stratum of strataOf(record)) allStrata.add(stratumKey(stratum));
+  }
+
+  const remaining = [...population].sort((a, b) => a.workflow_id.localeCompare(b.workflow_id));
+  const covered = new Set<string>();
+  const selected: SampleSelection["selected"] = [];
+
+  while (selected.length < cap && remaining.length > 0) {
+    let best: { record: DriftAnalysisRecord; added: string[]; tie: string } | null = null;
+    for (const record of remaining) {
+      const added = strataOf(record)
+        .map(stratumKey)
+        .filter((key) => !covered.has(key));
+      const unique = [...new Set(added)].sort();
+      const tie = contentFingerprint([
+        SAMPLE_ALGORITHM_VERSION,
+        fingerprint,
+        record.workflow_id,
+      ]);
+      if (
+        !best ||
+        unique.length > best.added.length ||
+        (unique.length === best.added.length && tie < best.tie)
+      ) {
+        best = { record, added: unique, tie };
+      }
+    }
+    if (!best || best.added.length === 0) break;
+    selected.push({
+      workflow_id: best.record.workflow_id,
+      inclusion_reason: `Adds ${best.added.length} previously uncovered strata.`,
+      strata_added: best.added,
+    });
+    for (const key of best.added) covered.add(key);
+    remaining.splice(
+      remaining.findIndex((record) => record.workflow_id === best!.record.workflow_id),
+      1,
+    );
+  }
+
+  return {
+    algorithm_version: SAMPLE_ALGORITHM_VERSION,
+    population_fingerprint: fingerprint,
+    population_size: population.length,
+    cap,
+    selected,
+    strata_covered: [...covered].sort(),
+    strata_uncovered: [...allStrata].filter((key) => !covered.has(key)).sort(),
+  };
+}
+
+export interface ProposalBatch {
+  batch_id: string;
+  proposal_basis_fingerprint: string;
+  proposed_resolution: ProposedResolution;
+  proposal_basis: string;
+  member_workflow_ids: string[];
+}
+
+/**
+ * Batches of records whose basis is identical in every recorded dimension.
+ *
+ * Mandatory-review records are excluded by construction, not by filtering after
+ * the fact. A batch is a convenience for reading, never for deciding.
+ */
+export function buildProposalBatches(records: DriftAnalysisRecord[]): ProposalBatch[] {
+  const groups = new Map<string, DriftAnalysisRecord[]>();
+  for (const record of records) {
+    if (!record.batch_eligible) continue;
+    const existing = groups.get(record.proposal_basis_fingerprint) ?? [];
+    existing.push(record);
+    groups.set(record.proposal_basis_fingerprint, existing);
+  }
+  return [...groups.entries()]
+    .filter(([, members]) => members.length > 1)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([fingerprint, members], index) => ({
+      batch_id: `DRIFT-BATCH-${String(index + 1).padStart(3, "0")}`,
+      proposal_basis_fingerprint: fingerprint,
+      proposed_resolution: members[0]!.proposed_resolution,
+      proposal_basis: members[0]!.proposal_basis,
+      member_workflow_ids: members.map((record) => record.workflow_id).sort(),
+    }));
+}
