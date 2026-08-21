@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "expires_at": "2026-11-19T04:46:21.289Z",
+  "expires_at": "2026-11-19T09:56:44.906Z",
   "tool_version": "1.0.0",
-  "tree_hash": "6bec82af7a14061329283e15a1d315edd0bbe14d",
+  "tree_hash": "74795f97057f1edbbd411538261de2619ddfc428",
   "expected_result": "A declared licence, or an explicit unknown, for every dependency.",
   "artifact_path": "artifacts/licenses/licenses.json",
   "artifact_hash": "f2ceb9fb34e797fc676a86c22e559e8f8ba5eaaf4bf4829b584997efb6844a78",
   "input_set": {
-    "manifest": "fe089d0560fd6dbfae6188c0d909e30e11e7c08043937c8fb2cf134e52c0a4f6",
+    "manifest": "b4d3d7a244932760c4fd1c0ceec20332461b49ef647f856eb5bf1ab673b26519",
     "lockfile": "77b40b3862114a24d4b230a4faa81b9ed08f29f8b240d79c502c08d5a172afc6"
   },
   "related_requirements": [],
@@ -24,9 +24,9 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "LICENSE_SCAN",
-  "commit_sha": "4d47bc057a1962b5647b8bc567df5ecdb4f70838",
+  "commit_sha": "e4a6c82e015aea0bc4cfb41205b6b651f2d06c42",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-21T04:46:21.289Z",
+  "timestamp": "2026-08-21T09:56:44.906Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-LICENSE",
   "title": "Dependency licence inventory",

@@ -1,0 +1,583 @@
+{
+  "generated_by": "scripts/gen-wave0-snapshot.ts",
+  "controlling_source": "data/product-definition-assurance/wave0-declaration.json",
+  "authority_note": "Generated projection. Candidate authority only. Records no disposition and closes no gate.",
+  "declaration": {
+    "snapshot_id": "PDA-WAVE0",
+    "snapshot_version": "0.1.0",
+    "controlling_decision": "DEC-023",
+    "authority_class": "candidate",
+    "boundary": [
+      "This snapshot maps what exists. It approves nothing, closes nothing, adopts no requirement, and promotes no claim.",
+      "No owner disposition is recorded here. The disposition packet presents choices only.",
+      "Waves 1 through 6 of the Product Definition & Assurance Artifact Suite are not authorized by this snapshot.",
+      "Synthetic and fictional records only. No personal data exists in this repository.",
+      "No database, backend authentication, tenancy, row-level security, live integration, provider execution, or production AI exists in the tracked tree.",
+      "The published surface is a public synthetic prototype. It is not access controlled, not released, and is not updated by this increment.",
+      "A passing test is not validation, release, compliance, or public-claim authority.",
+      "Generated documentation is a projection. It is not controlling merely because it is current."
+    ],
+    "state_axes": {
+      "truth": [
+        "observed",
+        "declared",
+        "derived",
+        "historical",
+        "unknown"
+      ],
+      "authority": [
+        "controlling",
+        "candidate",
+        "historical",
+        "superseded",
+        "none"
+      ],
+      "lifecycle": [
+        "proposed",
+        "active",
+        "generated",
+        "superseded",
+        "absent"
+      ],
+      "implementation": [
+        "implemented",
+        "partially-implemented",
+        "not-implemented",
+        "not-applicable"
+      ],
+      "validation": [
+        "tested",
+        "partially-tested",
+        "not-run",
+        "blocked",
+        "stale",
+        "not-applicable"
+      ],
+      "release": [
+        "not-released"
+      ],
+      "claim_eligibility": [
+        "ineligible",
+        "internal-only"
+      ]
+    },
+    "preserved_program_state": [
+      {
+        "subject": "Gate A",
+        "state": "OPEN",
+        "source": "data/program/program-policy.json"
+      },
+      {
+        "subject": "WP-007",
+        "state": "ACTIVE",
+        "source": "data/program/program-policy.json"
+      },
+      {
+        "subject": "WP-038",
+        "state": "CLOSED BY OWNER",
+        "source": "docs/wp-038/CLOSURE_RECOMMENDATION.md"
+      },
+      {
+        "subject": "WP-039",
+        "state": "NOT AUTHORIZED",
+        "source": "data/program/program-policy.json"
+      },
+      {
+        "subject": "Bounded Product Alpha 001 increment",
+        "state": "CONTROLLED BY DEC-023",
+        "source": "src/fixtures/registers.ts"
+      },
+      {
+        "subject": "TTR-001 whole-interface execution",
+        "state": "DEFERRED / NOT RUN",
+        "source": "data/accessibility/touch-target-rule.json"
+      },
+      {
+        "subject": "Operator capacity",
+        "state": "Founder / developer governance operator only",
+        "source": "src/fixtures/posture.ts"
+      }
+    ],
+    "declared_inputs": [
+      "data/product-definition-assurance/wave0-declaration.json",
+      "src/lib/route-registry.ts",
+      "src/fixtures/registers.ts",
+      "src/fixtures/program.ts",
+      "data/program/program-policy.json",
+      "data/program/checkpoints.json",
+      "data/packages/governed-packages.json",
+      "data/governance/obligations.json",
+      "data/historical/historical-sources.json",
+      "data/historical/historical-requirements.json",
+      "data/accessibility/touch-target-rule.json",
+      "scripts/gen-wave0-snapshot.ts",
+      "src/lib/wave0-snapshot.ts"
+    ],
+    "artifact_map": [
+      {
+        "artifact_id": "PDA-A01",
+        "artifact": "Product Brief",
+        "existing_canonical_sources": [
+          "docs/CURRENT_STATE.md",
+          "src/fixtures/program.ts",
+          "docs/product-alpha-001/ENTRY_SPECIFICATION.md",
+          "src/fixtures/posture.ts"
+        ],
+        "current_evidence": [
+          "EV-046"
+        ],
+        "present": "Program state, boundary posture, and the bounded Product Alpha 001 entry specification are recorded and generated from registers.",
+        "missing_fields": [
+          "Single stated product definition covering problem, intended operator, and out-of-scope users",
+          "Named success conditions that are not test counts",
+          "Explicit statement of what the synthetic prototype is not"
+        ],
+        "conflicts": [
+          "Product framing is distributed across a generated current-state projection, a walkthrough protocol, and an entry specification, with no one document declared controlling."
+        ],
+        "recommended_extension": "Extend docs/product-alpha-001/ENTRY_SPECIFICATION.md as the controlling brief; do not create a parallel brief document.",
+        "states": {
+          "truth": "declared",
+          "authority": "candidate",
+          "lifecycle": "active",
+          "implementation": "partially-implemented",
+          "validation": "partially-tested",
+          "release": "not-released",
+          "claim_eligibility": "internal-only"
+        }
+      },
+      {
+        "artifact_id": "PDA-A02",
+        "artifact": "Requirements Register",
+        "existing_canonical_sources": [
+          "data/historical/historical-requirements.json",
+          "data/governance/obligations.json",
+          "data/historical/restatement-index.json"
+        ],
+        "current_evidence": [
+          "EV-040"
+        ],
+        "present": "Thirty historical requirement candidates extracted from two historical sources, plus thirty-four external obligations with applicability recorded.",
+        "missing_fields": [
+          "Current-state requirements distinct from historical candidates",
+          "Adoption state per requirement",
+          "Requirement-to-route and requirement-to-test coverage links"
+        ],
+        "conflicts": [
+          "Historical requirement candidates carry inherited authority only and must never be read as adopted current requirements."
+        ],
+        "recommended_extension": "Add a current-requirement register alongside data/historical/historical-requirements.json, keyed by a distinct identifier namespace, after owner acceptance.",
+        "states": {
+          "truth": "historical",
+          "authority": "candidate",
+          "lifecycle": "active",
+          "implementation": "not-implemented",
+          "validation": "not-run",
+          "release": "not-released",
+          "claim_eligibility": "ineligible"
+        }
+      },
+      {
+        "artifact_id": "PDA-A03",
+        "artifact": "Route Registry",
+        "existing_canonical_sources": [
+          "src/lib/route-registry.ts",
+          "src/routes"
+        ],
+        "current_evidence": [
+          "EV-ROUTES"
+        ],
+        "present": "A controlling in-code route registry drives navigation and the route coverage tests, and the evidence pipeline records a runtime route inventory.",
+        "missing_fields": [
+          "Per-route authority class and data-source classification in the controlling registry",
+          "Declared exemptions for framework and generated surfaces"
+        ],
+        "conflicts": [
+          "docs/wp-006/ROUTE_MANIFEST.md records seventeen routes at commit 70c1f89 and is version-bound historical evidence, not the current inventory."
+        ],
+        "recommended_extension": "Extend src/lib/route-registry.ts with classification fields; keep docs/wp-006/ROUTE_MANIFEST.md as historical evidence.",
+        "states": {
+          "truth": "observed",
+          "authority": "controlling",
+          "lifecycle": "active",
+          "implementation": "implemented",
+          "validation": "tested",
+          "release": "not-released",
+          "claim_eligibility": "internal-only"
+        }
+      },
+      {
+        "artifact_id": "PDA-A04",
+        "artifact": "Entity Relationship Diagram",
+        "existing_canonical_sources": [
+          "src/domain/shared-object/governance-metadata.ts",
+          "docs/shared-object/OBJECT_MODEL.md",
+          "docs/shared-object/RELATIONSHIP_ARCHITECTURE.md"
+        ],
+        "current_evidence": [
+          "EV-CONFIG"
+        ],
+        "present": "A shared object model with universal and conditional governance metadata, object families, and an explicit relationship architecture.",
+        "missing_fields": [
+          "Physical data model",
+          "Cardinality and referential-integrity statements bound to a persistence layer",
+          "Storage, retention, and deletion mechanics"
+        ],
+        "conflicts": [
+          "There is no database in the tracked tree, so any entity relationship diagram describes a design intent and not a deployed schema."
+        ],
+        "recommended_extension": "Extend docs/shared-object/RELATIONSHIP_ARCHITECTURE.md with a logical diagram marked design-intent; do not imply a physical schema.",
+        "states": {
+          "truth": "declared",
+          "authority": "candidate",
+          "lifecycle": "active",
+          "implementation": "not-implemented",
+          "validation": "partially-tested",
+          "release": "not-released",
+          "claim_eligibility": "ineligible"
+        }
+      },
+      {
+        "artifact_id": "PDA-A05",
+        "artifact": "Authorization Matrix",
+        "existing_canonical_sources": [
+          "docs/shared-object/AUTHORIZATION_MODEL.md",
+          "src/fixtures/workspace",
+          "docs/PUBLICATION_ACCESS.md"
+        ],
+        "current_evidence": [
+          "EV-041"
+        ],
+        "present": "An eight-element authorization model and a declared acting-capacity vocabulary, with publication access recorded separately.",
+        "missing_fields": [
+          "Principal-by-operation matrix",
+          "Statement of runtime enforcement per surface",
+          "Denial recording mechanics"
+        ],
+        "conflicts": [
+          "Default deny is a governing design posture while runtime enforcement is NOT IMPLEMENTED; both truths must be preserved separately.",
+          "A public route is not protected because the Lovable project is private."
+        ],
+        "recommended_extension": "Extend docs/shared-object/AUTHORIZATION_MODEL.md with a matrix whose enforcement column reads NOT IMPLEMENTED until enforcement exists.",
+        "states": {
+          "truth": "declared",
+          "authority": "candidate",
+          "lifecycle": "active",
+          "implementation": "not-implemented",
+          "validation": "not-run",
+          "release": "not-released",
+          "claim_eligibility": "ineligible"
+        }
+      },
+      {
+        "artifact_id": "PDA-A06",
+        "artifact": "Threat Model",
+        "existing_canonical_sources": [
+          "docs/trust/SSLS-TRUST-001-exposure-remediation-record-v0.1-CANDIDATE.md",
+          "docs/wp-038/domain-security.md",
+          "docs/wp-038/domain-student-privacy.md",
+          "evidence/artifacts/boundary/secret-scan.json",
+          "evidence/artifacts/boundary/pii-boundary-scan.json"
+        ],
+        "current_evidence": [
+          "EV-SECRET",
+          "EV-PII",
+          "EV-VULN"
+        ],
+        "present": "An exposure remediation record, security and privacy obligation domains, and automated secret, personal-data, and dependency scans.",
+        "missing_fields": [
+          "Enumerated threat register with actor, asset, and surface",
+          "Mitigation-to-evidence links",
+          "Residual-risk statements awaiting owner acceptance"
+        ],
+        "conflicts": [
+          "The vulnerability scan remains NOT COMPLETED because the external advisory source is unavailable; this must not be converted to a pass.",
+          "The personal-data boundary scan holds one review-required candidate."
+        ],
+        "recommended_extension": "Add a threat register under docs/trust/ that cites existing evidence identifiers rather than restating scan output.",
+        "states": {
+          "truth": "observed",
+          "authority": "candidate",
+          "lifecycle": "active",
+          "implementation": "partially-implemented",
+          "validation": "blocked",
+          "release": "not-released",
+          "claim_eligibility": "ineligible"
+        }
+      },
+      {
+        "artifact_id": "PDA-A07",
+        "artifact": "Test Plan",
+        "existing_canonical_sources": [
+          "src/test",
+          "package.json",
+          "evidence/records/EV-TEST.json",
+          "docs/ACCESSIBILITY_ACCEPTANCE.md"
+        ],
+        "current_evidence": [
+          "EV-TEST",
+          "EV-046"
+        ],
+        "present": "An executable suite, declared verification commands, and an evidence record bound to the executing commit.",
+        "missing_fields": [
+          "Test case register mapping cases to requirements and routes",
+          "Declared uncovered categories",
+          "Entry and exit criteria per verification run"
+        ],
+        "conflicts": [
+          "TTR-001 whole-interface execution is deferred and NOT RUN; suite passes do not substitute for it."
+        ],
+        "recommended_extension": "Derive a test case register from the existing suite, generated rather than hand-kept, after owner acceptance.",
+        "states": {
+          "truth": "observed",
+          "authority": "candidate",
+          "lifecycle": "active",
+          "implementation": "implemented",
+          "validation": "partially-tested",
+          "release": "not-released",
+          "claim_eligibility": "internal-only"
+        }
+      }
+    ],
+    "reconciliation": [
+      {
+        "entry_id": "PDA-R01",
+        "subject": "Historical requirement identifier namespaces",
+        "observation": "Historical requirement candidates are extracted from two historical sources into one HREQ namespace. Original source identifiers and locators are preserved on every record, so the July and August namespaces remain distinguishable by source rather than by identifier.",
+        "resolution_rule": "Legacy identifiers stay as source-bound aliases. HREQ identifiers are never reused for current requirements.",
+        "owner_decision_required": false,
+        "sources": [
+          "data/historical/historical-requirements.json",
+          "data/historical/historical-sources.json",
+          "data/historical/restatement-index.json"
+        ]
+      },
+      {
+        "entry_id": "PDA-R02",
+        "subject": "Seventeen-route historical evidence versus the current route inventory",
+        "observation": "The WP-006 route manifest records seventeen routes at commit 70c1f89. The current registry and route files record a larger set. The old count is version-bound evidence, not current truth.",
+        "resolution_rule": "Cite the current registry for present state; cite the manifest only with its commit.",
+        "owner_decision_required": false,
+        "sources": [
+          "docs/wp-006/ROUTE_MANIFEST.md",
+          "src/lib/route-registry.ts",
+          "src/routes"
+        ]
+      },
+      {
+        "entry_id": "PDA-R03",
+        "subject": "Product definition source of truth",
+        "observation": "No single document is declared controlling for the product definition; three documents each carry part of it.",
+        "resolution_rule": "Owner names one controlling location before Wave 1 writes a Product Brief.",
+        "owner_decision_required": true,
+        "sources": [
+          "docs/CURRENT_STATE.md",
+          "docs/product-alpha-001/ENTRY_SPECIFICATION.md"
+        ]
+      },
+      {
+        "entry_id": "PDA-R04",
+        "subject": "Design posture versus runtime enforcement",
+        "observation": "Default deny is declared as a design posture while no runtime authentication, role check, or row-level security exists in the tracked tree.",
+        "resolution_rule": "Record both truths on separate axes. Never report the posture as enforcement.",
+        "owner_decision_required": false,
+        "sources": [
+          "docs/shared-object/AUTHORIZATION_MODEL.md",
+          "docs/PUBLICATION_ACCESS.md"
+        ]
+      },
+      {
+        "entry_id": "PDA-R05",
+        "subject": "Incomplete external advisory source",
+        "observation": "The vulnerability scan is recorded NOT COMPLETED because the external advisory source is unavailable. A recovery source is recorded separately and does not replace it.",
+        "resolution_rule": "Preserve NOT COMPLETED. Do not convert an unavailable source into a pass.",
+        "owner_decision_required": false,
+        "sources": [
+          "evidence/records/EV-VULN.json",
+          "evidence/records/EV-VULN-RECOVERY.json"
+        ]
+      }
+    ],
+    "disposition_packet": {
+      "disposition_recorded": null,
+      "options": [
+        {
+          "option_id": "PDA-D1",
+          "label": "ACCEPT BASELINE",
+          "meaning": "The recorded baseline is accepted as the reviewed starting point for the artifact suite.",
+          "consequences": [
+            "Wave 1 may be authorized in a later message and extends the named canonical sources rather than creating new ones.",
+            "The seven recommended extension locations become binding for the suite.",
+            "Nothing about Gate A, work-package state, release, or conformance changes."
+          ],
+          "smallest_next_action": "Record one accepted decision that names this snapshot and authorizes Wave 1 scope only."
+        },
+        {
+          "option_id": "PDA-D2",
+          "label": "REVISE BASELINE",
+          "meaning": "The baseline is materially wrong or incomplete in named places and must be re-derived before it is usable.",
+          "consequences": [
+            "Wave 1 stays unauthorized.",
+            "Only the named entries are re-derived; unrelated records are untouched.",
+            "The snapshot version increments and the previous version stays readable."
+          ],
+          "smallest_next_action": "Name the artifact or reconciliation identifiers that are wrong, and what the correct reading is."
+        },
+        {
+          "option_id": "PDA-D3",
+          "label": "HOLD",
+          "meaning": "No judgement is recorded now and the baseline stays available unchanged.",
+          "consequences": [
+            "The snapshot remains candidate and non-controlling.",
+            "Wave 1 stays unauthorized and no artifact work begins.",
+            "The snapshot goes stale if its declared inputs change, which the generated check detects."
+          ],
+          "smallest_next_action": "Do nothing. Re-run the generated-artifact check before reading the snapshot later."
+        }
+      ]
+    },
+    "gated_future": [
+      {
+        "subject": "Wave 1 — Product Brief",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Wave 2 — Requirements Register",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Wave 3 — Route Registry extension",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Wave 4 — Entity Relationship Diagram",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Wave 5 — Authorization Matrix and Threat Register",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Wave 6 — Test Case Register",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "WP-039",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Public redeployment of the synthetic prototype",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "Database, authentication, tenancy, row-level security, integrations",
+        "state": "not-authorized"
+      },
+      {
+        "subject": "TTR-001 whole-interface execution",
+        "state": "deferred-not-run"
+      }
+    ]
+  },
+  "inventories": {
+    "routes": {
+      "registered": 21,
+      "by_group": {
+        "product": 1,
+        "governance": 20
+      },
+      "files": {
+        "total_route_modules": 42,
+        "framework_surfaces": [
+          "__root.tsx"
+        ],
+        "layout_surfaces": [
+          "capabilities.tsx",
+          "design-system.tsx",
+          "learners.tsx",
+          "objects.tsx",
+          "technology-decisions.tsx",
+          "value-streams.tsx",
+          "workspaces.tsx"
+        ],
+        "index_surfaces": [
+          "capabilities.index.tsx",
+          "design-system.index.tsx",
+          "index.tsx",
+          "learners.index.tsx",
+          "objects.index.tsx",
+          "technology-decisions.index.tsx",
+          "technology-decisions.roles.index.tsx",
+          "value-streams.index.tsx",
+          "workspaces.index.tsx"
+        ],
+        "dynamic_detail_surfaces": [
+          "capabilities.$capabilityId.tsx",
+          "design-system.templates.$templateId.tsx",
+          "learners.$learnerId.tsx",
+          "objects.$typeId.tsx",
+          "technology-decisions.roles.$groupId.tsx",
+          "technology-decisions.workflows.$workflowId.tsx",
+          "value-streams.$streamId.tsx",
+          "workspaces.$workspaceId.tsx"
+        ]
+      },
+      "historical_manifest_rows": 25
+    },
+    "registers": {
+      "decisions": 23,
+      "decisions_by_state": {
+        "accepted": 17,
+        "required": 4,
+        "pending": 1,
+        "superseded": 1
+      },
+      "findings": 24,
+      "findings_by_state": {
+        "blocked": 2,
+        "unknown": 4,
+        "conflicted": 3,
+        "not-run": 1,
+        "not-applicable": 1,
+        "confirmed": 10,
+        "stale": 1,
+        "not-verified": 1,
+        "partial": 1
+      },
+      "evidence_records": 46,
+      "claims": 13,
+      "claims_refused": 10,
+      "pipeline_evidence_records": 15,
+      "pipeline_evidence_by_status": {
+        "pass": 12,
+        "fail": 1,
+        "not-completed": 1,
+        "review-required": 1
+      },
+      "governed_packages": 2,
+      "obligations": 34,
+      "historical_sources": 23,
+      "historical_requirements": 30,
+      "checkpoints": 10,
+      "attempts": 1
+    },
+    "verification": {
+      "test_files": 34,
+      "commands": [
+        "bun run lint",
+        "bun run typecheck",
+        "bun run test",
+        "bun run build",
+        "bun run check:current-state",
+        "bun run check:generated",
+        "bun run evidence:verify",
+        "bun run evidence:output-safety:check"
+      ]
+    },
+    "persistence": {
+      "backend": "No database, backend authentication, or row-level security exists in the tracked tree.",
+      "personal_data": "No personal data. Every product record is synthetic and marked as such in the fixtures."
+    }
+  },
+  "input_fingerprint": "36b0ef4fba1a3220f33041144f3fccc12096a3148a6e3c139e83930195e944e9"
+}
