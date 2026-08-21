@@ -82,6 +82,18 @@ function readJson(path: string): unknown {
   return JSON.parse(readFileSync(join(ROOT, path), "utf8"));
 }
 
+/**
+ * The evidence bundle is regenerated in place, so it is absent for part of a
+ * collection run. Absence is reported as unknown rather than as zero.
+ */
+function readEvidenceIndex(): { records: { evidence_id: string; status: string }[] } | null {
+  const path = join(ROOT, "evidence/evidence-index.json");
+  if (!existsSync(path)) return null;
+  return JSON.parse(readFileSync(path, "utf8")) as {
+    records: { evidence_id: string; status: string }[];
+  };
+}
+
 function countRecords(path: string, key: string): number {
   const value = readJson(path) as Record<string, unknown>;
   const records = value[key];
