@@ -114,12 +114,18 @@ function optionsInClause(clause: string): OptionId[] {
   return [...found].sort();
 }
 
-function modalityOf(clause: string, isHead: boolean): OptionModality {
+/**
+ * Modality precedence is fixed: exclusion beats staging, staging beats
+ * optionality, and only a clause with no qualifier at all is read as a present
+ * commitment. Reading a qualified clause as a commitment would attribute to
+ * the owner a decision the owner explicitly deferred.
+ */
+function modalityOf(clause: string): OptionModality {
   if (hasMarker(clause, NEGATION_MARKERS)) return "excluded";
   if (hasMarker(clause, INTERIM_MARKERS)) return "interim";
   if (hasMarker(clause, OPTIONAL_MARKERS)) return "optional";
   if (hasMarker(clause, FUTURE_MARKERS)) return "future";
-  return isHead ? "primary" : "primary";
+  return "primary";
 }
 
 /** Split on clause boundaries the source actually uses, keeping the text intact. */
@@ -138,10 +144,9 @@ export function parseSourceRecommendation(verbatim: string): SourceExpression {
   const clauses = clausesOf(verbatim);
   const references: OptionReference[] = [];
 
-  clauses.forEach((clause, index) => {
-    const isHead = index === 0;
+  clauses.forEach((clause) => {
     const negatedHere = clause.match(/\b(?:not|no|never)\s+option\s*([1-7])/i);
-    const clauseModality = modalityOf(clause, isHead);
+    const clauseModality = modalityOf(clause);
     for (const optionId of optionsInClause(clause)) {
       const modality: OptionModality =
         negatedHere && `OPT-${negatedHere[1]}` === optionId ? "excluded" : clauseModality;
@@ -227,8 +232,13 @@ export function parseSourceRecommendation(verbatim: string): SourceExpression {
   } else if (primaryOptionIds.length === 1) {
     expressionType = "SINGLE";
   } else {
-    expressionType = headOptions.length === primaryOptionIds.length ? "COMBINATION" : "COMBINATION";
+    expressionType = "COMBINATION";
     diagnostics.push("combination — the source commits to more than one option together");
+    if (headOptions.length !== primaryOptionIds.length) {
+      diagnostics.push(
+        "commitment-spans-clauses — the committed set is assembled from more than one clause",
+      );
+    }
   }
 
   const contradictory = primaryOptionIds.some((id) => excludedOptionIds.includes(id));
