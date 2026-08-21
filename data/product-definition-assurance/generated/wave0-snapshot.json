@@ -276,8 +276,7 @@
           "docs/trust/SSLS-TRUST-001-exposure-remediation-record-v0.1-CANDIDATE.md",
           "docs/wp-038/domain-security.md",
           "docs/wp-038/domain-student-privacy.md",
-          "evidence/artifacts/boundary/secret-scan.json",
-          "evidence/artifacts/boundary/pii-boundary-scan.json"
+          "scripts/evidence/boundary.mjs"
         ],
         "current_evidence": [
           "EV-SECRET",
@@ -311,7 +310,7 @@
         "existing_canonical_sources": [
           "src/test",
           "package.json",
-          "evidence/records/EV-TEST.json",
+          "scripts/evidence/collect.mjs",
           "docs/ACCESSIBILITY_ACCEPTANCE.md"
         ],
         "current_evidence": [
@@ -393,8 +392,8 @@
         "resolution_rule": "Preserve NOT COMPLETED. Do not convert an unavailable source into a pass.",
         "owner_decision_required": false,
         "sources": [
-          "evidence/records/EV-VULN.json",
-          "evidence/records/EV-VULN-RECOVERY.json"
+          "scripts/evidence/supply-chain.mjs",
+          "scripts/evidence/baseline.mjs"
         ]
       }
     ],
@@ -549,8 +548,7 @@
       "claims_refused": 10,
       "pipeline_evidence_records": 15,
       "pipeline_evidence_by_status": {
-        "pass": 12,
-        "fail": 1,
+        "pass": 13,
         "not-completed": 1,
         "review-required": 1
       },
@@ -579,5 +577,5 @@
       "personal_data": "No personal data. Every product record is synthetic and marked as such in the fixtures."
     }
   },
-  "input_fingerprint": "36b0ef4fba1a3220f33041144f3fccc12096a3148a6e3c139e83930195e944e9"
+  "input_fingerprint": "0b0e5340893476040b43e89398e680bcb57612918eab03561559f617e6b0a708"
 }

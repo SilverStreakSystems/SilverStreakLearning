@@ -68,5 +68,5 @@ The vulnerability scan is recorded NOT COMPLETED because the external advisory s
 
 **Sources**
 
-- `evidence/records/EV-VULN.json`
-- `evidence/records/EV-VULN-RECOVERY.json`
+- `scripts/evidence/supply-chain.mjs`
+- `scripts/evidence/baseline.mjs`

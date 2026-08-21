@@ -143,8 +143,7 @@ adopts a requirement or authorizes a wave.
 - `docs/trust/SSLS-TRUST-001-exposure-remediation-record-v0.1-CANDIDATE.md`
 - `docs/wp-038/domain-security.md`
 - `docs/wp-038/domain-student-privacy.md`
-- `evidence/artifacts/boundary/secret-scan.json`
-- `evidence/artifacts/boundary/pii-boundary-scan.json`
+- `scripts/evidence/boundary.mjs`
 
 **Current evidence:** EV-SECRET, EV-PII, EV-VULN
 
@@ -169,7 +168,7 @@ adopts a requirement or authorizes a wave.
 
 - `src/test`
 - `package.json`
-- `evidence/records/EV-TEST.json`
+- `scripts/evidence/collect.mjs`
 - `docs/ACCESSIBILITY_ACCEPTANCE.md`
 
 **Current evidence:** EV-TEST, EV-046

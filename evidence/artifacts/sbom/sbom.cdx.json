@@ -3,7 +3,7 @@
   "specVersion": "1.5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-21T10:01:58.958Z",
+    "timestamp": "2026-08-21T10:04:55.339Z",
     "tools": [
       {
         "vendor": "SSLS",
@@ -19,7 +19,7 @@
     "properties": [
       {
         "name": "ssls:commit",
-        "value": "9c51dd50cb57e5c616c0352ae255cb2ef170f3b6"
+        "value": "af4c8b9d990d17e7498ce3e333fac3168fce855a"
       },
       {
         "name": "ssls:manifest-hash",

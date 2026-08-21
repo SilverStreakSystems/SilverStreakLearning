@@ -306,7 +306,7 @@
       "observation": "The vulnerability scan is recorded NOT COMPLETED because the external advisory source is unavailable. A recovery source is recorded separately and does not replace it.",
       "resolution_rule": "Preserve NOT COMPLETED. Do not convert an unavailable source into a pass.",
       "owner_decision_required": false,
-      "sources": ["scripts/evidence/supply-chain.mjs", "evidence/BASELINE.md"]
+      "sources": ["scripts/evidence/supply-chain.mjs", "scripts/evidence/baseline.mjs"]
     }
   ],
   "disposition_packet": {
