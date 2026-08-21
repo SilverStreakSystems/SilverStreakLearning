@@ -3,62 +3,78 @@
 
 # SSLS 3.0 — open owner decisions
 
-Every owner decision the foundation package leaves open: **58** in total.
+Every owner decision the foundation package leaves open: **74** in total.
 
 Listing a decision does not answer it, rank it beyond what the package itself states, or defer
 it. Only the owner records a decision.
 
 ## Priority 1 — blocks everything downstream
 
-4 decisions.
+22 decisions.
 
 | ID | Raised by | Decision needed |
 |---|---|---|
+| OD-00-1 | SSLS3-DOC-00 | Confirm the operational meaning: "Make learning, expectations, steps to success, and effort visible." |
+| OD-00-2 | SSLS3-DOC-00 | Confirm that effort remains visible but separate from mastery or achievement. |
+| OD-00-5 | SSLS3-DOC-00 | Confirm the end-to-end development map as a routing model, explicitly not a phase, gate, maturity, roadmap, or authorization model. |
+| OD-00-8 | SSLS3-DOC-00 | Confirm that release preparation and release authorization remain separate states. |
+| OD-00-9 | SSLS3-DOC-00 | Confirm File 00's authority summary as navigational only, with File 02 remaining the sole controller of source hierarchy and conflict resolution. |
+| OD-01-1 | SSLS3-DOC-01 | Confirm "Make Learning Visible" as the North Star and "Make learning, expectations, steps to success, and effort visible" as its operational meaning. |
+| OD-01-1A | SSLS3-DOC-01 | Confirm that effort remains visible but separate from mastery, achievement, behavior, worth, motivation, and compliance. |
+| OD-01-2 | SSLS3-DOC-01 | Confirm or revise the project purpose in §3. |
+| OD-01-3 | SSLS3-DOC-01 | Confirm the successor boundary in §4. |
+| OD-01-4 | SSLS3-DOC-01 | Confirm the eighteen founding governance principles in §5. |
+| OD-01-5 | SSLS3-DOC-01 | Confirm the evidence and traceability commitment in §6, including the charter-level separation of governance authority, research evidence, descriptive evidence, and validation evidence. |
+| OD-01-6 | SSLS3-DOC-01 | Confirm the human decision authority and AI boundary in §§7–8. |
+| OD-01-8 | SSLS3-DOC-01 | Confirm the enduring privacy, security, accessibility, and trust commitments in §10. |
+| OD-01-14 | SSLS3-DOC-01 | Confirm that matrices, crosswalks, prototypes, repository artifacts, exports, AI outputs, and self-labeled "SSOT" artifacts do not acquire authority by existence, implementation, or naming. |
+| OD-02-1 | SSLS3-DOC-02 | Confirm the nine-rank hierarchy (§2). |
+| OD-02-2 | SSLS3-DOC-02 | Confirm the separation of normative authority from descriptive implementation evidence (§3). |
+| OD-02-4 | SSLS3-DOC-02 | Confirm the stop conditions (§13) as binding. |
+| OD-02-5 | SSLS3-DOC-02 | Confirm that no historical artifact is promoted by default. |
+| OD-02-7 | SSLS3-DOC-02 | Confirm that research evidence, implementation evidence, and validation evidence remain distinct (§6B). |
+| OD-02-8 | SSLS3-DOC-02 | Confirm that matrices, crosswalks, lifecycle maps, and self-labeled "SSOT" artifacts remain non-authoritative until governed disposition (§12A). |
 | OD-04-1 | SSLS3-DOC-04 | Confirm or set the program phase, and confirm whether a phase or maturity model is needed at all. |
 | OD-03-2 | SSLS3-DOC-03 | Confirm that all twelve foundation artifacts remain CANDIDATE pending individual approval — accept, revise, or reject each. |
-| OD-02-1 | SSLS3-DOC-02 | Confirm the eight-rank authority hierarchy. |
-| OD-01-1 | SSLS3-DOC-01 | Confirm the North Star statement and its stated limits. |
 
 ## Priority 2
 
-4 decisions.
+13 decisions.
 
 | ID | Raised by | Decision needed |
 |---|---|---|
+| OD-00-3 | SSLS3-DOC-00 | Confirm this reader-centered Start Here structure. |
+| OD-00-4 | SSLS3-DOC-00 | Confirm the practical preflight and stop conditions as the default entry procedure for substantial work. |
+| OD-00-6 | SSLS3-DOC-00 | Confirm continuous R&D as a cross-lifecycle operating expectation. |
+| OD-01-7 | SSLS3-DOC-01 | Confirm the educational and human-centered commitments in §9. |
+| OD-01-9 | SSLS3-DOC-01 | Confirm the modularity, interoperability, and program non-goal boundaries in §§11–13. |
+| OD-01-10 | SSLS3-DOC-01 | Confirm the five independent program success dimensions in §16, including Learning visibility. |
+| OD-01-11 | SSLS3-DOC-01 | Confirm the charter amendment discipline in §17. |
+| OD-01-13 | SSLS3-DOC-01 | Confirm continuous R&D and the end-to-end development orientation in §§7 and 14 as enduring routing commitments, not authorization structures. |
+| OD-02-3 | SSLS3-DOC-02 | Confirm that AI memory and AI summaries carry no authority (§5). |
+| OD-02-6 | SSLS3-DOC-02 | Confirm the separate research source-quality ladder (§6A). |
 | OD-05-1 | SSLS3-DOC-05 | Confirm the current authorized scope. |
-| OD-01-6 | SSLS3-DOC-01 | Set the accessibility conformance target. |
 | OD-04-2 | SSLS3-DOC-04 | Decide whether to build a phase or maturity model now or defer it. |
 | OD-03-3 | SSLS3-DOC-03 | Confirm that no historical artifact is promoted. Default: none. |
 
 ## Priority 3
 
-3 decisions.
+5 decisions.
 
 | ID | Raised by | Decision needed |
 |---|---|---|
+| OD-00-7 | SSLS3-DOC-00 | Confirm the standard handoff packet and implementation-readiness check. |
+| OD-01-12 | SSLS3-DOC-01 | Direct File 07 to define the formal predecessor-disposition vocabulary before charter canonicalization. |
 | OD-06-1 | SSLS3-DOC-06 | Confirm or revise the problem statement. |
 | OD-11-1 | SSLS3-DOC-11 | Decide whether a repository is created, and on what platform. |
 | OD-04-3 | SSLS3-DOC-04 | Decide how R-02 (governance burden) and R-06 (self-approval) are controlled. |
 
 ## Unranked — the foundation package states no priority
 
-47 decisions.
+34 decisions.
 
 | ID | Raised by | Decision needed |
 |---|---|---|
-| OD-00-1 | SSLS3-DOC-00 | Confirm or replace the mandatory reading order. |
-| OD-00-2 | SSLS3-DOC-00 | Confirm the AI-use boundaries as binding on all connected tools. |
-| OD-00-3 | SSLS3-DOC-00 | Confirm the definition of done for governed work. |
-| OD-01-2 | SSLS3-DOC-01 | Confirm or revise the purpose statement. |
-| OD-01-3 | SSLS3-DOC-01 | Confirm the ten governing principles. |
-| OD-01-4 | SSLS3-DOC-01 | Confirm the educational commitments as binding design constraints. |
-| OD-01-5 | SSLS3-DOC-01 | Confirm the AI boundary as binding on all connected tools. |
-| OD-01-7 | SSLS3-DOC-01 | Confirm the three success dimensions and their thresholds. |
-| OD-01-8 | SSLS3-DOC-01 | Decide whether any named historical artifact is promoted. Default: none. |
-| OD-02-2 | SSLS3-DOC-02 | Confirm the normative and descriptive separation. |
-| OD-02-3 | SSLS3-DOC-02 | Confirm that AI memory and AI summaries carry no authority. |
-| OD-02-4 | SSLS3-DOC-02 | Confirm the stop conditions as binding. |
-| OD-02-5 | SSLS3-DOC-02 | Confirm that no historical artifact is promoted by default. |
 | OD-03-1 | SSLS3-DOC-03 | Confirm the nine status values. |
 | OD-03-4 | SSLS3-DOC-03 | Decide whether a full historical inventory is required, and at what depth. |
 | OD-03-5 | SSLS3-DOC-03 | Confirm the handling of restricted items H-021 through H-023 — reference by ID only, do not open. |
@@ -98,9 +114,9 @@ it. Only the owner records a decision.
 
 | Document | Open decisions |
 |---|---|
-| SSLS3-DOC-00 — Start Here | OD-00-1, OD-00-2, OD-00-3 |
-| SSLS3-DOC-01 — Project Charter | OD-01-1, OD-01-2, OD-01-3, OD-01-4, OD-01-5, OD-01-6, OD-01-7, OD-01-8 |
-| SSLS3-DOC-02 — Source Hierarchy | OD-02-1, OD-02-2, OD-02-3, OD-02-4, OD-02-5 |
+| SSLS3-DOC-00 — Start Here | OD-00-1, OD-00-2, OD-00-3, OD-00-4, OD-00-5, OD-00-6, OD-00-7, OD-00-8, OD-00-9 |
+| SSLS3-DOC-01 — Project Charter | OD-01-1, OD-01-1A, OD-01-2, OD-01-3, OD-01-4, OD-01-5, OD-01-6, OD-01-7, OD-01-8, OD-01-9, OD-01-10, OD-01-11, OD-01-12, OD-01-13, OD-01-14 |
+| SSLS3-DOC-02 — Source Hierarchy | OD-02-1, OD-02-2, OD-02-3, OD-02-4, OD-02-5, OD-02-6, OD-02-7, OD-02-8 |
 | SSLS3-DOC-03 — Canon Manifest | OD-03-1, OD-03-2, OD-03-3, OD-03-4, OD-03-5 |
 | SSLS3-DOC-04 — Current Project State | OD-04-1, OD-04-2, OD-04-3 |
 | SSLS3-DOC-05 — Scope and Boundaries | OD-05-1, OD-05-2, OD-05-3, OD-05-4, OD-05-5 |

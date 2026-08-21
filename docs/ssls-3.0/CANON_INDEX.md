@@ -18,8 +18,8 @@ SSLS 3.0 is a clean-slate declaration. No SSLS 2.0 schema, role model, route set
 | Documents registered | 12 |
 | Documents carrying authority | 0 |
 | Documents reconstructed rather than transcribed | 3 |
-| Documents not stating a review class | 1 |
-| Open owner decisions | 58 |
+| Documents not stating a review class | 0 |
+| Open owner decisions | 74 |
 | Unresolved items carried forward | 3 |
 
 Lifecycle status distribution:
@@ -32,9 +32,9 @@ Lifecycle status distribution:
 
 | ID | File | Controls | Status | Provenance | Authorizing decision | Open decisions |
 |---|---|---|---|---|---|---|
-| SSLS3-DOC-00 | [`00-SSLS_3.0_START_HERE.md`](00-SSLS_3.0_START_HERE.md) | Reader routing. Controls nothing. | CANDIDATE | transcribed | none | 3 |
-| SSLS3-DOC-01 | [`01-SSLS_3.0_PROJECT_CHARTER.md`](01-SSLS_3.0_PROJECT_CHARTER.md) | Identity, purpose, North Star, principles | CANDIDATE | transcribed | none | 8 |
-| SSLS3-DOC-02 | [`02-SSLS_3.0_SOURCE_HIERARCHY.md`](02-SSLS_3.0_SOURCE_HIERARCHY.md) | Authority and conflict resolution | CANDIDATE | transcribed | none | 5 |
+| SSLS3-DOC-00 | [`00-SSLS_3.0_START_HERE.md`](00-SSLS_3.0_START_HERE.md) | Reader routing and lifecycle routing. Controls nothing. | CANDIDATE | transcribed | none | 9 |
+| SSLS3-DOC-01 | [`01-SSLS_3.0_PROJECT_CHARTER.md`](01-SSLS_3.0_PROJECT_CHARTER.md) | Identity, purpose, North Star, principles | CANDIDATE | transcribed | none | 15 |
+| SSLS3-DOC-02 | [`02-SSLS_3.0_SOURCE_HIERARCHY.md`](02-SSLS_3.0_SOURCE_HIERARCHY.md) | Source authority, ranking, promotion, and conflict resolution | CANDIDATE | transcribed | none | 8 |
 | SSLS3-DOC-03 | [`03-SSLS_3.0_CANON_MANIFEST.md`](03-SSLS_3.0_CANON_MANIFEST.md) | Artifact status and canonicality | CANDIDATE | transcribed | none | 5 |
 | SSLS3-DOC-04 | [`04-SSLS_3.0_CURRENT_PROJECT_STATE.md`](04-SSLS_3.0_CURRENT_PROJECT_STATE.md) | Dynamic phase, status, blockers, next work | CANDIDATE | transcribed | none | 3 |
 | SSLS3-DOC-05 | [`05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md`](05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md) | Scope, exclusions, future-state separation | CANDIDATE | transcribed | none | 5 |
@@ -52,9 +52,9 @@ absence is recorded rather than filled in by inference.
 
 | ID | Review class |
 |---|---|
-| SSLS3-DOC-00 | **none stated** |
-| SSLS3-DOC-01 | AI-assisted authorship. Not independent review, not human review, not validation. |
-| SSLS3-DOC-02 | AI-assisted authorship. Not independent review, not human review, not validation. |
+| SSLS3-DOC-00 | AI-assisted alignment revision against File 01 v0.3.0-draft and File 02 v0.2.0-draft. Not independent review, validation, canonical approval, or implementation authorization. |
+| SSLS3-DOC-01 | AI-assisted alignment revision against Start Here v0.6.0-draft and Source Hierarchy v0.2.0-draft. Not independent review, human review, validation, or owner approval. |
+| SSLS3-DOC-02 | AI-assisted alignment revision using current SSLS 3.0 candidate governance plus the Integration Crosswalk and Greenfield Enterprise Artifact Matrices v1.1 as working/research evidence. Not independent review, validation, or owner approval. |
 | SSLS3-DOC-03 | AI-assisted authorship. Not independent review, not human review, not validation. |
 | SSLS3-DOC-04 | AI-assisted authorship. Not independent review, not human review, not validation. |
 | SSLS3-DOC-05 | AI-assisted authorship. Not independent review, not human review, not validation. |
