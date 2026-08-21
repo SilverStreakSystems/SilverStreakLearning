@@ -119,11 +119,20 @@ describe("SSLS 3.0 canon record", () => {
 describe("open decisions", () => {
   it("indexes every open decision exactly once", () => {
     const decisions = openDecisions();
-    expect(decisions).toHaveLength(58);
-    expect(new Set(decisions.map((d) => d.decision_id)).size).toBe(58);
+    expect(decisions).toHaveLength(74);
+    expect(new Set(decisions.map((d) => d.decision_id)).size).toBe(74);
     for (const decision of decisions) {
       expect(decision.state).toBe("open");
     }
+  });
+
+  it("accepts the multi-digit and suffixed identifiers the source documents use", () => {
+    const ids = openDecisions().map((d) => d.decision_id);
+    // File 01 numbers past nine and inserts a sibling item; both must survive validation.
+    expect(ids).toContain("OD-01-10");
+    expect(ids).toContain("OD-01-14");
+    expect(ids).toContain("OD-01-1A");
+    expect(canonDefects(loadCanon())).toEqual([]);
   });
 
   it("indexes exactly the decisions the documents raise", () => {
