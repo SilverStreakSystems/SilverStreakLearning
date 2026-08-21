@@ -97,13 +97,23 @@ function main() {
       "",
       "| Measure | Value |",
       "| --- | --- |",
-      `| Registered routes | ${inventories.routes.registered} |`,
-      `| Route modules on disk | ${inventories.routes.files.total_route_modules} |`,
-      `| Historical WP-006 manifest rows | ${inventories.routes.historical_manifest_rows} |`,
+      `| Registered routes (live registry) | ${inventories.routes.registered} |`,
+      `| Route modules on disk (live) | ${inventories.routes.files.total_route_modules} |`,
+      `| WP-006 manifest rows at commit ${inventories.routes.wp006_manifest.commit} (historical) | ${inventories.routes.wp006_manifest.manifest_rows} |`,
+      `| WP-006 manifest declared route files (historical) | ${inventories.routes.wp006_manifest.declared_route_files} |`,
+      `| WP-006 manifest declared registry paths (historical) | ${inventories.routes.wp006_manifest.declared_registry_paths} |`,
+      ...inventories.routes.external_historical_counts.map(
+        (entry) =>
+          `| External historical count — ${esc(entry.source)} (${esc(entry.locator)}) | ${entry.count} |`,
+      ),
       ...Object.entries(inventories.registers)
         .filter(([, value]) => typeof value === "number")
         .map(([key, value]) => `| ${key.replace(/_/g, " ")} | ${value} |`),
       `| Test files | ${inventories.verification.test_files} |`,
+      "",
+      `WP-006 manifest: ${inventories.routes.wp006_manifest.declared_addressable_routes_plus_root_layout}. ${inventories.routes.wp006_manifest.note}`,
+      "",
+      ...inventories.routes.external_historical_counts.map((entry) => `${esc(entry.note)}`),
       "",
       `Persistence: ${inventories.persistence.backend}`,
       "",
@@ -213,8 +223,13 @@ function main() {
     ]),
   );
 
+  // The manifest is itself a generated output, so it lists itself. Anything
+  // generated but unlisted would be an invisible artifact.
+  const MANIFEST_NAME = "WAVE0_MANIFEST.md";
+  const generatedOutputs = [...written, `docs/product-definition-assurance/${MANIFEST_NAME}`];
+
   written.push(
-    writeDoc("WAVE0_MANIFEST.md", [
+    writeDoc(MANIFEST_NAME, [
       "# Wave 0 output manifest",
       "",
       `Snapshot ${declaration.snapshot_id} v${declaration.snapshot_version}. Input fingerprint \`${fingerprint}\`.`,
@@ -231,7 +246,7 @@ function main() {
       "",
       "## Generated, never hand-edited",
       "",
-      ...bullets(written.map((path) => `\`${path}\``)),
+      ...bullets(generatedOutputs.map((path) => `\`${path}\``)),
       "",
       "## Declared inputs",
       "",

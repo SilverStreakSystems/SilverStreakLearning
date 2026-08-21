@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "git version 2.51.2",
-  "tree_hash": "7b42b7435eb0cc27cb95b123dc987120ed36a534",
+  "tree_hash": "816053df9a7d08afa828c63e759629bcb7f85106",
   "expected_result": "Ancestry recoverable to a single root commit.",
   "artifact_path": "artifacts/provenance/provenance.json",
-  "artifact_hash": "73a1692a56a5976e8c5b133737dde6e3c81af4f1a776dc80f53d0584be321573",
+  "artifact_hash": "9e52e2b6593eb6b62279f82998cb2a445415a2afd8c3d85ef042d3e504417c80",
   "input_set": {
-    "tracked": "c9fc69082e0a8559c7a54ff72b6c58e02ef25b18091588e2a59da27f3e6a92a0"
+    "tracked": "5cc89b3004bc873fc9996646c87ef39f5887c3b95ce6d51fcbf53907e1da86d6"
   },
   "related_requirements": [],
   "related_decisions": [
@@ -26,15 +26,15 @@
   "method": "automated",
   "evidence_id": "EV-PROVENANCE",
   "evidence_type": "SOURCE_PROVENANCE",
-  "commit_sha": "24eb31eeb01fdd5e872cebd89b972028a7fff5a0",
+  "commit_sha": "4582d02c0d7c2d3c2a1b0033107b7945b3fdb4af",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-21T10:07:17.449Z",
+  "timestamp": "2026-08-21T10:23:30.668Z",
   "producer": "SSLS evidence pipeline",
   "title": "Source provenance derived from Git",
   "description": "Repository identity, ancestry, and tree size read directly from Git.",
   "tool": "git",
   "command": "git rev-parse / rev-list / ls-files",
-  "actual_result": "Root commit 3190f7973cc6626912c8de24731514df0608a5d9; 861 commits; 628 tracked files.",
+  "actual_result": "Root commit 3190f7973cc6626912c8de24731514df0608a5d9; 885 commits; 628 tracked files.",
   "status": "pass",
   "supports": [
     "Repository ancestry and tree size as recorded by Git at this commit."

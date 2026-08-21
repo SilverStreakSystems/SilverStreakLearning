@@ -141,18 +141,83 @@ describe("Wave 0 projection", () => {
     expect(snapshot.input_fingerprint).toBe(fingerprintDeclaredInputs(declaration.declared_inputs));
   });
 
-  it("records the live route inventory rather than the historical manifest count", () => {
+  it("records the live route inventory and keeps version-bound counts separate", () => {
     const snapshot = readSnapshot();
-    expect(snapshot.inventories.routes.registered).toBe(ROUTE_REGISTRY.length);
-    expect(snapshot.inventories.routes.historical_manifest_rows).not.toBe(
-      snapshot.inventories.routes.registered,
-    );
+    const routes = snapshot.inventories.routes;
+    expect(routes.registered).toBe(ROUTE_REGISTRY.length);
+    expect(routes.wp006_manifest.manifest_rows).toBe(25);
+    expect(routes.wp006_manifest.commit).toBe("70c1f891c5d341c60132d0109979042004425a4b");
+    expect(routes.wp006_manifest.declared_route_files).toBe(30);
+    expect(routes.wp006_manifest.declared_registry_paths).toBe(19);
+    expect(routes.wp006_manifest.manifest_rows).not.toBe(17);
+    const external = routes.external_historical_counts.find((entry) => entry.count === 17);
+    expect(external?.source).toContain("August 5");
+    expect(external?.note).toContain("not the WP-006 manifest count");
   });
 
-  it("reports no database and no personal data", () => {
+  it("never attaches the seventeen-route count to the WP-006 manifest", () => {
+    const routeEntry = declaration.artifact_map.find(
+      (entry) => entry.artifact === "Route Registry",
+    );
+    const prose = [
+      ...(routeEntry?.conflicts ?? []),
+      declaration.reconciliation.find((entry) => entry.entry_id === "PDA-R02")?.observation ?? "",
+      declaration.reconciliation.find((entry) => entry.entry_id === "PDA-R02")?.resolution_rule ??
+        "",
+      readFileSync(join(process.cwd(), DOC_DIR, "ARTIFACT_GAP_MAP.md"), "utf8"),
+      readFileSync(join(process.cwd(), DOC_DIR, "RECONCILIATION_REPORT.md"), "utf8"),
+      readFileSync(join(process.cwd(), DOC_DIR, "WAVE0_SNAPSHOT.md"), "utf8"),
+    ].join("\n");
+    expect(prose).not.toMatch(/manifest records seventeen routes/i);
+    expect(prose).not.toMatch(/seventeen routes at commit/i);
+    expect(prose).toContain("70c1f891c5d341c60132d0109979042004425a4b");
+  });
+
+  it("states a bounded personal-data non-claim and refuses categorical absence", () => {
     const snapshot = readSnapshot();
+    const statement = snapshot.inventories.persistence.personal_data;
     expect(snapshot.inventories.persistence.backend).toContain("No database");
-    expect(snapshot.inventories.persistence.personal_data).toContain("No personal data");
+    expect(statement).toContain("prohibited and not intentionally introduced");
+    expect(statement).toContain("review-required");
+    expect(statement).toContain("does not establish the absence");
+    const prose = [statement, ...declaration.boundary].join("\n");
+    expect(prose).not.toMatch(/no personal data exists/i);
+    expect(prose).not.toMatch(/\bNo personal data\b/i);
+    expect(prose).not.toMatch(/zero personal data/i);
+  });
+
+  it("keeps EV-PII review-required and records the scan limitation", () => {
+    const entry = declaration.reconciliation.find((item) => item.entry_id === "PDA-R06");
+    expect(entry?.resolution_rule).toContain("review-required");
+    expect(entry?.resolution_rule).toContain("Never state categorical absence");
+    // The evidence bundle is absent while it is being regenerated; unverifiable
+    // is not the same as wrong, so the state is only asserted when it is readable.
+    const indexPath = join(process.cwd(), "evidence/evidence-index.json");
+    if (!existsSync(indexPath)) return;
+    const index = JSON.parse(readFileSync(indexPath, "utf8")) as {
+      records: { evidence_id: string; status: string }[];
+    };
+    const pii = index.records.find((record) => record.evidence_id === "EV-PII");
+    if (pii) expect(pii.status).toBe("review-required");
+  });
+
+  it("recommends an ecosystem-level Product Brief location that collapses no scope", () => {
+    const brief = declaration.artifact_map.find((entry) => entry.artifact === "Product Brief");
+    expect(brief?.recommended_extension).toContain("docs/product/SSLS_PRODUCT_BRIEF.md");
+    expect(brief?.recommended_extension).not.toMatch(
+      /Extend docs\/product-alpha-001\/ENTRY_SPECIFICATION\.md as the controlling brief/,
+    );
+    expect(brief?.recommended_extension).toContain("docs/CURRENT_STATE.md");
+    const r03 = declaration.reconciliation.find((entry) => entry.entry_id === "PDA-R03");
+    expect(r03?.owner_decision_required).toBe(true);
+    expect(r03?.resolution_rule).toContain("not an owner disposition");
+    expect(existsSync(join(process.cwd(), "docs/product/SSLS_PRODUCT_BRIEF.md"))).toBe(false);
+  });
+
+  it("holds the Test Plan artifact at partially-implemented", () => {
+    const plan = declaration.artifact_map.find((entry) => entry.artifact === "Test Plan");
+    expect(plan?.states.implementation).toBe("partially-implemented");
+    expect(plan?.missing_fields.join(" ")).toContain("Test case register");
   });
 
   it("writes every generated document with its do-not-edit marker", () => {
@@ -160,6 +225,16 @@ describe("Wave 0 projection", () => {
       const body = readFileSync(join(process.cwd(), DOC_DIR, name), "utf8");
       expect(body.startsWith("<!-- Generated by scripts/gen-wave0-snapshot.ts")).toBe(true);
     }
+  });
+
+  it("lists the complete generated output set in the manifest, including itself", () => {
+    const body = readFileSync(join(process.cwd(), DOC_DIR, "WAVE0_MANIFEST.md"), "utf8");
+    const generatedSection = body.slice(body.indexOf("## Generated, never hand-edited"));
+    for (const name of GENERATED_DOCS) {
+      expect(generatedSection).toContain(`docs/product-definition-assurance/${name}`);
+    }
+    expect(generatedSection).toContain(SNAPSHOT_PATH);
+    expect(generatedSection).toContain("WAVE0_MANIFEST.md");
   });
 
   it("states the boundary in the published snapshot document", () => {
