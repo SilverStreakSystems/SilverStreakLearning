@@ -8,7 +8,7 @@ import {
 } from "../src/fixtures";
 import { ENTERPRISE_FUNCTION_META } from "../src/domain";
 
-const out = "/dev-server/docs/value-streams";
+const out = "docs/value-streams";
 mkdirSync(out, { recursive: true });
 const fn = (id: string) =>
   (ENTERPRISE_FUNCTION_META as Record<string, { name: string } | undefined>)[id]?.name ?? id;

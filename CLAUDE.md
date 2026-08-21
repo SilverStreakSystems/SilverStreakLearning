@@ -1,0 +1,69 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this repository is
+
+SSLS 2.0 — a **public synthetic prototype** for Silver Streak Learning Systems. Every record is synthetic; there is no backend, database, authentication, AI feature, or external integration, and none may be added — they are explicitly unauthorized (see "Status boundaries" in `README.md`). Built with TanStack Start, React 19, TypeScript, Tailwind CSS 4, and Vitest, running on Bun (pinned `1.3.3`).
+
+The project is connected to Lovable: **never force-push, rebase, amend, or squash commits that are already pushed** — rewriting published history breaks the Lovable sync (see `AGENTS.md`).
+
+## Commands
+
+```sh
+bun install --frozen-lockfile   # install (no global tooling needed)
+bun run dev                     # dev server
+bun run verify                  # full read-only gate: lint + typecheck + test + build
+                                #   + current-state check + generated check + evidence checks
+bun run lint                    # ESLint + Prettier, --max-warnings 0 (warnings are failures)
+bun run typecheck               # tsc --noEmit
+bun run test                    # whole Vitest suite
+bun run test src/test/obligations.test.ts   # single test file (args pass through to vitest run)
+bun run gen:all                 # run every governed generator and keep the result
+bun run check:generated         # run every generator, fail on any tree diff
+```
+
+`verify` is read-only (leaves no new files). `verify:ci` adds `evidence:ephemeral`, which generates and verifies a full evidence set in a temp directory. Evidence scripts run under Node (>= 22), not Bun.
+
+CI (`.github/workflows/`): `quality-gate.yml` runs the complete gate on PRs and pushes to `main`; `evidence-pipeline.yml` and `current-state.yml` cover evidence and the current-state projection.
+
+## Controlling vs derived state — the core rule
+
+**Controlling (authored):** `data/`, `src/fixtures/`, hand-written docs in `docs/`.
+**Derived (generated):** `docs/CURRENT_STATE.md`, the current-state fingerprint (`data/current-state/current-state.fingerprint.json`), every generated document under `docs/` and `data/*/generated/`, and the `evidence/` tree.
+
+Never hand-edit derived state — `check:generated` fails on it. The workflow for any change to a controlling source:
+
+1. Edit the controlling source (`data/`, `src/fixtures/`, or a generator in `scripts/gen-*.ts`).
+2. Run `bun run gen:all`.
+3. Commit the regenerated artefacts together with the source change.
+
+Generators are discovered by convention: any `scripts/gen-*.ts` file is a governed generator (`scripts/check-generated.mjs`).
+
+**No parallel truth plane:** there is exactly one controlling source per concept. Program posture is derived from the decision/finding/evidence/checkpoint registers by `src/domain/program-state-derivation.ts` — never maintained as a second hand-kept status object. Do not introduce a fixture, document, or constant restating a fact carried elsewhere; restate by derivation, never by copy.
+
+## Architecture
+
+- `src/domain/` — domain models and derivation logic. **TypeScript here is the schema source of truth** (authority, layers, capabilities, registers, obligations, program state, value streams, workspaces, technology decisions, learning loop). Strict compiler options are on (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, etc.).
+- `src/fixtures/` — synthetic seed records, each flagged `synthetic: true`, including the governance registers (`src/fixtures/registers.ts`).
+- `src/lib/` — registries and query helpers. `src/lib/route-registry.ts` is the single source of truth for routes, labels, and page headings; navigation and tests both read it. Query modules compute counts, never scores.
+- `src/routes/` — TanStack Start **file-based routes** (see `src/routes/README.md`): `$param` for dynamic segments, `__root.tsx` is the only root layout, `routeTree.gen.ts` is auto-generated. Do not create `src/pages/` or Next.js/Remix-style layouts.
+- `src/components/` — `app-shell.tsx`, plus `governance/` (state chips, authority badges, synthetic markers, gated panels, page/registry primitives), `brand/`, `learning-loop/`, `technology-decisions/`.
+- `src/test/` — Vitest suites (jsdom, globals on, setup in `src/test/setup.ts`, `render-route.tsx` helper for route-level acceptance tests). Timeouts are raised to 20s because route tests render whole pages with real user events.
+- `data/` — controlling governance data: registers, obligations, historical packages, program checkpoints, and the current-state input manifest (`data/current-state/current-state-inputs.json`).
+- `docs/` — governance canon; `docs/CURRENT_STATE.md` is the canonical (generated) program state.
+- `scripts/` — governed generators (`gen-*.ts`, run with Bun), the evidence pipeline (`scripts/evidence/*.mjs`, run with Node), and the dormant accessibility audit (TTR-001 is NOT-RUN; do not claim touch-target conformance).
+- `evidence/` — committed evidence records and artefacts (derived; written only by `evidence:run`).
+
+Vite config comes from `@lovable.dev/vite-tanstack-config`, which already bundles TanStack Start, React, Tailwind, tsconfig paths, and the `@/` alias — do not re-add those plugins manually.
+
+### Product Alpha 001 (learning loop)
+
+A bounded founder/operator-only vertical slice: synthetic learner → goal → support/action → observation → result → timeline → deterministic LLR-001 next-step projection. Domain logic in `src/domain/learning-loop/`, persistence in `src/lib/learning-loop/repository.ts` — **browser-local storage only** behind a repository interface, with seed/reset/export/import. No expansion beyond this exact local synthetic proof is authorized.
+
+## Conventions and guardrails
+
+- Warnings are never left to accumulate: fix them or record a dispositioned finding.
+- Evidence applicability is decided by declared input-set hashes; generated outputs are excluded from every input set. Verification passing is not certification, conformance, or release readiness — don't write claims to the contrary into docs or UI.
+- The governance docs use precise status language (e.g. "recorded target, not achieved state", "deployment is not release"). Preserve that framing when editing docs; do not upgrade claims.
+- Record IDs (DEC-nnn, FND-nnn, EV-nnn, CHECKPOINT-nnn, WP-nnn, TTR-nnn) refer to entries in the controlling registers; cite existing IDs rather than inventing new facts.
