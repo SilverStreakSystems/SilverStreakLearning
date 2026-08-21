@@ -108,7 +108,7 @@
         },
         "open_decision_ids": {
           "type": "array",
-          "items": { "type": "string", "pattern": "^OD-\\d{2}-\\d$" }
+          "items": { "type": "string", "pattern": "^OD-\\d{2}-\\d+[A-Z]?$" }
         }
       }
     },
@@ -117,7 +117,7 @@
       "additionalProperties": false,
       "required": ["decision_id", "source_document_id", "priority", "question", "state"],
       "properties": {
-        "decision_id": { "type": "string", "pattern": "^OD-\\d{2}-\\d$" },
+        "decision_id": { "type": "string", "pattern": "^OD-\\d{2}-\\d+[A-Z]?$" },
         "source_document_id": { "type": "string", "pattern": "^SSLS3-DOC-\\d{2}$" },
         "priority": {
           "description": "1 blocks everything downstream. unranked means the foundation package states no priority for it.",
@@ -142,7 +142,7 @@
           "minItems": 2,
           "items": { "type": "string", "minLength": 1 }
         },
-        "routed_to": { "type": "string", "pattern": "^OD-\\d{2}-\\d$" }
+        "routed_to": { "type": "string", "pattern": "^OD-\\d{2}-\\d+[A-Z]?$" }
       }
     }
   }
