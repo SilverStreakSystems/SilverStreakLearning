@@ -190,17 +190,18 @@ export function readDecisionDrivers(
   const add = (driver: DecisionDriver) => {
     if (!drivers.includes(driver)) drivers.push(driver);
   };
-  if (answerIs(derived, "Q-01", "yes")) add("HUMAN-PROCESS-SUFFICIENT");
-  if (answerIs(derived, "Q-02", "yes")) add("WORKSPACE-SUFFICIENT");
-  if (answerIs(derived, "Q-03", "yes")) add("DETERMINISTIC-PRECEDENCE");
-  if (answerIs(derived, "Q-04", "yes")) add("RULES-AUTOMATION");
-  if (answerIs(derived, "Q-05", "yes")) add("RECORD-AUTHORITY");
-  if (answerIs(derived, "Q-06", "yes")) add("RELATIONAL-DATA");
-  if (answerIs(derived, "Q-07", "yes")) add("LONGITUDINAL-DATA");
-  if (answerIs(derived, "Q-08", "yes")) add("PERMISSION-COMPLEXITY");
-  if (answerIs(derived, "Q-09", "yes")) add("AUDIT-REQUIREMENT");
-  if (answerIs(derived, "Q-10", "yes")) add("CROSS-ROLE-WORKFLOW");
-  if (evaluation.aiBoundary === "prohibited" || evaluation.aiBoundary === "bounded-assistive") {
+  if (answerIs(derived, "human_process_sufficient", "yes")) add("HUMAN-PROCESS-SUFFICIENT");
+  if (answerIs(derived, "workspace_tool_fits", "yes")) add("WORKSPACE-SUFFICIENT");
+  if (answerIs(derived, "output_predictable", "yes")) add("DETERMINISTIC-PRECEDENCE");
+  if (answerIs(derived, "deterministic_core_available", "yes")) add("DETERMINISTIC-PRECEDENCE");
+  if (answerIs(derived, "repeatable_routing", "yes")) add("RULES-AUTOMATION");
+  if (answerIs(derived, "authoritative_record_required", "yes")) add("RECORD-AUTHORITY");
+  if (answerIs(derived, "relational_data_required", "yes")) add("RELATIONAL-DATA");
+  if (answerIs(derived, "longitudinal_data_required", "yes")) add("LONGITUDINAL-DATA");
+  if (answerIs(derived, "permission_complexity", "restricted")) add("PERMISSION-COMPLEXITY");
+  if (answerIs(derived, "audit_history_required", "yes")) add("AUDIT-REQUIREMENT");
+  if (answerIs(derived, "cross_role_workflow", "yes")) add("CROSS-ROLE-WORKFLOW");
+  if (evaluation.aiBoundary === "prohibited") {
     add("AI-BOUNDARY");
   }
   if (evaluation.decidedAtStep === "STEP-HYBRID") add("HYBRID-NEED");
