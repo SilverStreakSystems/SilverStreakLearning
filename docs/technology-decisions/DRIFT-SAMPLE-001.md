@@ -14,7 +14,7 @@ Records that are high risk, consequential, student- or family-facing, AI-boundar
 | Population fingerprint | `ba19b71132895e687a917d208552814a07a9aff15e55a4e29e1da020a42658b7` |
 | Population size | 66 |
 | Cap | 48 |
-| Selected | 16 |
+| Selected | 36 |
 | Strata covered | 62 |
 | Strata uncovered | 0 |
 
@@ -2741,6 +2741,326 @@ Records that are high risk, consequential, student- or family-facing, AI-boundar
 - Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
 - Evidence: SUFFICIENT; defect state: NONE
 - Candidate causes: POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-L-007 — Technology, Data, Privacy, and Security
+
+- Role: Educational technology specialist
+- Workflow: Instructional tool evaluation and staff training delivery
+- Supplied recommendation (verbatim source): "Option 6: deterministic rubric and tool list with bounded AI drafting of training materials"
+- Read as: HYBRID / parsed — committed OPT-6
+- Derived: OPT-2, OPT-6 (STEP-HYBRID)
+- Relation: DERIVED-PROPER-SUPERSET — Every supplied option is in the derived set, and the derived set names more.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, PERMISSION-COMPLEXITY, CROSS-ROLE-WORKFLOW, HYBRID-NEED
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: DERIVED-MORE-COMPLEX
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): RETAIN-SUPPLIED — The derived set adds technology beyond what the source asked for, with no safety condition requiring it. The supplied recommendation is the more restrained reading.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-G-001 — Multilingual-Learner Services
+
+- Role: EL or multilingual-learner director
+- Workflow: Monitor program-wide service delivery and compliance status
+- Supplied recommendation (verbatim source): "Option 2 + 3: validated compliance workbook with Apps Script flagging and reminders"
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RELATIONAL-DATA, LONGITUDINAL-DATA, PERMISSION-COMPLEXITY, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-B-004 — Central-Office Academic Leadership
+
+- Role: Curriculum coordinator
+- Workflow: Curriculum review committee coordination
+- Supplied recommendation (verbatim source): "Option 1 + 3: native Google tools with scripted reminders and feedback compilation."
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-3
+- Derived: OPT-2, OPT-3 (STEP-DETERMINISTIC)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-D-013 — General and Specialized Instruction
+
+- Role: Reading specialist
+- Workflow: Intervention group progress monitoring and exit decisions
+- Supplied recommendation (verbatim source): "Option 2 + 3: decision-rule probe workbook with scripted alerts."
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RELATIONAL-DATA, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-M-008 — Human Resources and Workforce Operations
+
+- Role: Recruiter
+- Workflow: Drafting postings and managing candidate pipeline
+- Supplied recommendation (verbatim source): "Option 6: templates and tracking with bounded AI drafting, human-approved postings"
+- Read as: HYBRID / parsed — committed OPT-6
+- Derived: OPT-2, OPT-6 (STEP-HYBRID)
+- Relation: DERIVED-PROPER-SUPERSET — Every supplied option is in the derived set, and the derived set names more.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, CROSS-ROLE-WORKFLOW, HYBRID-NEED
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: DERIVED-MORE-COMPLEX
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): RETAIN-SUPPLIED — The derived set adds technology beyond what the source asked for, with no safety condition requiring it. The supplied recommendation is the more restrained reading.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-B-012 — Central-Office Academic Leadership
+
+- Role: District instructional coach
+- Workflow: Coaching cycle documentation
+- Supplied recommendation (verbatim source): "Option 2 + 3: structured logs with scripted reminders; strict folder permissions protect non-evaluative status."
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: abstained (no deciding step)
+- Relation: DERIVED-ABSTAIN — The evaluator abstained. Abstention is a valid result and is not a disagreement with the source.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, CROSS-ROLE-WORKFLOW
+- Evidence: MISSING; defect state: NONE
+- Candidate causes: INSUFFICIENT-EVIDENCE
+- Unresolved question: The evaluator could not answer: authoritative_record_required.
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): NEEDS-EVIDENCE — The source fields do not support a reliable reading, so no proposal is defensible.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-L-002 — Technology, Data, Privacy, and Security
+
+- Role: Technology director
+- Workflow: Software request intake, evaluation, and approval
+- Supplied recommendation (verbatim source): "Option 2 + 3: validated intake form and rubric with Apps Script routing and status tracking"
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RELATIONAL-DATA, LONGITUDINAL-DATA, PERMISSION-COMPLEXITY, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-B-008 — Central-Office Academic Leadership
+
+- Role: Assessment coordinator
+- Workflow: Assessment calendar and administration logistics
+- Supplied recommendation (verbatim source): "Option 1 + 2 + 3: calendar and validated checklists with scripted reminders and escalation."
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-2, OPT-3
+- Derived: OPT-2, OPT-3 (STEP-DETERMINISTIC)
+- Relation: DERIVED-PROPER-SUBSET — Every derived option is in the supplied set, and the supplied set names more.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, PERMISSION-COMPLEXITY, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: SOURCE-MORE-COMPLEX
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): ACCEPT-DERIVED — The derived set is contained in the supplied set, evidence is sufficient, and no safety condition applies. The smaller set is the minimum effective one on the evidence available.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-L-008 — Technology, Data, Privacy, and Security
+
+- Role: Data analyst
+- Workflow: Recurring dashboard and ad-hoc report production
+- Supplied recommendation (verbatim source): "Option 1 + 3: Looker Studio on validated extracts with scripted refresh and mismatch flags"
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RELATIONAL-DATA, LONGITUDINAL-DATA, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-L-006 — Technology, Data, Privacy, and Security
+
+- Role: Help-desk technician
+- Workflow: Ticket intake, triage, resolution, and escalation
+- Supplied recommendation (verbatim source): "Option 2 + 3: validated intake and priority rubric with scripted routing; Option 6 for knowledge-base suggestions"
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3, OPT-6
+- Derived: OPT-2, OPT-6 (STEP-HYBRID)
+- Relation: DERIVED-PROPER-SUBSET — Every derived option is in the supplied set, and the supplied set names more.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW, HYBRID-NEED
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: SOURCE-MORE-COMPLEX
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): ACCEPT-DERIVED — The derived set is contained in the supplied set, evidence is sufficient, and no safety condition applies. The smaller set is the minimum effective one on the evidence available.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-A-006 — Governance and Executive Leadership
+
+- Role: Deputy or assistant superintendent
+- Workflow: Coordinating cross-department initiative execution and escalations
+- Supplied recommendation (verbatim source): "Option 2 + 3 now: validated tracker with scripted alerts; Option 4 as initiatives scale"
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3; staged or optional OPT-4
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RECORD-AUTHORITY, RELATIONAL-DATA, LONGITUDINAL-DATA, PERMISSION-COMPLEXITY, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY, STAGED-ADOPTION, POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-B-006 — Central-Office Academic Leadership
+
+- Role: Professional learning director or coordinator
+- Workflow: PD catalog and session registration
+- Supplied recommendation (verbatim source): "Option 1 + 3: Forms/Sheets/Calendar with Apps Script confirmation and waitlist automation."
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-3
+- Derived: OPT-2, OPT-3 (STEP-DETERMINISTIC)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-E-003 — Special Education and Student Services
+
+- Role: Special education coordinator
+- Workflow: Paperwork completeness and quality review before finalization
+- Supplied recommendation (verbatim source): "Option 2 + 3: checklist workbook with Apps Script routing and notifications"
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RELATIONAL-DATA, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-P-005 — Communications and Family Engagement
+
+- Role: Community-engagement coordinator
+- Workflow: Community partner event planning and follow-up
+- Supplied recommendation (verbatim source): "Option 1 + 2: Google tools with planning templates; add Option 3 reminders as volume grows"
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-2; staged or optional OPT-3
+- Derived: OPT-2, OPT-3 (STEP-DETERMINISTIC)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-2 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: STAGED-ADOPTION, POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-O-003 — District and School Operations
+
+- Role: Custodian
+- Workflow: Completing and logging assigned cleaning checklists
+- Supplied recommendation (verbatim source): "Option 1 + 2: validated Forms checklist logging to Sheets"
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-2
+- Derived: OPT-2, OPT-3 (STEP-DETERMINISTIC)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-2 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-R-005 — External and Oversight Roles
+
+- Role: Partner organization
+- Workflow: Agreement management and joint program coordination
+- Supplied recommendation (verbatim source): "Option 1 + 3: governed Drive folder and Calendar with Apps Script reminders"
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-3
+- Derived: abstained (no deciding step)
+- Relation: DERIVED-ABSTAIN — The evaluator abstained. Abstention is a valid result and is not a disagreement with the source.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, PERMISSION-COMPLEXITY, CROSS-ROLE-WORKFLOW
+- Evidence: MISSING; defect state: NONE
+- Candidate causes: INSUFFICIENT-EVIDENCE
+- Unresolved question: The evaluator could not answer: authoritative_record_required.
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): NEEDS-EVIDENCE — The source fields do not support a reliable reading, so no proposal is defensible.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-G-012 — Multilingual-Learner Services
+
+- Role: Language-access coordinator
+- Workflow: Route interpretation and translation service requests
+- Supplied recommendation (verbatim source): "Option 1 + 3: Forms intake with Apps Script routing and escalation"
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, RELATIONAL-DATA, LONGITUDINAL-DATA, PERMISSION-COMPLEXITY, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-E-015 — Special Education and Student Services
+
+- Role: Special education administrative assistant
+- Workflow: Records filing and meeting notice preparation
+- Supplied recommendation (verbatim source): "Option 2 + 3: merge templates and folder conventions with Apps Script notice generation"
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, PERMISSION-COMPLEXITY, AUDIT-REQUIREMENT, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY, POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-C-013 — School Leadership
+
+- Role: Team leader
+- Workflow: Team meeting agenda, minutes, and action-item tracking
+- Supplied recommendation (verbatim source): "Option 1 + 2: Docs/Sheets templates; add Option 3 reminders if follow-through lags"
+- Read as: COMBINATION / parsed — committed OPT-1, OPT-2; staged or optional OPT-3
+- Derived: OPT-2, OPT-3 (STEP-DETERMINISTIC)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-2 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, PERMISSION-COMPLEXITY, CROSS-ROLE-WORKFLOW
+- Evidence: SUFFICIENT; defect state: NONE
+- Candidate causes: STAGED-ADOPTION, POLICY-CHOICE
+- Unresolved question: none recorded
+- Mandatory review: no
+- Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.
+- Owner disposition: none recorded; review status: NOT-REVIEWED
+
+### TDW-B-005 — Central-Office Academic Leadership
+
+- Role: Content-area director or coordinator
+- Workflow: Content resource review and alignment
+- Supplied recommendation (verbatim source): "Option 2 + 3: validated rubric register with scripted intake and notification."
+- Read as: COMBINATION / parsed — committed OPT-2, OPT-3
+- Derived: OPT-4, OPT-3 (STEP-APPLICATION)
+- Relation: PARTIAL-OVERLAP — The two sides share OPT-3 and each names an option the other does not.
+- Decision drivers: DETERMINISTIC-PRECEDENCE, RULES-AUTOMATION, LONGITUDINAL-DATA, CROSS-ROLE-WORKFLOW
+- Evidence: AMBIGUOUS; defect state: NONE
+- Candidate causes: RECORD-AUTHORITY
 - Unresolved question: none recorded
 - Mandatory review: no
 - Proposed resolution (engineering proposal, not a disposition): MERGE-OPTIONS — Both readings share ground and each names something the other omits. A merged set is a candidate, subject to owner judgement.

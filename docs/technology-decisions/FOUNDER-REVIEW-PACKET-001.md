@@ -17,7 +17,7 @@ Nothing yet. Dispositions are a separate, later act, recorded as an owner decisi
 | Queue | Size | Handling |
 | --- | --- | --- |
 | Mandatory individual review | 154 | One record at a time. No batching. |
-| Representative sample | 16 | Calibration read. Confirms the mechanism before wider review. |
+| Representative sample | 36 | Calibration read. Confirms the mechanism before wider review. |
 | Batch-eligible proposals | 34 | Grouped into 2 batches by identical basis fingerprint. |
 | Needs evidence | 30 | Not a disagreement. Source fields are insufficient. |
 

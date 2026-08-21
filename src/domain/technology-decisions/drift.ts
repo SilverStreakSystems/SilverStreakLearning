@@ -445,6 +445,7 @@ export interface SampleSelection {
   population_fingerprint: string;
   population_size: number;
   cap: number;
+  floor: number;
   selected: Array<{ workflow_id: string; inclusion_reason: string; strata_added: string[] }>;
   strata_covered: string[];
   strata_uncovered: string[];
@@ -461,6 +462,7 @@ export interface SampleSelection {
 export function selectRepresentativeSample(
   population: DriftAnalysisRecord[],
   cap: number,
+  floor = 0,
 ): SampleSelection {
   const fingerprint = contentFingerprint({
     algorithm_version: SAMPLE_ALGORITHM_VERSION,
@@ -496,10 +498,14 @@ export function selectRepresentativeSample(
         best = { record, added: unique, tie };
       }
     }
-    if (!best || best.added.length === 0) break;
+    if (!best) break;
+    if (best.added.length === 0 && selected.length >= Math.min(floor, population.length)) break;
     selected.push({
       workflow_id: best.record.workflow_id,
-      inclusion_reason: `Adds ${best.added.length} previously uncovered strata.`,
+      inclusion_reason:
+        best.added.length > 0
+          ? `Adds ${best.added.length} previously uncovered strata.`
+          : "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
       strata_added: best.added,
     });
     for (const key of best.added) covered.add(key);
@@ -514,6 +520,7 @@ export function selectRepresentativeSample(
     population_fingerprint: fingerprint,
     population_size: population.length,
     cap,
+    floor,
     selected,
     strata_covered: [...covered].sort(),
     strata_uncovered: [...allStrata].filter((key) => !covered.has(key)).sort(),

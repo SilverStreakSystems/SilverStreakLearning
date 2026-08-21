@@ -171,6 +171,7 @@
     "population_fingerprint": "ba19b71132895e687a917d208552814a07a9aff15e55a4e29e1da020a42658b7",
     "population_size": 66,
     "cap": 48,
+    "floor": 36,
     "selected": [
       {
         "workflow_id": "TDW-L-009",
@@ -329,6 +330,106 @@
         "strata_added": [
           "role_group=F"
         ]
+      },
+      {
+        "workflow_id": "TDW-L-007",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-G-001",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-B-004",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-D-013",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-M-008",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-B-012",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-L-002",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-B-008",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-L-008",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-L-006",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-A-006",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-B-006",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-E-003",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-P-005",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-O-003",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-R-005",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-G-012",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-E-015",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-C-013",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
+      },
+      {
+        "workflow_id": "TDW-B-005",
+        "inclusion_reason": "Strata coverage is already saturated; included deterministically to reach the minimum sample size.",
+        "strata_added": []
       }
     ],
     "strata_covered": [
@@ -414,5 +515,5 @@
       "TDW-R-009"
     ]
   },
-  "sample_fingerprint": "23a2ff5bf4fd70cf75116df670e1216b27b6e430b7c5941b660c65a324b9a414"
+  "sample_fingerprint": "e7ca67d935fa1172fb91836ac384196ab26f014c01bf4365adce0934630202f3"
 }

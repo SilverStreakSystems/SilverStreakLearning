@@ -174,9 +174,10 @@ export function samplePopulation(): DriftAnalysisRecord[] {
 }
 
 export const SAMPLE_CAP = 48;
+export const SAMPLE_FLOOR = 36;
 
 export function representativeSample(): SampleSelection {
-  return selectRepresentativeSample(samplePopulation(), SAMPLE_CAP);
+  return selectRepresentativeSample(samplePopulation(), SAMPLE_CAP, SAMPLE_FLOOR);
 }
 
 export function proposalBatches(): ProposalBatch[] {
