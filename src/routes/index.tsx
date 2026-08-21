@@ -107,8 +107,6 @@ function CommandCenter() {
         </Link>
       </div>
 
-
-
       <Section
         id="program-state"
         title="Current governed state"
