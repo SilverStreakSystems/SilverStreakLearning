@@ -101,7 +101,9 @@ function canonIndexDoc(): string {
     "|---|---|",
   );
   for (const doc of ordered) {
-    lines.push(`| ${doc.document_id} | ${doc.review_class ? esc(doc.review_class) : "**none stated**"} |`);
+    lines.push(
+      `| ${doc.document_id} | ${doc.review_class ? esc(doc.review_class) : "**none stated**"} |`,
+    );
   }
   lines.push("");
 
@@ -177,12 +179,7 @@ function openDecisionsDoc(): string {
     lines.push("");
   }
 
-  lines.push(
-    "## By source document",
-    "",
-    "| Document | Open decisions |",
-    "|---|---|",
-  );
+  lines.push("## By source document", "", "| Document | Open decisions |", "|---|---|");
   const ordered = [...record.documents].sort((a, b) => a.file_name.localeCompare(b.file_name));
   for (const doc of ordered) {
     lines.push(

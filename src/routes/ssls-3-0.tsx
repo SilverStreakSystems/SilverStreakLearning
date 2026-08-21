@@ -143,7 +143,9 @@ function Ssls30Canon() {
                   </div>
                   <div className="sm:col-span-2">
                     <dt className="inline text-muted-foreground">Review class: </dt>
-                    <dd className="inline">{doc.review_class ?? "none stated — recorded defect"}</dd>
+                    <dd className="inline">
+                      {doc.review_class ?? "none stated — recorded defect"}
+                    </dd>
                   </div>
                 </dl>
                 {doc.open_decision_ids.length > 0 ? (
@@ -199,9 +201,7 @@ function Ssls30Canon() {
               <RecordCard>
                 <div className="flex flex-wrap items-baseline gap-x-3">
                   <p className="font-display text-base font-semibold">{item.item_id}</p>
-                  <code className="text-xs text-muted-foreground">
-                    routed to {item.routed_to}
-                  </code>
+                  <code className="text-xs text-muted-foreground">routed to {item.routed_to}</code>
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">{item.summary}</p>
                 <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">

@@ -11,20 +11,10 @@
  */
 
 export type DocumentClass =
-  | "navigational"
-  | "governance"
-  | "status"
-  | "product"
-  | "register"
-  | "structure";
+  "navigational" | "governance" | "status" | "product" | "register" | "structure";
 
 export type CanonicalStatus =
-  | "DRAFT"
-  | "CANDIDATE"
-  | "CANONICAL"
-  | "SUPERSEDED"
-  | "ARCHIVED"
-  | "WITHDRAWN";
+  "DRAFT" | "CANDIDATE" | "CANONICAL" | "SUPERSEDED" | "ARCHIVED" | "WITHDRAWN";
 
 export type Provenance = "transcribed" | "reconstructed";
 
