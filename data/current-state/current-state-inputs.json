@@ -18,6 +18,7 @@
     "data/historical/historical-requirements.json",
     "data/historical/fnd-022-owner-dispositions.json",
     "data/governance/obligations.json",
+    "data/ssls-3.0/canon.json",
     "src/lib/route-registry.ts",
     "scripts/gen-current-state.ts"
   ],

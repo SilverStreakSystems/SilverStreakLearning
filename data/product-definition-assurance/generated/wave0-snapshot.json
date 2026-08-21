@@ -496,13 +496,13 @@
   },
   "inventories": {
     "routes": {
-      "registered": 21,
+      "registered": 22,
       "by_group": {
         "product": 1,
-        "governance": 20
+        "governance": 21
       },
       "files": {
-        "total_route_modules": 42,
+        "total_route_modules": 43,
         "framework_surfaces": [
           "__root.tsx"
         ],
@@ -585,7 +585,7 @@
       "attempts": 1
     },
     "verification": {
-      "test_files": 35,
+      "test_files": 36,
       "commands": [
         "bun run lint",
         "bun run typecheck",
@@ -602,5 +602,5 @@
       "personal_data": "Real personal data is prohibited and not intentionally introduced; every product record is synthetic and marked as such in the fixtures. The automated boundary scan (EV-PII) remains review-required: it reported one inspected test-token candidate and does not establish the absence of personal data."
     }
   },
-  "input_fingerprint": "d83eb8221aac191da3220e8f9e2e59a56e4df9fa573bc2f571610866d10a5060"
+  "input_fingerprint": "ca9e2b7808741e6c6cf757976ff071d28ab3851cee2e6c7257251ba57a4e021c"
 }

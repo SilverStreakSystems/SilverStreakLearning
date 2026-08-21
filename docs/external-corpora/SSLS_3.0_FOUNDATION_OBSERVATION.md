@@ -68,6 +68,13 @@ This record states only that these items were observed at a point in time. It gr
 - **SSLS3-DOC-09** — Cited as the controlling source of requirements and acceptance criteria. Not present in the observed container.
 - **SSLS3-DOC-10** — Cited as the controlling source of evidence and claim authorization. Not present in the observed container. Absence here is absence from this container, not proof the artifact does not exist elsewhere.
 
+### Subsequent disposition
+
+Appended after the observation. The observation above is unchanged and remains true about
+what was seen and when. A disposition describes handling only; it confers no authority.
+
+On 2026-08-21, after this observation was recorded, the owner directed that this repository is the home of SSLS 3.0. Nine of the observed foundation documents (SSLS3-DOC-00 through 07 and 11) were transcribed into `docs/ssls-3.0/`, and the three registers listed above as ABSENT-AT-OBSERVATION were reconstructed from content cited across those documents rather than transcribed, because no source item for them existed in any observed container. All twelve are registered in `data/ssls-3.0/canon.json` as SSLS3-CANON-001, authority class INDEX ONLY — NON-CONTROLLING. This disposition changes nothing above: the items were observed in connected storage at the stated time, and the location class recorded for each item is the location at observation, not a current address. Transcription is copying, not adoption; reconstruction is composition, not discovery. Neither promotes anything, and the twelve documents remain CANDIDATE with zero authorizing decisions.
+
 ### Non-effects
 
 - Promotes nothing. No observed item acquires authority in this repository or in SSLS 3.0 by appearing in this record.
