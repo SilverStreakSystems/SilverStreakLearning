@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import {
   buildTimeline,
-  describeLoadFailure,
+  describeImportFailure,
   NEXT_STEP_LIMITATION,
   type LearningLoopDocument,
   type NextStepProjection,
