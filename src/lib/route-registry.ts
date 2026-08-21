@@ -184,4 +184,3 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     group: "governance",
   },
 ];
-
