@@ -178,7 +178,7 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
   },
   {
     path: "/ssls-3-0",
-    label: "SSLS 3.0 Canon",
+    label: "Foundation canon 3.0",
     purpose:
       "The SSLS 3.0 foundation documents held here, their provenance, and every owner decision they leave open.",
     heading: "SSLS 3.0 Canon Index",
