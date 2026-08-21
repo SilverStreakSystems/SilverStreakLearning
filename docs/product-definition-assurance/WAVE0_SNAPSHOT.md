@@ -61,7 +61,7 @@ Authority class: candidate. Input fingerprint: `d83eb8221aac191da3220e8f9e2e59a5
 | historical requirements | 30 |
 | checkpoints | 10 |
 | attempts | 1 |
-| Test files | 34 |
+| Test files | 35 |
 
 WP-006 manifest: 29 addressable routes plus the root layout. Version-bound historical evidence from docs/wp-006/ROUTE_MANIFEST.md. It does not record seventeen routes and is not the current inventory.
 
