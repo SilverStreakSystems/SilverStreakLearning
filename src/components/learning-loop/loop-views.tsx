@@ -256,7 +256,8 @@ export function DataControls({ store }: { store: LearningLoopStore }) {
     }
     const result = store.parseImport(text);
     if (!result.ok) {
-      fail(result.message, describeLoadFailure(result));
+      const refusal = describeImportFailure(result);
+      fail(refusal.message, refusal.details);
       return;
     }
     const rosterProblems = checkImportedRoster(result.document);
