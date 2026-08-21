@@ -29,7 +29,7 @@ Phase, maturity, authorized work, progress, blockers, decisions, dependencies, r
 
 **Controls:** dynamic phase, status, blockers, next authorized work.
 
-**Controlled by:** owner decisions in [08-SSLS_3.0_DECISION_REGISTER.xlsx](08-SSLS_3.0_DECISION_REGISTER.xlsx); evidence in [10-SSLS_3.0_EVIDENCE_AND_CLAIMS_REGISTER.xlsx](10-SSLS_3.0_EVIDENCE_AND_CLAIMS_REGISTER.xlsx).
+**Controlled by:** owner decisions in [08-SSLS_3.0_DECISIONS.md](08-SSLS_3.0_DECISIONS.md); evidence in [10-SSLS_3.0_EVIDENCE_AND_CLAIMS.md](10-SSLS_3.0_EVIDENCE_AND_CLAIMS.md).
 
 ---
 
@@ -108,11 +108,11 @@ Requirements beyond foundation governance · architecture · data model · secur
 
 ### Recorded and in force
 
-Ten decisions derive directly from the owner's commissioning instruction of 2026-08-21. They are recorded in [file 08](08-SSLS_3.0_DECISION_REGISTER.xlsx) as `D-3001` through `D-3010` and cover: project identity; the North Star; the naming rule; the clean-slate mandate; decision authority; the synthetic/no-PII posture; default-deny authority; the draft status of this package; claims defaulting to NOT AUTHORIZED; and the version scheme. `[C]`
+Ten decisions derive directly from the owner's commissioning instruction of 2026-08-21. They are recorded in [file 08](08-SSLS_3.0_DECISIONS.md) as `D-3001` through `D-3010` and cover: project identity; the North Star; the naming rule; the clean-slate mandate; decision authority; the synthetic/no-PII posture; default-deny authority; the draft status of this package; claims defaulting to NOT AUTHORIZED; and the version scheme. `[C]`
 
 ### Unresolved
 
-Twenty-eight decisions are open, spanning phase and maturity model, scope confirmation, stakeholder validation, accessibility target, technology, repository, product capability areas, and promotion of historical material. See [file 08](08-SSLS_3.0_DECISION_REGISTER.xlsx) and the consolidated queue in §12. `[C]`
+Twenty-eight decisions are open, spanning phase and maturity model, scope confirmation, stakeholder validation, accessibility target, technology, repository, product capability areas, and promotion of historical material. See [file 08](08-SSLS_3.0_DECISIONS.md) and the consolidated queue in §12. `[C]`
 
 ## 7. Dependencies
 
@@ -206,7 +206,7 @@ Priority 1 blocks everything downstream.
 | 3 | OD-11-1 | Decide the repository platform and structure |
 | 3 | OD-04-3 | Decide how R-02 (governance burden) and R-06 (self-approval) are controlled |
 
-Full detail in [file 08](08-SSLS_3.0_DECISION_REGISTER.xlsx).
+Full detail in [file 08](08-SSLS_3.0_DECISIONS.md).
 
 ## Assumptions and unknowns
 

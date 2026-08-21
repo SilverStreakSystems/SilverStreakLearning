@@ -23,7 +23,7 @@ Identity, purpose, principles, commitments, and governance. This charter does **
 
 **Controls:** project identity, purpose, North Star, governing principles, human decision authority, amendment process.
 
-**Controlled by:** owner decisions recorded in [08-SSLS_3.0_DECISION_REGISTER.xlsx](08-SSLS_3.0_DECISION_REGISTER.xlsx).
+**Controlled by:** owner decisions recorded in [08-SSLS_3.0_DECISIONS.md](08-SSLS_3.0_DECISIONS.md).
 
 **Defers to:** [02-SSLS_3.0_SOURCE_HIERARCHY.md](02-SSLS_3.0_SOURCE_HIERARCHY.md) for conflict resolution; [07-SSLS_3.0_GLOSSARY.md](07-SSLS_3.0_GLOSSARY.md) for terminology.
 
