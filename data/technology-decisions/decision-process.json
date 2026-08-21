@@ -1,0 +1,349 @@
+{
+  "schema_version": "1.0.0",
+  "process_id": "TDP-001",
+  "version": "1.0.0",
+  "adopted_on": "2026-08-21",
+  "authority_note": "TDP-001 is a planning contract. It decides what the minimum effective solution would be for an analyzed workflow. It never authorizes building anything, never activates a role, and never makes an operational determination about a person.",
+  "source_reference": "TDS-002 Decision Process, reconciled against the TDS-001 Decision Process worksheet.",
+  "options": [
+    {
+      "option_id": "OPT-1",
+      "ordinal": 1,
+      "name": "Existing Google Workspace tool",
+      "short_name": "Workspace tool",
+      "use_when": "A native tool the district already has — Sheets, Forms, Docs, Drive, Classroom, Calendar, Gmail, Looker Studio — already fits the workflow.",
+      "determinism": "deterministic",
+      "implementation_burden": "low",
+      "human_review_burden": "unchanged"
+    },
+    {
+      "option_id": "OPT-2",
+      "ordinal": 2,
+      "name": "Deterministic workbook or template",
+      "short_name": "Deterministic template",
+      "use_when": "The expected result can be reliably determined in advance: formulas, data validation, conditional formatting, lookup tables, rubrics, scoring rules, approved sentence banks, mail merges, dashboards, protected ranges.",
+      "determinism": "deterministic",
+      "implementation_burden": "low",
+      "human_review_burden": "unchanged"
+    },
+    {
+      "option_id": "OPT-3",
+      "ordinal": 3,
+      "name": "Apps Script or other transparent rules automation",
+      "short_name": "Rules automation",
+      "use_when": "A repeatable process follows fixed rules: routing, notifications, reminders, document generation, approval workflows, scheduled reports, controlled transfers, record creation or synchronization.",
+      "determinism": "deterministic",
+      "implementation_burden": "moderate",
+      "human_review_burden": "unchanged"
+    },
+    {
+      "option_id": "OPT-4",
+      "ordinal": 4,
+      "name": "Structured SSLS database and application workflow",
+      "short_name": "SSLS application",
+      "use_when": "The workflow genuinely requires authoritative records, relational or longitudinal data, role-based permissions, cross-department coordination, audit history, or secure approvals — or it exceeds safe spreadsheet limits.",
+      "determinism": "deterministic",
+      "implementation_burden": "high",
+      "human_review_burden": "unchanged"
+    },
+    {
+      "option_id": "OPT-5",
+      "ordinal": 5,
+      "name": "Governed AI assistance",
+      "short_name": "Governed AI",
+      "use_when": "The work genuinely requires interpretation, synthesis, adaptation, generation, or flexible language, and a named human approves the result before it is used.",
+      "determinism": "non-deterministic",
+      "implementation_burden": "high",
+      "human_review_burden": "increased"
+    },
+    {
+      "option_id": "OPT-6",
+      "ordinal": 6,
+      "name": "Hybrid deterministic core with bounded AI",
+      "short_name": "Hybrid",
+      "use_when": "The task needs both predictable structure and flexible language, and deterministic controls cannot reasonably cover the whole task.",
+      "determinism": "mixed",
+      "implementation_burden": "high",
+      "human_review_burden": "increased"
+    },
+    {
+      "option_id": "OPT-7",
+      "ordinal": 7,
+      "name": "No additional technology",
+      "short_name": "No new technology",
+      "use_when": "The existing human process is sufficient. This is a successful decision, not a failure to find a tool.",
+      "determinism": "not-applicable",
+      "implementation_burden": "none",
+      "human_review_burden": "unchanged"
+    }
+  ],
+  "precedence": [
+    {
+      "step": 1,
+      "step_id": "STEP-HUMAN",
+      "question_id": "human_process_sufficient",
+      "decides": "Existing human process is sufficient — Option 7.",
+      "explanation": "Ask first whether anything needs to change at all. Adding technology to a working human process adds burden without removing any."
+    },
+    {
+      "step": 2,
+      "step_id": "STEP-WORKSPACE",
+      "question_id": "workspace_tool_fits",
+      "decides": "A tool the district already has is sufficient — Option 1.",
+      "explanation": "A tool already licensed, already administered, and already familiar is cheaper and safer than anything new."
+    },
+    {
+      "step": 3,
+      "step_id": "STEP-DETERMINISTIC",
+      "question_id": "output_predictable",
+      "decides": "The output can be determined in advance — Option 2, plus Option 3 when the routing is repeatable.",
+      "explanation": "When the correct output is knowable in advance, a formula, rubric, template, or transparent rule is more reliable, more explainable, and cheaper to audit than a model."
+    },
+    {
+      "step": 4,
+      "step_id": "STEP-APPLICATION",
+      "question_id": "structured_application_required",
+      "decides": "Authoritative records, relational or longitudinal data, permissions, audit history, secure approvals, or cross-role coordination genuinely require a structured application — Option 4.",
+      "explanation": "Option 4 is reached by need, never by default. Being an SSLS project is not a reason to choose SSLS."
+    },
+    {
+      "step": 5,
+      "step_id": "STEP-AI",
+      "question_id": "interpretation_required",
+      "decides": "Interpretation, synthesis, adaptation, or flexible language is genuinely required — Option 5.",
+      "explanation": "AI is considered only after every deterministic route has been rejected on the merits, and never because it is available."
+    },
+    {
+      "step": 6,
+      "step_id": "STEP-HYBRID",
+      "question_id": "deterministic_core_available",
+      "decides": "A deterministic core carries the structure and bounded AI carries only the language — Option 6.",
+      "explanation": "Where part of the task is predictable, that part must stay deterministic. AI is bounded to the part that is not."
+    },
+    {
+      "step": 7,
+      "step_id": "STEP-ABSTAIN",
+      "question_id": null,
+      "decides": "Evidence is insufficient — abstain and record the unresolved questions.",
+      "explanation": "Abstention is a valid outcome. Inventing certainty is not."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "human_process_sufficient",
+      "prompt": "Is the existing human process already sufficient?",
+      "help": "If the work is being done correctly today without a tool, the honest answer is that no technology is needed.",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "workspace_tool_fits",
+      "prompt": "Does a tool the district already has fit this workflow as-is?",
+      "help": "Sheets, Forms, Docs, Drive, Classroom, Calendar, Gmail, or Looker Studio, used natively without custom building.",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "output_predictable",
+      "prompt": "Can the correct output be determined in advance from the inputs?",
+      "help": "If a rubric, formula, lookup, or checklist can produce the answer, the output is predictable.",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "repeatable_routing",
+      "prompt": "Does the same sequence of routing, reminders, or document generation repeat on fixed rules?",
+      "help": "Repeatable routing is what transparent automation is for.",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "authoritative_record_required",
+      "prompt": "Must this workflow hold the authoritative record other people rely on?",
+      "help": "An authoritative record is the one that settles a dispute about what happened.",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "relational_data_required",
+      "prompt": "Does the work require related records to stay connected across people, goals, services, or events?",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "longitudinal_data_required",
+      "prompt": "Does the work require history over time rather than a current snapshot?",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "cross_role_workflow",
+      "prompt": "Does the workflow cross roles or departments with handoffs and approvals?",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "permission_complexity",
+      "prompt": "How complex are the permissions?",
+      "help": "Restricted means only named people may see the record at all.",
+      "answers": ["simple", "role-based", "restricted", "uncertain"]
+    },
+    {
+      "question_id": "audit_history_required",
+      "prompt": "Is an audit history — who changed what, when — required?",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "interpretation_required",
+      "prompt": "Does the work genuinely require interpretation, synthesis, adaptation, or flexible language?",
+      "help": "Summarizing convenience is not the same as a task that cannot be done deterministically.",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "deterministic_core_available",
+      "prompt": "Can a deterministic core carry the structure while flexible language is bounded to a small part?",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "consequence_class",
+      "prompt": "Does this workflow decide something consequential about a person?",
+      "help": "Eligibility, placement, grading, discipline, safety, employment, medical, or legal determinations are consequential.",
+      "answers": [
+        "none",
+        "eligibility",
+        "placement",
+        "grading",
+        "discipline",
+        "safety",
+        "employment",
+        "medical",
+        "legal"
+      ]
+    },
+    {
+      "question_id": "student_facing_output",
+      "prompt": "Does output from this workflow reach a student or family?",
+      "answers": ["yes", "no", "uncertain"]
+    },
+    {
+      "question_id": "data_sensitivity",
+      "prompt": "What is the most sensitive data involved?",
+      "answers": ["public", "operational", "personal", "highly-sensitive-personal", "uncertain"]
+    }
+  ],
+  "invariants": [
+    {
+      "invariant_id": "TDP-INV-01",
+      "statement": "AI is never selected merely because it is available.",
+      "enforced_by": "The evaluator can only reach Option 5 or Option 6 through precedence step 5, which requires every deterministic route to have been rejected on the merits."
+    },
+    {
+      "invariant_id": "TDP-INV-02",
+      "statement": "Predictable outputs prefer formulas, templates, rubrics, validation, sentence banks, and transparent rules.",
+      "enforced_by": "A predictable output resolves at step 3 before AI is considered at all."
+    },
+    {
+      "invariant_id": "TDP-INV-03",
+      "statement": "AI cannot independently make an eligibility, placement, grading, discipline, safety, employment, medical, or legal determination.",
+      "enforced_by": "A consequence class other than none sets the AI boundary to prohibited-for-the-determination; the evaluator refuses to return Option 5 as the determining mechanism."
+    },
+    {
+      "invariant_id": "TDP-INV-04",
+      "statement": "Consequential or student-facing AI-supported output requires meaningful named human review.",
+      "enforced_by": "The evaluator returns a required approver whenever AI appears in the option set with a consequential or student-facing workflow, and records an unresolved question when no approver is named."
+    },
+    {
+      "invariant_id": "TDP-INV-05",
+      "statement": "AI-generated language stays distinguishable from authoritative records and facts.",
+      "enforced_by": "Option 5 and Option 6 outcomes carry a drafting-only boundary statement; no analyzed workflow may record model output as the authoritative record."
+    },
+    {
+      "invariant_id": "TDP-INV-06",
+      "statement": "A supplied recommendation is never silently treated as canonical.",
+      "enforced_by": "The supplied recommendation is preserved verbatim and displayed as source analysis; the derived option set is computed independently and never overwrites it."
+    },
+    {
+      "invariant_id": "TDP-INV-07",
+      "statement": "Evaluator disagreement becomes visible drift.",
+      "enforced_by": "Every workflow carries a drift status comparing the derived option set with the supplied recommendation."
+    },
+    {
+      "invariant_id": "TDP-INV-08",
+      "statement": "Missing evidence produces uncertainty, not invented certainty.",
+      "enforced_by": "Any uncertain answer that would change the outcome produces an abstention with the unresolved questions named."
+    },
+    {
+      "invariant_id": "TDP-INV-09",
+      "statement": "No maturity value can activate authority or implementation.",
+      "enforced_by": "The provisional Level 1 to Level 10 value is carried as source text only and is never an evaluator input, a sort key, or a readiness signal."
+    },
+    {
+      "invariant_id": "TDP-INV-10",
+      "statement": "An override of the derived result requires a recorded rationale and a named reviewer.",
+      "enforced_by": "The override record type refuses an empty rationale or reviewer and never mutates the derived result."
+    }
+  ],
+  "ai_boundary_classes": [
+    {
+      "id": "prohibited",
+      "label": "Prohibited",
+      "meaning": "AI must not participate in the determination itself."
+    },
+    {
+      "id": "unnecessary",
+      "label": "Unnecessary",
+      "meaning": "A deterministic route covers the work; AI adds risk without adding capability."
+    },
+    {
+      "id": "optional",
+      "label": "Optional",
+      "meaning": "AI could assist at the margin; the workflow does not depend on it."
+    },
+    {
+      "id": "helpful",
+      "label": "Helpful",
+      "meaning": "AI meaningfully reduces effort for language or synthesis, behind human approval."
+    },
+    {
+      "id": "required",
+      "label": "Required",
+      "meaning": "The workflow cannot be performed without AI. No analyzed workflow is classified this way."
+    }
+  ],
+  "data_sensitivity_classes": [
+    { "id": "public", "label": "Public", "meaning": "Published or publishable without restriction." },
+    {
+      "id": "operational",
+      "label": "Operational",
+      "meaning": "Internal district operations with no personal detail."
+    },
+    {
+      "id": "personal",
+      "label": "Personal",
+      "meaning": "Identifiable student, family, or staff information."
+    },
+    {
+      "id": "highly-sensitive-personal",
+      "label": "Highly sensitive personal",
+      "meaning": "Health, disability, discipline, legal, or employment detail about an identifiable person."
+    },
+    { "id": "unclear", "label": "Unclear", "meaning": "The source does not say." }
+  ],
+  "permission_complexity_levels": [
+    { "id": "simple", "label": "Simple", "meaning": "One group of people, same access." },
+    {
+      "id": "role-based",
+      "label": "Role-based",
+      "meaning": "Different roles need different access to the same record."
+    },
+    {
+      "id": "restricted",
+      "label": "Restricted",
+      "meaning": "Access is limited to named people and must be defensible."
+    },
+    { "id": "unclear", "label": "Unclear", "meaning": "The source does not say." }
+  ],
+  "override_requirements": {
+    "requires_rationale": true,
+    "requires_reviewer": true,
+    "mutates_derived_result": false,
+    "mutates_source_recommendation": false,
+    "statement": "An override is an additional record placed beside the derived result. It never edits the derived result and never edits the supplied recommendation."
+  },
+  "abstention": {
+    "outcome_id": "UNRESOLVED",
+    "statement": "When an uncertain answer would change the outcome, the evaluator returns no option set, names the questions that must be answered, and says plainly that it is abstaining."
+  }
+}

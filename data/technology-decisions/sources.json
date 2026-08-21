@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "registered_on": "2026-08-21",
+  "register_id": "RTDA-001",
+  "source_boundary": "These artifacts are owner-supplied future-state analysis. They are registered as governed inputs, not as canonical product authority. Registration does not activate a role, does not authorize an integration, does not create an obligation, does not close a finding or a work package, and does not change Gate A. Where a supplied artifact and an accepted owner decision differ, the decision and the canonical registers control.",
+  "retention_limitation": "The supplied files are external owner inputs and are not retained in this repository. No byte-identical copy exists here and no repository locator can be given. Independent checking is therefore digest-bound: artifact digest, worksheet digests, and per-row digests are recorded so any re-supplied copy can be proven identical to the copy that was normalized. Re-extraction requires the owner to re-supply the file to `scripts/extract-technology-decisions.mjs`.",
+  "records": [
+    {
+      "source_artifact_id": "TDS-001",
+      "filename": "SSLS_Role_Technology_Decision_Matrix.xlsx",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "byte_size": 168010,
+      "sha256": "2b7187cad64cd43024ea93c7f9263b373a425b81c3a00f66ad731e21e4e3825a",
+      "declared_version": "1.0",
+      "declared_date": "2026-07-17",
+      "authority_role": "FUTURE-STATE-INPUT",
+      "canonical_status": "NONCANONICAL",
+      "acquisition_method": "OWNER-SUPPLIED-INPUT",
+      "retention_state": "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
+      "locator": "owner-supplied input: SSLS_Role_Technology_Decision_Matrix.xlsx, supplied 2026-08-21, digest-bound",
+      "role": "Detailed record: eighteen analysis fields for every analyzed workflow, one worksheet per role group, plus a Summary and a Decision Process worksheet.",
+      "normalized_into": "data/technology-decisions/workflow-decisions.json",
+      "limitations": [
+        "A second upload of the same file was supplied in the same request; both copies carry this digest, so there is one source version and not two.",
+        "Role counts in the Summary worksheet are hardcoded from an approved role inventory supplied on 2026-07-17. They are a declared figure, not a figure derived from the workflow rows.",
+        "The Level 1 to Level 10 maturity column is described by the source itself as provisional and unapproved.",
+        "Digest verification proves file identity only. It proves nothing about whether the analysis is correct."
+      ]
+    },
+    {
+      "source_artifact_id": "TDS-002",
+      "filename": "SSLS_Role_Technology_Decision_Summary.md",
+      "media_type": "text/markdown",
+      "byte_size": 60082,
+      "sha256": "fbd22dd3badc2f3debc3dc1dffce569fd1dbabdee76ce1e57e0f9772721468d6",
+      "declared_version": "1.0",
+      "declared_date": "2026-07-17",
+      "authority_role": "FUTURE-STATE-INPUT",
+      "canonical_status": "NONCANONICAL",
+      "acquisition_method": "OWNER-SUPPLIED-INPUT",
+      "retention_state": "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
+      "locator": "owner-supplied input: SSLS_Role_Technology_Decision_Summary.md, supplied 2026-08-21, digest-bound",
+      "role": "Condensed index of the same analysis, including the canonical seven-option decision process and the published aggregate totals.",
+      "normalized_into": "data/technology-decisions/decision-process.json",
+      "limitations": [
+        "The summary is a condensed narrative over the workbook. Where the two differ, the workbook rows were treated as the detailed record and the summary totals were recomputed rather than trusted.",
+        "Interpretive statements in the summary, including the 75 percent pattern claim, are the source author's interpretation and are not reproduced as canonical findings."
+      ]
+    }
+  ],
+  "reconciliation": {
+    "performed_on": "2026-08-21",
+    "method": "Recomputed directly from the workbook by scripts/extract-technology-decisions.mjs, which refuses to normalize when any published total disagrees.",
+    "expected_vs_observed": "Every published total was reproduced exactly: 20 worksheets, 18 role groups, 279 workflow rows, 18 fields per row, 212 roles counted within their groups, 211 globally distinct role labels, AI necessity Required 0 / Helpful 38 / Optional 94 / Unnecessary 115 / Prohibited 32, risk High 102 / Moderate 138 / Low 39.",
+    "explained_difference": "212 and 211 are both correct and are not in conflict. 212 counts distinct role labels within each group and then sums the groups, matching the declared inventory group by group. 211 counts labels distinct across the whole workbook, and is one lower because a single role label legitimately appears in two different groups.",
+    "unresolved": [
+      "The declared 212-role inventory itself cannot be verified from the workbook: the Summary worksheet states it is hardcoded from a separately supplied inventory that was not provided."
+    ]
+  }
+}
