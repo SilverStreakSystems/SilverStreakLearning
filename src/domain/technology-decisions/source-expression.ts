@@ -160,8 +160,7 @@ export function parseSourceRecommendation(verbatim: string): SourceExpression {
   clauses.forEach(({ text: clause, staged }) => {
     const negatedHere = clause.match(/\b(?:not|no|never)\s+option\s*([1-7])/i);
     const declared = modalityOf(clause);
-    const clauseModality: OptionModality =
-      staged && declared === "primary" ? "future" : declared;
+    const clauseModality: OptionModality = staged && declared === "primary" ? "future" : declared;
     for (const optionId of optionsInClause(clause)) {
       const modality: OptionModality =
         negatedHere && `OPT-${negatedHere[1]}` === optionId ? "excluded" : clauseModality;

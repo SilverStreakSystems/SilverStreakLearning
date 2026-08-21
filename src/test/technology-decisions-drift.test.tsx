@@ -45,9 +45,7 @@ describe("fingerprinting", () => {
     expect(sha256Hex("abc")).toBe(
       "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
     );
-    expect(sha256Hex("")).toBe(
-      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    );
+    expect(sha256Hex("")).toBe("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
   });
 
   it("ignores key order but not values", () => {
@@ -118,9 +116,9 @@ describe("source parsing", () => {
     const forms = new Set(analyzedWorkflows().map((item) => item.expression.expressionType));
     expect(forms.size).toBeGreaterThan(1);
     for (const item of analyzedWorkflows()) {
-      expect(item.expression.diagnostics.length + item.expression.references.length).toBeGreaterThan(
-        0,
-      );
+      expect(
+        item.expression.diagnostics.length + item.expression.references.length,
+      ).toBeGreaterThan(0);
     }
   });
 });
@@ -140,7 +138,9 @@ describe("comparison", () => {
 
   it("does not create drift from ordering alone", () => {
     const expression = parseSourceRecommendation("Option 3 + 2: scripted workbook");
-    expect(compareRecommendation(expression, evaluation(["OPT-2", "OPT-3"])).relation).toBe("EXACT");
+    expect(compareRecommendation(expression, evaluation(["OPT-2", "OPT-3"])).relation).toBe(
+      "EXACT",
+    );
   });
 
   it("resolves exactly one relation per record", () => {
@@ -180,6 +180,12 @@ describe("evaluator and safety", () => {
   });
 
   it("never recommends AI for a consequential determination about a person", () => {
+    const approverOf = new Map(
+      analyzedWorkflows().map((item) => [
+        item.record.workflow_id,
+        item.evaluation.requiresNamedApprover,
+      ]),
+    );
     for (const record of RECORDS) {
       if (!record.consequential) continue;
       expect(record.ai_boundary).toBe("prohibited");
@@ -188,7 +194,7 @@ describe("evaluator and safety", () => {
       // drafting, and only behind a named approver.
       expect(record.derived_option_ids).not.toContain("OPT-5");
       if (record.derived_option_ids.includes("OPT-6")) {
-        expect(record.requires_named_approver).toBe(true);
+        expect(approverOf.get(record.workflow_id)).toBe(true);
         expect(record.derived_option_ids.length).toBeGreaterThan(1);
       }
     }
@@ -262,7 +268,9 @@ describe("analysis records", () => {
   });
 
   it("regenerating the document reproduces the committed fingerprint", () => {
-    expect(driftAnalysisDocument().generation_fingerprint).toBe(analysisJson.generation_fingerprint);
+    expect(driftAnalysisDocument().generation_fingerprint).toBe(
+      analysisJson.generation_fingerprint,
+    );
   });
 
   it("proposes nothing where the evidence does not support a reading", () => {
