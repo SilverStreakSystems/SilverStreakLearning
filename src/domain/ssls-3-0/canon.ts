@@ -74,7 +74,9 @@ export interface CanonRecord {
 export const CANON_AUTHORITY_CLASS = "INDEX ONLY — NON-CONTROLLING" as const;
 
 const DOCUMENT_ID = /^SSLS3-DOC-\d{2}$/;
-const DECISION_ID = /^OD-\d{2}-\d$/;
+// A source document numbers its own decisions. Sequences pass ten (OD-01-10) and
+// a document may insert a sibling item (OD-01-1A) without renumbering the rest.
+const DECISION_ID = /^OD-\d{2}-\d+[A-Z]?$/;
 const UNRESOLVED_ID = /^U3-\d{3}$/;
 
 /**
