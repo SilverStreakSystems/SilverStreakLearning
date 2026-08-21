@@ -259,7 +259,7 @@ describe("canon route", () => {
     expect(await screen.findByText("Documents carrying authority")).toBeInTheDocument();
     expect(screen.getAllByText("Open owner decisions").length).toBeGreaterThan(0);
     expect(screen.getAllByText(/OD-04-1/).length).toBeGreaterThan(0);
-    expect(screen.getByText(/none stated — recorded defect/)).toBeInTheDocument();
+    expect(screen.getAllByText(/OD-01-1A/).length).toBeGreaterThan(0);
   });
 
   it("offers no control that could record or close a decision", async () => {
