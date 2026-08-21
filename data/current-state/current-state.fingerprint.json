@@ -2,7 +2,7 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.1.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "3c037bd141002203c64cbf739d9463aa90211d8aaf21e2aa4e49a8343cff13b4",
+  "fingerprint": "2822aebee25409e5559e2ba2a4656675de58eb800c13812fe28f142121504dce",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
@@ -66,8 +66,8 @@
     },
     {
       "path": "src/lib/route-registry.ts",
-      "sha256": "59e0c2770648fbca69c45b67b2bf7943f3981b490931c8d28d8ff27bd2b9d6bb",
-      "bytes": 5698
+      "sha256": "3b19523b4c388efb7d802b50d8571e8f787caa41029074b343a857a6fcd6a499",
+      "bytes": 5697
     },
     {
       "path": "scripts/gen-current-state.ts",
