@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "canon_id": "SSLS3-CANON-001",
   "canon_title": "SSLS 3.0 foundation package held in this repository",
-  "recorded_at": "2026-08-21T17:30:00Z",
+  "recorded_at": "2026-08-21T20:00:00Z",
   "recorded_by": "AI-assisted registration",
   "authority_class": "INDEX ONLY — NON-CONTROLLING",
   "non_authority_statement": "This record indexes the SSLS 3.0 foundation documents that are held in this repository and the owner decisions they leave open. It approves nothing, promotes nothing, and closes nothing. No document acquires authority by being registered here, by being complete, by being detailed, by being recent, or by being placed in any folder. Authority over an SSLS 3.0 document comes only from a recorded owner decision, and none exists.",
@@ -14,42 +14,59 @@
       "file_name": "00-SSLS_3.0_START_HERE.md",
       "title": "Start Here",
       "document_class": "navigational",
-      "version": "0.1.0-draft",
+      "version": "0.6.0-draft",
       "status": "DRAFT — OWNER REVIEW REQUIRED",
       "canonical_status": "CANDIDATE",
-      "authority_level": "Navigational. Routes readers to controlling sources. Controls nothing itself.",
-      "review_class": null,
-      "controlled_concept": "Reader routing. Controls nothing.",
+      "authority_level": "Navigational and lifecycle-routing only. Orients readers and routes work; creates no project authority.",
+      "review_class": "AI-assisted alignment revision against File 01 v0.3.0-draft and File 02 v0.2.0-draft. Not independent review, validation, canonical approval, or implementation authorization.",
+      "controlled_concept": "Reader routing and lifecycle routing. Controls nothing.",
       "provenance": "transcribed",
-      "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001).",
-      "source_item_name": "00-SSLS_3.0_START_HERE.md",
+      "provenance_note": "Reproduced from the owner-supplied revised draft superseding the v0.1.0-draft transcription; see SUPERSESSION-001.",
+      "source_item_name": "00-SSLS_3.0_START_HERE_v0.6.0-draft.pdf",
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-00-1", "OD-00-2", "OD-00-3"]
+      "open_decision_ids": [
+        "OD-00-1",
+        "OD-00-2",
+        "OD-00-3",
+        "OD-00-4",
+        "OD-00-5",
+        "OD-00-6",
+        "OD-00-7",
+        "OD-00-8",
+        "OD-00-9"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-01",
       "file_name": "01-SSLS_3.0_PROJECT_CHARTER.md",
       "title": "Project Charter",
       "document_class": "governance",
-      "version": "0.1.0-draft",
+      "version": "0.4.0-draft",
       "status": "DRAFT — OWNER REVIEW REQUIRED",
       "canonical_status": "CANDIDATE",
-      "authority_level": "Founding. Controls identity, purpose, North Star, and governing principles.",
-      "review_class": "AI-assisted authorship. Not independent review, not human review, not validation.",
+      "authority_level": "Founding if accepted. Would control identity, purpose, North Star, enduring principles, human decision authority, successor boundary, and amendment rules.",
+      "review_class": "AI-assisted alignment revision against Start Here v0.6.0-draft and Source Hierarchy v0.2.0-draft. Not independent review, human review, validation, or owner approval.",
       "controlled_concept": "Identity, purpose, North Star, principles",
       "provenance": "transcribed",
-      "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001).",
-      "source_item_name": "01-SSLS_3.0_PROJECT_CHARTER.md",
+      "provenance_note": "Reproduced from the owner-supplied revised draft superseding the v0.1.0-draft transcription; see SUPERSESSION-001.",
+      "source_item_name": "01-SSLS_3.0_PROJECT_CHARTER_v0.4.0-draft.pdf",
       "authorizing_decision": null,
       "open_decision_ids": [
         "OD-01-1",
+        "OD-01-1A",
         "OD-01-2",
         "OD-01-3",
         "OD-01-4",
         "OD-01-5",
         "OD-01-6",
         "OD-01-7",
-        "OD-01-8"
+        "OD-01-8",
+        "OD-01-9",
+        "OD-01-10",
+        "OD-01-11",
+        "OD-01-12",
+        "OD-01-13",
+        "OD-01-14"
       ]
     },
     {
@@ -57,17 +74,26 @@
       "file_name": "02-SSLS_3.0_SOURCE_HIERARCHY.md",
       "title": "Source Hierarchy",
       "document_class": "governance",
-      "version": "0.1.0-draft",
+      "version": "0.3.0-draft",
       "status": "DRAFT — OWNER REVIEW REQUIRED",
       "canonical_status": "CANDIDATE",
-      "authority_level": "Controlling. Defines authority ranking and conflict resolution for all SSLS 3.0 work.",
-      "review_class": "AI-assisted authorship. Not independent review, not human review, not validation.",
-      "controlled_concept": "Authority and conflict resolution",
+      "authority_level": "Controlling if accepted. Would define source authority, ranking, evidence-quality distinctions, promotion, and conflict resolution.",
+      "review_class": "AI-assisted alignment revision using current SSLS 3.0 candidate governance plus the Integration Crosswalk and Greenfield Enterprise Artifact Matrices v1.1 as working/research evidence. Not independent review, validation, or owner approval.",
+      "controlled_concept": "Source authority, ranking, promotion, and conflict resolution",
       "provenance": "transcribed",
-      "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001).",
-      "source_item_name": "02-SSLS_3.0_SOURCE_HIERARCHY.md",
+      "provenance_note": "Reproduced from the owner-supplied revised draft superseding the v0.1.0-draft transcription; see SUPERSESSION-001.",
+      "source_item_name": "02-SSLS_3.0_SOURCE_HIERARCHY_v0.3.0-draft.pdf",
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-02-1", "OD-02-2", "OD-02-3", "OD-02-4", "OD-02-5"]
+      "open_decision_ids": [
+        "OD-02-1",
+        "OD-02-2",
+        "OD-02-3",
+        "OD-02-4",
+        "OD-02-5",
+        "OD-02-6",
+        "OD-02-7",
+        "OD-02-8"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-03",
@@ -84,7 +110,13 @@
       "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001). Register filenames were corrected from the cited .xlsx names to the .md files that now exist; the correction is itself routed to OD-11-4.",
       "source_item_name": "03-SSLS_3.0_CANON_MANIFEST.md",
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-03-1", "OD-03-2", "OD-03-3", "OD-03-4", "OD-03-5"]
+      "open_decision_ids": [
+        "OD-03-1",
+        "OD-03-2",
+        "OD-03-3",
+        "OD-03-4",
+        "OD-03-5"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-04",
@@ -101,7 +133,11 @@
       "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001).",
       "source_item_name": "04-SSLS_3.0_CURRENT_PROJECT_STATE.md",
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-04-1", "OD-04-2", "OD-04-3"]
+      "open_decision_ids": [
+        "OD-04-1",
+        "OD-04-2",
+        "OD-04-3"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-05",
@@ -118,7 +154,13 @@
       "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001).",
       "source_item_name": "05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md",
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-05-1", "OD-05-2", "OD-05-3", "OD-05-4", "OD-05-5"]
+      "open_decision_ids": [
+        "OD-05-1",
+        "OD-05-2",
+        "OD-05-3",
+        "OD-05-4",
+        "OD-05-5"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-06",
@@ -185,7 +227,11 @@
       "provenance_note": "No decision register existed in any observed source. D-3001 through D-3010 are named by subject only in file 04 and were reconstructed from normative wording in files 01, 02, 03, 05 and 11. Every reconstructed decision is marked RECONSTRUCTED and carries no authority.",
       "source_item_name": null,
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-08-1", "OD-08-2", "OD-08-3"]
+      "open_decision_ids": [
+        "OD-08-1",
+        "OD-08-2",
+        "OD-08-3"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-09",
@@ -202,7 +248,11 @@
       "provenance_note": "No requirements register existed in any observed source. The 24 foundation governance requirements restate obligations already stated normatively in files 00 to 07 and 11. All are DRAFT; none is approved.",
       "source_item_name": null,
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-09-1", "OD-09-2", "OD-09-3"]
+      "open_decision_ids": [
+        "OD-09-1",
+        "OD-09-2",
+        "OD-09-3"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-10",
@@ -219,7 +269,12 @@
       "provenance_note": "No evidence and claims register existed in any observed source. EV-0001 through EV-0006 reconstruct a count of six stated in file 04 without enumeration. Authorized claims: zero.",
       "source_item_name": null,
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-10-1", "OD-10-2", "OD-10-3", "OD-10-4"]
+      "open_decision_ids": [
+        "OD-10-1",
+        "OD-10-2",
+        "OD-10-3",
+        "OD-10-4"
+      ]
     },
     {
       "document_id": "SSLS3-DOC-11",
@@ -236,11 +291,241 @@
       "provenance_note": "Reproduced from the observed corpus item of the same name (XC-001). Register filenames were corrected from the cited .xlsx names to the .md files that now exist; the correction is itself routed to OD-11-4.",
       "source_item_name": "11-SSLS_3.0_REPOSITORY_MAP.md",
       "authorizing_decision": null,
-      "open_decision_ids": ["OD-11-1", "OD-11-2", "OD-11-3", "OD-11-4", "OD-11-5"]
+      "open_decision_ids": [
+        "OD-11-1",
+        "OD-11-2",
+        "OD-11-3",
+        "OD-11-4",
+        "OD-11-5"
+      ]
     }
   ],
-  "open_decision_count": 58,
+  "open_decision_count": 74,
   "open_decisions": [
+    {
+      "decision_id": "OD-00-1",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "1",
+      "question": "Confirm the operational meaning: \"Make learning, expectations, steps to success, and effort visible.\"",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-2",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "1",
+      "question": "Confirm that effort remains visible but separate from mastery or achievement.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-3",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "2",
+      "question": "Confirm this reader-centered Start Here structure.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-4",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "2",
+      "question": "Confirm the practical preflight and stop conditions as the default entry procedure for substantial work.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-5",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "1",
+      "question": "Confirm the end-to-end development map as a routing model, explicitly not a phase, gate, maturity, roadmap, or authorization model.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-6",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "2",
+      "question": "Confirm continuous R&D as a cross-lifecycle operating expectation.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-7",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "3",
+      "question": "Confirm the standard handoff packet and implementation-readiness check.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-8",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "1",
+      "question": "Confirm that release preparation and release authorization remain separate states.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-00-9",
+      "source_document_id": "SSLS3-DOC-00",
+      "priority": "1",
+      "question": "Confirm File 00's authority summary as navigational only, with File 02 remaining the sole controller of source hierarchy and conflict resolution.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-1",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm \"Make Learning Visible\" as the North Star and \"Make learning, expectations, steps to success, and effort visible\" as its operational meaning.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-1A",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm that effort remains visible but separate from mastery, achievement, behavior, worth, motivation, and compliance.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-2",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm or revise the project purpose in §3.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-3",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm the successor boundary in §4.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-4",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm the eighteen founding governance principles in §5.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-5",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm the evidence and traceability commitment in §6, including the charter-level separation of governance authority, research evidence, descriptive evidence, and validation evidence.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-6",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm the human decision authority and AI boundary in §§7–8.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-7",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "2",
+      "question": "Confirm the educational and human-centered commitments in §9.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-8",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm the enduring privacy, security, accessibility, and trust commitments in §10.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-9",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "2",
+      "question": "Confirm the modularity, interoperability, and program non-goal boundaries in §§11–13.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-10",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "2",
+      "question": "Confirm the five independent program success dimensions in §16, including Learning visibility.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-11",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "2",
+      "question": "Confirm the charter amendment discipline in §17.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-12",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "3",
+      "question": "Direct File 07 to define the formal predecessor-disposition vocabulary before charter canonicalization.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-13",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "2",
+      "question": "Confirm continuous R&D and the end-to-end development orientation in §§7 and 14 as enduring routing commitments, not authorization structures.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-01-14",
+      "source_document_id": "SSLS3-DOC-01",
+      "priority": "1",
+      "question": "Confirm that matrices, crosswalks, prototypes, repository artifacts, exports, AI outputs, and self-labeled \"SSOT\" artifacts do not acquire authority by existence, implementation, or naming.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-1",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "1",
+      "question": "Confirm the nine-rank hierarchy (§2).",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-2",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "1",
+      "question": "Confirm the separation of normative authority from descriptive implementation evidence (§3).",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-3",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "2",
+      "question": "Confirm that AI memory and AI summaries carry no authority (§5).",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-4",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "1",
+      "question": "Confirm the stop conditions (§13) as binding.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-5",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "1",
+      "question": "Confirm that no historical artifact is promoted by default.",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-6",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "2",
+      "question": "Confirm the separate research source-quality ladder (§6A).",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-7",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "1",
+      "question": "Confirm that research evidence, implementation evidence, and validation evidence remain distinct (§6B).",
+      "state": "open"
+    },
+    {
+      "decision_id": "OD-02-8",
+      "source_document_id": "SSLS3-DOC-02",
+      "priority": "1",
+      "question": "Confirm that matrices, crosswalks, lifecycle maps, and self-labeled \"SSOT\" artifacts remain non-authoritative until governed disposition (§12A).",
+      "state": "open"
+    },
     {
       "decision_id": "OD-04-1",
       "source_document_id": "SSLS3-DOC-04",
@@ -256,31 +541,10 @@
       "state": "open"
     },
     {
-      "decision_id": "OD-02-1",
-      "source_document_id": "SSLS3-DOC-02",
-      "priority": "1",
-      "question": "Confirm the eight-rank authority hierarchy.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-1",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "1",
-      "question": "Confirm the North Star statement and its stated limits.",
-      "state": "open"
-    },
-    {
       "decision_id": "OD-05-1",
       "source_document_id": "SSLS3-DOC-05",
       "priority": "2",
       "question": "Confirm the current authorized scope.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-6",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "2",
-      "question": "Set the accessibility conformance target.",
       "state": "open"
     },
     {
@@ -316,97 +580,6 @@
       "source_document_id": "SSLS3-DOC-04",
       "priority": "3",
       "question": "Decide how R-02 (governance burden) and R-06 (self-approval) are controlled.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-00-1",
-      "source_document_id": "SSLS3-DOC-00",
-      "priority": "unranked",
-      "question": "Confirm or replace the mandatory reading order.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-00-2",
-      "source_document_id": "SSLS3-DOC-00",
-      "priority": "unranked",
-      "question": "Confirm the AI-use boundaries as binding on all connected tools.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-00-3",
-      "source_document_id": "SSLS3-DOC-00",
-      "priority": "unranked",
-      "question": "Confirm the definition of done for governed work.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-2",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "unranked",
-      "question": "Confirm or revise the purpose statement.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-3",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "unranked",
-      "question": "Confirm the ten governing principles.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-4",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "unranked",
-      "question": "Confirm the educational commitments as binding design constraints.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-5",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "unranked",
-      "question": "Confirm the AI boundary as binding on all connected tools.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-7",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "unranked",
-      "question": "Confirm the three success dimensions and their thresholds.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-01-8",
-      "source_document_id": "SSLS3-DOC-01",
-      "priority": "unranked",
-      "question": "Decide whether any named historical artifact is promoted. Default: none.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-02-2",
-      "source_document_id": "SSLS3-DOC-02",
-      "priority": "unranked",
-      "question": "Confirm the normative and descriptive separation.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-02-3",
-      "source_document_id": "SSLS3-DOC-02",
-      "priority": "unranked",
-      "question": "Confirm that AI memory and AI summaries carry no authority.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-02-4",
-      "source_document_id": "SSLS3-DOC-02",
-      "priority": "unranked",
-      "question": "Confirm the stop conditions as binding.",
-      "state": "open"
-    },
-    {
-      "decision_id": "OD-02-5",
-      "source_document_id": "SSLS3-DOC-02",
-      "priority": "unranked",
-      "question": "Confirm that no historical artifact is promoted by default.",
       "state": "open"
     },
     {
