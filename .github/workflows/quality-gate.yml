@@ -79,5 +79,9 @@ jobs:
         env:
           SSLS_EVIDENCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
 
+      # `git status` has no --exit-code option; print any drift, then fail
+      # on non-empty porcelain output.
       - name: Confirm the tree is clean after the gate
-        run: git status --porcelain --exit-code
+        run: |
+          git status --porcelain
+          test -z "$(git status --porcelain)"

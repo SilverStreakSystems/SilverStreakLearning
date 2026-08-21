@@ -3,5 +3,5 @@ RUN  v4.1.10 /home/user/SilverStreakLearning
 
  Test Files  34 passed (34)
       Tests  709 passed (709)
-   Start at  13:43:54
-   Duration  39.54s (transform 5.50s, setup 5.47s, import 30.22s, tests 50.24s, environment 26.04s)
+   Start at  13:49:42
+   Duration  39.40s (transform 5.62s, setup 5.42s, import 29.98s, tests 50.35s, environment 25.25s)

@@ -96,7 +96,7 @@ computing gzip size...
 .output/public/assets/index-DdSwoDoV.js                                       364.98 kB │ gzip: 111.59 kB
 .output/public/assets/technology-decision-registry-COCOOYlN.js                578.71 kB │ gzip: 136.64 kB
 
-✓ built in 2.36s
+✓ built in 2.41s
 vite v8.2.0 building ssr environment for production...
 [2Ktransforming...✓ 312 modules transformed.
 rendering chunks...
@@ -209,7 +209,7 @@ node_modules/.nitro/vite/services/ssr/assets/registers-DeIzxe3f.js              
 node_modules/.nitro/vite/services/ssr/assets/capability-queries-fmMwUK3o.js                          156.58 kB │ gzip:  37.68 kB
 node_modules/.nitro/vite/services/ssr/assets/technology-decision-registry-DsXcrPVo.js                669.62 kB │ gzip: 144.77 kB
 
-✓ built in 1.90s
+✓ built in 1.96s
 
 [nitro] o Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-21)
 [nitro] √ Generated public .output/public
@@ -338,7 +338,7 @@ computing gzip size...
 .output/server/_libs/@tanstack/react-router+[...].mjs                        649.67 kB │ gzip: 137.07 kB
 .output/server/_ssr/technology-decision-registry-DsXcrPVo.mjs                669.43 kB │ gzip: 144.81 kB
 
-✓ built in 447ms
+✓ built in 465ms
 [nitro] i Using auto generated worker name: silverstreaksystems-silverstreaklearning
 i Generated .output/server/wrangler.json
 i Generated .wrangler/deploy/config.json

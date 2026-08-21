@@ -10,7 +10,7 @@
     },
     {
       "file": ".github/workflows/quality-gate.yml",
-      "hash": "1e01a49f34aaacf982b06012cf5c8558d399d02367526d887eb43b29ddccbeda"
+      "hash": "905491568d22da6e85c329e6454672cc1dd67998da42c927b644d6a16a94f9db"
     }
   ],
   "build_config": {
