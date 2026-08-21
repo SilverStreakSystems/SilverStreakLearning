@@ -1,117 +1,131 @@
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m/dev-server[39m
 
- [32m✓[39m src/test/learning-loop-rules.test.ts [2m([22m[2m45 tests[22m[2m)[22m[32m 141[2mms[22m[39m
- [32m✓[39m src/test/obligations.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 75[2mms[22m[39m
- [32m✓[39m src/test/evidence-output-safety-modes.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1263[2mms[22m[39m
-     [33m[2m✓[22m[39m fails closed on a match in both execution paths [33m 362[2mms[22m[39m
-     [33m[2m✓[22m[39m fails closed on an empty or unreadable tree in both execution paths [33m 310[2mms[22m[39m
- [32m✓[39m src/test/learning-loop-repository.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 92[2mms[22m[39m
- [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 1194[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 939[2mms[22m[39m
- [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 2069[2mms[22m[39m
-     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 956[2mms[22m[39m
-     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 581[2mms[22m[39m
-     [33m[2m✓[22m[39m marks the gated AI stream as target state on its detail page [33m 487[2mms[22m[39m
- [32m✓[39m src/test/program-state.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 4148[2mms[22m[39m
-     [33m[2m✓[22m[39m prints the unrun touch-target verification obligation on the Action Center [33m 954[2mms[22m[39m
-     [33m[2m✓[22m[39m projects gate, work package, checkpoint, and pending disposition [33m 640[2mms[22m[39m
-     [33m[2m✓[22m[39m projects the package authority role, digest verification, and drift count [33m 459[2mms[22m[39m
-     [33m[2m✓[22m[39m states what is not authorized and what hosting does not mean [33m 430[2mms[22m[39m
-     [33m[2m✓[22m[39m leads the next defensible action with the authorized product loop, not the deferred audit [33m 361[2mms[22m[39m
-     [33m[2m✓[22m[39m shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint [33m 605[2mms[22m[39m
-     [33m[2m✓[22m[39m makes no release, production, certification, or district-use claim [33m 443[2mms[22m[39m
- [32m✓[39m src/test/touch-target-rule.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 207[2mms[22m[39m
- [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 65[2mms[22m[39m
- [32m✓[39m src/test/product-alpha-close.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 5533[2mms[22m[39m
-     [33m[2m✓[22m[39m refuses to restore over a document another tab recovered from corrupt bytes [33m 1053[2mms[22m[39m
-     [33m[2m✓[22m[39m refuses to restore over a document another tab recovered from a newer envelope [33m 583[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the close-off form on support A when another tab makes support B the next target [33m 1483[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the review form on support A when another tab makes support B the next review [33m 2409[2mms[22m[39m
- [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 5580[2mms[22m[39m
-     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 2143[2mms[22m[39m
-     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 1773[2mms[22m[39m
-     [33m[2m✓[22m[39m gates every target-state workspace with a visible notice [33m 336[2mms[22m[39m
-     [33m[2m✓[22m[39m never relies on color alone to carry state [33m 450[2mms[22m[39m
- [32m✓[39m src/test/fnd-022-owner-review.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 40[2mms[22m[39m
- [32m✓[39m src/test/learning-loop-schema-invariants.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 51[2mms[22m[39m
- [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 8135[2mms[22m[39m
-     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 2232[2mms[22m[39m
-     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 2248[2mms[22m[39m
-     [33m[2m✓[22m[39m filters the registry from a search parameter [33m 374[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 2597[2mms[22m[39m
-     [33m[2m✓[22m[39m answers the North Star question for a capability [33m 314[2mms[22m[39m
- [32m✓[39m src/test/product-alpha-blockers.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 8635[2mms[22m[39m
-     [33m[2m✓[22m[39m does not open the restore confirmation when the expectation cannot be captured [33m 980[2mms[22m[39m
-     [33m[2m✓[22m[39m cycles tab inside the drawer and returns focus to the trigger on close [33m 1239[2mms[22m[39m
-     [33m[2m✓[22m[39m clears the previous success before the next attempt and moves focus to the next step [33m 3819[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the close-off form open with its note after a storage failure [33m 822[2mms[22m[39m
-     [33m[2m✓[22m[39m marks the earlier result replaced, advances the revision once, and updates the projection [33m 1739[2mms[22m[39m
- [32m✓[39m src/test/learning-loop-flow.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 12054[2mms[22m[39m
-     [33m[2m✓[22m[39m starts empty and offers loading the fictional sample learners as the only way in [33m 921[2mms[22m[39m
-     [33m[2m✓[22m[39m shows a next step and the rule that produced it for each learner [33m 643[2mms[22m[39m
-     [33m[2m✓[22m[39m makes keeping the saved data the focused first choice when restoring [33m 586[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the observation form open with its values when validation fails, then saves [33m 2519[2mms[22m[39m
-     [33m[2m✓[22m[39m carries Sample Learner C from a bare goal to a recorded result, and survives a reload [33m 7381[2mms[22m[39m
- [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 70[2mms[22m[39m
+ [32m✓[39m src/test/learning-loop-rules.test.ts [2m([22m[2m45 tests[22m[2m)[22m[32m 201[2mms[22m[39m
+ [32m✓[39m src/test/evidence-output-safety-modes.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1160[2mms[22m[39m
+     [33m[2m✓[22m[39m fails closed on a match in both execution paths [33m 316[2mms[22m[39m
+ [32m✓[39m src/test/touch-target-rule.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+ [32m✓[39m src/test/shared-objects.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 1662[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with exactly one H1 [33m 1204[2mms[22m[39m
+     [33m[2m✓[22m[39m renders a type detail page [33m 355[2mms[22m[39m
+ [32m✓[39m src/test/value-streams.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 3649[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the registry with one H1 and a synthetic marker [33m 1798[2mms[22m[39m
+     [33m[2m✓[22m[39m renders a stream detail page with its stages and gates [33m 1152[2mms[22m[39m
+     [33m[2m✓[22m[39m marks the gated AI stream as target state on its detail page [33m 647[2mms[22m[39m
+ [32m✓[39m src/test/product-alpha-walkthrough.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 4027[2mms[22m[39m
+     [33m[2m✓[22m[39m offers a named link from the Command Center into the learner workflow [33m 2540[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the header menu trigger on one line and unshrunk [33m 471[2mms[22m[39m
+     [33m[2m✓[22m[39m names the chosen file as the subject and says the saved records were untouched [33m 504[2mms[22m[39m
+     [33m[2m✓[22m[39m uses the same file-subject wording for a newer-schema file [33m 494[2mms[22m[39m
+ [32m✓[39m src/test/learning-loop-repository.test.ts [2m([22m[2m24 tests[22m[2m)[22m[33m 408[2mms[22m[39m
+ [32m✓[39m src/test/evidence-output-safety.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+ [32m✓[39m src/test/program-state.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 7510[2mms[22m[39m
+     [33m[2m✓[22m[39m regenerates with no diff and matches the recorded input fingerprint [33m 452[2mms[22m[39m
+     [33m[2m✓[22m[39m prints the unrun touch-target verification obligation on the Action Center [33m 2408[2mms[22m[39m
+     [33m[2m✓[22m[39m projects gate, work package, checkpoint, and pending disposition [33m 1062[2mms[22m[39m
+     [33m[2m✓[22m[39m projects the package authority role, digest verification, and drift count [33m 901[2mms[22m[39m
+     [33m[2m✓[22m[39m states what is not authorized and what hosting does not mean [33m 1413[2mms[22m[39m
+     [33m[2m✓[22m[39m leads the next defensible action with the authorized product loop, not the deferred audit [33m 426[2mms[22m[39m
+     [33m[2m✓[22m[39m shows the aborted Cycle 8 attempt as an attempt, never as a checkpoint [33m 417[2mms[22m[39m
+     [33m[2m✓[22m[39m makes no release, production, certification, or district-use claim [33m 309[2mms[22m[39m
+ [32m✓[39m src/test/obligations.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 91[2mms[22m[39m
+ [32m✓[39m src/test/governance.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 8352[2mms[22m[39m
+     [33m[2m✓[22m[39m labels every capability record as candidate in the interface [33m 4093[2mms[22m[39m
+     [33m[2m✓[22m[39m marks synthetic records visibly wherever they appear [33m 2261[2mms[22m[39m
+     [33m[2m✓[22m[39m reports independent axes and no combined score [33m 463[2mms[22m[39m
+     [33m[2m✓[22m[39m never relies on color alone to carry state [33m 758[2mms[22m[39m
+ [32m✓[39m src/test/product-alpha-close.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 8437[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses to restore over a document another tab recovered from corrupt bytes [33m 2992[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses to restore over a document another tab recovered from a newer envelope [33m 767[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the close-off form on support A when another tab makes support B the next target [33m 2526[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the review form on support A when another tab makes support B the next review [33m 2137[2mms[22m[39m
+ [32m✓[39m src/test/capability-architecture.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 10801[2mms[22m[39m
+     [33m[2m✓[22m[39m renders one H1 and refuses any readiness percentage [33m 3766[2mms[22m[39m
+     [33m[2m✓[22m[39m offers every filter control with an accessible label [33m 2547[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps filters when the operator types in the search box [33m 3491[2mms[22m[39m
+ [32m✓[39m src/test/product-alpha-blockers.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 11324[2mms[22m[39m
+     [33m[2m✓[22m[39m does not open the restore confirmation when the expectation cannot be captured [33m 2236[2mms[22m[39m
+     [33m[2m✓[22m[39m cycles tab inside the drawer and returns focus to the trigger on close [33m 1964[2mms[22m[39m
+     [33m[2m✓[22m[39m clears the previous success before the next attempt and moves focus to the next step [33m 4523[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the close-off form open with its note after a storage failure [33m 1229[2mms[22m[39m
+     [33m[2m✓[22m[39m marks the earlier result replaced, advances the revision once, and updates the projection [33m 1285[2mms[22m[39m
  [32m✓[39m src/test/product-alpha-closeout.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 48[2mms[22m[39m
- [32m✓[39m src/test/learning-loop-data-safety.test.tsx [2m([22m[2m38 tests[22m[2m)[22m[33m 14805[2mms[22m[39m
-     [33m[2m✓[22m[39m exports exactly the stored bytes, and importing them back is a previewed no-change [33m 1461[2mms[22m[39m
-     [33m[2m✓[22m[39m previews a real difference, and cancelling changes neither the revision nor the bytes [33m 669[2mms[22m[39m
-     [33m[2m✓[22m[39m changes the document once on a confirmed replace and keeps one recovery snapshot [33m 754[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the current data and the preview when the replace itself fails, then succeeds on retry [33m 910[2mms[22m[39m
-     [33m[2m✓[22m[39m reports a download failure instead of claiming an export happened [33m 371[2mms[22m[39m
-     [33m[2m✓[22m[39m accepts a file at exactly the limit and reads it [33m 363[2mms[22m[39m
-     [33m[2m✓[22m[39m reports a file that cannot be read, and changes nothing [33m 305[2mms[22m[39m
-     [33m[2m✓[22m[39m never presents unreadable data as an empty workspace, and only a confirmed replace overwrites it [33m 307[2mms[22m[39m
-     [33m[2m✓[22m[39m reports a storage refusal instead of pretending the observation was saved [33m 1477[2mms[22m[39m
-     [33m[2m✓[22m[39m reports a revision conflict when the saved records moved underneath the open form [33m 1621[2mms[22m[39m
-     [33m[2m✓[22m[39m does not revise anything when a command is refused before it reaches storage [33m 490[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the loop usable after a refusal: the next valid save still works [33m 1269[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps restore and import confirmations mutually exclusive [33m 414[2mms[22m[39m
-     [33m[2m✓[22m[39m returns focus to the control that opened the confirmation when it is cancelled [33m 315[2mms[22m[39m
-     [33m[2m✓[22m[39m exports the recovery copy separately from the current records [33m 493[2mms[22m[39m
- [32m✓[39m src/test/evidence-output-safety.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 67[2mms[22m[39m
- [32m✓[39m src/test/historical-requirements.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 34[2mms[22m[39m
- [32m✓[39m src/test/governed-packages.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 31[2mms[22m[39m
- [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+ [32m✓[39m src/test/learning-loop-flow.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 14112[2mms[22m[39m
+     [33m[2m✓[22m[39m starts empty and offers loading the fictional sample learners as the only way in [33m 2054[2mms[22m[39m
+     [33m[2m✓[22m[39m shows a next step and the rule that produced it for each learner [33m 521[2mms[22m[39m
+     [33m[2m✓[22m[39m makes keeping the saved data the focused first choice when restoring [33m 690[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the observation form open with its values when validation fails, then saves [33m 3265[2mms[22m[39m
+     [33m[2m✓[22m[39m carries Sample Learner C from a bare goal to a recorded result, and survives a reload [33m 7574[2mms[22m[39m
+ [32m✓[39m src/test/governed-packages.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 147[2mms[22m[39m
+ [32m✓[39m src/test/evidence-pipeline.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 88[2mms[22m[39m
+ [32m✓[39m src/test/learning-loop-data-safety.test.tsx [2m([22m[2m38 tests[22m[2m)[22m[33m 16913[2mms[22m[39m
+     [33m[2m✓[22m[39m exports exactly the stored bytes, and importing them back is a previewed no-change [33m 2210[2mms[22m[39m
+     [33m[2m✓[22m[39m previews a real difference, and cancelling changes neither the revision nor the bytes [33m 902[2mms[22m[39m
+     [33m[2m✓[22m[39m changes the document once on a confirmed replace and keeps one recovery snapshot [33m 1136[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the current data and the preview when the replace itself fails, then succeeds on retry [33m 1226[2mms[22m[39m
+     [33m[2m✓[22m[39m reports a download failure instead of claiming an export happened [33m 459[2mms[22m[39m
+     [33m[2m✓[22m[39m accepts a file at exactly the limit and reads it [33m 453[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses invalid JSON with its own visible message, non-destructively [33m 305[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses a document with no schema version with its own visible message, non-destructively [33m 323[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses a document written by a newer schema with its own visible message, non-destructively [33m 368[2mms[22m[39m
+     [33m[2m✓[22m[39m never presents unreadable data as an empty workspace, and only a confirmed replace overwrites it [33m 408[2mms[22m[39m
+     [33m[2m✓[22m[39m reports a storage refusal instead of pretending the observation was saved [33m 1280[2mms[22m[39m
+     [33m[2m✓[22m[39m reports a revision conflict when the saved records moved underneath the open form [33m 1073[2mms[22m[39m
+     [33m[2m✓[22m[39m does not revise anything when a command is refused before it reaches storage [33m 398[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the loop usable after a refusal: the next valid save still works [33m 1305[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps restore and import confirmations mutually exclusive [33m 359[2mms[22m[39m
+     [33m[2m✓[22m[39m returns focus to the control that opened the confirmation when it is cancelled [33m 427[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the confirmation open and focused on the safe choice when a restore fails [33m 375[2mms[22m[39m
+     [33m[2m✓[22m[39m offers no ordinary export of unreadable bytes, only the labelled rescue export [33m 322[2mms[22m[39m
+     [33m[2m✓[22m[39m exports the recovery copy separately from the current records [33m 630[2mms[22m[39m
+ [32m✓[39m src/test/learning-loop-schema-invariants.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+ [32m✓[39m src/test/workspaces.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[32m 69[2mms[22m[39m
+ [32m✓[39m src/test/design-system.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[32m 71[2mms[22m[39m
+ [32m✓[39m src/test/fnd-022-owner-dispositions.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 111[2mms[22m[39m
+ [32m✓[39m src/test/historical-requirements.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m src/test/fnd-022-owner-review.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 69[2mms[22m[39m
+ [32m✓[39m src/test/product-alpha-audit.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[33m 21058[2mms[22m[39m
+     [33m[2m✓[22m[39m never offers another support's result as correctable in the review form [33m 2073[2mms[22m[39m
+     [33m[2m✓[22m[39m opens no preview when the expectation cannot be captured, and stays retryable [33m 1339[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses to preview against a base another tab has already moved past [33m 439[2mms[22m[39m
+     [33m[2m✓[22m[39m refuses to open the restore confirmation against a base another tab moved past [33m 1020[2mms[22m[39m
+     [33m[2m✓[22m[39m clears an earlier success before a client validation refusal [33m 3143[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the close-off form on the same support after another tab changes the document [33m 1387[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps the review form on the same support and its draft after a client refusal [33m 879[2mms[22m[39m
+     [33m[2m✓[22m[39m lands focus on the announced next step at each transition [33m 2857[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps a corrected result and its replacement label across a full remount [33m 1681[2mms[22m[39m
+     [33m[2m✓[22m[39m wraps tab and shift-tab with the governance group expanded [33m 4485[2mms[22m[39m
+     [33m[2m✓[22m[39m closes on a backdrop click and returns focus to the trigger [33m 468[2mms[22m[39m
+     [33m[2m✓[22m[39m locks scrolling while open and restores the exact prior overflow on close [33m 379[2mms[22m[39m
+     [33m[2m✓[22m[39m makes the whole background, including the skip link, unreachable [33m 432[2mms[22m[39m
+     [33m[2m✓[22m[39m closes on navigation and puts focus on the heading of the page opened [33m 405[2mms[22m[39m
  [32m✓[39m src/test/historical-sources.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 25[2mms[22m[39m
- [32m✓[39m src/test/restatement-index.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 18[2mms[22m[39m
- [32m✓[39m src/test/product-alpha-audit.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[33m 15957[2mms[22m[39m
-     [33m[2m✓[22m[39m never offers another support's result as correctable in the review form [33m 1155[2mms[22m[39m
-     [33m[2m✓[22m[39m opens no preview when the expectation cannot be captured, and stays retryable [33m 501[2mms[22m[39m
-     [33m[2m✓[22m[39m refuses to preview against a base another tab has already moved past [33m 316[2mms[22m[39m
-     [33m[2m✓[22m[39m refuses to open the restore confirmation against a base another tab moved past [33m 343[2mms[22m[39m
-     [33m[2m✓[22m[39m clears an earlier success before a client validation refusal [33m 2888[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the close-off form on the same support after another tab changes the document [33m 1124[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps the review form on the same support and its draft after a client refusal [33m 801[2mms[22m[39m
-     [33m[2m✓[22m[39m lands focus on the announced next step at each transition [33m 3766[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps a corrected result and its replacement label across a full remount [33m 1464[2mms[22m[39m
-     [33m[2m✓[22m[39m wraps tab and shift-tab with the governance group expanded [33m 2702[2mms[22m[39m
- [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 10[2mms[22m[39m
- [32m✓[39m src/test/product-alpha-boundary.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 12[2mms[22m[39m
- [32m✓[39m src/test/fnd-022-owner-dispositions.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 18[2mms[22m[39m
- [32m✓[39m src/test/shell.test.tsx [2m([22m[2m86 tests[22m[2m)[22m[33m 16654[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/learners' with its heading [33m 478[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/' with its heading [33m 779[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 995[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/objects' with its heading [33m 411[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/value-streams' with its heading [33m 323[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/findings' with its heading [33m 320[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/evidence' with its heading [33m 526[2mms[22m[39m
-     [33m[2m✓[22m[39m renders '/decisions' with its heading [33m 343[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 514[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/evidence' [33m 564[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/decisions' [33m 344[2mms[22m[39m
-     [33m[2m✓[22m[39m exposes landmarks on '/search' [33m 307[2mms[22m[39m
-     [33m[2m✓[22m[39m places the skip link first in tab order and points it at main content [33m 363[2mms[22m[39m
-     [33m[2m✓[22m[39m moves between sections using the keyboard alone [33m 385[2mms[22m[39m
-     [33m[2m✓[22m[39m opens the small-screen navigation as a dialog, product first and governance collapsed [33m 591[2mms[22m[39m
-     [33m[2m✓[22m[39m puts focus on the new page, not the menu button, after navigating from the drawer [33m 394[2mms[22m[39m
-     [33m[2m✓[22m[39m keeps element ids unique and the page behind the drawer out of reach [33m 742[2mms[22m[39m
-     [33m[2m✓[22m[39m uses plain-language navigation labels without unexplained abbreviations [33m 673[2mms[22m[39m
-     [33m[2m✓[22m[39m states the no-personal-data boundary on '/capabilities' [33m 445[2mms[22m[39m
+ [32m✓[39m src/test/restatement-index.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m src/test/accessibility.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/test/product-alpha-boundary.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/test/shell.test.tsx [2m([22m[2m86 tests[22m[2m)[22m[33m 23721[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/learners' with its heading [33m 874[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/' with its heading [33m 1523[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/foundation-map' with its heading [33m 495[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/authority' with its heading [33m 739[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/capabilities' with its heading [33m 2496[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/objects' with its heading [33m 406[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/value-streams' with its heading [33m 316[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/findings' with its heading [33m 387[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/evidence' with its heading [33m 744[2mms[22m[39m
+     [33m[2m✓[22m[39m renders '/decisions' with its heading [33m 398[2mms[22m[39m
+     [33m[2m✓[22m[39m exposes landmarks on '/capabilities' [33m 563[2mms[22m[39m
+     [33m[2m✓[22m[39m exposes landmarks on '/evidence' [33m 337[2mms[22m[39m
+     [33m[2m✓[22m[39m places the skip link first in tab order and points it at main content [33m 719[2mms[22m[39m
+     [33m[2m✓[22m[39m moves between sections using the keyboard alone [33m 749[2mms[22m[39m
+     [33m[2m✓[22m[39m opens the small-screen navigation as a dialog, product first and governance collapsed [33m 633[2mms[22m[39m
+     [33m[2m✓[22m[39m puts focus on the new page, not the menu button, after navigating from the drawer [33m 889[2mms[22m[39m
+     [33m[2m✓[22m[39m keeps element ids unique and the page behind the drawer out of reach [33m 762[2mms[22m[39m
+     [33m[2m✓[22m[39m uses plain-language navigation labels without unexplained abbreviations [33m 1103[2mms[22m[39m
+     [33m[2m✓[22m[39m states the no-personal-data boundary on '/capabilities' [33m 795[2mms[22m[39m
+     [33m[2m✓[22m[39m states the no-personal-data boundary on '/evidence' [33m 361[2mms[22m[39m
+     [33m[2m✓[22m[39m states the no-personal-data boundary on '/decisions' [33m 329[2mms[22m[39m
 
-[2m Test Files [22m [1m[32m30 passed[39m[22m[90m (30)[39m
-[2m      Tests [22m [1m[32m629 passed[39m[22m[90m (629)[39m
-[2m   Start at [22m 21:14:15
-[2m   Duration [22m 26.98s[2m (transform 18.27s, setup 49.46s, import 41.11s, tests 97.08s, environment 170.28s)[22m
+[2m Test Files [22m [1m[32m31 passed[39m[22m[90m (31)[39m
+[2m      Tests [22m [1m[32m633 passed[39m[22m[90m (633)[39m
+[2m   Start at [22m 00:12:11
+[2m   Duration [22m 39.01s[2m (transform 24.24s, setup 63.33s, import 57.99s, tests 134.51s, environment 241.21s)[22m

@@ -2,14 +2,14 @@ vite v8.2.0 building client environment for production...
 [2Ktransforming...✓ 409 modules transformed.
 rendering chunks...
 computing gzip size...
-dist/client/assets/styles-Sa0Ip27z.css                               31.89 kB │ gzip:   7.21 kB
+dist/client/assets/styles-D8L6FXIK.css                               31.93 kB │ gzip:   7.22 kB
 dist/client/assets/not-found-i5RsCZif.js                              0.11 kB │ gzip:   0.11 kB
-dist/client/assets/capabilities-Br7T2fxx.js                           0.14 kB │ gzip:   0.13 kB
-dist/client/assets/design-system-Br7T2fxx.js                          0.14 kB │ gzip:   0.13 kB
-dist/client/assets/learners-Br7T2fxx.js                               0.14 kB │ gzip:   0.13 kB
-dist/client/assets/objects-Br7T2fxx.js                                0.14 kB │ gzip:   0.13 kB
-dist/client/assets/value-streams-Br7T2fxx.js                          0.14 kB │ gzip:   0.13 kB
-dist/client/assets/workspaces-Br7T2fxx.js                             0.14 kB │ gzip:   0.13 kB
+dist/client/assets/capabilities-BDtVgLJd.js                           0.14 kB │ gzip:   0.14 kB
+dist/client/assets/design-system-BDtVgLJd.js                          0.14 kB │ gzip:   0.14 kB
+dist/client/assets/learners-BDtVgLJd.js                               0.14 kB │ gzip:   0.14 kB
+dist/client/assets/objects-BDtVgLJd.js                                0.14 kB │ gzip:   0.14 kB
+dist/client/assets/value-streams-BDtVgLJd.js                          0.14 kB │ gzip:   0.14 kB
+dist/client/assets/workspaces-BDtVgLJd.js                             0.14 kB │ gzip:   0.14 kB
 dist/client/assets/workspaces._workspaceId-D-oGKyVY.js                0.33 kB │ gzip:   0.25 kB
 dist/client/assets/registers-DOMwnue3.js                              0.41 kB │ gzip:   0.25 kB
 dist/client/assets/objects._typeId-DJci9Poc.js                        0.58 kB │ gzip:   0.38 kB
@@ -31,8 +31,8 @@ dist/client/assets/findings-CcWWZe-Q.js                               2.36 kB �
 dist/client/assets/boundaries-BDiIqJRd.js                             2.65 kB │ gzip:   1.02 kB
 dist/client/assets/decisions-CLPXfA5z.js                              2.66 kB │ gzip:   1.01 kB
 dist/client/assets/posture-CayrVNLy.js                                3.00 kB │ gzip:   1.31 kB
-dist/client/assets/learners.index-CeJ6UiDJ.js                         3.00 kB │ gzip:   1.31 kB
-dist/client/assets/design-system.templates._templateId-nMRCbB3U.js    3.10 kB │ gzip:   1.27 kB
+dist/client/assets/learners.index-DdYZTX-o.js                         3.00 kB │ gzip:   1.31 kB
+dist/client/assets/design-system.templates._templateId-DtkiJUM9.js    3.10 kB │ gzip:   1.27 kB
 dist/client/assets/projection-CBa6W3Pt.js                             3.41 kB │ gzip:   1.31 kB
 dist/client/assets/profile-CcJaCqGA.js                                3.54 kB │ gzip:   1.15 kB
 dist/client/assets/search-CCvee__U.js                                 3.67 kB │ gzip:   1.56 kB
@@ -41,11 +41,11 @@ dist/client/assets/future-architecture-BGpJmoP6.js                    3.91 kB �
 dist/client/assets/notifications-VzJV7TDZ.js                          3.92 kB │ gzip:   1.56 kB
 dist/client/assets/authority-BSU5jwyc.js                              4.17 kB │ gzip:   1.58 kB
 dist/client/assets/object-controls-DVJjSXoy.js                        4.26 kB │ gzip:   1.33 kB
-dist/client/assets/workspaces.index-BAHpj9yj.js                       4.64 kB │ gzip:   1.57 kB
-dist/client/assets/objects._typeId-D6xf9RuP.js                        4.99 kB │ gzip:   1.73 kB
+dist/client/assets/workspaces.index-Bwe6iVp4.js                       4.64 kB │ gzip:   1.57 kB
+dist/client/assets/objects._typeId-DzZpBrXx.js                        4.99 kB │ gzip:   1.73 kB
 dist/client/assets/authority-CwkSNom0.js                              5.12 kB │ gzip:   1.72 kB
 dist/client/assets/value-stream-view-model-Ccd-LzUG.js                5.24 kB │ gzip:   1.83 kB
-dist/client/assets/workspaces._workspaceId-B7m_83ls.js                5.33 kB │ gzip:   1.66 kB
+dist/client/assets/workspaces._workspaceId-CEmt5qZr.js                5.33 kB │ gzip:   1.66 kB
 dist/client/assets/object-view-model-CjizhABL.js                      5.72 kB │ gzip:   2.15 kB
 dist/client/assets/preload-helper-Gz4FfcYz.js                         5.75 kB │ gzip:   2.16 kB
 dist/client/assets/foundation-map-C6y_aB42.js                         6.22 kB │ gzip:   2.29 kB
@@ -57,8 +57,8 @@ dist/client/assets/capacities-DISudhi9.js                             8.95 kB �
 dist/client/assets/design-system-controls-BAovc7wA.js                 8.95 kB │ gzip:   3.09 kB
 dist/client/assets/artifacts-C1xAbssm.js                              9.23 kB │ gzip:   2.42 kB
 dist/client/assets/capability-controls-Bpc8LUGh.js                    9.52 kB │ gzip:   2.99 kB
-dist/client/assets/capabilities._capabilityId-B058nfxJ.js            10.05 kB │ gzip:   2.68 kB
-dist/client/assets/value-streams._streamId-BHsM6fJZ.js               10.57 kB │ gzip:   2.91 kB
+dist/client/assets/capabilities._capabilityId-DjavnAEn.js            10.05 kB │ gzip:   2.68 kB
+dist/client/assets/value-streams._streamId-COaKPRp2.js               10.57 kB │ gzip:   2.91 kB
 dist/client/assets/workspace-queries-DIHdVNWs.js                     11.66 kB │ gzip:   3.96 kB
 dist/client/assets/utilities-CaLUyaeC.js                             12.01 kB │ gzip:   3.86 kB
 dist/client/assets/design-system-view-model-BqEHSKt5.js              14.06 kB │ gzip:   4.68 kB
@@ -68,23 +68,23 @@ dist/client/assets/useStore-B8VQ1jaU.js                              26.65 kB �
 dist/client/assets/utils-BtRqtsxU.js                                 27.25 kB │ gzip:   8.69 kB
 dist/client/assets/workspaces-BAaDBfTI.js                            34.06 kB │ gzip:   8.98 kB
 dist/client/assets/value-streams.index-DeK7ERrQ.js                   34.14 kB │ gzip:   9.79 kB
-dist/client/assets/learners._learnerId-C5LqURKn.js                   34.16 kB │ gzip:   8.20 kB
-dist/client/assets/routes-9qHXR0gA.js                                36.28 kB │ gzip:   8.98 kB
+dist/client/assets/learners._learnerId-DsSXfNBA.js                   34.16 kB │ gzip:   8.20 kB
+dist/client/assets/routes-2-z-Fwqb.js                                37.07 kB │ gzip:   9.24 kB
 dist/client/assets/object-queries-CRPC1eBM.js                        42.97 kB │ gzip:  11.36 kB
-dist/client/assets/design-system.index-B22Q8bqZ.js                   47.73 kB │ gzip:  12.74 kB
-dist/client/assets/objects.index-Dr6EGaQ6.js                         59.23 kB │ gzip:  16.56 kB
+dist/client/assets/design-system.index-j5aT0xVd.js                   47.73 kB │ gzip:  12.74 kB
+dist/client/assets/objects.index-Co66-VEW.js                         59.23 kB │ gzip:  16.56 kB
 dist/client/assets/value-stream-queries-LkYCz2UX.js                 105.17 kB │ gzip:  27.00 kB
-dist/client/assets/use-learning-loop-BDr08773.js                    115.95 kB │ gzip:  29.29 kB
+dist/client/assets/use-learning-loop-vxmno4rQ.js                    116.48 kB │ gzip:  29.43 kB
 dist/client/assets/registers-CqDvagXz.js                            118.49 kB │ gzip:  32.98 kB
 dist/client/assets/capability-queries-Dx7RVEAe.js                   137.00 kB │ gzip:  35.93 kB
-dist/client/assets/index-B5urhq2n.js                                356.25 kB │ gzip: 109.73 kB
+dist/client/assets/index-B2IGpak4.js                                356.27 kB │ gzip: 109.73 kB
 
-✓ built in 2.14s
+✓ built in 3.80s
 vite v8.2.0 building ssr environment for production...
 [2Ktransforming...✓ 269 modules transformed.
 rendering chunks...
 computing gzip size...
-node_modules/.nitro/vite/services/ssr/assets/styles-Sa0Ip27z.css                               31.89 kB │ gzip:  7.21 kB
+node_modules/.nitro/vite/services/ssr/assets/styles-D8L6FXIK.css                               31.93 kB │ gzip:  7.22 kB
 node_modules/.nitro/vite/services/ssr/assets/utils-C_uf36nf.js                                  0.18 kB │ gzip:  0.15 kB
 node_modules/.nitro/vite/services/ssr/assets/empty-plugin-adapters-D9UWiqvJ.js                  0.22 kB │ gzip:  0.16 kB
 node_modules/.nitro/vite/services/ssr/assets/objects-BJO8H_X6.js                                0.25 kB │ gzip:  0.19 kB
@@ -103,7 +103,7 @@ node_modules/.nitro/vite/services/ssr/assets/design-system.templates._templateId
 node_modules/.nitro/vite/services/ssr/assets/objects.index-odytVVvO.js                          1.12 kB │ gzip:  0.55 kB
 node_modules/.nitro/vite/services/ssr/assets/value-streams.index-NT4OrlS-.js                    1.14 kB │ gzip:  0.56 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities.index-4Cdau5Pd.js                     1.15 kB │ gzip:  0.55 kB
-node_modules/.nitro/vite/services/ssr/assets/learners._learnerId-FQxh_hSV.js                    1.22 kB │ gzip:  0.61 kB
+node_modules/.nitro/vite/services/ssr/assets/learners._learnerId-B95zcZMF.js                    1.22 kB │ gzip:  0.61 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities._capabilityId-DiKj8pX0.js             1.39 kB │ gzip:  0.61 kB
 node_modules/.nitro/vite/services/ssr/assets/workspaces._workspaceId-DuHBBn0e.js                1.41 kB │ gzip:  0.59 kB
 node_modules/.nitro/vite/services/ssr/assets/value-streams._streamId-Dg3Jw-IZ.js                1.56 kB │ gzip:  0.66 kB
@@ -125,7 +125,7 @@ node_modules/.nitro/vite/services/ssr/assets/boundaries-BM65SoEx.js             
 node_modules/.nitro/vite/services/ssr/assets/decisions-DHepAhSg.js                              4.54 kB │ gzip:  1.34 kB
 node_modules/.nitro/vite/services/ssr/index.js                                                  4.61 kB │ gzip:  1.92 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system.templates._templateId-08Zvy4D-.js    4.74 kB │ gzip:  1.58 kB
-node_modules/.nitro/vite/services/ssr/assets/learners.index-D0o3RNAD.js                         4.78 kB │ gzip:  1.80 kB
+node_modules/.nitro/vite/services/ssr/assets/learners.index-jZrTBEz0.js                         4.78 kB │ gzip:  1.80 kB
 node_modules/.nitro/vite/services/ssr/assets/search-DBNT7y1U.js                                 5.32 kB │ gzip:  1.89 kB
 node_modules/.nitro/vite/services/ssr/assets/authority-Pv0L0w5Z.js                              5.43 kB │ gzip:  1.86 kB
 node_modules/.nitro/vite/services/ssr/assets/actions-Bh9aUtyF.js                                5.55 kB │ gzip:  1.80 kB
@@ -145,7 +145,7 @@ node_modules/.nitro/vite/services/ssr/assets/traceability-DWC_qXNJ.js           
 node_modules/.nitro/vite/services/ssr/assets/capability-architecture-BiAvo19A.js                9.72 kB │ gzip:  3.45 kB
 node_modules/.nitro/vite/services/ssr/assets/capacities-CZTeMMiY.js                            10.29 kB │ gzip:  2.69 kB
 node_modules/.nitro/vite/services/ssr/assets/value-stream-controls-BfTj1GJI.js                 10.66 kB │ gzip:  3.24 kB
-node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BAout0T7.js            10.82 kB │ gzip:  1.84 kB
+node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DbHhlNLB.js            10.82 kB │ gzip:  1.83 kB
 node_modules/.nitro/vite/services/ssr/assets/artifacts-h593lOI2.js                             10.92 kB │ gzip:  2.67 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system-controls-DBW5dsXO.js                12.00 kB │ gzip:  3.69 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-controls-Bhsr607h.js                   13.54 kB │ gzip:  3.72 kB
@@ -158,22 +158,22 @@ node_modules/.nitro/vite/services/ssr/assets/evidence-Cz5Z-A1x.js               
 node_modules/.nitro/vite/services/ssr/assets/program-Cly5wNQI.js                               21.24 kB │ gzip:  6.22 kB
 node_modules/.nitro/vite/services/ssr/assets/capabilities.index-LE07hToV.js                    36.14 kB │ gzip:  8.65 kB
 node_modules/.nitro/vite/services/ssr/assets/workspaces-0HdHBftJ.js                            39.16 kB │ gzip:  9.49 kB
-node_modules/.nitro/vite/services/ssr/assets/router-Bnyf0yDP.js                                42.55 kB │ gzip: 10.58 kB
+node_modules/.nitro/vite/services/ssr/assets/router-C4YirmFa.js                                42.57 kB │ gzip: 10.60 kB
 node_modules/.nitro/vite/services/ssr/assets/value-streams.index-fu24ViLY.js                   47.74 kB │ gzip: 11.77 kB
-node_modules/.nitro/vite/services/ssr/assets/routes-CXwl6gdU.js                                49.23 kB │ gzip: 10.51 kB
+node_modules/.nitro/vite/services/ssr/assets/routes-2xhzDbXw.js                                50.17 kB │ gzip: 10.79 kB
 node_modules/.nitro/vite/services/ssr/assets/object-queries-CJIkMDYO.js                        50.91 kB │ gzip: 12.56 kB
-node_modules/.nitro/vite/services/ssr/assets/server-CQn_90Re.js                                56.40 kB │ gzip: 14.53 kB
-node_modules/.nitro/vite/services/ssr/assets/learners._learnerId-Cz2itPh0.js                   56.55 kB │ gzip: 11.34 kB
+node_modules/.nitro/vite/services/ssr/assets/server-eH9Lt-lg.js                                56.40 kB │ gzip: 14.53 kB
+node_modules/.nitro/vite/services/ssr/assets/learners._learnerId-CJpYJXIW.js                   56.55 kB │ gzip: 11.34 kB
 node_modules/.nitro/vite/services/ssr/assets/design-system.index-BcqTtKEZ.js                   67.08 kB │ gzip: 15.15 kB
 node_modules/.nitro/vite/services/ssr/assets/objects.index-CNMQ5WiP.js                         79.87 kB │ gzip: 19.53 kB
-node_modules/.nitro/vite/services/ssr/assets/use-learning-loop-D27I7yMz.js                    105.45 kB │ gzip: 26.70 kB
+node_modules/.nitro/vite/services/ssr/assets/use-learning-loop-BHpOZkX6.js                    106.55 kB │ gzip: 27.05 kB
 node_modules/.nitro/vite/services/ssr/assets/value-stream-queries-BzMZb-UT.js                 124.55 kB │ gzip: 29.26 kB
 node_modules/.nitro/vite/services/ssr/assets/registers-DeIzxe3f.js                            124.66 kB │ gzip: 33.41 kB
 node_modules/.nitro/vite/services/ssr/assets/capability-queries-fmMwUK3o.js                   156.58 kB │ gzip: 37.68 kB
 
-✓ built in 1.46s
+✓ built in 2.41s
 
-[nitro] ◐ Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-20)
+[nitro] ◐ Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-21)
 [nitro] ✔ Generated public dist/client
 vite v8.2.0 building nitro environment for production...
 [2Ktransforming...✓ 322 modules transformed.
@@ -193,7 +193,7 @@ dist/server/_chunks/ssr-renderer.mjs                                 0.60 kB │
 dist/server/_ssr/workspaces._workspaceId-CfPuET2V.mjs                0.66 kB │ gzip:   0.39 kB
 dist/server/_ssr/registers-FYFehdfB.mjs                              0.68 kB │ gzip:   0.39 kB
 dist/server/_ssr/capacity-qE2Dx2h4.mjs                               0.90 kB │ gzip:   0.50 kB
-dist/server/_ssr/learners._learnerId-FQxh_hSV.mjs                    1.06 kB │ gzip:   0.54 kB
+dist/server/_ssr/learners._learnerId-B95zcZMF.mjs                    1.06 kB │ gzip:   0.54 kB
 dist/server/_ssr/objects._typeId-BzQzAWR0.mjs                        1.10 kB │ gzip:   0.58 kB
 dist/server/_ssr/value-streams._streamId-HLgRbS0l.mjs                1.12 kB │ gzip:   0.58 kB
 dist/server/_runtime.mjs                                             1.14 kB │ gzip:   0.57 kB
@@ -221,7 +221,7 @@ dist/server/_ssr/projection-BcL4wGJj.mjs                             4.05 kB │
 dist/server/_ssr/ssr.mjs                                             4.55 kB │ gzip:   1.92 kB
 dist/server/_ssr/boundaries-BM65SoEx.mjs                             4.81 kB │ gzip:   1.39 kB
 dist/server/_ssr/findings-B1tvjtxw.mjs                               4.83 kB │ gzip:   1.29 kB
-dist/server/_ssr/learners.index-D0o3RNAD.mjs                         5.43 kB │ gzip:   1.88 kB
+dist/server/_ssr/learners.index-jZrTBEz0.mjs                         5.43 kB │ gzip:   1.88 kB
 dist/server/_ssr/decisions-DHepAhSg.mjs                              5.45 kB │ gzip:   1.42 kB
 dist/server/_ssr/authority-Pv0L0w5Z.mjs                              5.47 kB │ gzip:   1.90 kB
 dist/server/_ssr/design-system.templates._templateId-08Zvy4D-.mjs    5.60 kB │ gzip:   1.66 kB
@@ -243,7 +243,7 @@ dist/server/_ssr/traceability-DWC_qXNJ.mjs                          10.17 kB │
 dist/server/_ssr/authority-4uuzeXvk.mjs                             10.19 kB │ gzip:   2.25 kB
 dist/server/_ssr/capacities-CZTeMMiY.mjs                            10.32 kB │ gzip:   2.72 kB
 dist/server/_ssr/workspaces._workspaceId-BwJJohP7.mjs               10.46 kB │ gzip:   2.23 kB
-dist/server/_tanstack-start-manifest_v-BAout0T7.mjs                 10.87 kB │ gzip:   1.87 kB
+dist/server/_tanstack-start-manifest_v-DbHhlNLB.mjs                 10.87 kB │ gzip:   1.87 kB
 dist/server/_ssr/artifacts-h593lOI2.mjs                             10.96 kB │ gzip:   2.71 kB
 dist/server/_ssr/value-stream-controls-BfTj1GJI.mjs                 11.41 kB │ gzip:   3.30 kB
 dist/server/_libs/tanstack__history.mjs                             12.09 kB │ gzip:   3.48 kB
@@ -258,28 +258,28 @@ dist/server/_ssr/capabilities._capabilityId-CzG-Br1D.mjs            20.08 kB │
 dist/server/_ssr/program-Cly5wNQI.mjs                               21.20 kB │ gzip:   6.24 kB
 dist/server/_ssr/value-streams._streamId-XWoyVkDJ.mjs               21.24 kB │ gzip:   3.94 kB
 dist/server/_ssr/evidence-Cz5Z-A1x.mjs                              22.95 kB │ gzip:   5.83 kB
-dist/server/index.mjs                                               27.92 kB │ gzip:   6.84 kB
+dist/server/index.mjs                                               27.92 kB │ gzip:   6.86 kB
 dist/server/_ssr/workspaces-0HdHBftJ.mjs                            39.19 kB │ gzip:   9.52 kB
 dist/server/_ssr/capabilities.index-LE07hToV.mjs                    39.27 kB │ gzip:   8.77 kB
-dist/server/_ssr/router-Bnyf0yDP.mjs                                43.13 kB │ gzip:  10.58 kB
+dist/server/_ssr/router-C4YirmFa.mjs                                43.15 kB │ gzip:  10.60 kB
 dist/server/_libs/tanstack__query-core.mjs                          48.17 kB │ gzip:  10.70 kB
 dist/server/_ssr/object-queries-CJIkMDYO.mjs                        50.78 kB │ gzip:  12.55 kB
 dist/server/_ssr/value-streams.index-fu24ViLY.mjs                   52.88 kB │ gzip:  11.88 kB
-dist/server/_ssr/routes-CXwl6gdU.mjs                                53.76 kB │ gzip:  10.63 kB
-dist/server/_ssr/server-CQn_90Re.mjs                                54.69 kB │ gzip:  14.38 kB
-dist/server/_ssr/learners._learnerId-Cz2itPh0.mjs                   60.63 kB │ gzip:  11.48 kB
+dist/server/_ssr/server-eH9Lt-lg.mjs                                54.69 kB │ gzip:  14.38 kB
+dist/server/_ssr/routes-2xhzDbXw.mjs                                54.79 kB │ gzip:  10.91 kB
+dist/server/_ssr/learners._learnerId-CJpYJXIW.mjs                   60.63 kB │ gzip:  11.49 kB
 dist/server/_ssr/design-system.index-BcqTtKEZ.mjs                   74.90 kB │ gzip:  15.40 kB
 dist/server/_libs/@tanstack/router-core+[...].mjs                   80.27 kB │ gzip:  20.17 kB
 dist/server/_ssr/objects.index-CNMQ5WiP.mjs                         86.07 kB │ gzip:  19.73 kB
 dist/server/_libs/tailwind-merge.mjs                                88.13 kB │ gzip:  15.66 kB
 dist/server/_libs/zod.mjs                                          100.02 kB │ gzip:  17.31 kB
-dist/server/_ssr/use-learning-loop-D27I7yMz.mjs                    107.81 kB │ gzip:  26.82 kB
+dist/server/_ssr/use-learning-loop-BHpOZkX6.mjs                    108.90 kB │ gzip:  27.18 kB
 dist/server/_ssr/value-stream-queries-BzMZb-UT.mjs                 124.42 kB │ gzip:  29.24 kB
 dist/server/_ssr/registers-DeIzxe3f.mjs                            124.70 kB │ gzip:  33.44 kB
 dist/server/_ssr/capability-queries-fmMwUK3o.mjs                   156.49 kB │ gzip:  37.68 kB
 dist/server/_libs/@tanstack/react-router+[...].mjs                 649.67 kB │ gzip: 137.07 kB
 
-✓ built in 291ms
+✓ built in 446ms
 [nitro] ℹ Using auto generated worker name: tanstack-start-ts
 ℹ Generated dist/server/wrangler.json
 ℹ Generated .wrangler/deploy/config.json

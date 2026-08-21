@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "196e104ef75b96cb518526e4825e76161e08c864",
+  "tree_hash": "7560c18d94b0d8d251576feeb7271eb22c9f2d8b",
   "expected_result": "One declared path per route module.",
   "artifact_path": "artifacts/provenance/routes.json",
   "artifact_hash": "19d437c55aae7293afead8571b48db58417ee886500a658959a014f17b77d638",
   "input_set": {
-    "routes": "e8c5f915d10ad04e5fa1ffbb3db3781f1a9dc4932a58d1783b384871ea71ef3f"
+    "routes": "85cc71a44f6e63373b9c4537533b490774609c0ef1edf538290fa6508824a736"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -24,9 +24,9 @@
   "method": "automated",
   "evidence_id": "EV-ROUTES",
   "evidence_type": "ROUTE_INVENTORY",
-  "commit_sha": "dd167e87968dc9d941f1234df44ab690d9d860e5",
+  "commit_sha": "09721402b32af57ed36f3005fd022d5767201a9a",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-20T21:14:52.210Z",
+  "timestamp": "2026-08-21T00:13:07.099Z",
   "producer": "SSLS evidence pipeline",
   "title": "Route inventory derived from route sources",
   "description": "Route paths parsed from createFileRoute declarations in the route directory.",
