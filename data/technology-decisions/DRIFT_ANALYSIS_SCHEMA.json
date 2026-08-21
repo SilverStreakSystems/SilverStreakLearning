@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://silverstreak.learning/schemas/drift-analysis.json",
+  "title": "Technology decision drift analysis",
+  "description": "Generated, non-authoritative comparison analysis between owner-supplied technology recommendations and the deterministic TDP-001 evaluator. No record in this document is an owner decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "authority_status",
+    "authority_note",
+    "schema_version",
+    "analysis_schema_version",
+    "fingerprint_algorithm",
+    "generation_fingerprint",
+    "workflow_register_fingerprint",
+    "decision_process_id",
+    "decision_process_version",
+    "parser_version",
+    "evaluator_version",
+    "classifier_version",
+    "totals",
+    "records",
+    "batches"
+  ],
+  "properties": {
+    "authority_status": { "const": "GENERATED-NONAUTHORITATIVE" },
+    "authority_note": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string" },
+    "analysis_schema_version": { "type": "string" },
+    "fingerprint_algorithm": { "type": "string" },
+    "generation_fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "workflow_register_fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "decision_process_id": { "type": "string" },
+    "decision_process_version": { "type": "string" },
+    "parser_version": { "type": "string" },
+    "evaluator_version": { "type": "string" },
+    "classifier_version": { "type": "string" },
+    "totals": { "type": "object" },
+    "batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "batch_id",
+          "proposal_basis_fingerprint",
+          "proposed_resolution",
+          "proposal_basis",
+          "member_workflow_ids"
+        ],
+        "properties": {
+          "batch_id": { "type": "string", "pattern": "^DRIFT-BATCH-\\d{3}$" },
+          "proposal_basis_fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "proposed_resolution": { "type": "string" },
+          "proposal_basis": { "type": "string" },
+          "member_workflow_ids": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string", "pattern": "^TDW-[A-R]-\\d{3}$" }
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "workflow_id",
+          "source_recommendation_verbatim",
+          "comparison_relation",
+          "evidence_state",
+          "defect_state",
+          "proposed_resolution",
+          "proposal_basis_fingerprint",
+          "owner_disposition",
+          "review_status",
+          "owner_decision_id"
+        ],
+        "properties": {
+          "workflow_id": { "type": "string", "pattern": "^TDW-[A-R]-\\d{3}$" },
+          "source_recommendation_verbatim": { "type": "string" },
+          "comparison_relation": {
+            "enum": [
+              "EXACT",
+              "DERIVED-PROPER-SUBSET",
+              "DERIVED-PROPER-SUPERSET",
+              "PARTIAL-OVERLAP",
+              "DISJOINT",
+              "SOURCE-UNPARSEABLE",
+              "DERIVED-ABSTAIN"
+            ]
+          },
+          "evidence_state": { "enum": ["SUFFICIENT", "AMBIGUOUS", "MISSING", "CONTRADICTORY"] },
+          "defect_state": {
+            "enum": [
+              "NONE",
+              "SUSPECTED-PARSER",
+              "SUSPECTED-COMPARISON",
+              "SUSPECTED-EVALUATOR",
+              "POSSIBLE-POLICY-ISSUE"
+            ]
+          },
+          "proposed_resolution": {
+            "enum": [
+              "RETAIN-SUPPLIED",
+              "ACCEPT-DERIVED",
+              "MERGE-OPTIONS",
+              "CORRECT-IMPLEMENTATION-DEFECT",
+              "NEEDS-EVIDENCE",
+              "OWNER-POLICY-DECISION",
+              "OUT-OF-SCOPE",
+              "NO-PROPOSAL"
+            ]
+          },
+          "proposal_basis_fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "owner_disposition": {
+            "type": "null",
+            "description": "Generated analysis can never carry a disposition. Only a recorded owner decision may express one, and it lives outside this artefact."
+          },
+          "review_status": { "const": "NOT-REVIEWED" },
+          "owner_decision_id": { "type": "null" }
+        }
+      }
+    }
+  }
+}
