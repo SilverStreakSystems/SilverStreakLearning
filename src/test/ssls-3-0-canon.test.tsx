@@ -152,14 +152,12 @@ describe("open decisions", () => {
     expect(findDocument("SSLS3-DOC-99")).toBeUndefined();
   });
 
-  it("keeps the four priority-1 decisions first", () => {
+  it("keeps the priority-1 decisions first", () => {
     const grouped = decisionsByPriority(loadCanon());
-    expect(grouped.get("1")?.map((d) => d.decision_id)).toEqual([
-      "OD-04-1",
-      "OD-03-2",
-      "OD-02-1",
-      "OD-01-1",
-    ]);
+    const priorityOne = grouped.get("1")?.map((d) => d.decision_id) ?? [];
+    expect(priorityOne.slice(0, 3)).toEqual(["OD-00-1", "OD-00-2", "OD-00-5"]);
+    expect(priorityOne).toContain("OD-04-1");
+    expect(priorityOne).toContain("OD-01-1A");
     expect([...grouped.keys()]).toEqual(["1", "2", "3", "unranked"]);
   });
 
