@@ -93,6 +93,18 @@ function observationDoc(): string {
       );
     }
 
+    if (record.subsequent_disposition) {
+      lines.push(
+        "### Subsequent disposition",
+        "",
+        "Appended after the observation. The observation above is unchanged and remains true about",
+        "what was seen and when. A disposition describes handling only; it confers no authority.",
+        "",
+        esc(record.subsequent_disposition),
+        "",
+      );
+    }
+
     lines.push("### Non-effects", "", ...record.non_effects.map((entry) => `- ${entry}`), "");
   }
 
