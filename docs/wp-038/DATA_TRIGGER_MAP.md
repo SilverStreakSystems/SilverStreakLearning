@@ -5,14 +5,14 @@
 Each data class that SSLS does not currently hold, and what would attach if it did. Current use is
 false for every class in this table; that is the finding, not an omission.
 
-| Data class                                              | Current use | Future candidate | Sensitivity | Domains activated                                    | Prerequisite review                                                                      |
-| ------------------------------------------------------- | ----------- | ---------------- | ----------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Student identity and demographic data                   | no          | yes              | high        | student-privacy, records-retention, interoperability | Legal review plus an executed district data privacy agreement                            |
-| Special-education and multilingual-learner program data | no          | yes              | high        | student-privacy, records-retention, interoperability | Legal review; IDEA confidentiality analysis; Ed-Fi domain mapping                        |
-| Staff and operator identity                             | no          | yes              | elevated    | security, procurement                                | Security review before any authentication is added                                       |
-| Payroll, payment or government identifier data          | no          | yes              | high        | security, records-retention                          | 201 CMR 17.00 written information security program must exist first                      |
-| Product telemetry and usage analytics                   | no          | yes              | elevated    | student-privacy, public-surface                      | Privacy review; surveillance-metric refusal rules already prohibit individual monitoring |
-| Support correspondence and free text                    | no          | yes              | elevated    | student-privacy, records-retention                   | Privacy review                                                                           |
+| Data class | Current use | Future candidate | Sensitivity | Domains activated | Prerequisite review |
+|---|---|---|---|---|---|
+| Student identity and demographic data | no | yes | high | student-privacy, records-retention, interoperability | Legal review plus an executed district data privacy agreement |
+| Special-education and multilingual-learner program data | no | yes | high | student-privacy, records-retention, interoperability | Legal review; IDEA confidentiality analysis; Ed-Fi domain mapping |
+| Staff and operator identity | no | yes | elevated | security, procurement | Security review before any authentication is added |
+| Payroll, payment or government identifier data | no | yes | high | security, records-retention | 201 CMR 17.00 written information security program must exist first |
+| Product telemetry and usage analytics | no | yes | elevated | student-privacy, public-surface | Privacy review; surveillance-metric refusal rules already prohibit individual monitoring |
+| Support correspondence and free text | no | yes | elevated | student-privacy, records-retention | Privacy review |
 
 ## Minimum-necessary position and unresolved questions
 

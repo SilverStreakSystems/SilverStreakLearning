@@ -19,11 +19,9 @@ States the conditions for trust before any AI capability exists, not after.
 ## Who this serves
 
 Human beneficiaries:
-
 - Students and educators who would be subject to AI-influenced decisions
 
 Enterprise beneficiaries:
-
 - Governance, Security and Privacy, Quality
 
 ## Trigger, entry, exit
@@ -31,12 +29,10 @@ Enterprise beneficiaries:
 Trigger: A future AI capability is proposed. No such proposal is authorized today.
 
 Entry criteria:
-
 - The AI trigger gate has been formally opened by a governed decision. It has not been.
 - A human-decision boundary is defined for the proposed capability.
 
 Exit criteria:
-
 - The capability is authorized under continuous oversight, or refused.
 
 ## Authority separation
@@ -186,7 +182,6 @@ Decide whether AI Capability Lifecycle (gated future) may advance past authoriza
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The AI trigger gate is closed. This is the current state and blocks every stage.
 - The capability would make or strongly shape a decision about a person without human authority.
 - Failure modes cannot be detected by a human reviewer.
@@ -194,18 +189,15 @@ Refusal conditions:
 Rollback and recovery: Disable the capability immediately; disablement requires no committee.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - No AI capability advances without a recorded gate opening.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -220,15 +212,12 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Gate opened implicitly by building an AI feature first.
 
 Assumptions:
-
 - No AI capability exists in SSLS today.
 
 Unknowns:
-
 - What evidence standard would justify opening the gate.
 
 Review trigger: Any proposal referencing AI, model output, or automated inference.

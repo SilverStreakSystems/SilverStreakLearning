@@ -4,33 +4,33 @@
 
 5 obligations in this domain.
 
-| ID      | Title                                                  | Source                        | Applicability | Control status |
-| ------- | ------------------------------------------------------ | ----------------------------- | ------------- | -------------- |
-| OBL-009 | Written comprehensive information security program     | 201 CMR 17.03                 | CONDITIONAL   | MISSING        |
-| OBL-010 | Encryption and access control for personal information | 201 CMR 17.04                 | CONDITIONAL   | MISSING        |
-| OBL-011 | Breach notification to the data owner                  | M.G.L. c. 93H, s. 3           | CONDITIONAL   | MISSING        |
-| OBL-022 | Cybersecurity risk management organising model         | NIST CSWP 29, CSF 2.0         | REFERENCE     | MISSING        |
-| OBL-034 | Branch protection and change-control enforcement       | CIS Controls v8.1, Control 16 | APPLIES-NOW   | PARTIAL        |
+| ID | Title | Source | Applicability | Control status |
+|---|---|---|---|---|
+| OBL-009 | Written comprehensive information security program | 201 CMR 17.03 | CONDITIONAL | MISSING |
+| OBL-010 | Encryption and access control for personal information | 201 CMR 17.04 | CONDITIONAL | MISSING |
+| OBL-011 | Breach notification to the data owner | M.G.L. c. 93H, s. 3 | CONDITIONAL | MISSING |
+| OBL-022 | Cybersecurity risk management organising model | NIST CSWP 29, CSF 2.0 | REFERENCE | MISSING |
+| OBL-034 | Branch protection and change-control enforcement | CIS Controls v8.1, Control 16 | APPLIES-NOW | PARTIAL |
 
 ### OBL-009 — Written comprehensive information security program
 
-| Field              | Value                                                                                                                                                                                                                            |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Source             | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011)                                                                                                                                                       |
-| Authority type     | regulation                                                                                                                                                                                                                       |
-| Citation           | 201 CMR 17.03                                                                                                                                                                                                                    |
-| Locator            | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download                                                                                               |
-| Source version     | Current published edition                                                                                                                                                                                                        |
-| Verified on        | 2026-08-19                                                                                                                                                                                                                       |
-| Jurisdiction       | US-MA                                                                                                                                                                                                                            |
-| Applicability      | CONDITIONAL                                                                                                                                                                                                                      |
-| Trigger            | SSLS owns, licenses, receives, stores, maintains, processes or otherwise has access to a Massachusetts resident's name combined with a Social Security number, driver's licence or state ID number, or financial account number. |
-| Control family     | SECURITY                                                                                                                                                                                                                         |
-| Control status     | MISSING                                                                                                                                                                                                                          |
-| Evidence status    | NOT-PRODUCED                                                                                                                                                                                                                     |
-| Owning route       | Routed to the security work package; must precede any handling of narrow personal information                                                                                                                                    |
-| Review requirement | SECURITY REVIEW REQUIRED                                                                                                                                                                                                         |
-| Review trigger     | First handling of narrow personal information, including operator payroll or payment data                                                                                                                                        |
+| Field | Value |
+|---|---|
+| Source | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011) |
+| Authority type | regulation |
+| Citation | 201 CMR 17.03 |
+| Locator | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
+| Source version | Current published edition |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-MA |
+| Applicability | CONDITIONAL |
+| Trigger | SSLS owns, licenses, receives, stores, maintains, processes or otherwise has access to a Massachusetts resident's name combined with a Social Security number, driver's licence or state ID number, or financial account number. |
+| Control family | SECURITY |
+| Control status | MISSING |
+| Evidence status | NOT-PRODUCED |
+| Owning route | Routed to the security work package; must precede any handling of narrow personal information |
+| Review requirement | SECURITY REVIEW REQUIRED |
+| Review trigger | First handling of narrow personal information, including operator payroll or payment data |
 
 **What the source states.** 201 CMR 17.01 states the scope and 17.03 enumerates the program elements. Personal information is narrowly defined at 17.02.
 
@@ -58,23 +58,23 @@
 
 ### OBL-010 — Encryption and access control for personal information
 
-| Field              | Value                                                                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Source             | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011)                                                         |
-| Authority type     | regulation                                                                                                                         |
-| Citation           | 201 CMR 17.04                                                                                                                      |
-| Locator            | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
-| Source version     | Current published edition                                                                                                          |
-| Verified on        | 2026-08-19                                                                                                                         |
-| Jurisdiction       | US-MA                                                                                                                              |
-| Applicability      | CONDITIONAL                                                                                                                        |
-| Trigger            | Same trigger as OBL-009 where the information is on a computer system.                                                             |
-| Control family     | IDENTITY & ACCESS                                                                                                                  |
-| Control status     | MISSING                                                                                                                            |
-| Evidence status    | NOT-PRODUCED                                                                                                                       |
-| Owning route       | First authentication work package                                                                                                  |
-| Review requirement | SECURITY REVIEW REQUIRED                                                                                                           |
-| Review trigger     | First authenticated deployment                                                                                                     |
+| Field | Value |
+|---|---|
+| Source | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011) |
+| Authority type | regulation |
+| Citation | 201 CMR 17.04 |
+| Locator | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
+| Source version | Current published edition |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-MA |
+| Applicability | CONDITIONAL |
+| Trigger | Same trigger as OBL-009 where the information is on a computer system. |
+| Control family | IDENTITY & ACCESS |
+| Control status | MISSING |
+| Evidence status | NOT-PRODUCED |
+| Owning route | First authentication work package |
+| Review requirement | SECURITY REVIEW REQUIRED |
+| Review trigger | First authenticated deployment |
 
 **What the source states.** 17.04 enumerates the requirements. Subsections beyond (1) to (3) were not fully enumerated during WP-038 verification.
 
@@ -102,23 +102,23 @@
 
 ### OBL-011 — Breach notification to the data owner
 
-| Field              | Value                                                                                 |
-| ------------------ | ------------------------------------------------------------------------------------- |
-| Source             | Massachusetts General Court (SRC-010)                                                 |
-| Authority type     | statute                                                                               |
-| Citation           | M.G.L. c. 93H, s. 3                                                                   |
-| Locator            | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93H/Section3          |
-| Source version     | As codified                                                                           |
-| Verified on        | 2026-08-19                                                                            |
-| Jurisdiction       | US-MA                                                                                 |
-| Applicability      | CONDITIONAL                                                                           |
-| Trigger            | SSLS maintains or stores personal information it does not own and discovers a breach. |
-| Control family     | INCIDENT RESPONSE                                                                     |
-| Control status     | MISSING                                                                               |
-| Evidence status    | NOT-PRODUCED                                                                          |
-| Owning route       | Routed to the security work package                                                   |
-| Review requirement | SECURITY REVIEW REQUIRED                                                              |
-| Review trigger     | Before holding any third-party personal information                                   |
+| Field | Value |
+|---|---|
+| Source | Massachusetts General Court (SRC-010) |
+| Authority type | statute |
+| Citation | M.G.L. c. 93H, s. 3 |
+| Locator | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93H/Section3 |
+| Source version | As codified |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-MA |
+| Applicability | CONDITIONAL |
+| Trigger | SSLS maintains or stores personal information it does not own and discovers a breach. |
+| Control family | INCIDENT RESPONSE |
+| Control status | MISSING |
+| Evidence status | NOT-PRODUCED |
+| Owning route | Routed to the security work package |
+| Review requirement | SECURITY REVIEW REQUIRED |
+| Review trigger | Before holding any third-party personal information |
 
 **What the source states.** Section 3 addresses persons and agencies maintaining or storing personal information.
 
@@ -140,27 +140,28 @@
 
 **Claim refused.** Breach-ready; incident response in place
 
+
 ---
 
 ### OBL-022 — Cybersecurity risk management organising model
 
-| Field              | Value                                                                            |
-| ------------------ | -------------------------------------------------------------------------------- |
-| Source             | NIST (SRC-022)                                                                   |
-| Authority type     | voluntary-framework                                                              |
-| Citation           | NIST CSWP 29, CSF 2.0                                                            |
-| Locator            | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
-| Source version     | 2.0                                                                              |
-| Verified on        | 2026-08-19                                                                       |
-| Jurisdiction       | NOT-JURISDICTIONAL                                                               |
-| Applicability      | REFERENCE                                                                        |
-| Trigger            | A district security review asks which framework SSLS organises around.           |
-| Control family     | GOVERNANCE                                                                       |
-| Control status     | MISSING                                                                          |
-| Evidence status    | NOT-PRODUCED                                                                     |
-| Owning route       | Routed with OBL-009                                                              |
-| Review requirement | SECURITY REVIEW REQUIRED                                                         |
-| Review trigger     | First district security questionnaire                                            |
+| Field | Value |
+|---|---|
+| Source | NIST (SRC-022) |
+| Authority type | voluntary-framework |
+| Citation | NIST CSWP 29, CSF 2.0 |
+| Locator | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
+| Source version | 2.0 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | REFERENCE |
+| Trigger | A district security review asks which framework SSLS organises around. |
+| Control family | GOVERNANCE |
+| Control status | MISSING |
+| Evidence status | NOT-PRODUCED |
+| Owning route | Routed with OBL-009 |
+| Review requirement | SECURITY REVIEW REQUIRED |
+| Review trigger | First district security questionnaire |
 
 **What the source states.** NIST states the framework is voluntary and not certifiable.
 
@@ -188,23 +189,23 @@
 
 ### OBL-034 — Branch protection and change-control enforcement
 
-| Field              | Value                                                                        |
-| ------------------ | ---------------------------------------------------------------------------- |
-| Source             | Center for Internet Security (SRC-025)                                       |
-| Authority type     | voluntary-framework                                                          |
-| Citation           | CIS Controls v8.1, Control 16                                                |
-| Locator            | https://www.cisecurity.org/controls/v8-1                                     |
-| Source version     | 8.1                                                                          |
-| Verified on        | 2026-08-19                                                                   |
-| Jurisdiction       | NOT-JURISDICTIONAL                                                           |
-| Applicability      | APPLIES-NOW                                                                  |
-| Trigger            | SSLS maintains a repository that is the authorised software source of truth. |
-| Control family     | GOVERNANCE                                                                   |
-| Control status     | PARTIAL                                                                      |
-| Evidence status    | NOT-PRODUCED                                                                 |
-| Owning route       | FND-012 remains open                                                         |
-| Review requirement | none recorded                                                                |
-| Review trigger     | Any claim about change control                                               |
+| Field | Value |
+|---|---|
+| Source | Center for Internet Security (SRC-025) |
+| Authority type | voluntary-framework |
+| Citation | CIS Controls v8.1, Control 16 |
+| Locator | https://www.cisecurity.org/controls/v8-1 |
+| Source version | 8.1 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | APPLIES-NOW |
+| Trigger | SSLS maintains a repository that is the authorised software source of truth. |
+| Control family | GOVERNANCE |
+| Control status | PARTIAL |
+| Evidence status | NOT-PRODUCED |
+| Owning route | FND-012 remains open |
+| Review requirement | none recorded |
+| Review trigger | Any claim about change control |
 
 **What the source states.** CIS publishes voluntary safeguards.
 

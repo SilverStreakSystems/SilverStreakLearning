@@ -5,34 +5,34 @@ Authority: Working direction. Generated from fixtures.
 Maturity is a declared field. It is never derived from implementation status,
 test success, or the existence of a route.
 
-| Label              | Meaning                                                                    |
-| ------------------ | -------------------------------------------------------------------------- |
-| Implemented        | Exists in the current runtime and has direct implementation evidence.      |
-| Prototype          | Interactive or rendered proof. Not production authorized.                  |
-| Specified          | Defined well enough to implement but not yet built.                        |
+| Label | Meaning |
+| --- | --- |
+| Implemented | Exists in the current runtime and has direct implementation evidence. |
+| Prototype | Interactive or rendered proof. Not production authorized. |
+| Specified | Defined well enough to implement but not yet built. |
 | Research candidate | Target-state pattern requiring a governing decision before implementation. |
-| Gated future       | Explicitly out of current scope until authority changes.                   |
+| Gated future | Explicitly out of current scope until authority changes. |
 
-| Template                            | Primary job                                              | Maturity           | Implementing routes                                                       |
-| ----------------------------------- | -------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------- |
-| TPL-01 Enterprise Application Shell | Provide the authenticated global frame.                  | Specified          | /                                                                         |
-| TPL-02 Command Center               | Orient the operator to what matters first.               | Implemented        | /                                                                         |
-| TPL-03 Workspace Shell              | Hold collaborative context around a body of work.        | Gated future       | None                                                                      |
-| TPL-04 Focus Workspace              | Support deep work on one object.                         | Research candidate | None                                                                      |
-| TPL-05 Registry                     | Browse and manage governed objects.                      | Implemented        | /capabilities, /objects, /value-streams, /findings, /evidence, /decisions |
-| TPL-06 Record Detail                | Inspect one governed object.                             | Implemented        | /capabilities/$capabilityId, /objects/$typeId, /value-streams/$streamId   |
-| TPL-07 Action Center                | Hold one cross-platform work queue.                      | Specified          | None                                                                      |
-| TPL-08 Search                       | Retrieve only what the viewer is authorized to see.      | Specified          | None                                                                      |
-| TPL-09 Context Package              | Deliver a purpose-bound projection.                      | Prototype          | /objects                                                                  |
-| TPL-10 Meeting                      | Prepare, decide, and follow up.                          | Gated future       | None                                                                      |
-| TPL-11 Plan                         | Move from current state to target state.                 | Specified          | None                                                                      |
-| TPL-12 Review                       | Evaluate a target against stated criteria.               | Prototype          | /findings                                                                 |
-| TPL-13 Approval                     | Record an explicit human promotion.                      | Prototype          | /decisions, /authority                                                    |
-| TPL-14 Compare                      | Show the difference between versions or objects.         | Specified          | None                                                                      |
-| TPL-15 Timeline                     | Present chronological truth.                             | Specified          | None                                                                      |
-| TPL-16 Relationship Explorer        | Show typed relationships with an accessible alternative. | Prototype          | /objects, /traceability                                                   |
-| TPL-17 Notification Center          | Present an action-aware change stream.                   | Gated future       | None                                                                      |
-| TPL-18 Resource Library             | Find and reuse governed knowledge.                       | Specified          | None                                                                      |
+| Template | Primary job | Maturity | Implementing routes |
+| --- | --- | --- | --- |
+| TPL-01 Enterprise Application Shell | Provide the authenticated global frame. | Specified | / |
+| TPL-02 Command Center | Orient the operator to what matters first. | Implemented | / |
+| TPL-03 Workspace Shell | Hold collaborative context around a body of work. | Gated future | None |
+| TPL-04 Focus Workspace | Support deep work on one object. | Research candidate | None |
+| TPL-05 Registry | Browse and manage governed objects. | Implemented | /capabilities, /objects, /value-streams, /findings, /evidence, /decisions |
+| TPL-06 Record Detail | Inspect one governed object. | Implemented | /capabilities/$capabilityId, /objects/$typeId, /value-streams/$streamId |
+| TPL-07 Action Center | Hold one cross-platform work queue. | Specified | None |
+| TPL-08 Search | Retrieve only what the viewer is authorized to see. | Specified | None |
+| TPL-09 Context Package | Deliver a purpose-bound projection. | Prototype | /objects |
+| TPL-10 Meeting | Prepare, decide, and follow up. | Gated future | None |
+| TPL-11 Plan | Move from current state to target state. | Specified | None |
+| TPL-12 Review | Evaluate a target against stated criteria. | Prototype | /findings |
+| TPL-13 Approval | Record an explicit human promotion. | Prototype | /decisions, /authority |
+| TPL-14 Compare | Show the difference between versions or objects. | Specified | None |
+| TPL-15 Timeline | Present chronological truth. | Specified | None |
+| TPL-16 Relationship Explorer | Show typed relationships with an accessible alternative. | Prototype | /objects, /traceability |
+| TPL-17 Notification Center | Present an action-aware change stream. | Gated future | None |
+| TPL-18 Resource Library | Find and reuse governed knowledge. | Specified | None |
 
 ## Required anatomy and open unknowns
 
@@ -185,14 +185,14 @@ test success, or the existence of a route.
 
 Target-state architecture. None is authorized as a released capability.
 
-| Workspace                           | Template family                                                                                                               | Maturity           | Note                                                                                     |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------- |
-| WSP-01 Command Center               | Enterprise state, Priority queue, Decisions, Blockers, Risk, Evidence gaps, Initiatives                                       | Prototype          | A single-operator command center exists at /. The enterprise workspace form does not.    |
-| WSP-02 Strategy and Governance      | Governance register, Authority map, Requirements, Decisions, Policy, Gates, Claims, Risk                                      | Prototype          | Authority, decisions, findings, and evidence registers exist as operator surfaces.       |
-| WSP-03 Research and Intelligence    | Research library, Source comparison, Evidence synthesis, Standards explorer, Horizon scan                                     | Specified          | No research library is stored in this build.                                             |
-| WSP-04 Product and Learning Systems | Capability map, Learning architecture, Curriculum, content, assessment design, Accessibility and multilingual review          | Specified          | The capability map exists; learning design surfaces do not.                              |
-| WSP-05 Engineering and Delivery     | Backlog, Architecture explorer, Decision records, Implementation records, Validations, Findings, Release and dependency views | Specified          | Decision and finding registers exist; delivery mechanics do not.                         |
-| WSP-06 Market and Growth            | Market intelligence, Opportunity pipeline, Organizations, Proposals, Demo and publication readiness, Governed claims          | Research candidate | Public claims are governed at /boundaries; the growth workspace is not authorized.       |
-| WSP-07 Customer and Implementation  | Onboarding, Readiness, Implementation plan, Milestones, Configuration, Training, Support, Adoption                            | Gated future       | Requires real district relationships. Gated until a pilot decision exists.               |
-| WSP-08 Trust, Quality and Assurance | Accessibility, Privacy, Security, AI governance, Validation, Evidence packages, Release gates, Corrective action              | Prototype          | Accessibility and evidence surfaces exist. AI governance stays modelled, never operated. |
-| WSP-09 Enterprise Operations        | Finance planning, Capacity, Vendors, Contracts, Assets, Continuity, Enterprise calendar                                       | Gated future       | Out of scope until the enterprise operates with more than one participant.               |
+| Workspace | Template family | Maturity | Note |
+| --- | --- | --- | --- |
+| WSP-01 Command Center | Enterprise state, Priority queue, Decisions, Blockers, Risk, Evidence gaps, Initiatives | Prototype | A single-operator command center exists at /. The enterprise workspace form does not. |
+| WSP-02 Strategy and Governance | Governance register, Authority map, Requirements, Decisions, Policy, Gates, Claims, Risk | Prototype | Authority, decisions, findings, and evidence registers exist as operator surfaces. |
+| WSP-03 Research and Intelligence | Research library, Source comparison, Evidence synthesis, Standards explorer, Horizon scan | Specified | No research library is stored in this build. |
+| WSP-04 Product and Learning Systems | Capability map, Learning architecture, Curriculum, content, assessment design, Accessibility and multilingual review | Specified | The capability map exists; learning design surfaces do not. |
+| WSP-05 Engineering and Delivery | Backlog, Architecture explorer, Decision records, Implementation records, Validations, Findings, Release and dependency views | Specified | Decision and finding registers exist; delivery mechanics do not. |
+| WSP-06 Market and Growth | Market intelligence, Opportunity pipeline, Organizations, Proposals, Demo and publication readiness, Governed claims | Research candidate | Public claims are governed at /boundaries; the growth workspace is not authorized. |
+| WSP-07 Customer and Implementation | Onboarding, Readiness, Implementation plan, Milestones, Configuration, Training, Support, Adoption | Gated future | Requires real district relationships. Gated until a pilot decision exists. |
+| WSP-08 Trust, Quality and Assurance | Accessibility, Privacy, Security, AI governance, Validation, Evidence packages, Release gates, Corrective action | Prototype | Accessibility and evidence surfaces exist. AI governance stays modelled, never operated. |
+| WSP-09 Enterprise Operations | Finance planning, Capacity, Vendors, Contracts, Assets, Continuity, Enterprise calendar | Gated future | Out of scope until the enterprise operates with more than one participant. |

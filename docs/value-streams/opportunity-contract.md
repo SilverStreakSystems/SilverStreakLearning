@@ -19,11 +19,9 @@ Prevents commitments that outrun capability, capacity, or evidence.
 ## Who this serves
 
 Human beneficiaries:
-
 - Educators who would otherwise inherit an oversold promise
 
 Enterprise beneficiaries:
-
 - Implementation, Support, Finance and Legal
 
 ## Trigger, entry, exit
@@ -31,11 +29,9 @@ Enterprise beneficiaries:
 Trigger: A district or partner expresses interest, or a qualified need is identified.
 
 Entry criteria:
-
 - A named opportunity exists with a recorded need and context.
 
 Exit criteria:
-
 - A signed scope with obligations exists, or the opportunity is declined on the record.
 
 ## Authority separation
@@ -185,7 +181,6 @@ Decide whether Opportunity → Contract may advance past signature and scope bas
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The requested scope exceeds current capability.
 - The buyer requires a claim SSLS cannot support with evidence.
 - Delivery would require personal data outside the governed boundary.
@@ -193,19 +188,16 @@ Refusal conditions:
 Rollback and recovery: Withdraw the proposal or renegotiate scope; record the reason as a decision.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Declined opportunities are recorded with reasons.
 - Obligations are explicit before signature.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -220,16 +212,13 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Sales language exceeding approved claims.
 - Obligations accepted without a delivery owner.
 
 Assumptions:
-
 - No live opportunities exist at this stage; this stream is reference architecture.
 
 Unknowns:
-
 - What contracting patterns small districts will actually require.
 
 Review trigger: Any scope change or claim change during negotiation.

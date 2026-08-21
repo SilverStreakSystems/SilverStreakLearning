@@ -7,21 +7,21 @@
 
 Controlling decision: DEC-023. State date: 2026-08-20.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `2822aebee25409e5559e2ba2a4656675de58eb800c13812fe28f142121504dce`.
+Input fingerprint: `96692d20ba2dfc00af6bb318eca916f6c229efddda4e30f6f872c611158d9072`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.
 
 ## Program state
 
-| Field               | Value                          | Source                                   |
-| ------------------- | ------------------------------ | ---------------------------------------- |
-| Gate                | Gate A — OPEN                  | DEC-018                                  |
-| Active work package | WP-007 — ACTIVE                | WP-007                                   |
-| Latest checkpoint   | CHECKPOINT-010 (2026-08-20)    | docs/product-alpha-001/CHECKPOINT-010.md |
-| Latest attempt      | ATTEMPT-001 — ABORTED-DEFERRED | docs/wp-007/ATTEMPT-001-CYCLE-8.md       |
-| Owner disposition   | ACCEPTED                       | DEC-023                                  |
-| TTR-001 execution   | NOT-RUN                        | FND-024                                  |
+| Field | Value | Source |
+|---|---|---|
+| Gate | Gate A — OPEN | DEC-018 |
+| Active work package | WP-007 — ACTIVE | WP-007 |
+| Latest checkpoint | CHECKPOINT-010 (2026-08-20) | docs/product-alpha-001/CHECKPOINT-010.md |
+| Latest attempt | ATTEMPT-001 — ABORTED-DEFERRED | docs/wp-007/ATTEMPT-001-CYCLE-8.md |
+| Owner disposition | ACCEPTED | DEC-023 |
+| TTR-001 execution | NOT-RUN | FND-024 |
 
 Gate A is not closed. Gate A remains open. No cycle, checkpoint, attempt, test result, or package registration closes a gate; only a recorded owner decision does.
 
@@ -35,12 +35,12 @@ No audit artifact exists. No route, component, or control was measured or classi
 
 ## Registers
 
-| Register  | Rows                           |
-| --------- | ------------------------------ |
-| Decisions | 23                             |
-| Findings  | 24 (14 not confirmed resolved) |
-| Evidence  | 46                             |
-| Claims    | 13 (10 refused)                |
+| Register | Rows |
+|---|---|
+| Decisions | 23 |
+| Findings | 24 (14 not confirmed resolved) |
+| Evidence | 46 |
+| Claims | 13 (10 refused) |
 
 ## Bound verifications
 

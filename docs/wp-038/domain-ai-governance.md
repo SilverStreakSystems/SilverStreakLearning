@@ -4,32 +4,32 @@
 
 4 obligations in this domain.
 
-| ID      | Title                                           | Source                                                             | Applicability | Control status     |
-| ------- | ----------------------------------------------- | ------------------------------------------------------------------ | ------------- | ------------------ |
-| OBL-024 | AI risk management before any AI feature        | NIST AI 100-1                                                      | CONDITIONAL   | NOT-APPLICABLE     |
-| OBL-025 | Existing law applies to AI claims and behaviour | AGO AI Advisory, 2024-04-16                                        | APPLIES-NOW   | IMPLEMENTED        |
-| OBL-026 | Developer-directed AI design expectations       | Designing for Education with AI: An Essential Guide for Developers | REFERENCE     | SPECIFICATION-ONLY |
-| OBL-027 | Colorado automated decision-making watch item   | SB 26-189                                                          | CONDITIONAL   | NOT-APPLICABLE     |
+| ID | Title | Source | Applicability | Control status |
+|---|---|---|---|---|
+| OBL-024 | AI risk management before any AI feature | NIST AI 100-1 | CONDITIONAL | NOT-APPLICABLE |
+| OBL-025 | Existing law applies to AI claims and behaviour | AGO AI Advisory, 2024-04-16 | APPLIES-NOW | IMPLEMENTED |
+| OBL-026 | Developer-directed AI design expectations | Designing for Education with AI: An Essential Guide for Developers | REFERENCE | SPECIFICATION-ONLY |
+| OBL-027 | Colorado automated decision-making watch item | SB 26-189 | CONDITIONAL | NOT-APPLICABLE |
 
 ### OBL-024 — AI risk management before any AI feature
 
-| Field              | Value                                                                                         |
-| ------------------ | --------------------------------------------------------------------------------------------- |
-| Source             | NIST (SRC-033)                                                                                |
-| Authority type     | voluntary-framework                                                                           |
-| Citation           | NIST AI 100-1                                                                                 |
-| Locator            | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10 |
-| Source version     | 1.0                                                                                           |
-| Verified on        | 2026-08-19                                                                                    |
-| Jurisdiction       | NOT-JURISDICTIONAL                                                                            |
-| Applicability      | CONDITIONAL                                                                                   |
-| Trigger            | An AI feature is proposed for SSLS.                                                           |
-| Control family     | AI GOVERNANCE                                                                                 |
-| Control status     | NOT-APPLICABLE                                                                                |
-| Evidence status    | INAPPLICABLE                                                                                  |
-| Owning route       | Gate condition on any AI capability                                                           |
-| Review requirement | none recorded                                                                                 |
-| Review trigger     | Any proposed AI capability                                                                    |
+| Field | Value |
+|---|---|
+| Source | NIST (SRC-033) |
+| Authority type | voluntary-framework |
+| Citation | NIST AI 100-1 |
+| Locator | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10 |
+| Source version | 1.0 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | CONDITIONAL |
+| Trigger | An AI feature is proposed for SSLS. |
+| Control family | AI GOVERNANCE |
+| Control status | NOT-APPLICABLE |
+| Evidence status | INAPPLICABLE |
+| Owning route | Gate condition on any AI capability |
+| Review requirement | none recorded |
+| Review trigger | Any proposed AI capability |
 
 **What the source states.** NIST states the framework is voluntary. A revision is in progress.
 
@@ -57,23 +57,23 @@
 
 ### OBL-025 — Existing law applies to AI claims and behaviour
 
-| Field              | Value                                                                                               |
-| ------------------ | --------------------------------------------------------------------------------------------------- |
-| Source             | Massachusetts Office of the Attorney General (SRC-014)                                              |
-| Authority type     | official-guidance                                                                                   |
-| Citation           | AGO AI Advisory, 2024-04-16                                                                         |
-| Locator            | https://www.mass.gov/doc/ago-ai-advisory-41624/download                                             |
-| Source version     | 2024-04-16                                                                                          |
-| Verified on        | 2026-08-19                                                                                          |
-| Jurisdiction       | US-MA                                                                                               |
-| Applicability      | APPLIES-NOW                                                                                         |
-| Trigger            | SSLS makes any public statement about AI capability, including a statement about future capability. |
-| Control family     | CLAIMS / TRANSPARENCY                                                                               |
-| Control status     | IMPLEMENTED                                                                                         |
-| Evidence status    | CURRENT                                                                                             |
-| Owning route       | Maintained across all work packages; established in WP-000                                          |
-| Review requirement | none recorded                                                                                       |
-| Review trigger     | Every published change to a public surface                                                          |
+| Field | Value |
+|---|---|
+| Source | Massachusetts Office of the Attorney General (SRC-014) |
+| Authority type | official-guidance |
+| Citation | AGO AI Advisory, 2024-04-16 |
+| Locator | https://www.mass.gov/doc/ago-ai-advisory-41624/download |
+| Source version | 2024-04-16 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-MA |
+| Applicability | APPLIES-NOW |
+| Trigger | SSLS makes any public statement about AI capability, including a statement about future capability. |
+| Control family | CLAIMS / TRANSPARENCY |
+| Control status | IMPLEMENTED |
+| Evidence status | CURRENT |
+| Owning route | Maintained across all work packages; established in WP-000 |
+| Review requirement | none recorded |
+| Review trigger | Every published change to a public surface |
 
 **What the source states.** The Attorney General states how existing law applies. The advisory is guidance interpreting statutes such as c. 93A.
 
@@ -101,23 +101,23 @@
 
 ### OBL-026 — Developer-directed AI design expectations
 
-| Field              | Value                                                                    |
-| ------------------ | ------------------------------------------------------------------------ |
-| Source             | U.S. Department of Education, Office of Educational Technology (SRC-036) |
-| Authority type     | official-guidance                                                        |
-| Citation           | Designing for Education with AI: An Essential Guide for Developers       |
-| Locator            | https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf      |
-| Source version     | 2023 report with 2024 developer guide                                    |
-| Verified on        | 2026-08-19                                                               |
-| Jurisdiction       | US-FEDERAL                                                               |
-| Applicability      | REFERENCE                                                                |
-| Trigger            | Any AI capability design.                                                |
-| Control family     | HUMAN REVIEW                                                             |
-| Control status     | SPECIFICATION-ONLY                                                       |
-| Evidence status    | INAPPLICABLE                                                             |
-| Owning route       | Gate condition on any AI capability                                      |
-| Review requirement | EDUCATION POLICY REVIEW REQUIRED                                         |
-| Review trigger     | Any proposed AI capability                                               |
+| Field | Value |
+|---|---|
+| Source | U.S. Department of Education, Office of Educational Technology (SRC-036) |
+| Authority type | official-guidance |
+| Citation | Designing for Education with AI: An Essential Guide for Developers |
+| Locator | https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf |
+| Source version | 2023 report with 2024 developer guide |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | REFERENCE |
+| Trigger | Any AI capability design. |
+| Control family | HUMAN REVIEW |
+| Control status | SPECIFICATION-ONLY |
+| Evidence status | INAPPLICABLE |
+| Owning route | Gate condition on any AI capability |
+| Review requirement | EDUCATION POLICY REVIEW REQUIRED |
+| Review trigger | Any proposed AI capability |
 
 **What the source states.** The Department states the guidance is non-regulatory and that examples are not endorsements.
 
@@ -139,27 +139,28 @@
 
 **Claim refused.** Department of Education endorsed; ED aligned
 
+
 ---
 
 ### OBL-027 — Colorado automated decision-making watch item
 
-| Field              | Value                                                                                                                      |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Source             | Colorado General Assembly (SRC-037)                                                                                        |
-| Authority type     | statute                                                                                                                    |
-| Citation           | SB 26-189                                                                                                                  |
-| Locator            | https://leg.colorado.gov/bills/SB26-189                                                                                    |
-| Source version     | Signed 2026-05-14                                                                                                          |
-| Verified on        | 2026-08-19                                                                                                                 |
-| Jurisdiction       | US-STATE-OTHER                                                                                                             |
-| Applicability      | CONDITIONAL                                                                                                                |
-| Trigger            | SSLS develops or deploys a high-risk automated decision-making system affecting Colorado residents on or after 2027-01-01. |
-| Control family     | AI GOVERNANCE                                                                                                              |
-| Control status     | NOT-APPLICABLE                                                                                                             |
-| Evidence status    | INAPPLICABLE                                                                                                               |
-| Owning route       | Watch item; re-check before 2027-01-01                                                                                     |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                                                      |
-| Review trigger     | Any recommendation or eligibility-scoring capability, or Colorado market entry                                             |
+| Field | Value |
+|---|---|
+| Source | Colorado General Assembly (SRC-037) |
+| Authority type | statute |
+| Citation | SB 26-189 |
+| Locator | https://leg.colorado.gov/bills/SB26-189 |
+| Source version | Signed 2026-05-14 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-STATE-OTHER |
+| Applicability | CONDITIONAL |
+| Trigger | SSLS develops or deploys a high-risk automated decision-making system affecting Colorado residents on or after 2027-01-01. |
+| Control family | AI GOVERNANCE |
+| Control status | NOT-APPLICABLE |
+| Evidence status | INAPPLICABLE |
+| Owning route | Watch item; re-check before 2027-01-01 |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | Any recommendation or eligibility-scoring capability, or Colorado market entry |
 
 **What the source states.** The bill text states the effective date. Its scope was narrowed relative to SB 24-205.
 

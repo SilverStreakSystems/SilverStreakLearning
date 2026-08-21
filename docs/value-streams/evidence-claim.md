@@ -19,11 +19,9 @@ Keeps the gap between what is known and what is said visible.
 ## Who this serves
 
 Human beneficiaries:
-
 - Districts and families who rely on accurate statements
 
 Enterprise beneficiaries:
-
 - Governance, Revenue, Legal
 
 ## Trigger, entry, exit
@@ -31,12 +29,10 @@ Enterprise beneficiaries:
 Trigger: Someone proposes wording that asserts something about SSLS or its results.
 
 Entry criteria:
-
 - Exact proposed wording exists.
 - A purpose and audience are stated.
 
 Exit criteria:
-
 - The claim is approved with limitations, or refused, with the decision recorded.
 
 ## Authority separation
@@ -211,7 +207,6 @@ Decide whether Evidence → Claim may advance past approval or refusal.
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The wording asserts more than the evidence supports.
 - Supporting evidence has expired.
 - The claim implies independent validation that has not occurred.
@@ -219,18 +214,15 @@ Refusal conditions:
 Rollback and recovery: Withdraw the claim, publish the correction, and record a finding.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Approved claims carry expiry and revalidation dates.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -245,15 +237,12 @@ Findings from this stream return to: `governance-artifact-lifecycle`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Marketing language drifts from the approved wording.
 
 Assumptions:
-
 - All current claims are internal only.
 
 Unknowns:
-
 - What review cadence external claims will need.
 
 Review trigger: Evidence expiry, contradiction, or any change to the wording.

@@ -4,32 +4,32 @@
 
 4 obligations in this domain.
 
-| ID      | Title                                                   | Source                            | Applicability | Control status |
-| ------- | ------------------------------------------------------- | --------------------------------- | ------------- | -------------- |
-| OBL-018 | Software bill of materials production                   | NTIA minimum elements for an SBOM | REFERENCE     | IMPLEMENTED    |
-| OBL-019 | Dependency vulnerability identification and remediation | CIS Controls v8.1, Control 7      | APPLIES-NOW   | IMPLEMENTED    |
-| OBL-020 | Dependency licence posture                              | SPDX 3.0.1 licence identifiers    | APPLIES-NOW   | PARTIAL        |
-| OBL-021 | Build provenance and source integrity                   | SLSA build track                  | REFERENCE     | PARTIAL        |
+| ID | Title | Source | Applicability | Control status |
+|---|---|---|---|---|
+| OBL-018 | Software bill of materials production | NTIA minimum elements for an SBOM | REFERENCE | IMPLEMENTED |
+| OBL-019 | Dependency vulnerability identification and remediation | CIS Controls v8.1, Control 7 | APPLIES-NOW | IMPLEMENTED |
+| OBL-020 | Dependency licence posture | SPDX 3.0.1 licence identifiers | APPLIES-NOW | PARTIAL |
+| OBL-021 | Build provenance and source integrity | SLSA build track | REFERENCE | PARTIAL |
 
 ### OBL-018 — Software bill of materials production
 
-| Field              | Value                                                                                   |
-| ------------------ | --------------------------------------------------------------------------------------- |
-| Source             | NTIA (SRC-031)                                                                          |
-| Authority type     | official-guidance                                                                       |
-| Citation           | NTIA minimum elements for an SBOM                                                       |
-| Locator            | https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom          |
-| Source version     | 2021 report                                                                             |
-| Verified on        | 2026-08-19                                                                              |
-| Jurisdiction       | US-FEDERAL                                                                              |
-| Applicability      | REFERENCE                                                                               |
-| Trigger            | Federal software procurement, or a district or state procurement that asks for an SBOM. |
-| Control family     | SOFTWARE SUPPLY CHAIN                                                                   |
-| Control status     | IMPLEMENTED                                                                             |
-| Evidence status    | CURRENT                                                                                 |
-| Owning route       | WP-037, closed by DEC-017                                                               |
-| Review requirement | none recorded                                                                           |
-| Review trigger     | Change of SBOM format or emitted version                                                |
+| Field | Value |
+|---|---|
+| Source | NTIA (SRC-031) |
+| Authority type | official-guidance |
+| Citation | NTIA minimum elements for an SBOM |
+| Locator | https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom |
+| Source version | 2021 report |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | REFERENCE |
+| Trigger | Federal software procurement, or a district or state procurement that asks for an SBOM. |
+| Control family | SOFTWARE SUPPLY CHAIN |
+| Control status | IMPLEMENTED |
+| Evidence status | CURRENT |
+| Owning route | WP-037, closed by DEC-017 |
+| Review requirement | none recorded |
+| Review trigger | Change of SBOM format or emitted version |
 
 **What the source states.** NTIA defines minimum elements. The document is guidance and does not itself bind private parties.
 
@@ -57,23 +57,23 @@
 
 ### OBL-019 — Dependency vulnerability identification and remediation
 
-| Field              | Value                                                            |
-| ------------------ | ---------------------------------------------------------------- |
-| Source             | Center for Internet Security (SRC-025)                           |
-| Authority type     | voluntary-framework                                              |
-| Citation           | CIS Controls v8.1, Control 7                                     |
-| Locator            | https://www.cisecurity.org/controls/v8-1                         |
-| Source version     | 8.1                                                              |
-| Verified on        | 2026-08-19                                                       |
-| Jurisdiction       | NOT-JURISDICTIONAL                                               |
-| Applicability      | APPLIES-NOW                                                      |
-| Trigger            | SSLS maintains a software product with third-party dependencies. |
-| Control family     | VULNERABILITY MANAGEMENT                                         |
-| Control status     | IMPLEMENTED                                                      |
-| Evidence status    | CURRENT                                                          |
-| Owning route       | WP-037, closed by DEC-017                                        |
-| Review requirement | none recorded                                                    |
-| Review trigger     | Each lockfile change                                             |
+| Field | Value |
+|---|---|
+| Source | Center for Internet Security (SRC-025) |
+| Authority type | voluntary-framework |
+| Citation | CIS Controls v8.1, Control 7 |
+| Locator | https://www.cisecurity.org/controls/v8-1 |
+| Source version | 8.1 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | APPLIES-NOW |
+| Trigger | SSLS maintains a software product with third-party dependencies. |
+| Control family | VULNERABILITY MANAGEMENT |
+| Control status | IMPLEMENTED |
+| Evidence status | CURRENT |
+| Owning route | WP-037, closed by DEC-017 |
+| Review requirement | none recorded |
+| Review trigger | Each lockfile change |
 
 **What the source states.** CIS publishes voluntary safeguards. Adoption is elective.
 
@@ -101,23 +101,23 @@
 
 ### OBL-020 — Dependency licence posture
 
-| Field              | Value                                                                 |
-| ------------------ | --------------------------------------------------------------------- |
-| Source             | Linux Foundation SPDX project (SRC-029)                               |
-| Authority type     | standard                                                              |
-| Citation           | SPDX 3.0.1 licence identifiers                                        |
-| Locator            | https://spdx.github.io/spdx-spec/v3.0/                                |
-| Source version     | 3.0.1                                                                 |
-| Verified on        | 2026-08-19                                                            |
-| Jurisdiction       | INTERNATIONAL                                                         |
-| Applicability      | APPLIES-NOW                                                           |
-| Trigger            | SSLS distributes or hosts software containing third-party components. |
-| Control family     | SOFTWARE SUPPLY CHAIN                                                 |
-| Control status     | PARTIAL                                                               |
-| Evidence status    | CURRENT                                                               |
-| Owning route       | WP-037 for inventory; legal interpretation unassigned                 |
-| Review requirement | LEGAL REVIEW REQUIRED                                                 |
-| Review trigger     | First commercial distribution                                         |
+| Field | Value |
+|---|---|
+| Source | Linux Foundation SPDX project (SRC-029) |
+| Authority type | standard |
+| Citation | SPDX 3.0.1 licence identifiers |
+| Locator | https://spdx.github.io/spdx-spec/v3.0/ |
+| Source version | 3.0.1 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | INTERNATIONAL |
+| Applicability | APPLIES-NOW |
+| Trigger | SSLS distributes or hosts software containing third-party components. |
+| Control family | SOFTWARE SUPPLY CHAIN |
+| Control status | PARTIAL |
+| Evidence status | CURRENT |
+| Owning route | WP-037 for inventory; legal interpretation unassigned |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | First commercial distribution |
 
 **What the source states.** SPDX defines identifiers and format. It does not state what any licence requires.
 
@@ -145,23 +145,23 @@
 
 ### OBL-021 — Build provenance and source integrity
 
-| Field              | Value                                                        |
-| ------------------ | ------------------------------------------------------------ |
-| Source             | OpenSSF (SRC-030)                                            |
-| Authority type     | voluntary-framework                                          |
-| Citation           | SLSA build track                                             |
-| Locator            | https://slsa.dev/                                            |
-| Source version     | 1.2 (date unverified)                                        |
-| Verified on        | 2026-08-19                                                   |
-| Jurisdiction       | NOT-JURISDICTIONAL                                           |
-| Applicability      | REFERENCE                                                    |
-| Trigger            | A customer or partner asks for build provenance attestation. |
-| Control family     | SOFTWARE SUPPLY CHAIN                                        |
-| Control status     | PARTIAL                                                      |
-| Evidence status    | NOT-PRODUCED                                                 |
-| Owning route       | Unassigned                                                   |
-| Review requirement | none recorded                                                |
-| Review trigger     | First provenance request                                     |
+| Field | Value |
+|---|---|
+| Source | OpenSSF (SRC-030) |
+| Authority type | voluntary-framework |
+| Citation | SLSA build track |
+| Locator | https://slsa.dev/ |
+| Source version | 1.2 (date unverified) |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | REFERENCE |
+| Trigger | A customer or partner asks for build provenance attestation. |
+| Control family | SOFTWARE SUPPLY CHAIN |
+| Control status | PARTIAL |
+| Evidence status | NOT-PRODUCED |
+| Owning route | Unassigned |
+| Review requirement | none recorded |
+| Review trigger | First provenance request |
 
 **What the source states.** OpenSSF publishes the framework. Levels are self-assessed unless independently verified.
 

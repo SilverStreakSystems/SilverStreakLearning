@@ -2,7 +2,7 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.1.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "2822aebee25409e5559e2ba2a4656675de58eb800c13812fe28f142121504dce",
+  "fingerprint": "96692d20ba2dfc00af6bb318eca916f6c229efddda4e30f6f872c611158d9072",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
@@ -41,8 +41,8 @@
     },
     {
       "path": "data/packages/governed-packages.json",
-      "sha256": "3547bb9f39d50951dd01713d837aa13f3f781cbbe84d6519f30db20705465bfb",
-      "bytes": 13708
+      "sha256": "9b9b47930f15efdb7104be2ffda3f819bceb7d48516fe11bdf95b98157329c50",
+      "bytes": 13572
     },
     {
       "path": "data/packages/package-drift.json",
@@ -56,8 +56,8 @@
     },
     {
       "path": "data/historical/fnd-022-owner-dispositions.json",
-      "sha256": "1365d62eef6e4d8bd79e1457f9ebbf7a0eaa5b7e0121e169aef257b89a1c85f7",
-      "bytes": 18888
+      "sha256": "884d4852a78226318ce1a455c3e2177290d04656836a59c5215dcf6cf96c4f36",
+      "bytes": 18760
     },
     {
       "path": "data/governance/obligations.json",

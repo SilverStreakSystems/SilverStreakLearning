@@ -19,11 +19,9 @@ Makes SSLS's dependence on others explicit rather than assumed.
 ## Who this serves
 
 Human beneficiaries:
-
 - Users whose data or service depends on a third party
 
 Enterprise beneficiaries:
-
 - Security and Privacy, Finance and Legal, Engineering
 
 ## Trigger, entry, exit
@@ -31,11 +29,9 @@ Enterprise beneficiaries:
 Trigger: A need cannot be met internally and a third party is considered.
 
 Entry criteria:
-
 - A dependency need is recorded with the alternative of not using a vendor.
 
 Exit criteria:
-
 - The vendor is governed with an exit plan, or the dependency is refused.
 
 ## Authority separation
@@ -152,7 +148,6 @@ No gate is modelled on this stream. Every stage exit is still evidence-bound.
 ## Refusal and rollback
 
 Refusal conditions:
-
 - No viable exit exists.
 - The vendor requires data outside the governed boundary.
 - Security or privacy assessment fails.
@@ -160,18 +155,15 @@ Refusal conditions:
 Rollback and recovery: Execute the exit plan and record the migration as an incident if unplanned.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Every active dependency has a current exit plan.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -186,16 +178,13 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Lock-in discovered only at renewal.
 - Shadow dependencies never assessed.
 
 Assumptions:
-
 - Current vendor use is limited to development tooling.
 
 Unknowns:
-
 - Which dependencies become critical once districts are live.
 
 Review trigger: Renewal date, security event, or a change in vendor data handling.

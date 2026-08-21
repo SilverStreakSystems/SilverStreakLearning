@@ -19,11 +19,9 @@ Makes it clear which document governs today and which one used to.
 ## Who this serves
 
 Human beneficiaries:
-
 - Anyone who must follow the current rule rather than an old one
 
 Enterprise beneficiaries:
-
 - Every function that relies on standing rules
 
 ## Trigger, entry, exit
@@ -31,11 +29,9 @@ Enterprise beneficiaries:
 Trigger: A governance artifact is drafted, revised, or challenged.
 
 Entry criteria:
-
 - A draft or revision exists with a named author and purpose.
 
 Exit criteria:
-
 - The artifact carries a declared authority class, or is retired and superseded.
 
 ## Authority separation
@@ -200,25 +196,21 @@ Decide whether Governance Artifact → Promotion / Supersession may advance past
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The artifact conflicts with a current standing rule and the conflict is unresolved.
 - No authority is willing to own the artifact.
 
 Rollback and recovery: Restore the prior artifact version and record the reversal as a decision.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Every governing artifact states its authority class and its supersession status.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -233,16 +225,13 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Two artifacts govern the same subject.
 - A draft is used as if it were approved.
 
 Assumptions:
-
 - Markdown documents plus the authority ledger are sufficient at this stage.
 
 Unknowns:
-
 - When artifact governance needs tooling beyond the current ledger.
 
 Review trigger: Conflict discovered, evidence change, or the review interval elapsing.

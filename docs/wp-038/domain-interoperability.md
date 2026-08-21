@@ -4,31 +4,31 @@
 
 3 obligations in this domain.
 
-| ID      | Title                                                | Source                                                                                  | Applicability    | Control status     |
-| ------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------------- | ------------------ |
-| OBL-028 | Roster and enrolment data exchange                   | OneRoster v1.2                                                                          | APPLIES-AT-PILOT | SPECIFICATION-ONLY |
-| OBL-029 | Program and service data exchange with state systems | Ed-Fi Data Standard 6.0; ODS/API 7.3.1                                                  | APPLIES-AT-PILOT | MISSING            |
-| OBL-030 | Deferred interoperability specifications             | LTI 1.3 with Advantage services; QTI 3.0.1; Caliper 1.2; CASE 1.1; Common Cartridge 1.4 | REFERENCE        | NOT-APPLICABLE     |
+| ID | Title | Source | Applicability | Control status |
+|---|---|---|---|---|
+| OBL-028 | Roster and enrolment data exchange | OneRoster v1.2 | APPLIES-AT-PILOT | SPECIFICATION-ONLY |
+| OBL-029 | Program and service data exchange with state systems | Ed-Fi Data Standard 6.0; ODS/API 7.3.1 | APPLIES-AT-PILOT | MISSING |
+| OBL-030 | Deferred interoperability specifications | LTI 1.3 with Advantage services; QTI 3.0.1; Caliper 1.2; CASE 1.1; Common Cartridge 1.4 | REFERENCE | NOT-APPLICABLE |
 
 ### OBL-028 — Roster and enrolment data exchange
 
-| Field              | Value                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------- |
-| Source             | 1EdTech Consortium (SRC-038)                                                       |
-| Authority type     | standard                                                                           |
-| Citation           | OneRoster v1.2                                                                     |
-| Locator            | https://www.1edtech.org/standards/oneroster                                        |
-| Source version     | 1.2                                                                                |
-| Verified on        | 2026-08-19                                                                         |
-| Jurisdiction       | NOT-JURISDICTIONAL                                                                 |
-| Applicability      | APPLIES-AT-PILOT                                                                   |
-| Trigger            | A district needs to sync students, organisations, classes or enrolments into SSLS. |
-| Control family     | INTEROPERABILITY                                                                   |
-| Control status     | SPECIFICATION-ONLY                                                                 |
-| Evidence status    | NOT-PRODUCED                                                                       |
-| Owning route       | First ingestion work package                                                       |
-| Review requirement | none recorded                                                                      |
-| Review trigger     | First ingestion design                                                             |
+| Field | Value |
+|---|---|
+| Source | 1EdTech Consortium (SRC-038) |
+| Authority type | standard |
+| Citation | OneRoster v1.2 |
+| Locator | https://www.1edtech.org/standards/oneroster |
+| Source version | 1.2 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | APPLIES-AT-PILOT |
+| Trigger | A district needs to sync students, organisations, classes or enrolments into SSLS. |
+| Control family | INTEROPERABILITY |
+| Control status | SPECIFICATION-ONLY |
+| Evidence status | NOT-PRODUCED |
+| Owning route | First ingestion work package |
+| Review requirement | none recorded |
+| Review trigger | First ingestion design |
 
 **What the source states.** 1EdTech publishes the specification and operates the certification programme.
 
@@ -56,23 +56,23 @@
 
 ### OBL-029 — Program and service data exchange with state systems
 
-| Field              | Value                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------------- |
-| Source             | Ed-Fi Alliance (SRC-039)                                                                                   |
-| Authority type     | standard                                                                                                   |
-| Citation           | Ed-Fi Data Standard 6.0; ODS/API 7.3.1                                                                     |
-| Locator            | https://docs.ed-fi.org/reference/data-exchange/data-standard/                                              |
-| Source version     | 6.0                                                                                                        |
-| Verified on        | 2026-08-19                                                                                                 |
-| Jurisdiction       | NOT-JURISDICTIONAL                                                                                         |
-| Applicability      | APPLIES-AT-PILOT                                                                                           |
-| Trigger            | SSLS must exchange multilingual-learner or special-education program data with a district or state system. |
-| Control family     | INTEROPERABILITY                                                                                           |
-| Control status     | MISSING                                                                                                    |
-| Evidence status    | NOT-PRODUCED                                                                                               |
-| Owning route       | First program data-model work package                                                                      |
-| Review requirement | none recorded                                                                                              |
-| Review trigger     | First program data model                                                                                   |
+| Field | Value |
+|---|---|
+| Source | Ed-Fi Alliance (SRC-039) |
+| Authority type | standard |
+| Citation | Ed-Fi Data Standard 6.0; ODS/API 7.3.1 |
+| Locator | https://docs.ed-fi.org/reference/data-exchange/data-standard/ |
+| Source version | 6.0 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | APPLIES-AT-PILOT |
+| Trigger | SSLS must exchange multilingual-learner or special-education program data with a district or state system. |
+| Control family | INTEROPERABILITY |
+| Control status | MISSING |
+| Evidence status | NOT-PRODUCED |
+| Owning route | First program data-model work package |
+| Review requirement | none recorded |
+| Review trigger | First program data model |
 
 **What the source states.** The Ed-Fi Alliance publishes the standard and its testing tools.
 
@@ -100,23 +100,23 @@
 
 ### OBL-030 — Deferred interoperability specifications
 
-| Field              | Value                                                                                                                  |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| Source             | 1EdTech Consortium (SRC-040)                                                                                           |
-| Authority type     | standard                                                                                                               |
-| Citation           | LTI 1.3 with Advantage services; QTI 3.0.1; Caliper 1.2; CASE 1.1; Common Cartridge 1.4                                |
-| Locator            | https://www.imsglobal.org/specifications/learning-tools-interoperability                                               |
-| Source version     | See citation                                                                                                           |
-| Verified on        | 2026-08-19                                                                                                             |
-| Jurisdiction       | NOT-JURISDICTIONAL                                                                                                     |
-| Applicability      | REFERENCE                                                                                                              |
-| Trigger            | LMS embedding, assessment item exchange, analytics event emission, competency framework exchange or content packaging. |
-| Control family     | INTEROPERABILITY                                                                                                       |
-| Control status     | NOT-APPLICABLE                                                                                                         |
-| Evidence status    | INAPPLICABLE                                                                                                           |
-| Owning route       | None                                                                                                                   |
-| Review requirement | none recorded                                                                                                          |
-| Review trigger     | LMS embedding or analytics emission proposal                                                                           |
+| Field | Value |
+|---|---|
+| Source | 1EdTech Consortium (SRC-040) |
+| Authority type | standard |
+| Citation | LTI 1.3 with Advantage services; QTI 3.0.1; Caliper 1.2; CASE 1.1; Common Cartridge 1.4 |
+| Locator | https://www.imsglobal.org/specifications/learning-tools-interoperability |
+| Source version | See citation |
+| Verified on | 2026-08-19 |
+| Jurisdiction | NOT-JURISDICTIONAL |
+| Applicability | REFERENCE |
+| Trigger | LMS embedding, assessment item exchange, analytics event emission, competency framework exchange or content packaging. |
+| Control family | INTEROPERABILITY |
+| Control status | NOT-APPLICABLE |
+| Evidence status | INAPPLICABLE |
+| Owning route | None |
+| Review requirement | none recorded |
+| Review trigger | LMS embedding or analytics emission proposal |
 
 **What the source states.** 1EdTech publishes each specification and operates certification programmes.
 

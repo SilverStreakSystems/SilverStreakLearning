@@ -3,6 +3,7 @@
 > Generated from `data/packages/governed-packages.json` by `scripts/gen-governed-package-docs.ts`. Do not edit by hand.
 > A package summarizes governed state. It is not a register, it carries no authority, and it closes nothing.
 
+
 Inclusion in a package, file recency, a successful digest match, and a passing test are all
 independent of authority. None of them promotes a record, closes a finding, closes a work
 package, changes a gate, or authorizes a successor package.

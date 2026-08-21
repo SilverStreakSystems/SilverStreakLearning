@@ -19,11 +19,9 @@ Makes uncertainty about impact visible instead of hiding it behind a number.
 ## Who this serves
 
 Human beneficiaries:
-
 - Students whose outcomes are the point of the work
 
 Enterprise beneficiaries:
-
 - Research, Governance, Product
 
 ## Trigger, entry, exit
@@ -31,12 +29,10 @@ Enterprise beneficiaries:
 Trigger: Sustained use exists long enough for outcomes to be examined.
 
 Entry criteria:
-
 - Sustained use is recorded.
 - An intended outcome was defined in advance.
 
 Exit criteria:
-
 - An outcome finding exists with its confidence and limits stated.
 
 ## Authority separation
@@ -153,7 +149,6 @@ No gate is modelled on this stream. Every stage exit is still evidence-bound.
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The data cannot support the outcome question asked.
 - Analysis would require identifiable student data outside the boundary.
 - The intended outcome was never defined in advance.
@@ -161,18 +156,15 @@ Refusal conditions:
 Rollback and recovery: Withdraw the outcome finding and any claim resting on it; record the retraction.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Outcome findings state their confidence and their limits.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -187,15 +179,12 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Outcome findings converted directly into marketing claims.
 
 Assumptions:
-
 - No real outcome data exists at this stage.
 
 Unknowns:
-
 - What outcome measures are defensible for low-incidence populations.
 
 Review trigger: New data, contradictory result, or a claim request resting on this finding.

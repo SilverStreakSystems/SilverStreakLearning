@@ -4,34 +4,34 @@
 
 6 obligations in this domain.
 
-| ID      | Title                                                                | Source                           | Applicability    | Control status     |
-| ------- | -------------------------------------------------------------------- | -------------------------------- | ---------------- | ------------------ |
-| OBL-001 | Education-record disclosure consent and use limitation               | 34 CFR 99.30, 99.31(a)(1)        | APPLIES-AT-PILOT | NOT-APPLICABLE     |
-| OBL-002 | Parental inspection and amendment of education records               | 34 CFR 99.10, 99.20-99.22        | APPLIES-AT-PILOT | SPECIFICATION-ONLY |
-| OBL-003 | Protected-category survey notice and consent                         | 20 U.S.C. 1232h; 34 CFR Part 98  | CONDITIONAL      | NOT-APPLICABLE     |
-| OBL-004 | IDEA confidentiality and destruction of special-education PII        | 34 CFR 300.610, 300.622, 300.624 | APPLIES-AT-PILOT | MISSING            |
-| OBL-005 | Verifiable parental consent for under-13 personal information        | 16 CFR 312.4, 312.5              | CONDITIONAL      | NOT-APPLICABLE     |
-| OBL-007 | Massachusetts student-record security and duty-limited vendor access | 603 CMR 23.02, 23.05             | APPLIES-AT-PILOT | SPECIFICATION-ONLY |
+| ID | Title | Source | Applicability | Control status |
+|---|---|---|---|---|
+| OBL-001 | Education-record disclosure consent and use limitation | 34 CFR 99.30, 99.31(a)(1) | APPLIES-AT-PILOT | NOT-APPLICABLE |
+| OBL-002 | Parental inspection and amendment of education records | 34 CFR 99.10, 99.20-99.22 | APPLIES-AT-PILOT | SPECIFICATION-ONLY |
+| OBL-003 | Protected-category survey notice and consent | 20 U.S.C. 1232h; 34 CFR Part 98 | CONDITIONAL | NOT-APPLICABLE |
+| OBL-004 | IDEA confidentiality and destruction of special-education PII | 34 CFR 300.610, 300.622, 300.624 | APPLIES-AT-PILOT | MISSING |
+| OBL-005 | Verifiable parental consent for under-13 personal information | 16 CFR 312.4, 312.5 | CONDITIONAL | NOT-APPLICABLE |
+| OBL-007 | Massachusetts student-record security and duty-limited vendor access | 603 CMR 23.02, 23.05 | APPLIES-AT-PILOT | SPECIFICATION-ONLY |
 
 ### OBL-001 — Education-record disclosure consent and use limitation
 
-| Field              | Value                                                                                          |
-| ------------------ | ---------------------------------------------------------------------------------------------- |
-| Source             | U.S. Department of Education (SRC-002)                                                         |
-| Authority type     | regulation                                                                                     |
-| Citation           | 34 CFR 99.30, 99.31(a)(1)                                                                      |
-| Locator            | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
-| Source version     | CFR annual edition revised 2025-07-01                                                          |
-| Verified on        | 2026-08-19                                                                                     |
-| Jurisdiction       | US-FEDERAL                                                                                     |
-| Applicability      | APPLIES-AT-PILOT                                                                               |
-| Trigger            | A district discloses real education records to SSLS under the school-official exception.       |
-| Control family     | PRIVACY                                                                                        |
-| Control status     | NOT-APPLICABLE                                                                                 |
-| Evidence status    | NOT-PRODUCED                                                                                   |
-| Owning route       | Deferred to the work package that first proposes district data ingestion                       |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                          |
-| Review trigger     | Before any district data-sharing agreement is signed                                           |
+| Field | Value |
+|---|---|
+| Source | U.S. Department of Education (SRC-002) |
+| Authority type | regulation |
+| Citation | 34 CFR 99.30, 99.31(a)(1) |
+| Locator | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
+| Source version | CFR annual edition revised 2025-07-01 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | APPLIES-AT-PILOT |
+| Trigger | A district discloses real education records to SSLS under the school-official exception. |
+| Control family | PRIVACY |
+| Control status | NOT-APPLICABLE |
+| Evidence status | NOT-PRODUCED |
+| Owning route | Deferred to the work package that first proposes district data ingestion |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | Before any district data-sharing agreement is signed |
 
 **What the source states.** 34 CFR 99.31(a)(1) states the conditions of the school-official exception. The regulation addresses the institution's disclosure, not vendor conduct in the abstract.
 
@@ -59,23 +59,23 @@
 
 ### OBL-002 — Parental inspection and amendment of education records
 
-| Field              | Value                                                                                          |
-| ------------------ | ---------------------------------------------------------------------------------------------- |
-| Source             | U.S. Department of Education (SRC-002)                                                         |
-| Authority type     | regulation                                                                                     |
-| Citation           | 34 CFR 99.10, 99.20-99.22                                                                      |
-| Locator            | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
-| Source version     | CFR annual edition revised 2025-07-01                                                          |
-| Verified on        | 2026-08-19                                                                                     |
-| Jurisdiction       | US-FEDERAL                                                                                     |
-| Applicability      | APPLIES-AT-PILOT                                                                               |
-| Trigger            | SSLS holds education-record data on behalf of a district.                                      |
-| Control family     | PRIVACY                                                                                        |
-| Control status     | SPECIFICATION-ONLY                                                                             |
-| Evidence status    | NOT-PRODUCED                                                                                   |
-| Owning route       | Deferred to the first persistence work package                                                 |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                          |
-| Review trigger     | First persistence design                                                                       |
+| Field | Value |
+|---|---|
+| Source | U.S. Department of Education (SRC-002) |
+| Authority type | regulation |
+| Citation | 34 CFR 99.10, 99.20-99.22 |
+| Locator | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
+| Source version | CFR annual edition revised 2025-07-01 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | APPLIES-AT-PILOT |
+| Trigger | SSLS holds education-record data on behalf of a district. |
+| Control family | PRIVACY |
+| Control status | SPECIFICATION-ONLY |
+| Evidence status | NOT-PRODUCED |
+| Owning route | Deferred to the first persistence work package |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | First persistence design |
 
 **What the source states.** The rights run against the educational agency or institution. The regulation imposes no direct vendor workflow.
 
@@ -103,23 +103,23 @@
 
 ### OBL-003 — Protected-category survey notice and consent
 
-| Field              | Value                                                                                                                                                                     |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Source             | U.S. Department of Education (SRC-003)                                                                                                                                    |
-| Authority type     | regulation                                                                                                                                                                |
-| Citation           | 20 U.S.C. 1232h; 34 CFR Part 98                                                                                                                                           |
-| Locator            | https://www.law.cornell.edu/cfr/text/34/part-98                                                                                                                           |
-| Source version     | CFR annual edition revised 2025-07-01                                                                                                                                     |
-| Verified on        | 2026-08-19                                                                                                                                                                |
-| Jurisdiction       | US-FEDERAL                                                                                                                                                                |
-| Applicability      | CONDITIONAL                                                                                                                                                               |
-| Trigger            | SSLS administers or co-administers a survey, analysis or evaluation of students for a federally funded recipient, or collects student personal information for marketing. |
-| Control family     | GOVERNANCE                                                                                                                                                                |
-| Control status     | NOT-APPLICABLE                                                                                                                                                            |
-| Evidence status    | INAPPLICABLE                                                                                                                                                              |
-| Owning route       | Gate condition on any future assessment or survey capability                                                                                                              |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                                                                                                     |
-| Review trigger     | First proposed student-facing instrument                                                                                                                                  |
+| Field | Value |
+|---|---|
+| Source | U.S. Department of Education (SRC-003) |
+| Authority type | regulation |
+| Citation | 20 U.S.C. 1232h; 34 CFR Part 98 |
+| Locator | https://www.law.cornell.edu/cfr/text/34/part-98 |
+| Source version | CFR annual edition revised 2025-07-01 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | CONDITIONAL |
+| Trigger | SSLS administers or co-administers a survey, analysis or evaluation of students for a federally funded recipient, or collects student personal information for marketing. |
+| Control family | GOVERNANCE |
+| Control status | NOT-APPLICABLE |
+| Evidence status | INAPPLICABLE |
+| Owning route | Gate condition on any future assessment or survey capability |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | First proposed student-facing instrument |
 
 **What the source states.** Part 98 addresses the funded recipient. It contains no school-official style vendor exception.
 
@@ -147,23 +147,23 @@
 
 ### OBL-004 — IDEA confidentiality and destruction of special-education PII
 
-| Field              | Value                                                                                               |
-| ------------------ | --------------------------------------------------------------------------------------------------- |
-| Source             | U.S. Department of Education (SRC-004)                                                              |
-| Authority type     | regulation                                                                                          |
-| Citation           | 34 CFR 300.610, 300.622, 300.624                                                                    |
-| Locator            | https://www.law.cornell.edu/cfr/text/34/300.610                                                     |
-| Source version     | Part 300 as amended; currency conflicted                                                            |
-| Verified on        | 2026-08-19                                                                                          |
-| Jurisdiction       | US-FEDERAL                                                                                          |
-| Applicability      | APPLIES-AT-PILOT                                                                                    |
-| Trigger            | A state or local education agency shares real Part B personally identifiable information with SSLS. |
-| Control family     | RETENTION & DELETION                                                                                |
-| Control status     | MISSING                                                                                             |
-| Evidence status    | NOT-PRODUCED                                                                                        |
-| Owning route       | First persistence work package                                                                      |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                               |
-| Review trigger     | First special-education data model                                                                  |
+| Field | Value |
+|---|---|
+| Source | U.S. Department of Education (SRC-004) |
+| Authority type | regulation |
+| Citation | 34 CFR 300.610, 300.622, 300.624 |
+| Locator | https://www.law.cornell.edu/cfr/text/34/300.610 |
+| Source version | Part 300 as amended; currency conflicted |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | APPLIES-AT-PILOT |
+| Trigger | A state or local education agency shares real Part B personally identifiable information with SSLS. |
+| Control family | RETENTION & DELETION |
+| Control status | MISSING |
+| Evidence status | NOT-PRODUCED |
+| Owning route | First persistence work package |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | First special-education data model |
 
 **What the source states.** The duty is placed on the Secretary, state agencies and local agencies. The regulation does not bind vendors directly.
 
@@ -191,23 +191,23 @@
 
 ### OBL-005 — Verifiable parental consent for under-13 personal information
 
-| Field              | Value                                                                                                                      |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Source             | Federal Trade Commission (SRC-006)                                                                                         |
-| Authority type     | regulation                                                                                                                 |
-| Citation           | 16 CFR 312.4, 312.5                                                                                                        |
-| Locator            | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf                                                       |
-| Source version     | Amended rule, effective 2025-06-23                                                                                         |
-| Verified on        | 2026-08-19                                                                                                                 |
-| Jurisdiction       | US-FEDERAL                                                                                                                 |
-| Applicability      | CONDITIONAL                                                                                                                |
-| Trigger            | SSLS operates a child-directed service or gains actual knowledge of collecting personal information from a child under 13. |
-| Control family     | PRIVACY                                                                                                                    |
-| Control status     | NOT-APPLICABLE                                                                                                             |
-| Evidence status    | INAPPLICABLE                                                                                                               |
-| Owning route       | Gate condition on any student-facing capability                                                                            |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                                                      |
-| Review trigger     | Any proposal for a student-facing surface                                                                                  |
+| Field | Value |
+|---|---|
+| Source | Federal Trade Commission (SRC-006) |
+| Authority type | regulation |
+| Citation | 16 CFR 312.4, 312.5 |
+| Locator | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf |
+| Source version | Amended rule, effective 2025-06-23 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-FEDERAL |
+| Applicability | CONDITIONAL |
+| Trigger | SSLS operates a child-directed service or gains actual knowledge of collecting personal information from a child under 13. |
+| Control family | PRIVACY |
+| Control status | NOT-APPLICABLE |
+| Evidence status | INAPPLICABLE |
+| Owning route | Gate condition on any student-facing capability |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | Any proposal for a student-facing surface |
 
 **What the source states.** The rule addresses operators of child-directed or actual-knowledge services. The school-consent pathway comes from FTC guidance interpreting the rule.
 
@@ -235,23 +235,23 @@
 
 ### OBL-007 — Massachusetts student-record security and duty-limited vendor access
 
-| Field              | Value                                                                                    |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| Source             | Massachusetts Board of Elementary and Secondary Education (SRC-007)                      |
-| Authority type     | regulation                                                                               |
-| Citation           | 603 CMR 23.02, 23.05                                                                     |
-| Locator            | https://www.doe.mass.edu/lawsregs/603cmr23.html                                          |
-| Source version     | Amended 2026-01-27                                                                       |
-| Verified on        | 2026-08-19                                                                               |
-| Jurisdiction       | US-MA                                                                                    |
-| Applicability      | APPLIES-AT-PILOT                                                                         |
-| Trigger            | A Massachusetts district grants SSLS access to student records under a service contract. |
-| Control family     | IDENTITY & ACCESS                                                                        |
-| Control status     | SPECIFICATION-ONLY                                                                       |
-| Evidence status    | NOT-PRODUCED                                                                             |
-| Owning route       | First persistence and authentication work package                                        |
-| Review requirement | LEGAL REVIEW REQUIRED                                                                    |
-| Review trigger     | First Massachusetts district agreement                                                   |
+| Field | Value |
+|---|---|
+| Source | Massachusetts Board of Elementary and Secondary Education (SRC-007) |
+| Authority type | regulation |
+| Citation | 603 CMR 23.02, 23.05 |
+| Locator | https://www.doe.mass.edu/lawsregs/603cmr23.html |
+| Source version | Amended 2026-01-27 |
+| Verified on | 2026-08-19 |
+| Jurisdiction | US-MA |
+| Applicability | APPLIES-AT-PILOT |
+| Trigger | A Massachusetts district grants SSLS access to student records under a service contract. |
+| Control family | IDENTITY & ACCESS |
+| Control status | SPECIFICATION-ONLY |
+| Evidence status | NOT-PRODUCED |
+| Owning route | First persistence and authentication work package |
+| Review requirement | LEGAL REVIEW REQUIRED |
+| Review trigger | First Massachusetts district agreement |
 
 **What the source states.** The duty is placed on the principal, superintendent and school committee. The regulation does not create a direct vendor duty or penalty.
 

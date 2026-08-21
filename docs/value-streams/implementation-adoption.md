@@ -19,11 +19,9 @@ Shows whether people can actually use the thing, not just whether it exists.
 ## Who this serves
 
 Human beneficiaries:
-
 - Teachers and staff whose daily work the system touches
 
 Enterprise beneficiaries:
-
 - Support, Product, Learning Design
 
 ## Trigger, entry, exit
@@ -31,11 +29,9 @@ Enterprise beneficiaries:
 Trigger: A deployment goes live.
 
 Entry criteria:
-
 - Go-live is recorded and support is available.
 
 Exit criteria:
-
 - Sustained use, or a recorded finding explaining non-adoption.
 
 ## Authority separation
@@ -170,26 +166,22 @@ Decide whether Implementation → Adoption may advance past adoption disposition
 ## Refusal and rollback
 
 Refusal conditions:
-
 - Adoption would require surveillance-style measurement of staff.
 - Barriers are structural and cannot be resolved by support.
 
 Rollback and recovery: Reduce scope of use, restore prior practice, and record the reason.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Barriers are named with owners.
 - Support burden is recorded rather than absorbed silently.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -204,16 +196,13 @@ Findings from this stream return to: `feedback-decision`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Measuring individuals rather than the system.
 - Reading login counts as adoption.
 
 Assumptions:
-
 - Adoption is a shared responsibility, not solely the customer's.
 
 Unknowns:
-
 - What sustained use looks like in low-incidence programs.
 
 Review trigger: Sharp change in use, or an unresolved barrier.

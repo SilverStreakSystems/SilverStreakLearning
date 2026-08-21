@@ -12,46 +12,46 @@ this package never collapses them into a compliance statement.
 
 ## Canonical data
 
-| File                                        | Contents                                   |
-| ------------------------------------------- | ------------------------------------------ |
-| `data/governance/OBLIGATION_SCHEMA.json`    | Schema for both registers                  |
-| `data/governance/external-authorities.json` | 43 verified external sources               |
-| `data/governance/obligations.json`          | 34 interpreted obligations                 |
-| `data/governance/obligation-context.json`   | Conflicts, stale references, data triggers |
+| File | Contents |
+|---|---|
+| `data/governance/OBLIGATION_SCHEMA.json` | Schema for both registers |
+| `data/governance/external-authorities.json` | 43 verified external sources |
+| `data/governance/obligations.json` | 34 interpreted obligations |
+| `data/governance/obligation-context.json` | Conflicts, stale references, data triggers |
 
 Every document in this directory whose header says so is a projection of that data.
 
 ## Documents
 
-| Document                         | Purpose                                                             |
-| -------------------------------- | ------------------------------------------------------------------- |
-| `METHOD_AND_LIMITS.md`           | How sources were verified and what that verification cannot support |
-| `JURISDICTION_SCOPE.md`          | Which jurisdictions are in scope and why                            |
-| `EXTERNAL_AUTHORITY_REGISTER.md` | The source register                                                 |
-| `OBLIGATION_REGISTER.md`         | The full obligation register                                        |
-| `APPLICABILITY_MATRIX.md`        | Obligations by applicability state                                  |
-| `GAP_REGISTER.md`                | Where a required control is absent, partial or specified only       |
-| `CONTROL_FAMILY_MAP.md`          | Obligations grouped by control family                               |
-| `EVIDENCE_REQUIREMENTS.md`       | What evidence each obligation would need                            |
-| `REVIEW_TRIGGERS.md`             | What event forces a review, and which need qualified review         |
-| `CONFLICT_REGISTER.md`           | Source conflicts and ambiguities                                    |
-| `STALE_REFERENCE_REGISTER.md`    | Project references checked against verified current sources         |
-| `DATA_TRIGGER_MAP.md`            | Data classes and the obligations each would activate                |
-| `REFUSED_CLAIMS.md`              | Wording this baseline will not produce                              |
-| `CLAIMS_RECONCILIATION.md`       | Claims Register reconciliation                                      |
-| `DEC-012-BRIEF.md`               | Decision brief prepared for the owner                               |
-| `EXIT_CRITERIA_MATRIX.md`        | Exit criteria and their state                                       |
-| `CLOSURE_RECOMMENDATION.md`      | Recommendation, with limitations preserved                          |
-| `HANDOFF_TO_WP-007.md`           | What carries forward                                                |
-| `domain-student-privacy.md`      | Student privacy obligations                                         |
-| `domain-accessibility.md`        | Accessibility obligations                                           |
-| `domain-security.md`             | Security obligations                                                |
-| `domain-supply-chain.md`         | Software supply chain obligations                                   |
-| `domain-interoperability.md`     | Interoperability obligations                                        |
-| `domain-ai-governance.md`        | AI governance obligations                                           |
-| `domain-records-retention.md`    | Records retention and deletion obligations                          |
-| `domain-procurement.md`          | Procurement and attestation obligations                             |
-| `domain-public-surface.md`       | Public surface and claims obligations                               |
+| Document | Purpose |
+|---|---|
+| `METHOD_AND_LIMITS.md` | How sources were verified and what that verification cannot support |
+| `JURISDICTION_SCOPE.md` | Which jurisdictions are in scope and why |
+| `EXTERNAL_AUTHORITY_REGISTER.md` | The source register |
+| `OBLIGATION_REGISTER.md` | The full obligation register |
+| `APPLICABILITY_MATRIX.md` | Obligations by applicability state |
+| `GAP_REGISTER.md` | Where a required control is absent, partial or specified only |
+| `CONTROL_FAMILY_MAP.md` | Obligations grouped by control family |
+| `EVIDENCE_REQUIREMENTS.md` | What evidence each obligation would need |
+| `REVIEW_TRIGGERS.md` | What event forces a review, and which need qualified review |
+| `CONFLICT_REGISTER.md` | Source conflicts and ambiguities |
+| `STALE_REFERENCE_REGISTER.md` | Project references checked against verified current sources |
+| `DATA_TRIGGER_MAP.md` | Data classes and the obligations each would activate |
+| `REFUSED_CLAIMS.md` | Wording this baseline will not produce |
+| `CLAIMS_RECONCILIATION.md` | Claims Register reconciliation |
+| `DEC-012-BRIEF.md` | Decision brief prepared for the owner |
+| `EXIT_CRITERIA_MATRIX.md` | Exit criteria and their state |
+| `CLOSURE_RECOMMENDATION.md` | Recommendation, with limitations preserved |
+| `HANDOFF_TO_WP-007.md` | What carries forward |
+| `domain-student-privacy.md` | Student privacy obligations |
+| `domain-accessibility.md` | Accessibility obligations |
+| `domain-security.md` | Security obligations |
+| `domain-supply-chain.md` | Software supply chain obligations |
+| `domain-interoperability.md` | Interoperability obligations |
+| `domain-ai-governance.md` | AI governance obligations |
+| `domain-records-retention.md` | Records retention and deletion obligations |
+| `domain-procurement.md` | Procurement and attestation obligations |
+| `domain-public-surface.md` | Public surface and claims obligations |
 
 ## Boundaries
 

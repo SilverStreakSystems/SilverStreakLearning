@@ -19,11 +19,9 @@ Keeps the gap between required capability and available capacity honest.
 ## Who this serves
 
 Human beneficiaries:
-
 - Future staff who deserve a defined, sustainable role
 
 Enterprise beneficiaries:
-
 - Every function that depends on capacity
 
 ## Trigger, entry, exit
@@ -31,11 +29,9 @@ Enterprise beneficiaries:
 Trigger: A capability gap or unsustainable workload is recorded.
 
 Entry criteria:
-
 - A capability gap exists with evidence of the need.
 
 Exit criteria:
-
 - A staffing decision is recorded, including a decision not to hire.
 
 ## Authority separation
@@ -170,7 +166,6 @@ Decide whether Hire → Develop → Retain may advance past sustainability revie
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The role would hold both builder and validator authority for the same work.
 - The gap can be closed by removing work rather than adding a person.
 - Funding is not established.
@@ -178,18 +173,15 @@ Refusal conditions:
 Rollback and recovery: Withdraw a role definition and record why the gap will be handled differently.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Capability gaps carry an explicit staffing disposition.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -204,16 +196,13 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Hiring to relieve symptoms of a process problem.
 - Independence violated by role design.
 
 Assumptions:
-
 - Zero staff at this stage; every role is a candidate.
 
 Unknowns:
-
 - Which roles must be first when funding exists.
 
 Review trigger: New capability gap, workload evidence, or funding change.

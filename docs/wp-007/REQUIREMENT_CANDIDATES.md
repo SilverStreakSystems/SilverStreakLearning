@@ -3,6 +3,7 @@
 > Generated from `data/historical/historical-requirements.json` by `scripts/gen-historical-requirement-docs.ts`. Do not edit by hand.
 > Every record is a pre-disposition candidate. Nothing here is required now, satisfied, or accepted.
 
+
 ## Extraction boundary
 
 WP-007 cycle 2 extracts candidate requirements from exactly one named historical source, HS-011, the ULW-AS-001 v1.3 accessibility acceptance contract as carried in this repository at docs/ACCESSIBILITY_ACCEPTANCE.md, bound to commit 6e447103fcb65c2054d2080a12847777960a4642. Every normative sentence and every table row of that document is extracted; nothing outside that file is read, and no second source is opened. Candidates are pre-disposition records: no owner disposition, no conformance state, and no implementation, testing, release, or claimability meaning is attached to any record. WP-007 cycle 4 adds exactly one further source under DEC-019: HS-023, Section 11 of the digest-verified historical August 5, 2026 v0.2.0 clean-room rewrite PDF, printed pages 20-21. Every normative statement on those two pages is extracted and nothing outside Section 11 of that document is read as an extraction surface. Candidates from the two sources are kept separate; they are related in data/historical/restatement-index.json and are never merged, deduplicated, or ranked.

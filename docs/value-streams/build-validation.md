@@ -19,11 +19,9 @@ Makes the difference between planned and executed checks visible.
 ## Who this serves
 
 Human beneficiaries:
-
 - Users who rely on the thing actually working
 
 Enterprise beneficiaries:
-
 - Quality, Governance, Release
 
 ## Trigger, entry, exit
@@ -31,12 +29,10 @@ Enterprise beneficiaries:
 Trigger: An implementation candidate is offered for validation.
 
 Entry criteria:
-
 - An implementation candidate exists.
 - The governing requirement is testable.
 
 Exit criteria:
-
 - A validation disposition is recorded with evidence bound to a version.
 
 ## Authority separation
@@ -191,7 +187,6 @@ Decide whether Build → Validation may advance past validation disposition.
 ## Refusal and rollback
 
 Refusal conditions:
-
 - The validator is not independent of the builder.
 - Preconditions for the check are not met.
 - The requirement is not testable as written.
@@ -199,18 +194,15 @@ Refusal conditions:
 Rollback and recovery: Failed validation returns the work to remediation with named findings.
 
 Escalations:
-
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
-
 - Executed checks are distinguishable from planned checks.
 
 Recorded metrics:
-
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -225,16 +217,13 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
-
 - Planned tests are counted as evidence.
 - The builder validates their own work.
 
 Assumptions:
-
 - At current scale, independence is procedural rather than organizational.
 
 Unknowns:
-
 - When independent external validation becomes mandatory.
 
 Review trigger: Any change to the implementation under validation.

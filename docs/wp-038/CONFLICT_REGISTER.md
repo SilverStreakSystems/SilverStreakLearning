@@ -5,14 +5,14 @@
 Where sources disagreed, could not be retrieved, or could not be dated. None of these is resolved by
 assumption.
 
-| ID      | Title                                                                       | Sources                   | State    | Owner                                           | Route                                                                                                             |
-| ------- | --------------------------------------------------------------------------- | ------------------------- | -------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| CNF-001 | eCFR currency metadata inconsistent for Title 34                            | SRC-002, SRC-003, SRC-004 | OPEN     | Founder / Operator, with qualified legal review | Manual eCFR check before any determination relies on the amendment state of 34 CFR Part 99, 98 or 300.            |
-| CNF-002 | CycloneDX ratified standard and latest specification are different versions | SRC-028                   | ROUTED   | Founder / Operator                              | The evidence pipeline must state the CycloneDX specVersion it emits rather than referring to CycloneDX generally. |
-| CNF-003 | Massachusetts personal information is narrower than education-record PII    | SRC-007, SRC-011, SRC-012 | RESOLVED | Founder / Operator, with qualified legal review | The register keeps the two regimes on separate obligation records and never merges their triggers.                |
-| CNF-004 | Regulated accessibility version differs from the current W3C Recommendation | SRC-016, SRC-017, SRC-018 | ROUTED   | Founder / Operator                              | Owner decision recorded through OBL-014, binding ULW-AS-001 v1.3 to a named WCAG version.                         |
-| CNF-005 | EOTSS accessibility policy scope unresolved                                 | SRC-015                   | OPEN     | Founder / Operator, with qualified legal review | Retrieve the policy text and its scope clause before any Massachusetts procurement response.                      |
-| CNF-006 | COPPA statutory citation range varies across FTC pages                      | SRC-005                   | OPEN     | Founder / Operator                              | Confirm against the U.S. Code before the citation appears in any formal memo.                                     |
+| ID | Title | Sources | State | Owner | Route |
+|---|---|---|---|---|---|
+| CNF-001 | eCFR currency metadata inconsistent for Title 34 | SRC-002, SRC-003, SRC-004 | OPEN | Founder / Operator, with qualified legal review | Manual eCFR check before any determination relies on the amendment state of 34 CFR Part 99, 98 or 300. |
+| CNF-002 | CycloneDX ratified standard and latest specification are different versions | SRC-028 | ROUTED | Founder / Operator | The evidence pipeline must state the CycloneDX specVersion it emits rather than referring to CycloneDX generally. |
+| CNF-003 | Massachusetts personal information is narrower than education-record PII | SRC-007, SRC-011, SRC-012 | RESOLVED | Founder / Operator, with qualified legal review | The register keeps the two regimes on separate obligation records and never merges their triggers. |
+| CNF-004 | Regulated accessibility version differs from the current W3C Recommendation | SRC-016, SRC-017, SRC-018 | ROUTED | Founder / Operator | Owner decision recorded through OBL-014, binding ULW-AS-001 v1.3 to a named WCAG version. |
+| CNF-005 | EOTSS accessibility policy scope unresolved | SRC-015 | OPEN | Founder / Operator, with qualified legal review | Retrieve the policy text and its scope clause before any Massachusetts procurement response. |
+| CNF-006 | COPPA statutory citation range varies across FTC pages | SRC-005 | OPEN | Founder / Operator | Confirm against the U.S. Code before the citation appears in any formal memo. |
 
 ## Detail
 
