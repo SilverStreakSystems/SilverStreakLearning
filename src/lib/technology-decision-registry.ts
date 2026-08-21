@@ -22,11 +22,17 @@ import {
   type WorkflowRecord,
   type WorkflowRegister,
   type WorksheetSummary,
+  type ComparisonResult,
+  type SourceExpression,
+  CLASSIFIER_VERSION,
+  PARSER_VERSION,
   classifyWorkflow,
+  compareRecommendation,
+  contentFingerprint,
   decisionAnswersSchema,
   decisionProcessSchema,
   evaluate,
-  readSuppliedOptions,
+  parseSourceRecommendation,
   toDecisionAnswers,
   workflowRegisterSchema,
 } from "../domain/technology-decisions";
@@ -76,88 +82,86 @@ export interface AnalyzedWorkflow {
   derived: DerivedAnswers;
   answers: DecisionAnswers;
   evaluation: EvaluationResult;
+  /** How the supplied recommendation was read. Never a replacement for it. */
+  expression: SourceExpression;
+  /** The single resolved relation between supplied and derived option sets. */
+  comparison: ComparisonResult;
+  /** Legacy coarse status, derived from `comparison`. Kept for existing views. */
   drift: DriftAssessment;
 }
 
-function sameSet(a: OptionId[], b: OptionId[]): boolean {
-  return a.length === b.length && a.every((id) => b.includes(id));
-}
-
-function subsetOf(a: OptionId[], b: OptionId[]): boolean {
-  return a.every((id) => b.includes(id));
-}
-
-function assessDrift(supplied: OptionId[], evaluation: EvaluationResult): DriftAssessment {
-  const derived = evaluation.optionIds;
-  if (supplied.length === 0) {
-    return {
-      status: "source-unreadable",
-      suppliedOptionIds: supplied,
-      derivedOptionIds: derived,
-      explanation:
-        "The supplied recommendation does not name an option number that can be read mechanically, so the two cannot be compared.",
-    };
-  }
-  if (evaluation.outcome === "unresolved") {
-    return {
-      status: "derived-unresolved",
-      suppliedOptionIds: supplied,
-      derivedOptionIds: derived,
-      explanation:
-        "The evaluator abstained, so there is no derived result to compare against the supplied recommendation.",
-    };
-  }
-  if (sameSet(supplied, derived)) {
-    return {
-      status: "agrees",
-      suppliedOptionIds: supplied,
-      derivedOptionIds: derived,
-      explanation: "The derived option set matches the supplied recommendation.",
-    };
-  }
-  if (subsetOf(derived, supplied)) {
-    return {
-      status: "derived-narrower",
-      suppliedOptionIds: supplied,
-      derivedOptionIds: derived,
-      explanation: "The evaluator reaches a smaller option set than the source recommended.",
-    };
-  }
-  if (subsetOf(supplied, derived)) {
-    return {
-      status: "derived-broader",
-      suppliedOptionIds: supplied,
-      derivedOptionIds: derived,
-      explanation: "The evaluator reaches a larger option set than the source recommended.",
-    };
-  }
-  return {
-    status: "differs",
-    suppliedOptionIds: supplied,
-    derivedOptionIds: derived,
-    explanation: "The evaluator and the source recommend different options.",
+/**
+ * The coarse legacy status is a projection of the resolved relation, so the two
+ * can never disagree.
+ */
+function toLegacyStatus(comparison: ComparisonResult): DriftAssessment {
+  const shared = {
+    suppliedOptionIds: comparison.suppliedOptionIds,
+    derivedOptionIds: comparison.derivedOptionIds,
+    explanation: comparison.explanation,
   };
+  switch (comparison.relation) {
+    case "EXACT":
+      return { status: "agrees", ...shared };
+    case "DERIVED-PROPER-SUBSET":
+      return { status: "derived-narrower", ...shared };
+    case "DERIVED-PROPER-SUPERSET":
+      return { status: "derived-broader", ...shared };
+    case "SOURCE-UNPARSEABLE":
+      return { status: "source-unreadable", ...shared };
+    case "DERIVED-ABSTAIN":
+      return { status: "derived-unresolved", ...shared };
+    default:
+      return { status: "differs", ...shared };
+  }
 }
 
 function analyze(record: WorkflowRecord): AnalyzedWorkflow {
   const derived = classifyWorkflow(record.source);
   const answers = decisionAnswersSchema.parse(toDecisionAnswers(derived));
   const evaluation = evaluate(answers);
+  const expression = parseSourceRecommendation(record.source.recommended_solution);
+  const comparison = compareRecommendation(expression, evaluation);
   return {
     record,
     derived,
     answers,
     evaluation,
-    drift: assessDrift(readSuppliedOptions(record.source.recommended_solution), evaluation),
+    expression,
+    comparison,
+    drift: toLegacyStatus(comparison),
   };
 }
 
-let analyzedCache: AnalyzedWorkflow[] | null = null;
+/**
+ * The fingerprint of every input the analysis depends on.
+ *
+ * The cache is keyed by this value rather than held in a bare module variable,
+ * so a changed register, a changed TDP contract, or a changed parser version
+ * cannot serve a stale analysis. Reordering source rows changes nothing but the
+ * order of the output, so the fingerprint is computed over sorted records.
+ */
+export function analysisFingerprint(): string {
+  return contentFingerprint({
+    parser_version: PARSER_VERSION,
+    classifier_version: CLASSIFIER_VERSION,
+    decision_process: DECISION_PROCESS,
+    records: [...WORKFLOW_REGISTER.records].sort((a, b) =>
+      a.workflow_id.localeCompare(b.workflow_id),
+    ),
+  });
+}
 
-/** Every analyzed workflow, derived once and memoized. */
+const analyzedCache = new Map<string, AnalyzedWorkflow[]>();
+
+/** Every analyzed workflow, derived once per distinct input fingerprint. */
 export function analyzedWorkflows(): AnalyzedWorkflow[] {
-  analyzedCache ??= WORKFLOW_REGISTER.records.map(analyze);
-  return analyzedCache;
+  const key = analysisFingerprint();
+  const cached = analyzedCache.get(key);
+  if (cached) return cached;
+  const computed = WORKFLOW_REGISTER.records.map(analyze);
+  analyzedCache.set(key, computed);
+  return computed;
 }
 
 export function workflowById(workflowId: string): AnalyzedWorkflow | undefined {
