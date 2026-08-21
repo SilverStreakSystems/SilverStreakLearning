@@ -18,11 +18,11 @@ Historical requirement candidates are extracted from two historical sources into
 - `data/historical/historical-sources.json`
 - `data/historical/restatement-index.json`
 
-## PDA-R02 — Seventeen-route historical evidence versus the current route inventory
+## PDA-R02 — Version-bound route counts versus the current route inventory
 
-The WP-006 route manifest records seventeen routes at commit 70c1f89. The current registry and route files record a larger set. The old count is version-bound evidence, not current truth.
+Three route counts exist and must stay separate. The WP-006 manifest at commit 70c1f891c5d341c60132d0109979042004425a4b carries 25 rows RT-000 through RT-024 and states 30 route files, 29 addressable routes plus the root layout, and 19 paths in ROUTE_REGISTRY. A seventeen-route count is reported separately by the external August 5 v0.2.0 package, for which no exact repository source locator exists in the tracked tree. The live inventory is derived from src/lib/route-registry.ts and src/routes at the current commit.
 
-**Resolution rule.** Cite the current registry for present state; cite the manifest only with its commit.
+**Resolution rule.** Cite the live inventory for present state. Cite the WP-006 manifest only with its exact counts and full commit. Never attach the external seventeen-route count to the WP-006 manifest or to the current inventory.
 
 **Owner decision required:** No
 
@@ -34,9 +34,9 @@ The WP-006 route manifest records seventeen routes at commit 70c1f89. The curren
 
 ## PDA-R03 — Product definition source of truth
 
-No single document is declared controlling for the product definition; three documents each carry part of it.
+No single document is declared controlling for the product definition; three documents each carry part of it, and each covers a different scope: SSLS the modular ecosystem, Silver Streak Learning the instructional educator-facing product, and Product Alpha 001 the bounded local synthetic increment.
 
-**Resolution rule.** Owner names one controlling location before Wave 1 writes a Product Brief.
+**Resolution rule.** The recommended controlling location is a new ecosystem-level brief at docs/product/SSLS_PRODUCT_BRIEF.md that links docs/CURRENT_STATE.md and docs/product-alpha-001/ENTRY_SPECIFICATION.md as bounded current projections rather than replacing them. The recommendation is not an owner disposition and creates no document. The owner names the controlling location before Wave 1 writes a Product Brief.
 
 **Owner decision required:** Yes
 
@@ -70,3 +70,16 @@ The vulnerability scan is recorded NOT COMPLETED because the external advisory s
 
 - `scripts/evidence/supply-chain.mjs`
 - `scripts/evidence/baseline.mjs`
+
+## PDA-R06 — Personal-data boundary scan limitation
+
+The boundary scan scanned 521 tracked files and reported one candidate outside synthetic fixtures, at src/test/evidence-output-safety.test.ts line 115, which is a constructed scanner-test token and not a real-person record. Pattern matching cannot distinguish real personal data from synthetic data that resembles it, and no-match does not prove absence. EV-PII therefore remains review-required.
+
+**Resolution rule.** State that real personal data is prohibited and not intentionally introduced and that fixtures are synthetic. Never state categorical absence of personal data. Preserve EV-PII as review-required; no reviewed-disposition mechanism exists in this repository that could truthfully close the narrow finding.
+
+**Owner decision required:** No
+
+**Sources**
+
+- `scripts/evidence/boundary.mjs`
+- `src/test/evidence-output-safety.test.ts`

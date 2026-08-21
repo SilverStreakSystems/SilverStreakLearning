@@ -10,8 +10,8 @@ The recorded baseline is accepted as the reviewed starting point for the artifac
 
 **Consequences**
 
-- Wave 1 may be authorized in a later message and extends the named canonical sources rather than creating new ones.
-- The seven recommended extension locations become binding for the suite.
+- Wave 1 may be authorized in a separate later message; acceptance alone authorizes nothing.
+- The seven corrected extension locations recorded here become binding for the suite, including the new ecosystem-level Product Brief location docs/product/SSLS_PRODUCT_BRIEF.md, which is not created by this acceptance.
 - Nothing about Gate A, work-package state, release, or conformance changes.
 
 **Smallest next action.** Record one accepted decision that names this snapshot and authorizes Wave 1 scope only.

@@ -1,13 +1,14 @@
 {
   "snapshot_id": "PDA-WAVE0",
-  "snapshot_version": "0.1.0",
+  "snapshot_version": "0.2.0",
   "controlling_decision": "DEC-023",
   "authority_class": "candidate",
   "boundary": [
     "This snapshot maps what exists. It approves nothing, closes nothing, adopts no requirement, and promotes no claim.",
     "No owner disposition is recorded here. The disposition packet presents choices only.",
     "Waves 1 through 6 of the Product Definition & Assurance Artifact Suite are not authorized by this snapshot.",
-    "Synthetic and fictional records only. No personal data exists in this repository.",
+    "Real personal data is prohibited and was not intentionally introduced. Product fixtures are declared synthetic and fictional.",
+    "The automated personal-data boundary scan (EV-PII) remains review-required: it scanned 521 tracked files and reported one candidate outside synthetic fixtures, inspected as a constructed scanner-test token at src/test/evidence-output-safety.test.ts line 115. Pattern scanning cannot establish the absence of personal data, and absence is not certified here.",
     "No database, backend authentication, tenancy, row-level security, live integration, provider execution, or production AI exists in the tracked tree.",
     "The published surface is a public synthetic prototype. It is not access controlled, not released, and is not updated by this increment.",
     "A passing test is not validation, release, compliance, or public-claim authority.",
@@ -76,9 +77,10 @@
         "Explicit statement of what the synthetic prototype is not"
       ],
       "conflicts": [
-        "Product framing is distributed across a generated current-state projection, a walkthrough protocol, and an entry specification, with no one document declared controlling."
+        "Product framing is distributed across a generated current-state projection, a walkthrough protocol, and an entry specification, with no one document declared controlling.",
+        "Three scopes must not be collapsed: SSLS as the modular ecosystem, Silver Streak Learning as the instructional educator-facing product, and Product Alpha 001 as the bounded local synthetic increment."
       ],
-      "recommended_extension": "Extend docs/product-alpha-001/ENTRY_SPECIFICATION.md as the controlling brief; do not create a parallel brief document.",
+      "recommended_extension": "Create an ecosystem-level controlling brief at docs/product/SSLS_PRODUCT_BRIEF.md that links docs/CURRENT_STATE.md and docs/product-alpha-001/ENTRY_SPECIFICATION.md as bounded current projections. It must not replace them and must not let Product Alpha 001 stand in for the whole product definition. This is a recommended location only; it is not created by Wave 0 and requires the owner decision recorded at PDA-R03.",
       "states": {
         "truth": "declared",
         "authority": "candidate",
@@ -129,9 +131,11 @@
         "Declared exemptions for framework and generated surfaces"
       ],
       "conflicts": [
-        "docs/wp-006/ROUTE_MANIFEST.md records seventeen routes at commit 70c1f89 and is version-bound historical evidence, not the current inventory."
+        "docs/wp-006/ROUTE_MANIFEST.md is version-bound historical evidence at commit 70c1f891c5d341c60132d0109979042004425a4b. It carries 25 manifest rows RT-000 through RT-024 and states 30 route files, 29 addressable routes plus the root layout, and 19 paths registered in ROUTE_REGISTRY. It does not record seventeen routes.",
+        "A separate seventeen-route count is reported by the August 5 v0.2.0 package. No exact repository source locator for that count exists in the tracked tree, so it is external, version-bound historical evidence and must never be attached to the WP-006 manifest.",
+        "The current inventory is derived live from src/lib/route-registry.ts and src/routes and supersedes every historical count for present-state statements."
       ],
-      "recommended_extension": "Extend src/lib/route-registry.ts with classification fields; keep docs/wp-006/ROUTE_MANIFEST.md as historical evidence.",
+      "recommended_extension": "Extend src/lib/route-registry.ts with classification fields; keep docs/wp-006/ROUTE_MANIFEST.md as historical evidence cited with its exact counts and commit.",
       "states": {
         "truth": "observed",
         "authority": "controlling",
@@ -219,7 +223,7 @@
       ],
       "conflicts": [
         "The vulnerability scan remains NOT COMPLETED because the external advisory source is unavailable; this must not be converted to a pass.",
-        "The personal-data boundary scan holds one review-required candidate."
+        "The personal-data boundary scan (EV-PII) is review-required: 521 files scanned, one candidate outside synthetic fixtures at src/test/evidence-output-safety.test.ts line 115, inspected and found to be a constructed scanner-test token rather than a real-person record. The scan does not establish the absence of personal data and its status stays review-required."
       ],
       "recommended_extension": "Add a threat register under docs/trust/ that cites existing evidence identifiers rather than restating scan output.",
       "states": {
@@ -249,14 +253,15 @@
         "Entry and exit criteria per verification run"
       ],
       "conflicts": [
-        "TTR-001 whole-interface execution is deferred and NOT RUN; suite passes do not substitute for it."
+        "TTR-001 whole-interface execution is deferred and NOT RUN; suite passes do not substitute for it.",
+        "The executable suite is implemented, but the requested Test Plan artifact is not: no canonical test-case register and no entry or exit criteria exist. The artifact is therefore partially-implemented, and an executing suite must never be read as a completed Test Plan."
       ],
       "recommended_extension": "Derive a test case register from the existing suite, generated rather than hand-kept, after owner acceptance.",
       "states": {
         "truth": "observed",
         "authority": "candidate",
         "lifecycle": "active",
-        "implementation": "implemented",
+        "implementation": "partially-implemented",
         "validation": "partially-tested",
         "release": "not-released",
         "claim_eligibility": "internal-only"
@@ -278,17 +283,17 @@
     },
     {
       "entry_id": "PDA-R02",
-      "subject": "Seventeen-route historical evidence versus the current route inventory",
-      "observation": "The WP-006 route manifest records seventeen routes at commit 70c1f89. The current registry and route files record a larger set. The old count is version-bound evidence, not current truth.",
-      "resolution_rule": "Cite the current registry for present state; cite the manifest only with its commit.",
+      "subject": "Version-bound route counts versus the current route inventory",
+      "observation": "Three route counts exist and must stay separate. The WP-006 manifest at commit 70c1f891c5d341c60132d0109979042004425a4b carries 25 rows RT-000 through RT-024 and states 30 route files, 29 addressable routes plus the root layout, and 19 paths in ROUTE_REGISTRY. A seventeen-route count is reported separately by the external August 5 v0.2.0 package, for which no exact repository source locator exists in the tracked tree. The live inventory is derived from src/lib/route-registry.ts and src/routes at the current commit.",
+      "resolution_rule": "Cite the live inventory for present state. Cite the WP-006 manifest only with its exact counts and full commit. Never attach the external seventeen-route count to the WP-006 manifest or to the current inventory.",
       "owner_decision_required": false,
       "sources": ["docs/wp-006/ROUTE_MANIFEST.md", "src/lib/route-registry.ts", "src/routes"]
     },
     {
       "entry_id": "PDA-R03",
       "subject": "Product definition source of truth",
-      "observation": "No single document is declared controlling for the product definition; three documents each carry part of it.",
-      "resolution_rule": "Owner names one controlling location before Wave 1 writes a Product Brief.",
+      "observation": "No single document is declared controlling for the product definition; three documents each carry part of it, and each covers a different scope: SSLS the modular ecosystem, Silver Streak Learning the instructional educator-facing product, and Product Alpha 001 the bounded local synthetic increment.",
+      "resolution_rule": "The recommended controlling location is a new ecosystem-level brief at docs/product/SSLS_PRODUCT_BRIEF.md that links docs/CURRENT_STATE.md and docs/product-alpha-001/ENTRY_SPECIFICATION.md as bounded current projections rather than replacing them. The recommendation is not an owner disposition and creates no document. The owner names the controlling location before Wave 1 writes a Product Brief.",
       "owner_decision_required": true,
       "sources": ["docs/CURRENT_STATE.md", "docs/product-alpha-001/ENTRY_SPECIFICATION.md"]
     },
@@ -307,6 +312,14 @@
       "resolution_rule": "Preserve NOT COMPLETED. Do not convert an unavailable source into a pass.",
       "owner_decision_required": false,
       "sources": ["scripts/evidence/supply-chain.mjs", "scripts/evidence/baseline.mjs"]
+    },
+    {
+      "entry_id": "PDA-R06",
+      "subject": "Personal-data boundary scan limitation",
+      "observation": "The boundary scan scanned 521 tracked files and reported one candidate outside synthetic fixtures, at src/test/evidence-output-safety.test.ts line 115, which is a constructed scanner-test token and not a real-person record. Pattern matching cannot distinguish real personal data from synthetic data that resembles it, and no-match does not prove absence. EV-PII therefore remains review-required.",
+      "resolution_rule": "State that real personal data is prohibited and not intentionally introduced and that fixtures are synthetic. Never state categorical absence of personal data. Preserve EV-PII as review-required; no reviewed-disposition mechanism exists in this repository that could truthfully close the narrow finding.",
+      "owner_decision_required": false,
+      "sources": ["scripts/evidence/boundary.mjs", "src/test/evidence-output-safety.test.ts"]
     }
   ],
   "disposition_packet": {
@@ -317,8 +330,8 @@
         "label": "ACCEPT BASELINE",
         "meaning": "The recorded baseline is accepted as the reviewed starting point for the artifact suite.",
         "consequences": [
-          "Wave 1 may be authorized in a later message and extends the named canonical sources rather than creating new ones.",
-          "The seven recommended extension locations become binding for the suite.",
+          "Wave 1 may be authorized in a separate later message; acceptance alone authorizes nothing.",
+          "The seven corrected extension locations recorded here become binding for the suite, including the new ecosystem-level Product Brief location docs/product/SSLS_PRODUCT_BRIEF.md, which is not created by this acceptance.",
           "Nothing about Gate A, work-package state, release, or conformance changes."
         ],
         "smallest_next_action": "Record one accepted decision that names this snapshot and authorizes Wave 1 scope only."

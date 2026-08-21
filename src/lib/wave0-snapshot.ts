@@ -135,15 +135,25 @@ export interface Wave0Inventories {
     registered: number;
     by_group: Record<string, number>;
     files: ReturnType<typeof routeFileInventory>;
-    historical_manifest_rows: number;
+    wp006_manifest: {
+      commit: string;
+      manifest_rows: number;
+      declared_route_files: number;
+      declared_addressable_routes_plus_root_layout: string;
+      declared_registry_paths: number;
+      note: string;
+    };
+    external_historical_counts: { source: string; count: number; locator: string; note: string }[];
   };
   registers: Record<string, number | Record<string, number>>;
   verification: { test_files: number; commands: string[] };
   persistence: { backend: string; personal_data: string };
 }
 
-function historicalRouteManifestRows(): number {
-  const path = join(ROOT, "docs/wp-006/ROUTE_MANIFEST.md");
+const WP006_MANIFEST_PATH = "docs/wp-006/ROUTE_MANIFEST.md";
+
+function wp006ManifestRows(): number {
+  const path = join(ROOT, WP006_MANIFEST_PATH);
   if (!existsSync(path)) return 0;
   return (readFileSync(path, "utf8").match(/^\| RT-\d+ \|/gm) ?? []).length;
 }
@@ -170,7 +180,22 @@ export function buildWave0Inventories(): Wave0Inventories {
       registered: ROUTE_REGISTRY.length,
       by_group: byGroup,
       files: routeFileInventory(),
-      historical_manifest_rows: historicalRouteManifestRows(),
+      wp006_manifest: {
+        commit: "70c1f891c5d341c60132d0109979042004425a4b",
+        manifest_rows: wp006ManifestRows(),
+        declared_route_files: 30,
+        declared_addressable_routes_plus_root_layout: "29 addressable routes plus the root layout",
+        declared_registry_paths: 19,
+        note: `Version-bound historical evidence from ${WP006_MANIFEST_PATH}. It does not record seventeen routes and is not the current inventory.`,
+      },
+      external_historical_counts: [
+        {
+          source: "August 5 v0.2.0 package",
+          count: 17,
+          locator: "no exact repository source locator in the tracked tree",
+          note: "External, version-bound historical evidence. It is not the WP-006 manifest count and must never be attached to it or to the live inventory.",
+        },
+      ],
     },
     registers: {
       decisions: DECISIONS.length,
@@ -208,7 +233,7 @@ export function buildWave0Inventories(): Wave0Inventories {
         ? "integration directory present"
         : "No database, backend authentication, or row-level security exists in the tracked tree.",
       personal_data:
-        "No personal data. Every product record is synthetic and marked as such in the fixtures.",
+        "Real personal data is prohibited and not intentionally introduced; every product record is synthetic and marked as such in the fixtures. The automated boundary scan (EV-PII) remains review-required: it reported one inspected test-token candidate and does not establish the absence of personal data.",
     },
   };
 }

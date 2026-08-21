@@ -12,7 +12,7 @@ adopts a requirement or authorizes a wave.
 | PDA-A04 | Entity Relationship Diagram | declared | candidate | not-implemented | partially-tested | ineligible |
 | PDA-A05 | Authorization Matrix | declared | candidate | not-implemented | not-run | ineligible |
 | PDA-A06 | Threat Model | observed | candidate | partially-implemented | blocked | ineligible |
-| PDA-A07 | Test Plan | observed | candidate | implemented | partially-tested | internal-only |
+| PDA-A07 | Test Plan | observed | candidate | partially-implemented | partially-tested | internal-only |
 
 ## PDA-A01 — Product Brief
 
@@ -36,8 +36,9 @@ adopts a requirement or authorizes a wave.
 **Conflicts**
 
 - Product framing is distributed across a generated current-state projection, a walkthrough protocol, and an entry specification, with no one document declared controlling.
+- Three scopes must not be collapsed: SSLS as the modular ecosystem, Silver Streak Learning as the instructional educator-facing product, and Product Alpha 001 as the bounded local synthetic increment.
 
-**Recommended extension.** Extend docs/product-alpha-001/ENTRY_SPECIFICATION.md as the controlling brief; do not create a parallel brief document.
+**Recommended extension.** Create an ecosystem-level controlling brief at docs/product/SSLS_PRODUCT_BRIEF.md that links docs/CURRENT_STATE.md and docs/product-alpha-001/ENTRY_SPECIFICATION.md as bounded current projections. It must not replace them and must not let Product Alpha 001 stand in for the whole product definition. This is a recommended location only; it is not created by Wave 0 and requires the owner decision recorded at PDA-R03.
 
 ## PDA-A02 — Requirements Register
 
@@ -81,9 +82,11 @@ adopts a requirement or authorizes a wave.
 
 **Conflicts**
 
-- docs/wp-006/ROUTE_MANIFEST.md records seventeen routes at commit 70c1f89 and is version-bound historical evidence, not the current inventory.
+- docs/wp-006/ROUTE_MANIFEST.md is version-bound historical evidence at commit 70c1f891c5d341c60132d0109979042004425a4b. It carries 25 manifest rows RT-000 through RT-024 and states 30 route files, 29 addressable routes plus the root layout, and 19 paths registered in ROUTE_REGISTRY. It does not record seventeen routes.
+- A separate seventeen-route count is reported by the August 5 v0.2.0 package. No exact repository source locator for that count exists in the tracked tree, so it is external, version-bound historical evidence and must never be attached to the WP-006 manifest.
+- The current inventory is derived live from src/lib/route-registry.ts and src/routes and supersedes every historical count for present-state statements.
 
-**Recommended extension.** Extend src/lib/route-registry.ts with classification fields; keep docs/wp-006/ROUTE_MANIFEST.md as historical evidence.
+**Recommended extension.** Extend src/lib/route-registry.ts with classification fields; keep docs/wp-006/ROUTE_MANIFEST.md as historical evidence cited with its exact counts and commit.
 
 ## PDA-A04 — Entity Relationship Diagram
 
@@ -156,7 +159,7 @@ adopts a requirement or authorizes a wave.
 **Conflicts**
 
 - The vulnerability scan remains NOT COMPLETED because the external advisory source is unavailable; this must not be converted to a pass.
-- The personal-data boundary scan holds one review-required candidate.
+- The personal-data boundary scan (EV-PII) is review-required: 521 files scanned, one candidate outside synthetic fixtures at src/test/evidence-output-safety.test.ts line 115, inspected and found to be a constructed scanner-test token rather than a real-person record. The scan does not establish the absence of personal data and its status stays review-required.
 
 **Recommended extension.** Add a threat register under docs/trust/ that cites existing evidence identifiers rather than restating scan output.
 
@@ -182,5 +185,6 @@ adopts a requirement or authorizes a wave.
 **Conflicts**
 
 - TTR-001 whole-interface execution is deferred and NOT RUN; suite passes do not substitute for it.
+- The executable suite is implemented, but the requested Test Plan artifact is not: no canonical test-case register and no entry or exit criteria exist. The artifact is therefore partially-implemented, and an executing suite must never be read as a completed Test Plan.
 
 **Recommended extension.** Derive a test case register from the existing suite, generated rather than hand-kept, after owner acceptance.
