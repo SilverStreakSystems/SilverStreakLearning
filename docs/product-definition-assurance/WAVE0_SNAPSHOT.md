@@ -2,7 +2,7 @@
 # Wave 0 — authority and implementation snapshot (PDA-WAVE0 v0.2.0)
 
 Controlling source: `data/product-definition-assurance/wave0-declaration.json`. Controlling decision: DEC-023.
-Authority class: candidate. Input fingerprint: `d83eb8221aac191da3220e8f9e2e59a56e4df9fa573bc2f571610866d10a5060`.
+Authority class: candidate. Input fingerprint: `5fcf821202c5e50e5ab85e1610e6e55f042129403c1823e792620be9a4d886dc`.
 
 ## Boundary
 
@@ -44,8 +44,8 @@ Authority class: candidate. Input fingerprint: `d83eb8221aac191da3220e8f9e2e59a5
 
 | Measure | Value |
 | --- | --- |
-| Registered routes (live registry) | 21 |
-| Route modules on disk (live) | 42 |
+| Registered routes (live registry) | 22 |
+| Route modules on disk (live) | 43 |
 | WP-006 manifest rows at commit 70c1f891c5d341c60132d0109979042004425a4b (historical) | 25 |
 | WP-006 manifest declared route files (historical) | 30 |
 | WP-006 manifest declared registry paths (historical) | 19 |
@@ -61,7 +61,7 @@ Authority class: candidate. Input fingerprint: `d83eb8221aac191da3220e8f9e2e59a5
 | historical requirements | 30 |
 | checkpoints | 10 |
 | attempts | 1 |
-| Test files | 35 |
+| Test files | 36 |
 
 WP-006 manifest: 29 addressable routes plus the root layout. Version-bound historical evidence from docs/wp-006/ROUTE_MANIFEST.md. It does not record seventeen routes and is not the current inventory.
 

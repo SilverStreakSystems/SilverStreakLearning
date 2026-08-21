@@ -177,6 +177,14 @@ export const ROUTE_REGISTRY: RouteEntry[] = [
     group: "governance",
   },
   {
+    path: "/ssls-3-0",
+    label: "Foundation canon 3.0",
+    purpose:
+      "The SSLS 3.0 foundation documents held here, their provenance, and every owner decision they leave open.",
+    heading: "SSLS 3.0 Canon Index",
+    group: "governance",
+  },
+  {
     path: "/boundaries",
     label: "Settings and Boundaries",
     purpose: "The authorized posture of this workspace and the claims it refuses.",

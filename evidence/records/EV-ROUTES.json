@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "2344720ef6075546bce91f54a3c913a36b19cb7d",
+  "tree_hash": "d5a2a17923e8e23244891679699c93093da1b060",
   "expected_result": "One declared path per route module.",
   "artifact_path": "artifacts/provenance/routes.json",
-  "artifact_hash": "eb08c0879d864b68b169c04dc7430549264dd9926390cfa8ebbcb2f2ee6562f3",
+  "artifact_hash": "70a7ef9e28d7e8fdb8e4bd815a3df48301fcfafe83d439ee48aaca5a9c618328",
   "input_set": {
-    "routes": "956e3e060c4b140e07f00d2ca5e8a47b50b8d758be8104001dbe01d8b774ccb7"
+    "routes": "672346e808363d1126383a227f7ff02ff30f467678b396dd44c228f30e213ec4"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -24,15 +24,15 @@
   "method": "automated",
   "evidence_id": "EV-ROUTES",
   "evidence_type": "ROUTE_INVENTORY",
-  "commit_sha": "3fd78ea339297027822510e5c08af44e0c1e1ab8",
+  "commit_sha": "52ab833c2bd0c06eaa45f4096f160d8fe71b464a",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-21T17:12:58.264Z",
+  "timestamp": "2026-08-21T17:36:37.782Z",
   "producer": "SSLS evidence pipeline",
   "title": "Route inventory derived from route sources",
   "description": "Route paths parsed from createFileRoute declarations in the route directory.",
   "tool": "scripts/evidence/collect.mjs",
   "command": "bun run evidence:run",
-  "actual_result": "41 routes declared across 41 route modules.",
+  "actual_result": "42 routes declared across 42 route modules.",
   "status": "pass",
   "supports": [
     "The set of route paths declared in source at the declared input set."

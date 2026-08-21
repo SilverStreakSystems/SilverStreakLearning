@@ -51,6 +51,11 @@
       "type": "array",
       "items": { "$ref": "#/definitions/absentItem" }
     },
+    "subsequent_disposition": {
+      "description": "What happened to observed items after the observation was recorded. The observation itself is never rewritten; a disposition is appended alongside it. A disposition describes handling only and never upgrades an item's authority.",
+      "type": "string",
+      "minLength": 1
+    },
     "non_effects": {
       "type": "array",
       "minItems": 1,

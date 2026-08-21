@@ -68,6 +68,12 @@ export interface ExternalCorpusObservation {
   readonly item_count: number;
   readonly items: readonly ObservedItem[];
   readonly declared_but_absent: readonly DeclaredButAbsentItem[];
+  /**
+   * What happened to observed items afterwards. Appended alongside the
+   * observation, never merged into it: the observation stays true about what
+   * was seen and when, and a disposition never upgrades an item's authority.
+   */
+  readonly subsequent_disposition?: string;
   readonly non_effects: readonly string[];
 }
 
