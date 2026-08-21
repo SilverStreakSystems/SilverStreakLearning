@@ -9,6 +9,8 @@ import {
 } from "@/components/technology-decisions/parts";
 import type { DerivedAnswer, QuestionId, SourceField } from "@/domain/technology-decisions";
 import { SOURCE_FIELDS } from "@/domain/technology-decisions";
+import { ComparisonPanel } from "@/components/technology-decisions/drift-review";
+import { toAnalysisRecord } from "@/lib/technology-decision-drift";
 import { analyzedWorkflowById, questionPrompt } from "@/lib/technology-decision-registry";
 
 const FIELD_LABEL: Record<SourceField, string> = {
@@ -79,7 +81,8 @@ function WorkflowPage() {
   const item = analyzedWorkflowById(workflowId);
   if (!item) return <WorkflowNotFound />;
 
-  const { record, evaluation, derived, drift } = item;
+  const { record, evaluation, derived } = item;
+  const analysis = toAnalysisRecord(item);
   const source = record.source;
   const derivation = Object.entries(derived) as Array<[QuestionId, DerivedAnswer]>;
 
@@ -104,10 +107,14 @@ function WorkflowPage() {
         description="Produced by the deterministic evaluator from the answers below. No model was consulted."
       >
         <EvaluationPanel evaluation={evaluation} />
-        <p className="measure mt-4 text-sm text-muted-foreground">
-          Comparison with the supplied recommendation: <strong>{drift.status}</strong>.{" "}
-          {drift.explanation}
-        </p>
+      </Section>
+
+      <Section
+        id="comparison"
+        title="Supplied against derived"
+        description="The two readings are shown separately and never merged. Any proposal below is an engineering reading offered for owner review."
+      >
+        <ComparisonPanel record={analysis} />
       </Section>
 
       <Section
