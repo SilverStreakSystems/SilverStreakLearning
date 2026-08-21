@@ -2,7 +2,7 @@
 # Wave 0 — authority and implementation snapshot (PDA-WAVE0 v0.1.0)
 
 Controlling source: `data/product-definition-assurance/wave0-declaration.json`. Controlling decision: DEC-023.
-Authority class: candidate. Input fingerprint: `0b0e5340893476040b43e89398e680bcb57612918eab03561559f617e6b0a708`.
+Authority class: candidate. Input fingerprint: `a2b13f7ec911bf1a06b8abcc3df482aac69018a61ef44d5b1a8d80ce9dbd2e26`.
 
 ## Boundary
 
@@ -51,7 +51,6 @@ Authority class: candidate. Input fingerprint: `0b0e5340893476040b43e89398e680bc
 | evidence records | 46 |
 | claims | 13 |
 | claims refused | 10 |
-| pipeline evidence records | 15 |
 | governed packages | 2 |
 | obligations | 34 |
 | historical sources | 23 |

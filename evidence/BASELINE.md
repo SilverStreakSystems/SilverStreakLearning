@@ -6,11 +6,11 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Field | Value |
 |---|---|
-| Generated at | 2026-08-21T10:04:56.069Z |
-| Commit | `af4c8b9d990d17e7498ce3e333fac3168fce855a` |
-| Tree hash | `49dff1de0a738404ed4c9aa4713a475743bed808` |
+| Generated at | 2026-08-21T10:07:18.209Z |
+| Commit | `24eb31eeb01fdd5e872cebd89b972028a7fff5a0` |
+| Tree hash | `7b42b7435eb0cc27cb95b123dc987120ed36a534` |
 | Working tree dirty | true |
-| Input-set digest | `63347027069adaf89194433235dcf74c88fca420c03cfa5a0ee1caa53b281d89` |
+| Input-set digest | `82825bc707324fa92c7b0132551e6d8ea0286e99dedf30fec158888fc2e3623c` |
 | Freshness | **CURRENT** |
 
 ## Repository
@@ -18,7 +18,7 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 | Measure | Count |
 |---|---|
 | Root commit | `3190f7973cc6626912c8de24731514df0608a5d9` |
-| Commits | 859 |
+| Commits | 861 |
 | Tracked files | 628 |
 | Source files | 256 |
 | Test files | 34 |
@@ -29,8 +29,8 @@ Layer B derived record. Authority class: candidate. Method: automated, executor-
 
 | Subject | Recorded result |
 |---|---|
-| Build | Exit code 0. Duration 7497 ms. |
-| Tests | Exit code 0. Test counts not parsed.  Duration 32519 ms. |
+| Build | Exit code 0. Duration 7086 ms. |
+| Tests | Exit code 0. Test counts not parsed.  Duration 34578 ms. |
 | Type check | Exit code 0. |
 | Lint | 0 problems across 0 files: 0 errors, 0 warnings, 0 auto-fixable. |
 | Routes | 41 |

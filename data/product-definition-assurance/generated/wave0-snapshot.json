@@ -546,12 +546,6 @@
       "evidence_records": 46,
       "claims": 13,
       "claims_refused": 10,
-      "pipeline_evidence_records": 15,
-      "pipeline_evidence_by_status": {
-        "pass": 13,
-        "not-completed": 1,
-        "review-required": 1
-      },
       "governed_packages": 2,
       "obligations": 34,
       "historical_sources": 23,
@@ -577,5 +571,5 @@
       "personal_data": "No personal data. Every product record is synthetic and marked as such in the fixtures."
     }
   },
-  "input_fingerprint": "0b0e5340893476040b43e89398e680bcb57612918eab03561559f617e6b0a708"
+  "input_fingerprint": "a2b13f7ec911bf1a06b8abcc3df482aac69018a61ef44d5b1a8d80ce9dbd2e26"
 }
