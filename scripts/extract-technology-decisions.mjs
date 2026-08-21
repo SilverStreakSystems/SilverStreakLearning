@@ -235,8 +235,12 @@ function main() {
   };
 
   const disagreements = [];
+  const canonical = (value) =>
+    value && typeof value === "object" && !Array.isArray(value)
+      ? JSON.stringify(Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b))))
+      : JSON.stringify(value);
   const compare = (label, expectedValue, observedValue) => {
-    if (JSON.stringify(expectedValue) !== JSON.stringify(observedValue)) {
+    if (canonical(expectedValue) !== canonical(observedValue)) {
       disagreements.push(`${label}: expected ${JSON.stringify(expectedValue)}, observed ${JSON.stringify(observedValue)}`);
     }
   };
