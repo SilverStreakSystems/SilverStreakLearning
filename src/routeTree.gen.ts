@@ -26,6 +26,7 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ObjectsRouteImport } from './routes/objects'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as Ssls30RouteImport } from './routes/ssls-3-0'
 import { Route as TechnologyDecisionsRouteImport } from './routes/technology-decisions'
 import { Route as TraceabilityRouteImport } from './routes/traceability'
 import { Route as ValueStreamsRouteImport } from './routes/value-streams'
@@ -134,6 +135,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Ssls30Route = Ssls30RouteImport.update({
+  id: '/ssls-3-0',
+  path: '/ssls-3-0',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TechnologyDecisionsRoute = TechnologyDecisionsRouteImport.update({
@@ -285,6 +291,7 @@ export interface FileRoutesByFullPath {
   '/objects': typeof ObjectsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/ssls-3-0': typeof Ssls30Route
   '/technology-decisions': typeof TechnologyDecisionsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
@@ -324,6 +331,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/ssls-3-0': typeof Ssls30Route
   '/traceability': typeof TraceabilityRoute
   '/capabilities/$capabilityId': typeof CapabilitiesCapabilityIdRoute
   '/learners/$learnerId': typeof LearnersLearnerIdRoute
@@ -365,6 +373,7 @@ export interface FileRoutesById {
   '/objects': typeof ObjectsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/ssls-3-0': typeof Ssls30Route
   '/technology-decisions': typeof TechnologyDecisionsRouteWithChildren
   '/traceability': typeof TraceabilityRoute
   '/value-streams': typeof ValueStreamsRouteWithChildren
@@ -410,6 +419,7 @@ export interface FileRouteTypes {
     | '/objects'
     | '/profile'
     | '/search'
+    | '/ssls-3-0'
     | '/technology-decisions'
     | '/traceability'
     | '/value-streams'
@@ -449,6 +459,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/profile'
     | '/search'
+    | '/ssls-3-0'
     | '/traceability'
     | '/capabilities/$capabilityId'
     | '/learners/$learnerId'
@@ -489,6 +500,7 @@ export interface FileRouteTypes {
     | '/objects'
     | '/profile'
     | '/search'
+    | '/ssls-3-0'
     | '/technology-decisions'
     | '/traceability'
     | '/value-streams'
@@ -533,6 +545,7 @@ export interface RootRouteChildren {
   ObjectsRoute: typeof ObjectsRouteWithChildren
   ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
+  Ssls30Route: typeof Ssls30Route
   TechnologyDecisionsRoute: typeof TechnologyDecisionsRouteWithChildren
   TraceabilityRoute: typeof TraceabilityRoute
   ValueStreamsRoute: typeof ValueStreamsRouteWithChildren
@@ -658,6 +671,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssls-3-0': {
+      id: '/ssls-3-0'
+      path: '/ssls-3-0'
+      fullPath: '/ssls-3-0'
+      preLoaderRoute: typeof Ssls30RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/technology-decisions': {
@@ -958,6 +978,7 @@ const rootRouteChildren: RootRouteChildren = {
   ObjectsRoute: ObjectsRouteWithChildren,
   ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
+  Ssls30Route: Ssls30Route,
   TechnologyDecisionsRoute: TechnologyDecisionsRouteWithChildren,
   TraceabilityRoute: TraceabilityRoute,
   ValueStreamsRoute: ValueStreamsRouteWithChildren,
