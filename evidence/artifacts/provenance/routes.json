@@ -100,6 +100,42 @@
     "path": "/search"
   },
   {
+    "file": "src/routes/technology-decisions.tsx",
+    "path": "/technology-decisions"
+  },
+  {
+    "file": "src/routes/technology-decisions.index.tsx",
+    "path": "/technology-decisions/"
+  },
+  {
+    "file": "src/routes/technology-decisions.evaluate.tsx",
+    "path": "/technology-decisions/evaluate"
+  },
+  {
+    "file": "src/routes/technology-decisions.process.tsx",
+    "path": "/technology-decisions/process"
+  },
+  {
+    "file": "src/routes/technology-decisions.product-alpha.tsx",
+    "path": "/technology-decisions/product-alpha"
+  },
+  {
+    "file": "src/routes/technology-decisions.roles.index.tsx",
+    "path": "/technology-decisions/roles/"
+  },
+  {
+    "file": "src/routes/technology-decisions.roles.$groupId.tsx",
+    "path": "/technology-decisions/roles/$groupId"
+  },
+  {
+    "file": "src/routes/technology-decisions.sources.tsx",
+    "path": "/technology-decisions/sources"
+  },
+  {
+    "file": "src/routes/technology-decisions.workflows.$workflowId.tsx",
+    "path": "/technology-decisions/workflows/$workflowId"
+  },
+  {
     "file": "src/routes/traceability.tsx",
     "path": "/traceability"
   },
