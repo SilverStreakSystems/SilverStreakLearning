@@ -1,6 +1,6 @@
 {
   "package_manager": "bun",
-  "manifest_hash": "ea87addf2501da79644589b84a2cc1d7b598782248b9cf35e5f6592a6d843bd0",
+  "manifest_hash": "e070f8f6a4136606c6d420528cbdd2e7652737f5f3a047fb3aeef72a14f9540f",
   "lockfiles": [
     {
       "file": "bun.lock",
