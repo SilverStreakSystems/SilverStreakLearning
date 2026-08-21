@@ -120,3 +120,29 @@ export function describeLoadFailure(failure: DocumentLoadFailure): string[] {
   ];
   return details.slice(0, 8);
 }
+
+/**
+ * The same decoder reads stored bytes and chosen files, but its messages are
+ * written about the saved data. Reported unchanged on the import path they
+ * misattribute the fault to the records already in this browser, which is the
+ * opposite of what happened: a refused import changes nothing. This restates
+ * the failure with the file as its subject and keeps the decoder's own wording
+ * as the first detail line, so nothing is lost.
+ */
+export function describeImportFailure(failure: DocumentLoadFailure): {
+  message: string;
+  details: string[];
+} {
+  const subject: Record<DocumentLoadFailure["reason"], string> = {
+    "not-json": "That file is not valid JSON, so it was not imported.",
+    "unsupported-version":
+      "That file was written for a different schema version of this preview, so it was not imported.",
+    schema: "That file does not match the shape this preview can read, so it was not imported.",
+    invariant:
+      "That file breaks a rule this preview enforces on every record, so it was not imported.",
+  };
+  return {
+    message: `${subject[failure.reason]} The records saved in this browser were not changed.`,
+    details: [failure.message, ...describeLoadFailure(failure)].slice(0, 8),
+  };
+}

@@ -307,7 +307,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 aria-expanded={mobileNavOpen}
                 aria-haspopup="dialog"
                 onClick={() => setMobileNavOpen(true)}
-                className="min-h-11 min-w-11 rounded-sm border border-sidebar-border px-3 text-sm font-semibold text-sidebar-foreground lg:hidden"
+                className="min-h-11 min-w-11 shrink-0 whitespace-nowrap rounded-sm border border-sidebar-border px-3 text-sm font-semibold text-sidebar-foreground lg:hidden"
               >
                 Menu
               </button>
