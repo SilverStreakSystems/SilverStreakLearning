@@ -6,17 +6,17 @@ I read the folder. It holds 15 items, three groups:
 
 **SSLS 3.0 foundation package (drafted 2026-08-21, all DRAFT / CANDIDATE, none accepted)**
 
-| File                                 | Document ID  | Role                                    |
-| ------------------------------------ | ------------ | --------------------------------------- |
-| 00-SSLS_3.0_START_HERE.md            | SSLS3-DOC-00 | Routing only, controls nothing          |
-| 01-SSLS_3.0_PROJECT_CHARTER.md       | SSLS3-DOC-01 | Identity, North Star, principles        |
-| 02-SSLS_3.0_SOURCE_HIERARCHY.md      | SSLS3-DOC-02 | What counts as authority                |
-| 03-SSLS_3.0_CANON_MANIFEST.md        | SSLS3-DOC-03 | Artifact status                         |
-| 04-SSLS_3.0_CURRENT_PROJECT_STATE.md | SSLS3-DOC-04 | Only permitted status source            |
-| 05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md  | SSLS3-DOC-05 | What is permitted                       |
-| 06-SSLS_3.0_PRODUCT_BRIEF.md         | SSLS3-DOC-06 | Problem, users, value                   |
-| 07-SSLS_3.0_GLOSSARY.md              | SSLS3-DOC-07 | Terminology                             |
-| 11-SSLS_3.0_REPOSITORY_MAP.md        | SSLS3-DOC-11 | Proposed structure, nothing implemented |
+| File | Document ID | Role |
+|---|---|---|
+| 00-SSLS_3.0_START_HERE.md | SSLS3-DOC-00 | Routing only, controls nothing |
+| 01-SSLS_3.0_PROJECT_CHARTER.md | SSLS3-DOC-01 | Identity, North Star, principles |
+| 02-SSLS_3.0_SOURCE_HIERARCHY.md | SSLS3-DOC-02 | What counts as authority |
+| 03-SSLS_3.0_CANON_MANIFEST.md | SSLS3-DOC-03 | Artifact status |
+| 04-SSLS_3.0_CURRENT_PROJECT_STATE.md | SSLS3-DOC-04 | Only permitted status source |
+| 05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md | SSLS3-DOC-05 | What is permitted |
+| 06-SSLS_3.0_PRODUCT_BRIEF.md | SSLS3-DOC-06 | Problem, users, value |
+| 07-SSLS_3.0_GLOSSARY.md | SSLS3-DOC-07 | Terminology |
+| 11-SSLS_3.0_REPOSITORY_MAP.md | SSLS3-DOC-11 | Proposed structure, nothing implemented |
 
 Registers 08 (decisions), 09 (requirements) and 10 (evidence and claims) are referenced by the
 package but are **not present in this folder**. That is a gap in the delivered set, not an

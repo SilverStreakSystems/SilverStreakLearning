@@ -15,25 +15,25 @@ Inspected baseline for every deliverable in this folder:
 
 ## Deliverables
 
-| #   | Deliverable                       | File                                                |
-| --- | --------------------------------- | --------------------------------------------------- |
-| 1   | Current-state SSOT (canonical)    | `SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md` |
-| 2   | Repository Manifest               | `REPOSITORY_MANIFEST.md`                            |
-| 3   | Build Manifest                    | `BUILD_MANIFEST.md`                                 |
-| 4   | Route Manifest                    | `ROUTE_MANIFEST.md`                                 |
-| 5   | Implementation Inventory          | `IMPLEMENTATION_INVENTORY.md`                       |
-| 6   | Repository Provenance Report      | `PROVENANCE_REPORT.md`                              |
-| 7   | Drive-to-Repository Authority Map | `DRIVE_REPOSITORY_AUTHORITY_MAP.md`                 |
-| 8   | Repository Candidate Comparison   | `REPOSITORY_CANDIDATE_COMPARISON.md`                |
-| 9   | Gate-Lineage Reconciliation       | `GATE_LINEAGE_RECONCILIATION.md`                    |
-| 10  | Discrepancy Register              | `DISCREPANCY_REGISTER.md`                           |
-| 11  | Staleness Register                | `STALENESS_REGISTER.md`                             |
-| 12  | Current Data/Backend Status       | `DATA_BACKEND_STATUS.md`                            |
-| 13  | Current Test/Build Status         | `TEST_BUILD_STATUS.md`                              |
-| 14  | WP-006 Evidence Index             | `EVIDENCE_INDEX.md`                                 |
-| 15  | WP-006 Findings Register          | `FINDINGS_REGISTER.md`                              |
-| 16  | DQ-R01 Decision Brief             | `DQ-R01-DECISION-BRIEF.md`                          |
-| 17  | Exit-Criteria Matrix              | `EXIT_CRITERIA_MATRIX.md`                           |
+| # | Deliverable | File |
+|---|---|---|
+| 1 | Current-state SSOT (canonical) | `SSLS-FND-001-current-state-ssot-v0.1-CANDIDATE.md` |
+| 2 | Repository Manifest | `REPOSITORY_MANIFEST.md` |
+| 3 | Build Manifest | `BUILD_MANIFEST.md` |
+| 4 | Route Manifest | `ROUTE_MANIFEST.md` |
+| 5 | Implementation Inventory | `IMPLEMENTATION_INVENTORY.md` |
+| 6 | Repository Provenance Report | `PROVENANCE_REPORT.md` |
+| 7 | Drive-to-Repository Authority Map | `DRIVE_REPOSITORY_AUTHORITY_MAP.md` |
+| 8 | Repository Candidate Comparison | `REPOSITORY_CANDIDATE_COMPARISON.md` |
+| 9 | Gate-Lineage Reconciliation | `GATE_LINEAGE_RECONCILIATION.md` |
+| 10 | Discrepancy Register | `DISCREPANCY_REGISTER.md` |
+| 11 | Staleness Register | `STALENESS_REGISTER.md` |
+| 12 | Current Data/Backend Status | `DATA_BACKEND_STATUS.md` |
+| 13 | Current Test/Build Status | `TEST_BUILD_STATUS.md` |
+| 14 | WP-006 Evidence Index | `EVIDENCE_INDEX.md` |
+| 15 | WP-006 Findings Register | `FINDINGS_REGISTER.md` |
+| 16 | DQ-R01 Decision Brief | `DQ-R01-DECISION-BRIEF.md` |
+| 17 | Exit-Criteria Matrix | `EXIT_CRITERIA_MATRIX.md` |
 
 ## Status language
 

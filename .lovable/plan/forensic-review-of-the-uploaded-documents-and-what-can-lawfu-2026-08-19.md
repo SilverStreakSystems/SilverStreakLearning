@@ -6,11 +6,11 @@ The three files attached to this message are the **v0.3.0** package, not the thr
 August 5 **v0.2.0** files that Cycle 4 authorizes. Digests measured against the attached
 manifest:
 
-| File                  | Measured SHA-256    | Manifest claim     | Result |
-| --------------------- | ------------------- | ------------------ | ------ |
-| Governed Rewrite PDF  | `9632f08c…52f943`   | same               | MATCH  |
-| Control Workbook XLSX | `68064dcb…6fcce1e`  | same               | MATCH  |
-| Manifest TXT          | `3a98382e…50ca7a13` | self-hash excluded | n/a    |
+| File | Measured SHA-256 | Manifest claim | Result |
+| --- | --- | --- | --- |
+| Governed Rewrite PDF | `9632f08c…52f943` | same | MATCH |
+| Control Workbook XLSX | `68064dcb…6fcce1e` | same | MATCH |
+| Manifest TXT | `3a98382e…50ca7a13` | self-hash excluded | n/a |
 
 All three are byte-identical to the artifacts already registered as PKA-001, PKA-002 and
 PKA-003 under PKG-002. Re-registering them would create a duplicate package, so no new

@@ -3,7 +3,7 @@
 The following statements are deliberately withheld. Each is refused because no
 evidence supports it, not because it is unimportant.
 
-- **"SSLS has N capabilities."** Refused. SSLS has N candidate _records_. A
+- **"SSLS has N capabilities."** Refused. SSLS has N candidate *records*. A
   record is a description of an ability, not the ability.
 - **"The capability architecture is X% complete."** Refused. No percentage,
   score, or blended readiness index is computed anywhere in the system.

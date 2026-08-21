@@ -6,30 +6,31 @@
 > declared in `data/current-state/current-state-inputs.json`. Superseded by DEC-022; the
 > commit-binding guard it describes has been removed (FND-011).
 
+
 Bound to commit `c1f06016c5eb4e4b19e9b5821f525be4131d639a`, executed 2026-08-19 02:13–02:14 UTC in
 the Lovable sandbox by the Founder / Operator agent session. Evidence method: automated, executor-run.
 Not independent.
 
 ## Build
 
-| Field                           | Value                                                                                           |
-| ------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Command                         | `bun run build` (`vite build`)                                                                  |
-| Result                          | Success                                                                                         |
-| Output                          | Client bundle plus Nitro Cloudflare Worker server output; `dist/server/wrangler.json` generated |
-| Warnings material to governance | None observed                                                                                   |
+| Field | Value |
+|---|---|
+| Command | `bun run build` (`vite build`) |
+| Result | Success |
+| Output | Client bundle plus Nitro Cloudflare Worker server output; `dist/server/wrangler.json` generated |
+| Warnings material to governance | None observed |
 
 ## Tests
 
-| Field    | Value                         |
-| -------- | ----------------------------- |
-| Command  | `bun run test` (`vitest run`) |
-| Files    | 9                             |
-| Tests    | 217                           |
-| Passed   | 217                           |
-| Failed   | 0                             |
-| Skipped  | 0                             |
-| Duration | 14.48 s                       |
+| Field | Value |
+|---|---|
+| Command | `bun run test` (`vitest run`) |
+| Files | 9 |
+| Tests | 217 |
+| Passed | 217 |
+| Failed | 0 |
+| Skipped | 0 |
+| Duration | 14.48 s |
 
 Suites: `shell.test.tsx` (81), `governance.test.tsx`, `capability-architecture.test.tsx`,
 `shared-objects.test.tsx`, `value-streams.test.tsx`, `workspaces.test.tsx` (25),
@@ -37,14 +38,14 @@ Suites: `shell.test.tsx` (81), `governance.test.tsx`, `capability-architecture.t
 
 ## Not executed at this commit
 
-| Check                                | Status                                                                                                                                                                                                                                 |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ESLint                               | Run. Full repository: 683 problems (669 errors, 14 warnings), predominantly pre-existing Prettier formatting errors. Guard scripts clean; `src/fixtures/registers.ts` 6 Prettier errors. FAIL as a repository-wide gate — see FND-014. |
-| Standalone typecheck                 | [U] Not run; the build compiled without error                                                                                                                                                                                          |
-| axe-core accessibility scan          | [U] Not re-run at this commit; prior run recorded at an earlier commit in `docs/ACCESSIBILITY_EVIDENCE.md`                                                                                                                             |
-| Screen-reader walkthrough            | Not Run                                                                                                                                                                                                                                |
-| Measured contrast ratios             | Not Run                                                                                                                                                                                                                                |
-| Independent verification of any kind | Not Run                                                                                                                                                                                                                                |
+| Check | Status |
+|---|---|
+| ESLint | Run. Full repository: 683 problems (669 errors, 14 warnings), predominantly pre-existing Prettier formatting errors. Guard scripts clean; `src/fixtures/registers.ts` 6 Prettier errors. FAIL as a repository-wide gate — see FND-014. |
+| Standalone typecheck | [U] Not run; the build compiled without error |
+| axe-core accessibility scan | [U] Not re-run at this commit; prior run recorded at an earlier commit in `docs/ACCESSIBILITY_EVIDENCE.md` |
+| Screen-reader walkthrough | Not Run |
+| Measured contrast ratios | Not Run |
+| Independent verification of any kind | Not Run |
 
 ## Supersession
 

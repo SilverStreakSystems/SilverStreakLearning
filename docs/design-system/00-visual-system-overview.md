@@ -26,12 +26,12 @@ existence of a route, a passing test, or a rendered surface.
 
 ## Refused claims
 
-| Refused claim                              | Reason                                                                                                  |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| WCAG 2.2 AA conformance                    | No independent audit has been performed. The implementation is AA-informed.                             |
-| Responsive validation across all viewports | No measurement run has been recorded for any of the nine required viewports.                            |
-| Design-system completeness percentage      | It would merge declared maturity, implementation evidence, and validation into one unexaminable figure. |
-| Canonical brand identity                   | No validated vector master and no approved decision exist. The assets here are reference geometry.      |
+| Refused claim | Reason |
+| --- | --- |
+| WCAG 2.2 AA conformance | No independent audit has been performed. The implementation is AA-informed. |
+| Responsive validation across all viewports | No measurement run has been recorded for any of the nine required viewports. |
+| Design-system completeness percentage | It would merge declared maturity, implementation evidence, and validation into one unexaminable figure. |
+| Canonical brand identity | No validated vector master and no approved decision exist. The assets here are reference geometry. |
 
 ## Document set
 

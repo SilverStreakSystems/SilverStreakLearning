@@ -34,7 +34,9 @@
   "command": "bun run evidence:run",
   "actual_result": "41 routes declared across 41 route modules.",
   "status": "pass",
-  "supports": ["The set of route paths declared in source at the declared input set."],
+  "supports": [
+    "The set of route paths declared in source at the declared input set."
+  ],
   "does_not_support": [
     "That every route renders correctly, is reachable, is authorized, or is accessible."
   ]

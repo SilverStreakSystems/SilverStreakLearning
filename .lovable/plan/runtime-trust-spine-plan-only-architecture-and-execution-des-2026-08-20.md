@@ -18,12 +18,12 @@ Verified by direct inspection, not assumed:
 
 ## B. Exact authority required before each stage
 
-| Stage | Required owner decision before start                                                                                                               |
-| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| P1A   | A recorded decision opening a named product work package, plus a disposition on Cycle 8 (complete it, or supersede it explicitly).                 |
-| P1B   | Adoption of ADR-001, plus explicit authorization to enable a development-only backend, apply additive migrations, and create synthetic identities. |
-| P1C   | Authorization to change Command Center and related routes for the workflow.                                                                        |
-| P1D   | Authorization to execute TTR-001 against the resulting interface and to record commit-bound evidence and a checkpoint.                             |
+| Stage | Required owner decision before start |
+| --- | --- |
+| P1A | A recorded decision opening a named product work package, plus a disposition on Cycle 8 (complete it, or supersede it explicitly). |
+| P1B | Adoption of ADR-001, plus explicit authorization to enable a development-only backend, apply additive migrations, and create synthetic identities. |
+| P1C | Authorization to change Command Center and related routes for the workflow. |
+| P1D | Authorization to execute TTR-001 against the resulting interface and to record commit-bound evidence and a checkpoint. |
 
 No stage inherits a pass from another. No stage begins on the strength of this plan.
 
@@ -56,14 +56,12 @@ Runtime activity may never mutate Gate A, WP-007, accepted Git decisions, histor
 Every table below is specified with: purpose, authority class, PK plus human-readable ID, tenant column, FKs with tenant-consistency enforcement (composite FK on `(id, org_id)`), indexes, immutable vs editable fields, `created_at` / `updated_at` plus a `version` column for optimistic concurrency, lifecycle status constraint, RLS policies, audit behaviour, retention limits, and classification (canonical / derived / evidentiary).
 
 Identity and tenancy:
-
 - `organizations` — fictional tenants. Canonical. No cross-tenant FK.
 - `profiles` — one row per synthetic auth identity; no PII fields exist in the schema at all.
 - `memberships` — `(org_id, profile_id, capacity)`; capacity is an enum in its own table-backed type, never a column on `profiles`.
 - `canonical_manifests` — committed-canon fingerprint per org for drift detection.
 
 Governed runtime objects (all tenant-owned, all RLS-enforced):
-
 - `requirements`, `decisions`, `work_items`, `validation_runs`, `evidence_artifacts`, `findings`, `record_links` (typed edges, tenant-consistent on both ends), `audit_events` (append-only).
 
 Rules: `evidence_artifacts` requires SHA-256 digest, provenance, method, timestamp, validator/reviewer, and a non-empty limitations field before it may reach `verified`. Derived proof posture is computed by a deterministic function over the chain and is never a stored editable column. `audit_events` has no UPDATE or DELETE grant to any authenticated role.
@@ -130,14 +128,14 @@ Stop rather than improvise if: Cycle 8 remains ambiguous; repository authority c
 
 ## P. Risks, anti-targets, mitigations
 
-| Risk                                             | Mitigation                                                                             |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| Fixture fallback masks a broken backend          | Product mode fails visibly; a test asserts no successful fixture substitution.         |
-| RLS proven only through the UI                   | Direct API and direct SQL negative tests, run as each identity.                        |
-| Denial auditing overclaimed                      | Trusted-boundary refusals only; direct DB denials recorded as not fully audited.       |
-| Roles drift into profile columns                 | Roles exist only in `memberships`, read through a security-definer function.           |
-| Runtime state leaking into Git canon             | Canon guard plus tests asserting Gate A, WP-007, HREQ, and evidence records unchanged. |
-| Governance packet substituted for a working flow | P1C gate is a person completing the flow.                                              |
+| Risk | Mitigation |
+| --- | --- |
+| Fixture fallback masks a broken backend | Product mode fails visibly; a test asserts no successful fixture substitution. |
+| RLS proven only through the UI | Direct API and direct SQL negative tests, run as each identity. |
+| Denial auditing overclaimed | Trusted-boundary refusals only; direct DB denials recorded as not fully audited. |
+| Roles drift into profile columns | Roles exist only in `memberships`, read through a security-definer function. |
+| Runtime state leaking into Git canon | Canon guard plus tests asserting Gate A, WP-007, HREQ, and evidence records unchanged. |
+| Governance packet substituted for a working flow | P1C gate is a person completing the flow. |
 
 Anti-targets: AI of any kind, learner experience, curriculum, real data, production deployment, binary uploads, generic rules engines, and any conformance or readiness claim.
 

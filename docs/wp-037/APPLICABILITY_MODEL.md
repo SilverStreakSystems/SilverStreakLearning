@@ -6,14 +6,14 @@ applicable environment, unexpired and unsuperseded".
 
 ## The six states
 
-| State          | Decided when                                                                                                                               |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `CURRENT`      | Every declared input hash matches and validity has not ended                                                                               |
-| `STALE`        | At least one declared input changed, or a type whose declared inputs do not fully determine its result is being read at a different commit |
-| `EXPIRED`      | The declared validity window has passed                                                                                                    |
-| `SUPERSEDED`   | The record names a successor, or a successor names it                                                                                      |
-| `INAPPLICABLE` | The recording environment does not cover the environment under review                                                                      |
-| `UNKNOWN`      | Commit, environment, input hashes, or the type declaration is missing                                                                      |
+| State | Decided when |
+|---|---|
+| `CURRENT` | Every declared input hash matches and validity has not ended |
+| `STALE` | At least one declared input changed, or a type whose declared inputs do not fully determine its result is being read at a different commit |
+| `EXPIRED` | The declared validity window has passed |
+| `SUPERSEDED` | The record names a successor, or a successor names it |
+| `INAPPLICABLE` | The recording environment does not cover the environment under review |
+| `UNKNOWN` | Commit, environment, input hashes, or the type declaration is missing |
 
 ## Amendment — 2026-08-20 (engineering-baseline recovery, EV-045)
 

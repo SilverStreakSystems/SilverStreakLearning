@@ -48,7 +48,6 @@ Non-destructive pass over `AppShell` and the shared `page.tsx` primitives so the
 ## 6. Tests
 
 Extend Vitest with `src/test/design-system.test.tsx`:
-
 - All 18 universal templates, 9 workspaces, 9 experience families, 8 state templates present and uniquely identified.
 - Every template carries an explicit maturity label; maturity is never derived from route existence.
 - No template claims Implemented without a listed implementing route.

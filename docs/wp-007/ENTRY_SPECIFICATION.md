@@ -5,18 +5,18 @@ legal, security, accessibility, or district review has occurred.
 
 ## Entry authority
 
-| Item                       | Verified state at entry                                            |
-| -------------------------- | ------------------------------------------------------------------ |
-| Governing program          | SSLS-BPP-001 v2.0, ratified by DEC-007                             |
-| Software SSOT              | Current Lovable-managed repository, adopted by DEC-010             |
-| WP-038                     | CLOSED BY OWNER under DEC-018 (2026-08-19)                         |
-| WP-007                     | NEXT ELIGIBLE by DEC-018, sequence-based not numerical             |
-| Gate A                     | OPEN — no accepted decision closes it                              |
-| DEC-012                    | ACCEPTED — WCAG 2.2 Level AA internal target, no conformance claim |
-| Later superseding decision | none — DEC-018 is the most recent accepted decision                |
-| FND-016                    | PARTIALLY RESOLVED by DEC-012 (named target only)                  |
-| FND-010, FND-017, FND-018  | OPEN                                                               |
-| FND-012, FND-014           | OPEN, unchanged                                                    |
+| Item | Verified state at entry |
+|---|---|
+| Governing program | SSLS-BPP-001 v2.0, ratified by DEC-007 |
+| Software SSOT | Current Lovable-managed repository, adopted by DEC-010 |
+| WP-038 | CLOSED BY OWNER under DEC-018 (2026-08-19) |
+| WP-007 | NEXT ELIGIBLE by DEC-018, sequence-based not numerical |
+| Gate A | OPEN — no accepted decision closes it |
+| DEC-012 | ACCEPTED — WCAG 2.2 Level AA internal target, no conformance claim |
+| Later superseding decision | none — DEC-018 is the most recent accepted decision |
+| FND-016 | PARTIALLY RESOLVED by DEC-012 (named target only) |
+| FND-010, FND-017, FND-018 | OPEN |
+| FND-012, FND-014 | OPEN, unchanged |
 
 Verification was performed by reading `src/fixtures/registers.ts` and `docs/CURRENT_STATE.md`
 at commit `62ce7d3a9c305674de5bd83801af3bf5c41edf83` before any WP-007 artifact was written.

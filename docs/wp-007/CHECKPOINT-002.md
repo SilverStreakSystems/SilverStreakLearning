@@ -40,19 +40,19 @@ exactly one named HIGH-relevance reachable historical source.
 
 Result: **MET.**
 
-| Exit criterion                                     | State                                                                                                                      |
-| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Versioned requirement schema exists                | MET — `data/historical/HISTORICAL_REQUIREMENT_SCHEMA.json` v1.0.0                                                          |
-| Exactly one source extracted                       | MET — HS-011 only; enforced by test                                                                                        |
-| Stable HREQ identifiers                            | MET — HREQ-001..HREQ-014, unique and sequential                                                                            |
-| Exact in-source locators                           | MET — line-anchored, pattern-enforced                                                                                      |
-| Original wording separated from normalized summary | MET — verbatim text substring-verified against the live file                                                               |
-| Authority inherited without promotion              | MET — every record `HISTORICAL-EVIDENCE`; source `NOT-PROMOTED`                                                            |
-| Requirement-family classification                  | MET — 12 accessibility-interface, 1 governance-authority, 1 claim-discipline                                               |
-| Extraction confidence and ambiguity                | MET — 10 HIGH, 4 MEDIUM; 4 NONE, 2 TERMINOLOGY, 3 SCOPE, 4 VERIFIABILITY, 1 AUTHORITY-BOUNDARY                             |
-| Schema validation and invariant tests              | MET — `src/test/historical-requirements.test.ts`                                                                           |
-| Human-readable projection                          | MET — `REQUIREMENT_CANDIDATES.md`, `REQUIREMENT_FAMILY_INDEX.md`, `EXTRACTION_CONFIDENCE.md`, `CYCLE2_SOURCE_SELECTION.md` |
-| Current applicable evidence                        | MET — EV-032                                                                                                               |
+| Exit criterion | State |
+|---|---|
+| Versioned requirement schema exists | MET — `data/historical/HISTORICAL_REQUIREMENT_SCHEMA.json` v1.0.0 |
+| Exactly one source extracted | MET — HS-011 only; enforced by test |
+| Stable HREQ identifiers | MET — HREQ-001..HREQ-014, unique and sequential |
+| Exact in-source locators | MET — line-anchored, pattern-enforced |
+| Original wording separated from normalized summary | MET — verbatim text substring-verified against the live file |
+| Authority inherited without promotion | MET — every record `HISTORICAL-EVIDENCE`; source `NOT-PROMOTED` |
+| Requirement-family classification | MET — 12 accessibility-interface, 1 governance-authority, 1 claim-discipline |
+| Extraction confidence and ambiguity | MET — 10 HIGH, 4 MEDIUM; 4 NONE, 2 TERMINOLOGY, 3 SCOPE, 4 VERIFIABILITY, 1 AUTHORITY-BOUNDARY |
+| Schema validation and invariant tests | MET — `src/test/historical-requirements.test.ts` |
+| Human-readable projection | MET — `REQUIREMENT_CANDIDATES.md`, `REQUIREMENT_FAMILY_INDEX.md`, `EXTRACTION_CONFIDENCE.md`, `CYCLE2_SOURCE_SELECTION.md` |
+| Current applicable evidence | MET — EV-032 |
 
 ## E. Disposition discipline
 

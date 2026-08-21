@@ -5,7 +5,6 @@
 Implemented today: 15 routes (Command Center at `/`, Foundation Map, Authority, Capabilities, Shared Objects, Value Streams, Traceability, Findings, Evidence, Decisions, Future Architecture, Boundaries, Design System), domain modules for authority, layers, artifacts, capabilities, shared objects, value streams, experience/templates, and a route registry that drives both navigation and tests. 147 tests pass.
 
 Thin or missing relative to this prompt:
-
 - `src/domain/future-workspace.ts` is an 8-field placeholder; the prompt's `WorkspaceDefinition` needs ~28 fields.
 - No workspace projection, membership, acting-capacity, action-center, search, or notification contracts exist.
 - The Command Center at `/` is a static governance summary, not an assembled projection.

@@ -10,7 +10,9 @@
     "tracked": "36b00995cb80c20a529c48430fc5279e5f2be012e74fb4066d4bb984bdedc69c"
   },
   "related_requirements": [],
-  "related_decisions": ["DEC-010"],
+  "related_decisions": [
+    "DEC-010"
+  ],
   "related_tasks": [],
   "related_validations": [],
   "related_findings": [],
@@ -34,7 +36,9 @@
   "command": "git rev-parse / rev-list / ls-files",
   "actual_result": "Root commit 53ac085881fd9cb994f00945d3f7b55b61ab5662; 331 commits; 629 tracked files.",
   "status": "pass",
-  "supports": ["Repository ancestry and tree size as recorded by Git at this commit."],
+  "supports": [
+    "Repository ancestry and tree size as recorded by Git at this commit."
+  ],
   "does_not_support": [
     "Authorship attribution, absence of history rewriting before the root commit, or any external copy of this code."
   ]

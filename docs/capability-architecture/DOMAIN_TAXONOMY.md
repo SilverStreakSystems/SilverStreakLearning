@@ -3,20 +3,20 @@
 Twelve candidate domains. Domain membership is an organizing choice, not a claim
 about reporting lines. Counts are counts of declared records only.
 
-| Domain | Name                          | Candidate capabilities |
-| ------ | ----------------------------- | ---------------------- |
-| D01    | Direction and Governance      | 12                     |
-| D02    | Learning and Academics        | 11                     |
-| D03    | Product and Experience        | 11                     |
-| D04    | Engineering and Platform      | 12                     |
-| D05    | Data, Measurement and AI      | 11                     |
-| D06    | Trust, Security and Privacy   | 11                     |
-| D07    | Quality and Validation        | 10                     |
-| D08    | Revenue and Market            | 10                     |
-| D09    | Customer and Service Delivery | 11                     |
-| D10    | Finance, Legal and Operations | 11                     |
-| D11    | People and Talent             | 10                     |
-| D12    | Organizational Learning       | 9                      |
+| Domain | Name | Candidate capabilities |
+| --- | --- | --- |
+| D01 | Direction and Governance | 12 |
+| D02 | Learning and Academics | 11 |
+| D03 | Product and Experience | 11 |
+| D04 | Engineering and Platform | 12 |
+| D05 | Data, Measurement and AI | 11 |
+| D06 | Trust, Security and Privacy | 11 |
+| D07 | Quality and Validation | 10 |
+| D08 | Revenue and Market | 10 |
+| D09 | Customer and Service Delivery | 11 |
+| D10 | Finance, Legal and Operations | 11 |
+| D11 | People and Talent | 10 |
+| D12 | Organizational Learning | 9 |
 
 Total: 129 candidate capabilities.
 

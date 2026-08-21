@@ -5,7 +5,7 @@
 **PROMOTE TO OWNER CLOSURE**
 
 Executor recommendation only. WP-037 is not closed by this document. Closure requires an accepted
-owner decision — prepared as **DEC-017**, state _decision required_.
+owner decision — prepared as **DEC-017**, state *decision required*.
 
 ## Authority chain
 
@@ -34,11 +34,11 @@ UNKNOWN rather than inferred. All five were transitive; none was a direct depend
 Minimum-necessary remediation (EV-023) — three `overrides` entries applied through `bun install`,
 seven lockfile resolution changes and no others:
 
-| Package         | Current       | Target | Advisories removed                                     |
-| --------------- | ------------- | ------ | ------------------------------------------------------ |
-| brace-expansion | 1.1.16, 5.0.8 | 5.0.9  | GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895 (both majors) |
-| js-yaml         | 4.3.0         | 4.3.1  | GHSA-5p4m-2wfm-xmqj                                    |
-| nanoid          | 3.3.16        | 3.3.18 | GHSA-2v37-7h3g-55p8                                    |
+| Package | Current | Target | Advisories removed |
+| --- | --- | --- | --- |
+| brace-expansion | 1.1.16, 5.0.8 | 5.0.9 | GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895 (both majors) |
+| js-yaml | 4.3.0 | 4.3.1 | GHSA-5p4m-2wfm-xmqj |
+| nanoid | 3.3.16 | 3.3.18 | GHSA-2v37-7h3g-55p8 |
 
 No breaking or major upgrade was required, so nothing exceeded the DEC-016 boundary.
 

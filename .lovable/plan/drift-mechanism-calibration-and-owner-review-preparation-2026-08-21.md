@@ -17,7 +17,7 @@ Calibrate the technology-decision comparison mechanism across all 279 workflows,
 
 1. **Entry gate.** Inspect branch/HEAD/tree/routes/deps/generated-artifact controls; read applicable AGENTS.md, the build controller, `docs/CURRENT_STATE.md`, latest accepted decision and checkpoint, all active registers, TDP-001 and schemas, the workflow register and Product Alpha assessment. Run `bun run verify:ci`. Confirm counts, the two distinct AI metrics, identifier availability, and a duplicate-identifier/contradiction scan. Stop before writing on any contradiction.
 
-2. **Authority.** Record DEC-024 with the authority scope and exclusions exactly as stated in the request. If repository conventions do not let the owner's execution instruction constitute authority, DEC-024 is recorded as _proposed_ and the increment stops there.
+2. **Authority.** Record DEC-024 with the authority scope and exclusions exactly as stated in the request. If repository conventions do not let the owner's execution instruction constitute authority, DEC-024 is recorded as *proposed* and the increment stops there.
 
 3. **Parsing validation.** Add an explicit expression model (`SINGLE`, `UNORDERED-ALTERNATIVES`, `ORDERED-PREFERENCE`, `COMBINATION`, `HYBRID`, `UNPARSEABLE`) in a new `src/domain/technology-decisions/source-expression.ts`. Verbatim source text, parsed expression, diagnostics, parse status, and normalized option references are stored as separate fields; source wording is never replaced. "or" ≠ "then"; Option 6 is not reduced to {2,5}; negation and priority language are preserved; ambiguity fails into an unresolved evidence state. Every distinct source form in the register gets a documented parse outcome, enumerated by test.
 

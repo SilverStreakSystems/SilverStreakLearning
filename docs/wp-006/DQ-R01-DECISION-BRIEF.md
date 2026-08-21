@@ -21,37 +21,37 @@ disposition of every other discoverable source-code lineage?
 
 ## Evidence summary
 
-| Fact                                                                                                 | Status                                                 |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Exactly one repository holds executable SSLS code (REPO-CAND-001)                                    | [C]                                                    |
-| Its provenance is fully recoverable (root `3190f797`, HEAD `c1f0601`, 330 commits)                   | [C]                                                    |
-| Its root commit carries no SSLS legacy ancestry                                                      | [C]                                                    |
-| It builds and passes 217 tests at the bound source tree                                              | [C]                                                    |
-| A declared-binding check exists, runs in CI on push and pull request, and uses the pull-request head | [C]                                                    |
-| Required-merge enforcement of that check                                                             | [U] — not verifiable from repository content (FND-012) |
-| No database, no migrations, no live integrations                                                     | [C]                                                    |
-| No real PII found; no committed secrets found                                                        | [C] within scan limits                                 |
-| Repository-wide lint does not pass (683 problems, predominantly formatting)                          | [C], FND-014                                           |
-| The FIRST-COMMIT-001 12-file origin plan was never executed                                          | [C]                                                    |
-| A legacy SSLS repository lineage is referenced but not locatable from inside the project             | [U]                                                    |
-| Off-platform copies cannot be enumerated                                                             | [U], accepted by DEC-009                               |
+| Fact | Status |
+|---|---|
+| Exactly one repository holds executable SSLS code (REPO-CAND-001) | [C] |
+| Its provenance is fully recoverable (root `3190f797`, HEAD `c1f0601`, 330 commits) | [C] |
+| Its root commit carries no SSLS legacy ancestry | [C] |
+| It builds and passes 217 tests at the bound source tree | [C] |
+| A declared-binding check exists, runs in CI on push and pull request, and uses the pull-request head | [C] |
+| Required-merge enforcement of that check | [U] — not verifiable from repository content (FND-012) |
+| No database, no migrations, no live integrations | [C] |
+| No real PII found; no committed secrets found | [C] within scan limits |
+| Repository-wide lint does not pass (683 problems, predominantly formatting) | [C], FND-014 |
+| The FIRST-COMMIT-001 12-file origin plan was never executed | [C] |
+| A legacy SSLS repository lineage is referenced but not locatable from inside the project | [U] |
+| Off-platform copies cannot be enumerated | [U], accepted by DEC-009 |
 
 ## Option analysis
 
-| Criterion               | A. Current Lovable repository                                                                  | B. Historical clean repository            | C. New clean repository from reviewed artifacts                     | D. Any other repository discovered by WP-006 |
-| ----------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------- |
-| Provenance              | Fully recoverable to root [C]                                                                  | Not locatable from inside the project [U] | Would start from a known parent, but discards recovered history [I] | No such repository was discovered [U]        |
-| Current implementation  | Holds all executable code [C]                                                                  | Holds none that can be shown [U]          | Zero at creation; requires migration [C]                            | Unknown [U]                                  |
-| No-PII posture          | Scanned across tree and history, no findings [C]                                               | Unscannable while unlocated [U]           | Inherits whatever is copied; requires a fresh scan [I]              | Unknown [U]                                  |
-| History                 | 330 commits, weak commit messages [C], FND-007 triage                                          | Unknown [U]                               | Truncated by construction [C]                                       | Unknown [U]                                  |
-| Contamination risk      | No legacy ancestry detected [C]                                                                | Cannot be assessed [U]                    | Low if the copy set is reviewed [I]                                 | Unknown [U]                                  |
-| Test continuity         | 217 tests continuous with prior captures [C]                                                   | None [U]                                  | Tests survive the copy, history does not [I]                        | Unknown [U]                                  |
-| Evidence continuity     | EV-008…EV-017 bind to this lineage [C]                                                         | Would orphan all existing evidence [C]    | Every evidence record would need rebinding [C]                      | Unknown [U]                                  |
-| Authority alignment     | Satisfies ADR-002 and REPO-BOOT-001 in substance; diverges from FIRST-COMMIT-001 (DSC-003) [I] | Cannot be evaluated [U]                   | Could satisfy FIRST-COMMIT-001 literally [I]                        | Unknown [U]                                  |
-| Migration burden        | None [C]                                                                                       | Unknown, presumed high [I]                | High: copy, rescan, rebind, re-verify [I]                           | Unknown [U]                                  |
-| Maintainability         | Platform-managed, already in use [C]                                                           | Unknown [U]                               | Adds a second lineage to keep coherent [I]                          | Unknown [U]                                  |
-| Rollback                | Full history available [C]                                                                     | Unknown [U]                               | Loses pre-migration rollback [C]                                    | Unknown [U]                                  |
-| Operational feasibility | Immediate [C]                                                                                  | Not actionable while unlocated [C]        | Feasible but costly and disruptive [I]                              | Not actionable [C]                           |
+| Criterion | A. Current Lovable repository | B. Historical clean repository | C. New clean repository from reviewed artifacts | D. Any other repository discovered by WP-006 |
+|---|---|---|---|---|
+| Provenance | Fully recoverable to root [C] | Not locatable from inside the project [U] | Would start from a known parent, but discards recovered history [I] | No such repository was discovered [U] |
+| Current implementation | Holds all executable code [C] | Holds none that can be shown [U] | Zero at creation; requires migration [C] | Unknown [U] |
+| No-PII posture | Scanned across tree and history, no findings [C] | Unscannable while unlocated [U] | Inherits whatever is copied; requires a fresh scan [I] | Unknown [U] |
+| History | 330 commits, weak commit messages [C], FND-007 triage | Unknown [U] | Truncated by construction [C] | Unknown [U] |
+| Contamination risk | No legacy ancestry detected [C] | Cannot be assessed [U] | Low if the copy set is reviewed [I] | Unknown [U] |
+| Test continuity | 217 tests continuous with prior captures [C] | None [U] | Tests survive the copy, history does not [I] | Unknown [U] |
+| Evidence continuity | EV-008…EV-017 bind to this lineage [C] | Would orphan all existing evidence [C] | Every evidence record would need rebinding [C] | Unknown [U] |
+| Authority alignment | Satisfies ADR-002 and REPO-BOOT-001 in substance; diverges from FIRST-COMMIT-001 (DSC-003) [I] | Cannot be evaluated [U] | Could satisfy FIRST-COMMIT-001 literally [I] | Unknown [U] |
+| Migration burden | None [C] | Unknown, presumed high [I] | High: copy, rescan, rebind, re-verify [I] | Unknown [U] |
+| Maintainability | Platform-managed, already in use [C] | Unknown [U] | Adds a second lineage to keep coherent [I] | Unknown [U] |
+| Rollback | Full history available [C] | Unknown [U] | Loses pre-migration rollback [C] | Unknown [U] |
+| Operational feasibility | Immediate [C] | Not actionable while unlocated [C] | Feasible but costly and disruptive [I] | Not actionable [C] |
 
 Option B and Option D cannot be selected on present evidence because their subjects are not located.
 Option C is feasible and would satisfy FIRST-COMMIT-001 literally, at the price of discarding

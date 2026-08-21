@@ -62,7 +62,15 @@
     "entry_state": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["gate_a", "wp_007", "wp_038", "wp_039", "fnd_022", "pkg_001", "hs_023"],
+      "required": [
+        "gate_a",
+        "wp_007",
+        "wp_038",
+        "wp_039",
+        "fnd_022",
+        "pkg_001",
+        "hs_023"
+      ],
       "properties": {
         "gate_a": {
           "const": "OPEN"
@@ -111,7 +119,13 @@
         "relationship_totals": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"],
+          "required": [
+            "RESTATES",
+            "NARROWS",
+            "BROADENS",
+            "CONFLICTS",
+            "NEW"
+          ],
           "properties": {
             "RESTATES": {
               "const": 3
@@ -173,7 +187,13 @@
     "owner_decision": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["decision_id", "recorded_on", "recorded_by", "canonical_record", "note"],
+      "required": [
+        "decision_id",
+        "recorded_on",
+        "recorded_by",
+        "canonical_record",
+        "note"
+      ],
       "properties": {
         "decision_id": {
           "const": "DEC-020"
@@ -333,7 +353,13 @@
           "type": "array",
           "minItems": 1,
           "items": {
-            "enum": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"]
+            "enum": [
+              "RESTATES",
+              "NARROWS",
+              "BROADENS",
+              "CONFLICTS",
+              "NEW"
+            ]
           }
         },
         "relationship_rows": {
@@ -461,7 +487,13 @@
           ]
         },
         "relationship_classification": {
-          "enum": ["RESTATES", "NARROWS", "BROADENS", "CONFLICTS", "NEW"]
+          "enum": [
+            "RESTATES",
+            "NARROWS",
+            "BROADENS",
+            "CONFLICTS",
+            "NEW"
+          ]
         },
         "classification_rationale": {
           "type": "string",

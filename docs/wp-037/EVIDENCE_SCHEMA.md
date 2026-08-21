@@ -5,24 +5,24 @@ schema violation aborts the run and no index is written.
 
 ## Required fields
 
-| Field                       | Meaning                                                                           |
-| --------------------------- | --------------------------------------------------------------------------------- |
-| `evidence_id`               | Stable identifier for the record                                                  |
-| `schema_version`            | Schema version the record conforms to                                             |
-| `evidence_type`             | One of the declared evidence types                                                |
-| `title`, `description`      | What the check is, in plain language                                              |
-| `method`                    | `automated`, `manual`, `assistive-technology`, `independent`                      |
+| Field | Meaning |
+|---|---|
+| `evidence_id` | Stable identifier for the record |
+| `schema_version` | Schema version the record conforms to |
+| `evidence_type` | One of the declared evidence types |
+| `title`, `description` | What the check is, in plain language |
+| `method` | `automated`, `manual`, `assistive-technology`, `independent` |
 | `producer`, `producer_type` | Who or what produced it (`pipeline`, `operator`, `ai-assisted`, `external-party`) |
-| `commit_sha`                | 40-character lowercase hex commit the check ran against                           |
-| `environment`               | Where it ran                                                                      |
-| `timestamp`                 | ISO-8601 execution instant                                                        |
-| `tool`, `command`           | How it can be re-run                                                              |
-| `actual_result`             | What was observed, stated literally                                               |
-| `status`                    | `pass`, `fail`, `not-completed`, `review-required`                                |
-| `supports`                  | Propositions the record does support                                              |
-| `does_not_support`          | Propositions the record explicitly cannot support                                 |
-| `independent`               | Declared, never inferred                                                          |
-| `synthetic_data_only`       | Boundary flag                                                                     |
+| `commit_sha` | 40-character lowercase hex commit the check ran against |
+| `environment` | Where it ran |
+| `timestamp` | ISO-8601 execution instant |
+| `tool`, `command` | How it can be re-run |
+| `actual_result` | What was observed, stated literally |
+| `status` | `pass`, `fail`, `not-completed`, `review-required` |
+| `supports` | Propositions the record does support |
+| `does_not_support` | Propositions the record explicitly cannot support |
+| `independent` | Declared, never inferred |
+| `synthetic_data_only` | Boundary flag |
 
 ## Conditional and structural fields
 

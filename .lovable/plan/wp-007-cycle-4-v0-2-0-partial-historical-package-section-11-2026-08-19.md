@@ -4,11 +4,11 @@
 
 The three authorized August 5 v0.2.0 inputs are present and measure exactly the digests DEC-019 declares:
 
-| File                                                            | Measured SHA-256 | Match                  |
-| --------------------------------------------------------------- | ---------------- | ---------------------- |
+| File | Measured SHA-256 | Match |
+| --- | --- | --- |
 | SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf | `2c83e6b6…7b044` | expected value matches |
-| SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx                | `f717dab3…3dc1`  | expected value matches |
-| SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt                           | `914b65e3…d09a8` | observed value matches |
+| SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx | `f717dab3…3dc1` | expected value matches |
+| SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt | `914b65e3…d09a8` | observed value matches |
 
 The PDF's Section 11 on printed pages 20–21 is titled "Accessibility", exactly as DEC-019 names it. This confirms the reading recorded in PDR-006: the section-numbering discrepancy belonged to the v0.3.0 document, not to this one. Cycle 4 entry is therefore satisfied and FND-021 can be dispositioned.
 

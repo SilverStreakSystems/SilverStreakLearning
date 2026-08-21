@@ -5,16 +5,16 @@ to, so that progress on one axis never manufactures progress on another.
 
 ## Axes in play during workflow
 
-| Axis           | Question                               | Never implies                   |
-| -------------- | -------------------------------------- | ------------------------------- |
-| Workflow       | Where is this in its stream?           | That it is approved or correct. |
-| Authority      | What standing does this hold?          | That it is implemented.         |
-| Implementation | Has it been built?                     | That it works or is authorised. |
-| Validation     | Has someone independent checked it?    | That it is released.            |
-| Evidence       | What supports the statement?           | That the statement is approved. |
-| Approval       | Has a human with standing accepted it? | That it is published.           |
-| Publication    | Is it externally stated?               | That it remains true.           |
-| Freshness      | When was this last confirmed?          | That it is still correct.       |
+| Axis | Question | Never implies |
+| --- | --- | --- |
+| Workflow | Where is this in its stream? | That it is approved or correct. |
+| Authority | What standing does this hold? | That it is implemented. |
+| Implementation | Has it been built? | That it works or is authorised. |
+| Validation | Has someone independent checked it? | That it is released. |
+| Evidence | What supports the statement? | That the statement is approved. |
+| Approval | Has a human with standing accepted it? | That it is published. |
+| Publication | Is it externally stated? | That it remains true. |
+| Freshness | When was this last confirmed? | That it is still correct. |
 
 ## Transition record
 

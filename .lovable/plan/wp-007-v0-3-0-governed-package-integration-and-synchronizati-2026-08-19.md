@@ -25,7 +25,6 @@ v0.2.0 set — with every synchronization backed by executing tests. No route is
 ## What will be built
 
 **1. Canonical governed-package register (new data domain, mirrors existing pattern)**
-
 - `data/packages/GOVERNED_PACKAGE_SCHEMA.json` v1.0.0.
 - `data/packages/governed-packages.json`: package `PKG-002` (v0.3.0, 2026-08-19) with
   three artifact records (PDF, XLSX, manifest TXT) each carrying filename, MIME type,
@@ -39,14 +38,12 @@ v0.2.0 set — with every synchronization backed by executing tests. No route is
   no repository locator is fabricated.
 
 **2. Narrowest authority extension**
-
 - Add one authority class, `synchronized-reference`, to `src/domain/authority.ts`
   (lowest-authority reference tier, `carriesImplementationAuthority: false`), only if
   no existing class already expresses "summarizes canonical state, is not a register".
   Existing class list is reviewed first; reuse is preferred over addition.
 
 **3. Registry + generated projection**
-
 - `src/domain/governed-package.ts`, `src/lib/governed-package-registry.ts`.
 - `scripts/gen-governed-package-docs.ts` → `docs/packages/PACKAGE_REGISTER.md`,
   `INTEGRITY_MANIFEST.md`, `COMPLETENESS_BOUNDARY.md`, `NON_CLAIM_BOUNDARY.md`.
@@ -54,7 +51,6 @@ v0.2.0 set — with every synchronization backed by executing tests. No route is
   surfaces through the register only — no new route.
 
 **4. Reconciliation and drift**
-
 - Compare each v0.3.0 package assertion against repository truth (North Star, Gate A
   OPEN, WP-038 closed, WP-007 active, WP-039 unauthorized, DEC-012/DEC-018 accepted,
   WCAG 2.2 AA internal target only, FND-016 partial, FND-017/018 open, FND-019
@@ -64,7 +60,6 @@ v0.2.0 set — with every synchronization backed by executing tests. No route is
   Repository values are never overwritten by the package summary.
 
 **5. Target-stack contract**
-
 - Added to `docs/wp-007/ENTRY_SPECIFICATION.md` and to the new
   `docs/wp-007/CHECKPOINT-003.md`, with the ten required layers. No new workflow.
 
@@ -80,7 +75,6 @@ presents Gate 0 as current or v0.2.0 as the current package; CURRENT_STATE agree
 the registers.
 
 **7. Validation and evidence**
-
 - Full run: `bun run test`, typecheck, production build, `bun run lint` (expected to
   remain at existing debt, FND-014 open), `bun run evidence:run`,
   `bun run evidence:verify`, schema validation, stale-reference searches, SSOT binding

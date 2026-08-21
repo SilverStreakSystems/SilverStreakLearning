@@ -539,7 +539,7 @@
       },
       "wp006_manifest": {
         "commit": "70c1f891c5d341c60132d0109979042004425a4b",
-        "manifest_rows": 0,
+        "manifest_rows": 25,
         "declared_route_files": 30,
         "declared_addressable_routes_plus_root_layout": "29 addressable routes plus the root layout",
         "declared_registry_paths": 19,
@@ -602,5 +602,5 @@
       "personal_data": "Real personal data is prohibited and not intentionally introduced; every product record is synthetic and marked as such in the fixtures. The automated boundary scan (EV-PII) remains review-required: it reported one inspected test-token candidate and does not establish the absence of personal data."
     }
   },
-  "input_fingerprint": "73999520e0b16d4317c2401bf401bb1cb176628099afb44356cd1c7655e2e367"
+  "input_fingerprint": "d83eb8221aac191da3220e8f9e2e59a56e4df9fa573bc2f571610866d10a5060"
 }

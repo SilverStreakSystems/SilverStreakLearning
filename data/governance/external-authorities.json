@@ -40,12 +40,7 @@
       "jurisdiction": "US-FEDERAL",
       "source_status": "VERIFIED-CURRENT",
       "lifecycle": "EFFECTIVE",
-      "section_locators": [
-        "34 CFR 99.10",
-        "34 CFR 99.20-99.22",
-        "34 CFR 99.30",
-        "34 CFR 99.31(a)(1)"
-      ],
+      "section_locators": ["34 CFR 99.10", "34 CFR 99.20-99.22", "34 CFR 99.30", "34 CFR 99.31(a)(1)"],
       "source_statement": "Implements FERPA: defines education records, requires prior written consent for disclosure of personally identifiable information, lists disclosure exceptions including the school-official exception, and establishes inspection and amendment procedures.",
       "reproduction_boundary": "Summarised only.",
       "supersedes": [],
@@ -133,13 +128,7 @@
       "jurisdiction": "US-FEDERAL",
       "source_status": "VERIFIED-CURRENT",
       "lifecycle": "EFFECTIVE",
-      "section_locators": [
-        "16 CFR 312.4",
-        "16 CFR 312.5",
-        "16 CFR 312.6",
-        "16 CFR 312.10",
-        "16 CFR 312.11(d)(1), (d)(4), (g)"
-      ],
+      "section_locators": ["16 CFR 312.4", "16 CFR 312.5", "16 CFR 312.6", "16 CFR 312.10", "16 CFR 312.11(d)(1), (d)(4), (g)"],
       "source_statement": "Amends the COPPA Rule with an effective date of 2025-06-23 and a general compliance date of 2026-04-22, adds a written data retention and deletion policy requirement, and requires separate consent for third-party disclosures for advertising.",
       "reproduction_boundary": "Summarised only.",
       "supersedes": [],
@@ -161,13 +150,7 @@
       "jurisdiction": "US-MA",
       "source_status": "VERIFIED-CURRENT",
       "lifecycle": "EFFECTIVE",
-      "section_locators": [
-        "603 CMR 23.01",
-        "603 CMR 23.02",
-        "603 CMR 23.03",
-        "603 CMR 23.05",
-        "603 CMR 23.06"
-      ],
+      "section_locators": ["603 CMR 23.01", "603 CMR 23.02", "603 CMR 23.03", "603 CMR 23.05", "603 CMR 23.06"],
       "source_statement": "Governs Massachusetts student records: assigns rights by student age, defines authorized school personnel to include service-contract personnel with duty-limited access, requires the principal and superintendent to secure records including electronic systems, and sets destruction timelines of sixty years for the transcript and no later than seven years for the temporary record.",
       "reproduction_boundary": "Summarised only.",
       "supersedes": [],
@@ -255,12 +238,7 @@
       "jurisdiction": "US-MA",
       "source_status": "VERIFIED-CURRENT",
       "lifecycle": "EFFECTIVE",
-      "section_locators": [
-        "201 CMR 17.01",
-        "201 CMR 17.02",
-        "201 CMR 17.03(2)(f)",
-        "201 CMR 17.04"
-      ],
+      "section_locators": ["201 CMR 17.01", "201 CMR 17.02", "201 CMR 17.03(2)(f)", "201 CMR 17.04"],
       "source_statement": "Applies to all persons that own or license personal information about a Massachusetts resident, requires a written comprehensive information security program with enumerated administrative, technical and physical safeguards, requires oversight of third-party service providers by contract, and sets computer system security requirements including authentication, access control and encryption in transit and on portable devices.",
       "reproduction_boundary": "Summarised only. Clause-level detail of 17.04 subsections beyond (1)-(3) was not fully enumerated in the WP-038 pass.",
       "supersedes": [],
@@ -392,12 +370,7 @@
       "jurisdiction": "US-FEDERAL",
       "source_status": "VERIFIED-CURRENT",
       "lifecycle": "EFFECTIVE",
-      "section_locators": [
-        "28 CFR 35.200(a)",
-        "28 CFR 35.200(b)",
-        "28 CFR 35.201",
-        "28 CFR 35.202"
-      ],
+      "section_locators": ["28 CFR 35.200(a)", "28 CFR 35.200(b)", "28 CFR 35.201", "28 CFR 35.202"],
       "source_statement": "Requires public entities to make web content and mobile applications readily accessible to and usable by individuals with disabilities, conforming to WCAG 2.1 Level AA, subject to listed exceptions and limited defences. The 2026 interim final rule extended compliance to 2027-04-26 for populations of 50,000 or more and 2028-04-26 for smaller populations and special district governments, without changing the technical standard.",
       "reproduction_boundary": "Summarised only.",
       "supersedes": [],
@@ -573,11 +546,7 @@
       "jurisdiction": "NOT-JURISDICTIONAL",
       "source_status": "VERIFIED-CURRENT",
       "lifecycle": "EFFECTIVE",
-      "section_locators": [
-        "Control 2 Software assets",
-        "Control 7 Vulnerability management",
-        "Control 16 Application software security"
-      ],
+      "section_locators": ["Control 2 Software assets", "Control 7 Vulnerability management", "Control 16 Application software security"],
       "source_statement": "Eighteen prioritised safeguards against common attack patterns, including a governance function.",
       "reproduction_boundary": "Summarised only.",
       "supersedes": ["CIS Controls v8"],

@@ -17,7 +17,9 @@
     "REJECT",
     "NEEDS-EVIDENCE / DEFER"
   ],
-  "unmatched_conclusion_vocabulary": ["NO-ACTION-CURRENT-STANDS"],
+  "unmatched_conclusion_vocabulary": [
+    "NO-ACTION-CURRENT-STANDS"
+  ],
   "candidate_dispositions": [
     {
       "candidate_id": "HREQ-015",
@@ -37,7 +39,10 @@
       "exact_text": "semantic headings and landmarks",
       "owner_disposition": "MERGE-OR-RESTATEMENT",
       "owner_rationale": "Preserve HREQ-001 and HREQ-002 as the controlling, more testable expectations; record HREQ-016 as historical lineage, not a third requirement.",
-      "controlling_requirement_ids": ["HREQ-001", "HREQ-002"],
+      "controlling_requirement_ids": [
+        "HREQ-001",
+        "HREQ-002"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",
@@ -50,7 +55,9 @@
       "exact_text": "skip link",
       "owner_disposition": "RETAIN-HISTORICAL",
       "owner_rationale": "HREQ-003 remains controlling because it states the skip-link position and target more specifically.",
-      "controlling_requirement_ids": ["HREQ-003"],
+      "controlling_requirement_ids": [
+        "HREQ-003"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",
@@ -76,7 +83,9 @@
       "exact_text": "visible focus",
       "owner_disposition": "RETAIN-HISTORICAL",
       "owner_rationale": "HREQ-006 remains controlling as the stronger dual-color visible-focus rule.",
-      "controlling_requirement_ids": ["HREQ-006"],
+      "controlling_requirement_ids": [
+        "HREQ-006"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",
@@ -115,7 +124,9 @@
       "exact_text": "status not conveyed by color alone",
       "owner_disposition": "MERGE-OR-RESTATEMENT",
       "owner_rationale": "Treat both sources as one prohibition; HREQ-007 remains the controlling current wording.",
-      "controlling_requirement_ids": ["HREQ-007"],
+      "controlling_requirement_ids": [
+        "HREQ-007"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",
@@ -128,7 +139,9 @@
       "exact_text": "contrast review",
       "owner_disposition": "RETAIN-HISTORICAL",
       "owner_rationale": "HREQ-012 remains controlling; the historical phrase contrast review adds no measurable ratio, tool, owner, or cadence.",
-      "controlling_requirement_ids": ["HREQ-012"],
+      "controlling_requirement_ids": [
+        "HREQ-012"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",
@@ -167,7 +180,9 @@
       "exact_text": "reduced-motion support",
       "owner_disposition": "MERGE-OR-RESTATEMENT",
       "owner_rationale": "Record one reduced-motion expectation with two sources; HREQ-009 remains controlling until a more testable formulation is approved.",
-      "controlling_requirement_ids": ["HREQ-009"],
+      "controlling_requirement_ids": [
+        "HREQ-009"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",
@@ -180,7 +195,9 @@
       "exact_text": "no content loss in horizontal table scrolling",
       "owner_disposition": "RETAIN-HISTORICAL",
       "owner_rationale": "Treat horizontal table scrolling as historical evidence of a narrower case already governed by HREQ-008; do not weaken HREQ-008.",
-      "controlling_requirement_ids": ["HREQ-008"],
+      "controlling_requirement_ids": [
+        "HREQ-008"
+      ],
       "post_disposition_state": {
         "extraction_record_unchanged": true,
         "conformance_state": "NOT-ASSESSED",

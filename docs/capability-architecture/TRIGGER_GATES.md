@@ -3,13 +3,13 @@
 A trigger gate names a threshold that must not be crossed until the capabilities
 behind it exist. Every gate below is currently **not crossed**.
 
-| Gate                         | Marker  | Meaning                                                                    |
-| ---------------------------- | ------- | -------------------------------------------------------------------------- |
-| Before live personal data    | [PII]   | Must exist before any real personal information enters a system.           |
-| Before product-facing AI     | [AI]    | Must exist before any AI feature reaches a person outside SSLS.            |
-| Before district pilot        | [PILOT] | Must exist before a district uses the product with real staff or learners. |
-| Before public outcome claims | [CLAIM] | Must exist before SSLS states publicly that it improves outcomes.          |
-| Before enterprise scale      | [SCALE] | Must exist before the enterprise operates beyond a small team.             |
+| Gate | Marker | Meaning |
+| --- | --- | --- |
+| Before live personal data | [PII] | Must exist before any real personal information enters a system. |
+| Before product-facing AI | [AI] | Must exist before any AI feature reaches a person outside SSLS. |
+| Before district pilot | [PILOT] | Must exist before a district uses the product with real staff or learners. |
+| Before public outcome claims | [CLAIM] | Must exist before SSLS states publicly that it improves outcomes. |
+| Before enterprise scale | [SCALE] | Must exist before the enterprise operates beyond a small team. |
 
 ## Rules
 

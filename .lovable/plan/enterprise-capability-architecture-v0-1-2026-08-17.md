@@ -13,7 +13,6 @@ or validation claim.
 ## What gets built
 
 ### 1. Capability object model
-
 A governed `EnterpriseCapability` type carrying all required fields: identity
 and description, domain and types (multi-type allowed), North Star
 contribution, beneficiary model, principles and constraints, function/role
@@ -33,7 +32,6 @@ specialist, independent review, automated support, not yet required), value
 streams (16), dependency edge kinds (10), and a `DeliverableType` schema.
 
 ### 2. Registry content
-
 Roughly 120–135 candidate capability records across the 12 domains, produced by
 working the taxonomy through a normalization pass rather than one record per
 bullet: synonyms merged, role/process/deliverable/module entries reclassified,
@@ -52,7 +50,6 @@ Customer Success Plan, Financial Forecast, Workforce Capability Plan, and a few
 more) linked to capabilities.
 
 ### 3. Views
-
 `/capabilities` becomes a layout with a Capability Command View:
 
 - Registry (searchable, filterable table — the authoritative surface)
@@ -84,7 +81,6 @@ The Command Center and Findings register gain links to the new capability
 findings; the Future Architecture boundary is restated, not loosened.
 
 ### 4. Tests
-
 Extends the existing Vitest suite: stable unique IDs; purpose, North Star
 contribution, at least one beneficiary, authority class, maturity, and owning
 function status present on every record; candidates cannot render as approved
@@ -100,7 +96,6 @@ scrolling tables that keep headers and keyboard access, reduced-motion safe,
 plain language with abbreviations expanded on first use.
 
 ### 5. Documents
-
 Create: ENTERPRISE_CAPABILITY_ARCHITECTURE, CAPABILITY_TAXONOMY,
 CAPABILITY_OBJECT_MODEL, CAPABILITY_AUTHORITY_RULES,
 CAPABILITY_MATURITY_MODEL, CAPABILITY_TRIGGER_MODEL,

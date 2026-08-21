@@ -303,11 +303,7 @@
     }
   ],
   "data_sensitivity_classes": [
-    {
-      "id": "public",
-      "label": "Public",
-      "meaning": "Published or publishable without restriction."
-    },
+    { "id": "public", "label": "Public", "meaning": "Published or publishable without restriction." },
     {
       "id": "operational",
       "label": "Operational",

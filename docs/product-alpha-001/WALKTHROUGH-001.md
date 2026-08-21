@@ -44,19 +44,19 @@ real-stakeholder finding is recorded here.
 **W-001 — the working product surface was not findable from the entry page.**
 `/` presented as a governance record viewer; the one usable product route was a
 single sidebar item with no description of what it does. An operator arriving
-cold had no stated path into the workflow. _Remediated:_ the Command Center now
+cold had no stated path into the workflow. *Remediated:* the Command Center now
 carries a named entry card that states in plain language what the workflow does
 and that it is a bounded local prototype, with a direct link to `/learners`.
 
 **W-002 — the small-screen menu label wrapped at 320 px.** The header menu
 trigger shrank and broke "Menu" across two lines at the narrowest supported
-width. _Remediated:_ the trigger no longer shrinks or wraps.
+width. *Remediated:* the trigger no longer shrinks or wraps.
 
 **W-003 — a refused import blamed the saved records.** The decoder's messages
 are written about stored data ("The saved data declares no schema version."),
 and were reported unchanged on the import path — telling the operator that the
 records already in the browser were faulty when in fact nothing had been
-touched. _Remediated:_ the import path restates the refusal with the chosen file
+touched. *Remediated:* the import path restates the refusal with the chosen file
 as its subject, states explicitly that the saved records were not changed, and
 keeps the decoder's own wording as a detail line so no information is lost.
 

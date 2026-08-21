@@ -18,11 +18,11 @@ nothing, extracts no requirement, and gives no record an owner disposition.
 
 ## 2. What was supplied
 
-| Supplied file                                                   | Measured SHA-256                                                   | Manifest declares             | Registered as | Result                                                    |
-| --------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------- | ------------- | --------------------------------------------------------- |
-| `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` | `9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943` | same value                    | PKA-001       | VERIFIED-MATCH, byte-identical to the registered artifact |
-| `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx`              | `68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e` | same value                    | PKA-002       | VERIFIED-MATCH, byte-identical                            |
-| `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt`                         | `3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130` | self-hash excluded, correctly | PKA-003       | Identical to the registered manifest                      |
+| Supplied file | Measured SHA-256 | Manifest declares | Registered as | Result |
+| --- | --- | --- | --- | --- |
+| `SSLS_2.0_Comprehensive_Governed_Rewrite_v0.3.0_2026-08-19.pdf` | `9632f08cd4afa0bfbbf7767a328fe3bbca2528314f34e39a078975619852f943` | same value | PKA-001 | VERIFIED-MATCH, byte-identical to the registered artifact |
+| `SSLS_2.0_Control_Workbook_v0.3.0_2026-08-19.xlsx` | `68064dcb39bea9e3a23f7593f65f00310a28254535c47aa1995c431bd6fcce1e` | same value | PKA-002 | VERIFIED-MATCH, byte-identical |
+| `SSLS_2.0_v0.3.0_SHA256_2026-08-19.txt` | `3a98382ee083b8aa3dd8f8182f14ef70b00617f62f356f43c4e817950ca7a130` | self-hash excluded, correctly | PKA-003 | Identical to the registered manifest |
 
 This is the third supply of the same three bytes. **No new package or package artifact was
 created**, because registering identical bytes a second time would manufacture a duplicate
@@ -53,10 +53,10 @@ AGREES, including the four added by this pass from the workbook sheets (Boundari
 work-package state, the bun-audit and independent-validation limitations, and the Evidence
 sheet's EV-026..EV-032 scope). Two new differences were recorded as drift, not corrected:
 
-| Row     | Difference                                                                                                                                                                                    | Controlling authority          | Disposition |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------- |
-| PDR-005 | The workbook states lint debt as 686 problems (672 errors, 14 warnings); the current repository state records 704.                                                                            | Executed repository validation | UNRESOLVED  |
-| PDR-006 | DEC-019 locks extraction to "Section 11 — Accessibility, printed pages 20–21", but Section 11 of the v0.3.0 PDF is "Security, privacy, and release boundary" and accessibility is Section 10. | Owner decision required        | UNRESOLVED  |
+| Row | Difference | Controlling authority | Disposition |
+| --- | --- | --- | --- |
+| PDR-005 | The workbook states lint debt as 686 problems (672 errors, 14 warnings); the current repository state records 704. | Executed repository validation | UNRESOLVED |
+| PDR-006 | DEC-019 locks extraction to "Section 11 — Accessibility, printed pages 20–21", but Section 11 of the v0.3.0 PDF is "Security, privacy, and release boundary" and accessibility is Section 10. | Owner decision required | UNRESOLVED |
 
 PDR-006 is consistent with DEC-019 describing the historical August 5 v0.2.0 document rather than this
 one, but that cannot be confirmed while the historical v0.2.0 PDF is unavailable, so it is recorded and

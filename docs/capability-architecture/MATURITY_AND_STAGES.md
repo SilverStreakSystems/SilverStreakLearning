@@ -2,14 +2,14 @@
 
 ## Scale stages
 
-| Stage | Meaning                                                                  |
-| ----- | ------------------------------------------------------------------------ |
-| S0    | Founder-only, synthetic data, no external users. Current declared stage. |
-| S1    | First controlled external exposure with no personal data.                |
-| S2    | First district pilot with real staff and real learners.                  |
-| S3    | Multiple districts under contract.                                       |
-| S4    | Sustained multi-district operation with dedicated functions.             |
-| S5    | Enterprise scale with independent assurance across domains.              |
+| Stage | Meaning |
+| --- | --- |
+| S0 | Founder-only, synthetic data, no external users. Current declared stage. |
+| S1 | First controlled external exposure with no personal data. |
+| S2 | First district pilot with real staff and real learners. |
+| S3 | Multiple districts under contract. |
+| S4 | Sustained multi-district operation with dedicated functions. |
+| S5 | Enterprise scale with independent assurance across domains. |
 
 The declared current stage is **S0**. Nothing in the shell may assert a later
 stage has been reached.
@@ -29,12 +29,12 @@ independent assurance and succession are never required earlier than execution.
 
 ## Maturity levels
 
-| Level   | Meaning                                             |
-| ------- | --------------------------------------------------- |
-| Absent  | The ability does not exist in any form.             |
-| Initial | Ad hoc, undocumented, dependent on one person.      |
-| Defined | Written down, repeatable, with a named owner.       |
-| Managed | Measured, with evidence produced routinely.         |
+| Level | Meaning |
+| --- | --- |
+| Absent | The ability does not exist in any form. |
+| Initial | Ad hoc, undocumented, dependent on one person. |
+| Defined | Written down, repeatable, with a named owner. |
+| Managed | Measured, with evidence produced routinely. |
 | Assured | Independently verified against stated requirements. |
 
 Maturity is declared, never computed. A capability may not be recorded as

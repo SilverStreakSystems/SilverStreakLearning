@@ -26,16 +26,8 @@
   "preserved_program_state": [
     { "subject": "Gate A", "state": "OPEN", "source": "data/program/program-policy.json" },
     { "subject": "WP-007", "state": "ACTIVE", "source": "data/program/program-policy.json" },
-    {
-      "subject": "WP-038",
-      "state": "CLOSED BY OWNER",
-      "source": "docs/wp-038/CLOSURE_RECOMMENDATION.md"
-    },
-    {
-      "subject": "WP-039",
-      "state": "NOT AUTHORIZED",
-      "source": "data/program/program-policy.json"
-    },
+    { "subject": "WP-038", "state": "CLOSED BY OWNER", "source": "docs/wp-038/CLOSURE_RECOMMENDATION.md" },
+    { "subject": "WP-039", "state": "NOT AUTHORIZED", "source": "data/program/program-policy.json" },
     {
       "subject": "Bounded Product Alpha 001 increment",
       "state": "CONTROLLED BY DEC-023",
@@ -377,10 +369,7 @@
     { "subject": "Wave 6 — Test Case Register", "state": "not-authorized" },
     { "subject": "WP-039", "state": "not-authorized" },
     { "subject": "Public redeployment of the synthetic prototype", "state": "not-authorized" },
-    {
-      "subject": "Database, authentication, tenancy, row-level security, integrations",
-      "state": "not-authorized"
-    },
+    { "subject": "Database, authentication, tenancy, row-level security, integrations", "state": "not-authorized" },
     { "subject": "TTR-001 whole-interface execution", "state": "deferred-not-run" }
   ]
 }

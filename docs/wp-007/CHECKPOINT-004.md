@@ -18,12 +18,12 @@ nothing, and appends nothing to CHECKPOINT-003.
 
 Verified entry state:
 
-| Proposition            | Locator                                                         | Result    |
-| ---------------------- | --------------------------------------------------------------- | --------- |
-| Gate A OPEN            | `src/fixtures/program.ts` — GATE-A; DEC-018                     | CONFIRMED |
-| WP-038 CLOSED BY OWNER | DEC-018                                                         | CONFIRMED |
-| WP-007 ACTIVE          | `src/fixtures/program.ts`; `docs/wp-007/ENTRY_SPECIFICATION.md` | CONFIRMED |
-| WP-039 NOT AUTHORIZED  | DEC-018; `docs/wp-007/REFUSED_CLAIMS.md`                        | CONFIRMED |
+| Proposition | Locator | Result |
+| --- | --- | --- |
+| Gate A OPEN | `src/fixtures/program.ts` — GATE-A; DEC-018 | CONFIRMED |
+| WP-038 CLOSED BY OWNER | DEC-018 | CONFIRMED |
+| WP-007 ACTIVE | `src/fixtures/program.ts`; `docs/wp-007/ENTRY_SPECIFICATION.md` | CONFIRMED |
+| WP-039 NOT AUTHORIZED | DEC-018; `docs/wp-007/REFUSED_CLAIMS.md` | CONFIRMED |
 
 Next unused identifiers verified at entry: HREQ-015, HS-023, EV-037, FND-021, DEC-019,
 `docs/wp-007/CHECKPOINT-004.md`. The historical, not-current August 5 v0.2.0 PDF, workbook, and manifest have no
@@ -55,13 +55,13 @@ Fabricating verbatim wording, locators, digests, or candidate counts is refused 
 
 ## 4. Artifact availability matrix
 
-| Artifact                                                        | Declared SHA-256 (owner-stated, not measured)                    | Availability             | Registration                                  |
-| --------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------ | --------------------------------------------- |
-| SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf | 2c83e6b666a2857922c6b80be830f3e3738b24b76c49ae638df2c84d6827b044 | NOT SUPPLIED TO EXECUTOR | NOT VERIFIED, NOT REGISTERED                  |
-| SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx                | f717dab3ad928ccd3bdcc96cf7b0054cc343edee276c4fbeb91063b4caf43dc1 | NOT SUPPLIED TO EXECUTOR | NOT VERIFIED, NOT REGISTERED                  |
-| SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt                           | 914b65e39895cbd225cf1211df242bae3804fc4fd561483f78a92987413d09a8 | NOT SUPPLIED TO EXECUTOR | NOT VERIFIED, NOT REGISTERED                  |
-| v0.2.0 DOCX named by the manifest                               | b5cd16ce8a2f4298a66f7f599e3e9aa918ba6fdd2bb0d0b991b75dfb17e1a4e1 | NOT SUPPLIED             | PKA-101 — remains NOT SUPPLIED / NOT VERIFIED |
-| v0.2.0 source ZIP named by the manifest                         | 6451f73460e77ca80786705d3cc2decd2ea93da82367944c741be0a8dd1bd9b3 | NOT SUPPLIED             | PKA-102 — remains NOT SUPPLIED / NOT VERIFIED |
+| Artifact | Declared SHA-256 (owner-stated, not measured) | Availability | Registration |
+| --- | --- | --- | --- |
+| SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf | 2c83e6b666a2857922c6b80be830f3e3738b24b76c49ae638df2c84d6827b044 | NOT SUPPLIED TO EXECUTOR | NOT VERIFIED, NOT REGISTERED |
+| SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx | f717dab3ad928ccd3bdcc96cf7b0054cc343edee276c4fbeb91063b4caf43dc1 | NOT SUPPLIED TO EXECUTOR | NOT VERIFIED, NOT REGISTERED |
+| SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt | 914b65e39895cbd225cf1211df242bae3804fc4fd561483f78a92987413d09a8 | NOT SUPPLIED TO EXECUTOR | NOT VERIFIED, NOT REGISTERED |
+| v0.2.0 DOCX named by the manifest | b5cd16ce8a2f4298a66f7f599e3e9aa918ba6fdd2bb0d0b991b75dfb17e1a4e1 | NOT SUPPLIED | PKA-101 — remains NOT SUPPLIED / NOT VERIFIED |
+| v0.2.0 source ZIP named by the manifest | 6451f73460e77ca80786705d3cc2decd2ea93da82367944c741be0a8dd1bd9b3 | NOT SUPPLIED | PKA-102 — remains NOT SUPPLIED / NOT VERIFIED |
 
 The owner-stated digests above are recorded as declared values only. This program measured
 none of them. The July 30 v0.1.0 material is not a substitute and was not used.

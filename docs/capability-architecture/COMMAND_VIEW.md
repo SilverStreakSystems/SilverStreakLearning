@@ -4,17 +4,17 @@ Route: `/capabilities`. Detail: `/capabilities/{capabilityId}`.
 
 ## Views
 
-| View                | Search parameter     | Answers                                          |
-| ------------------- | -------------------- | ------------------------------------------------ |
-| Registry            | `view=registry`      | What candidate capabilities are recorded?        |
-| Domain map          | `view=domains`       | How are they organized, and how many per domain? |
-| Dependencies        | `view=dependencies`  | What depends on what, and why?                   |
-| Maturity and stages | `view=maturity`      | When must each ability exist?                    |
-| Independence        | `view=independence`  | Where may the builder not be the validator?      |
-| Trigger gates       | `view=gates`         | What must exist before a threshold is crossed?   |
-| Coverage            | `view=coverage`      | How may a capability be held today?              |
-| Deliverable types   | `view=deliverables`  | What must capabilities produce?                  |
-| Normalization       | `view=normalization` | What judgments shaped the taxonomy?              |
+| View | Search parameter | Answers |
+| --- | --- | --- |
+| Registry | `view=registry` | What candidate capabilities are recorded? |
+| Domain map | `view=domains` | How are they organized, and how many per domain? |
+| Dependencies | `view=dependencies` | What depends on what, and why? |
+| Maturity and stages | `view=maturity` | When must each ability exist? |
+| Independence | `view=independence` | Where may the builder not be the validator? |
+| Trigger gates | `view=gates` | What must exist before a threshold is crossed? |
+| Coverage | `view=coverage` | How may a capability be held today? |
+| Deliverable types | `view=deliverables` | What must capabilities produce? |
+| Normalization | `view=normalization` | What judgments shaped the taxonomy? |
 
 ## Filters
 

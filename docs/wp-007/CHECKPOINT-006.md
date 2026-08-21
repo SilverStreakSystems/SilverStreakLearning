@@ -26,11 +26,11 @@ Executed before any register edit:
 
 ## Digest verification (EV-039)
 
-| Artifact             | File                                                            | Bytes   | Measured SHA-256 | Against DEC-019 |
-| -------------------- | --------------------------------------------------------------- | ------- | ---------------- | --------------- |
-| PKA-103 (historical) | SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf | 787,831 | `2c83e6b6…7b044` | MATCH           |
-| PKA-104 (historical) | SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx                | 36,546  | `f717dab3…3dc1`  | MATCH           |
-| PKA-105 (historical) | SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt                           | 491     | `914b65e3…d09a8` | MATCH           |
+| Artifact | File | Bytes | Measured SHA-256 | Against DEC-019 |
+| --- | --- | --- | --- | --- |
+| PKA-103 (historical) | SSLS_2.0_Comprehensive_Clean_Room_Rewrite_v0.2.0_2026-08-05.pdf | 787,831 | `2c83e6b6…7b044` | MATCH |
+| PKA-104 (historical) | SSLS_2.0_Control_Workbook_v0.2.0_2026-08-05.xlsx | 36,546 | `f717dab3…3dc1` | MATCH |
+| PKA-105 (historical) | SSLS_2.0_v0.2.0_SHA256_2026-08-05.txt | 491 | `914b65e3…d09a8` | MATCH |
 
 The v0.2.0 DOCX and ZIP named by the manifest were **not supplied**. They remain
 registered as NOT-SUPPLIED with no measured size and no digest, and no content of
@@ -61,12 +61,12 @@ are different versions; no renumbering was applied to either record.
 the HS-011 candidates HREQ-001..014:
 
 | Relationship | Rows |
-| ------------ | ---- |
-| RESTATES     | 3    |
-| NARROWS      | 2    |
-| BROADENS     | 6    |
-| CONFLICTS    | 0    |
-| NEW          | 6    |
+| --- | --- |
+| RESTATES | 3 |
+| NARROWS | 2 |
+| BROADENS | 6 |
+| CONFLICTS | 0 |
+| NEW | 6 |
 
 Three HS-011 candidates (HREQ-005, HREQ-013, HREQ-014) have no HS-023 counterpart
 and are listed as unmatched. No row merges, deduplicates, edits, deletes, ranks,

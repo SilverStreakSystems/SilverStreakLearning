@@ -35,7 +35,9 @@
   "command": "bun run evidence:run",
   "actual_result": "75 dependencies inventoried; 0 marked REQUIRES LEGAL REVIEW.",
   "status": "pass",
-  "supports": ["The licence strings declared by the resolved dependency set."],
+  "supports": [
+    "The licence strings declared by the resolved dependency set."
+  ],
   "does_not_support": [
     "Any legal conclusion about licence compatibility, obligations, or distribution rights. That requires qualified review."
   ]

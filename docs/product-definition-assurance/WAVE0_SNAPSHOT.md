@@ -2,7 +2,7 @@
 # Wave 0 — authority and implementation snapshot (PDA-WAVE0 v0.2.0)
 
 Controlling source: `data/product-definition-assurance/wave0-declaration.json`. Controlling decision: DEC-023.
-Authority class: candidate. Input fingerprint: `73999520e0b16d4317c2401bf401bb1cb176628099afb44356cd1c7655e2e367`.
+Authority class: candidate. Input fingerprint: `d83eb8221aac191da3220e8f9e2e59a56e4df9fa573bc2f571610866d10a5060`.
 
 ## Boundary
 
@@ -46,7 +46,7 @@ Authority class: candidate. Input fingerprint: `73999520e0b16d4317c2401bf401bb1c
 | --- | --- |
 | Registered routes (live registry) | 21 |
 | Route modules on disk (live) | 42 |
-| WP-006 manifest rows at commit 70c1f891c5d341c60132d0109979042004425a4b (historical) | 0 |
+| WP-006 manifest rows at commit 70c1f891c5d341c60132d0109979042004425a4b (historical) | 25 |
 | WP-006 manifest declared route files (historical) | 30 |
 | WP-006 manifest declared registry paths (historical) | 19 |
 | External historical count — August 5 v0.2.0 package (no exact repository source locator in the tracked tree) | 17 |

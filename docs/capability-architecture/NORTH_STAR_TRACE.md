@@ -7,8 +7,8 @@ evidence, and uncertainty understandable to the person accountable for them.
 
 ## The question every record must answer
 
-Each capability record answers: _if this ability is absent, whose understanding
-of learning becomes less accurate, and who is harmed by that?_
+Each capability record answers: *if this ability is absent, whose understanding
+of learning becomes less accurate, and who is harmed by that?*
 
 The detail page at `/capabilities/{id}` renders this first, before ownership,
 before maturity, before anything operational.

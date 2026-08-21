@@ -5,26 +5,26 @@ output state, and a way to stop.
 
 ## Anatomy
 
-| Element                 | Rule                                                                      |
-| ----------------------- | ------------------------------------------------------------------------- |
-| Owner                   | Exactly one enterprise function.                                          |
-| Participating functions | Named, so a stage cannot silently depend on an uninvolved party.          |
-| Acting capacities       | Declared. Work performed outside a declared capacity is refused.          |
-| Input objects           | Shared object types the stage requires.                                   |
-| Required context        | The purpose-bound context package the stage needs, or `null`.             |
-| Entry criteria          | Must be independently checkable. Not "previous stage done".               |
-| Work types              | The kind of work performed, so effort is described honestly.              |
-| Deliverables            | Named deliverable types produced.                                         |
-| Decision points         | Each with its own authority and options, including the option to decline. |
-| Approvals               | Human acts, recorded with actor, capacity, and rationale.                 |
-| Validation              | The check performed by someone other than the producer, where required.   |
-| Evidence                | At least one reviewable proposition bound to the instance and version.    |
-| Exit criteria           | Observable statements, not sentiment.                                     |
-| Refusal states          | Named ways this stage legitimately stops.                                 |
-| Maximum waiting state   | A bounded wait. Silence past the bound escalates.                         |
-| Escalation              | Where a stall goes, by function.                                          |
-| Output objects          | What leaves the stage.                                                    |
-| Audit requirement       | Who acted, in which capacity, on which objects, under which rule, when.   |
+| Element | Rule |
+| --- | --- |
+| Owner | Exactly one enterprise function. |
+| Participating functions | Named, so a stage cannot silently depend on an uninvolved party. |
+| Acting capacities | Declared. Work performed outside a declared capacity is refused. |
+| Input objects | Shared object types the stage requires. |
+| Required context | The purpose-bound context package the stage needs, or `null`. |
+| Entry criteria | Must be independently checkable. Not "previous stage done". |
+| Work types | The kind of work performed, so effort is described honestly. |
+| Deliverables | Named deliverable types produced. |
+| Decision points | Each with its own authority and options, including the option to decline. |
+| Approvals | Human acts, recorded with actor, capacity, and rationale. |
+| Validation | The check performed by someone other than the producer, where required. |
+| Evidence | At least one reviewable proposition bound to the instance and version. |
+| Exit criteria | Observable statements, not sentiment. |
+| Refusal states | Named ways this stage legitimately stops. |
+| Maximum waiting state | A bounded wait. Silence past the bound escalates. |
+| Escalation | Where a stall goes, by function. |
+| Output objects | What leaves the stage. |
+| Audit requirement | Who acted, in which capacity, on which objects, under which rule, when. |
 
 ## Advancement rule
 
