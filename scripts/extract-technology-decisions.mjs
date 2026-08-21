@@ -168,6 +168,15 @@ function main() {
     part: `xl/${relationships.get(match[2])}`,
   }));
 
+  // Declared role inventory per group, hardcoded in the workbook Summary sheet.
+  const summarySheet = worksheets.find((sheet) => sheet.name === "Summary");
+  const summaryRows = summarySheet ? sheetRows(read(summarySheet.part), strings) : [];
+  const declared = new Map();
+  for (const row of summaryRows) {
+    const id = row.B ?? "";
+    if (/^[A-R]$/.test(id)) declared.set(id, { name: row.C ?? "", roles: Number(row.D ?? "0") });
+  }
+
   const groupSheets = worksheets.filter(
     (sheet) => sheet.name !== "Summary" && sheet.name !== "Decision Process",
   );
@@ -183,7 +192,7 @@ function main() {
     const header = FIELD_COLUMNS.map(([column]) => rows[0]?.[column] ?? "");
     const body = rows.slice(1);
     const groupId = sheet.name.slice(0, 1);
-    const groupName = sheet.name.slice(2);
+    const groupName = declared.get(groupId)?.name || sheet.name.slice(2);
     const rolesInGroup = new Set();
 
     body.forEach((row, index) => {
@@ -212,6 +221,7 @@ function main() {
       header_fields: header,
       workflow_rows: body.length,
       roles_counted_in_group: rolesInGroup.size,
+      roles_declared_in_inventory: declared.get(groupId)?.roles ?? null,
       worksheet_sha256: sha256(zip.get(sheet.part)),
     });
   }
