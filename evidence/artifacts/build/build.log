@@ -209,7 +209,7 @@ node_modules/.nitro/vite/services/ssr/assets/registers-DeIzxe3f.js              
 node_modules/.nitro/vite/services/ssr/assets/capability-queries-fmMwUK3o.js                          156.58 kB │ gzip:  37.68 kB
 node_modules/.nitro/vite/services/ssr/assets/technology-decision-registry-DsXcrPVo.js                669.62 kB │ gzip: 144.77 kB
 
-✓ built in 1.84s
+✓ built in 1.90s
 
 [nitro] o Building [Nitro] (preset: cloudflare-module, compatibility: 2026-08-21)
 [nitro] √ Generated public .output/public
@@ -316,7 +316,7 @@ computing gzip size...
 .output/server/_ssr/program-Cly5wNQI.mjs                                      21.20 kB │ gzip:   6.24 kB
 .output/server/_ssr/value-streams._streamId-XWoyVkDJ.mjs                      21.24 kB │ gzip:   3.94 kB
 .output/server/_ssr/evidence-Cz5Z-A1x.mjs                                     22.95 kB │ gzip:   5.83 kB
-.output/server/index.mjs                                                      32.66 kB │ gzip:   7.65 kB
+.output/server/index.mjs                                                      32.66 kB │ gzip:   7.66 kB
 .output/server/_ssr/workspaces-0HdHBftJ.mjs                                   39.19 kB │ gzip:   9.52 kB
 .output/server/_ssr/capabilities.index-LE07hToV.mjs                           39.27 kB │ gzip:   8.77 kB
 .output/server/_libs/tanstack__query-core.mjs                                 48.17 kB │ gzip:  10.70 kB
@@ -338,7 +338,7 @@ computing gzip size...
 .output/server/_libs/@tanstack/react-router+[...].mjs                        649.67 kB │ gzip: 137.07 kB
 .output/server/_ssr/technology-decision-registry-DsXcrPVo.mjs                669.43 kB │ gzip: 144.81 kB
 
-✓ built in 421ms
+✓ built in 447ms
 [nitro] i Using auto generated worker name: silverstreaksystems-silverstreaklearning
 i Generated .output/server/wrangler.json
 i Generated .wrangler/deploy/config.json

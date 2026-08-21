@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "expires_at": null,
   "tool_version": "1.0.0",
-  "tree_hash": "1a2a5c33e03ba0f2335e978bb525362355b8404f",
+  "tree_hash": "c5c568d0fc866ad07c0c86e5ef555cdc6e1c8982",
   "expected_result": "No personal-data-shaped content outside declared synthetic fixtures.",
   "artifact_path": "artifacts/boundary/pii-boundary-scan.json",
   "artifact_hash": "cc077df23de2e81383ae8c7d15cee8ebed0fd60c7da210323da564ab5f63025e",
   "input_set": {
-    "tracked": "b43d934d6032c9ead491c0ddb315bbf14dcb3e65710065710a928cd114a27735"
+    "tracked": "2e2cb5bd756c247ec21e9e1001106649e8ec604e6009e90ef8ef84be3a2a5891"
   },
   "related_requirements": [],
   "related_decisions": [],
@@ -23,9 +23,9 @@
   "producer_type": "pipeline",
   "method": "automated",
   "evidence_type": "PII_BOUNDARY_SCAN",
-  "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
+  "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
   "environment": "lovable-sandbox",
-  "timestamp": "2026-08-21T13:36:52.505Z",
+  "timestamp": "2026-08-21T13:44:45.343Z",
   "producer": "SSLS evidence pipeline",
   "evidence_id": "EV-PII",
   "title": "Personal-data boundary scan over the tracked tree",

@@ -66,3 +66,6 @@ jobs:
           path: ${{ github.workspace }}/.ci-evidence
           retention-days: 90
           if-no-files-found: error
+          # The evidence tree lives in a dot-directory; without this the
+          # hidden-file filter excludes every file and the upload fails.
+          include-hidden-files: true

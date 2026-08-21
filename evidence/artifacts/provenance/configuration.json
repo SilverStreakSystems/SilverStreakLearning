@@ -6,7 +6,7 @@
     },
     {
       "file": ".github/workflows/evidence-pipeline.yml",
-      "hash": "d8f48890fd5f01786641c6a4faec96f7be9c5cc3c31aeb5fb898cd4f829d96bb"
+      "hash": "ee9957d080ea62e139389c0dfbeeebb6c261eda6865d22e70e1f06fabb061048"
     },
     {
       "file": ".github/workflows/quality-gate.yml",

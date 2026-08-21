@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "generated_marker": "GENERATED - DO NOT HAND EDIT",
   "layer": "B — current baseline manifest (derived; regenerated, never hand-edited)",
-  "generated_at": "2026-08-21T13:36:52.509Z",
-  "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-  "short_commit": "6bd728b",
-  "tree_hash": "1a2a5c33e03ba0f2335e978bb525362355b8404f",
+  "generated_at": "2026-08-21T13:44:45.346Z",
+  "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+  "short_commit": "74dbdda",
+  "tree_hash": "c5c568d0fc866ad07c0c86e5ef555cdc6e1c8982",
   "working_tree_dirty": true,
   "authority": {
     "class": "candidate",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "root_commit": "53ac085881fd9cb994f00945d3f7b55b61ab5662",
-    "commit_count": 329,
+    "commit_count": 330,
     "tracked_files": 629,
     "source_files": 256,
     "test_files": 34,
@@ -29,131 +29,131 @@
     "manifest": "b4d3d7a244932760c4fd1c0ceec20332461b49ef647f856eb5bf1ab673b26519",
     "routes": "956e3e060c4b140e07f00d2ca5e8a47b50b8d758be8104001dbe01d8b774ccb7",
     "pipeline": "263a80176f89c9e54d7b3c96ca8d89c9c31d136dbc680c08d7f7bd994ccc76fc",
-    "workflows": "6bf4b60a7d967db2682f67e914deb3f65c8a3e0bc01d18bbaaee46001102f94c",
+    "workflows": "15d15d5f74f82586b4772d6a56f58d71a8590d9f8eb047b60e22d8bf5505bb31",
     "docs": "fd4ffe7e9baf11752c8d3dd8812df7b03e3b2759b79b1f5f62e41af62f8fc0d2",
     "projection": "ffeb6935a3eb443ce6d3c7d3641e33d8dae341efdc6f08f35cbfd98969148fa0",
-    "tracked": "b43d934d6032c9ead491c0ddb315bbf14dcb3e65710065710a928cd114a27735"
+    "tracked": "2e2cb5bd756c247ec21e9e1001106649e8ec604e6009e90ef8ef84be3a2a5891"
   },
-  "input_set_digest": "b84cae64c2e722682a4b15e263f908cba7041b4b9883f731719215659dea7127",
+  "input_set_digest": "b81247a94f273a72781635c002a49a840c6c62cdc56fc1554bdb7cfab85c7f7b",
   "evidence_cited": [
     {
       "evidence_id": "EV-BUILD",
       "evidence_type": "BUILD",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:02.170Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:43:53.799Z",
       "artifact_path": "artifacts/build/build.log"
     },
     {
       "evidence_id": "EV-TEST",
       "evidence_type": "TEST",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:40.704Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:33.807Z",
       "artifact_path": "artifacts/tests/test.log"
     },
     {
       "evidence_id": "EV-TYPECHECK",
       "evidence_type": "TYPECHECK",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:42.455Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:35.436Z",
       "artifact_path": "artifacts/build/typecheck.log"
     },
     {
       "evidence_id": "EV-LINT",
       "evidence_type": "LINT",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.670Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.710Z",
       "artifact_path": "artifacts/lint/eslint.json"
     },
     {
       "evidence_id": "EV-ROUTES",
       "evidence_type": "ROUTE_INVENTORY",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.679Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.719Z",
       "artifact_path": "artifacts/provenance/routes.json"
     },
     {
       "evidence_id": "EV-PROVENANCE",
       "evidence_type": "SOURCE_PROVENANCE",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.698Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.739Z",
       "artifact_path": "artifacts/provenance/provenance.json"
     },
     {
       "evidence_id": "EV-CONFIG",
       "evidence_type": "CONFIGURATION",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.699Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.740Z",
       "artifact_path": "artifacts/provenance/configuration.json"
     },
     {
       "evidence_id": "EV-SSOT-GUARD",
       "evidence_type": "SSOT_BINDING",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.739Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.782Z",
       "artifact_path": "artifacts/provenance/ssot-binding.log"
     },
     {
       "evidence_id": "EV-DEPS",
       "evidence_type": "DEPENDENCY_INVENTORY",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.742Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.785Z",
       "artifact_path": "artifacts/sbom/dependency-inventory.json"
     },
     {
       "evidence_id": "EV-SBOM",
       "evidence_type": "SBOM",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.749Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.792Z",
       "artifact_path": "artifacts/sbom/sbom.cdx.json"
     },
     {
       "evidence_id": "EV-VULN",
       "evidence_type": "VULNERABILITY_SCAN",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:51.957Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:44.957Z",
       "artifact_path": "artifacts/vulnerability/audit.json"
     },
     {
       "evidence_id": "EV-VULN-RECOVERY",
       "evidence_type": "VULNERABILITY_SCAN",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:52.299Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:45.140Z",
       "artifact_path": "artifacts/vulnerability/advisory-recovery.json"
     },
     {
       "evidence_id": "EV-LICENSE",
       "evidence_type": "LICENSE_SCAN",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:52.305Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:45.145Z",
       "artifact_path": "artifacts/licenses/licenses.json"
     },
     {
       "evidence_id": "EV-SECRET",
       "evidence_type": "SECRET_SCAN",
       "status": "pass",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:52.407Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:45.243Z",
       "artifact_path": "artifacts/boundary/secret-scan.json"
     },
     {
       "evidence_id": "EV-PII",
       "evidence_type": "PII_BOUNDARY_SCAN",
       "status": "review-required",
-      "commit_sha": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-      "timestamp": "2026-08-21T13:36:52.505Z",
+      "commit_sha": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+      "timestamp": "2026-08-21T13:44:45.343Z",
       "artifact_path": "artifacts/boundary/pii-boundary-scan.json"
     }
   ],
@@ -280,8 +280,8 @@
     }
   ],
   "derived": {
-    "build": "Exit code 0. Duration 5979 ms.",
-    "tests": "Exit code 0. 709 tests passed of 709. 34 test files. Duration 38529 ms.",
+    "build": "Exit code 0. Duration 6058 ms.",
+    "tests": "Exit code 0. 709 tests passed of 709. 34 test files. Duration 40003 ms.",
     "typecheck": "Exit code 0.",
     "lint": "0 problems across 0 files: 0 errors, 0 warnings, 0 auto-fixable.",
     "routes": 41,

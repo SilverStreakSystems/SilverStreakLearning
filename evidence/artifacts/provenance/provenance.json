@@ -1,10 +1,10 @@
 {
   "repository": "Lovable-managed SSLS repository (authorized software SSOT under DEC-010)",
   "branch": "claude/claude-md-docs-fcbf46",
-  "commit": "6bd728bb483c2c8778a44dec83934d0c18300d41",
-  "tree_hash": "1a2a5c33e03ba0f2335e978bb525362355b8404f",
+  "commit": "74dbdda9401c66a95d1b8cc9f66d1929d7fc1d9c",
+  "tree_hash": "c5c568d0fc866ad07c0c86e5ef555cdc6e1c8982",
   "root_commit": "53ac085881fd9cb994f00945d3f7b55b61ab5662",
-  "commit_count": 329,
+  "commit_count": 330,
   "tracked_files": 629,
   "source_files": 297,
   "doc_files": 223
