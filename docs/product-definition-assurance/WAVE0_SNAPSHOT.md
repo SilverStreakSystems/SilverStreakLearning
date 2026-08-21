@@ -2,7 +2,7 @@
 # Wave 0 — authority and implementation snapshot (PDA-WAVE0 v0.2.0)
 
 Controlling source: `data/product-definition-assurance/wave0-declaration.json`. Controlling decision: DEC-023.
-Authority class: candidate. Input fingerprint: `ca9e2b7808741e6c6cf757976ff071d28ab3851cee2e6c7257251ba57a4e021c`.
+Authority class: candidate. Input fingerprint: `5fcf821202c5e50e5ab85e1610e6e55f042129403c1823e792620be9a4d886dc`.
 
 ## Boundary
 

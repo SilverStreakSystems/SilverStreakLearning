@@ -602,5 +602,5 @@
       "personal_data": "Real personal data is prohibited and not intentionally introduced; every product record is synthetic and marked as such in the fixtures. The automated boundary scan (EV-PII) remains review-required: it reported one inspected test-token candidate and does not establish the absence of personal data."
     }
   },
-  "input_fingerprint": "ca9e2b7808741e6c6cf757976ff071d28ab3851cee2e6c7257251ba57a4e021c"
+  "input_fingerprint": "5fcf821202c5e50e5ab85e1610e6e55f042129403c1823e792620be9a4d886dc"
 }
