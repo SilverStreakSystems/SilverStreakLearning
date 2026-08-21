@@ -16,9 +16,7 @@ const DATA_DIR = join(process.cwd(), "data", "external-corpora");
 export const EXTERNAL_CORPUS_FILES = ["ssls-3.0-foundation.json"] as const;
 
 export function loadExternalCorpus(fileName: string): ExternalCorpusObservation {
-  return JSON.parse(
-    readFileSync(join(DATA_DIR, fileName), "utf8"),
-  ) as ExternalCorpusObservation;
+  return JSON.parse(readFileSync(join(DATA_DIR, fileName), "utf8")) as ExternalCorpusObservation;
 }
 
 export function loadExternalCorpora(): ExternalCorpusObservation[] {
@@ -26,7 +24,8 @@ export function loadExternalCorpora(): ExternalCorpusObservation[] {
 }
 
 export function loadExternalCorpusSchema(): Record<string, unknown> {
-  return JSON.parse(
-    readFileSync(join(DATA_DIR, "EXTERNAL_CORPUS_SCHEMA.json"), "utf8"),
-  ) as Record<string, unknown>;
+  return JSON.parse(readFileSync(join(DATA_DIR, "EXTERNAL_CORPUS_SCHEMA.json"), "utf8")) as Record<
+    string,
+    unknown
+  >;
 }

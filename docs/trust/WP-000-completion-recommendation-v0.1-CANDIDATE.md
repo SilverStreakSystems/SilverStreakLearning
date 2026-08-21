@@ -2,19 +2,19 @@
 
 ## Exit-criteria matrix
 
-| # | Criterion | Status | Evidence |
-| --- | --- | --- | --- |
-| 1 | No identified real PII reachable from any current project surface | PASS | EV-WP000-001, EV-WP000-002, EV-WP000-003 |
-| 2 | Repository AND Git history scanned | PASS | EV-WP000-001 (Scans 1–3), EV-WP000-002 (Scan 5) |
-| 3 | Identified exposed credentials revoked/rotated | N/A | Credential rotation log — none identified as exposed |
-| 4 | Known public/semi-public exposure surfaces contained | N/A | Project not published; preview serves the scanned synthetic tree |
-| 5 | Disclosure assessment exists | PASS | WP-000-disclosure-assessment |
-| 6 | Residual Unknowns explicitly recorded | PASS | SSLS-TRUST-001 §6, findings WP000-F-001/002/005 |
-| 7 | Required owner/legal/privacy decisions identified | PASS | WP-000-decision-requirements; DEC-008, DEC-009 |
-| 8 | Claims Register and prohibited-claims list exist | PASS | SSLS-GOV-002; WP-000-prohibited-claims |
-| 9 | Remediation evidence preserved | PASS | WP-000-evidence-index |
-| 10 | No unresolved CRITICAL finding | PASS | Findings register: 0 CRITICAL, 0 HIGH |
-| — | Independent verification performed | NOT VERIFIED | All evidence is executor-run (WP000-F-004) |
+| #   | Criterion                                                         | Status       | Evidence                                                         |
+| --- | ----------------------------------------------------------------- | ------------ | ---------------------------------------------------------------- |
+| 1   | No identified real PII reachable from any current project surface | PASS         | EV-WP000-001, EV-WP000-002, EV-WP000-003                         |
+| 2   | Repository AND Git history scanned                                | PASS         | EV-WP000-001 (Scans 1–3), EV-WP000-002 (Scan 5)                  |
+| 3   | Identified exposed credentials revoked/rotated                    | N/A          | Credential rotation log — none identified as exposed             |
+| 4   | Known public/semi-public exposure surfaces contained              | N/A          | Project not published; preview serves the scanned synthetic tree |
+| 5   | Disclosure assessment exists                                      | PASS         | WP-000-disclosure-assessment                                     |
+| 6   | Residual Unknowns explicitly recorded                             | PASS         | SSLS-TRUST-001 §6, findings WP000-F-001/002/005                  |
+| 7   | Required owner/legal/privacy decisions identified                 | PASS         | WP-000-decision-requirements; DEC-008, DEC-009                   |
+| 8   | Claims Register and prohibited-claims list exist                  | PASS         | SSLS-GOV-002; WP-000-prohibited-claims                           |
+| 9   | Remediation evidence preserved                                    | PASS         | WP-000-evidence-index                                            |
+| 10  | No unresolved CRITICAL finding                                    | PASS         | Findings register: 0 CRITICAL, 0 HIGH                            |
+| —   | Independent verification performed                                | NOT VERIFIED | All evidence is executor-run (WP000-F-004)                       |
 
 ## Recommendation
 

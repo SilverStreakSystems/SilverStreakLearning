@@ -12,18 +12,11 @@
       "canonical_status": "NONCANONICAL",
       "register_relationship": "Mirrors the canonical application registers for human reading. Where the package narrative and a canonical register differ, the accepted owner decision and the register control, and the difference is recorded as drift in docs/packages/DRIFT_REGISTER.md.",
       "predecessor_package": "PKG-001",
-      "declared_contents": [
-        "PKA-001",
-        "PKA-002",
-        "PKA-003"
-      ],
+      "declared_contents": ["PKA-001", "PKA-002", "PKA-003"],
       "completeness_boundary": "The v0.3.0 package consists of exactly three supplied files: the governed rewrite PDF, the control workbook, and the SHA-256 manifest. The DOCX and ZIP named by the earlier v0.2.0 manifest were not supplied for this rewrite, are not part of v0.3.0, and are not represented as available v0.3.0 artifacts. v0.3.0 is therefore not a complete copy of the earlier four-artifact package.",
       "personal_data_state": "NO-PII",
       "release_state": "NOT-RELEASE-AUTHORIZED",
-      "evidence_references": [
-        "EV-033",
-        "EV-034"
-      ],
+      "evidence_references": ["EV-033", "EV-034"],
       "non_claims": [
         "This package does not supersede the canonical registers and is not a competing source of truth.",
         "This package never closes a finding, and no parent-package state change closes a finding.",
@@ -99,21 +92,11 @@
       "canonical_status": "NONCANONICAL",
       "register_relationship": "Predecessor package retained for lineage only. It is not the current synchronized package and states nothing about present repository truth.",
       "predecessor_package": null,
-      "declared_contents": [
-        "PKA-101",
-        "PKA-102",
-        "PKA-103",
-        "PKA-104",
-        "PKA-105"
-      ],
+      "declared_contents": ["PKA-101", "PKA-102", "PKA-103", "PKA-104", "PKA-105"],
       "completeness_boundary": "The v0.2.0 manifest names four artifacts: a ZIP, a DOCX, a PDF, and an XLSX. On 2026-08-19 the owner supplied three files under DEC-019 — the PDF, the XLSX, and the manifest itself — and each measured digest matched the value DEC-019 declares. The DOCX and the ZIP were not supplied, remain registered as NOT-SUPPLIED with no measured size and no digest, and no content of either is inferred, quoted, or claimed. v0.2.0 is therefore registered as a partial historical source package, not a complete copy of the four-artifact set.",
       "personal_data_state": "NO-PII",
       "release_state": "NOT-RELEASE-AUTHORIZED",
-      "evidence_references": [
-        "EV-033",
-        "EV-039",
-        "EV-040"
-      ],
+      "evidence_references": ["EV-033", "EV-039", "EV-040"],
       "non_claims": [
         "This historical package is not current authority and is not the current synchronized package.",
         "Nothing in this record claims the unsupplied DOCX and ZIP are available, readable, or verified.",

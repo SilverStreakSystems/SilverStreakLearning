@@ -29,23 +29,23 @@ Executed before any write:
 
 ## What was produced (EV-041)
 
-| Artifact | Role |
-| --- | --- |
+| Artifact                                           | Role                                                                    |
+| -------------------------------------------------- | ----------------------------------------------------------------------- |
 | `data/historical/FND_022_OWNER_REVIEW_SCHEMA.json` | Schema. Requires the owner decision fields and constrains them to null. |
-| `data/historical/fnd-022-owner-review.json` | Canonical packet. 16 candidates, 17 rows, 3 unmatched candidates. |
-| `docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md` | Generated projection. Never hand-edited. |
-| `scripts/gen-fnd-022-packet.ts` | Generator. |
-| `src/lib/fnd-022-review-registry.ts` | Loader used by the generator and by tests only. |
-| `src/test/fnd-022-owner-review.test.ts` | Mechanical reconciliation and non-disposition tests. |
+| `data/historical/fnd-022-owner-review.json`        | Canonical packet. 16 candidates, 17 rows, 3 unmatched candidates.       |
+| `docs/wp-007/FND-022_OWNER_DISPOSITION_PACKET.md`  | Generated projection. Never hand-edited.                                |
+| `scripts/gen-fnd-022-packet.ts`                    | Generator.                                                              |
+| `src/lib/fnd-022-review-registry.ts`               | Loader used by the generator and by tests only.                         |
+| `src/test/fnd-022-owner-review.test.ts`            | Mechanical reconciliation and non-disposition tests.                    |
 
 ## Reconciliation against Cycle 4
 
-| Measure | Cycle 4 record | Packet |
-| --- | --- | --- |
-| Candidates | 16 (HREQ-015..HREQ-030) | 16 |
-| Restatement rows | 17 | 17 |
-| RESTATES / NARROWS / BROADENS / CONFLICTS / NEW | 3 / 2 / 6 / 0 / 6 | 3 / 2 / 6 / 0 / 6 |
-| Unmatched HS-011 candidates | 3 | 3, listed separately and not counted as rows |
+| Measure                                         | Cycle 4 record          | Packet                                       |
+| ----------------------------------------------- | ----------------------- | -------------------------------------------- |
+| Candidates                                      | 16 (HREQ-015..HREQ-030) | 16                                           |
+| Restatement rows                                | 17                      | 17                                           |
+| RESTATES / NARROWS / BROADENS / CONFLICTS / NEW | 3 / 2 / 6 / 0 / 6       | 3 / 2 / 6 / 0 / 6                            |
+| Unmatched HS-011 candidates                     | 3                       | 3, listed separately and not counted as rows |
 
 Every candidate wording, source locator, classification, and basis in the packet is
 copied unchanged from the governed registers; the tests assert that equality rather

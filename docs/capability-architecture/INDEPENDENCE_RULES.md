@@ -5,11 +5,11 @@ person who builds a thing is never the last person who says it is safe.
 
 ## Levels
 
-| Level | Marker | Meaning |
-| --- | --- | --- |
-| Required | [IND REQ] | The builder may never be the final validator or approver. |
-| Conditional | [IND COND] | Independence becomes mandatory at a named trigger. |
-| Not required | [IND N/R] | No separation is required at any stage. |
+| Level        | Marker     | Meaning                                                   |
+| ------------ | ---------- | --------------------------------------------------------- |
+| Required     | [IND REQ]  | The builder may never be the final validator or approver. |
+| Conditional  | [IND COND] | Independence becomes mandatory at a named trigger.        |
+| Not required | [IND N/R]  | No separation is required at any stage.                   |
 
 Every record declares a separation-of-duties statement. Conditional records must
 also name the trigger. Locked by test.

@@ -3,7 +3,6 @@
 > Generated from `data/historical/historical-sources.json` by `scripts/gen-historical-source-docs.ts`. Do not edit by hand.
 > No source is promoted into current authority by appearing here.
 
-
 This register refuses, explicitly:
 
 - that any inventoried source has been read, verified, or reproduced;
@@ -15,6 +14,6 @@ This register refuses, explicitly:
 
 ## Sources refused as recovery inputs
 
-| ID | Source | Basis for refusal |
-| --- | --- | --- |
+| ID     | Source                           | Basis for refusal                                                                                                                                                                                      |
+| ------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | HS-022 | Legacy SSLS 1.x application code | The clean-slate posture carries no structures forward by default, and the WP-007 anti-targets forbid restoring legacy code. Refusal is recorded so the absence is deliberate rather than an oversight. |

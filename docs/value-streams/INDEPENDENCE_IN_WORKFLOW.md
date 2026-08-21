@@ -4,13 +4,13 @@ Independence is a property of the workflow, not a promise about intent.
 
 ## Required separations
 
-| Separation | Rule |
-| --- | --- |
-| Builder / validator | The function that produced work does not validate it. |
-| Decider / evidence producer | The function that supplies evidence does not decide on it. |
-| Claimant / claim verifier | The function that wants a claim does not verify its support. |
-| Operator / auditor | The function that runs a process does not audit the record of it. |
-| Vendor sponsor / vendor reviewer | The function that wants a vendor does not clear the vendor. |
+| Separation                       | Rule                                                              |
+| -------------------------------- | ----------------------------------------------------------------- |
+| Builder / validator              | The function that produced work does not validate it.             |
+| Decider / evidence producer      | The function that supplies evidence does not decide on it.        |
+| Claimant / claim verifier        | The function that wants a claim does not verify its support.      |
+| Operator / auditor               | The function that runs a process does not audit the record of it. |
+| Vendor sponsor / vendor reviewer | The function that wants a vendor does not clear the vendor.       |
 
 ## Exceptions
 

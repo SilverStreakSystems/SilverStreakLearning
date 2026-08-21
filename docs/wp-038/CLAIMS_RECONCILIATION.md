@@ -23,11 +23,11 @@ WP-038 adds no permitted claim. It narrows what may be said and names three find
 
 ## Findings raised
 
-| Finding | Statement | State |
-|---|---|---|
-| FND-016 | ULW-AS-001 v1.3 is not bound to a named WCAG version and level, so its coverage cannot be stated. | OPEN |
-| FND-017 | The BEFORE LIVE PII trigger gate implies student data is the first binding trigger. Massachusetts narrow personal information, including operator payroll data, may attach first. | OPEN |
-| FND-018 | Supply-chain documentation names CycloneDX without a specification version, while the ratified standard and the latest specification differ. | OPEN |
+| Finding | Statement                                                                                                                                                                         | State |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| FND-016 | ULW-AS-001 v1.3 is not bound to a named WCAG version and level, so its coverage cannot be stated.                                                                                 | OPEN  |
+| FND-017 | The BEFORE LIVE PII trigger gate implies student data is the first binding trigger. Massachusetts narrow personal information, including operator payroll data, may attach first. | OPEN  |
+| FND-018 | Supply-chain documentation names CycloneDX without a specification version, while the ratified standard and the latest specification differ.                                      | OPEN  |
 
 ## Findings carried, not restated
 

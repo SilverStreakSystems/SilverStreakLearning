@@ -247,89 +247,62 @@
       {
         "workflow_id": "TDW-C-017",
         "inclusion_reason": "Adds 2 previously uncovered strata.",
-        "strata_added": [
-          "program_area=general-education",
-          "role_group=C"
-        ]
+        "strata_added": ["program_area=general-education", "role_group=C"]
       },
       {
         "workflow_id": "TDW-E-014",
         "inclusion_reason": "Adds 2 previously uncovered strata.",
-        "strata_added": [
-          "program_area=special-education",
-          "role_group=E"
-        ]
+        "strata_added": ["program_area=special-education", "role_group=E"]
       },
       {
         "workflow_id": "TDW-K-010",
         "inclusion_reason": "Adds 2 previously uncovered strata.",
-        "strata_added": [
-          "expression_type=SINGLE",
-          "role_group=K"
-        ]
+        "strata_added": ["expression_type=SINGLE", "role_group=K"]
       },
       {
         "workflow_id": "TDW-N-002",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=N"
-        ]
+        "strata_added": ["role_group=N"]
       },
       {
         "workflow_id": "TDW-A-007",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=A"
-        ]
+        "strata_added": ["role_group=A"]
       },
       {
         "workflow_id": "TDW-D-020",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=D"
-        ]
+        "strata_added": ["role_group=D"]
       },
       {
         "workflow_id": "TDW-R-002",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=R"
-        ]
+        "strata_added": ["role_group=R"]
       },
       {
         "workflow_id": "TDW-M-013",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=M"
-        ]
+        "strata_added": ["role_group=M"]
       },
       {
         "workflow_id": "TDW-P-008",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=P"
-        ]
+        "strata_added": ["role_group=P"]
       },
       {
         "workflow_id": "TDW-O-015",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=O"
-        ]
+        "strata_added": ["role_group=O"]
       },
       {
         "workflow_id": "TDW-J-006",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=J"
-        ]
+        "strata_added": ["role_group=J"]
       },
       {
         "workflow_id": "TDW-F-013",
         "inclusion_reason": "Adds 1 previously uncovered strata.",
-        "strata_added": [
-          "role_group=F"
-        ]
+        "strata_added": ["role_group=F"]
       },
       {
         "workflow_id": "TDW-L-007",

@@ -3,9 +3,9 @@
 No credential values appear in this record. Credentials are referenced by redacted
 identifier only.
 
-| credential_id | type | affected system | active | plausible exposure path found | action taken | verification | status |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| CRED-001 | Platform-managed API key (`LOVABLE_API_KEY`) | Lovable platform / connector gateway | Yes | None found. Not present in source, history, tree, or any tracked artifact. | None. Rotation without an identified exposure path would be unrequested change. | Secret inventory read (name only, value never displayed); gitleaks scans 1–3 returned 0 findings | NO ACTION REQUIRED — no exposure identified |
+| credential_id | type                                         | affected system                      | active | plausible exposure path found                                              | action taken                                                                    | verification                                                                                     | status                                      |
+| ------------- | -------------------------------------------- | ------------------------------------ | ------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| CRED-001      | Platform-managed API key (`LOVABLE_API_KEY`) | Lovable platform / connector gateway | Yes    | None found. Not present in source, history, tree, or any tracked artifact. | None. Rotation without an identified exposure path would be unrequested change. | Secret inventory read (name only, value never displayed); gitleaks scans 1–3 returned 0 findings | NO ACTION REQUIRED — no exposure identified |
 
 ## Inventory scope checked
 

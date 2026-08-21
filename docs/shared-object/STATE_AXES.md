@@ -3,16 +3,16 @@
 Eight axes are tracked independently. Collapsing them into one status field is the single most
 common way a governance system starts lying.
 
-| Axis | Question | Never implies |
-| --- | --- | --- |
-| Workflow | Where is this in its stream? | Approval or correctness. |
-| Authority | What standing does this hold? | That it exists in code. |
-| Implementation | Has it been built? | That it works, or that it is permitted. |
-| Validation | Has someone independent checked it? | That it is released. |
-| Evidence | What supports this statement, and how strongly? | That the statement is approved. |
-| Approval | Has a human with standing accepted it? | That it is published. |
-| Publication | Is it stated externally? | That it is still true. |
-| Freshness | When was this last confirmed? | That it is correct. |
+| Axis           | Question                                        | Never implies                           |
+| -------------- | ----------------------------------------------- | --------------------------------------- |
+| Workflow       | Where is this in its stream?                    | Approval or correctness.                |
+| Authority      | What standing does this hold?                   | That it exists in code.                 |
+| Implementation | Has it been built?                              | That it works, or that it is permitted. |
+| Validation     | Has someone independent checked it?             | That it is released.                    |
+| Evidence       | What supports this statement, and how strongly? | That the statement is approved.         |
+| Approval       | Has a human with standing accepted it?          | That it is published.                   |
+| Publication    | Is it stated externally?                        | That it is still true.                  |
+| Freshness      | When was this last confirmed?                   | That it is correct.                     |
 
 ## Rules
 

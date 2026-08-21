@@ -4,30 +4,30 @@
 
 2 obligations in this domain.
 
-| ID | Title | Source | Applicability | Control status |
-|---|---|---|---|---|
-| OBL-023 | Independent security attestation expectation | SOC 2, Trust Services Criteria | APPLIES-AT-LAUNCH | MISSING |
-| OBL-031 | District data privacy agreement execution | TEC Student Data Privacy Alliance; SDPC National Data Privacy Agreement | APPLIES-AT-PILOT | MISSING |
+| ID      | Title                                        | Source                                                                  | Applicability     | Control status |
+| ------- | -------------------------------------------- | ----------------------------------------------------------------------- | ----------------- | -------------- |
+| OBL-023 | Independent security attestation expectation | SOC 2, Trust Services Criteria                                          | APPLIES-AT-LAUNCH | MISSING        |
+| OBL-031 | District data privacy agreement execution    | TEC Student Data Privacy Alliance; SDPC National Data Privacy Agreement | APPLIES-AT-PILOT  | MISSING        |
 
 ### OBL-023 — Independent security attestation expectation
 
-| Field | Value |
-|---|---|
-| Source | AICPA (SRC-027) |
-| Authority type | attestation-standard |
-| Citation | SOC 2, Trust Services Criteria |
-| Locator | https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2/ |
-| Source version | TSC 2017 with 2022 revised points of focus |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-AT-LAUNCH |
-| Trigger | A district or state procurement requires an independent attestation for a hosted service. |
-| Control family | GOVERNANCE |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Unassigned; sequencing decision required before any launch commitment |
-| Review requirement | PROCUREMENT REVIEW REQUIRED |
-| Review trigger | Before any launch date is committed to a district |
+| Field              | Value                                                                                     |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| Source             | AICPA (SRC-027)                                                                           |
+| Authority type     | attestation-standard                                                                      |
+| Citation           | SOC 2, Trust Services Criteria                                                            |
+| Locator            | https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2/  |
+| Source version     | TSC 2017 with 2022 revised points of focus                                                |
+| Verified on        | 2026-08-19                                                                                |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                                        |
+| Applicability      | APPLIES-AT-LAUNCH                                                                         |
+| Trigger            | A district or state procurement requires an independent attestation for a hosted service. |
+| Control family     | GOVERNANCE                                                                                |
+| Control status     | MISSING                                                                                   |
+| Evidence status    | NOT-PRODUCED                                                                              |
+| Owning route       | Unassigned; sequencing decision required before any launch commitment                     |
+| Review requirement | PROCUREMENT REVIEW REQUIRED                                                               |
+| Review trigger     | Before any launch date is committed to a district                                         |
 
 **What the source states.** AICPA describes an attestation engagement. No certification exists.
 
@@ -55,23 +55,23 @@
 
 ### OBL-031 — District data privacy agreement execution
 
-| Field | Value |
-|---|---|
-| Source | The Education Cooperative (Massachusetts) (SRC-042) |
-| Authority type | procurement-expectation |
-| Citation | TEC Student Data Privacy Alliance; SDPC National Data Privacy Agreement |
-| Locator | https://tec-coop.org/data-privacy/ |
-| Source version | UNKNOWN |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A Massachusetts district or collaborative requires an executed data privacy agreement before tool use. |
-| Control family | VENDOR MANAGEMENT |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Routed to the pilot-readiness work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First district conversation that reaches procurement |
+| Field              | Value                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
+| Source             | The Education Cooperative (Massachusetts) (SRC-042)                                                    |
+| Authority type     | procurement-expectation                                                                                |
+| Citation           | TEC Student Data Privacy Alliance; SDPC National Data Privacy Agreement                                |
+| Locator            | https://tec-coop.org/data-privacy/                                                                     |
+| Source version     | UNKNOWN                                                                                                |
+| Verified on        | 2026-08-19                                                                                             |
+| Jurisdiction       | US-MA                                                                                                  |
+| Applicability      | APPLIES-AT-PILOT                                                                                       |
+| Trigger            | A Massachusetts district or collaborative requires an executed data privacy agreement before tool use. |
+| Control family     | VENDOR MANAGEMENT                                                                                      |
+| Control status     | MISSING                                                                                                |
+| Evidence status    | NOT-PRODUCED                                                                                           |
+| Owning route       | Routed to the pilot-readiness work package                                                             |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                                  |
+| Review trigger     | First district conversation that reaches procurement                                                   |
 
 **What the source states.** These are private contract templates, not law.
 

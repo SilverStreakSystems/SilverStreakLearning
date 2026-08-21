@@ -35,9 +35,7 @@
   "command": "bun run evidence:run",
   "actual_result": "75 components emitted; 0 without a resolved version.",
   "status": "pass",
-  "supports": [
-    "A dependency inventory for the recorded manifest and lockfile state."
-  ],
+  "supports": ["A dependency inventory for the recorded manifest and lockfile state."],
   "does_not_support": [
     "Security, licence compatibility, or supply-chain integrity. An SBOM is an inventory, not an assurance."
   ]

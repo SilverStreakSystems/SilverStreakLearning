@@ -19,9 +19,11 @@ Separates source, finding, interpretation, and requirement so nothing is smuggle
 ## Who this serves
 
 Human beneficiaries:
+
 - Students and educators affected by what SSLS decides is required
 
 Enterprise beneficiaries:
+
 - Product, Learning Design, and Governance
 
 ## Trigger, entry, exit
@@ -29,10 +31,12 @@ Enterprise beneficiaries:
 Trigger: A recorded evidence need or research question enters the research queue.
 
 Entry criteria:
+
 - A research question is stated in answerable form.
 - The question has a requester and a purpose.
 
 Exit criteria:
+
 - Findings and interpretations are recorded separately.
 - A requirement proposal is created or explicitly declined.
 
@@ -198,6 +202,7 @@ Decide whether Research → Requirement may advance past requirement governance.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - The question is not answerable with available sources.
 - The proposed requirement exceeds what the findings support.
 - Research would require personal data, which the boundary forbids.
@@ -205,16 +210,19 @@ Refusal conditions:
 Rollback and recovery: A requirement proposal may be withdrawn when a source is retracted; dependent decisions are re-opened by finding.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Requirements trace to named findings.
 - Declined implications are recorded with reasoning.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -229,13 +237,16 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Research is treated as product authority.
 - A single study becomes a general rule.
 
 Assumptions:
+
 - Public and licensed literature is sufficient at the current stage.
 
 Unknowns:
+
 - What threshold of evidence justifies a mandatory requirement.
 
 Review trigger: Source retraction, contradiction, or a new systematic review.

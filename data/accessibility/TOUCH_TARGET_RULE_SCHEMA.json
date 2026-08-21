@@ -135,13 +135,7 @@
           "maxItems": 5,
           "uniqueItems": true,
           "items": {
-            "enum": [
-              "PASS-44-DEFAULT",
-              "PASS-24-FLOOR",
-              "PASS-EXCEPTION",
-              "FAIL",
-              "NOT-APPLICABLE"
-            ]
+            "enum": ["PASS-44-DEFAULT", "PASS-24-FLOOR", "PASS-EXCEPTION", "FAIL", "NOT-APPLICABLE"]
           }
         },
         "record_fields": { "type": "array", "minItems": 9, "items": { "$ref": "#/$defs/field" } },

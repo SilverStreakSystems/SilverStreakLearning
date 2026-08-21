@@ -19,9 +19,11 @@ Shows people what happened to what they said.
 ## Who this serves
 
 Human beneficiaries:
+
 - Users who took the time to report a problem
 
 Enterprise beneficiaries:
+
 - Product, Support, Governance
 
 ## Trigger, entry, exit
@@ -29,9 +31,11 @@ Enterprise beneficiaries:
 Trigger: Feedback is submitted or observed.
 
 Entry criteria:
+
 - A feedback item exists with its source and context.
 
 Exit criteria:
+
 - A recorded disposition exists and the originator can see it.
 
 ## Authority separation
@@ -156,21 +160,25 @@ Decide whether Feedback → Decision may advance past disposition decision.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - Acting on the feedback would harm another user group.
 - The request would exceed the governed boundary.
 
 Rollback and recovery: Reopen a disposition when new evidence contradicts the reason given.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - No feedback item closes without a recorded reason.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -185,13 +193,16 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Loudest voice prioritized over widest need.
 - Silent closure of inconvenient feedback.
 
 Assumptions:
+
 - Feedback volume is currently zero; this is reference architecture.
 
 Unknowns:
+
 - What response time is fair once districts are live.
 
 Review trigger: Repeated feedback on the same subject.

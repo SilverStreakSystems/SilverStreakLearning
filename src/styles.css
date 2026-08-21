@@ -38,7 +38,6 @@
   --color-status-information: var(--status-information);
   --color-status-unknown: var(--status-unknown);
 
-
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -167,8 +166,6 @@
   --focus-offset: 2px;
   --control-min-h: 44px;
   --control-comfort-h: 48px;
-
-
 
   --background: oklch(0.985 0.004 250);
   --foreground: oklch(0.21 0.045 258);
@@ -377,7 +374,6 @@
     var(--ssls-attention-yellow)
   );
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   *,

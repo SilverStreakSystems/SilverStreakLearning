@@ -2,16 +2,16 @@
 
 ## Authority state recovered (verified, read-only)
 
-| Item | Verified state |
-|---|---|
-| DEC-012 | `accepted` in `src/fixtures/registers.ts` |
-| DEC-018 | `accepted` in `src/fixtures/registers.ts` |
-| WP-038 | CLOSED BY OWNER (DEC-018) |
-| WP-007 | NEXT ELIGIBLE (DEC-018 consequences) |
-| Gate A | OPEN — no accepted decision closes it |
-| FND-010, FND-017, FND-018 | open (`conflicted` / `unknown`) |
-| FND-016 | description records PARTIALLY RESOLVED, but its machine field still reads `unknown` |
-| Later superseding decision | none — DEC-018 is the highest-numbered accepted decision and is not superseded |
+| Item                       | Verified state                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------- |
+| DEC-012                    | `accepted` in `src/fixtures/registers.ts`                                           |
+| DEC-018                    | `accepted` in `src/fixtures/registers.ts`                                           |
+| WP-038                     | CLOSED BY OWNER (DEC-018)                                                           |
+| WP-007                     | NEXT ELIGIBLE (DEC-018 consequences)                                                |
+| Gate A                     | OPEN — no accepted decision closes it                                               |
+| FND-010, FND-017, FND-018  | open (`conflicted` / `unknown`)                                                     |
+| FND-016                    | description records PARTIALLY RESOLVED, but its machine field still reads `unknown` |
+| Later superseding decision | none — DEC-018 is the highest-numbered accepted decision and is not superseded      |
 
 One defect found during recovery: FND-016's structured `resolutionState` does not
 match the owner's recorded disposition. This is repaired as part of entry hygiene,

@@ -2,16 +2,16 @@
 
 ## Layers
 
-| Layer | Name | Holds |
-| --- | --- | --- |
-| L0 | Core Beliefs | Non-negotiable commitments. |
-| L1 | Mission and North Star | Direction and the outcome being pursued. |
-| L2 | Operating Principles | How decisions are made and constrained. |
-| L3 | Governance and Authority | Lifecycle, authority classes, refusal rules. |
-| L4 | Standards | Accessibility, language, evidence, naming standards. |
-| L5 | Architecture and Models | Domain models, data shape, system structure. |
-| L6 | Capabilities and Requirements | Candidate capabilities and requirements. |
-| L7 | Implementation and Operations | Built software and operating practice. |
+| Layer | Name                          | Holds                                                |
+| ----- | ----------------------------- | ---------------------------------------------------- |
+| L0    | Core Beliefs                  | Non-negotiable commitments.                          |
+| L1    | Mission and North Star        | Direction and the outcome being pursued.             |
+| L2    | Operating Principles          | How decisions are made and constrained.              |
+| L3    | Governance and Authority      | Lifecycle, authority classes, refusal rules.         |
+| L4    | Standards                     | Accessibility, language, evidence, naming standards. |
+| L5    | Architecture and Models       | Domain models, data shape, system structure.         |
+| L6    | Capabilities and Requirements | Candidate capabilities and requirements.             |
+| L7    | Implementation and Operations | Built software and operating practice.               |
 
 Layers are a stack of dependency, not a ranking of importance. A lower layer
 constrains the layers above it. Nothing in L7 can grant authority to anything.
@@ -21,16 +21,16 @@ constrains the layers above it. Nothing in L7 can grant authority to anything.
 Authority is a declared property of an artifact. It is recorded on the artifact
 record and rendered directly in the Authority Ledger.
 
-| Class | Grants implementation authority |
-| --- | --- |
-| Approved Authority | Yes |
-| Accepted Decision | Yes |
-| Adopted Standard (external) | No, constrains only |
-| Provisional Working Artifact | No |
-| Candidate Proposal | No |
-| Research Input | No |
-| Historical Record | No |
-| Gated Future Concept | No |
+| Class                        | Grants implementation authority |
+| ---------------------------- | ------------------------------- |
+| Approved Authority           | Yes                             |
+| Accepted Decision            | Yes                             |
+| Adopted Standard (external)  | No, constrains only             |
+| Provisional Working Artifact | No                              |
+| Candidate Proposal           | No                              |
+| Research Input               | No                              |
+| Historical Record            | No                              |
+| Gated Future Concept         | No                              |
 
 ## The rule
 

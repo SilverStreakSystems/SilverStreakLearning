@@ -14,19 +14,19 @@ Nothing yet. Dispositions are a separate, later act, recorded as an owner decisi
 
 ## Scale of the review
 
-| Queue | Size | Handling |
-| --- | --- | --- |
-| Mandatory individual review | 154 | One record at a time. No batching. |
-| Representative sample | 36 | Calibration read. Confirms the mechanism before wider review. |
-| Batch-eligible proposals | 34 | Grouped into 2 batches by identical basis fingerprint. |
-| Needs evidence | 30 | Not a disagreement. Source fields are insufficient. |
+| Queue                       | Size | Handling                                                      |
+| --------------------------- | ---- | ------------------------------------------------------------- |
+| Mandatory individual review | 154  | One record at a time. No batching.                            |
+| Representative sample       | 36   | Calibration read. Confirms the mechanism before wider review. |
+| Batch-eligible proposals    | 34   | Grouped into 2 batches by identical basis fingerprint.        |
+| Needs evidence              | 30   | Not a disagreement. Source fields are insufficient.           |
 
 ## Batches
 
-| Batch | Proposal | Members | Workflow IDs |
-| --- | --- | --- | --- |
-| DRIFT-BATCH-001 | RETAIN-SUPPLIED | 3 | TDW-B-011 TDW-C-017 TDW-G-011 |
-| DRIFT-BATCH-002 | RETAIN-SUPPLIED | 3 | TDW-M-008 TDW-N-011 TDW-P-008 |
+| Batch           | Proposal        | Members | Workflow IDs                  |
+| --------------- | --------------- | ------- | ----------------------------- |
+| DRIFT-BATCH-001 | RETAIN-SUPPLIED | 3       | TDW-B-011 TDW-C-017 TDW-G-011 |
+| DRIFT-BATCH-002 | RETAIN-SUPPLIED | 3       | TDW-M-008 TDW-N-011 TDW-P-008 |
 
 ## Standing limits
 

@@ -4,16 +4,16 @@ Workflow: `.github/workflows/evidence-pipeline.yml`, named "SSLS Evidence Pipeli
 
 ## Design
 
-| Property | Value | Reason |
-|---|---|---|
-| Triggers | push to `main`, pull request, manual dispatch | Evidence is collected on the change, not after the fact |
-| Permissions | `contents: read` only | Least privilege; the pipeline reads the tree and writes nothing back |
-| Checkout depth | full history | Provenance requires ancestry, which a shallow clone does not carry |
-| Install | `bun install --frozen-lockfile` | The lockfile is a declared input; CI must not silently resolve differently |
-| Commit binding | `SSLS_EVIDENCE_COMMIT: github.sha` | The commit under evidence is passed in, never inferred from a constant |
-| Artifacts | `evidence/` uploaded, 90-day retention, `if-no-files-found: error` | An empty evidence upload is a failure, not a silent pass |
-| Predecessor guard | `continue-on-error: true` | Retained for visibility; superseded for freshness purposes |
-| Concurrency | one run per ref, cancel superseded | Avoids racing runs producing conflicting evidence |
+| Property          | Value                                                              | Reason                                                                     |
+| ----------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| Triggers          | push to `main`, pull request, manual dispatch                      | Evidence is collected on the change, not after the fact                    |
+| Permissions       | `contents: read` only                                              | Least privilege; the pipeline reads the tree and writes nothing back       |
+| Checkout depth    | full history                                                       | Provenance requires ancestry, which a shallow clone does not carry         |
+| Install           | `bun install --frozen-lockfile`                                    | The lockfile is a declared input; CI must not silently resolve differently |
+| Commit binding    | `SSLS_EVIDENCE_COMMIT: github.sha`                                 | The commit under evidence is passed in, never inferred from a constant     |
+| Artifacts         | `evidence/` uploaded, 90-day retention, `if-no-files-found: error` | An empty evidence upload is a failure, not a silent pass                   |
+| Predecessor guard | `continue-on-error: true`                                          | Retained for visibility; superseded for freshness purposes                 |
+| Concurrency       | one run per ref, cancel superseded                                 | Avoids racing runs producing conflicting evidence                          |
 
 ## Steps
 

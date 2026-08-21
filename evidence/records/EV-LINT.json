@@ -15,9 +15,7 @@
   "related_decisions": [],
   "related_tasks": [],
   "related_validations": [],
-  "related_findings": [
-    "FND-014"
-  ],
+  "related_findings": ["FND-014"],
   "related_claims": [],
   "supersedes": [],
   "superseded_by": null,

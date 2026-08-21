@@ -19,10 +19,10 @@ Definition of the touch-target acceptance rule, its exceptions, and the protocol
 
 ## Acceptance rule
 
-| Element | Obligation | Size | Applies to |
-| --- | --- | --- | --- |
-| SSLS default | SHOULD | 44 by 44 CSS px | Author-controlled standalone pointer targets. |
-| Measurable floor | MUST | 24 by 24 CSS px | Every visible, enabled pointer target. |
+| Element          | Obligation | Size            | Applies to                                    |
+| ---------------- | ---------- | --------------- | --------------------------------------------- |
+| SSLS default     | SHOULD     | 44 by 44 CSS px | Author-controlled standalone pointer targets. |
+| Measurable floor | MUST       | 24 by 24 CSS px | Every visible, enabled pointer target.        |
 
 Author-controlled standalone pointer targets SHOULD provide an interactive area at least 44 by 44 CSS pixels. Existing stricter adopted requirements continue to control.
 
@@ -48,13 +48,13 @@ A target below 24 by 24 CSS pixels cannot pass through a compact-context rationa
 
 ## Documented exceptions
 
-| Type | Condition | Determination | Record required |
-| --- | --- | --- | --- |
-| SPACING | The undersized target is spaced so that a 24 CSS pixel diameter circle centred on its bounding box intersects neither another target nor another target's circle. | MECHANICAL | Bounding rectangles of the target and every neighbouring target considered; The computed circle geometry and the intersection result |
-| EQUIVALENT-CONTROL | A different control on the same page performs the same action and itself meets at least the 24 by 24 CSS pixel floor. | MECHANICAL | Stable locator of the equivalent control; Measured size of the equivalent control |
-| INLINE | The target is positioned within a sentence or block of text, or its size is otherwise constrained by the line height of non-target text. | MANUAL-REVIEW | The text context the target sits inside; Reviewer and rationale for the inline determination |
-| USER-AGENT-CONTROL | The size of the target is determined by the user agent and is not modified by the author. | MANUAL-REVIEW | The element and the user-agent behaviour relied on; Confirmation that no author style alters the target size |
-| ESSENTIAL | A particular presentation of the target is essential, or is legally required, for the information being conveyed. | MANUAL-REVIEW | Why the presentation is essential rather than preferred; Reviewer and evidence reference for the judgment |
+| Type               | Condition                                                                                                                                                         | Determination | Record required                                                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| SPACING            | The undersized target is spaced so that a 24 CSS pixel diameter circle centred on its bounding box intersects neither another target nor another target's circle. | MECHANICAL    | Bounding rectangles of the target and every neighbouring target considered; The computed circle geometry and the intersection result |
+| EQUIVALENT-CONTROL | A different control on the same page performs the same action and itself meets at least the 24 by 24 CSS pixel floor.                                             | MECHANICAL    | Stable locator of the equivalent control; Measured size of the equivalent control                                                    |
+| INLINE             | The target is positioned within a sentence or block of text, or its size is otherwise constrained by the line height of non-target text.                          | MANUAL-REVIEW | The text context the target sits inside; Reviewer and rationale for the inline determination                                         |
+| USER-AGENT-CONTROL | The size of the target is determined by the user agent and is not modified by the author.                                                                         | MANUAL-REVIEW | The element and the user-agent behaviour relied on; Confirmation that no author style alters the target size                         |
+| ESSENTIAL          | A particular presentation of the target is essential, or is legally required, for the information being conveyed.                                                 | MANUAL-REVIEW | Why the presentation is essential rather than preferred; Reviewer and evidence reference for the judgment                            |
 
 ## Verification protocol — defined, not run
 
@@ -64,16 +64,16 @@ Viewport widths: 320, 768, 1366 CSS pixels.
 
 Classifications: PASS-44-DEFAULT, PASS-24-FLOOR, PASS-EXCEPTION, FAIL, NOT-APPLICABLE.
 
-| Field | Requirement | Description |
-| --- | --- | --- |
-| route | REQUIRED | Application route audited. |
-| locator | REQUIRED | Stable locator for the target, preferring role and accessible name. |
-| viewport_css_px | REQUIRED | One of the declared viewport widths. |
-| bounding_rect_css_px | REQUIRED | Measured x, y, width, and height of the interactive area. |
-| classification | REQUIRED | One of the five declared classifications. |
-| exception_type | CONDITIONAL | Required when the classification is PASS-EXCEPTION; exactly one of the five exception types. |
-| rationale | REQUIRED | Why the classification holds, including a compact-context rationale for any 24 to 43 CSS pixel departure. |
-| equivalent_control_locator | CONDITIONAL | Required when the exception type is EQUIVALENT-CONTROL. |
+| Field                           | Requirement | Description                                                                                                     |
+| ------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------- |
+| route                           | REQUIRED    | Application route audited.                                                                                      |
+| locator                         | REQUIRED    | Stable locator for the target, preferring role and accessible name.                                             |
+| viewport_css_px                 | REQUIRED    | One of the declared viewport widths.                                                                            |
+| bounding_rect_css_px            | REQUIRED    | Measured x, y, width, and height of the interactive area.                                                       |
+| classification                  | REQUIRED    | One of the five declared classifications.                                                                       |
+| exception_type                  | CONDITIONAL | Required when the classification is PASS-EXCEPTION; exactly one of the five exception types.                    |
+| rationale                       | REQUIRED    | Why the classification holds, including a compact-context rationale for any 24 to 43 CSS pixel departure.       |
+| equivalent_control_locator      | CONDITIONAL | Required when the exception type is EQUIVALENT-CONTROL.                                                         |
 | reviewer_and_evidence_reference | CONDITIONAL | Required for every judgment-based exception: named reviewer plus the evidence record that carries the judgment. |
 
 ### Spacing check
@@ -90,10 +90,10 @@ This protocol is defined and NOT-RUN. Defining it measures no target, sets no cl
 
 ## Sources, treated as inputs only
 
-| Source | Title | URL | Role |
-| --- | --- | --- | --- |
-| TTS-001 | Web Content Accessibility Guidelines (WCAG) 2.2, W3C normative specification | https://www.w3.org/TR/WCAG22/ | INPUT-ONLY |
-| TTS-002 | Understanding Success Criterion 2.5.8: Target Size (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum | INPUT-ONLY |
+| Source  | Title                                                                        | URL                                                             | Role       |
+| ------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------- |
+| TTS-001 | Web Content Accessibility Guidelines (WCAG) 2.2, W3C normative specification | https://www.w3.org/TR/WCAG22/                                   | INPUT-ONLY |
+| TTS-002 | Understanding Success Criterion 2.5.8: Target Size (Minimum)                 | https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum | INPUT-ONLY |
 
 ## Non-claims
 
@@ -106,6 +106,6 @@ This protocol is defined and NOT-RUN. Defining it measures no target, sets no cl
 
 ## History
 
-| Version | Recorded | Decision | Change | Boundary |
-| --- | --- | --- | --- | --- |
-| 1.0.0 | 2026-08-20 | DEC-021 | Rule created to resolve the missing-rule gap carried by FND-023: a named dimension, the exceptions that apply, and a stated verification method. | Creation of the rule discharges the definition gap only. It runs no audit and changes no interface. |
+| Version | Recorded   | Decision | Change                                                                                                                                           | Boundary                                                                                            |
+| ------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| 1.0.0   | 2026-08-20 | DEC-021  | Rule created to resolve the missing-rule gap carried by FND-023: a named dimension, the exceptions that apply, and a stated verification method. | Creation of the rule discharges the definition gap only. It runs no audit and changes no interface. |

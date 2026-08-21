@@ -19,9 +19,11 @@ Keeps the agreed scope and the delivered reality comparable.
 ## Who this serves
 
 Human beneficiaries:
+
 - Staff who must use the system after it is installed
 
 Enterprise beneficiaries:
+
 - Support, Quality, Revenue
 
 ## Trigger, entry, exit
@@ -29,9 +31,11 @@ Enterprise beneficiaries:
 Trigger: Implementation accepts a scope handoff.
 
 Entry criteria:
+
 - A scope baseline and obligation register exist and are accepted.
 
 Exit criteria:
+
 - The deployment is ready for use and readiness is recorded per axis.
 
 ## Authority separation
@@ -171,6 +175,7 @@ Decide whether Contract → Implementation may advance past readiness review.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - A prerequisite the customer owns is missing.
 - Data handling would exceed the agreed boundary.
 - Readiness cannot be evidenced.
@@ -178,15 +183,18 @@ Refusal conditions:
 Rollback and recovery: Pause deployment, restore the prior state, and record a finding with the cause.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Readiness evidence exists per axis before go-live.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -201,13 +209,16 @@ Findings from this stream return to: `incident-recovery-learning`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Scope creep absorbed silently by delivery.
 - Training treated as optional.
 
 Assumptions:
+
 - Deployment is reference architecture only at this stage.
 
 Unknowns:
+
 - What minimum readiness a small district can realistically evidence.
 
 Review trigger: Any change to scope, environment, or data handling.

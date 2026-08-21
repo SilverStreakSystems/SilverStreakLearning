@@ -12,12 +12,12 @@
 - Canonical record: `data/historical/fnd-022-owner-dispositions.json`.
 - Owner fields below are transcribed from the canonical Cycle 6 disposition record. This packet remains a projection surface and originates no decision.
 
-| Disposition | Candidates |
-| --- | --- |
-| ADOPT-AS-CANDIDATE | 7 |
-| MERGE-OR-RESTATEMENT | 3 |
-| NEEDS-EVIDENCE / DEFER | 1 |
-| RETAIN-HISTORICAL | 5 |
+| Disposition            | Candidates |
+| ---------------------- | ---------- |
+| ADOPT-AS-CANDIDATE     | 7          |
+| MERGE-OR-RESTATEMENT   | 3          |
+| NEEDS-EVIDENCE / DEFER | 1          |
+| RETAIN-HISTORICAL      | 5          |
 
 ## Packet boundary
 
@@ -39,15 +39,15 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 
 ## Entry state
 
-| Item | State |
-| --- | --- |
-| GATE A | OPEN |
-| WP 007 | ACTIVE |
-| WP 038 | CLOSED BY OWNER |
-| WP 039 | NOT AUTHORIZED |
-| FND 022 | OPEN |
-| PKG 001 | PARTIAL |
-| HS 023 | NOT-PROMOTED |
+| Item    | State           |
+| ------- | --------------- |
+| GATE A  | OPEN            |
+| WP 007  | ACTIVE          |
+| WP 038  | CLOSED BY OWNER |
+| WP 039  | NOT AUTHORIZED  |
+| FND 022 | OPEN            |
+| PKG 001 | PARTIAL         |
+| HS 023  | NOT-PROMOTED    |
 
 ## Reconciliation against the Cycle 4 record
 
@@ -400,36 +400,36 @@ Options presented for every item: RETAIN-HISTORICAL · ADOPT-AS-CANDIDATE · MER
 
 ## Restatement row review
 
-| Row | Historical | Reads as | Current | Owner question | Disposition |
-| --- | --- | --- | --- | --- | --- |
-| RST-001 | HREQ-016 | RESTATES | HREQ-001 | Are HREQ-016 and HREQ-001 one expectation with two sources, or two expectations to be carried separately? | MERGE-OR-RESTATEMENT |
-| RST-002 | HREQ-016 | BROADENS | HREQ-002 | Does the broader 'semantic headings' wording of HREQ-016 change anything about the exactly-one-H1 rule in HREQ-002, or is HREQ-002 the controlling statement of heading structure? | MERGE-OR-RESTATEMENT |
-| RST-003 | HREQ-017 | BROADENS | HREQ-003 | Should the specific skip-link rule in HREQ-003 remain the controlling statement, with HREQ-017 retained as history only? | RETAIN-HISTORICAL |
-| RST-004 | HREQ-018 | BROADENS | HREQ-004 | Should keyboard operability be extended from navigation (HREQ-004) to controls as HREQ-018 words it, and if so under what acceptance test? | ADOPT-AS-CANDIDATE |
-| RST-005 | HREQ-019 | BROADENS | HREQ-006 | Does the dual-color focus requirement in HREQ-006 remain controlling, with HREQ-019 retained as the weaker historical wording? | RETAIN-HISTORICAL |
-| RST-006 | HREQ-022 | RESTATES | HREQ-007 | HREQ-022 and HREQ-007 state the same prohibition. Should they be recorded as one expectation with two sources? | MERGE-OR-RESTATEMENT |
-| RST-007 | HREQ-023 | BROADENS | HREQ-012 | Does the 'contrast review' activity in HREQ-023 add anything to the measured-ratio row HREQ-012, or is it subsumed by it? | RETAIN-HISTORICAL |
-| RST-008 | HREQ-024 | NARROWS | HREQ-010 | Should the numeric 320-pixel reflow width in HREQ-024 be added to the reflow expectation that HREQ-010 states without a figure? | ADOPT-AS-CANDIDATE |
-| RST-009 | HREQ-026 | RESTATES | HREQ-009 | HREQ-026 and HREQ-009 state the same reduced-motion expectation. Should they be recorded as one? | MERGE-OR-RESTATEMENT |
-| RST-010 | HREQ-027 | NARROWS | HREQ-008 | Does the narrower table-scroll case in HREQ-027 need to be carried separately, or is it already covered by the general no-truncation rule HREQ-008? | RETAIN-HISTORICAL |
-| RST-011 | HREQ-030 | BROADENS | HREQ-011 | Should the evidence field list in HREQ-030 govern accessibility evidence generally, of which the HREQ-011 walkthrough is one instance? | ADOPT-AS-CANDIDATE |
-| RST-012 | HREQ-015 | NEW | none found | HREQ-015 names a WCAG 2.2 AA-informed target with no counterpart in HS-011. Does DEC-012 already state this target authoritatively, making the historical sentence evidence only? | RETAIN-HISTORICAL |
-| RST-013 | HREQ-020 | NEW | none found | HREQ-020 (programmatic names) has no counterpart. Should it be carried as a new candidate expectation? | ADOPT-AS-CANDIDATE |
-| RST-014 | HREQ-021 | NEW | none found | HREQ-021 (table captions and header cells) has no counterpart. Should it be carried as a new candidate expectation for register tables? | ADOPT-AS-CANDIDATE |
-| RST-015 | HREQ-025 | NEW | none found | HREQ-025 (touch targets) has no counterpart and states no minimum dimension. Should it be deferred pending a named figure? | NEEDS-EVIDENCE / DEFER |
-| RST-016 | HREQ-028 | NEW | none found | HREQ-028 (plain-language refusal and error states) has no counterpart. Should existing practice become a stated expectation? | ADOPT-AS-CANDIDATE |
-| RST-017 | HREQ-029 | NEW | none found | HREQ-029 (announcement of auto-updating content) has no counterpart. Should it be carried forward before any live-updating surface is built? | ADOPT-AS-CANDIDATE |
+| Row     | Historical | Reads as | Current    | Owner question                                                                                                                                                                     | Disposition            |
+| ------- | ---------- | -------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| RST-001 | HREQ-016   | RESTATES | HREQ-001   | Are HREQ-016 and HREQ-001 one expectation with two sources, or two expectations to be carried separately?                                                                          | MERGE-OR-RESTATEMENT   |
+| RST-002 | HREQ-016   | BROADENS | HREQ-002   | Does the broader 'semantic headings' wording of HREQ-016 change anything about the exactly-one-H1 rule in HREQ-002, or is HREQ-002 the controlling statement of heading structure? | MERGE-OR-RESTATEMENT   |
+| RST-003 | HREQ-017   | BROADENS | HREQ-003   | Should the specific skip-link rule in HREQ-003 remain the controlling statement, with HREQ-017 retained as history only?                                                           | RETAIN-HISTORICAL      |
+| RST-004 | HREQ-018   | BROADENS | HREQ-004   | Should keyboard operability be extended from navigation (HREQ-004) to controls as HREQ-018 words it, and if so under what acceptance test?                                         | ADOPT-AS-CANDIDATE     |
+| RST-005 | HREQ-019   | BROADENS | HREQ-006   | Does the dual-color focus requirement in HREQ-006 remain controlling, with HREQ-019 retained as the weaker historical wording?                                                     | RETAIN-HISTORICAL      |
+| RST-006 | HREQ-022   | RESTATES | HREQ-007   | HREQ-022 and HREQ-007 state the same prohibition. Should they be recorded as one expectation with two sources?                                                                     | MERGE-OR-RESTATEMENT   |
+| RST-007 | HREQ-023   | BROADENS | HREQ-012   | Does the 'contrast review' activity in HREQ-023 add anything to the measured-ratio row HREQ-012, or is it subsumed by it?                                                          | RETAIN-HISTORICAL      |
+| RST-008 | HREQ-024   | NARROWS  | HREQ-010   | Should the numeric 320-pixel reflow width in HREQ-024 be added to the reflow expectation that HREQ-010 states without a figure?                                                    | ADOPT-AS-CANDIDATE     |
+| RST-009 | HREQ-026   | RESTATES | HREQ-009   | HREQ-026 and HREQ-009 state the same reduced-motion expectation. Should they be recorded as one?                                                                                   | MERGE-OR-RESTATEMENT   |
+| RST-010 | HREQ-027   | NARROWS  | HREQ-008   | Does the narrower table-scroll case in HREQ-027 need to be carried separately, or is it already covered by the general no-truncation rule HREQ-008?                                | RETAIN-HISTORICAL      |
+| RST-011 | HREQ-030   | BROADENS | HREQ-011   | Should the evidence field list in HREQ-030 govern accessibility evidence generally, of which the HREQ-011 walkthrough is one instance?                                             | ADOPT-AS-CANDIDATE     |
+| RST-012 | HREQ-015   | NEW      | none found | HREQ-015 names a WCAG 2.2 AA-informed target with no counterpart in HS-011. Does DEC-012 already state this target authoritatively, making the historical sentence evidence only?  | RETAIN-HISTORICAL      |
+| RST-013 | HREQ-020   | NEW      | none found | HREQ-020 (programmatic names) has no counterpart. Should it be carried as a new candidate expectation?                                                                             | ADOPT-AS-CANDIDATE     |
+| RST-014 | HREQ-021   | NEW      | none found | HREQ-021 (table captions and header cells) has no counterpart. Should it be carried as a new candidate expectation for register tables?                                            | ADOPT-AS-CANDIDATE     |
+| RST-015 | HREQ-025   | NEW      | none found | HREQ-025 (touch targets) has no counterpart and states no minimum dimension. Should it be deferred pending a named figure?                                                         | NEEDS-EVIDENCE / DEFER |
+| RST-016 | HREQ-028   | NEW      | none found | HREQ-028 (plain-language refusal and error states) has no counterpart. Should existing practice become a stated expectation?                                                       | ADOPT-AS-CANDIDATE     |
+| RST-017 | HREQ-029   | NEW      | none found | HREQ-029 (announcement of auto-updating content) has no counterpart. Should it be carried forward before any live-updating surface is built?                                       | ADOPT-AS-CANDIDATE     |
 
 Every row above preserves its Cycle 4 classification unchanged. Full rationale,
 source support, and recorded uncertainty for each row are in the JSON packet.
 
 ## Current candidates with no historical counterpart
 
-| Requirement | Owner question | Disposition |
-| --- | --- | --- |
-| HREQ-005 | HREQ-005 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-005 remains unchanged and controlling. Absence from HS-023 is silence, not supersession. |
-| HREQ-013 | HREQ-013 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-013 remains unchanged as adopted-standard authority framing and stays outside historical restatement disposition. |
-| HREQ-014 | HREQ-014 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-014 remains unchanged as the controlling compliance-claim refusal. The refusal embedded in HREQ-015 is subordinate historical corroboration, not a second controlling refusal. |
+| Requirement | Owner question                                                                                                     | Disposition                                                                                                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HREQ-005    | HREQ-005 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-005 remains unchanged and controlling. Absence from HS-023 is silence, not supersession.                                                                                       |
+| HREQ-013    | HREQ-013 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-013 remains unchanged as adopted-standard authority framing and stays outside historical restatement disposition.                                                              |
+| HREQ-014    | HREQ-014 has no HS-023 counterpart. Does that absence require any action, or does the current row stand unchanged? | NO-ACTION-CURRENT-STANDS — HREQ-014 remains unchanged as the controlling compliance-claim refusal. The refusal embedded in HREQ-015 is subordinate historical corroboration, not a second controlling refusal. |
 
 ## Refused in this cycle
 

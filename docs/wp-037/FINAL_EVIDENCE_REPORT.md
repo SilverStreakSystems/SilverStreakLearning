@@ -11,16 +11,16 @@ package. No later decision supersedes that authority. Entry authority is establi
 
 ## Implementation result reconciled against repository truth
 
-| Reported | Verified at this head | Match |
-| --- | --- | --- |
-| 254/254 tests | 254 passed, 254 total | yes |
-| 10 test files | 10 passed | yes |
-| Production build exit 0 | exit 0 | yes |
-| 14 evidence records | 14 written | yes |
-| fail = 0 | fail = 0 | yes |
-| review-required = 2 | 2 (EV-LINT, EV-SSOT-GUARD) | yes |
-| not-completed = 1 | 1 (EV-VULN) | yes |
-| baseline CURRENT | CURRENT | yes |
+| Reported                | Verified at this head      | Match |
+| ----------------------- | -------------------------- | ----- |
+| 254/254 tests           | 254 passed, 254 total      | yes   |
+| 10 test files           | 10 passed                  | yes   |
+| Production build exit 0 | exit 0                     | yes   |
+| 14 evidence records     | 14 written                 | yes   |
+| fail = 0                | fail = 0                   | yes   |
+| review-required = 2     | 2 (EV-LINT, EV-SSOT-GUARD) | yes   |
+| not-completed = 1       | 1 (EV-VULN)                | yes   |
+| baseline CURRENT        | CURRENT                    | yes   |
 
 ## Input-aware applicability of the `1f7c51e` run
 
@@ -47,27 +47,27 @@ byte-identical.
 
 ## Deliverable verification
 
-| Deliverable | State | Source | Test / evidence |
-| --- | --- | --- | --- |
-| Evidence schema | IMPLEMENTED | `scripts/evidence/schema.mjs` | 8 schema cases |
-| Immutable execution evidence | IMPLEMENTED | `evidence/records/`, `evidence/runs/1f7c51e/` | EV-019 |
-| Current baseline generator | IMPLEMENTED | `scripts/evidence/baseline.mjs` | baseline freshness CURRENT |
-| Applicability calculation | IMPLEMENTED | `scripts/evidence/applicability.mjs` | 8 applicability cases |
-| Evidence expiry | IMPLEMENTED | `scripts/evidence/expiry.mjs` | 3 expiry cases |
-| Evidence supersession | IMPLEMENTED | `applicability.mjs` supersession branch | supersession case |
-| Evidence index | IMPLEMENTED | `evidence/evidence-index.json` | verify gate |
-| Evidence bundle | IMPLEMENTED | `evidence/` | reproduction run |
-| Artifact hashing | IMPLEMENTED | `scripts/evidence/util.mjs` | schema requires `artifact_hash` |
-| Reproduction process | IMPLEMENTED | `docs/wp-037/PIPELINE_OPERATION.md` | executed once, passed |
-| SBOM | IMPLEMENTED | `scripts/evidence/supply-chain.mjs` | EV-SBOM |
-| Vulnerability scanning | PARTIAL | `scripts/evidence/supply-chain.mjs` | EV-VULN not-completed |
-| License posture | IMPLEMENTED | `scripts/evidence/supply-chain.mjs` | EV-LICENSE |
-| Secret scan | IMPLEMENTED | `scripts/evidence/boundary.mjs` | EV-SECRET, boundary case |
-| Synthetic-data boundary scan | IMPLEMENTED | `scripts/evidence/boundary.mjs` | EV-PII, positive and negative controls |
-| Synthetic fixture generator | IMPLEMENTED | `src/fixtures/**` | governance suites |
-| Claim eligibility | IMPLEMENTED | `src/domain/evidence-pipeline.ts`, Claims Register | claim-overreach case |
-| Gate evidence eligibility | IMPLEMENTED | `evaluateReuse` reuse contract | 3 reuse cases |
-| CI integration | IMPLEMENTED (existence only) | `.github/workflows/evidence-pipeline.yml` | NOT VERIFIED for enforcement, FND-012 |
+| Deliverable                  | State                        | Source                                             | Test / evidence                        |
+| ---------------------------- | ---------------------------- | -------------------------------------------------- | -------------------------------------- |
+| Evidence schema              | IMPLEMENTED                  | `scripts/evidence/schema.mjs`                      | 8 schema cases                         |
+| Immutable execution evidence | IMPLEMENTED                  | `evidence/records/`, `evidence/runs/1f7c51e/`      | EV-019                                 |
+| Current baseline generator   | IMPLEMENTED                  | `scripts/evidence/baseline.mjs`                    | baseline freshness CURRENT             |
+| Applicability calculation    | IMPLEMENTED                  | `scripts/evidence/applicability.mjs`               | 8 applicability cases                  |
+| Evidence expiry              | IMPLEMENTED                  | `scripts/evidence/expiry.mjs`                      | 3 expiry cases                         |
+| Evidence supersession        | IMPLEMENTED                  | `applicability.mjs` supersession branch            | supersession case                      |
+| Evidence index               | IMPLEMENTED                  | `evidence/evidence-index.json`                     | verify gate                            |
+| Evidence bundle              | IMPLEMENTED                  | `evidence/`                                        | reproduction run                       |
+| Artifact hashing             | IMPLEMENTED                  | `scripts/evidence/util.mjs`                        | schema requires `artifact_hash`        |
+| Reproduction process         | IMPLEMENTED                  | `docs/wp-037/PIPELINE_OPERATION.md`                | executed once, passed                  |
+| SBOM                         | IMPLEMENTED                  | `scripts/evidence/supply-chain.mjs`                | EV-SBOM                                |
+| Vulnerability scanning       | PARTIAL                      | `scripts/evidence/supply-chain.mjs`                | EV-VULN not-completed                  |
+| License posture              | IMPLEMENTED                  | `scripts/evidence/supply-chain.mjs`                | EV-LICENSE                             |
+| Secret scan                  | IMPLEMENTED                  | `scripts/evidence/boundary.mjs`                    | EV-SECRET, boundary case               |
+| Synthetic-data boundary scan | IMPLEMENTED                  | `scripts/evidence/boundary.mjs`                    | EV-PII, positive and negative controls |
+| Synthetic fixture generator  | IMPLEMENTED                  | `src/fixtures/**`                                  | governance suites                      |
+| Claim eligibility            | IMPLEMENTED                  | `src/domain/evidence-pipeline.ts`, Claims Register | claim-overreach case                   |
+| Gate evidence eligibility    | IMPLEMENTED                  | `evaluateReuse` reuse contract                     | 3 reuse cases                          |
+| CI integration               | IMPLEMENTED (existence only) | `.github/workflows/evidence-pipeline.yml`          | NOT VERIFIED for enforcement, FND-012  |
 
 ## Pipeline test coverage — 37 cases inspected, not inferred
 

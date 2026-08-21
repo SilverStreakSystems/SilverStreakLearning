@@ -26,19 +26,19 @@ relevance, with no historical source promoted.
 
 Result: **MET.**
 
-| Exit criterion | State |
-|---|---|
-| Versioned schema exists | MET — `data/historical/HISTORICAL_SOURCE_SCHEMA.json` v1.0.0 |
-| Bounded universe inventoried | MET — 22 sources, boundary declared in the register |
-| Every source classified with basis | MET — enforced by test |
-| Exact locator on every source | MET — enforced by test |
-| Version or hash, or explicit NOT-AVAILABLE | MET — unreachable sources carry NOT-AVAILABLE |
-| Access limitation recorded | MET |
-| Recovery relevance with reason | MET; unreachable sources are UNKNOWN by rule |
-| No promotion of historical authority | MET — enforced by test |
-| Source immutability preserved | MET — no historical artifact rewritten |
-| Invariant tests executing | MET — `src/test/historical-sources.test.ts` |
-| Current applicable evidence | MET — EV-030, EV-031 |
+| Exit criterion                             | State                                                        |
+| ------------------------------------------ | ------------------------------------------------------------ |
+| Versioned schema exists                    | MET — `data/historical/HISTORICAL_SOURCE_SCHEMA.json` v1.0.0 |
+| Bounded universe inventoried               | MET — 22 sources, boundary declared in the register          |
+| Every source classified with basis         | MET — enforced by test                                       |
+| Exact locator on every source              | MET — enforced by test                                       |
+| Version or hash, or explicit NOT-AVAILABLE | MET — unreachable sources carry NOT-AVAILABLE                |
+| Access limitation recorded                 | MET                                                          |
+| Recovery relevance with reason             | MET; unreachable sources are UNKNOWN by rule                 |
+| No promotion of historical authority       | MET — enforced by test                                       |
+| Source immutability preserved              | MET — no historical artifact rewritten                       |
+| Invariant tests executing                  | MET — `src/test/historical-sources.test.ts`                  |
+| Current applicable evidence                | MET — EV-030, EV-031                                         |
 
 ## D. Classification distribution
 

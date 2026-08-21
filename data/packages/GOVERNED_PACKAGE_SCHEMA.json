@@ -22,11 +22,7 @@
     "canonicalStatus": { "enum": ["CANONICAL", "NONCANONICAL"] },
     "acquisitionMethod": { "enum": ["OWNER-SUPPLIED-INPUT", "REPOSITORY-GENERATED"] },
     "retentionState": {
-      "enum": [
-        "RETAINED-IN-REPOSITORY",
-        "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR",
-        "NOT-SUPPLIED"
-      ]
+      "enum": ["RETAINED-IN-REPOSITORY", "NOT-RETAINED-GOVERNED-EXTERNAL-LOCATOR", "NOT-SUPPLIED"]
     },
     "integrityState": {
       "enum": [

@@ -2,16 +2,16 @@
 
 Access is not a role check. Eight elements must all hold.
 
-| Element | Question |
-| --- | --- |
-| Identity | Who is this, verifiably? |
-| Capacity | In which declared capacity are they acting right now? |
-| Relationship | What connects them to this object? |
-| Purpose | Why do they need it, stated before access? |
-| Policy | Which rule permits this, for this purpose? |
-| Capability | Is the requested operation one this capacity may perform? |
-| Scope | Which subset of objects, not "all of type X"? |
-| Time | For how long, and has that window closed? |
+| Element      | Question                                                  |
+| ------------ | --------------------------------------------------------- |
+| Identity     | Who is this, verifiably?                                  |
+| Capacity     | In which declared capacity are they acting right now?     |
+| Relationship | What connects them to this object?                        |
+| Purpose      | Why do they need it, stated before access?                |
+| Policy       | Which rule permits this, for this purpose?                |
+| Capability   | Is the requested operation one this capacity may perform? |
+| Scope        | Which subset of objects, not "all of type X"?             |
+| Time         | For how long, and has that window closed?                 |
 
 ## Rules
 

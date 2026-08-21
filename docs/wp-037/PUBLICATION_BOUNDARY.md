@@ -4,12 +4,12 @@ Evidence: EV-020. Method: automated fetch. Independent: false.
 
 ## Observed state
 
-| Property | Observation |
-| --- | --- |
-| URL | https://vision-trunk.lovable.app |
-| HTTP status | 200 over HTTPS |
+| Property       | Observation                               |
+| -------------- | ----------------------------------------- |
+| URL            | https://vision-trunk.lovable.app          |
+| HTTP status    | 200 over HTTPS                            |
 | Document title | `Command Center \| SSLS Foundation Shell` |
-| Classification | **PUBLIC PROTOTYPE** |
+| Classification | **PUBLIC PROTOTYPE**                      |
 
 Allowed classifications are NOT PUBLISHED, PRIVATE PREVIEW, PUBLIC PROTOTYPE, CONTROLLED PILOT, and
 PRODUCTION RELEASE. The expected maximum without explicit further authority is PUBLIC PROTOTYPE, and

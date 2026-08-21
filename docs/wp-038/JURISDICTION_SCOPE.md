@@ -2,19 +2,19 @@
 
 ## In scope
 
-| Jurisdiction | Reason |
-|---|---|
-| US-FEDERAL | Education privacy, children's privacy, accessibility and federal procurement conditions reach any US education technology developer or its customers. |
-| US-MA | Massachusetts is the stated first market. Several Massachusetts obligations bind a vendor directly rather than through a district. |
-| NOT-JURISDICTIONAL | Voluntary standards and industry templates that carry no legal force but shape procurement. |
+| Jurisdiction       | Reason                                                                                                                                                |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| US-FEDERAL         | Education privacy, children's privacy, accessibility and federal procurement conditions reach any US education technology developer or its customers. |
+| US-MA              | Massachusetts is the stated first market. Several Massachusetts obligations bind a vendor directly rather than through a district.                    |
+| NOT-JURISDICTIONAL | Voluntary standards and industry templates that carry no legal force but shape procurement.                                                           |
 
 ## Recorded but not in scope
 
-| Jurisdiction | Reason | Records |
-|---|---|---|
-| US-STATE-OTHER | No presence outside Massachusetts. Colorado's automated decision-making law is tracked only because it is dated and could reach a future recommendation capability. | SRC-037, OBL-027 |
-| INTERNATIONAL | No EU or EEA market entry. Recorded so the question is closed rather than open. | SRC-020, OBL-017 |
-| US-LOCAL-DISTRICT | District-specific terms are contractual and cannot be enumerated before a district exists. | Handled through OBL-031 |
+| Jurisdiction      | Reason                                                                                                                                                              | Records                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| US-STATE-OTHER    | No presence outside Massachusetts. Colorado's automated decision-making law is tracked only because it is dated and could reach a future recommendation capability. | SRC-037, OBL-027        |
+| INTERNATIONAL     | No EU or EEA market entry. Recorded so the question is closed rather than open.                                                                                     | SRC-020, OBL-017        |
+| US-LOCAL-DISTRICT | District-specific terms are contractual and cannot be enumerated before a district exists.                                                                          | Handled through OBL-031 |
 
 ## The direct-versus-indirect distinction
 

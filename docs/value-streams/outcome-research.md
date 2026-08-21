@@ -19,9 +19,11 @@ Turns what actually happened into what SSLS next needs to know.
 ## Who this serves
 
 Human beneficiaries:
+
 - Future users who benefit from lessons already paid for
 
 Enterprise beneficiaries:
+
 - Research, Strategy, Product
 
 ## Trigger, entry, exit
@@ -29,9 +31,11 @@ Enterprise beneficiaries:
 Trigger: An outcome finding, incident lesson, or surprising result is recorded.
 
 Entry criteria:
+
 - A finding or lesson exists with its source.
 
 Exit criteria:
+
 - A research question is queued, or the loop is closed with a recorded reason.
 
 ## Authority separation
@@ -141,21 +145,25 @@ Decide whether Outcome → Research may advance past pattern review.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - The lesson is anecdotal and cannot be traced to a source.
 - The question cannot be answered within the governed boundary.
 
 Rollback and recovery: Withdraw a queued question when its originating finding is retracted.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Findings either produce a question or a recorded reason for closure.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -170,12 +178,15 @@ Findings from this stream return to: `research-requirement`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Lessons recorded but never acted on.
 
 Assumptions:
+
 - Learning must be scheduled, not incidental.
 
 Unknowns:
+
 - What review cadence keeps the loop alive with one operator.
 
 Review trigger: Each learning review cycle, or a retracted originating finding.

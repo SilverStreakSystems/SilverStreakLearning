@@ -19,9 +19,11 @@ Shows why each piece of work exists and which requirement it serves.
 ## Who this serves
 
 Human beneficiaries:
+
 - Users who receive work that was actually authorized
 
 Enterprise beneficiaries:
+
 - Engineering, Product, Quality
 
 ## Trigger, entry, exit
@@ -29,9 +31,11 @@ Enterprise beneficiaries:
 Trigger: An accepted decision creates authorized implementation scope.
 
 Entry criteria:
+
 - An accepted decision and a testable requirement both exist.
 
 Exit criteria:
+
 - Implementation is complete and internally reviewed, with validation not yet claimed.
 
 ## Authority separation
@@ -181,6 +185,7 @@ Decide whether Decision → Build may advance past internal review.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - Work has no served object or purpose.
 - The decision authorizing the work has been superseded.
 - A dependency is unowned.
@@ -188,16 +193,19 @@ Refusal conditions:
 Rollback and recovery: Reverse the change and record a finding; the requirement returns to its prior state.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Work items trace to authorized decisions.
 - Orphan work is surfaced, not hidden.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -212,13 +220,16 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Implementation completion is read as validation.
 - Scope grows without a decision.
 
 Assumptions:
+
 - Internal review by the builder is insufficient and is treated as such.
 
 Unknowns:
+
 - When independent review becomes mandatory rather than advisory.
 
 Review trigger: Scope change, superseded decision, or a blocking dependency.

@@ -23,17 +23,10 @@ export const PROHIBITED_STATUS_WORDS = [
 ] as const;
 
 export type LocationClass =
-  | "connected-storage"
-  | "owner-supplied-upload"
-  | "external-service"
-  | "unknown";
+  "connected-storage" | "owner-supplied-upload" | "external-service" | "unknown";
 
 export type ObservedItemClass =
-  | "foundation-document"
-  | "workbook"
-  | "spreadsheet"
-  | "probe"
-  | "other";
+  "foundation-document" | "workbook" | "spreadsheet" | "probe" | "other";
 
 export type ReadState = "content-read" | "metadata-only";
 

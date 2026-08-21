@@ -19,9 +19,11 @@ Keeps independent axes visible instead of averaging them into a single number.
 ## Who this serves
 
 Human beneficiaries:
+
 - People who would be harmed by an unsafe or inaccessible release
 
 Enterprise beneficiaries:
+
 - Governance, Security and Privacy, Support
 
 ## Trigger, entry, exit
@@ -29,9 +31,11 @@ Enterprise beneficiaries:
 Trigger: A validated increment is proposed for release.
 
 Entry criteria:
+
 - Validation evidence exists and is current.
 
 Exit criteria:
+
 - Release is authorized, held, or refused, with the disposition recorded.
 
 ## Authority separation
@@ -191,6 +195,7 @@ Decide whether Validation → Release may advance past authorization.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - An accessibility barrier is unresolved.
 - A security or privacy stop condition is triggered.
 - Validation evidence is stale relative to the candidate.
@@ -198,15 +203,18 @@ Refusal conditions:
 Rollback and recovery: Roll back the release, record an incident, and enter Incident → Recovery → Learning.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Every release carries a recorded gate disposition.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -221,13 +229,16 @@ Findings from this stream return to: `incident-recovery-learning`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Pressure to release overrides a stop condition.
 - Silence is treated as gate passage.
 
 Assumptions:
+
 - Hypercare is feasible at current scale.
 
 Unknowns:
+
 - What monitoring is sufficient before external users exist.
 
 Review trigger: Any change to the release candidate after gate review.

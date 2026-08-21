@@ -4,30 +4,30 @@
 
 2 obligations in this domain.
 
-| ID | Title | Source | Applicability | Control status |
-|---|---|---|---|---|
-| OBL-032 | Accuracy of public claims on the published prototype | AGO AI Advisory; M.G.L. c. 93A as referenced therein | APPLIES-NOW | IMPLEMENTED |
-| OBL-033 | Zero personal data on the current surface | 201 CMR 17.01 scope | APPLIES-NOW | IMPLEMENTED |
+| ID      | Title                                                | Source                                               | Applicability | Control status |
+| ------- | ---------------------------------------------------- | ---------------------------------------------------- | ------------- | -------------- |
+| OBL-032 | Accuracy of public claims on the published prototype | AGO AI Advisory; M.G.L. c. 93A as referenced therein | APPLIES-NOW   | IMPLEMENTED    |
+| OBL-033 | Zero personal data on the current surface            | 201 CMR 17.01 scope                                  | APPLIES-NOW   | IMPLEMENTED    |
 
 ### OBL-032 — Accuracy of public claims on the published prototype
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of the Attorney General (SRC-014) |
-| Authority type | official-guidance |
-| Citation | AGO AI Advisory; M.G.L. c. 93A as referenced therein |
-| Locator | https://www.mass.gov/doc/ago-ai-advisory-41624/download |
-| Source version | 2024-04-16 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-NOW |
-| Trigger | A public surface exists at a reachable URL. |
-| Control family | CLAIMS / TRANSPARENCY |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | WP-037 publication boundary; maintained continuously |
-| Review requirement | none recorded |
-| Review trigger | Every publication |
+| Field              | Value                                                   |
+| ------------------ | ------------------------------------------------------- |
+| Source             | Massachusetts Office of the Attorney General (SRC-014)  |
+| Authority type     | official-guidance                                       |
+| Citation           | AGO AI Advisory; M.G.L. c. 93A as referenced therein    |
+| Locator            | https://www.mass.gov/doc/ago-ai-advisory-41624/download |
+| Source version     | 2024-04-16                                              |
+| Verified on        | 2026-08-19                                              |
+| Jurisdiction       | US-MA                                                   |
+| Applicability      | APPLIES-NOW                                             |
+| Trigger            | A public surface exists at a reachable URL.             |
+| Control family     | CLAIMS / TRANSPARENCY                                   |
+| Control status     | IMPLEMENTED                                             |
+| Evidence status    | CURRENT                                                 |
+| Owning route       | WP-037 publication boundary; maintained continuously    |
+| Review requirement | none recorded                                           |
+| Review trigger     | Every publication                                       |
 
 **What the source states.** The advisory states that existing consumer protection law applies. It does not enumerate product wording.
 
@@ -49,28 +49,27 @@
 
 **Claim refused.** Production ready; district ready; live product
 
-
 ---
 
 ### OBL-033 — Zero personal data on the current surface
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011) |
-| Authority type | regulation |
-| Citation | 201 CMR 17.01 scope |
-| Locator | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
-| Source version | Current published edition |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-NOW |
-| Trigger | The scope test is continuous: the obligation attaches the moment personal information is received. |
-| Control family | DATA MINIMIZATION |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | WP-038 verification; maintained continuously |
-| Review requirement | none recorded |
-| Review trigger | Any added form, account, analytics or third-party script |
+| Field              | Value                                                                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Source             | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011)                                                         |
+| Authority type     | regulation                                                                                                                         |
+| Citation           | 201 CMR 17.01 scope                                                                                                                |
+| Locator            | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
+| Source version     | Current published edition                                                                                                          |
+| Verified on        | 2026-08-19                                                                                                                         |
+| Jurisdiction       | US-MA                                                                                                                              |
+| Applicability      | APPLIES-NOW                                                                                                                        |
+| Trigger            | The scope test is continuous: the obligation attaches the moment personal information is received.                                 |
+| Control family     | DATA MINIMIZATION                                                                                                                  |
+| Control status     | IMPLEMENTED                                                                                                                        |
+| Evidence status    | CURRENT                                                                                                                            |
+| Owning route       | WP-038 verification; maintained continuously                                                                                       |
+| Review requirement | none recorded                                                                                                                      |
+| Review trigger     | Any added form, account, analytics or third-party script                                                                           |
 
 **What the source states.** 17.01 states the scope. It does not describe web surfaces specifically.
 

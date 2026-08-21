@@ -5,16 +5,15 @@ WP-038 is CLOSED BY OWNER under DEC-018 (accepted 2026-08-19). The next eligible
 accepted decision supersedes the current Build Program sequence. Eligibility follows the accepted
 program sequence, not numerical order: WP-039 is not authorized because its number follows WP-038.
 
-
 ## Carried forward
 
-| Item | State |
-|---|---|
+| Item                          | State                                                                |
+| ----------------------------- | -------------------------------------------------------------------- |
 | Canonical obligation baseline | `data/governance/` — schema, 43 authorities, 34 obligations, context |
-| Register invariants | `src/test/obligations.test.ts`, 21 cases |
-| Documentation projection | `scripts/gen-obligation-docs.ts` |
-| Gap register | 16 gaps with owning routes |
-| Verification date | 2026-08-19 — the whole baseline ages from this date |
+| Register invariants           | `src/test/obligations.test.ts`, 21 cases                             |
+| Documentation projection      | `scripts/gen-obligation-docs.ts`                                     |
+| Gap register                  | 16 gaps with owning routes                                           |
+| Verification date             | 2026-08-19 — the whole baseline ages from this date                  |
 
 ## Open items inherited
 
@@ -28,7 +27,6 @@ program sequence, not numerical order: WP-039 is not authorized because its numb
 - **FND-016** — open, partially resolved by DEC-012 (named target only).
 - **FND-017, FND-018** — open.
 - **CNF-001, CNF-005, CNF-006** — open source conflicts.
-
 
 ## Constraints that travel with the handoff
 

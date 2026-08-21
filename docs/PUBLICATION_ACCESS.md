@@ -4,14 +4,14 @@ Authority class: current summary. Recorded under DEC-022. This document changes 
 
 ## Current truth
 
-| Question | Answer |
-|---|---|
-| Is the Lovable project private? | Yes. |
-| Is the published application URL reachable by anyone with the link? | Yes. |
-| Is the published surface access-controlled? | No. The private project setting does not restrict it. |
-| Does the robots file prevent access? | No. `public/robots.txt` is a crawler request, not access control. |
-| Is anything on the surface real? | No. Every record shown is synthetic. There is no personal data, no authentication, no database, and no production data path. |
-| Is the application released? | No. Hosting is not release authority. |
+| Question                                                            | Answer                                                                                                                       |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Is the Lovable project private?                                     | Yes.                                                                                                                         |
+| Is the published application URL reachable by anyone with the link? | Yes.                                                                                                                         |
+| Is the published surface access-controlled?                         | No. The private project setting does not restrict it.                                                                        |
+| Does the robots file prevent access?                                | No. `public/robots.txt` is a crawler request, not access control.                                                            |
+| Is anything on the surface real?                                    | No. Every record shown is synthetic. There is no personal data, no authentication, no database, and no production data path. |
+| Is the application released?                                        | No. Hosting is not release authority.                                                                                        |
 
 The interface must therefore describe itself as a **public synthetic prototype, no real personal
 data, not released**. Any statement that the published surface is a private workspace is false and

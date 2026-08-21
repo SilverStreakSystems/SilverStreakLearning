@@ -22,13 +22,13 @@ historical evidence is never rebound.
 
 ## What changes
 
-| Question | WP-006 answer | WP-037 answer |
-|---|---|---|
-| Is this evidence still valid? | Declared SHA equals HEAD | Declared input hashes unchanged, unexpired, unsuperseded, applicable environment |
-| What happens on a docs-only commit? | Every bound document must be rebound by hand | Build and test evidence stays CURRENT; nothing is rebound |
-| What happens on a one-line source change? | Rebinding the string makes it look fresh | Build and test evidence goes STALE immediately |
-| Who keeps the baseline true? | A human editing declarations | `bun run evidence:run` regenerating it |
-| Can the answer be "I don't know"? | No | Yes — `UNKNOWN` is a first-class state |
+| Question                                  | WP-006 answer                                | WP-037 answer                                                                    |
+| ----------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
+| Is this evidence still valid?             | Declared SHA equals HEAD                     | Declared input hashes unchanged, unexpired, unsuperseded, applicable environment |
+| What happens on a docs-only commit?       | Every bound document must be rebound by hand | Build and test evidence stays CURRENT; nothing is rebound                        |
+| What happens on a one-line source change? | Rebinding the string makes it look fresh     | Build and test evidence goes STALE immediately                                   |
+| Who keeps the baseline true?              | A human editing declarations                 | `bun run evidence:run` regenerating it                                           |
+| Can the answer be "I don't know"?         | No                                           | Yes — `UNKNOWN` is a first-class state                                           |
 
 ## Coexistence rule
 

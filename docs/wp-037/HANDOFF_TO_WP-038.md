@@ -6,18 +6,18 @@ authorizes WP-038 only. Gate A is not closed and no later work package is author
 
 ## Carried forward
 
-| Item | State |
-| --- | --- |
-| Authorized software SSOT | This Lovable-managed repository, adopted by DEC-010 |
-| Evidence schema | `scripts/evidence/schema.mjs`, schema version 1.0.0 |
-| Evidence type policy | 18 declared types in `scripts/evidence/inputs.mjs` with per-type input sets and reuse flags |
-| Expiry rules | `scripts/evidence/expiry.mjs`; feed-dependent evidence is time-bounded |
-| Applicability rules | `scripts/evidence/applicability.mjs`; six states, UNKNOWN never collapsed |
-| Current baseline | `evidence/baseline.json`, regenerated per run |
-| Current evidence index | `evidence/evidence-index.json` and `docs/wp-037/EVIDENCE_INDEX.md` |
-| Current evidence bundle | `evidence/` — 14 records, artifacts, archived producing run at `evidence/runs/1f7c51e/` |
-| Claims Register | CLM-001 … CLM-012, including the new CLM-008 permitted wording and CLM-009 … CLM-012 prohibitions |
-| Public deployment boundary | PUBLIC PROTOTYPE; publication is not release authority |
+| Item                       | State                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------- |
+| Authorized software SSOT   | This Lovable-managed repository, adopted by DEC-010                                               |
+| Evidence schema            | `scripts/evidence/schema.mjs`, schema version 1.0.0                                               |
+| Evidence type policy       | 18 declared types in `scripts/evidence/inputs.mjs` with per-type input sets and reuse flags       |
+| Expiry rules               | `scripts/evidence/expiry.mjs`; feed-dependent evidence is time-bounded                            |
+| Applicability rules        | `scripts/evidence/applicability.mjs`; six states, UNKNOWN never collapsed                         |
+| Current baseline           | `evidence/baseline.json`, regenerated per run                                                     |
+| Current evidence index     | `evidence/evidence-index.json` and `docs/wp-037/EVIDENCE_INDEX.md`                                |
+| Current evidence bundle    | `evidence/` — 14 records, artifacts, archived producing run at `evidence/runs/1f7c51e/`           |
+| Claims Register            | CLM-001 … CLM-012, including the new CLM-008 permitted wording and CLM-009 … CLM-012 prohibitions |
+| Public deployment boundary | PUBLIC PROTOTYPE; publication is not release authority                                            |
 
 ## Open items inherited by WP-038
 

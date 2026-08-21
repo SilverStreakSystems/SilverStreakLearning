@@ -16,29 +16,29 @@ advancement, no WP-006 work performed.
 
 ## 2. Surfaces inspected
 
-| Surface | Method | Result |
-| --- | --- | --- |
-| Working tree (337 tracked files, 0 untracked) | gitleaks 8.28.0 `--no-git`; deterministic regex sweep | No secrets, no PII patterns |
-| Git history, current branch | gitleaks 8.28.0 `detect` (236 commits scanned) | No leaks |
-| Git history, all refs | gitleaks `--log-opts=--all`; full `git log --all -p` regex sweep | No leaks; only two `noreply` commit-author addresses |
-| Branches and tags | `git for-each-ref` (10 refs, 0 tags) | All refs point at `9854a11` or `b2b794d`; both within scanned history |
-| Deleted-file history | `git log --all --diff-filter=D --name-only` | 4 deleted files, all source modules; no data files |
-| Commit messages | `git log --all --format=%s` (14 unique) | No sensitive content |
-| Static assets `public/` | Directory listing | `favicon.ico`, `robots.txt` only |
-| Tracked binaries / exports | `git ls-files` filtered on png/jpg/pdf/csv/xlsx/zip/sql/db | None tracked |
-| Environment configuration | Filesystem listing; `rg process.env / import.meta.env` | No `.env`, `.dev.vars`, or env reads in source |
-| Project secrets | Platform secret inventory | 1 secret: `LOVABLE_API_KEY` (platform-managed) |
-| Backend / data stores | `src/integrations` absence; no backend enabled | No database, no storage buckets, no seed data |
-| Project metadata | `.lovable/project.json` | Template metadata only |
-| Deployment surfaces | Publish state | Not published; preview URL serves the same synthetic tree |
+| Surface                                       | Method                                                           | Result                                                                |
+| --------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Working tree (337 tracked files, 0 untracked) | gitleaks 8.28.0 `--no-git`; deterministic regex sweep            | No secrets, no PII patterns                                           |
+| Git history, current branch                   | gitleaks 8.28.0 `detect` (236 commits scanned)                   | No leaks                                                              |
+| Git history, all refs                         | gitleaks `--log-opts=--all`; full `git log --all -p` regex sweep | No leaks; only two `noreply` commit-author addresses                  |
+| Branches and tags                             | `git for-each-ref` (10 refs, 0 tags)                             | All refs point at `9854a11` or `b2b794d`; both within scanned history |
+| Deleted-file history                          | `git log --all --diff-filter=D --name-only`                      | 4 deleted files, all source modules; no data files                    |
+| Commit messages                               | `git log --all --format=%s` (14 unique)                          | No sensitive content                                                  |
+| Static assets `public/`                       | Directory listing                                                | `favicon.ico`, `robots.txt` only                                      |
+| Tracked binaries / exports                    | `git ls-files` filtered on png/jpg/pdf/csv/xlsx/zip/sql/db       | None tracked                                                          |
+| Environment configuration                     | Filesystem listing; `rg process.env / import.meta.env`           | No `.env`, `.dev.vars`, or env reads in source                        |
+| Project secrets                               | Platform secret inventory                                        | 1 secret: `LOVABLE_API_KEY` (platform-managed)                        |
+| Backend / data stores                         | `src/integrations` absence; no backend enabled                   | No database, no storage buckets, no seed data                         |
+| Project metadata                              | `.lovable/project.json`                                          | Template metadata only                                                |
+| Deployment surfaces                           | Publish state                                                    | Not published; preview URL serves the same synthetic tree             |
 
 ## 3. Exposure records
 
-| exposure_id | source_surface | location | category | PII | learner | staff | family | credential | district-confidential | earliest | latest | accessibility | in history | current accessibility | rotation required | containment | remediation | verification | uncertainty | evidence_id | status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| EXP-001 | Git history (commit metadata) | Author/committer trailers, all commits | Platform `noreply` addresses (`*@users.noreply.github.com`, `noreply@lovable.dev`) | No | No | No | No | No | No | repo inception | 2026-08-17 | Private repo | Yes | Private | No | None required | None — non-identifying platform aliases | Regex enumeration of all history diffs; only two distinct addresses | None | EV-WP000-002 | VERIFIED (no exposure) |
-| EXP-002 | Repository configuration | `.gitignore` | No `.env` ignore rule (`*.local`, `.dev.vars` present) | No | No | No | No | Preventive | No | repo inception | 2026-08-17 | Private | N/A | N/A | No | N/A | Preventive control added: `.env`, `.env.*` ignored | Post-change inspection of `.gitignore` | None | EV-WP000-004 | REMEDIATED (preventive; no exposure occurred) |
-| EXP-003 | Third-party surfaces (GitHub mirror, deployment provider, external caches, screenshots, shared links) | Outside inspectable tooling | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | Unknown | None possible from executor position | None | Not verifiable with authorized tooling | Whole record | — | UNKNOWN |
+| exposure_id | source_surface                                                                                        | location                               | category                                                                           | PII     | learner | staff   | family  | credential | district-confidential | earliest       | latest     | accessibility | in history | current accessibility | rotation required | containment                          | remediation                                        | verification                                                        | uncertainty  | evidence_id  | status                                        |
+| ----------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------- | ------- | ------- | ------- | ------- | ---------- | --------------------- | -------------- | ---------- | ------------- | ---------- | --------------------- | ----------------- | ------------------------------------ | -------------------------------------------------- | ------------------------------------------------------------------- | ------------ | ------------ | --------------------------------------------- |
+| EXP-001     | Git history (commit metadata)                                                                         | Author/committer trailers, all commits | Platform `noreply` addresses (`*@users.noreply.github.com`, `noreply@lovable.dev`) | No      | No      | No      | No      | No         | No                    | repo inception | 2026-08-17 | Private repo  | Yes        | Private               | No                | None required                        | None — non-identifying platform aliases            | Regex enumeration of all history diffs; only two distinct addresses | None         | EV-WP000-002 | VERIFIED (no exposure)                        |
+| EXP-002     | Repository configuration                                                                              | `.gitignore`                           | No `.env` ignore rule (`*.local`, `.dev.vars` present)                             | No      | No      | No      | No      | Preventive | No                    | repo inception | 2026-08-17 | Private       | N/A        | N/A                   | No                | N/A                                  | Preventive control added: `.env`, `.env.*` ignored | Post-change inspection of `.gitignore`                              | None         | EV-WP000-004 | REMEDIATED (preventive; no exposure occurred) |
+| EXP-003     | Third-party surfaces (GitHub mirror, deployment provider, external caches, screenshots, shared links) | Outside inspectable tooling            | Unknown                                                                            | Unknown | Unknown | Unknown | Unknown | Unknown    | Unknown               | Unknown        | Unknown    | Unknown       | Unknown    | Unknown               | Unknown           | None possible from executor position | None                                               | Not verifiable with authorized tooling                              | Whole record | —            | UNKNOWN                                       |
 
 No IDENTIFIED-and-uncontained exposure of real learner, educator, staff, family, district,
 or customer information was found on any inspectable surface.

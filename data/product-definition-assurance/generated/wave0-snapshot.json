@@ -19,48 +19,18 @@
       "Generated documentation is a projection. It is not controlling merely because it is current."
     ],
     "state_axes": {
-      "truth": [
-        "observed",
-        "declared",
-        "derived",
-        "historical",
-        "unknown"
-      ],
-      "authority": [
-        "controlling",
-        "candidate",
-        "historical",
-        "superseded",
-        "none"
-      ],
-      "lifecycle": [
-        "proposed",
-        "active",
-        "generated",
-        "superseded",
-        "absent"
-      ],
+      "truth": ["observed", "declared", "derived", "historical", "unknown"],
+      "authority": ["controlling", "candidate", "historical", "superseded", "none"],
+      "lifecycle": ["proposed", "active", "generated", "superseded", "absent"],
       "implementation": [
         "implemented",
         "partially-implemented",
         "not-implemented",
         "not-applicable"
       ],
-      "validation": [
-        "tested",
-        "partially-tested",
-        "not-run",
-        "blocked",
-        "stale",
-        "not-applicable"
-      ],
-      "release": [
-        "not-released"
-      ],
-      "claim_eligibility": [
-        "ineligible",
-        "internal-only"
-      ]
+      "validation": ["tested", "partially-tested", "not-run", "blocked", "stale", "not-applicable"],
+      "release": ["not-released"],
+      "claim_eligibility": ["ineligible", "internal-only"]
     },
     "preserved_program_state": [
       {
@@ -124,9 +94,7 @@
           "docs/product-alpha-001/ENTRY_SPECIFICATION.md",
           "src/fixtures/posture.ts"
         ],
-        "current_evidence": [
-          "EV-046"
-        ],
+        "current_evidence": ["EV-046"],
         "present": "Program state, boundary posture, and the bounded Product Alpha 001 entry specification are recorded and generated from registers.",
         "missing_fields": [
           "Single stated product definition covering problem, intended operator, and out-of-scope users",
@@ -156,9 +124,7 @@
           "data/governance/obligations.json",
           "data/historical/restatement-index.json"
         ],
-        "current_evidence": [
-          "EV-040"
-        ],
+        "current_evidence": ["EV-040"],
         "present": "Thirty historical requirement candidates extracted from two historical sources, plus thirty-four external obligations with applicability recorded.",
         "missing_fields": [
           "Current-state requirements distinct from historical candidates",
@@ -182,13 +148,8 @@
       {
         "artifact_id": "PDA-A03",
         "artifact": "Route Registry",
-        "existing_canonical_sources": [
-          "src/lib/route-registry.ts",
-          "src/routes"
-        ],
-        "current_evidence": [
-          "EV-ROUTES"
-        ],
+        "existing_canonical_sources": ["src/lib/route-registry.ts", "src/routes"],
+        "current_evidence": ["EV-ROUTES"],
         "present": "A controlling in-code route registry drives navigation and the route coverage tests, and the evidence pipeline records a runtime route inventory.",
         "missing_fields": [
           "Per-route authority class and data-source classification in the controlling registry",
@@ -218,9 +179,7 @@
           "docs/shared-object/OBJECT_MODEL.md",
           "docs/shared-object/RELATIONSHIP_ARCHITECTURE.md"
         ],
-        "current_evidence": [
-          "EV-CONFIG"
-        ],
+        "current_evidence": ["EV-CONFIG"],
         "present": "A shared object model with universal and conditional governance metadata, object families, and an explicit relationship architecture.",
         "missing_fields": [
           "Physical data model",
@@ -249,9 +208,7 @@
           "src/fixtures/workspace",
           "docs/PUBLICATION_ACCESS.md"
         ],
-        "current_evidence": [
-          "EV-041"
-        ],
+        "current_evidence": ["EV-041"],
         "present": "An eight-element authorization model and a declared acting-capacity vocabulary, with publication access recorded separately.",
         "missing_fields": [
           "Principal-by-operation matrix",
@@ -282,11 +239,7 @@
           "docs/wp-038/domain-student-privacy.md",
           "scripts/evidence/boundary.mjs"
         ],
-        "current_evidence": [
-          "EV-SECRET",
-          "EV-PII",
-          "EV-VULN"
-        ],
+        "current_evidence": ["EV-SECRET", "EV-PII", "EV-VULN"],
         "present": "An exposure remediation record, security and privacy obligation domains, and automated secret, personal-data, and dependency scans.",
         "missing_fields": [
           "Enumerated threat register with actor, asset, and surface",
@@ -317,10 +270,7 @@
           "scripts/evidence/collect.mjs",
           "docs/ACCESSIBILITY_ACCEPTANCE.md"
         ],
-        "current_evidence": [
-          "EV-TEST",
-          "EV-046"
-        ],
+        "current_evidence": ["EV-TEST", "EV-046"],
         "present": "An executable suite, declared verification commands, and an evidence record bound to the executing commit.",
         "missing_fields": [
           "Test case register mapping cases to requirements and routes",
@@ -362,11 +312,7 @@
         "observation": "Three route counts exist and must stay separate. The WP-006 manifest at commit 70c1f891c5d341c60132d0109979042004425a4b carries 25 rows RT-000 through RT-024 and states 30 route files, 29 addressable routes plus the root layout, and 19 paths in ROUTE_REGISTRY. A seventeen-route count is reported separately by the external August 5 v0.2.0 package, for which no exact repository source locator exists in the tracked tree. The live inventory is derived from src/lib/route-registry.ts and src/routes at the current commit.",
         "resolution_rule": "Cite the live inventory for present state. Cite the WP-006 manifest only with its exact counts and full commit. Never attach the external seventeen-route count to the WP-006 manifest or to the current inventory.",
         "owner_decision_required": false,
-        "sources": [
-          "docs/wp-006/ROUTE_MANIFEST.md",
-          "src/lib/route-registry.ts",
-          "src/routes"
-        ]
+        "sources": ["docs/wp-006/ROUTE_MANIFEST.md", "src/lib/route-registry.ts", "src/routes"]
       },
       {
         "entry_id": "PDA-R03",
@@ -374,10 +320,7 @@
         "observation": "No single document is declared controlling for the product definition; three documents each carry part of it, and each covers a different scope: SSLS the modular ecosystem, Silver Streak Learning the instructional educator-facing product, and Product Alpha 001 the bounded local synthetic increment.",
         "resolution_rule": "The recommended controlling location is a new ecosystem-level brief at docs/product/SSLS_PRODUCT_BRIEF.md that links docs/CURRENT_STATE.md and docs/product-alpha-001/ENTRY_SPECIFICATION.md as bounded current projections rather than replacing them. The recommendation is not an owner disposition and creates no document. The owner names the controlling location before Wave 1 writes a Product Brief.",
         "owner_decision_required": true,
-        "sources": [
-          "docs/CURRENT_STATE.md",
-          "docs/product-alpha-001/ENTRY_SPECIFICATION.md"
-        ]
+        "sources": ["docs/CURRENT_STATE.md", "docs/product-alpha-001/ENTRY_SPECIFICATION.md"]
       },
       {
         "entry_id": "PDA-R04",
@@ -385,10 +328,7 @@
         "observation": "Default deny is declared as a design posture while no runtime authentication, role check, or row-level security exists in the tracked tree.",
         "resolution_rule": "Record both truths on separate axes. Never report the posture as enforcement.",
         "owner_decision_required": false,
-        "sources": [
-          "docs/shared-object/AUTHORIZATION_MODEL.md",
-          "docs/PUBLICATION_ACCESS.md"
-        ]
+        "sources": ["docs/shared-object/AUTHORIZATION_MODEL.md", "docs/PUBLICATION_ACCESS.md"]
       },
       {
         "entry_id": "PDA-R05",
@@ -396,10 +336,7 @@
         "observation": "The vulnerability scan is recorded NOT COMPLETED because the external advisory source is unavailable. A recovery source is recorded separately and does not replace it.",
         "resolution_rule": "Preserve NOT COMPLETED. Do not convert an unavailable source into a pass.",
         "owner_decision_required": false,
-        "sources": [
-          "scripts/evidence/supply-chain.mjs",
-          "scripts/evidence/baseline.mjs"
-        ]
+        "sources": ["scripts/evidence/supply-chain.mjs", "scripts/evidence/baseline.mjs"]
       },
       {
         "entry_id": "PDA-R06",
@@ -407,10 +344,7 @@
         "observation": "The boundary scan scanned 521 tracked files and reported one candidate outside synthetic fixtures, at src/test/evidence-output-safety.test.ts line 115, which is a constructed scanner-test token and not a real-person record. Pattern matching cannot distinguish real personal data from synthetic data that resembles it, and no-match does not prove absence. EV-PII therefore remains review-required.",
         "resolution_rule": "State that real personal data is prohibited and not intentionally introduced and that fixtures are synthetic. Never state categorical absence of personal data. Preserve EV-PII as review-required; no reviewed-disposition mechanism exists in this repository that could truthfully close the narrow finding.",
         "owner_decision_required": false,
-        "sources": [
-          "scripts/evidence/boundary.mjs",
-          "src/test/evidence-output-safety.test.ts"
-        ]
+        "sources": ["scripts/evidence/boundary.mjs", "src/test/evidence-output-safety.test.ts"]
       }
     ],
     "disposition_packet": {
@@ -503,9 +437,7 @@
       },
       "files": {
         "total_route_modules": 42,
-        "framework_surfaces": [
-          "__root.tsx"
-        ],
+        "framework_surfaces": ["__root.tsx"],
         "layout_surfaces": [
           "capabilities.tsx",
           "design-system.tsx",

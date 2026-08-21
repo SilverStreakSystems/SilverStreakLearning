@@ -5,15 +5,15 @@ field, not a checkbox, and not a build result.
 
 ## Dispositions
 
-| Disposition | Marker | Advances? | Meaning |
-| --- | --- | --- | --- |
-| Pass | `[PASS]` | Yes | Entry criteria met, evidence present, no stop condition triggered. |
-| Pass with non-blocking findings | `[PASS+F]` | Yes | Advance permitted with named, owned findings carried forward. |
-| Hold | `[HOLD]` | No | Paused pending a specific missing input. Not a failure. |
-| Blocked | `[BLOCK]` | No | An unmet dependency outside this stage prevents review. |
-| Refused | `[REFUSED]` | No | Governance declined to advance. A legitimate outcome. |
-| Revise | `[REVISE]` | No | Return to origin with named corrections. |
-| Not applicable | `[N/A]` | Yes | Explicitly out of scope for this instance, with a reason. |
+| Disposition                     | Marker      | Advances? | Meaning                                                            |
+| ------------------------------- | ----------- | --------- | ------------------------------------------------------------------ |
+| Pass                            | `[PASS]`    | Yes       | Entry criteria met, evidence present, no stop condition triggered. |
+| Pass with non-blocking findings | `[PASS+F]`  | Yes       | Advance permitted with named, owned findings carried forward.      |
+| Hold                            | `[HOLD]`    | No        | Paused pending a specific missing input. Not a failure.            |
+| Blocked                         | `[BLOCK]`   | No        | An unmet dependency outside this stage prevents review.            |
+| Refused                         | `[REFUSED]` | No        | Governance declined to advance. A legitimate outcome.              |
+| Revise                          | `[REVISE]`  | No        | Return to origin with named corrections.                           |
+| Not applicable                  | `[N/A]`     | Yes       | Explicitly out of scope for this instance, with a reason.          |
 
 Every disposition carries a text marker so status never depends on colour alone.
 

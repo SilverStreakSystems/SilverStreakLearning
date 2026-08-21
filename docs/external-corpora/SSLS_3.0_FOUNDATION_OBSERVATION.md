@@ -23,45 +23,45 @@ This record states only that these items were observed at a point in time. It gr
 
 ### Foundation documents
 
-| Item | Declared ID | Declared status | Bytes | Modified | Read state |
-| --- | --- | --- | --- | --- | --- |
-| 00-SSLS_3.0_START_HERE.md | SSLS3-DOC-00 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 10,250 | 2026-08-21T12:24:34.643Z | content-read |
-| 01-SSLS_3.0_PROJECT_CHARTER.md | SSLS3-DOC-01 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 13,692 | 2026-08-21T12:26:17.615Z | metadata-only |
-| 02-SSLS_3.0_SOURCE_HIERARCHY.md | SSLS3-DOC-02 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 15,227 | 2026-08-21T12:27:57.389Z | metadata-only |
-| 03-SSLS_3.0_CANON_MANIFEST.md | SSLS3-DOC-03 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 14,606 | 2026-08-21T12:46:39.963Z | metadata-only |
-| 04-SSLS_3.0_CURRENT_PROJECT_STATE.md | SSLS3-DOC-04 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 11,100 | 2026-08-21T12:57:08.657Z | content-read |
-| 05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md | SSLS3-DOC-05 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 12,136 | 2026-08-21T12:27:12.080Z | metadata-only |
-| 06-SSLS_3.0_PRODUCT_BRIEF.md | SSLS3-DOC-06 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 14,210 | 2026-08-21T12:46:41.661Z | metadata-only |
-| 07-SSLS_3.0_GLOSSARY.md | SSLS3-DOC-07 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 12,005 | 2026-08-21T12:57:09.995Z | content-read |
-| 11-SSLS_3.0_REPOSITORY_MAP.md | SSLS3-DOC-11 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 13,986 | 2026-08-21T13:25:05.281Z | content-read |
+| Item                                 | Declared ID  | Declared status                           | Bytes  | Modified                 | Read state    |
+| ------------------------------------ | ------------ | ----------------------------------------- | ------ | ------------------------ | ------------- |
+| 00-SSLS_3.0_START_HERE.md            | SSLS3-DOC-00 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 10,250 | 2026-08-21T12:24:34.643Z | content-read  |
+| 01-SSLS_3.0_PROJECT_CHARTER.md       | SSLS3-DOC-01 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 13,692 | 2026-08-21T12:26:17.615Z | metadata-only |
+| 02-SSLS_3.0_SOURCE_HIERARCHY.md      | SSLS3-DOC-02 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 15,227 | 2026-08-21T12:27:57.389Z | metadata-only |
+| 03-SSLS_3.0_CANON_MANIFEST.md        | SSLS3-DOC-03 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 14,606 | 2026-08-21T12:46:39.963Z | metadata-only |
+| 04-SSLS_3.0_CURRENT_PROJECT_STATE.md | SSLS3-DOC-04 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 11,100 | 2026-08-21T12:57:08.657Z | content-read  |
+| 05-SSLS_3.0_SCOPE_AND_BOUNDARIES.md  | SSLS3-DOC-05 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 12,136 | 2026-08-21T12:27:12.080Z | metadata-only |
+| 06-SSLS_3.0_PRODUCT_BRIEF.md         | SSLS3-DOC-06 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 14,210 | 2026-08-21T12:46:41.661Z | metadata-only |
+| 07-SSLS_3.0_GLOSSARY.md              | SSLS3-DOC-07 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 12,005 | 2026-08-21T12:57:09.995Z | content-read  |
+| 11-SSLS_3.0_REPOSITORY_MAP.md        | SSLS3-DOC-11 | DRAFT — OWNER REVIEW REQUIRED / CANDIDATE | 13,986 | 2026-08-21T13:25:05.281Z | content-read  |
 
 ### Workbooks
 
-| Item | Declared ID | Declared status | Bytes | Modified | Read state |
-| --- | --- | --- | --- | --- | --- |
-| 08-SSLS_3.0_GREENFIELD_ENTERPRISE_ARTIFACT_MATRICES_v1.0 | — | — | 167,264 | 2026-08-21T13:18:23.125Z | metadata-only |
-| K12 Academic Language Literacy Workbook v2.15 — Provisional Comprehensive Source Propagation | — | — | 544,160 | 2026-08-21T14:14:55.652Z | metadata-only |
-| SSLS_Internal_Dashboard_Workbook.xlsx | — | — | 85,067 | 2026-07-13T08:44:31.021Z | metadata-only |
+| Item                                                                                         | Declared ID | Declared status | Bytes   | Modified                 | Read state    |
+| -------------------------------------------------------------------------------------------- | ----------- | --------------- | ------- | ------------------------ | ------------- |
+| 08-SSLS_3.0_GREENFIELD_ENTERPRISE_ARTIFACT_MATRICES_v1.0                                     | —           | —               | 167,264 | 2026-08-21T13:18:23.125Z | metadata-only |
+| K12 Academic Language Literacy Workbook v2.15 — Provisional Comprehensive Source Propagation | —           | —               | 544,160 | 2026-08-21T14:14:55.652Z | metadata-only |
+| SSLS_Internal_Dashboard_Workbook.xlsx                                                        | —           | —               | 85,067  | 2026-07-13T08:44:31.021Z | metadata-only |
 
 ### Spreadsheets
 
-| Item | Declared ID | Declared status | Bytes | Modified | Read state |
-| --- | --- | --- | --- | --- | --- |
-| SSLS Enterprise Lifecycle SSOT v0.1 — Working | — | — | 154,032 | 2026-08-19T16:37:43.149Z | metadata-only |
-| SSLS Kanban Organizer v0.4.0 - 2026-08-21 | — | — | 84,253 | 2026-08-21T14:10:32.215Z | metadata-only |
+| Item                                          | Declared ID | Declared status | Bytes   | Modified                 | Read state    |
+| --------------------------------------------- | ----------- | --------------- | ------- | ------------------------ | ------------- |
+| SSLS Enterprise Lifecycle SSOT v0.1 — Working | —           | —               | 154,032 | 2026-08-19T16:37:43.149Z | metadata-only |
+| SSLS Kanban Organizer v0.4.0 - 2026-08-21     | —           | —               | 84,253  | 2026-08-21T14:10:32.215Z | metadata-only |
 
 ### Probe artifacts
 
-| Item | Declared ID | Declared status | Bytes | Modified | Read state |
-| --- | --- | --- | --- | --- | --- |
-| __control_probe_delete_me.xlsx | — | — | 1,527 | 2026-08-21T13:35:30.973Z | metadata-only |
+| Item                           | Declared ID | Declared status | Bytes | Modified                 | Read state    |
+| ------------------------------ | ----------- | --------------- | ----- | ------------------------ | ------------- |
+| __control_probe_delete_me.xlsx | —           | —               | 1,527 | 2026-08-21T13:35:30.973Z | metadata-only |
 
 ### Declared by the corpus, absent at observation
 
-| Declared ID | Declared title | Cited by | Presence |
-| --- | --- | --- | --- |
-| SSLS3-DOC-08 | 08-SSLS_3.0_DECISION_REGISTER.xlsx | SSLS3-DOC-04, SSLS3-DOC-11 | ABSENT-AT-OBSERVATION |
-| SSLS3-DOC-09 | 09-SSLS_3.0_REQUIREMENTS_REGISTER.xlsx | SSLS3-DOC-11 | ABSENT-AT-OBSERVATION |
+| Declared ID  | Declared title                                | Cited by                   | Presence              |
+| ------------ | --------------------------------------------- | -------------------------- | --------------------- |
+| SSLS3-DOC-08 | 08-SSLS_3.0_DECISION_REGISTER.xlsx            | SSLS3-DOC-04, SSLS3-DOC-11 | ABSENT-AT-OBSERVATION |
+| SSLS3-DOC-09 | 09-SSLS_3.0_REQUIREMENTS_REGISTER.xlsx        | SSLS3-DOC-11               | ABSENT-AT-OBSERVATION |
 | SSLS3-DOC-10 | 10-SSLS_3.0_EVIDENCE_AND_CLAIMS_REGISTER.xlsx | SSLS3-DOC-04, SSLS3-DOC-11 | ABSENT-AT-OBSERVATION |
 
 - **SSLS3-DOC-08** — Cited as the controlling source of decision status and as the home of D-3001 through D-3010. Not present in the observed container.

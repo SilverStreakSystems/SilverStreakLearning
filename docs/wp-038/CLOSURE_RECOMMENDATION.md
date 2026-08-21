@@ -7,7 +7,6 @@ accepted in the same disposition, adopting WCAG 2.2 Level AA as the current inte
 design and validation target with no conformance claim. FND-016 is recorded as partially resolved by
 DEC-012; FND-017 and FND-018 remain open. WP-038 did not self-close.
 
-
 ## What was produced
 
 A canonical, machine-readable regulatory baseline: 43 verified external authorities, 34 obligations,
@@ -57,4 +56,3 @@ CNF-001, CNF-005 and CNF-006 open, SRC-004 CONFLICTED, and FND-012 and FND-014 c
   validation target. No conformance, ADA, 504/508, ACR/VPAT, procurement, district-approval, or
   certification claim. Where a verified external obligation names a different or more specific
   standard, that obligation controls. See `DEC-012-BRIEF.md`.
-

@@ -6,64 +6,64 @@
 source states from how SSLS reads it, and separates applicability from control status from evidence
 status.
 
-| ID | Title | Source | Applicability | Control | Evidence | Family |
-|---|---|---|---|---|---|---|
-| OBL-001 | Education-record disclosure consent and use limitation | SRC-002 | APPLIES-AT-PILOT | NOT-APPLICABLE | NOT-PRODUCED | PRIVACY |
-| OBL-002 | Parental inspection and amendment of education records | SRC-002 | APPLIES-AT-PILOT | SPECIFICATION-ONLY | NOT-PRODUCED | PRIVACY |
-| OBL-003 | Protected-category survey notice and consent | SRC-003 | CONDITIONAL | NOT-APPLICABLE | INAPPLICABLE | GOVERNANCE |
-| OBL-004 | IDEA confidentiality and destruction of special-education PII | SRC-004 | APPLIES-AT-PILOT | MISSING | NOT-PRODUCED | RETENTION & DELETION |
-| OBL-005 | Verifiable parental consent for under-13 personal information | SRC-006 | CONDITIONAL | NOT-APPLICABLE | INAPPLICABLE | PRIVACY |
-| OBL-006 | Written data retention and deletion policy for children's data | SRC-006 | CONDITIONAL | NOT-APPLICABLE | INAPPLICABLE | RETENTION & DELETION |
-| OBL-007 | Massachusetts student-record security and duty-limited vendor access | SRC-007 | APPLIES-AT-PILOT | SPECIFICATION-ONLY | NOT-PRODUCED | IDENTITY & ACCESS |
-| OBL-008 | Massachusetts student-record destruction timelines | SRC-007 | APPLIES-AT-PILOT | MISSING | NOT-PRODUCED | RETENTION & DELETION |
-| OBL-009 | Written comprehensive information security program | SRC-011 | CONDITIONAL | MISSING | NOT-PRODUCED | SECURITY |
-| OBL-010 | Encryption and access control for personal information | SRC-011 | CONDITIONAL | MISSING | NOT-PRODUCED | IDENTITY & ACCESS |
-| OBL-011 | Breach notification to the data owner | SRC-010 | CONDITIONAL | MISSING | NOT-PRODUCED | INCIDENT RESPONSE |
-| OBL-012 | Minimum standards for disposal of records containing personal information | SRC-012 | CONDITIONAL | NOT-APPLICABLE | INAPPLICABLE | RETENTION & DELETION |
-| OBL-013 | District web and mobile accessibility conformance to WCAG 2.1 AA | SRC-017 | APPLIES-AT-PILOT | PARTIAL | STALE | ACCESSIBILITY |
-| OBL-014 | Internal conformance target version | SRC-016 | APPLIES-NOW | PARTIAL | NOT-PRODUCED | ACCESSIBILITY |
-| OBL-015 | Accessibility conformance report as self-disclosure | SRC-021 | APPLIES-AT-PILOT | MISSING | NOT-PRODUCED | CLAIMS / TRANSPARENCY |
-| OBL-016 | Section 508 procurement standards | SRC-019 | NOT-APPLICABLE | NOT-APPLICABLE | INAPPLICABLE | ACCESSIBILITY |
-| OBL-017 | European ICT accessibility requirements | SRC-020 | NOT-APPLICABLE | NOT-APPLICABLE | INAPPLICABLE | ACCESSIBILITY |
-| OBL-018 | Software bill of materials production | SRC-031 | REFERENCE | IMPLEMENTED | CURRENT | SOFTWARE SUPPLY CHAIN |
-| OBL-019 | Dependency vulnerability identification and remediation | SRC-025 | APPLIES-NOW | IMPLEMENTED | CURRENT | VULNERABILITY MANAGEMENT |
-| OBL-020 | Dependency licence posture | SRC-029 | APPLIES-NOW | PARTIAL | CURRENT | SOFTWARE SUPPLY CHAIN |
-| OBL-021 | Build provenance and source integrity | SRC-030 | REFERENCE | PARTIAL | NOT-PRODUCED | SOFTWARE SUPPLY CHAIN |
-| OBL-022 | Cybersecurity risk management organising model | SRC-022 | REFERENCE | MISSING | NOT-PRODUCED | GOVERNANCE |
-| OBL-023 | Independent security attestation expectation | SRC-027 | APPLIES-AT-LAUNCH | MISSING | NOT-PRODUCED | GOVERNANCE |
-| OBL-024 | AI risk management before any AI feature | SRC-033 | CONDITIONAL | NOT-APPLICABLE | INAPPLICABLE | AI GOVERNANCE |
-| OBL-025 | Existing law applies to AI claims and behaviour | SRC-014 | APPLIES-NOW | IMPLEMENTED | CURRENT | CLAIMS / TRANSPARENCY |
-| OBL-026 | Developer-directed AI design expectations | SRC-036 | REFERENCE | SPECIFICATION-ONLY | INAPPLICABLE | HUMAN REVIEW |
-| OBL-027 | Colorado automated decision-making watch item | SRC-037 | CONDITIONAL | NOT-APPLICABLE | INAPPLICABLE | AI GOVERNANCE |
-| OBL-028 | Roster and enrolment data exchange | SRC-038 | APPLIES-AT-PILOT | SPECIFICATION-ONLY | NOT-PRODUCED | INTEROPERABILITY |
-| OBL-029 | Program and service data exchange with state systems | SRC-039 | APPLIES-AT-PILOT | MISSING | NOT-PRODUCED | INTEROPERABILITY |
-| OBL-030 | Deferred interoperability specifications | SRC-040 | REFERENCE | NOT-APPLICABLE | INAPPLICABLE | INTEROPERABILITY |
-| OBL-031 | District data privacy agreement execution | SRC-042 | APPLIES-AT-PILOT | MISSING | NOT-PRODUCED | VENDOR MANAGEMENT |
-| OBL-032 | Accuracy of public claims on the published prototype | SRC-014 | APPLIES-NOW | IMPLEMENTED | CURRENT | CLAIMS / TRANSPARENCY |
-| OBL-033 | Zero personal data on the current surface | SRC-011 | APPLIES-NOW | IMPLEMENTED | CURRENT | DATA MINIMIZATION |
-| OBL-034 | Branch protection and change-control enforcement | SRC-025 | APPLIES-NOW | PARTIAL | NOT-PRODUCED | GOVERNANCE |
+| ID      | Title                                                                     | Source  | Applicability     | Control            | Evidence     | Family                   |
+| ------- | ------------------------------------------------------------------------- | ------- | ----------------- | ------------------ | ------------ | ------------------------ |
+| OBL-001 | Education-record disclosure consent and use limitation                    | SRC-002 | APPLIES-AT-PILOT  | NOT-APPLICABLE     | NOT-PRODUCED | PRIVACY                  |
+| OBL-002 | Parental inspection and amendment of education records                    | SRC-002 | APPLIES-AT-PILOT  | SPECIFICATION-ONLY | NOT-PRODUCED | PRIVACY                  |
+| OBL-003 | Protected-category survey notice and consent                              | SRC-003 | CONDITIONAL       | NOT-APPLICABLE     | INAPPLICABLE | GOVERNANCE               |
+| OBL-004 | IDEA confidentiality and destruction of special-education PII             | SRC-004 | APPLIES-AT-PILOT  | MISSING            | NOT-PRODUCED | RETENTION & DELETION     |
+| OBL-005 | Verifiable parental consent for under-13 personal information             | SRC-006 | CONDITIONAL       | NOT-APPLICABLE     | INAPPLICABLE | PRIVACY                  |
+| OBL-006 | Written data retention and deletion policy for children's data            | SRC-006 | CONDITIONAL       | NOT-APPLICABLE     | INAPPLICABLE | RETENTION & DELETION     |
+| OBL-007 | Massachusetts student-record security and duty-limited vendor access      | SRC-007 | APPLIES-AT-PILOT  | SPECIFICATION-ONLY | NOT-PRODUCED | IDENTITY & ACCESS        |
+| OBL-008 | Massachusetts student-record destruction timelines                        | SRC-007 | APPLIES-AT-PILOT  | MISSING            | NOT-PRODUCED | RETENTION & DELETION     |
+| OBL-009 | Written comprehensive information security program                        | SRC-011 | CONDITIONAL       | MISSING            | NOT-PRODUCED | SECURITY                 |
+| OBL-010 | Encryption and access control for personal information                    | SRC-011 | CONDITIONAL       | MISSING            | NOT-PRODUCED | IDENTITY & ACCESS        |
+| OBL-011 | Breach notification to the data owner                                     | SRC-010 | CONDITIONAL       | MISSING            | NOT-PRODUCED | INCIDENT RESPONSE        |
+| OBL-012 | Minimum standards for disposal of records containing personal information | SRC-012 | CONDITIONAL       | NOT-APPLICABLE     | INAPPLICABLE | RETENTION & DELETION     |
+| OBL-013 | District web and mobile accessibility conformance to WCAG 2.1 AA          | SRC-017 | APPLIES-AT-PILOT  | PARTIAL            | STALE        | ACCESSIBILITY            |
+| OBL-014 | Internal conformance target version                                       | SRC-016 | APPLIES-NOW       | PARTIAL            | NOT-PRODUCED | ACCESSIBILITY            |
+| OBL-015 | Accessibility conformance report as self-disclosure                       | SRC-021 | APPLIES-AT-PILOT  | MISSING            | NOT-PRODUCED | CLAIMS / TRANSPARENCY    |
+| OBL-016 | Section 508 procurement standards                                         | SRC-019 | NOT-APPLICABLE    | NOT-APPLICABLE     | INAPPLICABLE | ACCESSIBILITY            |
+| OBL-017 | European ICT accessibility requirements                                   | SRC-020 | NOT-APPLICABLE    | NOT-APPLICABLE     | INAPPLICABLE | ACCESSIBILITY            |
+| OBL-018 | Software bill of materials production                                     | SRC-031 | REFERENCE         | IMPLEMENTED        | CURRENT      | SOFTWARE SUPPLY CHAIN    |
+| OBL-019 | Dependency vulnerability identification and remediation                   | SRC-025 | APPLIES-NOW       | IMPLEMENTED        | CURRENT      | VULNERABILITY MANAGEMENT |
+| OBL-020 | Dependency licence posture                                                | SRC-029 | APPLIES-NOW       | PARTIAL            | CURRENT      | SOFTWARE SUPPLY CHAIN    |
+| OBL-021 | Build provenance and source integrity                                     | SRC-030 | REFERENCE         | PARTIAL            | NOT-PRODUCED | SOFTWARE SUPPLY CHAIN    |
+| OBL-022 | Cybersecurity risk management organising model                            | SRC-022 | REFERENCE         | MISSING            | NOT-PRODUCED | GOVERNANCE               |
+| OBL-023 | Independent security attestation expectation                              | SRC-027 | APPLIES-AT-LAUNCH | MISSING            | NOT-PRODUCED | GOVERNANCE               |
+| OBL-024 | AI risk management before any AI feature                                  | SRC-033 | CONDITIONAL       | NOT-APPLICABLE     | INAPPLICABLE | AI GOVERNANCE            |
+| OBL-025 | Existing law applies to AI claims and behaviour                           | SRC-014 | APPLIES-NOW       | IMPLEMENTED        | CURRENT      | CLAIMS / TRANSPARENCY    |
+| OBL-026 | Developer-directed AI design expectations                                 | SRC-036 | REFERENCE         | SPECIFICATION-ONLY | INAPPLICABLE | HUMAN REVIEW             |
+| OBL-027 | Colorado automated decision-making watch item                             | SRC-037 | CONDITIONAL       | NOT-APPLICABLE     | INAPPLICABLE | AI GOVERNANCE            |
+| OBL-028 | Roster and enrolment data exchange                                        | SRC-038 | APPLIES-AT-PILOT  | SPECIFICATION-ONLY | NOT-PRODUCED | INTEROPERABILITY         |
+| OBL-029 | Program and service data exchange with state systems                      | SRC-039 | APPLIES-AT-PILOT  | MISSING            | NOT-PRODUCED | INTEROPERABILITY         |
+| OBL-030 | Deferred interoperability specifications                                  | SRC-040 | REFERENCE         | NOT-APPLICABLE     | INAPPLICABLE | INTEROPERABILITY         |
+| OBL-031 | District data privacy agreement execution                                 | SRC-042 | APPLIES-AT-PILOT  | MISSING            | NOT-PRODUCED | VENDOR MANAGEMENT        |
+| OBL-032 | Accuracy of public claims on the published prototype                      | SRC-014 | APPLIES-NOW       | IMPLEMENTED        | CURRENT      | CLAIMS / TRANSPARENCY    |
+| OBL-033 | Zero personal data on the current surface                                 | SRC-011 | APPLIES-NOW       | IMPLEMENTED        | CURRENT      | DATA MINIMIZATION        |
+| OBL-034 | Branch protection and change-control enforcement                          | SRC-025 | APPLIES-NOW       | PARTIAL            | NOT-PRODUCED | GOVERNANCE               |
 
 ## Obligation detail
 
 ### OBL-001 — Education-record disclosure consent and use limitation
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Education (SRC-002) |
-| Authority type | regulation |
-| Citation | 34 CFR 99.30, 99.31(a)(1) |
-| Locator | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
-| Source version | CFR annual edition revised 2025-07-01 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A district discloses real education records to SSLS under the school-official exception. |
-| Control family | PRIVACY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Deferred to the work package that first proposes district data ingestion |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | Before any district data-sharing agreement is signed |
+| Field              | Value                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| Source             | U.S. Department of Education (SRC-002)                                                         |
+| Authority type     | regulation                                                                                     |
+| Citation           | 34 CFR 99.30, 99.31(a)(1)                                                                      |
+| Locator            | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
+| Source version     | CFR annual edition revised 2025-07-01                                                          |
+| Verified on        | 2026-08-19                                                                                     |
+| Jurisdiction       | US-FEDERAL                                                                                     |
+| Applicability      | APPLIES-AT-PILOT                                                                               |
+| Trigger            | A district discloses real education records to SSLS under the school-official exception.       |
+| Control family     | PRIVACY                                                                                        |
+| Control status     | NOT-APPLICABLE                                                                                 |
+| Evidence status    | NOT-PRODUCED                                                                                   |
+| Owning route       | Deferred to the work package that first proposes district data ingestion                       |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                          |
+| Review trigger     | Before any district data-sharing agreement is signed                                           |
 
 **What the source states.** 34 CFR 99.31(a)(1) states the conditions of the school-official exception. The regulation addresses the institution's disclosure, not vendor conduct in the abstract.
 
@@ -91,23 +91,23 @@ status.
 
 ### OBL-002 — Parental inspection and amendment of education records
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Education (SRC-002) |
-| Authority type | regulation |
-| Citation | 34 CFR 99.10, 99.20-99.22 |
-| Locator | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
-| Source version | CFR annual edition revised 2025-07-01 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | SSLS holds education-record data on behalf of a district. |
-| Control family | PRIVACY |
-| Control status | SPECIFICATION-ONLY |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Deferred to the first persistence work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First persistence design |
+| Field              | Value                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| Source             | U.S. Department of Education (SRC-002)                                                         |
+| Authority type     | regulation                                                                                     |
+| Citation           | 34 CFR 99.10, 99.20-99.22                                                                      |
+| Locator            | https://www.govinfo.gov/content/pkg/CFR-2025-title34-vol1/pdf/CFR-2025-title34-vol1-part99.pdf |
+| Source version     | CFR annual edition revised 2025-07-01                                                          |
+| Verified on        | 2026-08-19                                                                                     |
+| Jurisdiction       | US-FEDERAL                                                                                     |
+| Applicability      | APPLIES-AT-PILOT                                                                               |
+| Trigger            | SSLS holds education-record data on behalf of a district.                                      |
+| Control family     | PRIVACY                                                                                        |
+| Control status     | SPECIFICATION-ONLY                                                                             |
+| Evidence status    | NOT-PRODUCED                                                                                   |
+| Owning route       | Deferred to the first persistence work package                                                 |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                          |
+| Review trigger     | First persistence design                                                                       |
 
 **What the source states.** The rights run against the educational agency or institution. The regulation imposes no direct vendor workflow.
 
@@ -135,23 +135,23 @@ status.
 
 ### OBL-003 — Protected-category survey notice and consent
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Education (SRC-003) |
-| Authority type | regulation |
-| Citation | 20 U.S.C. 1232h; 34 CFR Part 98 |
-| Locator | https://www.law.cornell.edu/cfr/text/34/part-98 |
-| Source version | CFR annual edition revised 2025-07-01 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS administers or co-administers a survey, analysis or evaluation of students for a federally funded recipient, or collects student personal information for marketing. |
-| Control family | GOVERNANCE |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | Gate condition on any future assessment or survey capability |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First proposed student-facing instrument |
+| Field              | Value                                                                                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Source             | U.S. Department of Education (SRC-003)                                                                                                                                    |
+| Authority type     | regulation                                                                                                                                                                |
+| Citation           | 20 U.S.C. 1232h; 34 CFR Part 98                                                                                                                                           |
+| Locator            | https://www.law.cornell.edu/cfr/text/34/part-98                                                                                                                           |
+| Source version     | CFR annual edition revised 2025-07-01                                                                                                                                     |
+| Verified on        | 2026-08-19                                                                                                                                                                |
+| Jurisdiction       | US-FEDERAL                                                                                                                                                                |
+| Applicability      | CONDITIONAL                                                                                                                                                               |
+| Trigger            | SSLS administers or co-administers a survey, analysis or evaluation of students for a federally funded recipient, or collects student personal information for marketing. |
+| Control family     | GOVERNANCE                                                                                                                                                                |
+| Control status     | NOT-APPLICABLE                                                                                                                                                            |
+| Evidence status    | INAPPLICABLE                                                                                                                                                              |
+| Owning route       | Gate condition on any future assessment or survey capability                                                                                                              |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                                                                                                     |
+| Review trigger     | First proposed student-facing instrument                                                                                                                                  |
 
 **What the source states.** Part 98 addresses the funded recipient. It contains no school-official style vendor exception.
 
@@ -179,23 +179,23 @@ status.
 
 ### OBL-004 — IDEA confidentiality and destruction of special-education PII
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Education (SRC-004) |
-| Authority type | regulation |
-| Citation | 34 CFR 300.610, 300.622, 300.624 |
-| Locator | https://www.law.cornell.edu/cfr/text/34/300.610 |
-| Source version | Part 300 as amended; currency conflicted |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A state or local education agency shares real Part B personally identifiable information with SSLS. |
-| Control family | RETENTION & DELETION |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First persistence work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First special-education data model |
+| Field              | Value                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| Source             | U.S. Department of Education (SRC-004)                                                              |
+| Authority type     | regulation                                                                                          |
+| Citation           | 34 CFR 300.610, 300.622, 300.624                                                                    |
+| Locator            | https://www.law.cornell.edu/cfr/text/34/300.610                                                     |
+| Source version     | Part 300 as amended; currency conflicted                                                            |
+| Verified on        | 2026-08-19                                                                                          |
+| Jurisdiction       | US-FEDERAL                                                                                          |
+| Applicability      | APPLIES-AT-PILOT                                                                                    |
+| Trigger            | A state or local education agency shares real Part B personally identifiable information with SSLS. |
+| Control family     | RETENTION & DELETION                                                                                |
+| Control status     | MISSING                                                                                             |
+| Evidence status    | NOT-PRODUCED                                                                                        |
+| Owning route       | First persistence work package                                                                      |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                               |
+| Review trigger     | First special-education data model                                                                  |
 
 **What the source states.** The duty is placed on the Secretary, state agencies and local agencies. The regulation does not bind vendors directly.
 
@@ -223,23 +223,23 @@ status.
 
 ### OBL-005 — Verifiable parental consent for under-13 personal information
 
-| Field | Value |
-|---|---|
-| Source | Federal Trade Commission (SRC-006) |
-| Authority type | regulation |
-| Citation | 16 CFR 312.4, 312.5 |
-| Locator | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf |
-| Source version | Amended rule, effective 2025-06-23 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS operates a child-directed service or gains actual knowledge of collecting personal information from a child under 13. |
-| Control family | PRIVACY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | Gate condition on any student-facing capability |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | Any proposal for a student-facing surface |
+| Field              | Value                                                                                                                      |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Source             | Federal Trade Commission (SRC-006)                                                                                         |
+| Authority type     | regulation                                                                                                                 |
+| Citation           | 16 CFR 312.4, 312.5                                                                                                        |
+| Locator            | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf                                                       |
+| Source version     | Amended rule, effective 2025-06-23                                                                                         |
+| Verified on        | 2026-08-19                                                                                                                 |
+| Jurisdiction       | US-FEDERAL                                                                                                                 |
+| Applicability      | CONDITIONAL                                                                                                                |
+| Trigger            | SSLS operates a child-directed service or gains actual knowledge of collecting personal information from a child under 13. |
+| Control family     | PRIVACY                                                                                                                    |
+| Control status     | NOT-APPLICABLE                                                                                                             |
+| Evidence status    | INAPPLICABLE                                                                                                               |
+| Owning route       | Gate condition on any student-facing capability                                                                            |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                                                      |
+| Review trigger     | Any proposal for a student-facing surface                                                                                  |
 
 **What the source states.** The rule addresses operators of child-directed or actual-knowledge services. The school-consent pathway comes from FTC guidance interpreting the rule.
 
@@ -267,23 +267,23 @@ status.
 
 ### OBL-006 — Written data retention and deletion policy for children's data
 
-| Field | Value |
-|---|---|
-| Source | Federal Trade Commission (SRC-006) |
-| Authority type | regulation |
-| Citation | 16 CFR Part 312, 2025 amendments |
-| Locator | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf |
-| Source version | Amended rule, effective 2025-06-23 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | CONDITIONAL |
-| Trigger | Same trigger as OBL-005. |
-| Control family | RETENTION & DELETION |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | First persistence work package |
-| Review requirement | PRIVACY REVIEW REQUIRED |
-| Review trigger | First persistence design |
+| Field              | Value                                                                |
+| ------------------ | -------------------------------------------------------------------- |
+| Source             | Federal Trade Commission (SRC-006)                                   |
+| Authority type     | regulation                                                           |
+| Citation           | 16 CFR Part 312, 2025 amendments                                     |
+| Locator            | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf |
+| Source version     | Amended rule, effective 2025-06-23                                   |
+| Verified on        | 2026-08-19                                                           |
+| Jurisdiction       | US-FEDERAL                                                           |
+| Applicability      | CONDITIONAL                                                          |
+| Trigger            | Same trigger as OBL-005.                                             |
+| Control family     | RETENTION & DELETION                                                 |
+| Control status     | NOT-APPLICABLE                                                       |
+| Evidence status    | INAPPLICABLE                                                         |
+| Owning route       | First persistence work package                                       |
+| Review requirement | PRIVACY REVIEW REQUIRED                                              |
+| Review trigger     | First persistence design                                             |
 
 **What the source states.** This is a new requirement added by the 2025 amendments.
 
@@ -305,28 +305,27 @@ status.
 
 **Claim refused.** Meets COPPA retention requirements
 
-
 ---
 
 ### OBL-007 — Massachusetts student-record security and duty-limited vendor access
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Board of Elementary and Secondary Education (SRC-007) |
-| Authority type | regulation |
-| Citation | 603 CMR 23.02, 23.05 |
-| Locator | https://www.doe.mass.edu/lawsregs/603cmr23.html |
-| Source version | Amended 2026-01-27 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A Massachusetts district grants SSLS access to student records under a service contract. |
-| Control family | IDENTITY & ACCESS |
-| Control status | SPECIFICATION-ONLY |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First persistence and authentication work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First Massachusetts district agreement |
+| Field              | Value                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| Source             | Massachusetts Board of Elementary and Secondary Education (SRC-007)                      |
+| Authority type     | regulation                                                                               |
+| Citation           | 603 CMR 23.02, 23.05                                                                     |
+| Locator            | https://www.doe.mass.edu/lawsregs/603cmr23.html                                          |
+| Source version     | Amended 2026-01-27                                                                       |
+| Verified on        | 2026-08-19                                                                               |
+| Jurisdiction       | US-MA                                                                                    |
+| Applicability      | APPLIES-AT-PILOT                                                                         |
+| Trigger            | A Massachusetts district grants SSLS access to student records under a service contract. |
+| Control family     | IDENTITY & ACCESS                                                                        |
+| Control status     | SPECIFICATION-ONLY                                                                       |
+| Evidence status    | NOT-PRODUCED                                                                             |
+| Owning route       | First persistence and authentication work package                                        |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                    |
+| Review trigger     | First Massachusetts district agreement                                                   |
 
 **What the source states.** The duty is placed on the principal, superintendent and school committee. The regulation does not create a direct vendor duty or penalty.
 
@@ -354,23 +353,23 @@ status.
 
 ### OBL-008 — Massachusetts student-record destruction timelines
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Board of Elementary and Secondary Education (SRC-007) |
-| Authority type | regulation |
-| Citation | 603 CMR 23.06 |
-| Locator | https://www.doe.mass.edu/lawsregs/603cmr23.html |
-| Source version | Amended 2026-01-27 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | SSLS stores Massachusetts student-record data for a district. |
-| Control family | RETENTION & DELETION |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First persistence work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First persistence design |
+| Field              | Value                                                               |
+| ------------------ | ------------------------------------------------------------------- |
+| Source             | Massachusetts Board of Elementary and Secondary Education (SRC-007) |
+| Authority type     | regulation                                                          |
+| Citation           | 603 CMR 23.06                                                       |
+| Locator            | https://www.doe.mass.edu/lawsregs/603cmr23.html                     |
+| Source version     | Amended 2026-01-27                                                  |
+| Verified on        | 2026-08-19                                                          |
+| Jurisdiction       | US-MA                                                               |
+| Applicability      | APPLIES-AT-PILOT                                                    |
+| Trigger            | SSLS stores Massachusetts student-record data for a district.       |
+| Control family     | RETENTION & DELETION                                                |
+| Control status     | MISSING                                                             |
+| Evidence status    | NOT-PRODUCED                                                        |
+| Owning route       | First persistence work package                                      |
+| Review requirement | LEGAL REVIEW REQUIRED                                               |
+| Review trigger     | First persistence design                                            |
 
 **What the source states.** 603 CMR 23.06 states the timelines. It addresses the district as record custodian.
 
@@ -398,23 +397,23 @@ status.
 
 ### OBL-009 — Written comprehensive information security program
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011) |
-| Authority type | regulation |
-| Citation | 201 CMR 17.03 |
-| Locator | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
-| Source version | Current published edition |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS owns, licenses, receives, stores, maintains, processes or otherwise has access to a Massachusetts resident's name combined with a Social Security number, driver's licence or state ID number, or financial account number. |
-| Control family | SECURITY |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Routed to the security work package; must precede any handling of narrow personal information |
-| Review requirement | SECURITY REVIEW REQUIRED |
-| Review trigger | First handling of narrow personal information, including operator payroll or payment data |
+| Field              | Value                                                                                                                                                                                                                            |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Source             | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011)                                                                                                                                                       |
+| Authority type     | regulation                                                                                                                                                                                                                       |
+| Citation           | 201 CMR 17.03                                                                                                                                                                                                                    |
+| Locator            | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download                                                                                               |
+| Source version     | Current published edition                                                                                                                                                                                                        |
+| Verified on        | 2026-08-19                                                                                                                                                                                                                       |
+| Jurisdiction       | US-MA                                                                                                                                                                                                                            |
+| Applicability      | CONDITIONAL                                                                                                                                                                                                                      |
+| Trigger            | SSLS owns, licenses, receives, stores, maintains, processes or otherwise has access to a Massachusetts resident's name combined with a Social Security number, driver's licence or state ID number, or financial account number. |
+| Control family     | SECURITY                                                                                                                                                                                                                         |
+| Control status     | MISSING                                                                                                                                                                                                                          |
+| Evidence status    | NOT-PRODUCED                                                                                                                                                                                                                     |
+| Owning route       | Routed to the security work package; must precede any handling of narrow personal information                                                                                                                                    |
+| Review requirement | SECURITY REVIEW REQUIRED                                                                                                                                                                                                         |
+| Review trigger     | First handling of narrow personal information, including operator payroll or payment data                                                                                                                                        |
 
 **What the source states.** 201 CMR 17.01 states the scope and 17.03 enumerates the program elements. Personal information is narrowly defined at 17.02.
 
@@ -442,23 +441,23 @@ status.
 
 ### OBL-010 — Encryption and access control for personal information
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011) |
-| Authority type | regulation |
-| Citation | 201 CMR 17.04 |
-| Locator | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
-| Source version | Current published edition |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | CONDITIONAL |
-| Trigger | Same trigger as OBL-009 where the information is on a computer system. |
-| Control family | IDENTITY & ACCESS |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First authentication work package |
-| Review requirement | SECURITY REVIEW REQUIRED |
-| Review trigger | First authenticated deployment |
+| Field              | Value                                                                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Source             | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011)                                                         |
+| Authority type     | regulation                                                                                                                         |
+| Citation           | 201 CMR 17.04                                                                                                                      |
+| Locator            | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
+| Source version     | Current published edition                                                                                                          |
+| Verified on        | 2026-08-19                                                                                                                         |
+| Jurisdiction       | US-MA                                                                                                                              |
+| Applicability      | CONDITIONAL                                                                                                                        |
+| Trigger            | Same trigger as OBL-009 where the information is on a computer system.                                                             |
+| Control family     | IDENTITY & ACCESS                                                                                                                  |
+| Control status     | MISSING                                                                                                                            |
+| Evidence status    | NOT-PRODUCED                                                                                                                       |
+| Owning route       | First authentication work package                                                                                                  |
+| Review requirement | SECURITY REVIEW REQUIRED                                                                                                           |
+| Review trigger     | First authenticated deployment                                                                                                     |
 
 **What the source states.** 17.04 enumerates the requirements. Subsections beyond (1) to (3) were not fully enumerated during WP-038 verification.
 
@@ -486,23 +485,23 @@ status.
 
 ### OBL-011 — Breach notification to the data owner
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts General Court (SRC-010) |
-| Authority type | statute |
-| Citation | M.G.L. c. 93H, s. 3 |
-| Locator | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93H/Section3 |
-| Source version | As codified |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS maintains or stores personal information it does not own and discovers a breach. |
-| Control family | INCIDENT RESPONSE |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Routed to the security work package |
-| Review requirement | SECURITY REVIEW REQUIRED |
-| Review trigger | Before holding any third-party personal information |
+| Field              | Value                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| Source             | Massachusetts General Court (SRC-010)                                                 |
+| Authority type     | statute                                                                               |
+| Citation           | M.G.L. c. 93H, s. 3                                                                   |
+| Locator            | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93H/Section3          |
+| Source version     | As codified                                                                           |
+| Verified on        | 2026-08-19                                                                            |
+| Jurisdiction       | US-MA                                                                                 |
+| Applicability      | CONDITIONAL                                                                           |
+| Trigger            | SSLS maintains or stores personal information it does not own and discovers a breach. |
+| Control family     | INCIDENT RESPONSE                                                                     |
+| Control status     | MISSING                                                                               |
+| Evidence status    | NOT-PRODUCED                                                                          |
+| Owning route       | Routed to the security work package                                                   |
+| Review requirement | SECURITY REVIEW REQUIRED                                                              |
+| Review trigger     | Before holding any third-party personal information                                   |
 
 **What the source states.** Section 3 addresses persons and agencies maintaining or storing personal information.
 
@@ -524,28 +523,27 @@ status.
 
 **Claim refused.** Breach-ready; incident response in place
 
-
 ---
 
 ### OBL-012 — Minimum standards for disposal of records containing personal information
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts General Court (SRC-012) |
-| Authority type | statute |
-| Citation | M.G.L. c. 93I, s. 2 |
-| Locator | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93I/Section2 |
-| Source version | As codified |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS disposes of records containing narrow personal information. |
-| Control family | RETENTION & DELETION |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | Routed with OBL-009 |
-| Review requirement | SECURITY REVIEW REQUIRED |
-| Review trigger | First handling of narrow personal information |
+| Field              | Value                                                                        |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Source             | Massachusetts General Court (SRC-012)                                        |
+| Authority type     | statute                                                                      |
+| Citation           | M.G.L. c. 93I, s. 2                                                          |
+| Locator            | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93I/Section2 |
+| Source version     | As codified                                                                  |
+| Verified on        | 2026-08-19                                                                   |
+| Jurisdiction       | US-MA                                                                        |
+| Applicability      | CONDITIONAL                                                                  |
+| Trigger            | SSLS disposes of records containing narrow personal information.             |
+| Control family     | RETENTION & DELETION                                                         |
+| Control status     | NOT-APPLICABLE                                                               |
+| Evidence status    | INAPPLICABLE                                                                 |
+| Owning route       | Routed with OBL-009                                                          |
+| Review requirement | SECURITY REVIEW REQUIRED                                                     |
+| Review trigger     | First handling of narrow personal information                                |
 
 **What the source states.** Section 2 states the disposal standards.
 
@@ -567,28 +565,27 @@ status.
 
 **Claim refused.** Secure disposal certified
 
-
 ---
 
 ### OBL-013 — District web and mobile accessibility conformance to WCAG 2.1 AA
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Justice (SRC-017) |
-| Authority type | regulation |
-| Citation | 28 CFR 35.200(b) |
-| Locator | https://www.federalregister.gov/documents/2024/04/24/2024-07758 |
-| Source version | Final rule 2024, dates extended by 2026 interim final rule |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A public entity uses SSLS as part of its web content or mobile services. |
-| Control family | ACCESSIBILITY |
-| Control status | PARTIAL |
-| Evidence status | STALE |
-| Owning route | Accessibility validation work package |
-| Review requirement | ACCESSIBILITY REVIEW REQUIRED |
-| Review trigger | Before any accessibility statement is published or any procurement response is submitted |
+| Field              | Value                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| Source             | U.S. Department of Justice (SRC-017)                                                     |
+| Authority type     | regulation                                                                               |
+| Citation           | 28 CFR 35.200(b)                                                                         |
+| Locator            | https://www.federalregister.gov/documents/2024/04/24/2024-07758                          |
+| Source version     | Final rule 2024, dates extended by 2026 interim final rule                               |
+| Verified on        | 2026-08-19                                                                               |
+| Jurisdiction       | US-FEDERAL                                                                               |
+| Applicability      | APPLIES-AT-PILOT                                                                         |
+| Trigger            | A public entity uses SSLS as part of its web content or mobile services.                 |
+| Control family     | ACCESSIBILITY                                                                            |
+| Control status     | PARTIAL                                                                                  |
+| Evidence status    | STALE                                                                                    |
+| Owning route       | Accessibility validation work package                                                    |
+| Review requirement | ACCESSIBILITY REVIEW REQUIRED                                                            |
+| Review trigger     | Before any accessibility statement is published or any procurement response is submitted |
 
 **What the source states.** The regulated party is the public entity. The rule does not regulate private vendors.
 
@@ -616,23 +613,23 @@ status.
 
 ### OBL-014 — Internal conformance target version
 
-| Field | Value |
-|---|---|
-| Source | World Wide Web Consortium (SRC-016) |
-| Authority type | standard |
-| Citation | WCAG 2.2, W3C Recommendation |
-| Locator | https://www.w3.org/TR/WCAG22/ |
-| Source version | 2.2 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-NOW |
-| Trigger | SSLS publishes a user interface. |
-| Control family | ACCESSIBILITY |
-| Control status | PARTIAL |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Accessibility validation work package |
-| Review requirement | ACCESSIBILITY REVIEW REQUIRED |
-| Review trigger | Publication of any accessibility conformance report |
+| Field              | Value                                               |
+| ------------------ | --------------------------------------------------- |
+| Source             | World Wide Web Consortium (SRC-016)                 |
+| Authority type     | standard                                            |
+| Citation           | WCAG 2.2, W3C Recommendation                        |
+| Locator            | https://www.w3.org/TR/WCAG22/                       |
+| Source version     | 2.2                                                 |
+| Verified on        | 2026-08-19                                          |
+| Jurisdiction       | NOT-JURISDICTIONAL                                  |
+| Applicability      | APPLIES-NOW                                         |
+| Trigger            | SSLS publishes a user interface.                    |
+| Control family     | ACCESSIBILITY                                       |
+| Control status     | PARTIAL                                             |
+| Evidence status    | NOT-PRODUCED                                        |
+| Owning route       | Accessibility validation work package               |
+| Review requirement | ACCESSIBILITY REVIEW REQUIRED                       |
+| Review trigger     | Publication of any accessibility conformance report |
 
 **What the source states.** W3C states version status and conformance levels. W3C does not impose a legal duty.
 
@@ -660,23 +657,23 @@ status.
 
 ### OBL-015 — Accessibility conformance report as self-disclosure
 
-| Field | Value |
-|---|---|
-| Source | Information Technology Industry Council (SRC-021) |
-| Authority type | market-expectation |
-| Citation | VPAT 2.5 |
-| Locator | https://www.itic.org/policy/accessibility/vpat |
-| Source version | 2.5 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A district or state procurement asks for an accessibility conformance report. |
-| Control family | CLAIMS / TRANSPARENCY |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Accessibility validation work package |
-| Review requirement | ACCESSIBILITY REVIEW REQUIRED |
-| Review trigger | First procurement request |
+| Field              | Value                                                                         |
+| ------------------ | ----------------------------------------------------------------------------- |
+| Source             | Information Technology Industry Council (SRC-021)                             |
+| Authority type     | market-expectation                                                            |
+| Citation           | VPAT 2.5                                                                      |
+| Locator            | https://www.itic.org/policy/accessibility/vpat                                |
+| Source version     | 2.5                                                                           |
+| Verified on        | 2026-08-19                                                                    |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                            |
+| Applicability      | APPLIES-AT-PILOT                                                              |
+| Trigger            | A district or state procurement asks for an accessibility conformance report. |
+| Control family     | CLAIMS / TRANSPARENCY                                                         |
+| Control status     | MISSING                                                                       |
+| Evidence status    | NOT-PRODUCED                                                                  |
+| Owning route       | Accessibility validation work package                                         |
+| Review requirement | ACCESSIBILITY REVIEW REQUIRED                                                 |
+| Review trigger     | First procurement request                                                     |
 
 **What the source states.** ITI describes the template as a reporting template and never as a certification.
 
@@ -698,28 +695,27 @@ status.
 
 **Claim refused.** VPAT certified; independently verified accessibility
 
-
 ---
 
 ### OBL-016 — Section 508 procurement standards
 
-| Field | Value |
-|---|---|
-| Source | U.S. Access Board (SRC-019) |
-| Authority type | regulation |
-| Citation | 36 CFR Part 1194 |
-| Locator | https://www.access-board.gov/ict/ |
-| Source version | 2017 refresh as amended 2018 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | NOT-APPLICABLE |
-| Trigger | SSLS sells information and communication technology to a federal agency. |
-| Control family | ACCESSIBILITY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | None |
-| Review requirement | none recorded |
-| Review trigger | Any federal sales intent |
+| Field              | Value                                                                    |
+| ------------------ | ------------------------------------------------------------------------ |
+| Source             | U.S. Access Board (SRC-019)                                              |
+| Authority type     | regulation                                                               |
+| Citation           | 36 CFR Part 1194                                                         |
+| Locator            | https://www.access-board.gov/ict/                                        |
+| Source version     | 2017 refresh as amended 2018                                             |
+| Verified on        | 2026-08-19                                                               |
+| Jurisdiction       | US-FEDERAL                                                               |
+| Applicability      | NOT-APPLICABLE                                                           |
+| Trigger            | SSLS sells information and communication technology to a federal agency. |
+| Control family     | ACCESSIBILITY                                                            |
+| Control status     | NOT-APPLICABLE                                                           |
+| Evidence status    | INAPPLICABLE                                                             |
+| Owning route       | None                                                                     |
+| Review requirement | none recorded                                                            |
+| Review trigger     | Any federal sales intent                                                 |
 
 **What the source states.** The Access Board states the standards apply to federal agencies and federal procurement.
 
@@ -747,23 +743,23 @@ status.
 
 ### OBL-017 — European ICT accessibility requirements
 
-| Field | Value |
-|---|---|
-| Source | ETSI (SRC-020) |
-| Authority type | standard |
-| Citation | EN 301 549 V3.2.1 |
-| Locator | https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf |
-| Source version | V3.2.1 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | INTERNATIONAL |
-| Applicability | NOT-APPLICABLE |
-| Trigger | Entry to an EU or EEA market or sale to an EU public-sector body. |
-| Control family | ACCESSIBILITY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | None |
-| Review requirement | none recorded |
-| Review trigger | Any European market intent |
+| Field              | Value                                                                                       |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| Source             | ETSI (SRC-020)                                                                              |
+| Authority type     | standard                                                                                    |
+| Citation           | EN 301 549 V3.2.1                                                                           |
+| Locator            | https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf |
+| Source version     | V3.2.1                                                                                      |
+| Verified on        | 2026-08-19                                                                                  |
+| Jurisdiction       | INTERNATIONAL                                                                               |
+| Applicability      | NOT-APPLICABLE                                                                              |
+| Trigger            | Entry to an EU or EEA market or sale to an EU public-sector body.                           |
+| Control family     | ACCESSIBILITY                                                                               |
+| Control status     | NOT-APPLICABLE                                                                              |
+| Evidence status    | INAPPLICABLE                                                                                |
+| Owning route       | None                                                                                        |
+| Review requirement | none recorded                                                                               |
+| Review trigger     | Any European market intent                                                                  |
 
 **What the source states.** ETSI publishes the harmonised standard; the legal force comes from EU directives.
 
@@ -785,28 +781,27 @@ status.
 
 **Claim refused.** EN 301 549 conformant
 
-
 ---
 
 ### OBL-018 — Software bill of materials production
 
-| Field | Value |
-|---|---|
-| Source | NTIA (SRC-031) |
-| Authority type | official-guidance |
-| Citation | NTIA minimum elements for an SBOM |
-| Locator | https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom |
-| Source version | 2021 report |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | REFERENCE |
-| Trigger | Federal software procurement, or a district or state procurement that asks for an SBOM. |
-| Control family | SOFTWARE SUPPLY CHAIN |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | WP-037, closed by DEC-017 |
-| Review requirement | none recorded |
-| Review trigger | Change of SBOM format or emitted version |
+| Field              | Value                                                                                   |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| Source             | NTIA (SRC-031)                                                                          |
+| Authority type     | official-guidance                                                                       |
+| Citation           | NTIA minimum elements for an SBOM                                                       |
+| Locator            | https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom          |
+| Source version     | 2021 report                                                                             |
+| Verified on        | 2026-08-19                                                                              |
+| Jurisdiction       | US-FEDERAL                                                                              |
+| Applicability      | REFERENCE                                                                               |
+| Trigger            | Federal software procurement, or a district or state procurement that asks for an SBOM. |
+| Control family     | SOFTWARE SUPPLY CHAIN                                                                   |
+| Control status     | IMPLEMENTED                                                                             |
+| Evidence status    | CURRENT                                                                                 |
+| Owning route       | WP-037, closed by DEC-017                                                               |
+| Review requirement | none recorded                                                                           |
+| Review trigger     | Change of SBOM format or emitted version                                                |
 
 **What the source states.** NTIA defines minimum elements. The document is guidance and does not itself bind private parties.
 
@@ -834,23 +829,23 @@ status.
 
 ### OBL-019 — Dependency vulnerability identification and remediation
 
-| Field | Value |
-|---|---|
-| Source | Center for Internet Security (SRC-025) |
-| Authority type | voluntary-framework |
-| Citation | CIS Controls v8.1, Control 7 |
-| Locator | https://www.cisecurity.org/controls/v8-1 |
-| Source version | 8.1 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-NOW |
-| Trigger | SSLS maintains a software product with third-party dependencies. |
-| Control family | VULNERABILITY MANAGEMENT |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | WP-037, closed by DEC-017 |
-| Review requirement | none recorded |
-| Review trigger | Each lockfile change |
+| Field              | Value                                                            |
+| ------------------ | ---------------------------------------------------------------- |
+| Source             | Center for Internet Security (SRC-025)                           |
+| Authority type     | voluntary-framework                                              |
+| Citation           | CIS Controls v8.1, Control 7                                     |
+| Locator            | https://www.cisecurity.org/controls/v8-1                         |
+| Source version     | 8.1                                                              |
+| Verified on        | 2026-08-19                                                       |
+| Jurisdiction       | NOT-JURISDICTIONAL                                               |
+| Applicability      | APPLIES-NOW                                                      |
+| Trigger            | SSLS maintains a software product with third-party dependencies. |
+| Control family     | VULNERABILITY MANAGEMENT                                         |
+| Control status     | IMPLEMENTED                                                      |
+| Evidence status    | CURRENT                                                          |
+| Owning route       | WP-037, closed by DEC-017                                        |
+| Review requirement | none recorded                                                    |
+| Review trigger     | Each lockfile change                                             |
 
 **What the source states.** CIS publishes voluntary safeguards. Adoption is elective.
 
@@ -878,23 +873,23 @@ status.
 
 ### OBL-020 — Dependency licence posture
 
-| Field | Value |
-|---|---|
-| Source | Linux Foundation SPDX project (SRC-029) |
-| Authority type | standard |
-| Citation | SPDX 3.0.1 licence identifiers |
-| Locator | https://spdx.github.io/spdx-spec/v3.0/ |
-| Source version | 3.0.1 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | INTERNATIONAL |
-| Applicability | APPLIES-NOW |
-| Trigger | SSLS distributes or hosts software containing third-party components. |
-| Control family | SOFTWARE SUPPLY CHAIN |
-| Control status | PARTIAL |
-| Evidence status | CURRENT |
-| Owning route | WP-037 for inventory; legal interpretation unassigned |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First commercial distribution |
+| Field              | Value                                                                 |
+| ------------------ | --------------------------------------------------------------------- |
+| Source             | Linux Foundation SPDX project (SRC-029)                               |
+| Authority type     | standard                                                              |
+| Citation           | SPDX 3.0.1 licence identifiers                                        |
+| Locator            | https://spdx.github.io/spdx-spec/v3.0/                                |
+| Source version     | 3.0.1                                                                 |
+| Verified on        | 2026-08-19                                                            |
+| Jurisdiction       | INTERNATIONAL                                                         |
+| Applicability      | APPLIES-NOW                                                           |
+| Trigger            | SSLS distributes or hosts software containing third-party components. |
+| Control family     | SOFTWARE SUPPLY CHAIN                                                 |
+| Control status     | PARTIAL                                                               |
+| Evidence status    | CURRENT                                                               |
+| Owning route       | WP-037 for inventory; legal interpretation unassigned                 |
+| Review requirement | LEGAL REVIEW REQUIRED                                                 |
+| Review trigger     | First commercial distribution                                         |
 
 **What the source states.** SPDX defines identifiers and format. It does not state what any licence requires.
 
@@ -922,23 +917,23 @@ status.
 
 ### OBL-021 — Build provenance and source integrity
 
-| Field | Value |
-|---|---|
-| Source | OpenSSF (SRC-030) |
-| Authority type | voluntary-framework |
-| Citation | SLSA build track |
-| Locator | https://slsa.dev/ |
-| Source version | 1.2 (date unverified) |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | REFERENCE |
-| Trigger | A customer or partner asks for build provenance attestation. |
-| Control family | SOFTWARE SUPPLY CHAIN |
-| Control status | PARTIAL |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Unassigned |
-| Review requirement | none recorded |
-| Review trigger | First provenance request |
+| Field              | Value                                                        |
+| ------------------ | ------------------------------------------------------------ |
+| Source             | OpenSSF (SRC-030)                                            |
+| Authority type     | voluntary-framework                                          |
+| Citation           | SLSA build track                                             |
+| Locator            | https://slsa.dev/                                            |
+| Source version     | 1.2 (date unverified)                                        |
+| Verified on        | 2026-08-19                                                   |
+| Jurisdiction       | NOT-JURISDICTIONAL                                           |
+| Applicability      | REFERENCE                                                    |
+| Trigger            | A customer or partner asks for build provenance attestation. |
+| Control family     | SOFTWARE SUPPLY CHAIN                                        |
+| Control status     | PARTIAL                                                      |
+| Evidence status    | NOT-PRODUCED                                                 |
+| Owning route       | Unassigned                                                   |
+| Review requirement | none recorded                                                |
+| Review trigger     | First provenance request                                     |
 
 **What the source states.** OpenSSF publishes the framework. Levels are self-assessed unless independently verified.
 
@@ -966,23 +961,23 @@ status.
 
 ### OBL-022 — Cybersecurity risk management organising model
 
-| Field | Value |
-|---|---|
-| Source | NIST (SRC-022) |
-| Authority type | voluntary-framework |
-| Citation | NIST CSWP 29, CSF 2.0 |
-| Locator | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
-| Source version | 2.0 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | REFERENCE |
-| Trigger | A district security review asks which framework SSLS organises around. |
-| Control family | GOVERNANCE |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Routed with OBL-009 |
-| Review requirement | SECURITY REVIEW REQUIRED |
-| Review trigger | First district security questionnaire |
+| Field              | Value                                                                            |
+| ------------------ | -------------------------------------------------------------------------------- |
+| Source             | NIST (SRC-022)                                                                   |
+| Authority type     | voluntary-framework                                                              |
+| Citation           | NIST CSWP 29, CSF 2.0                                                            |
+| Locator            | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
+| Source version     | 2.0                                                                              |
+| Verified on        | 2026-08-19                                                                       |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                               |
+| Applicability      | REFERENCE                                                                        |
+| Trigger            | A district security review asks which framework SSLS organises around.           |
+| Control family     | GOVERNANCE                                                                       |
+| Control status     | MISSING                                                                          |
+| Evidence status    | NOT-PRODUCED                                                                     |
+| Owning route       | Routed with OBL-009                                                              |
+| Review requirement | SECURITY REVIEW REQUIRED                                                         |
+| Review trigger     | First district security questionnaire                                            |
 
 **What the source states.** NIST states the framework is voluntary and not certifiable.
 
@@ -1010,23 +1005,23 @@ status.
 
 ### OBL-023 — Independent security attestation expectation
 
-| Field | Value |
-|---|---|
-| Source | AICPA (SRC-027) |
-| Authority type | attestation-standard |
-| Citation | SOC 2, Trust Services Criteria |
-| Locator | https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2/ |
-| Source version | TSC 2017 with 2022 revised points of focus |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-AT-LAUNCH |
-| Trigger | A district or state procurement requires an independent attestation for a hosted service. |
-| Control family | GOVERNANCE |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Unassigned; sequencing decision required before any launch commitment |
-| Review requirement | PROCUREMENT REVIEW REQUIRED |
-| Review trigger | Before any launch date is committed to a district |
+| Field              | Value                                                                                     |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| Source             | AICPA (SRC-027)                                                                           |
+| Authority type     | attestation-standard                                                                      |
+| Citation           | SOC 2, Trust Services Criteria                                                            |
+| Locator            | https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2/  |
+| Source version     | TSC 2017 with 2022 revised points of focus                                                |
+| Verified on        | 2026-08-19                                                                                |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                                        |
+| Applicability      | APPLIES-AT-LAUNCH                                                                         |
+| Trigger            | A district or state procurement requires an independent attestation for a hosted service. |
+| Control family     | GOVERNANCE                                                                                |
+| Control status     | MISSING                                                                                   |
+| Evidence status    | NOT-PRODUCED                                                                              |
+| Owning route       | Unassigned; sequencing decision required before any launch commitment                     |
+| Review requirement | PROCUREMENT REVIEW REQUIRED                                                               |
+| Review trigger     | Before any launch date is committed to a district                                         |
 
 **What the source states.** AICPA describes an attestation engagement. No certification exists.
 
@@ -1054,23 +1049,23 @@ status.
 
 ### OBL-024 — AI risk management before any AI feature
 
-| Field | Value |
-|---|---|
-| Source | NIST (SRC-033) |
-| Authority type | voluntary-framework |
-| Citation | NIST AI 100-1 |
-| Locator | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10 |
-| Source version | 1.0 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | CONDITIONAL |
-| Trigger | An AI feature is proposed for SSLS. |
-| Control family | AI GOVERNANCE |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | Gate condition on any AI capability |
-| Review requirement | none recorded |
-| Review trigger | Any proposed AI capability |
+| Field              | Value                                                                                         |
+| ------------------ | --------------------------------------------------------------------------------------------- |
+| Source             | NIST (SRC-033)                                                                                |
+| Authority type     | voluntary-framework                                                                           |
+| Citation           | NIST AI 100-1                                                                                 |
+| Locator            | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10 |
+| Source version     | 1.0                                                                                           |
+| Verified on        | 2026-08-19                                                                                    |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                                            |
+| Applicability      | CONDITIONAL                                                                                   |
+| Trigger            | An AI feature is proposed for SSLS.                                                           |
+| Control family     | AI GOVERNANCE                                                                                 |
+| Control status     | NOT-APPLICABLE                                                                                |
+| Evidence status    | INAPPLICABLE                                                                                  |
+| Owning route       | Gate condition on any AI capability                                                           |
+| Review requirement | none recorded                                                                                 |
+| Review trigger     | Any proposed AI capability                                                                    |
 
 **What the source states.** NIST states the framework is voluntary. A revision is in progress.
 
@@ -1098,23 +1093,23 @@ status.
 
 ### OBL-025 — Existing law applies to AI claims and behaviour
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of the Attorney General (SRC-014) |
-| Authority type | official-guidance |
-| Citation | AGO AI Advisory, 2024-04-16 |
-| Locator | https://www.mass.gov/doc/ago-ai-advisory-41624/download |
-| Source version | 2024-04-16 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-NOW |
-| Trigger | SSLS makes any public statement about AI capability, including a statement about future capability. |
-| Control family | CLAIMS / TRANSPARENCY |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | Maintained across all work packages; established in WP-000 |
-| Review requirement | none recorded |
-| Review trigger | Every published change to a public surface |
+| Field              | Value                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| Source             | Massachusetts Office of the Attorney General (SRC-014)                                              |
+| Authority type     | official-guidance                                                                                   |
+| Citation           | AGO AI Advisory, 2024-04-16                                                                         |
+| Locator            | https://www.mass.gov/doc/ago-ai-advisory-41624/download                                             |
+| Source version     | 2024-04-16                                                                                          |
+| Verified on        | 2026-08-19                                                                                          |
+| Jurisdiction       | US-MA                                                                                               |
+| Applicability      | APPLIES-NOW                                                                                         |
+| Trigger            | SSLS makes any public statement about AI capability, including a statement about future capability. |
+| Control family     | CLAIMS / TRANSPARENCY                                                                               |
+| Control status     | IMPLEMENTED                                                                                         |
+| Evidence status    | CURRENT                                                                                             |
+| Owning route       | Maintained across all work packages; established in WP-000                                          |
+| Review requirement | none recorded                                                                                       |
+| Review trigger     | Every published change to a public surface                                                          |
 
 **What the source states.** The Attorney General states how existing law applies. The advisory is guidance interpreting statutes such as c. 93A.
 
@@ -1142,23 +1137,23 @@ status.
 
 ### OBL-026 — Developer-directed AI design expectations
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Education, Office of Educational Technology (SRC-036) |
-| Authority type | official-guidance |
-| Citation | Designing for Education with AI: An Essential Guide for Developers |
-| Locator | https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf |
-| Source version | 2023 report with 2024 developer guide |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | REFERENCE |
-| Trigger | Any AI capability design. |
-| Control family | HUMAN REVIEW |
-| Control status | SPECIFICATION-ONLY |
-| Evidence status | INAPPLICABLE |
-| Owning route | Gate condition on any AI capability |
-| Review requirement | EDUCATION POLICY REVIEW REQUIRED |
-| Review trigger | Any proposed AI capability |
+| Field              | Value                                                                    |
+| ------------------ | ------------------------------------------------------------------------ |
+| Source             | U.S. Department of Education, Office of Educational Technology (SRC-036) |
+| Authority type     | official-guidance                                                        |
+| Citation           | Designing for Education with AI: An Essential Guide for Developers       |
+| Locator            | https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf      |
+| Source version     | 2023 report with 2024 developer guide                                    |
+| Verified on        | 2026-08-19                                                               |
+| Jurisdiction       | US-FEDERAL                                                               |
+| Applicability      | REFERENCE                                                                |
+| Trigger            | Any AI capability design.                                                |
+| Control family     | HUMAN REVIEW                                                             |
+| Control status     | SPECIFICATION-ONLY                                                       |
+| Evidence status    | INAPPLICABLE                                                             |
+| Owning route       | Gate condition on any AI capability                                      |
+| Review requirement | EDUCATION POLICY REVIEW REQUIRED                                         |
+| Review trigger     | Any proposed AI capability                                               |
 
 **What the source states.** The Department states the guidance is non-regulatory and that examples are not endorsements.
 
@@ -1180,28 +1175,27 @@ status.
 
 **Claim refused.** Department of Education endorsed; ED aligned
 
-
 ---
 
 ### OBL-027 — Colorado automated decision-making watch item
 
-| Field | Value |
-|---|---|
-| Source | Colorado General Assembly (SRC-037) |
-| Authority type | statute |
-| Citation | SB 26-189 |
-| Locator | https://leg.colorado.gov/bills/SB26-189 |
-| Source version | Signed 2026-05-14 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-STATE-OTHER |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS develops or deploys a high-risk automated decision-making system affecting Colorado residents on or after 2027-01-01. |
-| Control family | AI GOVERNANCE |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | Watch item; re-check before 2027-01-01 |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | Any recommendation or eligibility-scoring capability, or Colorado market entry |
+| Field              | Value                                                                                                                      |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Source             | Colorado General Assembly (SRC-037)                                                                                        |
+| Authority type     | statute                                                                                                                    |
+| Citation           | SB 26-189                                                                                                                  |
+| Locator            | https://leg.colorado.gov/bills/SB26-189                                                                                    |
+| Source version     | Signed 2026-05-14                                                                                                          |
+| Verified on        | 2026-08-19                                                                                                                 |
+| Jurisdiction       | US-STATE-OTHER                                                                                                             |
+| Applicability      | CONDITIONAL                                                                                                                |
+| Trigger            | SSLS develops or deploys a high-risk automated decision-making system affecting Colorado residents on or after 2027-01-01. |
+| Control family     | AI GOVERNANCE                                                                                                              |
+| Control status     | NOT-APPLICABLE                                                                                                             |
+| Evidence status    | INAPPLICABLE                                                                                                               |
+| Owning route       | Watch item; re-check before 2027-01-01                                                                                     |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                                                      |
+| Review trigger     | Any recommendation or eligibility-scoring capability, or Colorado market entry                                             |
 
 **What the source states.** The bill text states the effective date. Its scope was narrowed relative to SB 24-205.
 
@@ -1229,23 +1223,23 @@ status.
 
 ### OBL-028 — Roster and enrolment data exchange
 
-| Field | Value |
-|---|---|
-| Source | 1EdTech Consortium (SRC-038) |
-| Authority type | standard |
-| Citation | OneRoster v1.2 |
-| Locator | https://www.1edtech.org/standards/oneroster |
-| Source version | 1.2 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A district needs to sync students, organisations, classes or enrolments into SSLS. |
-| Control family | INTEROPERABILITY |
-| Control status | SPECIFICATION-ONLY |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First ingestion work package |
-| Review requirement | none recorded |
-| Review trigger | First ingestion design |
+| Field              | Value                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| Source             | 1EdTech Consortium (SRC-038)                                                       |
+| Authority type     | standard                                                                           |
+| Citation           | OneRoster v1.2                                                                     |
+| Locator            | https://www.1edtech.org/standards/oneroster                                        |
+| Source version     | 1.2                                                                                |
+| Verified on        | 2026-08-19                                                                         |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                                 |
+| Applicability      | APPLIES-AT-PILOT                                                                   |
+| Trigger            | A district needs to sync students, organisations, classes or enrolments into SSLS. |
+| Control family     | INTEROPERABILITY                                                                   |
+| Control status     | SPECIFICATION-ONLY                                                                 |
+| Evidence status    | NOT-PRODUCED                                                                       |
+| Owning route       | First ingestion work package                                                       |
+| Review requirement | none recorded                                                                      |
+| Review trigger     | First ingestion design                                                             |
 
 **What the source states.** 1EdTech publishes the specification and operates the certification programme.
 
@@ -1273,23 +1267,23 @@ status.
 
 ### OBL-029 — Program and service data exchange with state systems
 
-| Field | Value |
-|---|---|
-| Source | Ed-Fi Alliance (SRC-039) |
-| Authority type | standard |
-| Citation | Ed-Fi Data Standard 6.0; ODS/API 7.3.1 |
-| Locator | https://docs.ed-fi.org/reference/data-exchange/data-standard/ |
-| Source version | 6.0 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | SSLS must exchange multilingual-learner or special-education program data with a district or state system. |
-| Control family | INTEROPERABILITY |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First program data-model work package |
-| Review requirement | none recorded |
-| Review trigger | First program data model |
+| Field              | Value                                                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Source             | Ed-Fi Alliance (SRC-039)                                                                                   |
+| Authority type     | standard                                                                                                   |
+| Citation           | Ed-Fi Data Standard 6.0; ODS/API 7.3.1                                                                     |
+| Locator            | https://docs.ed-fi.org/reference/data-exchange/data-standard/                                              |
+| Source version     | 6.0                                                                                                        |
+| Verified on        | 2026-08-19                                                                                                 |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                                                         |
+| Applicability      | APPLIES-AT-PILOT                                                                                           |
+| Trigger            | SSLS must exchange multilingual-learner or special-education program data with a district or state system. |
+| Control family     | INTEROPERABILITY                                                                                           |
+| Control status     | MISSING                                                                                                    |
+| Evidence status    | NOT-PRODUCED                                                                                               |
+| Owning route       | First program data-model work package                                                                      |
+| Review requirement | none recorded                                                                                              |
+| Review trigger     | First program data model                                                                                   |
 
 **What the source states.** The Ed-Fi Alliance publishes the standard and its testing tools.
 
@@ -1317,23 +1311,23 @@ status.
 
 ### OBL-030 — Deferred interoperability specifications
 
-| Field | Value |
-|---|---|
-| Source | 1EdTech Consortium (SRC-040) |
-| Authority type | standard |
-| Citation | LTI 1.3 with Advantage services; QTI 3.0.1; Caliper 1.2; CASE 1.1; Common Cartridge 1.4 |
-| Locator | https://www.imsglobal.org/specifications/learning-tools-interoperability |
-| Source version | See citation |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | REFERENCE |
-| Trigger | LMS embedding, assessment item exchange, analytics event emission, competency framework exchange or content packaging. |
-| Control family | INTEROPERABILITY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | None |
-| Review requirement | none recorded |
-| Review trigger | LMS embedding or analytics emission proposal |
+| Field              | Value                                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Source             | 1EdTech Consortium (SRC-040)                                                                                           |
+| Authority type     | standard                                                                                                               |
+| Citation           | LTI 1.3 with Advantage services; QTI 3.0.1; Caliper 1.2; CASE 1.1; Common Cartridge 1.4                                |
+| Locator            | https://www.imsglobal.org/specifications/learning-tools-interoperability                                               |
+| Source version     | See citation                                                                                                           |
+| Verified on        | 2026-08-19                                                                                                             |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                                                                     |
+| Applicability      | REFERENCE                                                                                                              |
+| Trigger            | LMS embedding, assessment item exchange, analytics event emission, competency framework exchange or content packaging. |
+| Control family     | INTEROPERABILITY                                                                                                       |
+| Control status     | NOT-APPLICABLE                                                                                                         |
+| Evidence status    | INAPPLICABLE                                                                                                           |
+| Owning route       | None                                                                                                                   |
+| Review requirement | none recorded                                                                                                          |
+| Review trigger     | LMS embedding or analytics emission proposal                                                                           |
 
 **What the source states.** 1EdTech publishes each specification and operates certification programmes.
 
@@ -1361,23 +1355,23 @@ status.
 
 ### OBL-031 — District data privacy agreement execution
 
-| Field | Value |
-|---|---|
-| Source | The Education Cooperative (Massachusetts) (SRC-042) |
-| Authority type | procurement-expectation |
-| Citation | TEC Student Data Privacy Alliance; SDPC National Data Privacy Agreement |
-| Locator | https://tec-coop.org/data-privacy/ |
-| Source version | UNKNOWN |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A Massachusetts district or collaborative requires an executed data privacy agreement before tool use. |
-| Control family | VENDOR MANAGEMENT |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Routed to the pilot-readiness work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First district conversation that reaches procurement |
+| Field              | Value                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
+| Source             | The Education Cooperative (Massachusetts) (SRC-042)                                                    |
+| Authority type     | procurement-expectation                                                                                |
+| Citation           | TEC Student Data Privacy Alliance; SDPC National Data Privacy Agreement                                |
+| Locator            | https://tec-coop.org/data-privacy/                                                                     |
+| Source version     | UNKNOWN                                                                                                |
+| Verified on        | 2026-08-19                                                                                             |
+| Jurisdiction       | US-MA                                                                                                  |
+| Applicability      | APPLIES-AT-PILOT                                                                                       |
+| Trigger            | A Massachusetts district or collaborative requires an executed data privacy agreement before tool use. |
+| Control family     | VENDOR MANAGEMENT                                                                                      |
+| Control status     | MISSING                                                                                                |
+| Evidence status    | NOT-PRODUCED                                                                                           |
+| Owning route       | Routed to the pilot-readiness work package                                                             |
+| Review requirement | LEGAL REVIEW REQUIRED                                                                                  |
+| Review trigger     | First district conversation that reaches procurement                                                   |
 
 **What the source states.** These are private contract templates, not law.
 
@@ -1405,23 +1399,23 @@ status.
 
 ### OBL-032 — Accuracy of public claims on the published prototype
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of the Attorney General (SRC-014) |
-| Authority type | official-guidance |
-| Citation | AGO AI Advisory; M.G.L. c. 93A as referenced therein |
-| Locator | https://www.mass.gov/doc/ago-ai-advisory-41624/download |
-| Source version | 2024-04-16 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-NOW |
-| Trigger | A public surface exists at a reachable URL. |
-| Control family | CLAIMS / TRANSPARENCY |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | WP-037 publication boundary; maintained continuously |
-| Review requirement | none recorded |
-| Review trigger | Every publication |
+| Field              | Value                                                   |
+| ------------------ | ------------------------------------------------------- |
+| Source             | Massachusetts Office of the Attorney General (SRC-014)  |
+| Authority type     | official-guidance                                       |
+| Citation           | AGO AI Advisory; M.G.L. c. 93A as referenced therein    |
+| Locator            | https://www.mass.gov/doc/ago-ai-advisory-41624/download |
+| Source version     | 2024-04-16                                              |
+| Verified on        | 2026-08-19                                              |
+| Jurisdiction       | US-MA                                                   |
+| Applicability      | APPLIES-NOW                                             |
+| Trigger            | A public surface exists at a reachable URL.             |
+| Control family     | CLAIMS / TRANSPARENCY                                   |
+| Control status     | IMPLEMENTED                                             |
+| Evidence status    | CURRENT                                                 |
+| Owning route       | WP-037 publication boundary; maintained continuously    |
+| Review requirement | none recorded                                           |
+| Review trigger     | Every publication                                       |
 
 **What the source states.** The advisory states that existing consumer protection law applies. It does not enumerate product wording.
 
@@ -1443,28 +1437,27 @@ status.
 
 **Claim refused.** Production ready; district ready; live product
 
-
 ---
 
 ### OBL-033 — Zero personal data on the current surface
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011) |
-| Authority type | regulation |
-| Citation | 201 CMR 17.01 scope |
-| Locator | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
-| Source version | Current published edition |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-NOW |
-| Trigger | The scope test is continuous: the obligation attaches the moment personal information is received. |
-| Control family | DATA MINIMIZATION |
-| Control status | IMPLEMENTED |
-| Evidence status | CURRENT |
-| Owning route | WP-038 verification; maintained continuously |
-| Review requirement | none recorded |
-| Review trigger | Any added form, account, analytics or third-party script |
+| Field              | Value                                                                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Source             | Massachusetts Office of Consumer Affairs and Business Regulation (SRC-011)                                                         |
+| Authority type     | regulation                                                                                                                         |
+| Citation           | 201 CMR 17.01 scope                                                                                                                |
+| Locator            | https://www.mass.gov/doc/201-cmr-17-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth/download |
+| Source version     | Current published edition                                                                                                          |
+| Verified on        | 2026-08-19                                                                                                                         |
+| Jurisdiction       | US-MA                                                                                                                              |
+| Applicability      | APPLIES-NOW                                                                                                                        |
+| Trigger            | The scope test is continuous: the obligation attaches the moment personal information is received.                                 |
+| Control family     | DATA MINIMIZATION                                                                                                                  |
+| Control status     | IMPLEMENTED                                                                                                                        |
+| Evidence status    | CURRENT                                                                                                                            |
+| Owning route       | WP-038 verification; maintained continuously                                                                                       |
+| Review requirement | none recorded                                                                                                                      |
+| Review trigger     | Any added form, account, analytics or third-party script                                                                           |
 
 **What the source states.** 17.01 states the scope. It does not describe web surfaces specifically.
 
@@ -1492,23 +1485,23 @@ status.
 
 ### OBL-034 — Branch protection and change-control enforcement
 
-| Field | Value |
-|---|---|
-| Source | Center for Internet Security (SRC-025) |
-| Authority type | voluntary-framework |
-| Citation | CIS Controls v8.1, Control 16 |
-| Locator | https://www.cisecurity.org/controls/v8-1 |
-| Source version | 8.1 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-NOW |
-| Trigger | SSLS maintains a repository that is the authorised software source of truth. |
-| Control family | GOVERNANCE |
-| Control status | PARTIAL |
-| Evidence status | NOT-PRODUCED |
-| Owning route | FND-012 remains open |
-| Review requirement | none recorded |
-| Review trigger | Any claim about change control |
+| Field              | Value                                                                        |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Source             | Center for Internet Security (SRC-025)                                       |
+| Authority type     | voluntary-framework                                                          |
+| Citation           | CIS Controls v8.1, Control 16                                                |
+| Locator            | https://www.cisecurity.org/controls/v8-1                                     |
+| Source version     | 8.1                                                                          |
+| Verified on        | 2026-08-19                                                                   |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                           |
+| Applicability      | APPLIES-NOW                                                                  |
+| Trigger            | SSLS maintains a repository that is the authorised software source of truth. |
+| Control family     | GOVERNANCE                                                                   |
+| Control status     | PARTIAL                                                                      |
+| Evidence status    | NOT-PRODUCED                                                                 |
+| Owning route       | FND-012 remains open                                                         |
+| Review requirement | none recorded                                                                |
+| Review trigger     | Any claim about change control                                               |
 
 **What the source states.** CIS publishes voluntary safeguards.
 

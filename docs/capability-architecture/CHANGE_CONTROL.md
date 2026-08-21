@@ -8,7 +8,7 @@
    states the evidence, and names the approver. Promotion changes
    `currentAuthority` and nothing else changes it.
 3. **Supersede a record.** The old record stays visible with `recordState:
-   historical` and a supersession pointer. Records are never silently deleted.
+historical` and a supersession pointer. Records are never silently deleted.
 4. **Retire a record.** Requires a decision record stating why the ability is no
    longer needed and who accepted the resulting risk.
 

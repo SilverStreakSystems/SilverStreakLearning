@@ -2,17 +2,17 @@
 
 ## Entry baseline (verified read-only, this turn)
 
-| Item | Repository truth |
-| --- | --- |
-| Gate A | OPEN |
-| WP-007 | ACTIVE |
-| FND-022 | OPEN, controlling owner obligation |
-| PKG-001 | partial (manifest names four artifacts; DOCX/ZIP not supplied) |
-| HS-023 | HISTORICAL-EVIDENCE, NOT-PROMOTED |
-| Candidates | HREQ-015..030 present, exactly 16, all pre-disposition / not assessed |
-| Restatement index | 17 relations — RESTATES 3, NARROWS 2, BROADENS 6, CONFLICTS 0, NEW 6 |
-| Unmatched | HREQ-005, HREQ-013, HREQ-014 (HS-011), held separately |
-| Latest evidence / checkpoint | EV-040, CHECKPOINT-006 |
+| Item                         | Repository truth                                                      |
+| ---------------------------- | --------------------------------------------------------------------- |
+| Gate A                       | OPEN                                                                  |
+| WP-007                       | ACTIVE                                                                |
+| FND-022                      | OPEN, controlling owner obligation                                    |
+| PKG-001                      | partial (manifest names four artifacts; DOCX/ZIP not supplied)        |
+| HS-023                       | HISTORICAL-EVIDENCE, NOT-PROMOTED                                     |
+| Candidates                   | HREQ-015..030 present, exactly 16, all pre-disposition / not assessed |
+| Restatement index            | 17 relations — RESTATES 3, NARROWS 2, BROADENS 6, CONFLICTS 0, NEW 6  |
+| Unmatched                    | HREQ-005, HREQ-013, HREQ-014 (HS-011), held separately                |
+| Latest evidence / checkpoint | EV-040, CHECKPOINT-006                                                |
 
 Everything the prompt expects at entry reconciles against governed data, so the cycle is not blocked. Next collision-free identifiers: **EV-041**, **CHECKPOINT-007**, and **FND-023** only if a new obligation is actually required.
 

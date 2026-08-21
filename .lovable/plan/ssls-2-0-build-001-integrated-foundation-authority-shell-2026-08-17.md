@@ -10,18 +10,18 @@ Out (explicitly not built): Lovable Cloud/database, authentication, AI of any ki
 
 ## Routes
 
-| Route | Purpose |
-| --- | --- |
-| `/` Command Center | Independent readiness axes, blockers, decisions required, next defensible action |
-| `/foundation-map` | L0–L7 layer stack (visual + table), artifacts per layer with authority state |
-| `/authority` | Authority ledger: artifact, version, authority class, implementation authority, evidence basis, supersession, conflicts, promotion requirement |
-| `/capabilities` | Candidate Enterprise Capability Registry (list + detail) |
-| `/traceability` | Governance Spine and Enterprise Outcome chain as two parallel views |
-| `/findings` | Findings register incl. the L0–L7 naming/count governance finding |
-| `/evidence` | Evidence register with Not Run / Unknown / Stale states |
-| `/decisions` | Decisions register: accepted, pending, required |
-| `/future-architecture` | Nine target-state workspaces, each gated: TARGET-STATE CANDIDATE / NOT CURRENT IMPLEMENTATION AUTHORITY |
-| `/boundaries` | Settings / Boundaries: the authorized posture, No-PII banner, refused claims |
+| Route                  | Purpose                                                                                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/` Command Center     | Independent readiness axes, blockers, decisions required, next defensible action                                                               |
+| `/foundation-map`      | L0–L7 layer stack (visual + table), artifacts per layer with authority state                                                                   |
+| `/authority`           | Authority ledger: artifact, version, authority class, implementation authority, evidence basis, supersession, conflicts, promotion requirement |
+| `/capabilities`        | Candidate Enterprise Capability Registry (list + detail)                                                                                       |
+| `/traceability`        | Governance Spine and Enterprise Outcome chain as two parallel views                                                                            |
+| `/findings`            | Findings register incl. the L0–L7 naming/count governance finding                                                                              |
+| `/evidence`            | Evidence register with Not Run / Unknown / Stale states                                                                                        |
+| `/decisions`           | Decisions register: accepted, pending, required                                                                                                |
+| `/future-architecture` | Nine target-state workspaces, each gated: TARGET-STATE CANDIDATE / NOT CURRENT IMPLEMENTATION AUTHORITY                                        |
+| `/boundaries`          | Settings / Boundaries: the authorized posture, No-PII banner, refused claims                                                                   |
 
 A persistent app shell provides skip link, semantic landmarks, sidebar nav (drawer on mobile), and a global synthetic-data + No-PII boundary banner.
 

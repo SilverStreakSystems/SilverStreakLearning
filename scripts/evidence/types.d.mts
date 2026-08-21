@@ -26,12 +26,7 @@ export type EvidenceType =
 export type EvidenceStatus = "pass" | "fail" | "review-required" | "not-completed";
 
 export type ApplicabilityState =
-  | "CURRENT"
-  | "STALE"
-  | "EXPIRED"
-  | "SUPERSEDED"
-  | "INAPPLICABLE"
-  | "UNKNOWN";
+  "CURRENT" | "STALE" | "EXPIRED" | "SUPERSEDED" | "INAPPLICABLE" | "UNKNOWN";
 
 export type InputSetName =
   | "source"

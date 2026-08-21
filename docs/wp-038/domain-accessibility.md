@@ -4,33 +4,33 @@
 
 5 obligations in this domain.
 
-| ID | Title | Source | Applicability | Control status |
-|---|---|---|---|---|
-| OBL-013 | District web and mobile accessibility conformance to WCAG 2.1 AA | 28 CFR 35.200(b) | APPLIES-AT-PILOT | PARTIAL |
-| OBL-014 | Internal conformance target version | WCAG 2.2, W3C Recommendation | APPLIES-NOW | PARTIAL |
-| OBL-015 | Accessibility conformance report as self-disclosure | VPAT 2.5 | APPLIES-AT-PILOT | MISSING |
-| OBL-016 | Section 508 procurement standards | 36 CFR Part 1194 | NOT-APPLICABLE | NOT-APPLICABLE |
-| OBL-017 | European ICT accessibility requirements | EN 301 549 V3.2.1 | NOT-APPLICABLE | NOT-APPLICABLE |
+| ID      | Title                                                            | Source                       | Applicability    | Control status |
+| ------- | ---------------------------------------------------------------- | ---------------------------- | ---------------- | -------------- |
+| OBL-013 | District web and mobile accessibility conformance to WCAG 2.1 AA | 28 CFR 35.200(b)             | APPLIES-AT-PILOT | PARTIAL        |
+| OBL-014 | Internal conformance target version                              | WCAG 2.2, W3C Recommendation | APPLIES-NOW      | PARTIAL        |
+| OBL-015 | Accessibility conformance report as self-disclosure              | VPAT 2.5                     | APPLIES-AT-PILOT | MISSING        |
+| OBL-016 | Section 508 procurement standards                                | 36 CFR Part 1194             | NOT-APPLICABLE   | NOT-APPLICABLE |
+| OBL-017 | European ICT accessibility requirements                          | EN 301 549 V3.2.1            | NOT-APPLICABLE   | NOT-APPLICABLE |
 
 ### OBL-013 — District web and mobile accessibility conformance to WCAG 2.1 AA
 
-| Field | Value |
-|---|---|
-| Source | U.S. Department of Justice (SRC-017) |
-| Authority type | regulation |
-| Citation | 28 CFR 35.200(b) |
-| Locator | https://www.federalregister.gov/documents/2024/04/24/2024-07758 |
-| Source version | Final rule 2024, dates extended by 2026 interim final rule |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A public entity uses SSLS as part of its web content or mobile services. |
-| Control family | ACCESSIBILITY |
-| Control status | PARTIAL |
-| Evidence status | STALE |
-| Owning route | Accessibility validation work package |
-| Review requirement | ACCESSIBILITY REVIEW REQUIRED |
-| Review trigger | Before any accessibility statement is published or any procurement response is submitted |
+| Field              | Value                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| Source             | U.S. Department of Justice (SRC-017)                                                     |
+| Authority type     | regulation                                                                               |
+| Citation           | 28 CFR 35.200(b)                                                                         |
+| Locator            | https://www.federalregister.gov/documents/2024/04/24/2024-07758                          |
+| Source version     | Final rule 2024, dates extended by 2026 interim final rule                               |
+| Verified on        | 2026-08-19                                                                               |
+| Jurisdiction       | US-FEDERAL                                                                               |
+| Applicability      | APPLIES-AT-PILOT                                                                         |
+| Trigger            | A public entity uses SSLS as part of its web content or mobile services.                 |
+| Control family     | ACCESSIBILITY                                                                            |
+| Control status     | PARTIAL                                                                                  |
+| Evidence status    | STALE                                                                                    |
+| Owning route       | Accessibility validation work package                                                    |
+| Review requirement | ACCESSIBILITY REVIEW REQUIRED                                                            |
+| Review trigger     | Before any accessibility statement is published or any procurement response is submitted |
 
 **What the source states.** The regulated party is the public entity. The rule does not regulate private vendors.
 
@@ -58,23 +58,23 @@
 
 ### OBL-014 — Internal conformance target version
 
-| Field | Value |
-|---|---|
-| Source | World Wide Web Consortium (SRC-016) |
-| Authority type | standard |
-| Citation | WCAG 2.2, W3C Recommendation |
-| Locator | https://www.w3.org/TR/WCAG22/ |
-| Source version | 2.2 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-NOW |
-| Trigger | SSLS publishes a user interface. |
-| Control family | ACCESSIBILITY |
-| Control status | PARTIAL |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Accessibility validation work package |
-| Review requirement | ACCESSIBILITY REVIEW REQUIRED |
-| Review trigger | Publication of any accessibility conformance report |
+| Field              | Value                                               |
+| ------------------ | --------------------------------------------------- |
+| Source             | World Wide Web Consortium (SRC-016)                 |
+| Authority type     | standard                                            |
+| Citation           | WCAG 2.2, W3C Recommendation                        |
+| Locator            | https://www.w3.org/TR/WCAG22/                       |
+| Source version     | 2.2                                                 |
+| Verified on        | 2026-08-19                                          |
+| Jurisdiction       | NOT-JURISDICTIONAL                                  |
+| Applicability      | APPLIES-NOW                                         |
+| Trigger            | SSLS publishes a user interface.                    |
+| Control family     | ACCESSIBILITY                                       |
+| Control status     | PARTIAL                                             |
+| Evidence status    | NOT-PRODUCED                                        |
+| Owning route       | Accessibility validation work package               |
+| Review requirement | ACCESSIBILITY REVIEW REQUIRED                       |
+| Review trigger     | Publication of any accessibility conformance report |
 
 **What the source states.** W3C states version status and conformance levels. W3C does not impose a legal duty.
 
@@ -102,23 +102,23 @@
 
 ### OBL-015 — Accessibility conformance report as self-disclosure
 
-| Field | Value |
-|---|---|
-| Source | Information Technology Industry Council (SRC-021) |
-| Authority type | market-expectation |
-| Citation | VPAT 2.5 |
-| Locator | https://www.itic.org/policy/accessibility/vpat |
-| Source version | 2.5 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | NOT-JURISDICTIONAL |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | A district or state procurement asks for an accessibility conformance report. |
-| Control family | CLAIMS / TRANSPARENCY |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | Accessibility validation work package |
-| Review requirement | ACCESSIBILITY REVIEW REQUIRED |
-| Review trigger | First procurement request |
+| Field              | Value                                                                         |
+| ------------------ | ----------------------------------------------------------------------------- |
+| Source             | Information Technology Industry Council (SRC-021)                             |
+| Authority type     | market-expectation                                                            |
+| Citation           | VPAT 2.5                                                                      |
+| Locator            | https://www.itic.org/policy/accessibility/vpat                                |
+| Source version     | 2.5                                                                           |
+| Verified on        | 2026-08-19                                                                    |
+| Jurisdiction       | NOT-JURISDICTIONAL                                                            |
+| Applicability      | APPLIES-AT-PILOT                                                              |
+| Trigger            | A district or state procurement asks for an accessibility conformance report. |
+| Control family     | CLAIMS / TRANSPARENCY                                                         |
+| Control status     | MISSING                                                                       |
+| Evidence status    | NOT-PRODUCED                                                                  |
+| Owning route       | Accessibility validation work package                                         |
+| Review requirement | ACCESSIBILITY REVIEW REQUIRED                                                 |
+| Review trigger     | First procurement request                                                     |
 
 **What the source states.** ITI describes the template as a reporting template and never as a certification.
 
@@ -140,28 +140,27 @@
 
 **Claim refused.** VPAT certified; independently verified accessibility
 
-
 ---
 
 ### OBL-016 — Section 508 procurement standards
 
-| Field | Value |
-|---|---|
-| Source | U.S. Access Board (SRC-019) |
-| Authority type | regulation |
-| Citation | 36 CFR Part 1194 |
-| Locator | https://www.access-board.gov/ict/ |
-| Source version | 2017 refresh as amended 2018 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | NOT-APPLICABLE |
-| Trigger | SSLS sells information and communication technology to a federal agency. |
-| Control family | ACCESSIBILITY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | None |
-| Review requirement | none recorded |
-| Review trigger | Any federal sales intent |
+| Field              | Value                                                                    |
+| ------------------ | ------------------------------------------------------------------------ |
+| Source             | U.S. Access Board (SRC-019)                                              |
+| Authority type     | regulation                                                               |
+| Citation           | 36 CFR Part 1194                                                         |
+| Locator            | https://www.access-board.gov/ict/                                        |
+| Source version     | 2017 refresh as amended 2018                                             |
+| Verified on        | 2026-08-19                                                               |
+| Jurisdiction       | US-FEDERAL                                                               |
+| Applicability      | NOT-APPLICABLE                                                           |
+| Trigger            | SSLS sells information and communication technology to a federal agency. |
+| Control family     | ACCESSIBILITY                                                            |
+| Control status     | NOT-APPLICABLE                                                           |
+| Evidence status    | INAPPLICABLE                                                             |
+| Owning route       | None                                                                     |
+| Review requirement | none recorded                                                            |
+| Review trigger     | Any federal sales intent                                                 |
 
 **What the source states.** The Access Board states the standards apply to federal agencies and federal procurement.
 
@@ -189,23 +188,23 @@
 
 ### OBL-017 — European ICT accessibility requirements
 
-| Field | Value |
-|---|---|
-| Source | ETSI (SRC-020) |
-| Authority type | standard |
-| Citation | EN 301 549 V3.2.1 |
-| Locator | https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf |
-| Source version | V3.2.1 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | INTERNATIONAL |
-| Applicability | NOT-APPLICABLE |
-| Trigger | Entry to an EU or EEA market or sale to an EU public-sector body. |
-| Control family | ACCESSIBILITY |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | None |
-| Review requirement | none recorded |
-| Review trigger | Any European market intent |
+| Field              | Value                                                                                       |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| Source             | ETSI (SRC-020)                                                                              |
+| Authority type     | standard                                                                                    |
+| Citation           | EN 301 549 V3.2.1                                                                           |
+| Locator            | https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf |
+| Source version     | V3.2.1                                                                                      |
+| Verified on        | 2026-08-19                                                                                  |
+| Jurisdiction       | INTERNATIONAL                                                                               |
+| Applicability      | NOT-APPLICABLE                                                                              |
+| Trigger            | Entry to an EU or EEA market or sale to an EU public-sector body.                           |
+| Control family     | ACCESSIBILITY                                                                               |
+| Control status     | NOT-APPLICABLE                                                                              |
+| Evidence status    | INAPPLICABLE                                                                                |
+| Owning route       | None                                                                                        |
+| Review requirement | none recorded                                                                               |
+| Review trigger     | Any European market intent                                                                  |
 
 **What the source states.** ETSI publishes the harmonised standard; the legal force comes from EU directives.
 

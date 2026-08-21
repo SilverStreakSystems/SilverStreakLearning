@@ -19,9 +19,11 @@ Makes direction visible: what was chosen, what was declined, and which evidence 
 ## Who this serves
 
 Human beneficiaries:
+
 - Educators whose priorities are affected by what SSLS builds
 
 Enterprise beneficiaries:
+
 - Every downstream stream that inherits direction
 
 ## Trigger, entry, exit
@@ -29,10 +31,12 @@ Enterprise beneficiaries:
 Trigger: A signal, need, constraint, or opportunity is recorded and reaches strategic review.
 
 Entry criteria:
+
 - A named signal or need exists with a recorded source.
 - The signal is within the current governed boundary.
 
 Exit criteria:
+
 - A portfolio commitment or refusal is recorded with rationale and opportunity cost.
 - Downstream streams can see what was authorized and what was declined.
 
@@ -183,6 +187,7 @@ Decide whether Strategy → Portfolio may advance past review and rebalance.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - The signal has no source and cannot be traced.
 - The option would exceed the current governed boundary.
 - The evidence base is too thin to prioritize responsibly.
@@ -190,16 +195,19 @@ Refusal conditions:
 Rollback and recovery: A portfolio commitment may be paused or stopped by the decision authority; the reversal is recorded as a new decision that supersedes the earlier one.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Portfolio commitments carry recorded rationale and opportunity cost.
 - Declined options remain visible with their reason.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -214,13 +222,16 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Strategy silently becomes product requirement without passing through governance.
 - Assumptions are treated as evidence.
 
 Assumptions:
+
 - A single operator can hold strategy and governance at the current scale.
 
 Unknowns:
+
 - What cadence portfolio rebalancing should follow once more than one function exists.
 
 Review trigger: Any material change in boundary, evidence, or capacity.

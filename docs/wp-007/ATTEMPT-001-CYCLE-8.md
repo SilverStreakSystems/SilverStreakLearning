@@ -11,13 +11,13 @@ against the production build.
 
 ## What exists in the repository
 
-| Artifact | Status |
-|---|---|
-| `scripts/accessibility/serve.mjs` | Dormant tooling — serves the built worker locally |
-| `scripts/accessibility/inventory.mjs` | Dormant tooling — route inventory |
-| `scripts/accessibility/classify.mjs` | Dormant tooling — pure TTR-001 classification logic |
-| `scripts/accessibility/audit.mjs` | Dormant tooling — unfinished runner |
-| `playwright-core` dev dependency | Present, unused by any executed evidence |
+| Artifact                              | Status                                              |
+| ------------------------------------- | --------------------------------------------------- |
+| `scripts/accessibility/serve.mjs`     | Dormant tooling — serves the built worker locally   |
+| `scripts/accessibility/inventory.mjs` | Dormant tooling — route inventory                   |
+| `scripts/accessibility/classify.mjs`  | Dormant tooling — pure TTR-001 classification logic |
+| `scripts/accessibility/audit.mjs`     | Dormant tooling — unfinished runner                 |
+| `playwright-core` dev dependency      | Present, unused by any executed evidence            |
 
 ## What does not exist
 

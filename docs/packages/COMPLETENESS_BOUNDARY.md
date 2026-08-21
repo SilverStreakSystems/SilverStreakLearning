@@ -3,7 +3,6 @@
 > Generated from `data/packages/governed-packages.json` by `scripts/gen-governed-package-docs.ts`. Do not edit by hand.
 > A package summarizes governed state. It is not a register, it carries no authority, and it closes nothing.
 
-
 ## PKG-002 — v0.3.0 (SYNCHRONIZED-REFERENCE)
 
 The v0.3.0 package consists of exactly three supplied files: the governed rewrite PDF, the control workbook, and the SHA-256 manifest. The DOCX and ZIP named by the earlier v0.2.0 manifest were not supplied for this rewrite, are not part of v0.3.0, and are not represented as available v0.3.0 artifacts. v0.3.0 is therefore not a complete copy of the earlier four-artifact package.

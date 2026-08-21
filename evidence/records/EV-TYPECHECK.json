@@ -36,10 +36,6 @@
   "command": "bunx tsgo --noEmit",
   "actual_result": "Exit code 0.",
   "status": "pass",
-  "supports": [
-    "The project type-checked with the recorded outcome at the declared input set."
-  ],
-  "does_not_support": [
-    "Runtime correctness or the absence of logic defects."
-  ]
+  "supports": ["The project type-checked with the recorded outcome at the declared input set."],
+  "does_not_support": ["Runtime correctness or the absence of logic defects."]
 }

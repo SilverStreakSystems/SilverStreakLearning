@@ -93,12 +93,7 @@ function observationDoc(): string {
       );
     }
 
-    lines.push(
-      "### Non-effects",
-      "",
-      ...record.non_effects.map((entry) => `- ${entry}`),
-      "",
-    );
+    lines.push("### Non-effects", "", ...record.non_effects.map((entry) => `- ${entry}`), "");
   }
 
   return lines.join("\n");

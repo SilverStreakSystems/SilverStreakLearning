@@ -19,9 +19,11 @@ Makes failure legible so it is not repeated.
 ## Who this serves
 
 Human beneficiaries:
+
 - Anyone affected by a failure of the system
 
 Enterprise beneficiaries:
+
 - Security and Privacy, Support, Engineering, Governance
 
 ## Trigger, entry, exit
@@ -29,9 +31,11 @@ Enterprise beneficiaries:
 Trigger: A failure, harm, near-miss, or suspected breach is reported or detected.
 
 Entry criteria:
+
 - An incident report exists with what was observed and when.
 
 Exit criteria:
+
 - Service is restored, cause is recorded, and lessons are routed to learning.
 
 ## Authority separation
@@ -178,21 +182,25 @@ No gate is modelled on this stream. Every stage exit is still evidence-bound.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - Notification is suppressed for reputational reasons.
 - A cause analysis is asked to name a person as the root cause.
 
 Rollback and recovery: Reverse the change that caused the incident and re-validate before resuming.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Every incident has a recorded cause and a corrective action with an owner.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -207,13 +215,16 @@ Findings from this stream return to: `outcome-research`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Near-misses go unrecorded.
 - Corrective actions are closed without verification.
 
 Assumptions:
+
 - No live incidents exist at this stage.
 
 Unknowns:
+
 - What notification obligations apply once districts are live.
 
 Review trigger: Any incident, near-miss, or repeated corrective action.

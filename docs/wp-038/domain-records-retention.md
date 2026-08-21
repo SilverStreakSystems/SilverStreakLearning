@@ -4,31 +4,31 @@
 
 3 obligations in this domain.
 
-| ID | Title | Source | Applicability | Control status |
-|---|---|---|---|---|
-| OBL-006 | Written data retention and deletion policy for children's data | 16 CFR Part 312, 2025 amendments | CONDITIONAL | NOT-APPLICABLE |
-| OBL-008 | Massachusetts student-record destruction timelines | 603 CMR 23.06 | APPLIES-AT-PILOT | MISSING |
-| OBL-012 | Minimum standards for disposal of records containing personal information | M.G.L. c. 93I, s. 2 | CONDITIONAL | NOT-APPLICABLE |
+| ID      | Title                                                                     | Source                           | Applicability    | Control status |
+| ------- | ------------------------------------------------------------------------- | -------------------------------- | ---------------- | -------------- |
+| OBL-006 | Written data retention and deletion policy for children's data            | 16 CFR Part 312, 2025 amendments | CONDITIONAL      | NOT-APPLICABLE |
+| OBL-008 | Massachusetts student-record destruction timelines                        | 603 CMR 23.06                    | APPLIES-AT-PILOT | MISSING        |
+| OBL-012 | Minimum standards for disposal of records containing personal information | M.G.L. c. 93I, s. 2              | CONDITIONAL      | NOT-APPLICABLE |
 
 ### OBL-006 — Written data retention and deletion policy for children's data
 
-| Field | Value |
-|---|---|
-| Source | Federal Trade Commission (SRC-006) |
-| Authority type | regulation |
-| Citation | 16 CFR Part 312, 2025 amendments |
-| Locator | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf |
-| Source version | Amended rule, effective 2025-06-23 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-FEDERAL |
-| Applicability | CONDITIONAL |
-| Trigger | Same trigger as OBL-005. |
-| Control family | RETENTION & DELETION |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | First persistence work package |
-| Review requirement | PRIVACY REVIEW REQUIRED |
-| Review trigger | First persistence design |
+| Field              | Value                                                                |
+| ------------------ | -------------------------------------------------------------------- |
+| Source             | Federal Trade Commission (SRC-006)                                   |
+| Authority type     | regulation                                                           |
+| Citation           | 16 CFR Part 312, 2025 amendments                                     |
+| Locator            | https://www.govinfo.gov/content/pkg/FR-2025-04-22/pdf/2025-05904.pdf |
+| Source version     | Amended rule, effective 2025-06-23                                   |
+| Verified on        | 2026-08-19                                                           |
+| Jurisdiction       | US-FEDERAL                                                           |
+| Applicability      | CONDITIONAL                                                          |
+| Trigger            | Same trigger as OBL-005.                                             |
+| Control family     | RETENTION & DELETION                                                 |
+| Control status     | NOT-APPLICABLE                                                       |
+| Evidence status    | INAPPLICABLE                                                         |
+| Owning route       | First persistence work package                                       |
+| Review requirement | PRIVACY REVIEW REQUIRED                                              |
+| Review trigger     | First persistence design                                             |
 
 **What the source states.** This is a new requirement added by the 2025 amendments.
 
@@ -50,28 +50,27 @@
 
 **Claim refused.** Meets COPPA retention requirements
 
-
 ---
 
 ### OBL-008 — Massachusetts student-record destruction timelines
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts Board of Elementary and Secondary Education (SRC-007) |
-| Authority type | regulation |
-| Citation | 603 CMR 23.06 |
-| Locator | https://www.doe.mass.edu/lawsregs/603cmr23.html |
-| Source version | Amended 2026-01-27 |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | APPLIES-AT-PILOT |
-| Trigger | SSLS stores Massachusetts student-record data for a district. |
-| Control family | RETENTION & DELETION |
-| Control status | MISSING |
-| Evidence status | NOT-PRODUCED |
-| Owning route | First persistence work package |
-| Review requirement | LEGAL REVIEW REQUIRED |
-| Review trigger | First persistence design |
+| Field              | Value                                                               |
+| ------------------ | ------------------------------------------------------------------- |
+| Source             | Massachusetts Board of Elementary and Secondary Education (SRC-007) |
+| Authority type     | regulation                                                          |
+| Citation           | 603 CMR 23.06                                                       |
+| Locator            | https://www.doe.mass.edu/lawsregs/603cmr23.html                     |
+| Source version     | Amended 2026-01-27                                                  |
+| Verified on        | 2026-08-19                                                          |
+| Jurisdiction       | US-MA                                                               |
+| Applicability      | APPLIES-AT-PILOT                                                    |
+| Trigger            | SSLS stores Massachusetts student-record data for a district.       |
+| Control family     | RETENTION & DELETION                                                |
+| Control status     | MISSING                                                             |
+| Evidence status    | NOT-PRODUCED                                                        |
+| Owning route       | First persistence work package                                      |
+| Review requirement | LEGAL REVIEW REQUIRED                                               |
+| Review trigger     | First persistence design                                            |
 
 **What the source states.** 603 CMR 23.06 states the timelines. It addresses the district as record custodian.
 
@@ -99,23 +98,23 @@
 
 ### OBL-012 — Minimum standards for disposal of records containing personal information
 
-| Field | Value |
-|---|---|
-| Source | Massachusetts General Court (SRC-012) |
-| Authority type | statute |
-| Citation | M.G.L. c. 93I, s. 2 |
-| Locator | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93I/Section2 |
-| Source version | As codified |
-| Verified on | 2026-08-19 |
-| Jurisdiction | US-MA |
-| Applicability | CONDITIONAL |
-| Trigger | SSLS disposes of records containing narrow personal information. |
-| Control family | RETENTION & DELETION |
-| Control status | NOT-APPLICABLE |
-| Evidence status | INAPPLICABLE |
-| Owning route | Routed with OBL-009 |
-| Review requirement | SECURITY REVIEW REQUIRED |
-| Review trigger | First handling of narrow personal information |
+| Field              | Value                                                                        |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Source             | Massachusetts General Court (SRC-012)                                        |
+| Authority type     | statute                                                                      |
+| Citation           | M.G.L. c. 93I, s. 2                                                          |
+| Locator            | https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93I/Section2 |
+| Source version     | As codified                                                                  |
+| Verified on        | 2026-08-19                                                                   |
+| Jurisdiction       | US-MA                                                                        |
+| Applicability      | CONDITIONAL                                                                  |
+| Trigger            | SSLS disposes of records containing narrow personal information.             |
+| Control family     | RETENTION & DELETION                                                         |
+| Control status     | NOT-APPLICABLE                                                               |
+| Evidence status    | INAPPLICABLE                                                                 |
+| Owning route       | Routed with OBL-009                                                          |
+| Review requirement | SECURITY REVIEW REQUIRED                                                     |
+| Review trigger     | First handling of narrow personal information                                |
 
 **What the source states.** Section 2 states the disposal standards.
 

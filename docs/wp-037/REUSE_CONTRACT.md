@@ -4,15 +4,15 @@ A result may be carried forward to a later commit only when **all seven** condit
 failing condition ends reuse. Implemented as `evaluateReuse` in
 `scripts/evidence/applicability.mjs`.
 
-| # | Condition | Failure meaning |
-|---|---|---|
-| 1 | The declared input scope fully determines the result | Type must be re-executed at the commit under review |
-| 2 | Every declared input hash is unchanged | The subject moved; the result describes a different tree |
-| 3 | The recording environment covers the environment under review | The result is INAPPLICABLE here |
-| 4 | The declared validity window has not ended | The result is EXPIRED |
-| 5 | No later artifact supersedes it for the same scope | The successor governs |
-| 6 | No open finding invalidates the result | The finding must be dispositioned first |
-| 7 | The proposition cited lies within the record's `supports` list | The citation is overreach, not evidence |
+| #   | Condition                                                      | Failure meaning                                          |
+| --- | -------------------------------------------------------------- | -------------------------------------------------------- |
+| 1   | The declared input scope fully determines the result           | Type must be re-executed at the commit under review      |
+| 2   | Every declared input hash is unchanged                         | The subject moved; the result describes a different tree |
+| 3   | The recording environment covers the environment under review  | The result is INAPPLICABLE here                          |
+| 4   | The declared validity window has not ended                     | The result is EXPIRED                                    |
+| 5   | No later artifact supersedes it for the same scope             | The successor governs                                    |
+| 6   | No open finding invalidates the result                         | The finding must be dispositioned first                  |
+| 7   | The proposition cited lies within the record's `supports` list | The citation is overreach, not evidence                  |
 
 ## Required wording when reuse is exercised
 

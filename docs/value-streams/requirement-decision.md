@@ -19,9 +19,11 @@ Makes authority visible: who decided, on what basis, and when it will be reconsi
 ## Who this serves
 
 Human beneficiaries:
+
 - Anyone affected by a choice they did not make
 
 Enterprise beneficiaries:
+
 - Engineering, Product, Quality, Legal
 
 ## Trigger, entry, exit
@@ -29,10 +31,12 @@ Enterprise beneficiaries:
 Trigger: A requirement contains a material choice that cannot be resolved by an existing rule.
 
 Entry criteria:
+
 - A decision question is stated.
 - The requirement it serves is identified.
 
 Exit criteria:
+
 - A decision is recorded as accepted, refused, or deferred, with rationale and revisit trigger.
 
 ## Authority separation
@@ -207,6 +211,7 @@ Decide whether Requirement → Decision may advance past decision recorded.
 ## Refusal and rollback
 
 Refusal conditions:
+
 - No authorized decision authority is available.
 - The choice would breach a standing policy rule.
 - Evidence is stale relative to the decision's consequence.
@@ -214,15 +219,18 @@ Refusal conditions:
 Rollback and recovery: A decision may be superseded by a later decision that names it; the original stays on the record.
 
 Escalations:
+
 - A stalled stage escalates to the stream stop authority.
 - A refused gate escalates to the decision authority named for that gate.
 
 ## Measurement
 
 Outcome measures:
+
 - Decisions carry rationale, consequence, reversibility, and revisit trigger.
 
 Recorded metrics:
+
 - Items waiting beyond their maximum waiting state: undefined
 - Items returned for correction: undefined
 - Gate dispositions recorded: undefined
@@ -237,13 +245,16 @@ Findings from this stream return to: `governance-artifact-lifecycle`.
 ## Risks, assumptions, unknowns
 
 Risks:
+
 - Ambiguous shared accountability.
 - Silent decisions taken in implementation.
 
 Assumptions:
+
 - One operator currently holds most decision rights and records them honestly.
 
 Unknowns:
+
 - How decision rights redistribute when functions are first staffed.
 
 Review trigger: New evidence, changed constraint, or the recorded revisit trigger firing.

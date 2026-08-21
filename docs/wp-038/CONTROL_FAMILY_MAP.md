@@ -7,111 +7,111 @@ different vocabulary map to the same family rather than creating a new one.
 
 ## GOVERNANCE (4)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-003 | Protected-category survey notice and consent | SRC-003 | NOT-APPLICABLE |
-| OBL-022 | Cybersecurity risk management organising model | SRC-022 | MISSING |
-| OBL-023 | Independent security attestation expectation | SRC-027 | MISSING |
-| OBL-034 | Branch protection and change-control enforcement | SRC-025 | PARTIAL |
+| ID      | Obligation                                       | Source  | Control status |
+| ------- | ------------------------------------------------ | ------- | -------------- |
+| OBL-003 | Protected-category survey notice and consent     | SRC-003 | NOT-APPLICABLE |
+| OBL-022 | Cybersecurity risk management organising model   | SRC-022 | MISSING        |
+| OBL-023 | Independent security attestation expectation     | SRC-027 | MISSING        |
+| OBL-034 | Branch protection and change-control enforcement | SRC-025 | PARTIAL        |
 
 ## PRIVACY (3)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-001 | Education-record disclosure consent and use limitation | SRC-002 | NOT-APPLICABLE |
-| OBL-002 | Parental inspection and amendment of education records | SRC-002 | SPECIFICATION-ONLY |
-| OBL-005 | Verifiable parental consent for under-13 personal information | SRC-006 | NOT-APPLICABLE |
+| ID      | Obligation                                                    | Source  | Control status     |
+| ------- | ------------------------------------------------------------- | ------- | ------------------ |
+| OBL-001 | Education-record disclosure consent and use limitation        | SRC-002 | NOT-APPLICABLE     |
+| OBL-002 | Parental inspection and amendment of education records        | SRC-002 | SPECIFICATION-ONLY |
+| OBL-005 | Verifiable parental consent for under-13 personal information | SRC-006 | NOT-APPLICABLE     |
 
 ## IDENTITY & ACCESS (2)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
+| ID      | Obligation                                                           | Source  | Control status     |
+| ------- | -------------------------------------------------------------------- | ------- | ------------------ |
 | OBL-007 | Massachusetts student-record security and duty-limited vendor access | SRC-007 | SPECIFICATION-ONLY |
-| OBL-010 | Encryption and access control for personal information | SRC-011 | MISSING |
+| OBL-010 | Encryption and access control for personal information               | SRC-011 | MISSING            |
 
 ## DATA MINIMIZATION (1)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-033 | Zero personal data on the current surface | SRC-011 | IMPLEMENTED |
+| ID      | Obligation                                | Source  | Control status |
+| ------- | ----------------------------------------- | ------- | -------------- |
+| OBL-033 | Zero personal data on the current surface | SRC-011 | IMPLEMENTED    |
 
 ## RETENTION & DELETION (4)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-004 | IDEA confidentiality and destruction of special-education PII | SRC-004 | MISSING |
-| OBL-006 | Written data retention and deletion policy for children's data | SRC-006 | NOT-APPLICABLE |
-| OBL-008 | Massachusetts student-record destruction timelines | SRC-007 | MISSING |
+| ID      | Obligation                                                                | Source  | Control status |
+| ------- | ------------------------------------------------------------------------- | ------- | -------------- |
+| OBL-004 | IDEA confidentiality and destruction of special-education PII             | SRC-004 | MISSING        |
+| OBL-006 | Written data retention and deletion policy for children's data            | SRC-006 | NOT-APPLICABLE |
+| OBL-008 | Massachusetts student-record destruction timelines                        | SRC-007 | MISSING        |
 | OBL-012 | Minimum standards for disposal of records containing personal information | SRC-012 | NOT-APPLICABLE |
 
 ## ACCESSIBILITY (4)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-013 | District web and mobile accessibility conformance to WCAG 2.1 AA | SRC-017 | PARTIAL |
-| OBL-014 | Internal conformance target version | SRC-016 | PARTIAL |
-| OBL-016 | Section 508 procurement standards | SRC-019 | NOT-APPLICABLE |
-| OBL-017 | European ICT accessibility requirements | SRC-020 | NOT-APPLICABLE |
+| ID      | Obligation                                                       | Source  | Control status |
+| ------- | ---------------------------------------------------------------- | ------- | -------------- |
+| OBL-013 | District web and mobile accessibility conformance to WCAG 2.1 AA | SRC-017 | PARTIAL        |
+| OBL-014 | Internal conformance target version                              | SRC-016 | PARTIAL        |
+| OBL-016 | Section 508 procurement standards                                | SRC-019 | NOT-APPLICABLE |
+| OBL-017 | European ICT accessibility requirements                          | SRC-020 | NOT-APPLICABLE |
 
 ## SECURITY (1)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-009 | Written comprehensive information security program | SRC-011 | MISSING |
+| ID      | Obligation                                         | Source  | Control status |
+| ------- | -------------------------------------------------- | ------- | -------------- |
+| OBL-009 | Written comprehensive information security program | SRC-011 | MISSING        |
 
 ## VULNERABILITY MANAGEMENT (1)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-019 | Dependency vulnerability identification and remediation | SRC-025 | IMPLEMENTED |
+| ID      | Obligation                                              | Source  | Control status |
+| ------- | ------------------------------------------------------- | ------- | -------------- |
+| OBL-019 | Dependency vulnerability identification and remediation | SRC-025 | IMPLEMENTED    |
 
 ## SOFTWARE SUPPLY CHAIN (3)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-018 | Software bill of materials production | SRC-031 | IMPLEMENTED |
-| OBL-020 | Dependency licence posture | SRC-029 | PARTIAL |
-| OBL-021 | Build provenance and source integrity | SRC-030 | PARTIAL |
+| ID      | Obligation                            | Source  | Control status |
+| ------- | ------------------------------------- | ------- | -------------- |
+| OBL-018 | Software bill of materials production | SRC-031 | IMPLEMENTED    |
+| OBL-020 | Dependency licence posture            | SRC-029 | PARTIAL        |
+| OBL-021 | Build provenance and source integrity | SRC-030 | PARTIAL        |
 
 ## INCIDENT RESPONSE (1)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-011 | Breach notification to the data owner | SRC-010 | MISSING |
+| ID      | Obligation                            | Source  | Control status |
+| ------- | ------------------------------------- | ------- | -------------- |
+| OBL-011 | Breach notification to the data owner | SRC-010 | MISSING        |
 
 ## VENDOR MANAGEMENT (1)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-031 | District data privacy agreement execution | SRC-042 | MISSING |
+| ID      | Obligation                                | Source  | Control status |
+| ------- | ----------------------------------------- | ------- | -------------- |
+| OBL-031 | District data privacy agreement execution | SRC-042 | MISSING        |
 
 ## INTEROPERABILITY (3)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-028 | Roster and enrolment data exchange | SRC-038 | SPECIFICATION-ONLY |
-| OBL-029 | Program and service data exchange with state systems | SRC-039 | MISSING |
-| OBL-030 | Deferred interoperability specifications | SRC-040 | NOT-APPLICABLE |
+| ID      | Obligation                                           | Source  | Control status     |
+| ------- | ---------------------------------------------------- | ------- | ------------------ |
+| OBL-028 | Roster and enrolment data exchange                   | SRC-038 | SPECIFICATION-ONLY |
+| OBL-029 | Program and service data exchange with state systems | SRC-039 | MISSING            |
+| OBL-030 | Deferred interoperability specifications             | SRC-040 | NOT-APPLICABLE     |
 
 ## AI GOVERNANCE (2)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-024 | AI risk management before any AI feature | SRC-033 | NOT-APPLICABLE |
+| ID      | Obligation                                    | Source  | Control status |
+| ------- | --------------------------------------------- | ------- | -------------- |
+| OBL-024 | AI risk management before any AI feature      | SRC-033 | NOT-APPLICABLE |
 | OBL-027 | Colorado automated decision-making watch item | SRC-037 | NOT-APPLICABLE |
 
 ## CLAIMS / TRANSPARENCY (3)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
-| OBL-015 | Accessibility conformance report as self-disclosure | SRC-021 | MISSING |
-| OBL-025 | Existing law applies to AI claims and behaviour | SRC-014 | IMPLEMENTED |
-| OBL-032 | Accuracy of public claims on the published prototype | SRC-014 | IMPLEMENTED |
+| ID      | Obligation                                           | Source  | Control status |
+| ------- | ---------------------------------------------------- | ------- | -------------- |
+| OBL-015 | Accessibility conformance report as self-disclosure  | SRC-021 | MISSING        |
+| OBL-025 | Existing law applies to AI claims and behaviour      | SRC-014 | IMPLEMENTED    |
+| OBL-032 | Accuracy of public claims on the published prototype | SRC-014 | IMPLEMENTED    |
 
 ## HUMAN REVIEW (1)
 
-| ID | Obligation | Source | Control status |
-|---|---|---|---|
+| ID      | Obligation                                | Source  | Control status     |
+| ------- | ----------------------------------------- | ------- | ------------------ |
 | OBL-026 | Developer-directed AI design expectations | SRC-036 | SPECIFICATION-ONLY |
 
 ## Families with no recorded obligation

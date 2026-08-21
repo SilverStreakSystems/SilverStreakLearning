@@ -52,12 +52,8 @@
       "requirement_family": "claim-discipline",
       "modality_as_worded": "UNSTATED",
       "matched_current_requirement_ids": [],
-      "relationship_type": [
-        "NEW"
-      ],
-      "relationship_rows": [
-        "RST-012"
-      ],
+      "relationship_type": ["NEW"],
+      "relationship_rows": ["RST-012"],
       "relationship_rationale": "The August 5 target sentence has no counterpart in the HS-011 restatement; FND-016 records that HS-011 names no WCAG version in its own text.",
       "substantive_delta": "The historical sentence names a specific accessibility target — WCAG 2.2 AA-informed — and pairs it with its own refusal of an independent conformance claim. HS-011 carries an equivalent refusal (HREQ-014) but names no WCAG version in its own text (FND-016). The delta is therefore the named version and level, not the refusal.",
       "scope_or_authority_implication": "Version naming is an authority question, not an interface question. DEC-012 already names WCAG 2.2 Level AA as the internal target, so adopting this wording could either corroborate DEC-012 or create a second place where the target is stated.",
@@ -100,18 +96,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-001",
-        "HREQ-002"
-      ],
-      "relationship_type": [
-        "BROADENS",
-        "RESTATES"
-      ],
-      "relationship_rows": [
-        "RST-001",
-        "RST-002"
-      ],
+      "matched_current_requirement_ids": ["HREQ-001", "HREQ-002"],
+      "relationship_type": ["BROADENS", "RESTATES"],
+      "relationship_rows": ["RST-001", "RST-002"],
       "relationship_rationale": "Both statements require semantic landmark structure; the historical v0.2.0 wording adds headings to the same bullet. 'Semantic headings' covers heading structure generally, where the HS-011 row states the narrower rule of exactly one top-level heading per view.",
       "substantive_delta": "The bullet couples headings and landmarks in one expectation. HS-011 states landmarks (HREQ-001) and the one-H1 rule (HREQ-002) as two separate, more testable rows.",
       "scope_or_authority_implication": "Interface-level only. Adoption would not raise any authority; the HS-011 rows are already the more specific statement of the same expectation.",
@@ -154,15 +141,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-003"
-      ],
-      "relationship_type": [
-        "BROADENS"
-      ],
-      "relationship_rows": [
-        "RST-003"
-      ],
+      "matched_current_requirement_ids": ["HREQ-003"],
+      "relationship_type": ["BROADENS"],
+      "relationship_rows": ["RST-003"],
       "relationship_rationale": "The historical v0.2.0 bullet names the skip link only; the HS-011 row additionally fixes its tab position and its target.",
       "substantive_delta": "The historical bullet names the skip link only. HS-011 (HREQ-003) additionally fixes its tab position and its target, so the current row is strictly more specific.",
       "scope_or_authority_implication": "Interface-level only.",
@@ -205,15 +186,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-004"
-      ],
-      "relationship_type": [
-        "BROADENS"
-      ],
-      "relationship_rows": [
-        "RST-004"
-      ],
+      "matched_current_requirement_ids": ["HREQ-004"],
+      "relationship_type": ["BROADENS"],
+      "relationship_rows": ["RST-004"],
       "relationship_rationale": "The historical v0.2.0 bullet extends keyboard operability to controls, where the HS-011 row states navigation between sections.",
       "substantive_delta": "The historical bullet extends keyboard operability to controls. HS-011 (HREQ-004) states navigation between sections only, so 'and controls' is an expectation the current contract does not carry in words.",
       "scope_or_authority_implication": "Interface-level, but genuinely wider: it brings every interactive control into scope rather than navigation alone.",
@@ -256,15 +231,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-006"
-      ],
-      "relationship_type": [
-        "BROADENS"
-      ],
-      "relationship_rows": [
-        "RST-005"
-      ],
+      "matched_current_requirement_ids": ["HREQ-006"],
+      "relationship_type": ["BROADENS"],
+      "relationship_rows": ["RST-005"],
       "relationship_rationale": "The historical v0.2.0 bullet requires a visible focus indicator without the dual-color treatment the HS-011 row specifies.",
       "substantive_delta": "The historical bullet requires a visible focus indicator without the dual-color treatment HS-011 (HREQ-006) specifies.",
       "scope_or_authority_implication": "Interface-level only.",
@@ -308,12 +277,8 @@
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
       "matched_current_requirement_ids": [],
-      "relationship_type": [
-        "NEW"
-      ],
-      "relationship_rows": [
-        "RST-013"
-      ],
+      "relationship_type": ["NEW"],
+      "relationship_rows": ["RST-013"],
       "relationship_rationale": "Programmatic names are not stated as a separate row in the HS-011 restatement.",
       "substantive_delta": "Programmatic names are not stated as a row in HS-011 at all. This is an expectation the current acceptance contract does not carry in words, even though the interface partly implements it.",
       "scope_or_authority_implication": "Interface-level, and it names the accessible-name mechanism HS-011 leaves implicit in HREQ-005.",
@@ -357,12 +322,8 @@
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
       "matched_current_requirement_ids": [],
-      "relationship_type": [
-        "NEW"
-      ],
-      "relationship_rows": [
-        "RST-014"
-      ],
+      "relationship_type": ["NEW"],
+      "relationship_rows": ["RST-014"],
       "relationship_rationale": "Table captions and header cells are not stated in the HS-011 restatement.",
       "substantive_delta": "Table captions and header cells are not stated anywhere in HS-011. Governed registers are rendered largely as tables, so the expectation is directly relevant to the current interface.",
       "scope_or_authority_implication": "Interface-level only.",
@@ -405,15 +366,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "PROHIBITION",
-      "matched_current_requirement_ids": [
-        "HREQ-007"
-      ],
-      "relationship_type": [
-        "RESTATES"
-      ],
-      "relationship_rows": [
-        "RST-006"
-      ],
+      "matched_current_requirement_ids": ["HREQ-007"],
+      "relationship_type": ["RESTATES"],
+      "relationship_rows": ["RST-006"],
       "relationship_rationale": "Both state the same prohibition on color-only status.",
       "substantive_delta": "No substantive delta. Both wordings state the same prohibition on status carried by color alone.",
       "scope_or_authority_implication": "None. Adoption would not change the expectation.",
@@ -456,15 +411,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-012"
-      ],
-      "relationship_type": [
-        "BROADENS"
-      ],
-      "relationship_rows": [
-        "RST-007"
-      ],
+      "matched_current_requirement_ids": ["HREQ-012"],
+      "relationship_type": ["BROADENS"],
+      "relationship_rows": ["RST-007"],
       "relationship_rationale": "'Contrast review' names an activity, where the HS-011 row names measured contrast ratios.",
       "substantive_delta": "'Contrast review' names an activity. HS-011 (HREQ-012) names measured contrast ratios, which is the more verifiable statement.",
       "scope_or_authority_implication": "Interface and process. The historical wording implies a reviewer and a cadence that neither source names.",
@@ -507,15 +456,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-010"
-      ],
-      "relationship_type": [
-        "NARROWS"
-      ],
-      "relationship_rows": [
-        "RST-008"
-      ],
+      "matched_current_requirement_ids": ["HREQ-010"],
+      "relationship_type": ["NARROWS"],
+      "relationship_rows": ["RST-008"],
       "relationship_rationale": "The historical v0.2.0 bullet fixes reflow at a 320-pixel width, where the HS-011 row states responsive reflow without a figure.",
       "substantive_delta": "The historical bullet adds a numeric 320-pixel reflow width to the 200% zoom expectation HS-011 (HREQ-010) states without a figure.",
       "scope_or_authority_implication": "Interface-level, and it converts an unverifiable statement into a measurable one.",
@@ -559,12 +502,8 @@
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
       "matched_current_requirement_ids": [],
-      "relationship_type": [
-        "NEW"
-      ],
-      "relationship_rows": [
-        "RST-015"
-      ],
+      "relationship_type": ["NEW"],
+      "relationship_rows": ["RST-015"],
       "relationship_rationale": "Touch target sizing is not stated in the HS-011 restatement.",
       "substantive_delta": "Touch target sizing has no counterpart in HS-011, but the historical wording states no minimum dimension.",
       "scope_or_authority_implication": "Interface-level. Without a figure the expectation cannot be tested as written.",
@@ -607,15 +546,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-009"
-      ],
-      "relationship_type": [
-        "RESTATES"
-      ],
-      "relationship_rows": [
-        "RST-009"
-      ],
+      "matched_current_requirement_ids": ["HREQ-009"],
+      "relationship_type": ["RESTATES"],
+      "relationship_rows": ["RST-009"],
       "relationship_rationale": "Both require reduced-motion support.",
       "substantive_delta": "No substantive delta. Both wordings require reduced-motion support.",
       "scope_or_authority_implication": "None.",
@@ -658,15 +591,9 @@
       },
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "PROHIBITION",
-      "matched_current_requirement_ids": [
-        "HREQ-008"
-      ],
-      "relationship_type": [
-        "NARROWS"
-      ],
-      "relationship_rows": [
-        "RST-010"
-      ],
+      "matched_current_requirement_ids": ["HREQ-008"],
+      "relationship_type": ["NARROWS"],
+      "relationship_rows": ["RST-010"],
       "relationship_rationale": "The historical v0.2.0 bullet limits the no-content-loss expectation to horizontal table scrolling, where the HS-011 row states that essential text is not truncated anywhere.",
       "substantive_delta": "The historical bullet limits the no-content-loss expectation to horizontal table scrolling. HS-011 (HREQ-008) prohibits truncation of essential text anywhere, so the historical wording is the narrower one.",
       "scope_or_authority_implication": "Interface-level. Adopting the narrower wording as a replacement would reduce coverage; adopting it alongside would add a specific case.",
@@ -710,12 +637,8 @@
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "MUST",
       "matched_current_requirement_ids": [],
-      "relationship_type": [
-        "NEW"
-      ],
-      "relationship_rows": [
-        "RST-016"
-      ],
+      "relationship_type": ["NEW"],
+      "relationship_rows": ["RST-016"],
       "relationship_rationale": "Plain-language refusal and error wording is not stated as an accessibility row in the HS-011 restatement.",
       "substantive_delta": "Plain-language refusal and error wording has no counterpart in HS-011 as an accessibility row, although the repository already writes refusals in plain language as a matter of practice.",
       "scope_or_authority_implication": "Interface and content. It ties accessibility to the refusal language the governance surfaces already use.",
@@ -759,12 +682,8 @@
       "requirement_family": "accessibility-interface",
       "modality_as_worded": "PROHIBITION",
       "matched_current_requirement_ids": [],
-      "relationship_type": [
-        "NEW"
-      ],
-      "relationship_rows": [
-        "RST-017"
-      ],
+      "relationship_type": ["NEW"],
+      "relationship_rows": ["RST-017"],
       "relationship_rationale": "Auto-updating content and announcement are not stated in the HS-011 restatement.",
       "substantive_delta": "Announcement of auto-updating content has no counterpart in HS-011.",
       "scope_or_authority_implication": "Interface-level. The current build has few auto-updating surfaces, so the expectation is mostly forward-looking.",
@@ -807,15 +726,9 @@
       },
       "requirement_family": "evidence-verification",
       "modality_as_worded": "MUST",
-      "matched_current_requirement_ids": [
-        "HREQ-011"
-      ],
-      "relationship_type": [
-        "BROADENS"
-      ],
-      "relationship_rows": [
-        "RST-011"
-      ],
+      "matched_current_requirement_ids": ["HREQ-011"],
+      "relationship_type": ["BROADENS"],
+      "relationship_rows": ["RST-011"],
       "relationship_rationale": "The historical v0.2.0 sentence states what accessibility evidence must record for any scenario, where the HS-011 row names a screen reader walkthrough as one such activity.",
       "substantive_delta": "The historical sentence enumerates the fields accessibility evidence must record. HS-011 (HREQ-011) names a screen reader walkthrough as one activity but states no evidence schema.",
       "scope_or_authority_implication": "Evidence and verification, not interface. It bears directly on the WP-037 evidence architecture already in the repository.",
