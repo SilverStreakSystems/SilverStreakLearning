@@ -2,8 +2,10 @@
 
 Public synthetic prototype for Silver Streak Learning Systems (SSLS). Every
 record in the interface is synthetic. The application holds no personal data,
-no district data, no production data, no AI features, no backend, no
-authentication, and no external integrations.
+no district data, no production data, no user sign-in or accounts, and no
+external integrations. `DEC-024` authorizes artificial-intelligence features
+and the Supabase backend services that serve them, for the owner's own creative
+writing only; no AI feature is implemented in the interface yet.
 
 Governance canon lives in `docs/`. The canonical program state is
 `docs/CURRENT_STATE.md`, which is generated — never hand edited — from the
@@ -162,7 +164,10 @@ claimed. FND-024 records that verification gap.
 
 ## Current limitations
 
-- No backend, database, authentication, or AI features.
+- No user sign-in, accounts, tenancy, or implemented AI features. `DEC-024`
+  authorizes AI and the Supabase backend that serves it for the owner's own
+  creative writing only; the platform-generated integration in
+  `src/integrations/supabase` is backend plumbing, not a user-facing feature.
 - Governance surfaces are fixture-derived and reset on reload. The Product Alpha
   001 product surface persists its synthetic data in browser-local storage only:
   there is no server backup, sharing, or synchronization, and clearing browser
@@ -183,10 +188,11 @@ Persistence is browser-local behind a repository interface, with
 seed/reset/export/import. There is no server backup, no sharing, and no
 synchronization; clearing browser storage loses the data unless it was exported.
 
-Explicitly out of scope and unauthorized: authentication, tenant model, cloud
-database, backend, RLS, AI, real PII, district integrations, analytics,
-conformance claim, release claim. Backend and authentication are a later
-architecture decision, taken only after the workflow is proven.
+Explicitly out of scope and unauthorized for Product Alpha 001:
+authentication, tenant model, cloud database, backend, RLS, AI, real PII,
+district integrations, analytics, conformance claim, release claim. `DEC-024`
+authorizes AI and its backend for the owner's own creative writing; it does not
+widen this slice, whose next step is still the deterministic LLR-001 rule.
 
 The implementation is a technical proof only. It is **not released, not
 validated, and not certified**: mechanics were tested, usefulness was not. The

@@ -133,7 +133,7 @@ describe("program state is derived, not restated", () => {
   });
 
   it("no longer leads with the deferred audit as the next action", () => {
-    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-023");
+    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-024");
     expect(PROGRAM_STATE.nextDefensibleOwnerAction.action).toMatch(
       /founder\/operator walkthrough of Product Alpha 001.*TTR-001 audit/i,
     );
@@ -327,7 +327,7 @@ describe("single source of truth", () => {
     }
     const finding = FINDINGS.find((record) => record.id === "FND-024");
     expect(finding?.resolutionState).toBe("blocked");
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-023");
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-024");
     expect(PROGRAM_STATE.deferredDebt.some((entry) => entry.recordId === finding?.id)).toBe(true);
   });
 });

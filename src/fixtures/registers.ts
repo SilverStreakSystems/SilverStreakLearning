@@ -1625,6 +1625,32 @@ export const DECISIONS: DecisionRecord[] = [
     relatedArtifacts: ["SSLS-BPP-001", "PRODUCT-ALPHA-001", "LLR-001", "TTR-001"],
     synthetic: false,
   },
+  {
+    id: "DEC-024",
+    title:
+      "Authorize artificial-intelligence features and the Supabase backend that serves them, for the owner's own creative writing",
+    state: "accepted",
+    decidedOn: "2026-09-29",
+    decidedBy: "Founder / Operator",
+    context:
+      'Commit 29008c3 ("Enabled AI for the project", made by the Lovable platform on 2026-08-23) added a Supabase integration — a browser client, a server client, server-function auth middleware, and generated types — and wired its auth attacher into src/start.ts. DEC-023 and the runtime-trust-spine boundary excluded both artificial intelligence and a backend, so the tracked tree contradicted its own controlling record, and the aggregate verification command failed on the generated files. The owner has now stated the approval and its scope explicitly.',
+    decision:
+      "RECORDED BY OWNER. Artificial-intelligence features are authorized for this project, together with the Supabase backend services and the platform-generated server plumbing they depend on. The only data an AI feature may process is the owner's own creative writing, which is the owner's personal work. This authorization expressly EXCLUDES user sign-in and accounts, tenancy, learner or district data, and any real personal data of other people. It does not expand Product Alpha 001: the learning loop remains local-only and synthetic, and its next step is still computed by the deterministic rule LLR-001, not by an AI system. It closes no finding, closes no work package, closes no gate, records no accessibility result, and authorizes no release.",
+    consequences: [
+      "DEC-024 is the controlling decision across the control plane. The next defensible owner action is unchanged: the Product Alpha 001 founder/operator walkthrough.",
+      "AI output is advisory. Nothing an AI feature produces becomes a governed record, evidence, a decision, or product data unless a person accepts it.",
+      "The Supabase integration under src/integrations/supabase is platform-generated and marked as not to be edited. It is excluded from lint and formatting because the platform regenerates it; it is not authored in this repository.",
+      "The auth plumbing that integration adds — the server-function auth attacher and middleware — is permitted only as backend infrastructure. It does not authorize sign-in screens, accounts, or any user-facing authentication.",
+      "This decision implements no AI feature in the learning loop or the governance workspace. Any such feature needs its own scoped work, tests, and evidence.",
+      "WP-007 remains ACTIVE; Gate A remains OPEN; WP-039, Cycle 9, user authentication, tenancy, and real personal data of anyone other than the owner remain unauthorized.",
+    ],
+    authorityClass: "current-summary",
+    recordState: "current",
+    supersedes: [],
+    supersededBy: null,
+    relatedArtifacts: ["DEC-023", "PRODUCT-ALPHA-001", "PLAN-RUNTIME-TRUST-SPINE", "LLR-001"],
+    synthetic: false,
+  },
 ];
 
 export const CLAIMS: ClaimRecord[] = [

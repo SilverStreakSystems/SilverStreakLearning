@@ -2,12 +2,12 @@
   "manifest_id": "CURRENT-STATE-INPUTS",
   "manifest_version": "1.1.0",
   "output": "docs/CURRENT_STATE.md",
-  "fingerprint": "85f733483dd486123805e088d199a828ab33f85942730faf88e6fac9790968aa",
+  "fingerprint": "fb556c8dc09e716f80ed79793a51c7f6634d4ecf7331faab02798f64e6025add",
   "inputs": [
     {
       "path": "src/fixtures/registers.ts",
-      "sha256": "66525d0853c4817581f92c38a747dff7c9e62f4ded4f69cdcc9a23d03136b575",
-      "bytes": 128887
+      "sha256": "e1de8a10d3c59496b70ea03cf033589f1931f17e9fccad1a3cffc219e45b991a",
+      "bytes": 131886
     },
     {
       "path": "src/fixtures/program.ts",
@@ -26,8 +26,8 @@
     },
     {
       "path": "data/program/program-policy.json",
-      "sha256": "4f9b4b0925e7769ac59cc425088a6aea4b26793929ee18fb8e491ab7155be356",
-      "bytes": 8686
+      "sha256": "4ea2a9ea6e73d9ede39805324d470e656b651aab87ccb140d9cd2aabac4e706b",
+      "bytes": 8886
     },
     {
       "path": "data/program/checkpoints.json",

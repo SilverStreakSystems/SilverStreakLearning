@@ -5,9 +5,9 @@
 > established by regenerating it from the declared inputs and comparing the
 > input fingerprint below.
 
-Controlling decision: DEC-023. State date: 2026-08-20.
+Controlling decision: DEC-024. State date: 2026-09-29.
 Declared input manifest: `data/current-state/current-state-inputs.json`.
-Input fingerprint: `85f733483dd486123805e088d199a828ab33f85942730faf88e6fac9790968aa`.
+Input fingerprint: `fb556c8dc09e716f80ed79793a51c7f6634d4ecf7331faab02798f64e6025add`.
 
 Authority class: current summary, executor-run, not independent. This document
 records state. It approves nothing, closes nothing, and authorizes nothing.
@@ -20,7 +20,7 @@ records state. It approves nothing, closes nothing, and authorizes nothing.
 | Active work package | WP-007 — ACTIVE | WP-007 |
 | Latest checkpoint | CHECKPOINT-010 (2026-08-20) | docs/product-alpha-001/CHECKPOINT-010.md |
 | Latest attempt | ATTEMPT-001 — ABORTED-DEFERRED | docs/wp-007/ATTEMPT-001-CYCLE-8.md |
-| Owner disposition | ACCEPTED | DEC-023 |
+| Owner disposition | ACCEPTED | DEC-024 |
 | TTR-001 execution | NOT-RUN | FND-024 |
 
 Gate A is not closed. Gate A remains open. No cycle, checkpoint, attempt, test result, or package registration closes a gate; only a recorded owner decision does.
@@ -37,7 +37,7 @@ No audit artifact exists. No route, component, or control was measured or classi
 
 | Register | Rows |
 |---|---|
-| Decisions | 23 |
+| Decisions | 24 |
 | Findings | 24 (14 not confirmed resolved) |
 | Evidence | 46 |
 | Claims | 13 (10 refused) |
@@ -58,7 +58,7 @@ No audit artifact exists. No route, component, or control was measured or classi
 - **CYCLE-8** — Execution of the TTR-001 verification protocol is deferred by DEC-022 and is not authorized now. The partial runner under scripts/accessibility/ is dormant development tooling; it measured nothing and produced no audit evidence. No Cycle 9 is authorized either.
 - **TOUCH-TARGET-AUDIT** — No route, component, or control has been measured or classified against TTR-001, so the interface is unmeasured rather than passing. FND-024 stays open as deferred debt.
 - **HREQ-IMPLEMENTATION** — Implementation or assessment of the disposed requirement candidates is not authorized. The seven candidates adopted under DEC-020 remain candidates that are not assessed and not implemented, HREQ-025 remains NEEDS-EVIDENCE / DEFER and is not rewritten, and no accessibility conformance is claimed for any of them.
-- **RUNTIME-TRUST-SPINE** — The runtime trust spine remains plan-only. No backend, authentication, database, server-side storage, tenancy, artificial intelligence, or real personal data is authorized. Product Alpha 001, authorized by DEC-023, is a local-only synthetic slice held in one browser and does not implement, start, or imply any part of the runtime trust spine.
+- **RUNTIME-TRUST-SPINE** — The runtime trust spine remains plan-only. DEC-024 authorizes artificial-intelligence features and the Supabase backend services that serve them, for the owner's own creative writing only. User sign-in and accounts, tenancy, learner or district data, and real personal data of anyone other than the owner remain unauthorized, and no part of the trust spine is implemented. Product Alpha 001, authorized by DEC-023, is a local-only synthetic slice held in one browser and does not implement, start, or imply any part of the runtime trust spine.
 - **PKG-002-PROMOTION** — Promotion of PKG-002 to canonical is not authorized. It remains a synchronized reference.
 - **DRIFT-RESOLUTION** — Resolution of the recorded package drift rows is not authorized. Each remains unresolved.
 - **PRODUCT-ALPHA-001-SCOPE** — Work beyond the authorized Product Alpha 001 slice is not authorized. The slice covers fictional learners, one goal at a time, observations, support actions, results, and the deterministic LLR-001 next step, held in browser-local storage. Accounts, sharing, reporting, export to district systems, artificial-intelligence features, and any real personal data are outside it. A bounded PRODUCT-ALPHA-001-EXPANSION stage remains unauthorized: no expansion beyond this exact local synthetic proof is authorized, no new work package is opened for it, and it is not a WP-007 cycle.

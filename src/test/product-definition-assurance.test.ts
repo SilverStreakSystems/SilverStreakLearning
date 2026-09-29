@@ -176,7 +176,9 @@ describe("Wave 0 projection", () => {
   it("states a bounded personal-data non-claim and refuses categorical absence", () => {
     const snapshot = readSnapshot();
     const statement = snapshot.inventories.persistence.personal_data;
-    expect(snapshot.inventories.persistence.backend).toContain("No database");
+    // The Supabase integration is present and authorized only as DEC-024 bounds it.
+    expect(snapshot.inventories.persistence.backend).toContain("authorized by DEC-024");
+    expect(snapshot.inventories.persistence.backend).toContain("No user sign-in, accounts");
     expect(statement).toContain("prohibited and not intentionally introduced");
     expect(statement).toContain("review-required");
     expect(statement).toContain("does not establish the absence");

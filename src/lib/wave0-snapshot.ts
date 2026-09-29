@@ -230,7 +230,7 @@ export function buildWave0Inventories(): Wave0Inventories {
     },
     persistence: {
       backend: existsSync(join(ROOT, "src/integrations/supabase"))
-        ? "integration directory present"
+        ? "A platform-generated Supabase integration is present, authorized by DEC-024 only as backend services for AI features over the owner's own creative writing. No user sign-in, accounts, tenancy, or learner data is authorized."
         : "No database, backend authentication, or row-level security exists in the tracked tree.",
       personal_data:
         "Real personal data is prohibited and not intentionally introduced; every product record is synthetic and marked as such in the fixtures. The automated boundary scan (EV-PII) remains review-required: it reported one inspected test-token candidate and does not establish the absence of personal data.",
