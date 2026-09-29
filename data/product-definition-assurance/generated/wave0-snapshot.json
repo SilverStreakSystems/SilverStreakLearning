@@ -5,7 +5,7 @@
   "declaration": {
     "snapshot_id": "PDA-WAVE0",
     "snapshot_version": "0.2.0",
-    "controlling_decision": "DEC-023",
+    "controlling_decision": "DEC-024",
     "authority_class": "candidate",
     "boundary": [
       "This snapshot maps what exists. It approves nothing, closes nothing, adopts no requirement, and promotes no claim.",
@@ -555,9 +555,9 @@
       ]
     },
     "registers": {
-      "decisions": 23,
+      "decisions": 24,
       "decisions_by_state": {
-        "accepted": 17,
+        "accepted": 18,
         "required": 4,
         "pending": 1,
         "superseded": 1
@@ -598,9 +598,9 @@
       ]
     },
     "persistence": {
-      "backend": "No database, backend authentication, or row-level security exists in the tracked tree.",
+      "backend": "A platform-generated Supabase integration is present, authorized by DEC-024 only as backend services for AI features over the owner's own creative writing. No user sign-in, accounts, tenancy, or learner data is authorized.",
       "personal_data": "Real personal data is prohibited and not intentionally introduced; every product record is synthetic and marked as such in the fixtures. The automated boundary scan (EV-PII) remains review-required: it reported one inspected test-token candidate and does not establish the absence of personal data."
     }
   },
-  "input_fingerprint": "5fcf821202c5e50e5ab85e1610e6e55f042129403c1823e792620be9a4d886dc"
+  "input_fingerprint": "c71a6b615c4307573a9305597de7ca4e053b9fc3d266f0d61159ac7fd334bc2f"
 }

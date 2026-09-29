@@ -84,18 +84,46 @@ describe("checkpoint register resolves", () => {
 });
 
 describe("one controlling decision across the control plane", () => {
-  it("points policy, manifest, disposition, and next action at DEC-023", () => {
-    expect(policy.controlling_decision).toBe("DEC-023");
-    expect(loadInputManifest().controlling_decision).toBe("DEC-023");
-    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-023");
-    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-023");
+  it("points policy, manifest, disposition, and next action at DEC-024", () => {
+    expect(policy.controlling_decision).toBe("DEC-024");
+    expect(loadInputManifest().controlling_decision).toBe("DEC-024");
+    expect(PROGRAM_STATE.ownerDisposition.obligationSource.recordId).toBe("DEC-024");
+    expect(PROGRAM_STATE.nextDefensibleOwnerAction.source.recordId).toBe("DEC-024");
     const latestAccepted = [...DECISIONS.filter((decision) => decision.state === "accepted")].sort(
       (a, b) =>
         (a.decidedOn ?? "") === (b.decidedOn ?? "")
           ? a.id.localeCompare(b.id)
           : (a.decidedOn ?? "").localeCompare(b.decidedOn ?? ""),
     );
-    expect(latestAccepted.at(-1)?.id).toBe("DEC-023");
+    expect(latestAccepted.at(-1)?.id).toBe("DEC-024");
+  });
+
+  it("keeps DEC-024 bounded to AI and its backend, for the owner's own writing", () => {
+    const decision = DECISIONS.find((record) => record.id === "DEC-024");
+    expect(decision?.state).toBe("accepted");
+    expect(decision?.decision).toMatch(/owner's own creative writing/);
+    for (const excluded of [
+      /user sign-in and accounts/,
+      /tenancy/,
+      /learner or district data/,
+      /real personal data of other people/,
+      /does not expand Product Alpha 001/,
+      /closes no gate/,
+      /authorizes no release/,
+    ]) {
+      expect(decision?.decision).toMatch(excluded);
+    }
+    const spine = policy.unauthorized_stages.find(
+      (stage) => stage.stage_id === "RUNTIME-TRUST-SPINE",
+    );
+    expect(spine?.statement).toMatch(/DEC-024/);
+    expect(spine?.statement).toMatch(/User sign-in and accounts, tenancy/);
+    // Product Alpha 001 keeps its own scope record; DEC-024 does not widen it.
+    const productScope = policy.unauthorized_stages.find(
+      (stage) => stage.stage_id === "PRODUCT-ALPHA-001-SCOPE",
+    );
+    expect(productScope?.source.record_id).toBe("DEC-023");
+    expect(productScope?.statement).toMatch(/artificial-intelligence features/);
   });
 
   it("resolves every file-backed owner-supporting source", () => {
@@ -163,7 +191,10 @@ describe("posture that must not have moved", () => {
     expect(stages["CYCLE-8"]).toMatch(/No Cycle 9 is authorized/i);
     expect(stages["PRODUCT-ALPHA-001-SCOPE"]).toMatch(/PRODUCT-ALPHA-001-EXPANSION/);
     expect(stages["PRODUCT-ALPHA-001-SCOPE"]).toMatch(/not a WP-007 cycle/i);
-    expect(stages["RUNTIME-TRUST-SPINE"]).toMatch(/No backend, authentication, database/i);
+    // DEC-024 narrowed the spine boundary: AI and its backend are authorized for the
+    // owner's own writing; sign-in, accounts, tenancy, and others' data are not.
+    expect(stages["RUNTIME-TRUST-SPINE"]).toMatch(/User sign-in and accounts, tenancy/);
+    expect(stages["RUNTIME-TRUST-SPINE"]).toMatch(/no part of the trust spine is implemented/i);
   });
 
   it("keeps FND-024 blocked and EV-003 not-run as visible deferred debt", () => {

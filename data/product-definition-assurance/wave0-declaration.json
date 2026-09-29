@@ -1,7 +1,7 @@
 {
   "snapshot_id": "PDA-WAVE0",
   "snapshot_version": "0.2.0",
-  "controlling_decision": "DEC-023",
+  "controlling_decision": "DEC-024",
   "authority_class": "candidate",
   "boundary": [
     "This snapshot maps what exists. It approves nothing, closes nothing, adopts no requirement, and promotes no claim.",

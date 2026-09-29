@@ -1,8 +1,9 @@
 # SSLS 2.0 — Foundation & Authority Shell (Builds 001–002)
 
 Private founder/developer operator shell. No personal data, no production data,
-no AI features, no external integrations. Every record in the interface is
-synthetic and visibly marked.
+no external integrations. AI features and their Supabase backend are authorized
+by DEC-024 for the owner's own creative writing only. Every record in the
+interface is synthetic and visibly marked.
 
 ## Documents
 

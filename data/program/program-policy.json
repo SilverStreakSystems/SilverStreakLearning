@@ -1,8 +1,8 @@
 {
   "policy_id": "PROGRAM-POLICY-001",
-  "policy_version": "1.1.0",
+  "policy_version": "1.2.0",
   "authority_note": "Minimal narrative policy record for values that cannot be derived mechanically from the controlling registers. Everything that can be derived is derived. This record creates no state: it does not open or close a gate, does not close a work package, does not record a disposition, and does not authorize anything.",
-  "controlling_decision": "DEC-023",
+  "controlling_decision": "DEC-024",
   "gate": {
     "gate_id": "GATE-A",
     "name": "Gate A",
@@ -29,8 +29,8 @@
   },
   "owner_disposition_supporting_sources": [
     {
-      "record_id": "DEC-023",
-      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-023",
+      "record_id": "DEC-024",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-024",
       "route": "/decisions"
     },
     {
@@ -108,7 +108,7 @@
     },
     {
       "stage_id": "RUNTIME-TRUST-SPINE",
-      "statement": "The runtime trust spine remains plan-only. No backend, authentication, database, server-side storage, tenancy, artificial intelligence, or real personal data is authorized. Product Alpha 001, authorized by DEC-023, is a local-only synthetic slice held in one browser and does not implement, start, or imply any part of the runtime trust spine.",
+      "statement": "The runtime trust spine remains plan-only. DEC-024 authorizes artificial-intelligence features and the Supabase backend services that serve them, for the owner's own creative writing only. User sign-in and accounts, tenancy, learner or district data, and real personal data of anyone other than the owner remain unauthorized, and no part of the trust spine is implemented. Product Alpha 001, authorized by DEC-023, is a local-only synthetic slice held in one browser and does not implement, start, or imply any part of the runtime trust spine.",
       "source": {
         "record_id": "PLAN-RUNTIME-TRUST-SPINE",
         "locator": ".lovable/plan/runtime-trust-spine-plan-only-architecture-and-execution-des-2026-08-20.md",
@@ -148,8 +148,8 @@
     "action": "Perform a bounded founder/operator walkthrough of Product Alpha 001 and record usability findings; then decide whether the workflow needs a bounded revision or is stable enough for a separately authorized TTR-001 audit.",
     "why": "The Product Alpha 001 slice authorized by DEC-023 is implemented and mechanically tested. Technical tests establish mechanics only: they do not establish usefulness, workflow stability, learning impact, educational validity, accessibility conformance, privacy or security certification, or any human validation. Only a founder/operator walkthrough can produce that observation, and only a separate owner decision can authorize the deferred TTR-001 audit — nothing here authorizes it. FND-024 stays open as deferred debt until an owner decision either authorizes execution or records that it stays unrun.",
     "source": {
-      "record_id": "DEC-023",
-      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-023",
+      "record_id": "DEC-024",
+      "locator": "src/fixtures/registers.ts — DECISIONS, DEC-024",
       "route": "/decisions"
     }
   },
